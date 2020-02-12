@@ -1,7 +1,7 @@
 digital-engagement-platform-frontend
 =============
 
-This is a frontend service for supplying a webchat platform to gov.uk users.
+This is a front-end service for supplying webchat to gov.uk users.
 
 ## Using Service Manager
 
