@@ -1,7 +1,38 @@
+digital-engagement-platform-frontend
+=============
 
-# digital-engagement-platform-frontend
+This is a frontend service for supplying a webchat platform to gov.uk users.
 
-This is a placeholder README.md for a new repository
+## Using Service Manager
+
+You can use service manager to provide assets to the frontend. The DEP_ALL service is responsible for starting up all services required by the digital engagement platform frontend project.
+This can be started by running:
+
+```
+sm --start DEP_ALL -f
+```
+
+## Run the application
+
+To run the application execute
+
+```
+sbt "run 9956"
+```
+
+and then access the application at
+
+```
+http://localhost:9956/ask-hmrc/webchat
+```
+
+## Unit tests
+
+To run the unit tests execute
+
+```
+sbt test
+```
 
 ### License
 
