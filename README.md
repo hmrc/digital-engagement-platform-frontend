@@ -17,7 +17,7 @@ sm --start DEP_ALL -f
 To run the application execute
 
 ```
-sbt "run 9956"
+sbt run
 ```
 
 and then access the application at
