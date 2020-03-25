@@ -24,7 +24,10 @@
 @()(implicit request: Request[_], messages: play.api.i18n.Messages)
 
 @main_template(title = messages("global.nav.title")) {
-    <h1>@messages("payment.problems.title")</h1>
+
+    @components.back_link()
+
+    <h1 class="payment-problems">@messages("payment.problems.title")</h1>
 
     <p>@messages("payment.problems.p1")</p>
     <p>@messages("payment.problems.p2")</p>

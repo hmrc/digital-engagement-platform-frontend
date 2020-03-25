@@ -1,6 +1,7 @@
 #global values
 global.nav.title=Ask HMRC - Webchat
 global.text.link.back.to.govuk.p1=Return to Contact HMRC
+global.back = Back
 
 #Self Assessment Webchat
 self.assessment.title=Self Assessment: webchat
