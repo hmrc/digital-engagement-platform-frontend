@@ -41,7 +41,11 @@ class PaymentProblemsViewSpec extends ChatViewBehaviours {
         "payment.problems.h4.2",
         "payment.problems.h4.3",
         "payment.problems.h4.4",
-        "payment.problems.h4.5"
+        "payment.problems.h4.5",
+        "payment.problems.p3",
+        "payment.problems.p4",
+        "payment.problems.p5",
+        "payment.problems.p6"
     )
 
 
@@ -64,7 +68,7 @@ class PaymentProblemsViewSpec extends ChatViewBehaviours {
         "display the correct page title" in {
           val doc = asDocument(createView())
           doc.getElementsByTag("h1")
-          assertPageTitleEqualsMessage(doc, "Support for businesses paying tax")
+          assertPageTitleEqualsMessage(doc, "Support for paying tax")
         }
 
         "display the correct guidance" in {

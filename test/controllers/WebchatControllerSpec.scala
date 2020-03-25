@@ -45,6 +45,11 @@ class WebchatControllerSpec
   val onlineServiceHelpdeskView = app.injector.instanceOf[OnlineServiceHelpdeskView]
   val vatEnquiriesView = app.injector.instanceOf[VatEnquiriesView]
   val vatOnlineServicesHelpdeskView = app.injector.instanceOf[VatOnlineServicesHelpdeskView]
+  val paymentProblemsSelfAssessmentView = app.injector.instanceOf[PaymentProblemsSelfAssessmentView]
+  val paymentProblemsVATEnquiriesView = app.injector.instanceOf[PaymentProblemsVATEnquiriesView]
+  val paymentProblemsPAYEEnquiriesView = app.injector.instanceOf[PaymentProblemsPAYEEnquiriesView]
+  val paymentProblemsCorporationTaxEnquiriesView = app.injector.instanceOf[PaymentProblemsCorporationTaxEnquiriesView]
+
 
   val mcc = stubMessagesControllerComponents()
   implicit val messages = mcc.messagesApi.preferred(fakeRequest)
@@ -61,7 +66,11 @@ class WebchatControllerSpec
     nationalInsuranceNumbersView,
     onlineServiceHelpdeskView,
     vatEnquiriesView,
-    vatOnlineServicesHelpdeskView)
+    vatOnlineServicesHelpdeskView,
+    paymentProblemsSelfAssessmentView,
+    paymentProblemsVATEnquiriesView,
+    paymentProblemsPAYEEnquiriesView,
+    paymentProblemsCorporationTaxEnquiriesView)
 
   "fixed URLs" should {
     "render self-assessment page" in {
@@ -122,6 +131,30 @@ class WebchatControllerSpec
       val result = controller.incomeTaxEnquiries(fakeRequest)
       status(result) shouldBe OK
       contentAsString(result) shouldBe incomeTaxEnquiriesView().toString
+    }
+
+    "render payment-problems self-assessment page" in {
+      val result = controller.paymentProblemsSelfAssessment(fakeRequest)
+      status(result) shouldBe OK
+      contentAsString(result) shouldBe paymentProblemsSelfAssessmentView().toString
+    }
+
+    "render payment-problems vat enquiries page" in {
+      val result = controller.paymentProblemsVATEnquiries(fakeRequest)
+      status(result) shouldBe OK
+      contentAsString(result) shouldBe paymentProblemsVATEnquiriesView().toString
+    }
+
+    "render payment-problems paye enquiries page" in {
+      val result = controller.paymentProblemsPAYEEnquiries(fakeRequest)
+      status(result) shouldBe OK
+      contentAsString(result) shouldBe paymentProblemsPAYEEnquiriesView().toString
+    }
+
+    "render payment-problems corporation tax enquiries page" in {
+      val result = controller.paymentProblemsCorporationTaxEnquiries(fakeRequest)
+      status(result) shouldBe OK
+      contentAsString(result) shouldBe paymentProblemsCorporationTaxEnquiriesView().toString
     }
   }
 }

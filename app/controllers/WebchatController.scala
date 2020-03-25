@@ -36,7 +36,11 @@ class WebchatController @Inject()(appConfig: AppConfig,
                                   nationalInsuranceNumbersView: NationalInsuranceNumbersView,
                                   onlineServiceHelpdeskView: OnlineServiceHelpdeskView,
                                   vatEnquiriesView: VatEnquiriesView,
-                                  vatOnlineServiceHelpdeskView: VatOnlineServicesHelpdeskView)
+                                  vatOnlineServiceHelpdeskView: VatOnlineServicesHelpdeskView,
+                                  paymentProblemsSelfAssessmentView: PaymentProblemsSelfAssessmentView,
+                                  paymentProblemsVATEnquiriesView: PaymentProblemsVATEnquiriesView,
+                                  paymentProblemsPAYEEnquiriesView: PaymentProblemsPAYEEnquiriesView,
+                                  paymentProblemsCorporationTaxEnquiriesView: PaymentProblemsCorporationTaxEnquiriesView)
     extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
@@ -80,4 +84,21 @@ class WebchatController @Inject()(appConfig: AppConfig,
   def incomeTaxEnquiries: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(incomeTaxEnquiriesView()))
   }
+
+  def paymentProblemsSelfAssessment: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(paymentProblemsSelfAssessmentView()))
+  }
+
+  def paymentProblemsVATEnquiries: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(paymentProblemsVATEnquiriesView()))
+  }
+
+  def paymentProblemsPAYEEnquiries: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(paymentProblemsPAYEEnquiriesView()))
+  }
+
+  def paymentProblemsCorporationTaxEnquiries: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(paymentProblemsCorporationTaxEnquiriesView()))
+  }
 }
+

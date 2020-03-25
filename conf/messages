@@ -34,11 +34,23 @@ customs.title=Imports and exports: webchat
 #Income Tax Enquiries
 income.tax.title=Income tax for individuals, pensioners and employees: webchat
 
+#Payment Problems Self Assessment
+payment.problems.self.assessment.title=Payment Problems Self Assessment: webchat
+
+#Payment Problems VAT Enquiries
+payment.problems.vat.enquiries.title=Payment Problems VAT Enquiries: webchat
+
+#Payment Problems PAYE Enquiries
+payment.problems.paye.enquiries.title=Payment Problems PAYE Enquiries: webchat
+
+#Payment Problems corporation Tax Enquiries
+payment.problems.corporation.tax.enquiries.title=Payment Problems Corporation Tax Enquiries: webchat
+
 #Test Only page
 testonly.title=Test only page
 
 #Payment Problems
-payment.problems.title=Support for businesses paying tax
+payment.problems.title=Support for paying tax
 payment.problems.p1=If you run a business or are self-employed, you might be eligible for support through HMRC’s Time To Pay service. This can help you if you are facing financial difficulties and have outstanding tax liabilities.
 payment.problems.p2=If you have missed a tax payment or you might miss your next payment due to COVID-19, you can contact us through webchat.
 payment.problems.h2=Webchat
@@ -51,16 +63,7 @@ payment.problems.h4.3=PAYE
 payment.problems.h4.4=Corporation tax
 payment.problems.h4.5=Telephone
 payment.problems.indent.4=Monday to Friday: 8am to 4pm
-payment.problems.p5=Time to Pay service 0300 200 3835
-payment.problems.p6=Payment support service 0800 024 1222
-
-
-
-
-
-
-
-
-
-
-
+payment.problems.p3=Coronavirus (COVID-19) helpline 0800 024 1222
+payment.problems.p4=Due to measures put in place to stop the spread of Coronavirus (COVID-19) we have fewer advisers available to answer your calls.
+payment.problems.p5=Payment support service (PSS) 0300 200 3835
+payment.problems.p6=Call the PSS if you cannot pay in full before your payment deadline. Anyone can use this service, not just business.
