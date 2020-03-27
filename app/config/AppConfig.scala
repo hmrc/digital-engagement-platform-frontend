@@ -23,7 +23,8 @@ import uk.gov.hmrc.play.bootstrap.config.ServicesConfig
 @Singleton
 class AppConfig @Inject()(config: Configuration,
                           servicesConfig: ServicesConfig) {
-  private val contactBaseUrl = servicesConfig.baseUrl("contact-frontend")
+
+  private val contactHost = config.get[String]("contact-frontend.host")
 
   private val assetsUrl = config.get[String]("assets.url")
   private val serviceIdentifier = "digital-engagement-platform-frontend"
@@ -34,10 +35,9 @@ class AppConfig @Inject()(config: Configuration,
 
   val performanceTest: Boolean = config.get[Boolean](s"performance-test.mode")
 
-  val reportAProblemPartialUrl: String =
-    s"$contactBaseUrl/contact/problem_reports_ajax?service=$serviceIdentifier"
-  val reportAProblemNonJSUrl: String =
-    s"$contactBaseUrl/contact/problem_reports_nonjs?service=$serviceIdentifier"
+  val reportAProblemPartialUrl: String = s"$contactHost/contact/problem_reports_ajax?service=$serviceIdentifier"
+  val reportAProblemNonJSUrl: String = s"$contactHost/contact/problem_reports_nonjs?service=$serviceIdentifier"
+
   val nuanceUrl: String =
     "https://hmrc-uk.digital.nuance.com/chatskins/launch/inqChatLaunch10006719.js"
   val contactUrl: String =
