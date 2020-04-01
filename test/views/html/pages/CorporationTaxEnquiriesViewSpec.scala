@@ -40,7 +40,7 @@ class CorporationTaxEnquiriesViewSpec extends ChatViewBehaviours {
       returnUrl,
       "Opening times:",
       "Monday to Friday, 8am to 4pm",
-      "Advisers cannot transfer you to another webchat team."
+      "Closed weekends and bank holidays."
     )
   }
 }

@@ -40,7 +40,7 @@ class CharitiesCommunityAmateurSportsViewSpec extends ChatViewBehaviours {
       returnUrl,
       "Opening times:",
       "Monday to Friday, 8:30am to 5pm",
-    "Advisers cannot transfer you to another webchat team."
+      "Closed weekends and bank holidays."
     )
   }
 }
