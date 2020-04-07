@@ -32,29 +32,23 @@ $(window).on("load", function() {
 
     var waitForEl = function(selector, callback, count) {
         if (jQuery(selector).length) {
-        callback;
+        callback();
         } else {
         setTimeout(function() {
           if(!count) {
             count=0;
           }
           count++;
-          if(count<20) {
+          console.log("count: " + count);
+          if(count<3) {
             waitForEl(selector,callback,count);
           } else {return;}
-        }, 100);
+        }, 1000);
       }
     }
 
     waitForEl("#inqChatStage", function() {
-        $("#inqChatStage").insertAfter($("#wrapper"));
-        $("#tcChat_Skin").insertAfter($("#wrapper"));
-        $("#inqDivResizeCorner").insertAfter($("#wrapper"));
-        $("#inqResizeBox").insertAfter($("#wrapper"));
-        $("#inqTitleBar").insertAfter($("#wrapper"));
-        $("#Nuance-chat-anchored").insertAfter($("#wrapper"));
-        $("#nuance-acif").insertAfter($("#wrapper"));
-        $("#tcChat_Minimized").insertAfter($("#wrapper"));
+        $('#footer').appendTo(document.body);
     });
 
 });
