@@ -26,3 +26,7 @@ $(document).ready(function() {
       });
 
 });
+
+$(window).on("load", function() {
+    $("#inqChatStage, #tcChat_Skin, #inqDivResizeCorner, #inqResizeBox, #inqTitleBar, #Nuance-chat-anchored, #nuance-acif, #tcChat_Minimized").insertAfter($("#wrapper"));
+});
