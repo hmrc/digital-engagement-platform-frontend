@@ -82,5 +82,9 @@ class AppConfig @Inject()(config: Configuration,
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/corporation-tax-enquiries"
   val constructionIndustrySchemeReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/construction-industry-scheme"
+  val vatRegistrationReturnUrl: String =
+    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/vat-registration-applications-exceptions-and-changes"
+  val nationalClearanceHubReturnUrl: String =
+    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/national-clearance-hub"
 }
 

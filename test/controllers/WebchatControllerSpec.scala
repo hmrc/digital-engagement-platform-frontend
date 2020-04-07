@@ -52,6 +52,8 @@ class WebchatControllerSpec
   val nonUkResidentLandlordsView = app.injector.instanceOf[NonUkResidentLandlordsView]
   val corporationTaxEnquiriesView = app.injector.instanceOf[CorporationTaxEnquiriesView]
   val constructionIndustrySchemeView = app.injector.instanceOf[ConstructionIndustrySchemeView]
+  val vatRegistrationView = app.injector.instanceOf[VatRegistrationView]
+  val nationalClearanceHubView = app.injector.instanceOf[NationalClearanceHubView]
 
   val mcc = stubMessagesControllerComponents()
   implicit val messages = mcc.messagesApi.preferred(fakeRequest)
@@ -75,7 +77,9 @@ class WebchatControllerSpec
     nonUkResidentEmployeesView,
     nonUkResidentLandlordsView,
     corporationTaxEnquiriesView,
-    constructionIndustrySchemeView)
+    constructionIndustrySchemeView,
+    vatRegistrationView,
+    nationalClearanceHubView)
 
   "fixed URLs" should {
     "render self-assessment page" in {
@@ -178,6 +182,18 @@ class WebchatControllerSpec
       val result = controller.constructionIndustryScheme(fakeRequest)
       status(result) shouldBe OK
       contentAsString(result) shouldBe constructionIndustrySchemeView().toString()
+    }
+
+    "VAT registration page" in {
+      val result = controller.vatRegistration(fakeRequest)
+      status(result) shouldBe OK
+      contentAsString(result) shouldBe vatRegistrationView().toString()
+    }
+
+    "National clearance hub page" in {
+      val result = controller.nationalClearanceHub(fakeRequest)
+      status(result) shouldBe OK
+      contentAsString(result) shouldBe nationalClearanceHubView().toString()
     }
   }
 }
