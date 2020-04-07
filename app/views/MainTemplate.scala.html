@@ -38,24 +38,21 @@
     }
 }
 
-@wrapMainContent = {
-    @mainContent
-}
-
 @webchatSessionId = @{ request.session.get("sessionId") }
 
-@scriptElem = {
+@wrapMainContent = {
+    @mainContent
     @if(!appConfig.performanceTest){
         <div id="HMRC_Anchored_1"></div>
 
         <script type="text/javascript">
-            var nuanceData =
-                {
-                    'mdtpdfSessionID': '@webchatSessionId'
-                }
-        </script>
+                    var nuanceData =
+                        {
+                            'mdtpdfSessionID': '@webchatSessionId'
+                        }
+                </script>
 
-    <script id="webchat-tag" type="text/javascript" src=@appConfig.nuanceUrl></script>
+        <script id="webchat-tag" type="text/javascript" src=@appConfig.nuanceUrl></script>
     }
 }
 
@@ -67,5 +64,5 @@
                contentHeader = contentHeader,
                mainContent = article(wrapMainContent),
                serviceInfoContent = serviceInfoContent,
-               scriptElem = Some(scriptElem)
+               scriptElem = None
 )
