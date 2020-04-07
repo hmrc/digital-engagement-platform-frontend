@@ -40,24 +40,21 @@
 
 @wrapMainContent = {
     @mainContent
-}
-
-@webchatSessionId = @{ request.session.get("sessionId") }
-
-@scriptElem = {
     @if(!appConfig.performanceTest){
         <div id="HMRC_Anchored_1"></div>
 
         <script type="text/javascript">
-            var nuanceData =
-                {
-                    'mdtpdfSessionID': '@webchatSessionId'
-                }
-        </script>
+                    var nuanceData =
+                        {
+                            'mdtpdfSessionID': '@webchatSessionId'
+                        }
+                </script>
 
-    <script id="webchat-tag" type="text/javascript" src=@appConfig.nuanceUrl></script>
+        <script id="webchat-tag" type="text/javascript" src=@appConfig.nuanceUrl></script>
     }
 }
+
+@webchatSessionId = @{ request.session.get("sessionId") }
 
 @govuk_wrapper(appConfig = appConfig,
                title = title,
@@ -67,5 +64,5 @@
                contentHeader = contentHeader,
                mainContent = article(wrapMainContent),
                serviceInfoContent = serviceInfoContent,
-               scriptElem = Some(scriptElem)
+               scriptElem = None
 )

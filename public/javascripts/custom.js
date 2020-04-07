@@ -26,8 +26,3 @@ $(document).ready(function() {
       });
 
 });
-
-$(window).on("load", function() {
-	document.querySelectorAll('#inqChatStage a').forEach(x => x.tabIndex = 2);
-	document.querySelectorAll('#footer a').forEach(x => x.tabIndex = 3);
-});
