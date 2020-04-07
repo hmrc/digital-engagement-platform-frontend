@@ -27,6 +27,34 @@ $(document).ready(function() {
 
 });
 
+// dynamically re-position nuance divs before footer for accessibility
 $(window).on("load", function() {
-    $("#inqChatStage, #tcChat_Skin, #inqDivResizeCorner, #inqResizeBox, #inqTitleBar, #Nuance-chat-anchored, #nuance-acif, #tcChat_Minimized").insertAfter($("#wrapper"));
+
+    var waitForEl = function(selector, callback, count) {
+        if (jQuery(selector).length) {
+        callback;
+        } else {
+        setTimeout(function() {
+          if(!count) {
+            count=0;
+          }
+          count++;
+          if(count<20) {
+            waitForEl(selector,callback,count);
+          } else {return;}
+        }, 100);
+      }
+    }
+
+    waitForEl("#inqChatStage", function() {
+        $("#inqChatStage").insertAfter($("#wrapper"));
+        $("#tcChat_Skin").insertAfter($("#wrapper"));
+        $("#inqDivResizeCorner").insertAfter($("#wrapper"));
+        $("#inqResizeBox").insertAfter($("#wrapper"));
+        $("#inqTitleBar").insertAfter($("#wrapper"));
+        $("#Nuance-chat-anchored").insertAfter($("#wrapper"));
+        $("#nuance-acif").insertAfter($("#wrapper"));
+        $("#tcChat_Minimized").insertAfter($("#wrapper"));
+    });
+
 });
