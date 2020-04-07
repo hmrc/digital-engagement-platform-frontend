@@ -38,6 +38,8 @@
     }
 }
 
+@webchatSessionId = @{ request.session.get("sessionId") }
+
 @wrapMainContent = {
     @mainContent
     @if(!appConfig.performanceTest){
@@ -53,8 +55,6 @@
         <script id="webchat-tag" type="text/javascript" src=@appConfig.nuanceUrl></script>
     }
 }
-
-@webchatSessionId = @{ request.session.get("sessionId") }
 
 @govuk_wrapper(appConfig = appConfig,
                title = title,
