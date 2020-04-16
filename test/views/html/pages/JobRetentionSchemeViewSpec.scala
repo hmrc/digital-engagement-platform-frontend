@@ -28,9 +28,8 @@ class JobRetentionSchemeViewSpec extends ChatViewBehaviours {
 
   def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "Vat registration view" must {
-    val returnUrl: String =
-      "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/vat-registration-applications-exceptions-and-changes"
+  "Job retention scheme view" must {
+    val returnUrl: String = "#"
 
     behave like normalPage(
       createView,
