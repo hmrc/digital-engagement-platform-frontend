@@ -56,6 +56,7 @@ class WebchatControllerSpec
   val constructionIndustrySchemeView = app.injector.instanceOf[ConstructionIndustrySchemeView]
   val vatRegistrationView = app.injector.instanceOf[VatRegistrationView]
   val nationalClearanceHubView = app.injector.instanceOf[NationalClearanceHubView]
+  val jobRetentionSchemeView = app.injector.instanceOf[JobRetentionSchemeView]
 
   val nuanceEncryptionService = app.injector.instanceOf[NuanceEncryptionService]
 
@@ -82,6 +83,7 @@ class WebchatControllerSpec
     constructionIndustrySchemeView,
     vatRegistrationView,
     nationalClearanceHubView,
+    jobRetentionSchemeView,
     nuanceEncryptionService)
 
   def asDocument(html: String): Document = Jsoup.parse(html)
@@ -238,5 +240,15 @@ class WebchatControllerSpec
       status(result) shouldBe OK
       doc.select("h1").text() shouldBe "National Clearance Hub: webchat"
     }
+
+    "Job Retention Scheme page" in {
+      val result = controller.jobRetentionScheme(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
+      status(result) shouldBe OK
+      doc.select("h1").text() shouldBe "Job Retention Scheme: webchat"
+    }
+
+
   }
 }

@@ -21,6 +21,7 @@ GET        /webchat/corporation-tax-enquiries                                   
 GET        /webchat/construction-industry-scheme-enquiries                               controllers.WebchatController.constructionIndustryScheme
 GET        /webchat/vat-registration                                                     controllers.WebchatController.vatRegistration
 GET        /webchat/national-clearance-hub                                               controllers.WebchatController.nationalClearanceHub
+GET        /webchat/coronavirus-job-retention-scheme                                     controllers.WebchatController.jobRetentionScheme
 
 GET        /webchat/payment-problems                                                     controllers.PaymentProblemsController.paymentProblem
 
