@@ -34,12 +34,12 @@ class JobRetentionSchemeViewSpec extends ChatViewBehaviours {
 
     behave like normalPage(
       createView,
-      "Job Retention Scheme: webchat",
-      "Job Retention Scheme: webchat",
-      "Return to Contact HMRC",
+      "Coronavirus (COVID-19): Job Retention Scheme",
+      "Coronavirus (COVID-19): Job Retention Scheme",
+      "",
       returnUrl,
       "Opening times:",
-      "Monday to Friday, 8am to 4pm"
+      "Monday to Friday, 8am to 8pm"
     )
   }
 }

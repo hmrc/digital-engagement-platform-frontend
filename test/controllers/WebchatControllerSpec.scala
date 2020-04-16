@@ -246,7 +246,7 @@ class WebchatControllerSpec
       val doc = asDocument(contentAsString(result))
 
       status(result) shouldBe OK
-      doc.select("h1").text() shouldBe "Job Retention Scheme: webchat"
+      doc.select("h1").text() shouldBe "Coronavirus (COVID-19): Job Retention Scheme"
     }
 
 
