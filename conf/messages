@@ -110,3 +110,9 @@ payment.problems.p3=Coronavirus (COVID-19) helpline
 payment.problems.p4=We have fewer advisers available to answer your calls due to coronavirus (COVID-19).
 payment.problems.p5=Payment Support Service (PSS) helpline
 payment.problems.p6=If you cannot pay in full before your payment deadline call the PSS helpline. Anyone can use this service, not just businesses.
+
+#Support for Coronavirus
+support.for.coronavirus.title=Use HMRC’s digital assistant
+support.for.coronavirus.p1=Use the digital assistant to find information about coronavirus (COVID-19) support schemes, or:
+support.for.coronavirus.linkto.general.info=find general coronavirus information
+support.for.coronavirus.linkto.coronavirus.help=contact HMRC for coronavirus help
