@@ -34,3 +34,5 @@ GET        /ivr/nino                                                            
 GET        /ivr/excise                                                                  controllers.IvrController.customsEnquiries
 GET        /ivr/sa                                                                      controllers.IvrController.selfAssessment
 GET        /ivr/jobretention                                                            controllers.IvrController.jobRetentionScheme
+
+GET        /virtual-assistant/support-for-coronavirus                                   controllers.VirtualAssistantController.supportForCoronavirus

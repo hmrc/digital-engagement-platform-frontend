@@ -86,5 +86,6 @@ class AppConfig @Inject()(config: Configuration,
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/vat-registration-applications-exceptions-and-changes"
   val nationalClearanceHubReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/national-clearance-hub"
-}
+  val coronavirusGeneralInfoUrl: String = "https://www.gov.uk/coronavirus"
+  }
 
