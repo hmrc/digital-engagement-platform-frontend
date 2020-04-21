@@ -30,12 +30,14 @@
 
     <p>@messages("support.for.coronavirus.p1")</p>
 
-    <li>
-        <a id="coronavirus-general-info-link" href="@appConfig.coronavirusGeneralInfoUrl">@messages("support.for.coronavirus.linkto.general.info")</a>
-    </li>
-    <li>
-        <a id="coronavirus-helpline-return-link" href="@appConfig.paymentProblemsCoronavirusHelplineReturnUrl">@messages("support.for.coronavirus.linkto.coronavirus.help")</a>
-    </li>
+    <ul class="list list-bullet">
+        <li>
+            <a id="coronavirus-general-info-link" href="@appConfig.coronavirusGeneralInfoUrl">@messages("support.for.coronavirus.linkto.general.info")</a>
+        </li>
+        <li>
+            <a id="coronavirus-helpline-return-link" href="@appConfig.paymentProblemsCoronavirusHelplineReturnUrl">@messages("support.for.coronavirus.linkto.coronavirus.help")</a>
+        </li>
+    </ul>
 
     @if(!appConfig.performanceTest){
         <div id="HMRC_Fixed_1"></div>
