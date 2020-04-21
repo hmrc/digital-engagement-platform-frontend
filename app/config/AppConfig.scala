@@ -18,11 +18,13 @@ package config
 
 import javax.inject.{Inject, Singleton}
 import play.api.Configuration
+import services.NuanceEncryptionService
 import uk.gov.hmrc.play.bootstrap.config.ServicesConfig
 
 @Singleton
 class AppConfig @Inject()(config: Configuration,
-                          servicesConfig: ServicesConfig) {
+                          servicesConfig: ServicesConfig,
+                          val nuanceEncryptionService: NuanceEncryptionService) {
 
   private val contactHost = config.get[String]("contact-frontend.host")
 

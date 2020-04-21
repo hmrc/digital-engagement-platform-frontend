@@ -19,6 +19,8 @@ package models
 import org.scalatest.{Matchers, WordSpec}
 import play.api.Configuration
 import services.NuanceEncryptionService
+import uk.gov.hmrc.http.HeaderCarrier
+import uk.gov.hmrc.http.logging.SessionId
 
 case class EncryptedNuanceDataSpec() extends WordSpec with Matchers {
 
@@ -37,25 +39,28 @@ case class EncryptedNuanceDataSpec() extends WordSpec with Matchers {
       val service = NuanceEncryptionService(configuration)
       val encryptedNuanceData = EncryptedNuanceData.create(
         service,
-        sessionID = "x"
-      )
+        HeaderCarrier(sessionId = Some(SessionId("x")), deviceID = Some("y")))
 
-      val nuanceHashID = encryptedNuanceData.head
-      val nuanceEncryptedID = encryptedNuanceData.last
+      encryptedNuanceData.mdtpSessionID should startWith("ENCRYPTED-")
+      encryptedNuanceData.deviceID should startWith("ENCRYPTED-")
 
-      nuanceHashID should fullyMatch regex "[0-9A-Za-z]+"
-      nuanceEncryptedID should startWith("ENCRYPTED-")
+      // each encryption should produce different cipher text
 
       val encryptedNuanceData2 = EncryptedNuanceData.create(
         service,
-        sessionID = "x"
-      )
+        HeaderCarrier(sessionId = Some(SessionId("x")), deviceID = Some("y")))
 
-      val nuanceHashID2 = encryptedNuanceData2.head
-      val nuanceEncryptedID2 = encryptedNuanceData2.last
+      encryptedNuanceData2.deviceID should startWith("ENCRYPTED-")
+      encryptedNuanceData.deviceID should not be encryptedNuanceData2.deviceID
 
-      nuanceHashID should be(nuanceHashID2)
-      nuanceEncryptedID shouldNot be(nuanceEncryptedID2)
+      // this needs to be a stable identifier based on the SessionId (Nuance will use it to track the session)
+      // it should *not* change if the plaintext doesn't change.  Should NEVER contain non-alpha chars (Nuance requirement)
+      //
+      encryptedNuanceData.nuanceSessionId should be (encryptedNuanceData2.nuanceSessionId)
+
+      encryptedNuanceData.nuanceSessionId should fullyMatch regex "[0-9A-Za-z]+"
+      encryptedNuanceData2.nuanceSessionId should fullyMatch regex "[0-9A-Za-z]+"
+
     }
   }
 }

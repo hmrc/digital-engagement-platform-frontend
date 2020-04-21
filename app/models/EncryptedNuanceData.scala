@@ -18,31 +18,44 @@ package models
 
 import com.google.inject.Inject
 import services.NuanceEncryptionService
+import uk.gov.hmrc.http.HeaderCarrier
 
 /**
-  * Encrypted nuanceSessionId data field which need to be sent to Nuance to support gov.uk
-  * users microservice will pick up this encrypted value, and pass
-  * on to Nuance.  Encryption is necessary to avoid plaintext JSON data in the HTML.
-  *
-  * This class implements the encryption algorithm as agreed in AIV-1751
-  *
-  * Each plaintext value is prefixed by a Sha512 hash for receiver verification purposes
-  * Then, the combined result is encrypted with AES256CGM using a shared secret. it then
-  * uses base64 to encode further.
-  *
-  * nuanceSessionId: hashed SessionId value  (for gov.uk chat client session tracking)
-  */
+ * Encrypted and/or hashed data fields which need to be sent to Nuance to support Virtual Assistant
+ * userid-recovery-api microservice will pick up these encrypted values, decrypt and pass
+ * on to Nuance.  Encryption is necessary to avoid plaintext JSON data in the HTML.
+ *
+ * This class implements the encryption algorithm as agreed in AIV-1751
+ *
+ * Each plaintext value is prefixed by a Sha512 hash for receiver verification purposes
+ * Then, the combined result is encrypted with AES256CGM using a shared secret
+ * Finally, the Ciphertext is preprended with "ENCRYPTED-"
+ *
+ * nuanceSessionId: hashed SessionId value  (for gov.uk chat client session tracking)
+ * mdtpSessionId: encrypted SessionId value (for TXM auditing)
+ * deviceId: encrypted DeviceId value (for TXM auditing)
+ *
+ */
 
-case class EncryptedNuanceData @Inject()(nuanceSessionId: String, mdtpSessionID: String)
+case class EncryptedNuanceData @Inject()(nuanceSessionId: String, mdtpSessionID: String, deviceID: String)
 
 object EncryptedNuanceData {
 
   /**
-    * Construct encrypted fields using data from request and header carrier
-    */
-
-  def create(encryptionService: NuanceEncryptionService, sessionID: String): List[String] = {
-    List(encryptionService.nuanceSafeHash(sessionID),
-      encryptionService.encryptField(sessionID))
+   * Construct encrypted fields using data from request and header carrier
+   */
+  def create(cryptoService: NuanceEncryptionService, hc: HeaderCarrier): EncryptedNuanceData = {
+    EncryptedNuanceData(
+      cryptoService.nuanceSafeHash(sessionId(hc)),
+      cryptoService.encryptField(sessionId(hc)),
+      cryptoService.encryptField(deviceID(hc))
+    )
   }
+
+  private def sessionId(hc: HeaderCarrier): String =
+    hc.sessionId.fold("")(_.value)
+
+  private def deviceID(hc: HeaderCarrier): String =
+    hc.deviceID.fold("")(_.toString)
+
 }

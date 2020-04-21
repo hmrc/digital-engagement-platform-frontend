@@ -18,6 +18,7 @@
 @import uk.gov.hmrc.play.views.html.layouts
 @import models.EncryptedNuanceData
 @import services.NuanceEncryptionService
+@import uk.gov.hmrc.play.HeaderCarrierConverter
 
 @this(
     govuk_wrapper: GovukWrapper,
@@ -46,22 +47,26 @@
     @mainContent
 }
 
-@nuanceHashedSessionId = @{ EncryptedNuanceData.create(nuanceEncryptionService, webchatSessionId.getOrElse("")) }
-@webchatSessionId = @{ request.session.get("sessionId") }
+@nuanceData = @{
+    EncryptedNuanceData.create(
+        appConfig.nuanceEncryptionService,
+        HeaderCarrierConverter.fromHeadersAndSessionAndRequest(request.headers, request = Some(request))
+    )
+}
 
 @scriptElem = {
     @if(!appConfig.performanceTest){
         <div id="HMRC_Anchored_1"></div>
 
         <script type="text/javascript">
-            var nuanceData =
-                {
-                    'mdtpdfSessionID': '@nuanceHashedSessionId.head',
-                    'mdtpSessionID' : '@nuanceHashedSessionId.tail'
-                }
+            var nuanceData = {
+                "mdtpdfSessionID" : "@{nuanceData.nuanceSessionId}",
+                "mdtpSessionID" : "@{nuanceData.mdtpSessionID}",
+                "deviceID" : "@{nuanceData.deviceID}"
+            }
         </script>
 
-    <script id="webchat-tag" type="text/javascript" src=@appConfig.nuanceUrl></script>
+        <script id="webchat-tag" type="text/javascript" src=@appConfig.nuanceUrl></script>
     }
 }
 
