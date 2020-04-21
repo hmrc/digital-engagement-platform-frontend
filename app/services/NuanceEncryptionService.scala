@@ -20,8 +20,6 @@ import com.google.inject.Inject
 import play.api.Configuration
 import uk.gov.hmrc.crypto.{CryptoGCMWithKeysFromConfig, PlainText, Scrambled, Sha512Crypto}
 
-import scala.util.Random
-
 /**
   * Service for encrypting data to send to Nuance (Virtual Assistance)
   * The configuration here (and algorithm) needs to match that in userid-recovery-api
@@ -34,13 +32,6 @@ case class NuanceEncryptionService @Inject()(configuration: Configuration) {
   private val VALUE_SEPARATOR = "-"
   private val baseSettingsKey = "request-body-encryption"
   private val hashingKey: String = configuration.get[String](s"$baseSettingsKey.hashing-key")
-  private val bytes = 32
-
-  private val saltArray = new Array[Byte](bytes)
-
-  private val randomSalt: Unit = Random.nextBytes(saltArray)
-
-  private val salt: String = saltArray.map(_.toChar).mkString
 
   protected lazy val crypto: CryptoGCMWithKeysFromConfig = new CryptoGCMWithKeysFromConfig(
     baseConfigKey = baseSettingsKey,
@@ -53,11 +44,9 @@ case class NuanceEncryptionService @Inject()(configuration: Configuration) {
     FIELD_PREFIX + crypto.encrypt(prefixWithHash(rawValue)).value
 
   private def prefixWithHash(rawValue: String): PlainText =
-    PlainText(saltedHashValue(rawValue).value + VALUE_SEPARATOR + rawValue)
+    PlainText(hashValue(rawValue).value + VALUE_SEPARATOR + rawValue)
 
   private def hashValue(rawValue: String): Scrambled = hasher.hash(PlainText(rawValue))
-
-  private def saltedHashValue(rawValue: String): Scrambled = hasher.hash(PlainText(salt + rawValue))
 
   protected def hashField(rawValue: String): String = hashValue(rawValue).value
 
