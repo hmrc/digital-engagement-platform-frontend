@@ -22,6 +22,7 @@ GET        /webchat/construction-industry-scheme-enquiries                      
 GET        /webchat/vat-registration                                                     controllers.WebchatController.vatRegistration
 GET        /webchat/national-clearance-hub                                               controllers.WebchatController.nationalClearanceHub
 GET        /webchat/job-retention-scheme                                                 controllers.WebchatController.jobRetentionScheme
+GET        /webchat/self-employment-income-support-scheme                                controllers.WebchatController.selfEmploymentIncomeSupportScheme
 
 GET        /webchat/payment-problems                                                     controllers.PaymentProblemsController.paymentProblem
 
@@ -34,5 +35,6 @@ GET        /ivr/nino                                                            
 GET        /ivr/excise                                                                  controllers.IvrController.customsEnquiries
 GET        /ivr/sa                                                                      controllers.IvrController.selfAssessment
 GET        /ivr/jobretention                                                            controllers.IvrController.jobRetentionScheme
+GET        /ivr/c19seiss                                                                controllers.IvrController.selfEmploymentIncomeSupportScheme
 
 GET        /virtual-assistant/support-for-coronavirus                                   controllers.VirtualAssistantController.supportForCoronavirus

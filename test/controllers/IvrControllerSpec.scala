@@ -115,5 +115,11 @@ class IvrControllerSpec
       redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/job-retention-scheme?nuance=ivr")
     }
 
+    "self employment income support scheme page" in {
+      val result = controller.selfEmploymentIncomeSupportScheme(fakeRequest)
+      status(result) shouldBe SEE_OTHER
+      redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/self-employment-income-support-scheme?nuance=ivr")
+    }
+
   }
 }

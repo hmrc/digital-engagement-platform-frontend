@@ -96,6 +96,9 @@ national.clearance.hub.title=National Clearance Hub: webchat
 #Job Retention Scheme
 job.retention.scheme.title=Coronavirus (COVID-19): Job Retention Scheme
 
+#Self Employment Income Support Scheme
+self.employment.income.support.scheme.title=Coronavirus (COVID-19): Self-employment Income Support Scheme
+
 #Payment Problems
 payment.problems.title=Coronavirus (COVID-19): tax support for businesses and self-employed
 payment.problems.p1=If you run a business or are self-employed, you might be eligible for support through our Time To Pay service. This can help you if you are facing financial difficulties and have outstanding tax liabilities.
