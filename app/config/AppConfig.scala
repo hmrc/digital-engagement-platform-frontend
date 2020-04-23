@@ -89,7 +89,8 @@ class AppConfig @Inject()(config: Configuration,
   val nationalClearanceHubReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/national-clearance-hub"
   val coronavirusGeneralInfoUrl: String = "https://www.gov.uk/coronavirus"
-  val selfEmploymentIncomeSupportReturnUrl: String = "#" //TODO
+  val selfEmploymentIncomeSupportReturnUrl: String =
+    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/get-help-with-the-self-employment-income-support-scheme"
 
 }
 

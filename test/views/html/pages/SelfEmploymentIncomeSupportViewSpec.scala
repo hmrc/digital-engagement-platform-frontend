@@ -30,7 +30,7 @@ class SelfEmploymentIncomeSupportViewSpec extends ChatViewBehaviours {
   def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
   "Self Employment Income Support view" must {
-    val returnUrl: String = "#"
+    val returnUrl: String = "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/get-help-with-the-self-employment-income-support-scheme"
 
     behave like normalPage(
       createView,
