@@ -91,6 +91,7 @@ class AppConfig @Inject()(config: Configuration,
   val coronavirusGeneralInfoUrl: String = "https://www.gov.uk/coronavirus"
   val selfEmploymentIncomeSupportReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/get-help-with-the-self-employment-income-support-scheme"
-
+  val jobRetentionSchemeReturnUrl: String =
+  "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/get-help-with-the-coronavirus-job-retention-scheme"
 }
 
