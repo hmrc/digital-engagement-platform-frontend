@@ -23,6 +23,7 @@ GET        /webchat/vat-registration                                            
 GET        /webchat/national-clearance-hub                                               controllers.WebchatController.nationalClearanceHub
 GET        /webchat/job-retention-scheme                                                 controllers.WebchatController.jobRetentionScheme
 GET        /webchat/self-employment-income-support-scheme                                controllers.WebchatController.selfEmploymentIncomeSupportScheme
+GET        /webchat/probate                                                              controllers.WebchatController.probate
 
 GET        /webchat/payment-problems                                                     controllers.PaymentProblemsController.paymentProblem
 

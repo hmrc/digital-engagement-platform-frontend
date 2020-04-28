@@ -58,6 +58,7 @@ class WebchatControllerSpec
   val nationalClearanceHubView = app.injector.instanceOf[NationalClearanceHubView]
   val jobRetentionSchemeView = app.injector.instanceOf[JobRetentionSchemeView]
   val selfEmploymentIncomeSupportView = app.injector.instanceOf[SelfEmploymentIncomeSupportView]
+  val probateView = app.injector.instanceOf[ProbateView]
 
   val nuanceEncryptionService = app.injector.instanceOf[NuanceEncryptionService]
 
@@ -87,6 +88,7 @@ class WebchatControllerSpec
     nationalClearanceHubView,
     jobRetentionSchemeView,
     selfEmploymentIncomeSupportView,
+    probateView,
     nuanceEncryptionService)
 
   def asDocument(html: String): Document = Jsoup.parse(html)
@@ -258,6 +260,14 @@ class WebchatControllerSpec
 
       status(result) shouldBe OK
       doc.select("h1").text() shouldBe "Coronavirus (COVID-19): Self-employment Income Support Scheme"
+    }
+
+    "Probate page" in {
+      val result = controller.probate(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
+      status(result) shouldBe OK
+      doc.select("h1").text() shouldBe "Coronavirus (COVID-19): Probate"
     }
 
   }

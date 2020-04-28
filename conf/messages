@@ -9,6 +9,7 @@ global.webchat.title.h2=Webchat
 global.opening.times.title=Opening times:
 global.opening.times.8to4=Monday to Friday, 8am to 4pm
 global.opening.times.8to5=Monday to Friday, 8am to 5pm
+global.opening.times.9to4=Monday to Friday, 9am to 4pm
 global.opening.times.8_30to4=Monday to Friday, 8:30am to 4pm
 global.opening.times.8_30to5=Monday to Friday, 8:30am to 5pm
 global.opening.times.8to6=Monday to Friday, 8am to 6pm
@@ -99,6 +100,9 @@ job.retention.scheme.title=Coronavirus (COVID-19): Job Retention Scheme
 
 #Self Employment Income Support Scheme
 self.employment.income.support.scheme.title=Coronavirus (COVID-19): Self-employment Income Support Scheme
+
+#Probate
+probate.title=Coronavirus (COVID-19): Probate
 
 #Payment Problems
 payment.problems.title=Coronavirus (COVID-19): tax support for businesses and self-employed
