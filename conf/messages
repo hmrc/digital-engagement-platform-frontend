@@ -24,6 +24,11 @@ global.opening.times.bankholidays.p=Closed on bank holidays.
 global.opening.times.24_7=24 hours a day, 7 days a week
 global.closed.time.sun.banckholidays=Closed Sunday and bank holidays.
 
+#SEISS temp opening times
+seiss.opening.times.mon.thur=Monday to Thursday, 8am to 8pm
+seiss.opening.times.fri=Friday (8th May Bank Holiday), 8am to 4pm
+seiss.opening.times.sat=Saturday (9th and 16th), 8am to 4pm
+
 #Self Assessment Webchat
 self.assessment.title=Self Assessment: webchat
 self.assessment.p1=Return to Contact HMRC

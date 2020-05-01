@@ -39,7 +39,8 @@ class NonUkResidentEmployeesViewSpec extends ChatViewBehaviours {
         "Return to Contact HMRC",
         returnUrl,
         "Opening times:",
-        "Monday to Friday, 8:30am to 4pm"
+        "Monday to Friday, 8:30am to 4pm",
+        "Closed weekends and bank holidays."
       )
     }
 }

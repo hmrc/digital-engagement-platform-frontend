@@ -37,6 +37,10 @@ class VatEnquirirsViewSpec extends ChatViewBehaviours {
       "VAT: webchat",
       "VAT: webchat",
       "Return to Contact HMRC",
-      returnUrl)
+      returnUrl,
+      "Opening times:",
+      "Monday to Friday, 8am to 6pm",
+      "Closed weekends and bank holidays."
+    )
   }
 }

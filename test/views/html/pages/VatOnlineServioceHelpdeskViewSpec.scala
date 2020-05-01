@@ -37,6 +37,10 @@ class VatOnlineServioceHelpdeskViewSpec extends ChatViewBehaviours {
       "VAT online services helpdesk: webchat",
       "VAT online services helpdesk: webchat",
       "Return to Contact HMRC",
-      returnUrl)
+      returnUrl,
+      "Opening times:",
+      "Monday to Friday, 8am to 6pm",
+      "Closed weekends and bank holidays."
+    )
   }
 }

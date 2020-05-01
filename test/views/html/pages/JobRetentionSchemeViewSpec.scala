@@ -38,7 +38,8 @@ class JobRetentionSchemeViewSpec extends ChatViewBehaviours {
       "",
       returnUrl,
       "Opening times:",
-      "Monday to Friday, 8am to 8pm"
+      "Monday to Friday, 8am to 8pm",
+      "Closed weekends and bank holidays."
     )
   }
 }
