@@ -23,6 +23,7 @@ global.opening.times.weekend.p=Closed weekends and bank holidays.
 global.opening.times.bankholidays.p=Closed on bank holidays.
 global.opening.times.24_7=24 hours a day, 7 days a week
 global.closed.time.sun.banckholidays=Closed Sunday and bank holidays.
+global.closed.time.sun=Closed Sundays
 
 #SEISS temp opening times
 seiss.opening.times.mon.thur=Monday to Thursday, 8am to 8pm
