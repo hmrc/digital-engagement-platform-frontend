@@ -29,10 +29,10 @@ global.opening.time.sat.bankholidays.8to4=Saturdays and Bank Holidays, 8am to 4p
 global.closed.time.sun=Closed Sundays.
 global.closed.time.bankholidays=Closed bank holidays.
 
-#SEISS temp opening times
-seiss.opening.times.mon.thur=Monday to Thursday, 8am to 8pm
-seiss.opening.times.fri=Friday (8th May Bank Holiday), 8am to 4pm
-seiss.opening.times.sat=Saturday (9th and 16th), 8am to 4pm
+#JRS and SEISS temp opening times
+temp.opening.times.mon.thur=Monday to Thursday, 8am to 8pm
+temp.opening.times.fri=Friday (8 May Bank Holiday) 8am to 4pm
+temp.closed.times.weekends=Closed on weekends.
 
 #Self Assessment Webchat
 self.assessment.title=Self Assessment: webchat
