@@ -60,6 +60,10 @@ class WebchatController @Inject()(appConfig: AppConfig,
     request.getQueryString("nuance").contains("ivr")
   }
 
+  private def isEntertainersRedirect()(implicit request: RequestHeader): Boolean = {
+    request.getQueryString("redirect").contains("entertainers")
+  }
+
   def selfAssessment: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(selfAssessmentView(isIvrRedirect())))
   }
@@ -117,7 +121,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def nonUkResidentLandlords: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(nonUkResidentLandlordsView()))
+    Future.successful(Ok(nonUkResidentLandlordsView(isEntertainersRedirect())))
   }
 
   def corporationTaxEnquiries: Action[AnyContent] = Action.async { implicit request =>

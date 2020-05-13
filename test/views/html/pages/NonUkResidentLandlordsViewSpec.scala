@@ -26,14 +26,14 @@ class NonUkResidentLandlordsViewSpec extends ChatViewBehaviours {
 
   val view = app.injector.instanceOf[NonUkResidentLandlordsView]
 
-  def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
+  def createView(isEntertainersRedirect: Boolean): () => HtmlFormat.Appendable = () => view(isEntertainersRedirect)(fakeRequest, messages)
 
   "NonUk Resident Landlords view" must {
     val returnUrl: String =
       "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/non-resident-landlords"
 
     behave like normalPage(
-      createView,
+      createView(false),
       "Non-UK resident landlords: webchat",
       "Non-UK resident landlords: webchat",
       "Return to Contact HMRC",
@@ -43,4 +43,21 @@ class NonUkResidentLandlordsViewSpec extends ChatViewBehaviours {
       "Closed weekends and bank holidays."
     )
   }
+
+  "NonUk Resident Entertainers view" must {
+    val returnUrl: String =
+      "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/non-uk-resident-entertainers"
+
+    behave like normalPage(
+      createView(true),
+      "Non-UK resident entertainers: webchat",
+      "Non-UK resident entertainers: webchat",
+      "Return to Contact HMRC",
+      returnUrl,
+      "Opening times:",
+      "Monday to Friday, 8:30am to 4pm",
+      "Closed weekends and bank holidays."
+    )
+  }
+
 }

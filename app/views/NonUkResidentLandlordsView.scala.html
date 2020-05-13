@@ -20,13 +20,18 @@
     main_template: MainTemplate,
     appConfig: AppConfig)
 
-@()(implicit request: Request[_], messages: play.api.i18n.Messages)
+@(isEntertainersRedirect: Boolean = false)(implicit request: Request[_], messages: play.api.i18n.Messages)
 
-@main_template(title = messages("nonUk.resident.landlords.title")) {
+@title = @{if (isEntertainersRedirect) {messages("nonUk.resident.entertainers.title")} else {messages("nonUk.resident.landlords.title")}}
+
+@href = @{if (isEntertainersRedirect) {appConfig.nonUkResidentEntertainersUrl} else {appConfig.nonUkResidentLandlordsUrl}}
+
+
+@main_template(title = title) {
 
     @components.back_link()
 
-    <h1 class="header-margin-top">@messages("nonUk.resident.landlords.title")</h1>
+    <h1 class="header-margin-top">@title</h1>
 
     <div class="govuk-inset-text">
         <p>@messages("global.opening.times.title")</p>
@@ -41,6 +46,6 @@
     }
 
     <p class="margin-top">
-        <a id="return-link" href=@appConfig.nonUkResidentLandlordsUrl>@messages("global.text.link.back.to.govuk.p1")</a>
+        <a id="return-link" href=@href>@messages("global.text.link.back.to.govuk.p1")</a>
     </p>
 }

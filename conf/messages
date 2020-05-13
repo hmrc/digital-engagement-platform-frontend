@@ -115,6 +115,9 @@ inheritance.tax.title=Coronavirus (COVID-19): Inheritance Tax
 #Additional Needs View
 additional.needs.title=HMRC’s Extra Support team: webchat
 
+#Non-UK resident landlords
+nonUk.resident.entertainers.title=Non-UK resident entertainers: webchat
+
 #Payment Problems
 payment.problems.title=Coronavirus (COVID-19): tax support for businesses and self-employed
 payment.problems.p1=If you run a business or are self-employed, you might be eligible for support through our Time To Pay service. This can help you if you are facing financial difficulties and have outstanding tax liabilities.
