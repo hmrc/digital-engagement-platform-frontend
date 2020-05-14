@@ -36,15 +36,18 @@ class AppConfig @Inject()(config: Configuration,
   val analyticsHost: String = config.get[String](s"google-analytics.host")
 
   val performanceTest: Boolean = config.get[Boolean](s"performance-test.mode")
+  val preProdMode: Boolean = config.get[Boolean](s"pre-prod.mode")
 
   val reportAProblemPartialUrl: String = s"$contactHost/contact/problem_reports_ajax?service=$serviceIdentifier"
   val reportAProblemNonJSUrl: String = s"$contactHost/contact/problem_reports_nonjs?service=$serviceIdentifier"
 
   val nuanceUrl: String =
     "https://hmrc-uk.digital.nuance.com/chatskins/launch/inqChatLaunch10006719.js"
+  val nuancePreProdUrl: String =
+    "https://hmrc-uk-preprod.digital.nuance.com/chatskins/launch/inqChatLaunch10006719.js"
+
   val contactUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact"
-
 
   val selfAssessmentReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/self-assessment"
