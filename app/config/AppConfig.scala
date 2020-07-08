@@ -102,6 +102,8 @@ class AppConfig @Inject()(config: Configuration,
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/get-help-with-the-statutory-sick-pay-rebate-scheme"
   val inheritanceTaxReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/probate-and-inheritance-tax-enquiries"
+  val eatOutToHelpOutUrl: String =
+    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/eat-out-to-help-out-scheme"
   val additionalNeedsReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/get-help-from-hmrc-s-extra-support-team"
   val nonUkResidentEntertainersUrl: String =

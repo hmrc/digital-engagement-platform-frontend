@@ -61,6 +61,7 @@ class WebchatControllerSpec
   val c19EmployerEnquiriesView = app.injector.instanceOf[C19EmployerEnquiriesView]
   val probateView = app.injector.instanceOf[ProbateView]
   val inheritanceTaxView = app.injector.instanceOf[InheritanceTaxView]
+  val eatOutToHelpOutView = app.injector.instanceOf[EatOutToHelpOutView]
   val additionalNeedsHelpView = app.injector.instanceOf[AdditionalNeedsHelpView]
 
   val nuanceEncryptionService = app.injector.instanceOf[NuanceEncryptionService]
@@ -94,6 +95,7 @@ class WebchatControllerSpec
     c19EmployerEnquiriesView,
     probateView,
     inheritanceTaxView,
+    eatOutToHelpOutView,
     additionalNeedsHelpView,
     nuanceEncryptionService)
 
@@ -290,6 +292,13 @@ class WebchatControllerSpec
 
       status(result) shouldBe OK
       doc.select("h1").text() shouldBe "Coronavirus (COVID-19): Inheritance Tax"
+    }
+    "Eat Out To Help Out page" in {
+      val result = controller.eatOutToHelpOut(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
+      status(result) shouldBe OK
+      doc.select("h1").text() shouldBe "Eat Out to Help Out scheme: webchat "
     }
 
     "Additional Needs page" in {

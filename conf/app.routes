@@ -25,6 +25,7 @@ GET         /webchat/job-retention-scheme                                       
 GET         /webchat/self-employment-income-support-scheme                              controllers.WebchatController.selfEmploymentIncomeSupportScheme
 GET         /webchat/probate                                                            controllers.WebchatController.probate
 GET         /webchat/inheritance-tax                                                    controllers.WebchatController.inheritanceTax
+GET         /webchat/eat-out-to-help-out                                                controllers.WebchatController.eatOutToHelpOut
 GET         /webchat/help-for-users-with-additional-needs                               controllers.WebchatController.additionalNeedsHelp
 GET         /webchat/c19-employer-enquiries                                             controllers.WebchatController.c19EmployerEnquiries
 

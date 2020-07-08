@@ -30,8 +30,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
                                   mcc: MessagesControllerComponents,
                                   selfAssessmentView: SelfAssessmentView,
                                   taxCreditsView: TaxCreditsView,
-                                  childBenefitView: ChildBenefitView,
-                                  customsEnquiriesView: CustomsEnquiriesView,
+                                  childBenefitView: ChildBenefitView, customsEnquiriesView: CustomsEnquiriesView,
                                   employerEnquiriesView: EmployerEnquiriesView,
                                   incomeTaxEnquiriesView: IncomeTaxEnquiriesView,
                                   nationalInsuranceNumbersView: NationalInsuranceNumbersView,
@@ -52,6 +51,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
                                   c19EmployerEnquiriesView: C19EmployerEnquiriesView,
                                   probateView: ProbateView,
                                   inheritanceTaxView: InheritanceTaxView,
+                                  eatOutToHelpOutView: EatOutToHelpOutView,
                                   additioonalNeedsHelpView: AdditionalNeedsHelpView,
                                   nuanceEncryptionService: NuanceEncryptionService) extends FrontendController(mcc) {
 
@@ -159,6 +159,10 @@ class WebchatController @Inject()(appConfig: AppConfig,
 
   def inheritanceTax: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(inheritanceTaxView()))
+  }
+
+  def eatOutToHelpOut: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(eatOutToHelpOutView()))
   }
 
   def additionalNeedsHelp: Action[AnyContent] = Action.async { implicit request =>
