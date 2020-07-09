@@ -103,7 +103,7 @@ class AppConfig @Inject()(config: Configuration,
   val inheritanceTaxReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/probate-and-inheritance-tax-enquiries"
   val eatOutToHelpOutUrl: String =
-    "https://www.tax.service.gov.uk/ask-hmrc/webchat/eat-out-to-help-out-scheme"
+    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/get-help-with-the-eat-out-to-help-out-scheme"
   val additionalNeedsReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/get-help-from-hmrc-s-extra-support-team"
   val nonUkResidentEntertainersUrl: String =
