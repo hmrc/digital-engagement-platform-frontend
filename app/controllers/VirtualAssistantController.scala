@@ -20,7 +20,7 @@ import config.AppConfig
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents, RequestHeader}
 import services.NuanceEncryptionService
-import views.html.SupportForCoronavirusView
+import views.html.{VASupportForCoronavirusView, VATaxCreditsEnquiriesView}
 import uk.gov.hmrc.play.bootstrap.controller.FrontendController
 
 import scala.concurrent.Future
@@ -28,13 +28,18 @@ import scala.concurrent.Future
 @Singleton
 class VirtualAssistantController @Inject()(appConfig: AppConfig,
                                            mcc: MessagesControllerComponents,
-                                           supportForCoronavirusView: SupportForCoronavirusView,
+                                           supportForCoronavirusView: VASupportForCoronavirusView,
+                                           taxCreditsEnquiriesView: VATaxCreditsEnquiriesView,
                                            nuanceEncryptionService: NuanceEncryptionService) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
   def supportForCoronavirus: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(supportForCoronavirusView()))
+  }
+
+  def taxCreditsEnquiries: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(taxCreditsEnquiriesView()))
   }
 }
 

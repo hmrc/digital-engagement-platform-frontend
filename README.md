@@ -9,7 +9,7 @@ You can use service manager to provide assets to the frontend. The DEP_ALL servi
 This can be started by running:
 
 ```
-sm --start DIGITAL_ENGAGEMENT_FRONTEND_ALL -f
+sm --start DIGITAL_ENGAGEMENT_PLATFORM_ALL -f
 ```
 
 ## Run the application

@@ -44,3 +44,6 @@ GET         /ivr/c19seiss                                                       
 GET         /ivr/c19employer                                                            controllers.IvrController.c19EmployerEnquiries
 
 GET         /virtual-assistant/support-for-coronavirus                                  controllers.VirtualAssistantController.supportForCoronavirus
+GET         /virtual-assistant/tax-credits-enquiries                                    controllers.VirtualAssistantController.taxCreditsEnquiries
+
+GET         /accessibility-statement                                                    controllers.AccessibilityStatementController.accessibility

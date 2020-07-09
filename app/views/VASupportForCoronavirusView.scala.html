@@ -22,17 +22,17 @@
 
 @()(implicit request: Request[_], messages: play.api.i18n.Messages)
 
-@main_template(title = messages("support.for.coronavirus.title"), navTitle = Some(messages("global.nav.va.title"))) {
+@main_template(title = messages("va.global.h1.title"), navTitle = Some(messages("global.nav.va.title"))) {
 
     @components.back_link()
 
-    <h1 class="header-margin-top">@messages("support.for.coronavirus.title")</h1>
+    <h1 class="header-margin-top">@messages("va.global.h1.title")</h1>
 
     @if(!appConfig.performanceTest){
         <div class="margin-bottom" id="HMRC_Fixed_1"></div>
     }
 
-    <p class="margin-top">@messages("support.for.coronavirus.p1")</p>
+    <p class="margin-top">@messages("va.global.h1.bullet.title")</p>
 
     <ul class="list list-bullet">
         <li>

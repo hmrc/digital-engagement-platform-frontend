@@ -26,46 +26,37 @@ import play.api.mvc.{Cookie, MessagesControllerComponents}
 import play.api.test.FakeRequest
 import play.api.test.Helpers._
 import services.NuanceEncryptionService
-import views.html.{VASupportForCoronavirusView, VATaxCreditsEnquiriesView}
+import views.html.AccessibilityStatementView
 
-class VirtualAssistantControllerSpec
+class AccessibilityStatementControllerSpec
   extends WordSpec
     with Matchers
     with GuiceOneAppPerSuite
-    with ScalaCheckPropertyChecks {
+    with ScalaCheckPropertyChecks{
 
   implicit private val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
 
   implicit val appConfig = app.injector.instanceOf[AppConfig]
-  val supportForCoronavirusView = app.injector.instanceOf[VASupportForCoronavirusView]
-  val taxCreditsEnquiriesView = app.injector.instanceOf[VATaxCreditsEnquiriesView]
-  val nuanceEncryptionService = app.injector.instanceOf[NuanceEncryptionService]
   val messagesCC = app.injector.instanceOf[MessagesControllerComponents]
+  val accessibilityStatementView =app.injector.instanceOf[AccessibilityStatementView]
+  val nuanceEncryptionService = app.injector.instanceOf[NuanceEncryptionService]
 
-  private val controller = new VirtualAssistantController(
+  private val controller = new AccessibilityStatementController(
     appConfig,
     messagesCC,
-    supportForCoronavirusView,
-    taxCreditsEnquiriesView,
-    nuanceEncryptionService)
+    accessibilityStatementView,
+    nuanceEncryptionService
+  )
 
   def asDocument(html: String): Document = Jsoup.parse(html)
 
-  "fixed VA URLs" should {
-    "render support for coronavirus page" in {
-      val result = controller.supportForCoronavirus(fakeRequest)
+  "fixed URLs" should {
+    "render accessibility statement page" in {
+      val result = controller.accessibility(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
       status(result) shouldBe OK
-      doc.select("h1").text() shouldBe "Use HMRC’s digital assistant"
-    }
-
-    "render tax credits enquiries page" in {
-      val  result = controller.taxCreditsEnquiries(fakeRequest)
-      val doc = asDocument(contentAsString(result))
-
-      status(result) shouldBe OK
-      doc.select("h1").text() shouldBe "Use HMRC’s digital assistant"
+      doc.select("h1").text() shouldBe "Accessibility statement for webchat and digital assistant"
     }
   }
 }

@@ -37,6 +37,7 @@ class AppConfig @Inject()(config: Configuration,
 
   val performanceTest: Boolean = config.get[Boolean](s"performance-test.mode")
   val preProdMode: Boolean = config.get[Boolean](s"pre-prod.mode")
+  val accessibilityStatementMode: String = config.get[String](s"accessibility-statement.mode")
 
   val reportAProblemPartialUrl: String = s"$contactHost/contact/problem_reports_ajax?service=$serviceIdentifier"
   val reportAProblemNonJSUrl: String = s"$contactHost/contact/problem_reports_nonjs?service=$serviceIdentifier"
@@ -108,5 +109,21 @@ class AppConfig @Inject()(config: Configuration,
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/get-help-from-hmrc-s-extra-support-team"
   val nonUkResidentEntertainersUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/non-uk-resident-entertainers"
-}
+  val manageYourTaxCreditsUrl: String = "https://www.gov.uk/manage-your-tax-credits"
 
+  val generalAccessibilityStatementUrl: String = "https://www.gov.uk/help/accessibility-statement"
+  val hmRevenueCustomsUrl: String = "https://www.gov.uk/government/organisations/hm-revenue-customs"
+  val abilityNetUrl: String = "https://mcmw.abilitynet.org.uk/"
+  val reportingProblemsEmail: String = "digitalengagementplatform@hmrc.gov.uk"
+  val equalityAdvisoryServiceUrl: String = "https://www.equalityadvisoryservice.com/"
+  val technicalInformationUrl: String = "https://www.w3.org/TR/WCAG21/"
+  val equalityOrgUrl: String = "https://www.equalityni.org/Home"
+  val getHelpHmrcExtraSupportUrl: String = "https://www.gov.uk/get-help-hmrc-extra-support"
+
+  val accessibilityStatementUrl: String = "https://www.tax.service.gov.uk/ask-hmrc/accessibility-statement"
+  val accessibilityStatementUrlDev: String = "https://www.development.tax.service.gov.uk/ask-hmrc/accessibility-statement"
+  val accessibilityStatementUrlQa: String = "https://www.qa.tax.service.gov.uk/ask-hmrc/accessibility-statement"
+  val accessibilityStatementUrlStaging: String = "https://www.staging.tax.service.gov.uk/ask-hmrc/accessibility-statement"
+  val accessibilityStatementUrlExternalTest: String = "https://test-www.tax.service.gov.uk/ask-hmrc/webchat/self-assessment"
+  val accessibilityStatementUrlLocal: String = "http://localhost:9956/ask-hmrc/accessibility-statement"
+}
