@@ -1,4 +1,4 @@
-d/*
+/*
  * Copyright 2020 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -34,12 +34,12 @@ class EatOutToHelpOutViewSpec extends ChatViewBehaviours {
 
     behave like normalPage(
       createView,
-      "Coronavirus (COVID-19): Inheritance Taxd",
-      "Coronavirus (COVID-19): Inheritance Tax",
+      "Eat Out to Help Out scheme: webchat",
+      "Eat Out to Help Out scheme: webchat",
       "Return to Contact HMRC",
       returnUrl,
       "Opening times:",
-      "Monday to Friday, 9am to 4pm",
+      "Monday to Friday, 8am to 8pm",
       "Closed weekends and bank holidays."
     )
   }
