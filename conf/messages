@@ -29,6 +29,8 @@ global.opening.time.banckholidays.8to4=Bank Holidays, 8am to 4pm.
 global.opening.time.sat.bankholidays.8to4=Saturdays and Bank Holidays, 8am to 4pm
 global.closed.time.sun=Closed Sundays.
 global.closed.time.bankholidays=Closed bank holidays.
+global.adviser.busy.p1=When an adviser is available, select the ‘speak to an adviser’ link to open the chat.
+global.adviser.busy.p2=If you do not select the link to open the chat, you will have to wait for the next available adviser.
 
 #Self Assessment Webchat
 self.assessment.title=Self Assessment: webchat
