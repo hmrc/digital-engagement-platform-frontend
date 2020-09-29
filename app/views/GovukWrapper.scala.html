@@ -48,7 +48,7 @@
         linkElem = None,
         headScripts = None)
         <meta name="format-detection" content="telephone=no" />
-        <link rel='stylesheet' media='print' href='@routes.Assets.versioned("stylesheets/_all.css")' />
+        <link rel='stylesheet' media='print' href='@controllers.routes.Assets.versioned("stylesheets/_all.css")' />
         @if(appConfig.optimizelyMode){
             <script src="https://cdn.optimizely.com/js/@{appConfig.optimizelyProjectId}.js"></script>
         }
