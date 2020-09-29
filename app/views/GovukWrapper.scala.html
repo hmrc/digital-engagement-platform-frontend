@@ -79,9 +79,8 @@
 
 @footerTop = {}
 
-@footerLinks = {
-    @footer_links()
-    <ul>
+@accessibilityStatementLink = {
+    <li>
         @if(appConfig.accessibilityStatementMode == "prod") {
             <a href="@appConfig.accessibilityStatementUrl" target="_blank">Accessibility Statement</a>
         }
@@ -100,7 +99,11 @@
         @if(appConfig.accessibilityStatementMode == "external") {
             <a href="@appConfig.accessibilityStatementUrlExternalTest" target="_blank">Accessibility Statement</a>
         }
-    </ul>
+    </li>
+}
+
+@footerLinks = {
+    @footer_links(additionalLinks = Some(accessibilityStatementLink))
 }
 
 @betaBanner = @{components.beta_banner(appConfig)}
