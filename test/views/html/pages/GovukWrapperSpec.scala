@@ -34,7 +34,7 @@ class GovukWrapperSpec extends ChatViewBehaviours {
     behave like generalContent(
       createView,
       "Self Assessment: webchat",
-      ""
+      "This is a new service"
     )
   }
 }
