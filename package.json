@@ -38,6 +38,8 @@
   "jest": {
     "setupFiles": [
       "./test/javascripts/setup.js"
-    ]
+    ],
+    "testRegex": "((\\.|/*.)(spec))\\.js?$",
+    "verbose": true
   }
 }

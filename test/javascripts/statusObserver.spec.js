@@ -1,5 +1,4 @@
 import * as SUT from '../../app/assets/javascripts/statusObserver'
-import * as dataLayerUpdater from '../../app/assets/javascripts/updateDatalayer'
 
 describe("The status observer", function() {
     var isObserved = false;

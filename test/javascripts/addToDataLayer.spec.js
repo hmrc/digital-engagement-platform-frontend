@@ -35,3 +35,21 @@ describe("Add to data layer", function() {
         expect(w.dataLayer[0].engine).toBe('v6');
 	});
 });
+
+describe("Save to data layer", function() {
+    it("will save an element", () => {
+        var w = {dataLayer : []};
+
+        SUT.reportEvent(w,{test:"test"})
+
+        expect(w.dataLayer[0].test).toEqual("test");
+    });
+
+    it("will initialise data layer if there is no dataLayer array", () => {
+        var w = {dataLayer : undefined};
+
+        SUT.reportEvent(w,{test:"test"})
+
+        expect(w.dataLayer[0].test).toEqual("test");
+    });
+});
