@@ -53,3 +53,5 @@ GET         /virtual-assistant/tax-credits-enquiries                            
 
 GET         /accessibility-statement                                                    controllers.AccessibilityStatementController.accessibilityNuance
 GET         /accessibility-statement/*pageUri                                           controllers.AccessibilityStatementController.accessibility(pageUri: String)
+
+GET         /contact-us/nuance-test/t85ting-on1y-pag8-for-d8v81opm8nt                   controllers.NuanceFullPageCUIController.nuanceFullPageCUI

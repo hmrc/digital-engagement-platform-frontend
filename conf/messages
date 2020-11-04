@@ -178,6 +178,9 @@ support.for.coronavirus.linkto.coronavirus.help=contact HMRC for coronavirus hel
 tax-credits-enquiries.li1=manage your tax credits online
 tax-credits-enquiries.li2=find more ways to contact HMRC
 
+#Nuance Full Page CUI Test Page
+nuance.full.page.cui.test.page.title=Test full page UCI for webchat
+
 #Accessibility Statement
 accessibility.statement.title=Accessibility statement for webchat and digital assistant
 
