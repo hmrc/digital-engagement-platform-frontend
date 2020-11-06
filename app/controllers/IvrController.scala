@@ -34,7 +34,7 @@ class IvrController @Inject()(appConfig: AppConfig,
                               employerEnquiriesView: EmployerEnquiriesView,
                               vatEnquiriesView: VatEnquiriesView,
                               nationalInsuranceNumbersView: NationalInsuranceNumbersView,
-                              customsEnquiriesView: CustomsEnquiriesView,
+                              exciseEnquiriesView: ExciseEnquiriesView,
                               selfAssessmentView: SelfAssessmentView,
                               eatOutToHelpOut: EatOutToHelpOutView,
                               nuanceEncryptionService: NuanceEncryptionService) extends FrontendController(mcc) {
@@ -67,8 +67,8 @@ class IvrController @Inject()(appConfig: AppConfig,
     Future.successful(Redirect(controllers.routes.WebchatController.nationalInsuranceNumbers().url + param))
   }
 
-  def customsEnquiries: Action[AnyContent] = Action.async {
-    Future.successful(Redirect(controllers.routes.WebchatController.customsEnquiries().url + param))
+  def exciseEnquiries: Action[AnyContent] = Action.async {
+    Future.successful(Redirect(controllers.routes.WebchatController.exciseEnquiries().url + param))
   }
 
   def selfAssessment: Action[AnyContent] = Action.async {

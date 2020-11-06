@@ -41,7 +41,7 @@ class IvrControllerSpec
   val employerEnquiriesView = app.injector.instanceOf[EmployerEnquiriesView]
   val vatEnquiriesView = app.injector.instanceOf[VatEnquiriesView]
   val nationalInsuranceNumbersView = app.injector.instanceOf[NationalInsuranceNumbersView]
-  val customsEnquiriesView = app.injector.instanceOf[CustomsEnquiriesView]
+  val exciseEnquiries = app.injector.instanceOf[ExciseEnquiriesView]
   val selfAssessmentView = app.injector.instanceOf[SelfAssessmentView]
   val eatOutToHelpOutView = app.injector.instanceOf[EatOutToHelpOutView]
   val nuanceEncryptionService = app.injector.instanceOf[NuanceEncryptionService]
@@ -56,7 +56,7 @@ class IvrControllerSpec
     employerEnquiriesView,
     vatEnquiriesView,
     nationalInsuranceNumbersView,
-    customsEnquiriesView,
+    exciseEnquiries,
     selfAssessmentView,
     eatOutToHelpOutView,
     nuanceEncryptionService)
@@ -99,10 +99,10 @@ class IvrControllerSpec
       redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/national-insurance-numbers?nuance=ivr")
     }
 
-    "render customs page" in {
-      val result = controller.customsEnquiries(fakeRequest)
+    "render excise page" in {
+      val result = controller.exciseEnquiries(fakeRequest)
       status(result) shouldBe SEE_OTHER
-      redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/customs-international-trade-and-excise-enquiries?nuance=ivr")
+      redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/excise-enquiries?nuance=ivr")
     }
 
     "render self-assessment page" in {

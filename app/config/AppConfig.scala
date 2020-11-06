@@ -83,6 +83,8 @@ class AppConfig @Inject()(config: Configuration,
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/national-insurance-numbers"
   val customsEnquiriesReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/customs-international-trade-and-excise-enquiries"
+  val exciseEnquiriesReturnUrl: String =
+    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/excise-enquiries"
   val charitiesCommunityAmateurSportsUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/charities-and-community-amateur-sports-clubs-cascs"
   val employingExpatriateEmployeesUrl: String =

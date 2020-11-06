@@ -41,6 +41,7 @@ class WebchatControllerSpec
   val taxCreditsView = app.injector.instanceOf[TaxCreditsView]
   val childBenefitView = app.injector.instanceOf[ChildBenefitView]
   val customsEnquiriesView = app.injector.instanceOf[CustomsEnquiriesView]
+  val exciseEnquiriesView = app.injector.instanceOf[ExciseEnquiriesView]
   val employerEnquiriesView = app.injector.instanceOf[EmployerEnquiriesView]
   val incomeTaxEnquiriesView = app.injector.instanceOf[IncomeTaxEnquiriesView]
   val nationalInsuranceNumbersView = app.injector.instanceOf[NationalInsuranceNumbersView]
@@ -76,6 +77,7 @@ class WebchatControllerSpec
     taxCreditsView,
     childBenefitView,
     customsEnquiriesView,
+    exciseEnquiriesView,
     employerEnquiriesView,
     incomeTaxEnquiriesView,
     nationalInsuranceNumbersView,
@@ -174,6 +176,14 @@ class WebchatControllerSpec
 
       status(result) shouldBe OK
       doc.select("h1").text() shouldBe "Imports and exports: webchat"
+    }
+
+    "render excise page" in {
+      val result = controller.exciseEnquiries(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
+      status(result) shouldBe OK
+      doc.select("h1").text() shouldBe "Excise: webchat"
     }
 
     "render income tax enquiries page" in {

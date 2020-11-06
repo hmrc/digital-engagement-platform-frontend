@@ -32,6 +32,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
                                   taxCreditsView: TaxCreditsView,
                                   childBenefitView: ChildBenefitView,
                                   customsEnquiriesView: CustomsEnquiriesView,
+                                  exciseEnquiriesView: ExciseEnquiriesView,
                                   employerEnquiriesView: EmployerEnquiriesView,
                                   incomeTaxEnquiriesView: IncomeTaxEnquiriesView,
                                   nationalInsuranceNumbersView: NationalInsuranceNumbersView,
@@ -101,6 +102,10 @@ class WebchatController @Inject()(appConfig: AppConfig,
 
   def customsEnquiries: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(customsEnquiriesView(isIvrRedirect())))
+  }
+
+  def exciseEnquiries: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(exciseEnquiriesView(isIvrRedirect())))
   }
 
   def incomeTaxEnquiries: Action[AnyContent] = Action.async { implicit request =>

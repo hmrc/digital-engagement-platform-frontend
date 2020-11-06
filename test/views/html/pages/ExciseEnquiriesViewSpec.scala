@@ -19,24 +19,25 @@ package views.html.pages
 import play.api.mvc.Cookie
 import play.api.test.FakeRequest
 import play.twirl.api.HtmlFormat
-import views.html.CustomsEnquiriesView
+import views.html.ExciseEnquiriesView
 
-class CustomerEnquiriesViewSpec extends ChatViewBehaviours {
+
+class ExciseEnquiriesViewSpec extends ChatViewBehaviours {
 
   implicit override val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
 
-  val view = app.injector.instanceOf[CustomsEnquiriesView]
+  val view = app.injector.instanceOf[ExciseEnquiriesView]
 
   def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "Customs Enquiries View" must {
+  "Excise Enquiries View" must {
     val returnUrl: String =
-      "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/customs-international-trade-and-excise-enquiries"
+      "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/excise-enquiries"
 
     behave like normalPage(
       createView,
-      "Imports and exports: webchat",
-      "Imports and exports: webchat",
+      "Excise: webchat",
+      "Excise: webchat",
       "Return to Contact HMRC",
       returnUrl,
       "Opening times:",

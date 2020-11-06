@@ -10,7 +10,9 @@ GET         /webchat/vat-enquiries                                              
 GET         /webchat/vat-online-services-helpdesk                                       controllers.WebchatController.vatOnlineServicesHelpdesk
 GET         /webchat/online-services-helpdesk                                           controllers.WebchatController.onlineServicesHelpdesk
 GET         /webchat/national-insurance-numbers                                         controllers.WebchatController.nationalInsuranceNumbers
+GET         /webchat/customs-international-trade                                        controllers.WebchatController.customsEnquiries
 GET         /webchat/customs-international-trade-and-excise-enquiries                   controllers.WebchatController.customsEnquiries
+GET         /webchat/excise-enquiries                                                   controllers.WebchatController.exciseEnquiries
 GET         /webchat/income-tax-enquiries-for-individuals-pensioners-and-employees      controllers.WebchatController.incomeTaxEnquiries
 GET         /webchat/charities-and-community-sports                                     controllers.WebchatController.charitiesCommunitySports
 GET         /webchat/employing-expatriate-employees                                     controllers.WebchatController.employingExpatriateEmployees
@@ -42,7 +44,7 @@ GET         /ivr/paye                                                           
 GET         /ivr/employers                                                              controllers.IvrController.employerEnquiries
 GET         /ivr/vat                                                                    controllers.IvrController.vatEnquiries
 GET         /ivr/nino                                                                   controllers.IvrController.nationalInsuranceNumbers
-GET         /ivr/excise                                                                 controllers.IvrController.customsEnquiries
+GET         /ivr/excise                                                                 controllers.IvrController.exciseEnquiries
 GET         /ivr/sa                                                                     controllers.IvrController.selfAssessment
 GET         /ivr/jobretention                                                           controllers.IvrController.jobRetentionScheme
 GET         /ivr/c19seiss                                                               controllers.IvrController.selfEmploymentIncomeSupportScheme

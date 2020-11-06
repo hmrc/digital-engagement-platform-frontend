@@ -66,6 +66,9 @@ national.insurance.title=National Insurance: webchat
 #Imports and Exports Webchat
 customs.title=Imports and exports: webchat
 
+#Excise Enquiries
+excise.enquiries.title=Excise: webchat
+
 #Income Tax Enquiries
 income.tax.title=Income tax for individuals, pensioners and employees: webchat
 
