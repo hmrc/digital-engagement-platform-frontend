@@ -18,10 +18,10 @@ package controllers
 
 import config.AppConfig
 import javax.inject.{Inject, Singleton}
-import play.api.mvc.{Action, AnyContent, MessagesControllerComponents, RequestHeader}
+import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import services.NuanceEncryptionService
-import views.html.{VASupportForCoronavirusView, VATaxCreditsEnquiriesView}
 import uk.gov.hmrc.play.bootstrap.controller.FrontendController
+import views.html.{VASupportForCoronavirusView, VATaxCreditsEnquiriesView}
 
 import scala.concurrent.Future
 

@@ -16,7 +16,6 @@
 
 package views.html.pages
 
-import org.jsoup.Jsoup
 import play.api.mvc.Cookie
 import play.api.test.FakeRequest
 import play.twirl.api.HtmlFormat

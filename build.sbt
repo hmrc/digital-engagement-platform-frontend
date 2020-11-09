@@ -28,6 +28,7 @@ lazy val microservice = Project(appName, file("."))
     javaScriptTestRunnerHook,
     defaultSettings(),
     scalaVersion := "2.12.8",
+    SilencerSettings(),
     PlayKeys.playDefaultPort := 9956,
     TwirlKeys.templateImports ++= Seq(
       "play.twirl.api.HtmlFormat",
