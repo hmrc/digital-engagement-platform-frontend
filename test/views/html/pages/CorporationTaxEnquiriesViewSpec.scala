@@ -38,9 +38,11 @@ class CorporationTaxEnquiriesViewSpec extends ChatViewBehaviours {
       "Corporation Tax: webchat",
       "Return to Contact HMRC",
       returnUrl,
-      "Opening times:",
-      "Monday to Friday, 8am to 6pm",
-      "Closed weekends and bank holidays."
+      Seq(
+        "Opening times:",
+        "Monday to Friday, 8am to 6pm",
+        "Closed weekends and bank holidays."
+      )
     )
   }
 }

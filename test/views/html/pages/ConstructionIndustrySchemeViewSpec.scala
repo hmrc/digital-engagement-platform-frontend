@@ -38,9 +38,11 @@ class ConstructionIndustrySchemeViewSpec extends ChatViewBehaviours {
       "Construction Industry Scheme: webchat",
       "Return to Contact HMRC",
       returnUrl,
-      "Opening times:",
-      "Monday to Friday, 8am to 8pm",
-      "Closed weekends and bank holidays."
+      Seq(
+        "Opening times:",
+        "Monday to Friday, 8am to 8pm",
+        "Closed weekends and bank holidays."
+      )
     )
   }
 }

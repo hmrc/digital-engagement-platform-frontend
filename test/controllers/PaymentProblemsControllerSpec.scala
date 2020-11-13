@@ -16,37 +16,16 @@
 
 package controllers
 
-import config.AppConfig
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
-import org.scalatest.{Matchers, WordSpec}
-import org.scalatestplus.play.guice.GuiceOneAppPerSuite
 import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
-import play.api.mvc.{Cookie, MessagesControllerComponents}
-import play.api.test.FakeRequest
 import play.api.test.Helpers._
-import services.NuanceEncryptionService
-import views.html._
+import views.html.pages.AppBuilderSpecBase
 
 class PaymentProblemsControllerSpec
-    extends WordSpec
-    with Matchers
-    with GuiceOneAppPerSuite
-    with ScalaCheckPropertyChecks {
+    extends AppBuilderSpecBase with ScalaCheckPropertyChecks {
 
-  implicit private val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
-
-  implicit val appConfig = app.injector.instanceOf[AppConfig]
-  val paymentProblemsView = app.injector.instanceOf[PaymentProblemsView]
-  val nuanceEncryptionService = app.injector.instanceOf[NuanceEncryptionService]
-
-  val messagesCC = app.injector.instanceOf[MessagesControllerComponents]
-
-  private val controller = new PaymentProblemsController(
-    appConfig,
-    messagesCC,
-    paymentProblemsView,
-    nuanceEncryptionService)
+  private val controller = app.injector.instanceOf[PaymentProblemsController]
 
   def asDocument(html: String): Document = Jsoup.parse(html)
 
@@ -55,8 +34,8 @@ class PaymentProblemsControllerSpec
       val result = controller.paymentProblem(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) shouldBe OK
-      doc.select("h1").text() shouldBe "Coronavirus (COVID-19): tax support for businesses and self-employed"
+      status(result) mustBe OK
+      doc.select("h1").text() mustBe "Coronavirus (COVID-19): tax support for businesses and self-employed"
     }
   }
 }

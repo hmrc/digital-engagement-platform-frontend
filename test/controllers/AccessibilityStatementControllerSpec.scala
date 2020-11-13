@@ -16,37 +16,16 @@
 
 package controllers
 
-import config.AppConfig
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
-import org.scalatest.{Matchers, WordSpec}
-import org.scalatestplus.play.guice.GuiceOneAppPerSuite
 import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
-import play.api.mvc.{Cookie, MessagesControllerComponents}
-import play.api.test.FakeRequest
 import play.api.test.Helpers._
-import services.NuanceEncryptionService
-import views.html.AccessibilityStatementView
+import views.html.pages.AppBuilderSpecBase
 
 class AccessibilityStatementControllerSpec
-  extends WordSpec
-    with Matchers
-    with GuiceOneAppPerSuite
-    with ScalaCheckPropertyChecks{
+  extends AppBuilderSpecBase with ScalaCheckPropertyChecks{
 
-  implicit private val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
-
-  implicit val appConfig = app.injector.instanceOf[AppConfig]
-  val messagesCC = app.injector.instanceOf[MessagesControllerComponents]
-  val accessibilityStatementView =app.injector.instanceOf[AccessibilityStatementView]
-  val nuanceEncryptionService = app.injector.instanceOf[NuanceEncryptionService]
-
-  private val controller = new AccessibilityStatementController(
-    appConfig,
-    messagesCC,
-    accessibilityStatementView,
-    nuanceEncryptionService
-  )
+  private val controller = app.injector.instanceOf[AccessibilityStatementController]
 
   def asDocument(html: String): Document = Jsoup.parse(html)
 
@@ -58,20 +37,20 @@ class AccessibilityStatementControllerSpec
       val result = controller.accessibility(pageUri)(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) shouldBe OK
-      contentType(result) shouldBe Some("text/html")
-      charset(result) shouldBe Some("utf-8")
-      doc.select("h1").text() shouldBe "Accessibility statement for webchat and digital assistant"
+      status(result) mustBe OK
+      contentType(result) mustBe Some("text/html")
+      charset(result) mustBe Some("utf-8")
+      doc.select("h1").text() mustBe "Accessibility statement for webchat and digital assistant"
     }
 
     "render accessibility statement page from link inside webchat" in {
       val result = controller.accessibilityNuance()(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) shouldBe OK
-      contentType(result) shouldBe Some("text/html")
-      charset(result) shouldBe Some("utf-8")
-      doc.select("h1").text() shouldBe "Accessibility statement for webchat and digital assistant"
+      status(result) mustBe OK
+      contentType(result) mustBe Some("text/html")
+      charset(result) mustBe Some("utf-8")
+      doc.select("h1").text() mustBe "Accessibility statement for webchat and digital assistant"
     }
   }
 }

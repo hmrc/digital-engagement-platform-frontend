@@ -37,9 +37,11 @@ class JobRetentionSchemeViewSpec extends ChatViewBehaviours {
       "Coronavirus (COVID-19): Job Retention Scheme",
       "",
       returnUrl,
-      "Opening times:",
-      "Monday to Friday, 8am to 8pm",
-      "Closed weekends and bank holidays."
+      Seq(
+        "Opening times:",
+        "Monday to Friday, 8am to 8pm",
+        "Closed weekends and bank holidays."
+      )
     )
   }
 }

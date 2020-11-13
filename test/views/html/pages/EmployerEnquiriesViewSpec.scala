@@ -37,7 +37,8 @@ class EmployerEnquiriesViewSpec extends ChatViewBehaviours {
       "Employers: webchat",
       "Employers: webchat",
       "Return to Contact HMRC",
-      returnUrl
+      returnUrl,
+      Nil
     )
   }
 }

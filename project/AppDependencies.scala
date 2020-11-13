@@ -11,6 +11,7 @@ object AppDependencies {
     "uk.gov.hmrc" %% "bootstrap-play-26" % "1.3.0",
     "uk.gov.hmrc" %% "play-whitelist-filter" % "3.1.0-play-26",
     "uk.gov.hmrc" %% "url-builder" % "3.4.0-play-26"
+    ,"uk.gov.hmrc" %% "digital-engagement-platform-chat" % "0.11.0-play-26-SNAPSHOT"
   )
 
   val test: Seq[ModuleID] = Seq(

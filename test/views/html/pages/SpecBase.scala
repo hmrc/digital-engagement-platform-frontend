@@ -17,14 +17,19 @@
 package views.html.pages
 
 import config.AppConfig
-import org.scalatestplus.play.PlaySpec
+import org.scalatest.{MustMatchers, WordSpec}
+import org.scalatestplus.mockito.MockitoSugar
 import org.scalatestplus.play.guice.GuiceOneAppPerSuite
+import play.api.Application
 import play.api.i18n.{Messages, MessagesApi}
-import play.api.inject.Injector
+import play.api.inject.guice.GuiceApplicationBuilder
+import play.api.inject.{Injector, bind}
 import play.api.mvc.{AnyContentAsEmpty, BodyParsers}
 import play.api.test.FakeRequest
+import uk.gov.hmrc.webchat.client.WebChatClient
+import uk.gov.hmrc.webchat.testhelpers.WebChatClientStub
 
-trait SpecBase extends PlaySpec with GuiceOneAppPerSuite {
+trait SpecBase extends WordSpec with GuiceOneAppPerSuite with MockitoSugar with MustMatchers {
 
   def injector: Injector = app.injector
 
@@ -38,4 +43,14 @@ trait SpecBase extends PlaySpec with GuiceOneAppPerSuite {
 
   val bodyParser:BodyParsers.Default = app.injector.instanceOf[BodyParsers.Default]
 
+}
+
+trait AppBuilderSpecBase extends SpecBase {
+
+  lazy val builder: GuiceApplicationBuilder = new GuiceApplicationBuilder()
+    .overrides(
+      bind[WebChatClient].toInstance(new WebChatClientStub)
+    )
+
+  override lazy val app: Application = builder.build()
 }

@@ -37,7 +37,8 @@ class SelfAssessmentViewSpec extends ChatViewBehaviours {
       "Self Assessment: webchat",
       "Self Assessment: webchat",
       "Return to Contact HMRC",
-      returnUrl
+      returnUrl,
+      Nil
     )
   }
 }

@@ -38,9 +38,11 @@ class SelfEmploymentIncomeSupportViewSpec extends ChatViewBehaviours {
       "Coronavirus (COVID-19): Self-Employment Income Support Scheme",
       "Return to Contact HMRC",
       returnUrl,
-      "Opening times:",
-      "Monday to Friday, 8am to 8pm",
-      "Closed weekends and bank holidays"
+      Seq(
+        "Opening times:",
+        "Monday to Friday, 8am to 8pm",
+        "Closed weekends and bank holidays"
+      )
     )
   }
 }

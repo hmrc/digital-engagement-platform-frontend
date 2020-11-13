@@ -21,7 +21,7 @@ import org.jsoup.nodes.Document
 import play.twirl.api.Html
 import org.scalatest.Assertion
 
-trait ViewSpecBase extends SpecBase {
+trait ViewSpecBase extends AppBuilderSpecBase {
 
   def asDocument(html: Html): Document = Jsoup.parse(html.toString())
 

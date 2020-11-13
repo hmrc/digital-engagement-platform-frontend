@@ -15,10 +15,12 @@
  *@
 
 @import config.AppConfig
+@import uk.gov.hmrc.webchat.client.WebChatClient
 
 @this(
     main_template: MainTemplate,
-    appConfig: AppConfig)
+    appConfig: AppConfig,
+    webChatClient: WebChatClient)
 
 @()(implicit request: Request[_], messages: play.api.i18n.Messages)
 

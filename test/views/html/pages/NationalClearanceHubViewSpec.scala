@@ -38,8 +38,10 @@ class NationalClearanceHubViewSpec extends ChatViewBehaviours {
         "National Clearance Hub: webchat",
         "Return to Contact HMRC",
         returnUrl,
-        "Opening times:",
-        "24 hours a day, 7 days a week"
+        Seq(
+          "Opening times:",
+          "24 hours a day, 7 days a week"
+        )
       )
     }
 }

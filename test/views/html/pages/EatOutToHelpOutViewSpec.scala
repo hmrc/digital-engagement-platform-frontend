@@ -38,9 +38,11 @@ class EatOutToHelpOutViewSpec extends ChatViewBehaviours {
       "Eat Out to Help Out scheme: webchat",
       "Return to Contact HMRC",
       returnUrl,
-      "Opening times:",
-      "Monday to Friday, 8am to 8pm",
-      "Closed weekends and bank holidays."
+      Seq(
+        "Opening times:",
+        "Monday to Friday, 8am to 8pm",
+        "Closed weekends and bank holidays."
+      )
     )
   }
 }

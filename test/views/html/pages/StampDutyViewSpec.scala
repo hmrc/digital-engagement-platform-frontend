@@ -38,7 +38,7 @@ class StampDutyViewSpec extends ChatViewBehaviours {
       "Stamp Duty Land Tax: webchat",
       "Return to Contact HMRC",
       returnUrl,
-      "Monday to Friday, 8:30am to 5pm"
+      Seq("Monday to Friday, 8:30am to 5pm")
     )
   }
 
@@ -53,7 +53,7 @@ class StampDutyViewSpec extends ChatViewBehaviours {
       "Stamp Duty Reserve Tax: webchat",
       "Return to Contact HMRC",
       returnUrl,
-      "Monday to Friday, 8:30am to 5pm"
+      Seq("Monday to Friday, 8:30am to 5pm")
     )
   }
 
@@ -68,7 +68,7 @@ class StampDutyViewSpec extends ChatViewBehaviours {
       "Stamp Duty shares and land: webchat",
       "Return to Contact HMRC",
       returnUrl,
-      "Monday to Friday, 8:30am to 5pm"
+      Seq("Monday to Friday, 8:30am to 5pm")
     )
   }
 }

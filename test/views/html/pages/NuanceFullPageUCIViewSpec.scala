@@ -35,7 +35,8 @@ class NuanceFullPageUCIViewSpec extends ChatViewBehaviours {
       "Test full page UCI for webchat",
       "Test full page UCI for webchat",
       "",
-      ""
+      "",
+      Nil
     )
   }
 }

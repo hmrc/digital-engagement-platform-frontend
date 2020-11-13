@@ -16,37 +16,16 @@
 
 package controllers.testOnlyDoNotUseInAppConf
 
-import config.AppConfig
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
-import org.scalatest.{Matchers, WordSpec}
-import org.scalatestplus.play.guice.GuiceOneAppPerSuite
 import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
-import play.api.mvc.{Cookie, MessagesControllerComponents}
-import play.api.test.FakeRequest
 import play.api.test.Helpers._
-import services.NuanceEncryptionService
-import views.html.NuanceFullPageCUIView
+import views.html.pages.AppBuilderSpecBase
 
 class NuanceFullPageCUIControllerSpec
-  extends WordSpec
-  with Matchers
-  with GuiceOneAppPerSuite
-  with ScalaCheckPropertyChecks {
+  extends AppBuilderSpecBase with ScalaCheckPropertyChecks {
 
-  implicit private val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
-
-  implicit val appConfig = app.injector.instanceOf[AppConfig]
-  val messagesCC = app.injector.instanceOf[MessagesControllerComponents]
-  val nuanceFullPageCUIView = app.injector.instanceOf[NuanceFullPageCUIView]
-  val nuanceEncryptionService = app.injector.instanceOf[NuanceEncryptionService]
-
-  private val controller = new NuanceFullPageCUIController(
-    appConfig,
-    messagesCC,
-    nuanceFullPageCUIView,
-    nuanceEncryptionService
-  )
+  private val controller = app.injector.instanceOf[NuanceFullPageCUIController]
 
   def asDocument(html: String): Document = Jsoup.parse(html)
 
@@ -55,8 +34,8 @@ class NuanceFullPageCUIControllerSpec
       val result = controller.nuanceFullPageCUI(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) shouldBe OK
-      doc.select("h1").text() shouldBe "Test full page UCI for webchat"
+      status(result) mustBe OK
+      doc.select("h1").text() mustBe "Test full page UCI for webchat"
     }
   }
 }

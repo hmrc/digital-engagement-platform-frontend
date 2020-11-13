@@ -38,9 +38,11 @@ class InheritanceTaxViewSpec extends ChatViewBehaviours {
       "Coronavirus (COVID-19): Inheritance Tax",
       "Return to Contact HMRC",
       returnUrl,
-      "Opening times:",
-      "Monday to Friday, 9am to 5pm",
-      "Closed weekends and bank holidays."
+      Seq(
+        "Opening times:",
+        "Monday to Friday, 9am to 5pm",
+        "Closed weekends and bank holidays."
+      )
     )
   }
 }

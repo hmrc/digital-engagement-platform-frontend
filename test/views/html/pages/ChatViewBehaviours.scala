@@ -25,7 +25,8 @@ trait ChatViewBehaviours extends ViewSpecBase {
                  messageHeading: String,
                  urlLinkText: String,
                  returnUrlLink: String,
-                 openingTimes: String*): Unit = {
+                 openingTimes: Seq[String],
+                 chatIds: Seq[String] = Seq("HMRC_Fixed_1")): Unit = {
 
     "behave like a normal page" when {
       "rendered" must {
@@ -64,6 +65,16 @@ trait ChatViewBehaviours extends ViewSpecBase {
         "display the opening times text" in {
           val doc = asDocument(view())
           for (key <- openingTimes) assertContainsText(doc, messages(s"$key"))
+        }
+
+        "insert the Nuance container tag" in {
+          val doc = asDocument(view())
+          doc.getElementById("HMRC_Fixed_1") must not be null
+        }
+
+        "insert the Nuance required tag" in {
+          val doc = asDocument(view())
+          doc.getElementById("WEBCHAT_TEST_RequiredElements") must not be null
         }
       }
     }

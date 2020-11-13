@@ -38,7 +38,8 @@ class IncomeTaxEnquiriesViewSpec extends ChatViewBehaviours {
       "Income tax for individuals, pensioners and employees: webchat",
       "Income tax for individuals, pensioners and employees: webchat",
       "Return to Contact HMRC",
-      returnUrl
+      returnUrl,
+      Nil
     )
   }
 }

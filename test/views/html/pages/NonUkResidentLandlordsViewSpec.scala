@@ -38,9 +38,11 @@ class NonUkResidentLandlordsViewSpec extends ChatViewBehaviours {
       "Non-UK resident landlords: webchat",
       "Return to Contact HMRC",
       returnUrl,
-      "Opening times:",
-      "Monday to Friday, 8:30am to 5pm",
-      "Closed weekends and bank holidays."
+      Seq(
+        "Opening times:",
+        "Monday to Friday, 8:30am to 5pm",
+        "Closed weekends and bank holidays."
+      )
     )
   }
 
@@ -54,9 +56,11 @@ class NonUkResidentLandlordsViewSpec extends ChatViewBehaviours {
       "Non-UK resident entertainers: webchat",
       "Return to Contact HMRC",
       returnUrl,
-      "Opening times:",
-      "Monday to Friday, 8:30am to 5pm",
-      "Closed weekends and bank holidays."
+      Seq(
+        "Opening times:",
+        "Monday to Friday, 8:30am to 5pm",
+        "Closed weekends and bank holidays."
+      )
     )
   }
 
