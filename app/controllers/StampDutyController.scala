@@ -19,7 +19,6 @@ package controllers
 import config.AppConfig
 import javax.inject.Inject
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
-import services.NuanceEncryptionService
 import uk.gov.hmrc.play.bootstrap.controller.FrontendController
 import views.html.{AnnualTaxOnEnvelopedDwellingsView, StampDutyView}
 
@@ -29,8 +28,7 @@ import scala.concurrent.Future
 class StampDutyController @Inject()(appConfig: AppConfig,
                                    mcc: MessagesControllerComponents,
                                    landDutyView: StampDutyView,
-                                   annualTaxOnEnvelopedDwellingsView: AnnualTaxOnEnvelopedDwellingsView,
-                                   nuanceEncryptionService: NuanceEncryptionService) extends FrontendController(mcc) {
+                                   annualTaxOnEnvelopedDwellingsView: AnnualTaxOnEnvelopedDwellingsView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 

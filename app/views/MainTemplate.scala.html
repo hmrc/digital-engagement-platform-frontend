@@ -16,9 +16,6 @@
 
 @import config.AppConfig
 @import uk.gov.hmrc.play.views.html.layouts
-@import models.EncryptedNuanceData
-@import services.NuanceEncryptionService
-@import uk.gov.hmrc.play.HeaderCarrierConverter
 @import uk.gov.hmrc.webchat.client.WebChatClient
 
 @this(
@@ -26,8 +23,6 @@
     sidebar: Sidebar,
     article: Article,
     appConfig: AppConfig,
-    encryptedNuanceData: EncryptedNuanceData,
-    nuanceEncryptionService: NuanceEncryptionService,
     webChatClient: WebChatClient
 )
 
@@ -49,15 +44,6 @@
 @wrapMainContent = {
     @mainContent
 }
-
-@nuanceData = @{
-    EncryptedNuanceData.create(
-        appConfig.nuanceEncryptionService,
-        HeaderCarrierConverter.fromHeadersAndSessionAndRequest(request.headers, request = Some(request))
-    )
-}
-
-@nuanceUrl = @{if (appConfig.preProdMode) {appConfig.nuancePreProdUrl} else {appConfig.nuanceUrl}}
 
 @scriptElem = {
     @if(!appConfig.performanceTest){

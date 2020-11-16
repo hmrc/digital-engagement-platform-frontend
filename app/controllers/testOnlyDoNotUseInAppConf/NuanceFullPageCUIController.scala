@@ -19,7 +19,6 @@ package controllers.testOnlyDoNotUseInAppConf
 import config.AppConfig
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
-import services.NuanceEncryptionService
 import uk.gov.hmrc.play.bootstrap.controller.FrontendController
 import views.html.NuanceFullPageCUIView
 
@@ -29,8 +28,7 @@ import scala.concurrent.Future
 class NuanceFullPageCUIController @Inject()(
   appConfig: AppConfig,
   mcc: MessagesControllerComponents,
-  nuanceFullPageCUIView: NuanceFullPageCUIView,
-  nuanceEncryptionServiceView: NuanceEncryptionService) extends FrontendController(mcc) {
+  nuanceFullPageCUIView: NuanceFullPageCUIView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 

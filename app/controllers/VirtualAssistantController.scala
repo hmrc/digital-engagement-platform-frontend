@@ -19,7 +19,6 @@ package controllers
 import config.AppConfig
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
-import services.NuanceEncryptionService
 import uk.gov.hmrc.play.bootstrap.controller.FrontendController
 import views.html.{VASupportForCoronavirusView, VATaxCreditsEnquiriesView}
 
@@ -29,8 +28,7 @@ import scala.concurrent.Future
 class VirtualAssistantController @Inject()(appConfig: AppConfig,
                                            mcc: MessagesControllerComponents,
                                            supportForCoronavirusView: VASupportForCoronavirusView,
-                                           taxCreditsEnquiriesView: VATaxCreditsEnquiriesView,
-                                           nuanceEncryptionService: NuanceEncryptionService) extends FrontendController(mcc) {
+                                           taxCreditsEnquiriesView: VATaxCreditsEnquiriesView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 

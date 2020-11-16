@@ -16,12 +16,11 @@
 
 package controllers
 
+import config.AppConfig
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
-import config.AppConfig
-import services.NuanceEncryptionService
-import views.html._
 import uk.gov.hmrc.play.bootstrap.controller.FrontendController
+import views.html._
 
 import scala.concurrent.Future
 
@@ -36,8 +35,7 @@ class IvrController @Inject()(appConfig: AppConfig,
                               nationalInsuranceNumbersView: NationalInsuranceNumbersView,
                               exciseEnquiriesView: ExciseEnquiriesView,
                               selfAssessmentView: SelfAssessmentView,
-                              eatOutToHelpOut: EatOutToHelpOutView,
-                              nuanceEncryptionService: NuanceEncryptionService) extends FrontendController(mcc) {
+                              eatOutToHelpOut: EatOutToHelpOutView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 

@@ -20,14 +20,12 @@ import java.net.URLEncoder
 
 import javax.inject.{Inject, Singleton}
 import play.api.Configuration
-import services.NuanceEncryptionService
 import uk.gov.hmrc.play.bootstrap.config.ServicesConfig
 import utils.StringHelpers
 
 @Singleton
 class AppConfig @Inject()(config: Configuration,
-                          servicesConfig: ServicesConfig,
-                          val nuanceEncryptionService: NuanceEncryptionService) {
+                          servicesConfig: ServicesConfig) {
 
   private val contactHost = config.get[String]("contact-frontend.host")
 
@@ -44,7 +42,6 @@ class AppConfig @Inject()(config: Configuration,
   val analyticsHost: String = config.get[String](s"google-analytics.host")
 
   val performanceTest: Boolean = config.get[Boolean](s"performance-test.mode")
-  val preProdMode: Boolean = config.get[Boolean](s"pre-prod.mode")
   val accessibilityStatementMode: String = config.get[String](s"accessibility-statement.mode")
 
   val optimizelyMode: Boolean = config.get[Boolean]("optimizely.mode")
@@ -54,11 +51,6 @@ class AppConfig @Inject()(config: Configuration,
   val reportAProblemNonJSUrl: String = s"$contactHost/contact/problem_reports_nonjs?service=$serviceIdentifier"
   val betaFeedbackUrl = s"$contactHost/contact/beta-feedback?service=$serviceIdentifier"
   val betaFeedbackUnauthenticatedUrl = s"$contactHost/contact/beta-feedback-unauthenticated?service=$serviceIdentifier"
-
-  val nuanceUrl: String =
-    "https://hmrc-uk.digital.nuance.com/chatskins/launch/inqChatLaunch10006719.js"
-  val nuancePreProdUrl: String =
-    "https://hmrc-uk-preprod.digital.nuance.com/chatskins/launch/inqChatLaunch10006719.js"
 
   val contactUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact"
@@ -138,7 +130,6 @@ class AppConfig @Inject()(config: Configuration,
   "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/stamp-duty-enquiries-shares-and-land"
   val AnnualTaxOnEnvelopedDwellingsReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/annual-tax-on-enveloped-dwellings-ated"
-
 
   val generalAccessibilityStatementUrl: String = "https://www.gov.uk/help/accessibility-statement"
   val hmRevenueCustomsUrl: String = "https://www.gov.uk/government/organisations/hm-revenue-customs"
