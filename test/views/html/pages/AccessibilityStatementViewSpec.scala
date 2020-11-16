@@ -16,20 +16,16 @@
 
 package views.html.pages
 
-import play.api.mvc.Cookie
-import play.api.test.FakeRequest
 import play.twirl.api.HtmlFormat
 import views.html.AccessibilityStatementView
 
 class AccessibilityStatementViewSpec extends ChatViewBehaviours {
-  implicit override val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
+  private val view = app.injector.instanceOf[AccessibilityStatementView]
+  private val userAction: String = "%2Fask-hmrc%2Fwebchat%2Fconstruction-industry-scheme-enquiries"
+  private val serviceIdentifier = "digital-engagement-platform-frontend"
+  private val pageUri: String = s"https://www.tax.service.gov.uk/contact/accessibility-unauthenticated?service=$serviceIdentifier&userAction=$userAction"
 
-  val view = app.injector.instanceOf[AccessibilityStatementView]
-  val userAction: String = "%2Fask-hmrc%2Fwebchat%2Fconstruction-industry-scheme-enquiries"
-  val serviceIdentifier = "digital-engagement-platform-frontend"
-  val pageUri: String = s"https://www.tax.service.gov.uk/contact/accessibility-unauthenticated?service=$serviceIdentifier&userAction=$userAction"
-
-  def createView: () => HtmlFormat.Appendable = () => view(pageUri)(fakeRequest, messages)
+  private def createView: () => HtmlFormat.Appendable = () => view(pageUri)(fakeRequest, messages)
 
   "Accessibility Statement page" when {
     "rendered" must {

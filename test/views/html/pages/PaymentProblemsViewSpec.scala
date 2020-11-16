@@ -16,23 +16,18 @@
 
 package views.html.pages
 import play.twirl.api.HtmlFormat
-
-import play.api.mvc.Cookie
-import play.api.test.FakeRequest
-import play.twirl.api.HtmlFormat
 import views.html.PaymentProblemsView
 
 class PaymentProblemsViewSpec extends ChatViewBehaviours {
 
-  implicit override val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
+  private val view = app.injector.instanceOf[PaymentProblemsView]
 
-  val view = app.injector.instanceOf[PaymentProblemsView]
-  val coronavirusReturnUrlLink: String =
+  private val coronavirusReturnUrlLink: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/coronavirus-covid-19-helpline"
-  val businessSupportReturnUrl: String =
+  private val businessSupportReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/business-payment-support-service"
 
-  def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
+  private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
   "Payment Problems view" must {
 
@@ -80,6 +75,17 @@ class PaymentProblemsViewSpec extends ChatViewBehaviours {
         "display the correct guidance" in {
           val doc = asDocument(createView())
           for (key <- expectedGuidanceKeys) assertContainsText(doc, messages(s"$key"))
+        }
+
+        "insert the Nuance container tag(s)" in {
+          val chatIds = Seq(
+            "pp_self_assessment_webchat",
+            "pp_vat_webchat",
+            "pp_paye_webchat",
+            "pp_corporation_tax_webchat"
+          )
+          val doc = asDocument(createView())
+          for (chatId <- chatIds) doc.getElementById(chatId) must not be null
         }
 
       }

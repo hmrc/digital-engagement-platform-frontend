@@ -15,10 +15,12 @@
  *@
 
 @import config.AppConfig
+@import uk.gov.hmrc.webchat.client.WebChatClient
 
 @this(
   main_template: MainTemplate,
-  appConfig: AppConfig)
+  appConfig: AppConfig,
+  webChatClient: WebChatClient)
 
 @()(implicit request: Request[_], messages: play.api.i18n.Messages)
 
@@ -45,25 +47,25 @@
     <h3>@messages("payment.problems.h3.1")</h3>
 
     @if(!appConfig.performanceTest){
-        <div id="pp_self_assessment_webchat"></div>
+        @{webChatClient.loadWebChatContainer("pp_self_assessment_webchat")}
     }
 
     <h3>@messages("payment.problems.h3.2")</h3>
 
     @if(!appConfig.performanceTest){
-        <div id="pp_vat_webchat"></div>
+        @{webChatClient.loadWebChatContainer("pp_vat_webchat")}
     }
 
     <h3>@messages("payment.problems.h3.3")</h3>
 
     @if(!appConfig.performanceTest){
-        <div id="pp_paye_webchat"></div>
+        @{webChatClient.loadWebChatContainer("pp_paye_webchat")}
     }
 
     <h3>@messages("payment.problems.h3.4")</h3>
 
     @if(!appConfig.performanceTest){
-        <div id="pp_corporation_tax_webchat"></div>
+        @{webChatClient.loadWebChatContainer("pp_corporation_tax_webchat")}
     }
 
     <h2 class="govuk-heading-l">@messages("payment.problems.h2.2")</h2>

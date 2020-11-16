@@ -16,20 +16,17 @@
 
 package views.html.pages
 
-import play.api.mvc.Cookie
-import play.api.test.FakeRequest
 import play.twirl.api.HtmlFormat
 import views.html.VATaxCreditsEnquiriesView
 
 class VATaxCreditsEnquiriesViewSpec extends ChatViewBehaviours {
-  implicit override val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
 
-  val view = app.injector.instanceOf[VATaxCreditsEnquiriesView]
-  val taxCreditsEnquiriesUrl1: String = "https://www.gov.uk/manage-your-tax-credits"
-  val taxCreditsEnquiriesUrl2: String =
+  private val view = app.injector.instanceOf[VATaxCreditsEnquiriesView]
+  private val taxCreditsEnquiriesUrl1: String = "https://www.gov.uk/manage-your-tax-credits"
+  private val taxCreditsEnquiriesUrl2: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/tax-credits-enquiries"
 
-  def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
+  private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
   "VA Tax credits enquiries view" must {
     "behave like a normal page" when {

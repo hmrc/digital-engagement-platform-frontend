@@ -23,11 +23,9 @@ import views.html.EmployerEnquiriesView
 
 class EmployerEnquiriesViewSpec extends ChatViewBehaviours {
 
-  implicit override val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
+  private val view = app.injector.instanceOf[EmployerEnquiriesView]
 
-  val view = app.injector.instanceOf[EmployerEnquiriesView]
-
-  def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
+  private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
   "Employer Enquiries view" must {
     val returnUrl: String = "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/employer-enquiries"

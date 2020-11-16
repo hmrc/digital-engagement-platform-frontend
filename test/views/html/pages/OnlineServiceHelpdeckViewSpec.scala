@@ -16,18 +16,14 @@
 
 package views.html.pages
 
-import play.api.mvc.Cookie
-import play.api.test.FakeRequest
 import play.twirl.api.HtmlFormat
 import views.html.OnlineServiceHelpdeskView
 
 class OnlineServiceHelpdeckViewSpec extends ChatViewBehaviours {
 
-  implicit override val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
+  private val view = app.injector.instanceOf[OnlineServiceHelpdeskView]
 
-  val view = app.injector.instanceOf[OnlineServiceHelpdeskView]
-
-  def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
+  private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
   "Online Service Helpdesk View" must {
     val returnUrl: String = "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/online-services-helpdesk"

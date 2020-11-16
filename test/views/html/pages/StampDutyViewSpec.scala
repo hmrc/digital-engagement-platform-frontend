@@ -16,16 +16,12 @@
 
 package views.html.pages
 
-import play.api.mvc.Cookie
-import play.api.test.FakeRequest
 import play.twirl.api.HtmlFormat
 import views.html.StampDutyView
 
 class StampDutyViewSpec extends ChatViewBehaviours {
-  implicit override val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
 
-  val view = app.injector.instanceOf[StampDutyView]
-
+  private val view = app.injector.instanceOf[StampDutyView]
 
   "Stamp Duty Land Tax view" must {
     def createView: () => HtmlFormat.Appendable = () => view("landTax")(fakeRequest, messages)

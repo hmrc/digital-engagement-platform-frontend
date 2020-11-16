@@ -16,32 +16,29 @@
 
 package views.html.pages
 
-import play.api.mvc.Cookie
-import play.api.test.FakeRequest
 import play.twirl.api.HtmlFormat
 import views.html.NationalClearanceHubView
 
 class NationalClearanceHubViewSpec extends ChatViewBehaviours {
-  implicit override val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
 
-  val view = app.injector.instanceOf[NationalClearanceHubView]
+  private val view = app.injector.instanceOf[NationalClearanceHubView]
 
-  def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
+  private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-    "Non Uk Resident Employees view" must {
-      val returnUrl: String =
-        "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/national-clearance-hub"
+  "Non Uk Resident Employees view" must {
+    val returnUrl: String =
+      "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/national-clearance-hub"
 
-      behave like normalPage(
-        createView,
-        "National Clearance Hub: webchat",
-        "National Clearance Hub: webchat",
-        "Return to Contact HMRC",
-        returnUrl,
-        Seq(
-          "Opening times:",
-          "24 hours a day, 7 days a week"
-        )
+    behave like normalPage(
+      createView,
+      "National Clearance Hub: webchat",
+      "National Clearance Hub: webchat",
+      "Return to Contact HMRC",
+      returnUrl,
+      Seq(
+        "Opening times:",
+        "24 hours a day, 7 days a week"
       )
-    }
+    )
+  }
 }

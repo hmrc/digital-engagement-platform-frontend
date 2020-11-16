@@ -16,17 +16,14 @@
 
 package views.html.pages
 
-import play.api.mvc.Cookie
-import play.api.test.FakeRequest
 import play.twirl.api.HtmlFormat
 import views.html.CharitiesCommunityAmateurSportsView
 
 class CharitiesCommunityAmateurSportsViewSpec extends ChatViewBehaviours {
-  implicit override val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
 
-  val view = app.injector.instanceOf[CharitiesCommunityAmateurSportsView]
+  private val view = app.injector.instanceOf[CharitiesCommunityAmateurSportsView]
 
-  def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
+  private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
   "Charities Community Amateur Sports view" must {
     val returnUrl: String =

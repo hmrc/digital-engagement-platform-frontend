@@ -16,20 +16,17 @@
 
 package views.html.pages
 
-import play.api.mvc.Cookie
-import play.api.test.FakeRequest
 import play.twirl.api.HtmlFormat
 import views.html.VASupportForCoronavirusView
 
 class VASupportForCoronavirusViewSpec extends ChatViewBehaviours {
-  implicit override val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
 
-  val view = app.injector.instanceOf[VASupportForCoronavirusView]
-  val coronavirusGeneralInfoUrl: String = "https://www.gov.uk/coronavirus"
-  val coronavirusHelplineUrl: String =
+  private val view = app.injector.instanceOf[VASupportForCoronavirusView]
+  private val coronavirusGeneralInfoUrl: String = "https://www.gov.uk/coronavirus"
+  private val coronavirusHelplineUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/coronavirus-covid-19-helpline"
 
-  def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
+  private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
   "Support For Coronavirus view" must {
     "behave like a normal page" when {

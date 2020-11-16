@@ -67,9 +67,9 @@ trait ChatViewBehaviours extends ViewSpecBase {
           for (key <- openingTimes) assertContainsText(doc, messages(s"$key"))
         }
 
-        "insert the Nuance container tag" in {
+        "insert the Nuance container tag(s)" in {
           val doc = asDocument(view())
-          doc.getElementById("HMRC_Fixed_1") must not be null
+          for (chatId <- chatIds) doc.getElementById(chatId) must not be null
         }
 
         "insert the Nuance required tag" in {

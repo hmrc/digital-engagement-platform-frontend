@@ -31,7 +31,7 @@
     <h1 class="header-margin-top">@messages("va.global.h1.title")</h1>
 
     @if(!appConfig.performanceTest){
-        <div class="margin-bottom" id="HMRC_Fixed_1"></div>
+        <div class="margin-bottom">@{webChatClient.loadWebChatContainer()}</div>
     }
 
     <p class="margin-top">@messages("va.global.h1.bullet.title")</p>
