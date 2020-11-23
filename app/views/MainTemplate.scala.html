@@ -47,6 +47,7 @@
 
 @scriptElem = {
     @if(!appConfig.performanceTest){
+        @{webChatClient.loadWebChatContainer("HMRC_Anchored_1")}
         @{webChatClient.loadRequiredElements()}
     }
 }
