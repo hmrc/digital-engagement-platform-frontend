@@ -18,7 +18,7 @@
 @import uk.gov.hmrc.webchat.client.WebChatClient
 
 @this(
-    main_template: MainTemplate,
+    main_template: MainTemplateUCI,
     appConfig: AppConfig,
     webChatClient: WebChatClient)
 
@@ -38,158 +38,40 @@
         </li>
     </ol>
 </div>
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds" style="width: 66.6666%">
+        <h1 class="heading-margin-top">Coronavirus business support: chat</h1>
+    </div>
+</div>
+
 }
 
 @sidebarLinks = {
-<aside class="app-related-items govuk-body govuk-body-m" role="complementary">
-    <h2 class="govuk-heading-m" id="subsection-title">You are chatting with a robot</h2>
-    <p>
-        This webchat is for employers. Please tell us what you need by typing into the chat window on the left.</p>
+    <aside class="app-related-items govuk-body govuk-body-m" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title" style="margin-bottom:20px;">Help from HMRC</h2>
 
-    <ul class="govuk-list govuk-!-font-size-16">
-        <li>
-            <a href="#">I don't want to speak to a bot</a></li><a href="#">
-    </a><li><a href="#">
-    </a><a href="#">Are there other options?</a></li><a href="#">
-    </a></ul><a href="#">
-</a></aside>
-}
+        <p>This chatbot can answer questions about the support offered under the Coronavirus Job Retention Scheme.</p>
 
-@myStyle = {
-<style type="text/css">
-        #nuanMessagingFrame {
-           width: 100% !important;
-           height: 634px !important;
-           position: relative !important;
-           float: left;
-           margin-bottom: 2em;
-        }
-        .app-related-items {
-            border-top: 2px solid #1d70b8;
-            padding-top: 10px;
-        }
-        #subsection-title {
-            margin-top: 0;
-            margin-bottom: 0;
-        }
-        .govuk-breadcrumbs__list {
-            margin: 0;
-            padding: 0;
-            list-style-type: none;
-            display: inline;
-        }
-
-        .govuk-breadcrumbs__list-item:before {
-            content: "";
-            display: block;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: -3.31px;
-            width: 7px;
-            height: 7px;
-            margin: auto 0;
-            -webkit-transform: rotate(45deg);
-            -ms-transform: rotate(45deg);
-            transform: rotate(45deg);
-            border: solid;
-            border-width: 1px 1px 0 0;
-            border-color: #505a5f;
-        }
-
-        .govuk-breadcrumbs__list-item {
-            display: inline-block;
-            position: relative;
-            margin-bottom: 5px;
-            margin-left: 10px;
-            padding-left: 15.655px;
-            float: left;
-        }
-
-        .govuk-breadcrumbs {
-            font-family: "GDS Transport", arial, sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            font-weight: 400;
-            font-size: 14px;
-            font-size: 0.875rem;
-            line-height: 1.14286;
-            color: #0b0c0c;
-            margin-top: 15px;
-            margin-bottom: 10px;
-        }
-
-        @@media (min-width: 40.0625em) {
-            .govuk-breadcrumbs {
-                font-size: 16px;
-                font-size: 1rem;
-                line-height: 1.25;
-            }
-        }
-
-        .govuk-breadcrumbs__list:after {
-            content: "";
-            display: block;
-            clear: both;
-        }
-
-        .govuk-breadcrumbs__link:link, .govuk-breadcrumbs__link:visited, .govuk-breadcrumbs__link:hover, .govuk-breadcrumbs__link:active, .govuk-breadcrumbs__link:focus {
-            color: #0b0c0c;
-        }
-
-        .govuk-breadcrumbs__link {
-            font-family: "GDS Transport", arial, sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            font-size: 16px;
-            color: #0b0c0c;
-        }
-
-        .phase-banner {
-            display: none;
-        }
-
-        .gem-c-govspeak .address, .gem-c-govspeak .contact {
-            border-left: 1px solid #b1b4b6;
-            padding-left: 15px;
-            margin-bottom: 30px;
-            margin-top: 30px;
-        }
-
-        .service-info .logo {
-            display: none;
-        }
-    </style>
+        <p>If it cannot help you, it can transfer you to an HMRC adviser if they're available.</p>
+    </aside>
 }
 
 @main_template(title = "Get help with the Coronavirus Job Retention Scheme - GOV.UK",
-    navTitle=Some(""),
-    sidebarLinks=Some(sidebarLinks),
-    contentHeader=Some(contentHeader)
+               navTitle=Some(""),
+               sidebarLinks=Some(sidebarLinks)
 ){
-    @myStyle
+
+<!--@components.back_link()-->
+
+<!--<div class="govuk-grid-row">-->
+<!--    <div class="govuk-grid-column-two-thirds" style="width: 66.6666%">-->
+<!--        <h1 class="heading-margin-top">Coronavirus Job Retention Scheme: chat</h1>-->
+<!--    </div>-->
+<!--</div>-->
+
     <div id="nuanMessagingFrame"></div>
+
     <div class="gem-c-govspeak govuk-govspeak " data-module="govspeak" style="margin-top:2em;">
-
-        <h2 id="phone-title" class="govuk-heading-m">Other ways to find assistance from HMRC</h2>
-        <p>We’re receiving a very high number of calls.</p>
-
-        <p>Due to measures put in place to stop the spread of coronavirus (COVID-19) we have fewer advisers available to answer your calls.</p>
-
-        <p>Contacting HMRC unnecessarily puts our essential public services at risk during these challenging times.</p>
-
-        <div class="contact">
-            <p>Telephone:<br><strong>0800 024 1222  </strong></p>
-        </div>
-
-        <p>Opening times:</p>
-        <p>Monday to Friday: 8am to 4pm</p>
-
-        <p>Closed on weekends and bank holidays.</p>
-
-        <p class="call-charges">
-            <a href="/call-charges">Find out about call charges</a>
-        </p>
-
     </div>
 }
