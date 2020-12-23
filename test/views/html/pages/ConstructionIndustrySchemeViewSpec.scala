@@ -35,11 +35,9 @@ class ConstructionIndustrySchemeViewSpec extends ChatViewBehaviours {
       "Return to Contact HMRC",
       returnUrl,
       Seq(
-//        "Opening times:",
-//        "Monday to Friday, 8am to 8pm",
-//        "Closed weekends and bank holidays."
-        "Christmas and New Year opening times:",
-        "19 to 20 December, closed"
+        "Opening times:",
+        "Monday to Friday, 8am to 8pm",
+        "Closed weekends and bank holidays."
       )
     )
   }
