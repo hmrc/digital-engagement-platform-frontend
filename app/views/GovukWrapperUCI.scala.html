@@ -1,0 +1,156 @@
+@*
+ * Copyright 2020 HM Revenue & Customs
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *@
+
+@import config.AppConfig
+@import play.twirl.api.HtmlFormat
+@import uk.gov.hmrc.play.views.html.{helpers => uiHelpers}
+@import views.html.layouts.GovUkTemplate
+
+@this(
+    head:HeadWithTrackingConsent,
+    header_nav:HeaderNav,
+    footer:Footer,
+    serviceInfo:ServiceInfo,
+    main_content_header:MainContentHeader,
+    main_content:MainContent,
+    reportAProblemLink: ReportAProblemLink,
+    hmrcGovUkTemplate: GovUkTemplate,
+    footer_links: FooterLinks,
+    appConfig: AppConfig
+)
+
+@(appConfig: config.AppConfig,
+        title: String,
+        mainClass: Option[String] = None,
+        mainDataAttributes: Option[Html] = None,
+        bodyClasses: Option[String] = None,
+        sidebar: Html = HtmlFormat.empty,
+        contentHeader: Option[Html] = None,
+        mainContent: Html = HtmlFormat.empty,
+        serviceInfoContent: Html = HtmlFormat.empty,
+        scriptElem: Option[Html] = None,
+        navTitle: Option[String] = None)(implicit request: Request[_], messages: play.api.i18n.Messages)
+
+@headContent = {
+    @head(linkElem = None, headScripts = None)
+
+    <style type="text/css">
+        .service-info .logo {
+            display: none;
+        }
+    </style>
+
+        <meta name="format-detection" content="telephone=no" />
+        <link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/main.css")' />
+        @if(appConfig.optimizelyMode){
+            <script src="https://cdn.optimizely.com/js/@{appConfig.optimizelyProjectId}.js"></script>
+        }
+}
+
+@headerNavLinks = {}
+
+@insideHeader = {
+    @header_nav(
+        navTitle = navTitle.orElse(Some("")),
+        navTitleLink = None,
+        showBetaLink = false,
+        navLinks = Some(headerNavLinks))
+}
+
+@afterHeader = {}
+
+@bodyEnd = {
+    @footer(
+        analyticsToken = Some(appConfig.analyticsToken),
+        analyticsHost = appConfig.analyticsHost,
+        ssoUrl = None,
+        scriptElem = scriptElem,
+        gaCalls = None)
+    <script type="text/javascript" src='@routes.Assets.versioned("javascripts/custom.js")'></script>
+    <script src='@routes.Assets.versioned("javascripts/bundle.js")' type="text/javascript"></script>
+}
+
+@footerTop = {}
+
+@accessibilityStatementLink = {
+    <li>
+        <a href="@appConfig.accessibilityStatementUrl(request.uri)" target="_blank">Accessibility Statement</a>
+    </li>
+}
+
+@footerLinks = {
+    @footer_links(additionalLinks = Some(accessibilityStatementLink))
+}
+
+@betaBanner = @{components.beta_banner(appConfig)}
+
+@serviceInfoBlock = {
+    @serviceInfo(
+        betaBanner = betaBanner,
+        includeGridWrapper = false,
+        serviceInfoContent = Some(serviceInfoContent))
+}
+
+@mainContentHeader = {
+    @if(contentHeader.isDefined) {
+        @main_content_header(contentHeader = contentHeader.get)
+
+        <style type="text/css">
+          <!--Space at the top of the Nuance chat section-->
+            .gem-c-govspeak .address, .gem-c-govspeak .contact {
+                border-left: 1px solid #b1b4b6;
+                padding-left: 15px;
+                margin-bottom: 30px;
+                margin-top: 30px;
+            }
+        </style>
+    }
+
+    @components.back_link()
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds" style="width: 66.6666%">
+            <h1 class="heading-margin-top">Coronavirus Job Retention Scheme: chat</h1>
+        </div>
+    </div>
+}
+
+@getHelpForm = {
+    @uiHelpers.reportAProblemLink(
+        appConfig.reportAProblemPartialUrl,
+        appConfig.reportAProblemNonJSUrl
+    )
+}
+
+@content = {
+    @main_content(
+        article = mainContent,
+        mainClass = mainClass,
+        mainDataAttributes = mainDataAttributes,
+        mainContentHeader = mainContentHeader,
+        serviceInfo = serviceInfoBlock,
+        getHelpForm = getHelpForm,
+        sidebar = sidebar)
+}
+
+@hmrcGovUkTemplate(Some(title), bodyClasses)(
+    head = headContent,
+    bodyEnd = bodyEnd,
+    insideHeader = insideHeader,
+    afterHeader = afterHeader,
+    footerTop = footerTop,
+    footerLinks = Some(footerLinks),
+    nav = true)(content)
