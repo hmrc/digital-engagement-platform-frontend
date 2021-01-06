@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 HM Revenue & Customs
+ * Copyright 2021 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,8 +37,9 @@ class CustomsEnquiriesViewSpec extends ChatViewBehaviours {
       returnUrl,
       Seq(
         "Opening times:",
-        "Monday to Friday, 8am to 6pm",
-        "Closed weekends and bank holidays."
+        "Monday to Friday, 8am to 8pm",
+        "Saturday, 8am to 4pm",
+        "Closed Sundays and bank holidays."
       )
     )
   }
