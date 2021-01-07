@@ -13,7 +13,7 @@ export function waitForEl(element, callback, w, defaultTimeout, timesCheckedForE
       setTimeout(function () {
         if (timesCheckedForElement == maxNumberOfAttempts) {
           const assistantUsed = window.location.pathname.includes("virtual-assistant") ? "The digital assistant" : "Webchat"
-          $(element).text(`${assistantUsed} is experiencing technical difficulties. Please keep refreshing the page to try again.`)
+          $(element).text(assistantUsed + ' is experiencing technical difficulties. Please keep refreshing the page to try again.')
           reportEvent(w,createDataLayerElement(availabilities.NuanceUnavailable, element))
           return;
         }
