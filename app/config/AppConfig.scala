@@ -51,6 +51,8 @@ class AppConfig @Inject()(config: Configuration,
   val betaFeedbackUrl = s"$contactHost/contact/beta-feedback?service=$serviceIdentifier"
   val betaFeedbackUnauthenticatedUrl = s"$contactHost/contact/beta-feedback-unauthenticated?service=$serviceIdentifier"
 
+  var featureChildBenefitsExperiment: Boolean = config.getOptional[Boolean]("features.childBenefitsExperiment").getOrElse(false)
+
   val contactUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact"
 

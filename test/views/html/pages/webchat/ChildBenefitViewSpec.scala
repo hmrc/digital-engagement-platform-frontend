@@ -24,13 +24,14 @@ class ChildBenefitViewSpec extends ChatViewBehaviours {
 
   private val view = app.injector.instanceOf[ChildBenefitView]
 
-  private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
+  private def createView(noChatExperiment: Boolean = false): () =>
+    HtmlFormat.Appendable = () => view(noChatExperiment = noChatExperiment)(fakeRequest, messages)
 
   "Child Benefit view" must {
     val returnUrl: String = "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/child-benefit"
 
     behave like normalPage(
-      createView,
+      createView(),
       "Ask HMRC - Webchat",
       "Child Benefit: webchat",
       "Child Benefit: webchat",
@@ -43,5 +44,19 @@ class ChildBenefitViewSpec extends ChatViewBehaviours {
         "Closed Sundays and bank holidays."
       )
     )
+    "ChildBenefitView without chat experiment" must {
+      behave like generalContent(
+        view = createView(),
+        messageHeading = "Child Benefit: webchat"
+      )
+    }
+
+    "ChildBenefitView with chat experiment" must {
+      behave like generalContent(
+        view = createView(true),
+        messageHeading = "Child Benefit: webchat",
+        hasGetHelpWithPageText = false
+      )
+    }
   }
 }
