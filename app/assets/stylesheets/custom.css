@@ -46,3 +46,7 @@
     margin-bottom: 30px;
     margin-top: 30px;
 }
+
+.webchat-unavailable > #HMRC_Fixed_1 {
+    display: none;
+}

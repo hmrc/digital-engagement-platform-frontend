@@ -26,29 +26,35 @@
 @(isIvrRedirect: Boolean = false, noChatExperiment: Boolean = false)(implicit request: Request[_], messages: play.api.i18n.Messages)
 
 @main_template(title = messages("child.benefit.title"), showHelpForm = !noChatExperiment) {
-
     @if(!isIvrRedirect) {
         @components.back_link()
     }
 
     <h1 @if(!isIvrRedirect){class="header-margin-top"}>@messages("child.benefit.title")</h1>
 
-    <div class="govuk-inset-text">
-        <p>@messages("global.opening.times.title")</p>
-        <p>@messages("global.opening.times.8to8")</p>
-        <p>@messages("global.opening.times.saturday.8to4")</p>
-        <p>@messages("global.closed.time.sun.bankholidays")</p>
-    </div>
-
-    <h2 class="margin-top">@messages("global.webchat.title.h2")</h2>
-
-    @if(!appConfig.performanceTest){
-        @{webChatClient.loadWebChatContainer()}
+    @if(!noChatExperiment) {
+        <div class="govuk-inset-text">
+            <p>@messages("global.opening.times.title")</p>
+            <p>@messages("global.opening.times.8to8")</p>
+            <p>@messages("global.opening.times.saturday.8to4")</p>
+            <p>@messages("global.closed.time.sun.bankholidays")</p>
+        </div>
+        <h2 class="margin-top">@messages("global.webchat.title.h2")</h2>
     }
 
-    <p class="margin-top">@messages("global.adviser.busy.p1")</p>
+    @if(!appConfig.performanceTest){
+        @if(noChatExperiment) {
+            <div class="webchat-unavailable">
+                <p class="margin-top">@messages("global.webchat.unavailable")</p>
+                @{webChatClient.loadWebChatContainer()}
+            </div>
+        } else {
+            @{webChatClient.loadWebChatContainer()}
 
-    <p class="margin-top">@messages("global.adviser.busy.p2")</p>
+            <p class="margin-top">@messages("global.adviser.busy.p1")</p>
+            <p class="margin-top">@messages("global.adviser.busy.p2")</p>
+        }
+    }
 
     <p class="margin-top">
         <a id="return-link" href=@appConfig.childBenefitReturnUrl>

@@ -31,6 +31,7 @@ global.closed.time.sun=Closed Sundays.
 global.closed.time.bankholidays=Closed bank holidays.
 global.adviser.busy.p1=When an adviser is available, select the ‘speak to an adviser’ link to open the chat.
 global.adviser.busy.p2=If you do not select the link to open the chat, you will have to wait for the next available adviser.
+global.webchat.unavailable=Webchat is currently unavailable.
 
 #Beta Banner
 global.banner.phase = BETA
