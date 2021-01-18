@@ -1,24 +1,24 @@
 import {availabilities} from './getAvailability'
 import {createDataLayerElement,reportEvent} from './addToDataLayer'
 
-export function waitForEl(element, callback, w, defaultTimeout, timesCheckedForElement) {
-    defaultTimeout = defaultTimeout || 1000
-    timesCheckedForElement = timesCheckedForElement || 0
+export function waitForEl(element, successCallback, timeoutCallback) {
+    _waitForEl(element, successCallback, timeoutCallback, 0)
+}
+
+function _waitForEl(element, successCallback, timeoutCallback, timesCheckedForElement) {
+    const timeout = 1000;
     const selector = element + ' div span';
     const maxNumberOfAttempts = 9;
 
     if (jQuery(selector).length) {
-      callback();
+      successCallback();
     } else {
       setTimeout(function () {
         if (timesCheckedForElement == maxNumberOfAttempts) {
-          const assistantUsed = window.location.pathname.includes("virtual-assistant") ? "The digital assistant" : "Webchat"
-          $(element).text(assistantUsed + ' is experiencing technical difficulties. Please keep refreshing the page to try again.')
-          reportEvent(w,createDataLayerElement(availabilities.NuanceUnavailable, element))
-          return;
+          timeoutCallback();
+        } else {
+          _waitForEl(element, successCallback, timeoutCallback, timesCheckedForElement + 1);
         }
-
-        waitForEl(element, callback, w, defaultTimeout, timesCheckedForElement + 1);
-      }, defaultTimeout);
+      }, timeout);
     }
   }
