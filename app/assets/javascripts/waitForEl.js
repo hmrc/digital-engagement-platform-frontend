@@ -1,6 +1,3 @@
-import {availabilities} from './getAvailability'
-import {createDataLayerElement,reportEvent} from './addToDataLayer'
-
 export function waitForEl(element, successCallback, timeoutCallback) {
     _waitForEl(element, successCallback, timeoutCallback, 0)
 }

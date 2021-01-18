@@ -1,9 +1,11 @@
 import * as elementWatcher from './waitForEl'
 import * as statusObserver from './statusObserver'
 import * as dataLayerUpdater from './updateDatalayer'
+import {createDataLayerElement,reportEvent} from './addToDataLayer'
+import {availabilities} from './getAvailability'
 
-export function waitForCUI(d, w) {
-  $(window).on("load", function () {
+export function waitForCUI(w, d) {
+  $(w).on("load", function () {
       elementWatcher.waitForEl('#nuanMessagingFrame', function () {
 
         dataLayerUpdater.updateDataLayer(el,w,d);
@@ -15,9 +17,9 @@ export function waitForCUI(d, w) {
   });
 };
 
-export function waitForChanges(d, w) {
-  $(window).on("load", function () {
-    if (window.location.pathname.includes("payment-problems")) {
+export function waitForChanges(w, d) {
+  $(w).on("load", function () {
+    if (w.location.pathname.includes("payment-problems")) {
       waitForNuanceElement('#pp_self_assessment_webchat',w,d);
       waitForNuanceElement('#pp_vat_webchat',w,d);
       waitForNuanceElement('#pp_paye_webchat',w,d);
@@ -32,7 +34,6 @@ function waitForNuanceElement(el,w,d) {
   elementWatcher.waitForEl(el,
     function () {
       updateDataLayer(el,w,d);
-
       observeStatus(el,w,d);
     },
     function() {

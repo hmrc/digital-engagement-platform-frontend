@@ -1,3 +1,3 @@
 import * as nuanceWatcher from './waitForChanges'
 
-nuanceWatcher.waitForChanges(document, window);
+nuanceWatcher.waitForChanges(window, document);
