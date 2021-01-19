@@ -46,7 +46,12 @@
 }
 
 @scriptElem = {
-    @if(!appConfig.performanceTest){
+
+<script>
+window.isCUI = true;
+</script>
+
+@if(!appConfig.performanceTest){
         @{webChatClient.loadWebChatContainer("HMRC_Anchored_1")}
         @{webChatClient.loadRequiredElements()}
     }

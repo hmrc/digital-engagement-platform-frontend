@@ -6,12 +6,22 @@ import {availabilities} from './getAvailability'
 
 export function waitForCUI(w, d) {
   $(w).on("load", function () {
-      elementWatcher.waitForEl('#nuanMessagingFrame', function () {
+      var loadingAnimation = $('#cui-loading-animation')
+      var messagingFrame = $('#nuanMessagingFrame')
+
+//      messagingFrame.hide();
+      loadingAnimation.show();
+
+      elementWatcher.waitForEl('#nuanMessagingFrame #inqChatStage', function () {
+        console.log("found nuance chat!")
+        messagingFrame.show();
+        loadingAnimation.hide();
 
         dataLayerUpdater.updateDataLayer(el,w,d);
         statusObserver.observeStatus(el,w,d);
       },
       function() {
+        loadingAnimation.hide();
         console.log("Timed out waiting for CUI chat to appear");
       });
   });
@@ -31,10 +41,10 @@ export function waitForChanges(w, d) {
 };
 
 function waitForNuanceElement(el,w,d) {
-  elementWatcher.waitForEl(el,
+  elementWatcher.waitForEl(el + ' div span',
     function () {
-      updateDataLayer(el,w,d);
-      observeStatus(el,w,d);
+      dataLayerUpdater.updateDataLayer(el,w,d);
+      statusObserver.observeStatus(el,w,d);
     },
     function() {
       const assistantUsed = w.location.pathname.includes("virtual-assistant")
