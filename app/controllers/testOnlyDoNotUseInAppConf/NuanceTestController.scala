@@ -23,16 +23,18 @@ import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 import views.html.CUIViews.{JobRetentionSchemeHelpView, NuanceFullPageCUIView}
 import views.html.IdTestView
+import views.html.testOnly.NuanceFile
 
 import scala.concurrent.Future
 
 @Singleton
-class NuanceFullPageCUIController @Inject()(
+class NuanceTestController @Inject()(
   appConfig: AppConfig,
   mcc: MessagesControllerComponents,
   nuanceFullPageCUIView: NuanceFullPageCUIView,
   idTestView: IdTestView,
-  jobRetentionSchemeHelpView: JobRetentionSchemeHelpView) extends FrontendController(mcc) {
+  jobRetentionSchemeHelpView: JobRetentionSchemeHelpView,
+  nuanceFile: NuanceFile) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
@@ -41,5 +43,8 @@ class NuanceFullPageCUIController @Inject()(
   }
   def idTest: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(idTestView()))
+  }
+  def nuanceHtml: Action[AnyContent] = Action.async {
+    Future.successful(Ok(nuanceFile()))
   }
 }
