@@ -30,24 +30,11 @@ describe("When loading a page and waiting for changes", () => {
             $(window).trigger('load');
 
             expect(elementWatcherMock).toHaveBeenCalled();
-            expect(elementWatcherMock.mock.calls[0][0]).toEqual("#HMRC_Fixed_1")
+            expect(elementWatcherMock.mock.calls[0][0]).toEqual("#HMRC_Fixed_1 div span")
         });
     });
 
     describe("If the page is `/payment-problems`", () => {
-        it("will not consume element #HMRC_Fixed_1", () => {
-            window.location = {
-                pathname: '/ask-hmrc/webchat/payment-problems'
-            };
-
-            document.body.innerHTML = `<input type="text" id="test">`
-    
-            SUT.waitForChanges(window, document);
-            $(window).trigger('load');
-
-            expect(elementWatcherMock.mock.calls[0][0]).not.toEqual("#HMRC_Fixed_1")
-        });
-
         it("will consume element #pp_self_assessment_webchat", () => {
             window.location = {
                 pathname: '/ask-hmrc/webchat/payment-problems'
@@ -59,7 +46,7 @@ describe("When loading a page and waiting for changes", () => {
             $(window).trigger('load');
 
             expect(elementWatcherMock).toHaveBeenCalled();
-            expect(elementWatcherMock.mock.calls[0][0]).toEqual("#pp_self_assessment_webchat")
+            expect(elementWatcherMock.mock.calls[0][0]).toEqual("#pp_self_assessment_webchat div span")
         });
 
         it("will consume element #pp_vat_webchat", () => {
@@ -73,7 +60,7 @@ describe("When loading a page and waiting for changes", () => {
             $(window).trigger('load');
 
             expect(elementWatcherMock).toHaveBeenCalled();
-            expect(elementWatcherMock.mock.calls[1][0]).toEqual("#pp_vat_webchat")
+            expect(elementWatcherMock.mock.calls[1][0]).toEqual("#pp_vat_webchat div span")
         });
 
         it("will consume element #pp_paye_webchat", () => {
@@ -87,7 +74,7 @@ describe("When loading a page and waiting for changes", () => {
             $(window).trigger('load');
 
             expect(elementWatcherMock).toHaveBeenCalled();
-            expect(elementWatcherMock.mock.calls[2][0]).toEqual("#pp_paye_webchat")
+            expect(elementWatcherMock.mock.calls[2][0]).toEqual("#pp_paye_webchat div span")
         });
 
         it("will consume element #pp_corporation_tax_webchat", () => {
@@ -101,7 +88,7 @@ describe("When loading a page and waiting for changes", () => {
             $(window).trigger('load');
 
             expect(elementWatcherMock).toHaveBeenCalled();
-            expect(elementWatcherMock.mock.calls[3][0]).toEqual("#pp_corporation_tax_webchat")
+            expect(elementWatcherMock.mock.calls[3][0]).toEqual("#pp_corporation_tax_webchat div span")
         });
     });
 
