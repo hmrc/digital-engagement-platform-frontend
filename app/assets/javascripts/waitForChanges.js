@@ -9,16 +9,17 @@ export function waitForCUI(w, d) {
       var loadingAnimation = $('#cui-loading-animation')
       var messagingFrame = $('#nuanMessagingFrame')
 
-//      messagingFrame.hide();
+      messagingFrame.hide();
       loadingAnimation.show();
 
-      elementWatcher.waitForEl('#nuanMessagingFrame #inqChatStage', function () {
+      var el = '#nuanMessagingFrame';
+      elementWatcher.waitForEl(el + ' #inqChatStage', function () {
         console.log("found nuance chat!")
         messagingFrame.show();
         loadingAnimation.hide();
 
-        dataLayerUpdater.updateDataLayer(el,w,d);
-        statusObserver.observeStatus(el,w,d);
+//        dataLayerUpdater.updateDataLayer(el,w,d);
+//        statusObserver.observeStatus(el,w,d);
       },
       function() {
         loadingAnimation.hide();
