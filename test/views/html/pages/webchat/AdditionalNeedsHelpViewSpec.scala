@@ -41,8 +41,8 @@ class AdditionalNeedsHelpViewSpec extends ChatViewBehaviours {
         "Opening times:",
         "Monday to Friday, 8am to 8pm",
         "We will be extending our opening hours on these days:",
-        "Saturday 30 January, 8am to 8pm",
-        "Sunday 31 January, 8am to 8pm"
+        "Saturday 30 January 2021, 8am to 8pm",
+        "Sunday 31 January 2021, 8am to 8pm"
       )
     )
   }

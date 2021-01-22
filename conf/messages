@@ -35,8 +35,8 @@ global.webchat.unavailable=Webchat is currently unavailable.
 
 #Temp hours change for SA Additional Needs page
 global.opening.times.message=We will be extending our opening hours on these days:
-global.opening.times.sat30Jan=Saturday 30 January, 8am to 8pm
-global.opening.times.sun31Jan=Sunday 31 January, 8am to 8pm
+global.opening.times.sat30Jan=Saturday 30 January 2021, 8am to 8pm
+global.opening.times.sun31Jan=Sunday 31 January 2021, 8am to 8pm
 
 #Beta Banner
 global.banner.phase = BETA
