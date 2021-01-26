@@ -20,27 +20,23 @@ import config.AppConfig
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
-import views.html.AccessibilityStatementView
 
 import scala.concurrent.Future
 
 @Singleton
 class AccessibilityStatementController @Inject()(appConfig: AppConfig,
-                                                 mcc: MessagesControllerComponents,
-                                                 accessibilityStatementView: AccessibilityStatementView) extends FrontendController(mcc) {
+                                                 mcc: MessagesControllerComponents) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
-  def accessibility(pageUri: String): Action[AnyContent] = Action.async { implicit request =>
-    val uri = appConfig.accessibilityReportUrl(pageUri)
-    val deckproIdentifier: String = "-nuance"
-    Future.successful(Ok(accessibilityStatementView(uri + deckproIdentifier)))
+  def accessibility(pageUri: String): Action[AnyContent] = Action.async {
+    val uri = appConfig.accessibilityStatementUrl(pageUri = s"$pageUri-nuance")
+    Future.successful(Redirect(uri))
   }
 
-  def accessibilityNuance: Action[AnyContent] = Action.async { implicit request =>
-    val pageUri: String = "nuance"
-    val uri = appConfig.accessibilityReportUrl(pageUri)
-    Future.successful(Ok(accessibilityStatementView(uri)))
+  def accessibilityNuance: Action[AnyContent] = Action.async {
+    val uri = appConfig.accessibilityStatementUrl(pageUri = "nuance")
+    Future.successful(Redirect(uri))
   }
 
 }
