@@ -29,14 +29,9 @@ class AccessibilityStatementController @Inject()(appConfig: AppConfig,
 
   implicit val config: AppConfig = appConfig
 
-  def accessibility(pageUri: String): Action[AnyContent] = Action.async {
-    val uri = appConfig.accessibilityStatementUrl(pageUri = s"$pageUri-nuance")
+  def accessibility(referrerUrl: Option[String]): Action[AnyContent] = Action.async {
+    val uriToUse = referrerUrl.fold("nuance")(_ + "-nuance")
+    val uri = appConfig.accessibilityStatementUrl(referrerUrl = uriToUse)
     Future.successful(Redirect(uri))
   }
-
-  def accessibilityNuance: Action[AnyContent] = Action.async {
-    val uri = appConfig.accessibilityStatementUrl(pageUri = "nuance")
-    Future.successful(Redirect(uri))
-  }
-
 }

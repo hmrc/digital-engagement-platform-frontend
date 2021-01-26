@@ -125,11 +125,11 @@ class AppConfig @Inject()(config: Configuration,
   private def accessibilityPath = config.get[String]("accessibility-statement-frontend.path")
   private val accessibilityStatementFrontendUrl: String = s"$accessibilityHost$accessibilityPath/$serviceIdentifier"
 
-  def accessibilityStatementUrl(pageUri: String): String = {
-    s"$accessibilityStatementFrontendUrl?referrerUrl=${encodeUrl(pageUri)}"
+  def accessibilityStatementUrl(referrerUrl: String): String = {
+    s"$accessibilityStatementFrontendUrl?referrerUrl=${encodeUrl(referrerUrl)}"
   }
 
   def accessibilityStatementLink(pageUri: String): String = {
-    controllers.routes.AccessibilityStatementController.accessibility(pageUri).url
+    controllers.routes.AccessibilityStatementController.accessibility(Some(pageUri)).url
   }
 }

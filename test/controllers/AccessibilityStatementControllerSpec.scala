@@ -33,7 +33,7 @@ class AccessibilityStatementControllerSpec
   "fixed URLs" should {
     "render accessibility statement page" in {
       val pageUri: String = s"https://www.tax.service.gov.uk/ask-hmrc/webchat/construction-industry-scheme-enquiries"
-      val result: Future[Result] = controller.accessibility(pageUri)(fakeRequest)
+      val result: Future[Result] = controller.accessibility(Some(pageUri))(fakeRequest)
 
       val expectedReferrerUrl = "https%3A%2F%2Fwww.tax.service.gov.uk%2Fask-hmrc%2Fwebchat%2Fconstruction-industry-scheme-enquiries-nuance"
 
@@ -42,7 +42,7 @@ class AccessibilityStatementControllerSpec
     }
 
     "render accessibility statement page from link inside webchat" in {
-      val result = controller.accessibilityNuance()(fakeRequest)
+      val result = controller.accessibility(None)(fakeRequest)
 
       status(result) mustBe SEE_OTHER
       redirectLocation(result) mustEqual Some(s"$expectedAccessibilityStatementUrl?referrerUrl=nuance")
