@@ -21,7 +21,6 @@ import java.net.URLEncoder
 import javax.inject.{Inject, Singleton}
 import play.api.Configuration
 import uk.gov.hmrc.play.bootstrap.config.ServicesConfig
-import utils.StringHelpers
 
 @Singleton
 class AppConfig @Inject()(config: Configuration,
@@ -129,15 +128,6 @@ class AppConfig @Inject()(config: Configuration,
   def accessibilityStatementUrl(pageUri: String): String = {
     s"$accessibilityStatementFrontendUrl?referrerUrl=${encodeUrl(pageUri)}"
   }
-
-  // In accessibility statement view
-  val generalAccessibilityStatementUrl: String = "https://www.gov.uk/help/accessibility-statement"
-  val hmRevenueCustomsUrl: String = "https://www.gov.uk/government/organisations/hm-revenue-customs"
-  val abilityNetUrl: String = "https://mcmw.abilitynet.org.uk/"
-  val equalityAdvisoryServiceUrl: String = "https://www.equalityadvisoryservice.com/"
-  val technicalInformationUrl: String = "https://www.w3.org/TR/WCAG21/"
-  val equalityOrgUrl: String = "https://www.equalityni.org/Home"
-  val getHelpHmrcExtraSupportUrl: String = "https://www.gov.uk/get-help-hmrc-extra-support"
 
   def accessibilityStatementLink(pageUri: String): String = {
     controllers.routes.AccessibilityStatementController.accessibility(pageUri).url
