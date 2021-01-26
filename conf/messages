@@ -5,6 +5,7 @@ global.text.link.back.to.govuk.p1=Return to Contact HMRC
 global.text.link.ivr.to.govuk.p1=More ways to contact HMRC
 global.text.link.online=online
 global.back = Back
+global.accessibility.statement = Accessibility statement
 global.webchat.title.h2=Webchat
 global.opening.times.title=Opening times:
 global.opening.times.8to4=Monday to Friday, 8am to 4pm
