@@ -41,5 +41,10 @@
     sidebarLinks=Some(sidebarLinks()),
     contentHeader=Some(contentHeader)
 ){
-    <div id="nuanMessagingFrame"></div>
+    <div id="cui-messaging-container">
+        <div id="nuanMessagingFrame"></div>
+    </div>
+    <div id="cui-loading-animation">
+        <img src='@routes.Assets.versioned("media/cui_animation.svg")'>
+    </div>
 }
