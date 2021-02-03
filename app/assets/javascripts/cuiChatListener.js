@@ -1,6 +1,10 @@
 window.isCUI = true;
 
 var chatListener = {
+    downTimeoutDuration: 15000,
+    engagementTimeoutDuration: 10000,
+    loadingAnimationSelector: '#cui-loading-animation',
+    messagingContainerSelector: '#cui-messaging-container',
     nuanceDownTimeout: null,
     engageTimeout: null,
     onPageLanding: function(evt) {
@@ -72,32 +76,35 @@ var chatListener = {
         if (this.nuanceDownTimeout) {
             clearTimeout(this.nuanceDownTimeout);
             this.nuanceDownTimeout = null;
-            var self = this;
-            this.engageTimeout = setTimeout(function() {
-                console.log("Chat did not start...");
-                self.technicalError();
-            }, 5000);
+            this.waitForEngagement();
         }
+    },
+    waitForEngagement: function() {
+        var self = this;
+        this.engageTimeout = setTimeout(function() {
+            console.log("Chat did not start...");
+            self.technicalError();
+        }, this.engagementTimeoutDuration);
     },
     chatHasEngaged: function() {
         if (this.engageTimeout) {
             clearTimeout(this.engageTimeout);
             this.engageTimeout = null;
         }
+        $('.cui-technical-error').hide();   // If we showed the technical error, clear it.
         this.showNuanceDiv();
     },
     showNuanceDiv: function() {
         console.log("showNuanceDiv");
 
-        var loadingAnimation = $('#cui-loading-animation')
-        var messagingContainer = $('#cui-messaging-container')
+        var loadingAnimation = $(this.loadingAnimationSelector)
+        var messagingContainer = $(this.messagingContainerSelector)
         messagingContainer.fadeTo(2000, 1.0);
         loadingAnimation.fadeTo(1500, 0.0);
     },
     showLoadingAnimation: function() {
-        console.log("showLoadingAnimation");
-        var loadingAnimation = $('#cui-loading-animation')
-        var messagingContainer = $('#cui-messaging-container')
+        var loadingAnimation = $(this.loadingAnimationSelector);
+        var messagingContainer = $(this.messagingContainerSelector);
 
         messagingContainer.fadeTo(0, 0.0);
         loadingAnimation.show();
@@ -105,9 +112,16 @@ var chatListener = {
     technicalError: function() {
         console.log("technicalError");
         this.showNuanceDiv();
-        var newDiv = $("<p>", {"class": "error-message form-group-error"})
+        var newDiv = $("<p>", {"class": "cui-technical-error error-message"})
         newDiv.text('There’s a problem with chat. Try again later.')
         $('#nuanMessagingFrame').append(newDiv);
+    },
+    waitForSignsOfLife: function() {
+        var self = this;
+        this.nuanceDownTimeout = setTimeout(function() {
+            console.log("Nuance is down...");
+            self.technicalError();
+        }, this.downTimeoutDuration);
     },
     startup: function() {
         localStorage.enableJSLogging = true;
@@ -116,10 +130,7 @@ var chatListener = {
         $(window).on("load", function() {
             self.showLoadingAnimation();
             console.log("chatListener onLoad");
-            self.nuanceDownTimeout = setTimeout(function() {
-                console.log("Nuance is down...");
-                self.technicalError();
-            }, 10000);
+            self.waitForSignsOfLife();
         });
     }
 };
