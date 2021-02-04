@@ -1,3 +1,7 @@
+
+window.GOVUKFrontend.initAll();
+window.HMRCFrontend.initAll();
+
 $(document).ready(function() {
 
       // =====================================================

@@ -20,14 +20,14 @@
 *@
 
 @import config.AppConfig
-@import layouts.GovUkTemplate
 @import uk.gov.hmrc.play.config.OptimizelyConfig
 @import uk.gov.hmrc.play.config.AssetsConfig
 @import uk.gov.hmrc.play.config.GTMConfig
+@import uk.gov.hmrc.govukfrontend.views.html.components._
+@import uk.gov.hmrc.govukfrontend.views._
 @import uk.gov.hmrc.play.views.html.{layouts => uiLayouts}
 
-
-@(pageTitle: String, heading: String, message: String, appConfig: AppConfig)(implicit request: Request[_], messages: Messages)
+@(govUkTemplate: GovukTemplate, pageTitle: String, heading: String, message: String, appConfig: AppConfig)(implicit request: Request[_], messages: Messages)
 
 @mainContent = {
 <article>
@@ -40,4 +40,4 @@
 @{new uiLayouts.MainContent().apply(article = mainContent)}
 }
 
-@{new GovUkTemplate().apply(Some(pageTitle), None)(Html(""), Html(""), Html(""), Html(""), Html(""), None)(content)}
+@{govUkTemplate(pageTitle=Some(pageTitle))(content)}
