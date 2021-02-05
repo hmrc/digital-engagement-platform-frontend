@@ -5,6 +5,7 @@ global.text.link.back.to.govuk.p1=Return to Contact HMRC
 global.text.link.ivr.to.govuk.p1=More ways to contact HMRC
 global.text.link.online=online
 global.back = Back
+global.accessibility.statement = Accessibility statement
 global.webchat.title.h2=Webchat
 global.opening.times.title=Opening times:
 global.opening.times.8to4=Monday to Friday, 8am to 4pm
@@ -194,79 +195,3 @@ cui.sidebar.p2=If it cannot help you, you can ask to transfer to an HMRC adviser
 
 #JRSVariant test pages
 cui.job.retention.scheme.title=Coronavirus Job Retention Scheme: chat
-
-#Accessibility Statement
-accessibility.statement.title=Accessibility statement for webchat and digital assistant
-
-accessibility.statement.aboutthisservice.p1=This accessibility statement explains how accessible this service is, what to do if you have difficulty using it, and how to report accessibility problems with the service.
-accessibility.statement.aboutthisservice.p2=This service is part of the wider GOV.UK website. {0}.
-accessibility.statement.aboutthisservice.p2urltext=There is a separate accessibility statement for the main GOV.UK website
-accessibility.statement.aboutthisservice.p3=This page only contains information about the Ask HMRC webchat and digital assistant services, available at {0}
-accessibility.statement.aboutthisservice.p3urltext=https://www.tax.service.gov.uk/
-
-accessibility.statement.usingtheservice.h2=Using the webchat and digital assistant
-accessibility.statement.usingtheservice.p1=The Ask HMRC webchat and digital assistant are services that enable you to communicate with an HMRC adviser or digital assistant over the internet.
-accessibility.statement.usingtheservice.p2=Both services are built and run by Nuance, a provider of customer engagement software. We want as many people as possible to be able to use this website and webchat. This means you should be able to:
-accessibility.statement.usingtheservice.li1=zoom in up to 200% without the text spilling off the screen
-accessibility.statement.usingtheservice.li2=get from the start of the webchat to the end using just a keyboard
-accessibility.statement.usingtheservice.li3=get from the start of the webchat to the end using speech recognition software
-accessibility.statement.usingtheservice.li4=listen to the webchat using a screen reader (including the most recent versions of JAWS, NVDA and VoiceOver)
-accessibility.statement.usingtheservice.p3=We have also made the text in the service as simple as possible to understand.
-accessibility.statement.askhmrcwebchat.p3={0} has advice on making your device easier to use if you have a disability.
-accessibility.statement.askhmrcwebchat.p4=AbilityNet
-
-accessibility.statement.howaccessible.h2=How accessible this service is
-accessibility.statement.howaccessible.p1a=This service is partially compliant with the {0}
-accessibility.statement.howaccessible.urltext=Web Content Accessibility Guidelines version 2.1 (opens in a new tab)
-accessibility.statement.howaccessible.p1b=AA standard.
-accessibility.statement.howaccessible.p2=Some people may find parts of this service difficult to use:
-accessibility.statement.howaccessible.li1=On mobile devices, you have to hit the Done button twice to dismiss the keyboard and send a message
-accessibility.statement.howaccessible.li2=If you’re using a screen reader you may need to tab past the footer of the webpage to find the webchat
-accessibility.statement.howaccessible.li3=There are some error messages in this service that may not be descriptive enough although they are compatible with common assistive technology tools
-accessibility.statement.howaccessible.li4=To find the privacy and accessibility links, users should tab beyond the message input box
-accessibility.statement.howaccessible.li5=When the digital assistant presents the user with possible solutions, it says ‘Links will open in a new tab’. This text is hidden but seen by screen readers
-accessibility.statement.howaccessible.li6=Chat button labelled ‘hide’in the digital assistant is not specific enough
-accessibility.statement.howaccessible.li7=After following a link from the digital assistant that opens in a new tab, then returning to the original tab with the digital assistant, focus is moved to the chat input rather than staying on the link
-accessibility.statement.howaccessible.li8=On mobile devices, the keyboard input appears after following a link within the digital assistant. This takes up a very large area of the screen and obstructs users'' ability to interact with the digital assistant as a simple decision tree
-accessibility.statement.howaccessible.li9=The form stepper appears when entering text into the chat field on mobile
-accessibility.statement.howaccessible.li10=JAWS announces every 2 minutes how long there is left before chat closes. This doesn’t happen on Mac or iOS with VoiceOver and Safari
-accessibility.statement.howaccessible.li11=When using zoom on a mobile browser (chrome or safari accessibility settings), the auto-selection of the keyboard makes the text difficult to read before proceeding.
-
-accessibility.statement.reportingproblems.h2=Reporting accessibility problems with this service
-accessibility.statement.reportingproblems.p1=We are always looking to improve the accessibility of this service. If you find any problems that are not listed on this page or think we are not meeting accessibility requirements, report the
-accessibility.statement.reportingproblems.linktext=accessibility problem (opens in a new window or tab).
-
-accessibility.statement.ifyournothappy.h2=What to do if you are not happy with how we respond to your complaint
-accessibility.statement.ifyournothappy.p1a=The Equality and Human Rights Commission (EHRC) is responsible for enforcing the Public Sector Bodies (Websites and Mobile Applications) (No.2) Accessibility Regulations 2018 (the  ‘accessibility regulations’).
-accessibility.statement.ifyournothappy.p1b=If you’re not happy with how we respond to your complaint, {0}
-accessibility.statement.ifyournothappy.eassurltext=contact the Equality Advisory and Support Services (EASS)
-accessibility.statement.ifyournothappy.p1c=or the {0}
-accessibility.statement.ifyournothappy.ecniurltext=Equality Commission for Northern Ireland (ECNI)
-accessibility.statement.ifyournothappy.p1d=if you live in Northern Ireland.
-
-accessibility.statement.contactus.h2=Contacting us by phone or getting a visit from us in person
-accessibility.statement.contactus.p1=We provide a text relay service if you are deaf, hearing impaired or have a speech impediment.
-accessibility.statement.contactus.p2=We can provide a British Sign Language (BSL) interpreter, or you can arrange a visit from an HMRC advisor to help you complete the service.
-accessibility.statement.contactus.p3=Find out how to {0}.
-accessibility.statement.contactus.urltext=contact us
-
-accessibility.statement.technicalinformation.h2=Technical information about this service’s accessibility
-accessibility.statement.technicalinformation.p1=HMRC is committed to making this service accessible, in accordance with the Public Sector Bodies (Websites and Mobile Applications) (No.2) Accessibility Regulations 2018.
-accessibility.statement.technicalinformation.p2=This service is partially compliant with the {0}
-accessibility.statement.technicalinformation.urltext=Web Content Accessibility Guidelines version 2.1
-accessibility.statement.technicalinformation.p3=AA standard, due to the non-compliances listed below.
-
-accessibility.statement.nonaccessiblecontent.h2=Non accessible content
-accessibility.statement.nonaccessiblecontent.p1=The content listed below is non-accessible for the following reasons:
-accessibility.statement.nonaccessiblecontent.h2bullets=Non compliance with the accessibility regulations
-accessibility.statement.nonaccessiblecontent.li1=If you’re using a screen reader you may need to tab past the footer of the webpage to find the webchat. This fails WCAG section 1.3.2 Meaningful Sequence
-accessibility.statement.nonaccessiblecontent.li2=There are some error messages in this service that may not be descriptive enough, although they are compatible with common assistive technology tools. This fails WCAG section 3.3.3 Error Suggestion
-accessibility.statement.nonaccessiblecontent.li3=To find the privacy and accessibility links, users should tab beyond the message input box. This fails WCAG section 2.4.3 Focus Order
-accessibility.statement.nonaccessiblecontent.li4=When using zoom on a mobile browser (chrome or safari accessibility settings), the auto-selection of the keyboard makes the text difficult to read before proceeding. This fails WCAG section 1.4.4 Resize text
-accessibility.statement.nonaccessiblecontent.li5=Chat button labelled ‘hide’in the digital assistant is not specific enough
-
-accessibility.statement.howwetested.h2=How we tested this webchat
-accessibility.statement.howwetested.p1=The service was last tested on 06/04/2020 and was checked for compliance with the WCAG 2.1 AA.
-accessibility.statement.howwetested.p2=We have fixed and therefore deleted three items from the original list.
-accessibility.statement.howwetested.p3=The full service was tested by HMRC and included a disabled user.
-accessibility.statement.howwetested.p4=This page was prepared on 06/07/2020.

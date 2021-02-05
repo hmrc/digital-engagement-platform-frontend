@@ -16,41 +16,36 @@
 
 package controllers
 
-import org.jsoup.Jsoup
-import org.jsoup.nodes.Document
 import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
+import play.api.mvc.Result
 import play.api.test.Helpers._
 import views.html.pages.helpers.AppBuilderSpecBase
+
+import scala.concurrent.Future
 
 class AccessibilityStatementControllerSpec
   extends AppBuilderSpecBase with ScalaCheckPropertyChecks{
 
   private val controller = app.injector.instanceOf[AccessibilityStatementController]
 
-  def asDocument(html: String): Document = Jsoup.parse(html)
+  private val expectedAccessibilityStatementUrl = "http://localhost:12346/accessibility-statement/digital-engagement-platform-frontend"
 
   "fixed URLs" should {
     "render accessibility statement page" in {
-      val userAction: String = "%2Fask-hmrc%2Fwebchat%2Fconstruction-industry-scheme-enquiries"
-      val serviceIdentifier = "digital-engagement-platform-frontend"
-      val pageUri: String = s"https://www.tax.service.gov.uk/contact/accessibility-unauthenticated?service=$serviceIdentifier&userAction=$userAction"
-      val result = controller.accessibility(pageUri)(fakeRequest)
-      val doc = asDocument(contentAsString(result))
+      val pageUri: String = s"https://www.tax.service.gov.uk/ask-hmrc/webchat/construction-industry-scheme-enquiries"
+      val result: Future[Result] = controller.accessibility(Some(pageUri))(fakeRequest)
 
-      status(result) mustBe OK
-      contentType(result) mustBe Some("text/html")
-      charset(result) mustBe Some("utf-8")
-      doc.select("h1").text() mustBe "Accessibility statement for webchat and digital assistant"
+      val expectedReferrerUrl = "https%3A%2F%2Fwww.tax.service.gov.uk%2Fask-hmrc%2Fwebchat%2Fconstruction-industry-scheme-enquiries-nuance"
+
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustEqual Some(s"$expectedAccessibilityStatementUrl?referrerUrl=$expectedReferrerUrl")
     }
 
     "render accessibility statement page from link inside webchat" in {
-      val result = controller.accessibilityNuance()(fakeRequest)
-      val doc = asDocument(contentAsString(result))
+      val result = controller.accessibility(None)(fakeRequest)
 
-      status(result) mustBe OK
-      contentType(result) mustBe Some("text/html")
-      charset(result) mustBe Some("utf-8")
-      doc.select("h1").text() mustBe "Accessibility statement for webchat and digital assistant"
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustEqual Some(s"$expectedAccessibilityStatementUrl?referrerUrl=nuance")
     }
   }
 }

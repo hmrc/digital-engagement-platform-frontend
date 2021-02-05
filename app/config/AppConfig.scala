@@ -21,7 +21,6 @@ import java.net.URLEncoder
 import javax.inject.{Inject, Singleton}
 import play.api.Configuration
 import uk.gov.hmrc.play.bootstrap.config.ServicesConfig
-import utils.StringHelpers
 
 @Singleton
 class AppConfig @Inject()(config: Configuration,
@@ -31,30 +30,20 @@ class AppConfig @Inject()(config: Configuration,
 
   private def encodeUrl(url: String): String = URLEncoder.encode(url, "UTF-8")
 
-  private val assetsUrl = config.get[String]("assets.url")
   private val serviceIdentifier = "digital-engagement-platform-frontend"
 
-  lazy val host: String = config.get[String]("host")
-  lazy val self: String = servicesConfig.getConfString(s"$serviceIdentifier.www.url", "")
+  val performanceTest: Boolean = config.get[Boolean]("performance-test.mode")
 
-  val assetsPrefix: String = assetsUrl + config.get[String]("assets.version")
-  val analyticsToken: String = config.get[String](s"google-analytics.token")
-  val analyticsHost: String = config.get[String](s"google-analytics.host")
-
-  val performanceTest: Boolean = config.get[Boolean](s"performance-test.mode")
-
+  // Used in wrapper
+  val analyticsToken: String = config.get[String]("google-analytics.token")
+  val analyticsHost: String = config.get[String]("google-analytics.host")
   val optimizelyMode: Boolean = config.get[Boolean]("optimizely.mode")
   val optimizelyProjectId: String = config.get[String]("optimizely.projectId")
-
   val reportAProblemPartialUrl: String = s"$contactHost/contact/problem_reports_ajax?service=$serviceIdentifier"
   val reportAProblemNonJSUrl: String = s"$contactHost/contact/problem_reports_nonjs?service=$serviceIdentifier"
-  val betaFeedbackUrl = s"$contactHost/contact/beta-feedback?service=$serviceIdentifier"
   val betaFeedbackUnauthenticatedUrl = s"$contactHost/contact/beta-feedback-unauthenticated?service=$serviceIdentifier"
 
   var featureChildBenefitsExperiment: Boolean = config.getOptional[Boolean]("features.childBenefitsExperiment").getOrElse(false)
-
-  val contactUrl: String =
-    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact"
 
   val selfAssessmentReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/self-assessment"
@@ -132,22 +121,15 @@ class AppConfig @Inject()(config: Configuration,
   val AnnualTaxOnEnvelopedDwellingsReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/annual-tax-on-enveloped-dwellings-ated"
 
-  val generalAccessibilityStatementUrl: String = "https://www.gov.uk/help/accessibility-statement"
-  val hmRevenueCustomsUrl: String = "https://www.gov.uk/government/organisations/hm-revenue-customs"
-  val abilityNetUrl: String = "https://mcmw.abilitynet.org.uk/"
+  private def accessibilityHost = config.get[String]("accessibility-statement-frontend.host")
+  private def accessibilityPath = config.get[String]("accessibility-statement-frontend.path")
+  private val accessibilityStatementFrontendUrl: String = s"$accessibilityHost$accessibilityPath/$serviceIdentifier"
 
-  def accessibilityReportUrl(pageUri: String): String = {
-    s"$contactHost/contact/accessibility-unauthenticated?service=" +
-      s"${serviceIdentifier}&userAction=${StringHelpers.tidyUpString(encodeUrl(pageUri))}"
+  def accessibilityStatementUrl(referrerUrl: String): String = {
+    s"$accessibilityStatementFrontendUrl?referrerUrl=${encodeUrl(referrerUrl)}"
   }
 
-  lazy val reportProblemUrl: String = config.get[String]("gov-uk.reportProblemUrl")
-  val equalityAdvisoryServiceUrl: String = "https://www.equalityadvisoryservice.com/"
-  val technicalInformationUrl: String = "https://www.w3.org/TR/WCAG21/"
-  val equalityOrgUrl: String = "https://www.equalityni.org/Home"
-  val getHelpHmrcExtraSupportUrl: String = "https://www.gov.uk/get-help-hmrc-extra-support"
-
-  def accessibilityStatementUrl(pageUri: String): String = {
-    StringHelpers.tidyUpString(controllers.routes.AccessibilityStatementController.accessibility(pageUri).url)
+  def accessibilityStatementLink(pageUri: String): String = {
+    controllers.routes.AccessibilityStatementController.accessibility(Some(pageUri)).url
   }
 }
