@@ -32,7 +32,7 @@ class AppConfig @Inject()(config: Configuration,
   private def encodeUrl(url: String): String = URLEncoder.encode(url, "UTF-8")
 
   private val assetsUrl = config.get[String]("assets.url")
-  private val serviceIdentifier = "digital-engagement-platform-frontend"
+  val serviceIdentifier: String = "digital-engagement-platform-frontend"
 
   lazy val host: String = config.get[String]("host")
   lazy val self: String = servicesConfig.getConfString(s"$serviceIdentifier.www.url", "")

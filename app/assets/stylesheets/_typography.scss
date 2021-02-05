@@ -1,0 +1,24 @@
+// Copied and cut down from node_modules/govuk-frontend/govuk/core/_typography
+@import "lib/govuk-frontend/govuk/settings/all";
+@import "lib/govuk-frontend/govuk/helpers/all";
+@import "lib/govuk-frontend/govuk/tools/all";
+
+$govuk-typography-use-rem: false;
+
+%govuk-heading-m {
+  @include govuk-text-colour;
+  @include govuk-font($size: 24, $weight: bold);
+
+  display: block;
+
+  margin-top: 0;
+  @include govuk-responsive-margin(4, "bottom");
+}
+
+%govuk-body-m {
+  @include govuk-text-colour;
+  @include govuk-font($size: 19);
+
+  margin-top: 0;
+  @include govuk-responsive-margin(4, "bottom");
+}

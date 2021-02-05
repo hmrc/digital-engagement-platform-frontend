@@ -20,18 +20,14 @@
 @import uk.gov.hmrc.hmrcfrontend.views.html.helpers._
 @import uk.gov.hmrc.govukfrontend.views.html.components.GovukLayout
 
+@import views.html.components._
+
 @this(
     govukLayout: GovukLayout,
-//    head: Head,
-//    hmrcBanner: HmrcBanner,
     hmrcHeader: HmrcHeader,
-//    header_nav:HeaderNav,
-//    serviceInfo:ServiceInfo,
-//    main_content_header:MainContentHeader,
-//    main_content:MainContent,
-      reportTechnicalIssue: HmrcReportTechnicalIssue,
-//    hmrcPageHeading: HmrcPageHeading,
+    reportTechnicalIssue: HmrcReportTechnicalIssue,
     hmrcStandardFooter: HmrcStandardFooter,
+    hmrcBanner: HmrcBanner,
     appConfig: AppConfig,
     hmrcTrackingConsentSnippet: HmrcTrackingConsentSnippet
 )
@@ -52,7 +48,6 @@
     @hmrcTrackingConsentSnippet()
 <!--[if lte IE 8]><link href='@routes.Assets.versioned("stylesheets/application-ie-8.css")' rel="stylesheet" type="text/css" /><![endif]-->
 <!--[if gt IE 8]><!--><link href='@routes.Assets.versioned("stylesheets/main.css")' media="screen" rel="stylesheet" type="text/css" /><!--<![endif]-->
-    <link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/main.css")' />
 @*
     @head(
         linkElem = None,
@@ -93,8 +88,6 @@
 @footerBlock = {
 }
 
-@betaBanner = @{components.beta_banner(appConfig)}
-
 @*
 @serviceInfoBlock = {
     @serviceInfo(
@@ -118,7 +111,11 @@
 *@
 
 @bodyEndBlock = {
-    @reportTechnicalIssue(ReportTechnicalIssue())
+@*
+    @reportTechnicalIssue(
+        ReportTechnicalIssue(serviceCode = appConfig.serviceIdentifier)
+    )
+*@
 }
 
 @content = {
@@ -129,9 +126,13 @@
 @hmrcHeader(Header(
 homepageUrl = "https://www.gov.uk/",
 language = En,
-displayHmrcBanner = true,
+displayHmrcBanner = false,
 serviceName = Some(messages("global.nav.title"))
 ))
+<div class="govuk-width-container">
+    @beta_banner(appConfig)
+    @hmrcBanner(Banner())
+</div>
 }
 
 @govukLayout(
