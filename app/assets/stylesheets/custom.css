@@ -35,14 +35,15 @@
     border-top: 2px solid #1d70b8;
     padding-top: 10px;
 }
-#subsection-title {
+
+#cui-subsection-title {
     margin-top: 0;
-    margin-bottom: 0;
+    margin-bottom:20px;
 }
 
 .content__body {
     position: relative;
-}
+    }
 
 .gem-c-govspeak .address, .gem-c-govspeak .contact {
     border-left: 1px solid #b1b4b6;
