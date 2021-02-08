@@ -104,30 +104,12 @@ trait ChatViewBehaviours extends ViewSpecBase {
     }
   }
 
-  def generalCuiContent(view: () => HtmlFormat.Appendable,
-                     messageHeading: String
-                    ): Unit = {
-    "the view" must {
-
-      "display the correct page title" in {
-        val doc = asDocument(view())
-        assertPageTitleEqualsMessage(doc, messageHeading)
-      }
-
-      "display the 'Get help with this page' text" in {
-        val doc = asDocument(view())
-        val helpTextExists = doc.getElementById("get-help-action") != null
-        helpTextExists mustBe true
-      }
-    }
-  }
-
   def generalContentCUI(view: () => HtmlFormat.Appendable,
                      messageHeading: String,
                      sidebarText: String
                     ): Unit = {
     "the view" must {
-      behave like generalCuiContent(view, messageHeading)
+      behave like generalContent(view, messageHeading)
 
       "display the sidebar text" in {
         val doc = asDocument(view())
@@ -145,7 +127,7 @@ trait ChatViewBehaviours extends ViewSpecBase {
     "behave like a normal CUI page" when {
       "rendered" must {
 
-        behave like generalCuiContent(view, messageHeading)
+        behave like generalContent(view, messageHeading)
 
         "have the correct banner title" in {
           val doc = asDocument(view())

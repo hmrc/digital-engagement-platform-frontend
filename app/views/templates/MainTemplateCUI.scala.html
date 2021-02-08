@@ -31,7 +31,7 @@
     sidebarLinks: Option[Html] = None,
     contentHeader: Option[Html] = None,
     bodyClasses: Option[String] = None,
-    mainClass: Option[String] = None)(mainContent: Html)(implicit request : Request[_], messages: Messages)
+    mainClass: Option[String] = Some("cui-main"))(mainContent: Html)(implicit request : Request[_], messages: Messages)
 
 @serviceInfoContent = {}
 

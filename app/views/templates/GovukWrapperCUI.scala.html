@@ -47,13 +47,6 @@
 @headContent = {
     @head(linkElem = None, headScripts = None)
 
-    <style type="text/css">
-        #content {
-          border-top: 10px solid;
-          border-top-color: #1d70b8;
-        }
-    </style>
-
         <meta name="format-detection" content="telephone=no" />
         <link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/main.css")' />
         @if(appConfig.optimizelyMode){
@@ -100,7 +93,8 @@
     @serviceInfo(
         betaBanner = betaBanner,
         includeGridWrapper = false,
-        serviceInfoContent = Some(serviceInfoContent))
+        includeHMRCBranding = false,
+        serviceInfoContent = None)
 }
 
 @mainContentHeader = {
@@ -132,6 +126,7 @@
         mainClass = mainClass,
         mainDataAttributes = mainDataAttributes,
         mainContentHeader = mainContentHeader,
+        serviceInfo = serviceInfoBlock,
         getHelpForm = getHelpForm,
         sidebar = sidebar)
 }
