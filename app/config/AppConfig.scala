@@ -37,8 +37,6 @@ class AppConfig @Inject()(config: Configuration,
   // Used in wrapper
   val analyticsToken: String = config.get[String]("google-analytics.token")
   val analyticsHost: String = config.get[String]("google-analytics.host")
-  val optimizelyMode: Boolean = config.get[Boolean]("optimizely.mode")
-  val optimizelyProjectId: String = config.get[String]("optimizely.projectId")
   val reportAProblemPartialUrl: String = s"$contactHost/contact/problem_reports_ajax?service=$serviceIdentifier"
   val reportAProblemNonJSUrl: String = s"$contactHost/contact/problem_reports_nonjs?service=$serviceIdentifier"
   val betaFeedbackUnauthenticatedUrl = s"$contactHost/contact/beta-feedback-unauthenticated?service=$serviceIdentifier"

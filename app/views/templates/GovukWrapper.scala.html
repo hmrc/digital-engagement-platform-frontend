@@ -51,9 +51,6 @@
         headScripts = None)
         <meta name="format-detection" content="telephone=no" />
         <link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/main.css")' />
-        @if(appConfig.optimizelyMode){
-            <script src="https://cdn.optimizely.com/js/@{appConfig.optimizelyProjectId}.js"></script>
-        }
     }
 
 @insideHeader = {
