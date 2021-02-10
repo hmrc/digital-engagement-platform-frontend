@@ -53,3 +53,6 @@ GET         /virtual-assistant/support-for-coronavirus                          
 GET         /virtual-assistant/tax-credits-enquiries                                    controllers.VirtualAssistantController.taxCreditsEnquiries
 
 GET         /accessibility-statement                                                    controllers.AccessibilityStatementController.accessibility(userAction: Option[String])
+
+GET         /chat/job-retention-scheme-help                                    controllers.CuiController.CuiController.jobRetentionSchemeHelp
+GET         /chat/help-job-retention-scheme                                    controllers.CuiController.CuiController.helpJobRetentionScheme

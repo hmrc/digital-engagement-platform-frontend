@@ -15,8 +15,6 @@
 + nocsrf
 GET         /ask-hmrc/contact-us/nuance-test/t85ting-on1y-pag8-for-d8v81opm8nt  controllers.testOnlyDoNotUseInAppConf.NuanceTestController.nuanceFullPageCUI
 GET         /ask-hmrc/test-only/id-test                                         controllers.testOnlyDoNotUseInAppConf.NuanceTestController.idTest
-GET         /ask-hmrc/chat/job-retention-scheme-help                            controllers.CuiController.CuiController.jobRetentionSchemeHelp
-GET         /ask-hmrc/chat/help-job-retention-scheme                            controllers.CuiController.CuiController.helpJobRetentionScheme
 
 # Serve up dummy page that digital-engagement-platform-config would have, to enable chat to work
 # This should only be requested locally.
