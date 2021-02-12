@@ -130,7 +130,7 @@ export var chatListener = {
         }, this.downTimeoutDuration);
     },
     startup: function(w) {
-        localStorage.enableJSLogging = true;
+//        localStorage.enableJSLogging = true;
         var self = this;
         $(w).on("load", function() {
             self.showLoadingAnimation();
