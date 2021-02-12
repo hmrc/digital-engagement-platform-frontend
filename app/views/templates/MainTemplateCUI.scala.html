@@ -47,7 +47,11 @@
 
 @scriptElem = {
 
-<script type="text/javascript" src='@routes.Assets.versioned("javascripts/cuiChatListener.js")'></script>
+<script>
+    window.isCUI = true;
+</script>
+<script type="text/javascript" src='@routes.Assets.versioned("javascripts/custom.js")'></script>
+<script src='@routes.Assets.versioned("javascripts/bundle.js")' type="text/javascript"></script>
 
 @if(!appConfig.performanceTest){
         @{webChatClient.loadWebChatContainer("HMRC_Anchored_1")}
