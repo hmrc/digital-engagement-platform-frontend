@@ -94,9 +94,9 @@ describe("CUI chat listener", () => {
             expect($('.cui-technical-error').length).toBe(0);
 
             // Make sure there are no lingering behaviours.
-   			jest.runOnlyPendingTimers();
-   			jest.runOnlyPendingTimers();
-   			jest.runOnlyPendingTimers();
+            jest.runOnlyPendingTimers();
+            jest.runOnlyPendingTimers();
+            jest.runOnlyPendingTimers();
             expect($('.cui-technical-error').length).toBe(0);
         });
 
@@ -133,9 +133,9 @@ describe("CUI chat listener", () => {
             expect($('.cui-technical-error').css("display")).toBe("none");
 
             // Make sure there are no lingering behaviours.
-   			jest.runOnlyPendingTimers();
-   			jest.runOnlyPendingTimers();
-   			jest.runOnlyPendingTimers();
+            jest.runOnlyPendingTimers();
+            jest.runOnlyPendingTimers();
+            jest.runOnlyPendingTimers();
             expect($('.cui-technical-error').length).toBe(1);
             expect($('.cui-technical-error').css("display")).toBe("none");
 
@@ -160,9 +160,9 @@ describe("CUI chat listener", () => {
             expect($('.cui-technical-error').css("display")).toBe("none");
 
             // Make sure there are no lingering behaviours.
-   			jest.runOnlyPendingTimers();
-   			jest.runOnlyPendingTimers();
-   			jest.runOnlyPendingTimers();
+            jest.runOnlyPendingTimers();
+            jest.runOnlyPendingTimers();
+            jest.runOnlyPendingTimers();
             expect($('.cui-technical-error').length).toBe(1);
             expect($('.cui-technical-error').css("display")).toBe("none");
         });
