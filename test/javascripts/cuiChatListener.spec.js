@@ -166,5 +166,24 @@ describe("CUI chat listener", () => {
             expect($('.cui-technical-error').length).toBe(1);
             expect($('.cui-technical-error').css("display")).toBe("none");
         });
+
+        it("will not show an error if activity and then shown before any other event", () => {
+            testListener.startup(window);
+            $(window).trigger('load');
+            expect($('.cui-technical-error').length).toBe(0);
+
+            testListener.onChatShown({});
+            testListener.onAnyEvent({});
+
+            jest.runOnlyPendingTimers();
+
+            expect($('.cui-technical-error').length).toBe(0);
+
+            // Make sure there are no lingering behaviours.
+            jest.runOnlyPendingTimers();
+            jest.runOnlyPendingTimers();
+            jest.runOnlyPendingTimers();
+            expect($('.cui-technical-error').length).toBe(0);
+        });
     });
 });

@@ -5,6 +5,7 @@ export var chatListener = {
     messagingContainerSelector: '#cui-messaging-container',
     nuanceDownTimeout: null,
     engageTimeout: null,
+    engaged: false,
     onPageLanding: function(evt) {
         console.log("On Page Landing: data=", evt.data, "page=", evt.page, "reinitialized=", evt.reinitialized);
     },
@@ -79,6 +80,10 @@ export var chatListener = {
         }
     },
     waitForEngagement: function() {
+        if (this.engaged) {
+            return;
+        }
+
         var self = this;
         this.engageTimeout = setTimeout(function() {
             console.log("Chat did not start...");
@@ -90,6 +95,7 @@ export var chatListener = {
             clearTimeout(this.engageTimeout);
             this.engageTimeout = null;
         }
+        this.engaged = true;
         $('.cui-technical-error').hide();   // If we showed the technical error, clear it.
         this.showNuanceDiv();
     },
