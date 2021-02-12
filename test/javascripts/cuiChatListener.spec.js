@@ -25,8 +25,8 @@ describe("CUI chat listener", () => {
                     <img src='@routes.Assets.versioned("media/cui_animation.svg")' alt="Chat is loading">
                 </div>
             `;
-       		jest.useFakeTimers();
-       		$.fx.off = true;
+            jest.useFakeTimers();
+            $.fx.off = true;
         });
         afterEach(() => {
             jest.clearAllTimers();
@@ -55,7 +55,7 @@ describe("CUI chat listener", () => {
             $(window).trigger('load');
             expect($('.cui-technical-error').length).toBe(0);
 
-			jest.runOnlyPendingTimers();
+            jest.runOnlyPendingTimers();
             expect($('.cui-technical-error').length).toBe(1);
         });
 
@@ -72,7 +72,7 @@ describe("CUI chat listener", () => {
             testListener.onChatShown({});
             testListener.onAnyEvent({});
 
-			jest.runOnlyPendingTimers();
+            jest.runOnlyPendingTimers();
             expect($('.cui-technical-error').length).toBe(0);
         });
 
@@ -89,7 +89,7 @@ describe("CUI chat listener", () => {
             testListener.onChatShown({});
             testListener.onAnyEvent({});
 
-			jest.runOnlyPendingTimers();
+            jest.runOnlyPendingTimers();
             expect($('#cui-messaging-container').css("opacity")).toBe("1");
             expect($('.cui-technical-error').length).toBe(0);
 
@@ -107,7 +107,7 @@ describe("CUI chat listener", () => {
 
             testListener.onAnyEvent({});
 
-			jest.runOnlyPendingTimers();
+            jest.runOnlyPendingTimers();
             expect($('.cui-technical-error').length).toBe(1);
         });
 
