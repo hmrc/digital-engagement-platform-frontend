@@ -5,7 +5,6 @@ export var chatListener = {
     messagingContainerSelector: '#cui-messaging-container',
     nuanceDownTimeout: null,
     engageTimeout: null,
-    name: "real object",
     onPageLanding: function(evt) {
         console.log("On Page Landing: data=", evt.data, "page=", evt.page, "reinitialized=", evt.reinitialized);
     },
