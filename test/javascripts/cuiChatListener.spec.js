@@ -26,10 +26,12 @@ describe("CUI chat listener", () => {
                 </div>
             `;
        		jest.useFakeTimers();
+       		$.fx.off = true;
         });
         afterEach(() => {
             jest.clearAllTimers();
             $(window).off("load")
+            $.fx.off = false;
         });
 
         it("will have basic properties", () => {
@@ -70,6 +72,53 @@ describe("CUI chat listener", () => {
 
 			jest.runOnlyPendingTimers();
             expect($('.cui-technical-error').length).toBe(0);
+        });
+
+        it("will show the Nuance div if activity and then shown", () => {
+            testListener.startup(window);
+            $(window).trigger('load');
+            expect($('#cui-messaging-container').css("opacity")).toBe("0");
+
+            testListener.onAnyEvent({});
+            testListener.onChatLaunched({});
+            testListener.onAnyEvent({});
+            testListener.onChatShown({});
+            testListener.onAnyEvent({});
+
+			jest.runOnlyPendingTimers();
+            expect($('#cui-messaging-container').css("opacity")).toBe("1");
+        });
+
+        it("will show an error if activity and then not engaged or shown", () => {
+            testListener.startup(window);
+            $(window).trigger('load');
+            expect($('.cui-technical-error').length).toBe(0);
+
+            testListener.onAnyEvent({});
+
+			jest.runOnlyPendingTimers();
+            expect($('.cui-technical-error').length).toBe(1);
+        });
+
+        it("will not show an error if activity and then shown after timeout", () => {
+            testListener.startup(window);
+            $(window).trigger('load');
+            expect($('.cui-technical-error').length).toBe(0);
+
+            testListener.onAnyEvent({});
+
+            jest.runOnlyPendingTimers();
+
+            expect($('.cui-technical-error').length).toBe(1);
+            expect($('.cui-technical-error').css("display")).toBe("block");
+
+            testListener.onChatLaunched({});
+            testListener.onAnyEvent({});
+            testListener.onChatShown({});
+            testListener.onAnyEvent({});
+
+            expect($('.cui-technical-error').length).toBe(1);
+            expect($('.cui-technical-error').css("display")).toBe("none");
         });
     });
 });

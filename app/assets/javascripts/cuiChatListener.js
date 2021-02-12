@@ -118,7 +118,6 @@ export var chatListener = {
     },
     waitForSignsOfLife: function() {
         var self = this;
-        console.log("---Wait for signs of life")
 
         this.nuanceDownTimeout = setTimeout(function() {
             console.log("Nuance is down...");
