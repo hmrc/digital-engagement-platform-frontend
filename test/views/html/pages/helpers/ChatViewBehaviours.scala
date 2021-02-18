@@ -104,7 +104,6 @@ trait ChatViewBehaviours extends ViewSpecBase {
     }
   }
 
-
   def generalContentCUI(view: () => HtmlFormat.Appendable,
                      messageHeading: String,
                      sidebarText: String
@@ -119,4 +118,41 @@ trait ChatViewBehaviours extends ViewSpecBase {
       }
     }
   }
+  def normalCuiPage(view: () => HtmlFormat.Appendable,
+                    bannerTitle: String,
+                    title: String,
+                    messageHeading: String,
+                    chatIds: Seq[String] = Seq("nuanMessagingFrame")): Unit = {
+
+    "behave like a normal CUI page" when {
+      "rendered" must {
+
+        behave like generalContent(view, messageHeading)
+
+        "have the correct banner title" in {
+          val doc = asDocument(view())
+          val nav = doc.getElementById("proposition-menu")
+          val span = nav.children.first
+          span.text mustBe bannerTitle
+        }
+
+        "display the correct browser title" in {
+          val doc = asDocument(view())
+          assertEqualsMessage(doc, "title", title)
+        }
+
+        "insert the Nuance container tag(s)" in {
+          val doc = asDocument(view())
+          for (chatId <- chatIds) doc.getElementById(chatId) must not be null
+        }
+
+        "insert the Nuance required tag" in {
+          val doc = asDocument(view())
+          doc.getElementById("WEBCHAT_TEST_RequiredElements") must not be null
+        }
+      }
+    }
+  }
+
+
 }

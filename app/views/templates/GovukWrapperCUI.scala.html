@@ -49,28 +49,16 @@
 
 @headContent = {
     @head(linkElem = None, headScripts = None)
-
-    <style type="text/css">
-        .service-info .logo {
-            display: none;
-        }
-    </style>
-
         <meta name="format-detection" content="telephone=no" />
         <link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/main.css")' />
-        @if(appConfig.optimizelyMode){
-            <script src="https://cdn.optimizely.com/js/@{appConfig.optimizelyProjectId}.js"></script>
-        }
 }
-
-@headerNavLinks = {}
 
 @insideHeader = {
     @header_nav(
         navTitle = navTitle.orElse(Some("")),
         navTitleLink = None,
         showBetaLink = false,
-        navLinks = Some(headerNavLinks))
+        navLinks = None)
 }
 
 @afterHeader = {}
@@ -82,15 +70,13 @@
         ssoUrl = None,
         scriptElem = scriptElem,
         gaCalls = None)
-    <script type="text/javascript" src='@routes.Assets.versioned("javascripts/custom.js")'></script>
-    <script src='@routes.Assets.versioned("javascripts/bundle.js")' type="text/javascript"></script>
 }
 
 @footerTop = {}
 
 @accessibilityStatementLink = {
     <li>
-        <a href="@appConfig.accessibilityStatementUrl(request.uri)" target="_blank">Accessibility Statement</a>
+        <a href="@appConfig.accessibilityStatementUrl(request.uri)" target="_blank">@messages("global.accessibility.statement")</a>
     </li>
 }
 
@@ -104,7 +90,8 @@
     @serviceInfo(
         betaBanner = betaBanner,
         includeGridWrapper = false,
-        serviceInfoContent = Some(serviceInfoContent))
+        includeHMRCBranding = false,
+        serviceInfoContent = None)
 }
 
 @mainContentHeader = {

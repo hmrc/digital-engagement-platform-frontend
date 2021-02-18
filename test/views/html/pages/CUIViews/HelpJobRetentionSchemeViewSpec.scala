@@ -29,15 +29,11 @@ class HelpJobRetentionSchemeViewSpec extends ChatViewBehaviours {
   "JRS Variant Two Test View" must {
     "rendered" must {
       //TODO add title when decided what it will be
-      behave like normalPage(
+      behave like normalCuiPage(
         createView,
         "Ask HMRC",
         "Coronavirus Job Retention Scheme: chat",
-        "Coronavirus Job Retention Scheme: chat",
-        "",
-        "",
-        Nil,
-        Seq("nuanMessagingFrame")
+        "Coronavirus Job Retention Scheme: chat"
       )
     }
   }
