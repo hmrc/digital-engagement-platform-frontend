@@ -127,7 +127,7 @@
 homepageUrl = "https://www.gov.uk/",
 language = En,
 displayHmrcBanner = false,
-serviceName = Some(messages("global.nav.title"))
+serviceName = navTitle.orElse(Some(Messages("global.nav.title")))
 ))
 <div class="govuk-width-container">
     @beta_banner(appConfig)
@@ -139,7 +139,7 @@ serviceName = Some(messages("global.nav.title"))
     pageTitle = Some(title),
     headBlock = Some(headContent),
     headerBlock = Some(headerBlock),
-//    scriptsBlock = scriptsBlock,
+    scriptsBlock = scriptElem,
 //    beforeContentBlock = Some(Html("Before content block")),
     bodyEndBlock = Some(bodyEndBlock),
     footerBlock = Some(hmrcStandardFooter())

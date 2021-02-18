@@ -58,8 +58,8 @@ class PaymentProblemsViewSpec extends ChatViewBehaviours {
 
         "have the correct banner title" in {
           val doc = asDocument(createView())
-          val nav = doc.getElementById("proposition-menu")
-          val span = nav.children.first
+          val nav = doc.getElementsByClass("govuk-header__link--service-name")
+          val span = nav.first
           span.text mustBe messages("global.nav.title")
         }
 
