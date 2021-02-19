@@ -25,7 +25,7 @@
 @this(
     govukLayout: GovukLayout,
     hmrcHeader: HmrcHeader,
-    reportTechnicalIssue: HmrcReportTechnicalIssue,
+    hmrcReportTechnicalIssueHelper: HmrcReportTechnicalIssueHelper,
     hmrcStandardFooter: HmrcStandardFooter,
     hmrcBanner: HmrcBanner,
     appConfig: AppConfig,
@@ -111,15 +111,11 @@
 *@
 
 @bodyEndBlock = {
-@*
-    @reportTechnicalIssue(
-        ReportTechnicalIssue(serviceCode = appConfig.serviceIdentifier)
-    )
-*@
 }
 
 @content = {
     @mainContent
+    @hmrcReportTechnicalIssueHelper()
 }
 
 @headerBlock = {
