@@ -5,20 +5,15 @@
 
 $govuk-typography-use-rem: false;
 
-%govuk-heading-m {
-  @include govuk-text-colour;
-  @include govuk-font($size: 24, $weight: bold);
-
-  display: block;
-
-  margin-top: 0;
-  @include govuk-responsive-margin(4, "bottom");
+#main-content {
+  p {
+    @extend .govuk-body
+  }
+  h1 {
+    @extend .govuk-heading-l
+  }
+  h2 {
+    @extend .govuk-heading-m
+  }
 }
 
-%govuk-body-m {
-  @include govuk-text-colour;
-  @include govuk-font($size: 19);
-
-  margin-top: 0;
-  @include govuk-responsive-margin(4, "bottom");
-}

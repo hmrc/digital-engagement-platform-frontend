@@ -33,17 +33,17 @@
         @components.back_link()
     }
 
-    <h1 @if(!isIvrRedirect){class="header-margin-top govuk-heading-l"}>@messages("self.assessment.title")</h1>
+    <h1 @if(!isIvrRedirect){class="header-margin-top"}>@messages("self.assessment.title")</h1>
 
     @if(!appConfig.performanceTest){
         @{webChatClient.loadWebChatContainer()}
     }
 
-    <p class="margin-top govuk-body">@messages("global.adviser.busy.p1")</p>
+    <p class="margin-top">@messages("global.adviser.busy.p1")</p>
 
-    <p class="margin-top govuk-body">@messages("global.adviser.busy.p2")</p>
+    <p class="margin-top">@messages("global.adviser.busy.p2")</p>
 
-    <p class="margin-top govuk-body">
+    <p class="margin-top">
         <a id="return-link" href=@appConfig.selfAssessmentReturnUrl>
             @if(isIvrRedirect) {@messages("global.text.link.ivr.to.govuk.p1")} else {@messages("global.text.link.back.to.govuk.p1")}
         </a>
