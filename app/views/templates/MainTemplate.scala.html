@@ -17,8 +17,6 @@
 @import config.AppConfig
 @import uk.gov.hmrc.play.views.html.layouts
 @import uk.gov.hmrc.webchat.client.WebChatClient
-@* @import uk.gov.hmrc.play.views.html.layouts._ *@
-@import uk.gov.hmrc.play.views.html.helpers._
 
 @this(
     govuk_wrapper: GovukWrapper,
@@ -28,15 +26,7 @@
 
 @(title: String,
     navTitle: Option[String] = None,
-//    contentHeader: Option[Html] = None,
-//    bodyClasses: Option[String] = None,
     showHelpForm: Boolean = true)(mainContent: Html)(implicit request : Request[_], messages: Messages)
-
-@serviceInfoContent = {}
-
-@wrapMainContent = {
-    @mainContent
-}
 
 @scriptElem = {
     @if(!appConfig.performanceTest){
@@ -48,11 +38,7 @@
 @govuk_wrapper(appConfig = appConfig,
                title = title,
                navTitle = navTitle,
-//               bodyClasses = bodyClasses,
-//               sidebar = sidebarContent,
-//               contentHeader = contentHeader,
-               mainContent = wrapMainContent,
-               serviceInfoContent = serviceInfoContent,
+               mainContent = mainContent,
                scriptElem = Some(scriptElem),
                showHelpForm = showHelpForm
 )
