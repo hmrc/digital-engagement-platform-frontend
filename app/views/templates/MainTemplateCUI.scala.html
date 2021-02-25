@@ -19,6 +19,7 @@
 @import uk.gov.hmrc.webchat.client.WebChatClient
 @import uk.gov.hmrc.play.views.html.layouts._
 @import uk.gov.hmrc.play.views.html.helpers._
+@import views.html.includes.cuiSidebar
 
 @this(
     govuk_wrapper: GovukWrapperCUI,
@@ -30,7 +31,6 @@
 
 @(title: String,
     navTitle: Option[String] = None,
-    sidebarLinks: Option[Html] = None,
     contentHeader: Option[Html] = None,
     bodyClasses: Option[String] = None,
     mainClass: Option[String] = Some("cui-main"))(mainContent: Html)(implicit request : Request[_], messages: Messages)
@@ -38,13 +38,7 @@
 @serviceInfoContent = {}
 
 @sidebarContent = {
-    @if(sidebarLinks.isDefined) {
-        @sidebar(sidebarLinks.get, Some("sidebar"))
-    }
-}
-
-@wrapMainContent = {
-    @mainContent
+    @sidebar(cuiSidebar(), Some("sidebar"))
 }
 
 @scriptElem = {
@@ -68,7 +62,7 @@
                bodyClasses = bodyClasses,
                sidebar = sidebarContent,
                contentHeader = contentHeader,
-               mainContent = article(wrapMainContent),
+               mainContent = article(mainContent),
                serviceInfoContent = serviceInfoContent,
                scriptElem = Some(scriptElem)
 )

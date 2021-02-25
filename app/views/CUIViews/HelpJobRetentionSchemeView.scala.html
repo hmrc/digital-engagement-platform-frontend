@@ -17,7 +17,6 @@
 @import config.AppConfig
 @import templates.MainTemplateCUI
 @import uk.gov.hmrc.webchat.client.WebChatClient
-@import views.html.includes.sidebarLinks
 
 @this(
     main_template: MainTemplateCUI,
@@ -36,7 +35,6 @@
 @main_template(
     title = messages("cui.job.retention.scheme.title"),
     navTitle=Some("Ask HMRC"),
-    sidebarLinks=Some(sidebarLinks()),
     contentHeader=Some(contentHeader)
 ){
     <div id="cui-messaging-container">
