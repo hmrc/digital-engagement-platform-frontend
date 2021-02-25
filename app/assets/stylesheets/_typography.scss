@@ -6,7 +6,7 @@
 $govuk-typography-use-rem: false;
 
 #main-content {
-  p {
+  p, div {
     @extend .govuk-body
   }
   h1 {
@@ -14,6 +14,9 @@ $govuk-typography-use-rem: false;
   }
   h2 {
     @extend .govuk-heading-m
+  }
+  .govuk-grid-column-two-thirds {
+    @include govuk-grid-column(two-thirds)
   }
 }
 
