@@ -43,6 +43,8 @@ class AppConfig @Inject()(config: Configuration,
 
   var featureChildBenefitsExperiment: Boolean = config.getOptional[Boolean]("features.childBenefitsExperiment").getOrElse(false)
 
+  val payeOnlineUrl: String = "https://www.gov.uk/paye-online"
+
   val selfAssessmentReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/self-assessment"
   val taxCreditsEnquiriesReturnUrl: String =

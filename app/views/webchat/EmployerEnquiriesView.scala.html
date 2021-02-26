@@ -25,6 +25,8 @@
 
 @(isIvrRedirect: Boolean = false)(implicit request: Request[_], messages: play.api.i18n.Messages)
 
+@payeLink = {@components.link(appConfig.payeOnlineUrl, "paye-online-link", "employers.enquiries.paye.link.text", true)}
+
 @main_template(title = messages("employers.enquiries.title")) {
 
     @if(!isIvrRedirect) {
@@ -40,6 +42,8 @@
     <p class="margin-top">@messages("global.adviser.busy.p1")</p>
 
     <p class="margin-top">@messages("global.adviser.busy.p2")</p>
+
+    <p class="margin-top">@messages("employers.enquiries.paye.link.part1")@payeLink@messages("employers.enquiries.paye.link.part2")</p>
 
     <p class="margin-top">
         <a id="return-link" href="@appConfig.employerEnquiriesReturnUrl">

@@ -53,6 +53,9 @@ child.benefit.title=Child Benefit: webchat
 
 #Employers Webchat
 employers.enquiries.title=Employers: webchat
+employers.enquiries.paye.link.part1=To find out how to manage your employers PAYE online and log in to your Business Tax Account, you can use
+employers.enquiries.paye.link.text=HM Revenue and Customs’ (HMRC) PAYE Online service (opens in a new tab)
+employers.enquiries.paye.link.part2=.
 
 #VAT Enquiries Webchat
 vat.enquiries.title=VAT: webchat

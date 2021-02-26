@@ -24,6 +24,8 @@ class EmployerEnquiriesViewSpec extends ChatViewBehaviours {
 
   private val view = app.injector.instanceOf[EmployerEnquiriesView]
 
+  private val payeOnlineUrl: String = "https://www.gov.uk/paye-online"
+
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
   "Employer Enquiries view" must {
@@ -38,5 +40,13 @@ class EmployerEnquiriesViewSpec extends ChatViewBehaviours {
       returnUrl,
       Nil
     )
+
+    "display Paye Online link" in {
+      val doc = asDocument(createView())
+      val a = doc.getElementById("paye-online-link")
+
+      val href = a.attr("href")
+      href mustBe payeOnlineUrl
+    }
   }
 }
