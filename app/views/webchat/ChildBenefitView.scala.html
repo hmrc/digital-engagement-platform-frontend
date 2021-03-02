@@ -43,13 +43,13 @@
         @if(noChatExperiment) {
             <div class="webchat-unavailable">
                 <p class="margin-top">@messages("global.webchat.unavailable")</p>
-                @{webChatClient.loadWebChatContainer()}
+
+                @components.webchat_container(appConfig, webChatClient)
+                @components.webchat_loading_text()
             </div>
         } else {
-            @{webChatClient.loadWebChatContainer()}
-
-            <p class="margin-top">@messages("global.adviser.busy.p1")</p>
-            <p class="margin-top">@messages("global.adviser.busy.p2")</p>
+            @components.webchat_container(appConfig, webChatClient)
+            @components.webchat_loading_text()
         }
     }
 

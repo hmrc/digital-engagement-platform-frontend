@@ -5,6 +5,7 @@ global.text.link.back.to.govuk.p1=Return to Contact HMRC
 global.text.link.ivr.to.govuk.p1=More ways to contact HMRC
 global.text.link.online=online
 global.back = Back
+global.nuance.div.loading.text=Checking adviser availability.
 global.accessibility.statement = Accessibility statement
 global.webchat.title.h2=Webchat
 global.opening.times.title=Opening times:
@@ -30,8 +31,6 @@ global.opening.time.bankholidays.8to4=Bank Holidays, 8am to 4pm.
 global.opening.time.sat.bankholidays.8to4=Saturdays and Bank Holidays, 8am to 4pm
 global.closed.time.sun=Closed Sundays.
 global.closed.time.bankholidays=Closed bank holidays.
-global.adviser.busy.p1=When an adviser is available, select the ‘speak to an adviser’ link to open the chat.
-global.adviser.busy.p2=If you do not select the link to open the chat, you will have to wait for the next available adviser.
 global.webchat.unavailable=Webchat is currently unavailable.
 
 #Beta Banner
@@ -57,6 +56,9 @@ child.benefit.title=Child Benefit: webchat
 
 #Employers Webchat
 employers.enquiries.title=Employers: webchat
+employers.enquiries.paye.link.part1=To find out how to manage your employers PAYE online and log in to your Business Tax Account, you can use
+employers.enquiries.paye.link.text=HM Revenue and Customs’ (HMRC) PAYE Online service (opens in a new tab)
+employers.enquiries.paye.link.part2=.
 
 #VAT Enquiries Webchat
 vat.enquiries.title=VAT: webchat

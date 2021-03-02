@@ -25,10 +25,11 @@ function waitForNuanceElement(el,w,d) {
     },
     function() {
       const assistantUsed = w.location.pathname.includes("virtual-assistant")
-        ? "The digital assistant"
-        : "Webchat";
-      $(el).text(assistantUsed + ' is experiencing technical difficulties. Please keep refreshing the page to try again.')
+        ? "the digital assistant"
+        : "webchat";
+      $(el).text("There's a problem with " + assistantUsed + ". Try again later.")
       reportEvent(w,createDataLayerElement(availabilities.NuanceUnavailable, el))
+      $(".hide-text-on-error").hide();
     }
   );
 }

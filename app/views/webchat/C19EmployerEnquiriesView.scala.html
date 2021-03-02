@@ -37,13 +37,8 @@
 
     <h2>@messages("global.webchat.title.h2")</h2>
 
-    @if(!appConfig.performanceTest){
-        @{webChatClient.loadWebChatContainer()}
-    }
-
-    <p>@messages("global.adviser.busy.p1")</p>
-
-    <p>@messages("global.adviser.busy.p2")</p>
+    @components.webchat_container(appConfig, webChatClient)
+    @components.webchat_loading_text()
 
     <p>
         <a id="return-link" href=@appConfig.c19EmployerEnquiriesReturnRul>

@@ -31,19 +31,15 @@
 
     <div class="govuk-inset-text">
         <p>@messages("global.opening.times.title")</p>
-        <p>@messages("global.opening.times.mon.sat.8to8")</p>
+        <p>@messages("global.opening.times.8to8")</p>
+        <p>@messages("global.opening.times.saturday.8to4")</p>
         <p>@messages("global.closed.time.sun.bankholidays")</p>
     </div>
 
     <h2 class="margin-top">@messages("global.webchat.title.h2")</h2>
 
-    @if(!appConfig.performanceTest){
-        @{webChatClient.loadWebChatContainer()}
-    }
-
-    <p class="margin-top">@messages("global.adviser.busy.p1")</p>
-
-    <p class="margin-top">@messages("global.adviser.busy.p2")</p>
+    @components.webchat_container(appConfig, webChatClient)
+    @components.webchat_loading_text()
 
     <p class="margin-top">
         <a  id="return-link"href=@appConfig.taxCreditsEnquiriesReturnUrl>

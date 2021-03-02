@@ -29,9 +29,8 @@
 
     <h1>@messages("va.global.h1.title")</h1>
 
-    @if(!appConfig.performanceTest){
-        <div class="margin-bottom">@{webChatClient.loadWebChatContainer()}</div>
-    }
+    <div class="margin-bottom">@components.webchat_container(appConfig, webChatClient)</div>
+    @components.webchat_loading_text()
 
     <p class="margin-top">@messages("va.global.h1.bullet.title")</p>
 

@@ -10,7 +10,7 @@ export function updateDataLayer(el,w,d) {
     if (nuanceElement === null)
         return;
 
-    var nuanceText = nuanceElement.innerHTML;
+    var nuanceText = nuanceElement.innerText;
   
     dataLayer.addToDataLayer(availabilityChecker.getAvailability(nuanceText), el, w, d);
   }

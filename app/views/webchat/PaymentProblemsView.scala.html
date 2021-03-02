@@ -40,31 +40,35 @@
         <p>@messages("global.opening.times.weekend.p")</p>
     </div>
 
-    <p>@messages("payment.problems.p7")</p>
-    <p>@messages("payment.problems.p8")</p>
+    <p class="hide-text-on-error">@messages("payment.problems.p7")</p>
+    <p class="hide-text-on-error">@messages("payment.problems.p8")</p>
 
     <h3>@messages("payment.problems.h3.1")</h3>
 
     @if(!appConfig.performanceTest){
-        @{webChatClient.loadWebChatContainer("pp_self_assessment_webchat")}
+        @components.webchat_container(appConfig, webChatClient, "pp_self_assessment_webchat")
+        @components.webchat_loading_text()
     }
 
     <h3>@messages("payment.problems.h3.2")</h3>
 
     @if(!appConfig.performanceTest){
-        @{webChatClient.loadWebChatContainer("pp_vat_webchat")}
+        @components.webchat_container(appConfig, webChatClient, "pp_vat_webchat")
+        @components.webchat_loading_text()
     }
 
     <h3>@messages("payment.problems.h3.3")</h3>
 
     @if(!appConfig.performanceTest){
-        @{webChatClient.loadWebChatContainer("pp_paye_webchat")}
+        @components.webchat_container(appConfig, webChatClient, "pp_paye_webchat")
+        @components.webchat_loading_text()
     }
 
     <h3>@messages("payment.problems.h3.4")</h3>
 
     @if(!appConfig.performanceTest){
-        @{webChatClient.loadWebChatContainer("pp_corporation_tax_webchat")}
+        @components.webchat_container(appConfig, webChatClient, "pp_corporation_tax_webchat")
+        @components.webchat_loading_text()
     }
 
     <h2 class="govuk-heading-l">@messages("payment.problems.h2.2")</h2>

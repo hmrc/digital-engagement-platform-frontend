@@ -98,16 +98,20 @@ describe("When loading a page and waiting for changes", () => {
                 pathname: '/ask-hmrc/webchat/test'
             };
 
-    		document.body.innerHTML = `<div id="HMRC_Fixed_1"></div>`
+    		document.body.innerHTML = `
+    		<div id="HMRC_Fixed_1"></div>
+    		<div class="hide-text-on-error"></div>`
 
             SUT.waitForChanges(window, document);
             $(window).trigger('load');
 
+            expect($('.hide-text-on-error').css("display")).toBe("block");
+
             var timeoutFunction = elementWatcherMock.mock.calls[0][2];
             timeoutFunction();
 
-            expect($("#HMRC_Fixed_1").text()).toEqual("Webchat is experiencing technical difficulties. Please keep refreshing the page to try again.")
-
+            expect($("#HMRC_Fixed_1").text()).toEqual("There's a problem with webchat. Try again later.")
+            expect($(".hide-text-on-error").css("display")).toBe("none")
         });
         it("will raise event on data layer if timeout for webchat", () => {
             window.location = {
@@ -134,14 +138,14 @@ describe("When loading a page and waiting for changes", () => {
             };
 
     		document.body.innerHTML = `<div id="HMRC_Fixed_1"></div>`
-
+//add element
             SUT.waitForChanges(window, document);
             $(window).trigger('load');
 
             var timeoutFunction = elementWatcherMock.mock.calls[0][2];
             timeoutFunction();
 
-            expect($("#HMRC_Fixed_1").text()).toEqual("The digital assistant is experiencing technical difficulties. Please keep refreshing the page to try again.")
+            expect($("#HMRC_Fixed_1").text()).toEqual("There's a problem with the digital assistant. Try again later.")
 
         });
         it("will raise event on data layer if timeout for virtual assistant", () => {
