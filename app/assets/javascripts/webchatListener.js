@@ -89,18 +89,22 @@ export var chatListener = {
         }
         this.showNuanceDiv();
     },
+    showAndHide(showSelector, hideSelector) {
+        var showElement = document.querySelector(showSelector);
+        var hideElement = document.querySelector(hideSelector);
+        if (hideElement !== null) {
+            hideElement.style.display = "none";
+        }
+        if (showElement !== null) {
+            showElement.style.display = "block";
+        }
+    },
     showNuanceDiv: function() {
         console.log("show Nuance Div text...");
-        var loadingText = $(this.loadingTextSelector)
-        var messagingContainer = $(this.messagingContainerSelector)
-        messagingContainer.show()
-        loadingText.hide()
+        this.showAndHide(this.messagingContainerSelector, this.loadingTextSelector);
     },
-    showloadingText: function() {
-        var loadingText = $(this.loadingTextSelector);
-        var messagingContainer = $(this.messagingContainerSelector);
-        messagingContainer.hide()
-        loadingText.show()
+    showLoadingText: function() {
+        this.showAndHide(this.loadingTextSelector, this.messagingContainerSelector);
     },
     technicalError: function() {
         console.log("technicalError");
@@ -118,7 +122,7 @@ export var chatListener = {
 //        localStorage.enableJSLogging = true;
         var self = this;
         this.loadFunction = function() {
-            self.showloadingText();
+            self.showLoadingText();
             self.waitForSignsOfLife();
         }
         w.addEventListener("load", this.loadFunction);
