@@ -99,8 +99,8 @@ export var chatListener = {
     showloadingText: function() {
         var loadingText = $(this.loadingTextSelector);
         var messagingContainer = $(this.messagingContainerSelector);
-          messagingContainer.hide()
-          loadingText.show()
+        messagingContainer.hide()
+        loadingText.show()
     },
     technicalError: function() {
         console.log("technicalError");
@@ -113,13 +113,18 @@ export var chatListener = {
             self.showNuanceDiv();
         }, this.downTimeoutDuration);
     },
-    startup: function() {
-        //localStorage.enableJSLogging = true;
+    loadFunction: null,
+    startup: function(w) {
+//        localStorage.enableJSLogging = true;
         var self = this;
-        $(window).on("load", function() {
+        this.loadFunction = function() {
             self.showloadingText();
             self.waitForSignsOfLife();
-        });
+        }
+        w.addEventListener("load", this.loadFunction);
+    },
+    shutdown: function(w) {
+        w.removeEventListener("load", this.loadFunction);
     }
 };
 

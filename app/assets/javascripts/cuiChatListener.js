@@ -129,13 +129,18 @@ export var chatListener = {
             self.technicalError();
         }, this.downTimeoutDuration);
     },
+    loadFunction: null,
     startup: function(w) {
 //        localStorage.enableJSLogging = true;
         var self = this;
-        $(w).on("load", function() {
+        this.loadFunction = function() {
             self.showLoadingAnimation();
             self.waitForSignsOfLife();
-        });
+        }
+        w.addEventListener("load", this.loadFunction);
+    },
+    shutdown: function(w) {
+        w.removeEventListener("load", this.loadFunction);
     }
 };
 

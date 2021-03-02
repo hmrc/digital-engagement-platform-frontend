@@ -5,7 +5,7 @@ import {createDataLayerElement,reportEvent} from './addToDataLayer'
 import {availabilities} from './getAvailability'
 
 export function waitForChanges(w, d) {
-  $(w).on("load", function () {
+  w.addEventListener("load", function () {
     if (w.location.pathname.includes("payment-problems")) {
       waitForNuanceElement('#pp_self_assessment_webchat',w,d);
       waitForNuanceElement('#pp_vat_webchat',w,d);
@@ -27,9 +27,18 @@ function waitForNuanceElement(el,w,d) {
       const assistantUsed = w.location.pathname.includes("virtual-assistant")
         ? "the digital assistant"
         : "webchat";
-      $(el).text("There's a problem with " + assistantUsed + ". Try again later.")
+
+      var the_element = d.querySelector(el);
+      if (the_element !== null) {
+          the_element.textContent = "There's a problem with " + assistantUsed + ". Try again later.";
+      }
+
       reportEvent(w,createDataLayerElement(availabilities.NuanceUnavailable, el))
-      $(".hide-text-on-error").hide();
+
+      var elements_to_hide = d.querySelectorAll(".hide-text-on-error");
+      for (var i = 0; i < elements_to_hide.length; i++) {
+        elements_to_hide[i].style.display = 'none';
+      }
     }
   );
 }

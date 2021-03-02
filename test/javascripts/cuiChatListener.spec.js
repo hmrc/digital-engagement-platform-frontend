@@ -9,6 +9,7 @@ describe("CUI chat listener", () => {
         it("will create the InqRegistry", () => {
             initChatListener(window);
             expect(window.InqRegistry).toEqual({ listeners: [chatListener] })
+            chatListener.shutdown(window);
         });
     });
     describe("chat listener", () => {
@@ -30,7 +31,7 @@ describe("CUI chat listener", () => {
         });
         afterEach(() => {
             jest.clearAllTimers();
-            $(window).off("load")
+            testListener.shutdown(window);
             $.fx.off = false;
         });
 
@@ -43,7 +44,7 @@ describe("CUI chat listener", () => {
 
         it("will do show the loading animation on load after startup is called", () => {
             testListener.startup(window);
-            $(window).trigger('load');
+            window.dispatchEvent(new Event('load'));
 
             let animation = $('#cui-loading-animation')
             expect(animation.length).toBe(1);
@@ -52,7 +53,7 @@ describe("CUI chat listener", () => {
 
         it("will do show an error if times out with no activity", () => {
             testListener.startup(window);
-            $(window).trigger('load');
+            window.dispatchEvent(new Event('load'));
             expect($('.cui-technical-error').length).toBe(0);
 
             jest.runOnlyPendingTimers();
@@ -61,7 +62,7 @@ describe("CUI chat listener", () => {
 
         it("will not show an error if activity and then shown", () => {
             testListener.startup(window);
-            $(window).trigger('load');
+            window.dispatchEvent(new Event('load'));
             expect($('.cui-technical-error').length).toBe(0);
 
             testListener.onAnyEvent({});
@@ -78,7 +79,7 @@ describe("CUI chat listener", () => {
 
         it("will show the Nuance div if activity and then shown", () => {
             testListener.startup(window);
-            $(window).trigger('load');
+            window.dispatchEvent(new Event('load'));
             expect($('#cui-messaging-container').css("opacity")).toBe("0");
 
             testListener.onAnyEvent({});
@@ -102,7 +103,7 @@ describe("CUI chat listener", () => {
 
         it("will show an error if activity and then not engaged or shown", () => {
             testListener.startup(window);
-            $(window).trigger('load');
+            window.dispatchEvent(new Event('load'));
             expect($('.cui-technical-error').length).toBe(0);
 
             testListener.onAnyEvent({});
@@ -113,7 +114,7 @@ describe("CUI chat listener", () => {
 
         it("will not show an error if activity and then shown after timeout", () => {
             testListener.startup(window);
-            $(window).trigger('load');
+            window.dispatchEvent(new Event('load'));
             expect($('.cui-technical-error').length).toBe(0);
 
             testListener.onAnyEvent({});
@@ -143,7 +144,7 @@ describe("CUI chat listener", () => {
 
         it("will not show an error if activity and then shown after timeout", () => {
             testListener.startup(window);
-            $(window).trigger('load');
+            window.dispatchEvent(new Event('load'));
             expect($('.cui-technical-error').length).toBe(0);
 
             jest.runOnlyPendingTimers();
@@ -169,7 +170,7 @@ describe("CUI chat listener", () => {
 
         it("will not show an error if activity and then shown before any other event", () => {
             testListener.startup(window);
-            $(window).trigger('load');
+            window.dispatchEvent(new Event('load'));
             expect($('.cui-technical-error').length).toBe(0);
 
             testListener.onChatShown({});

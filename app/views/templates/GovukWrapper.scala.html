@@ -52,12 +52,11 @@
         showBackLink: Boolean = true)(implicit request: Request[_], messages: play.api.i18n.Messages)
 
 @bodyEnd = {
-
-    <script src='@routes.Assets.versioned("lib/govuk-frontend/govuk/all.js")' type="text/javascript"></script>
-    <script src='@routes.Assets.versioned("lib/hmrc-frontend/hmrc/all.js")' type="text/javascript"></script>
 }
 
 @bodyEndBlock = {
+<script src='@routes.Assets.versioned("lib/govuk-frontend/govuk/all.js")' type="text/javascript"></script>
+<script src='@routes.Assets.versioned("lib/hmrc-frontend/hmrc/all.js")' type="text/javascript"></script>
 }
 
 @content = {

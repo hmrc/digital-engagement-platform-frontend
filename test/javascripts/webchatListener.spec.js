@@ -30,7 +30,7 @@ describe("Webchat listener", () => {
         });
         afterEach(() => {
             jest.clearAllTimers();
-            $(window).off("load")
+//            testListener.shutdown(window);
             $.fx.off = false;
         });
 
@@ -42,7 +42,7 @@ describe("Webchat listener", () => {
 
         it("will do show the loading text on load after startup is called", () => {
             testListener.startup(window);
-            $(window).trigger('load');
+            window.dispatchEvent(new Event('load'));
 
             let text = $('.webchat-loading-text')
             expect(text.length).toBe(1);
@@ -51,7 +51,7 @@ describe("Webchat listener", () => {
 
         it("will hide the loading text if activity and then shown", () => {
             testListener.startup(window);
-            $(window).trigger('load');
+            window.dispatchEvent(new Event('load'));
 
             testListener.onC2CStateChanged({});
             testListener.onAnyEvent({});
@@ -61,7 +61,7 @@ describe("Webchat listener", () => {
 
         it("will hide the loading text if timeout", () => {
             testListener.startup(window);
-            $(window).trigger('load');
+            window.dispatchEvent(new Event('load'));
 
             jest.runOnlyPendingTimers();
 

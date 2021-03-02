@@ -6,7 +6,7 @@ function _waitForEl(selector, successCallback, timeoutCallback, timesCheckedForE
     const timeout = 1000;
     const maxNumberOfAttempts = 9;
 
-    if (jQuery(selector).length) {
+    if (document.querySelector(selector) !== null) {
       successCallback();
     } else {
       setTimeout(function () {

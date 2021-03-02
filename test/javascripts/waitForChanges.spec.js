@@ -27,7 +27,7 @@ describe("When loading a page and waiting for changes", () => {
     		document.body.innerHTML = `<div id="HMRC_Fixed_1"></div>`
     
             SUT.waitForChanges(window, document);
-            $(window).trigger('load');
+            window.dispatchEvent(new Event('load'));
 
             expect(elementWatcherMock).toHaveBeenCalled();
             expect(elementWatcherMock.mock.calls[0][0]).toEqual("#HMRC_Fixed_1 div")
@@ -43,7 +43,7 @@ describe("When loading a page and waiting for changes", () => {
             document.body.innerHTML = `<input type="text" id="test">`
     
             SUT.waitForChanges(window, document);
-            $(window).trigger('load');
+            window.dispatchEvent(new Event('load'));
 
             expect(elementWatcherMock).toHaveBeenCalled();
             expect(elementWatcherMock.mock.calls[0][0]).toEqual("#pp_self_assessment_webchat div")
@@ -57,7 +57,7 @@ describe("When loading a page and waiting for changes", () => {
             document.body.innerHTML = `<input type="text" id="test">`
     
             SUT.waitForChanges(window, document);
-            $(window).trigger('load');
+            window.dispatchEvent(new Event('load'));
 
             expect(elementWatcherMock).toHaveBeenCalled();
             expect(elementWatcherMock.mock.calls[1][0]).toEqual("#pp_vat_webchat div")
@@ -71,7 +71,7 @@ describe("When loading a page and waiting for changes", () => {
             document.body.innerHTML = `<input type="text" id="test">`
     
             SUT.waitForChanges(window, document);
-            $(window).trigger('load');
+            window.dispatchEvent(new Event('load'));
 
             expect(elementWatcherMock).toHaveBeenCalled();
             expect(elementWatcherMock.mock.calls[2][0]).toEqual("#pp_paye_webchat div")
@@ -85,7 +85,7 @@ describe("When loading a page and waiting for changes", () => {
             document.body.innerHTML = `<input type="text" id="test">`
     
             SUT.waitForChanges(window, document);
-            $(window).trigger('load');
+            window.dispatchEvent(new Event('load'));
 
             expect(elementWatcherMock).toHaveBeenCalled();
             expect(elementWatcherMock.mock.calls[3][0]).toEqual("#pp_corporation_tax_webchat div")
@@ -103,7 +103,7 @@ describe("When loading a page and waiting for changes", () => {
     		<div class="hide-text-on-error"></div>`
 
             SUT.waitForChanges(window, document);
-            $(window).trigger('load');
+            window.dispatchEvent(new Event('load'));
 
             expect($('.hide-text-on-error').css("display")).toBe("block");
 
@@ -121,7 +121,7 @@ describe("When loading a page and waiting for changes", () => {
     		document.body.innerHTML = `<div id="HMRC_Fixed_1"></div>`
 
             SUT.waitForChanges(window, document);
-            $(window).trigger('load');
+            window.dispatchEvent(new Event('load'));
 
             var timeoutFunction = elementWatcherMock.mock.calls[0][2];
             timeoutFunction();
@@ -140,7 +140,7 @@ describe("When loading a page and waiting for changes", () => {
     		document.body.innerHTML = `<div id="HMRC_Fixed_1"></div>`
 //add element
             SUT.waitForChanges(window, document);
-            $(window).trigger('load');
+            window.dispatchEvent(new Event('load'));
 
             var timeoutFunction = elementWatcherMock.mock.calls[0][2];
             timeoutFunction();
@@ -156,7 +156,7 @@ describe("When loading a page and waiting for changes", () => {
     		document.body.innerHTML = `<div id="HMRC_Fixed_1"></div>`
 
             SUT.waitForChanges(window, document);
-            $(window).trigger('load');
+            window.dispatchEvent(new Event('load'));
 
             var timeoutFunction = elementWatcherMock.mock.calls[0][2];
             timeoutFunction();
