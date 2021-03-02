@@ -3,8 +3,8 @@ $govuk-assets-path: "/ask-hmrc/assets/lib/govuk-frontend/govuk/assets/";
 $hmrc-assets-path: "/ask-hmrc/assets/lib/hmrc-frontend/hmrc/";
 
 @import 'custom';
-@import '_palette';
-@import '_focus';
+// @import '_palette';
+// @import '_focus';
 @import '_typography';
 
 @import "lib/govuk-frontend/govuk/all";

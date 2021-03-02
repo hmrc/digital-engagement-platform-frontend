@@ -25,11 +25,7 @@
 
 @(isIvrRedirect: Boolean = false)(implicit request: Request[_], messages: play.api.i18n.Messages)
 
-@main_template(title = messages("vat.online.helpdesk.title")) {
-
-    @if(!isIvrRedirect) {
-        @components.back_link()
-    }
+@main_template(title = messages("vat.online.helpdesk.title"), showBackLink = !isIvrRedirect) {
 
     <h1 @if(!isIvrRedirect){class="header-margin-top"}>@messages("vat.online.helpdesk.title")</h1>
 

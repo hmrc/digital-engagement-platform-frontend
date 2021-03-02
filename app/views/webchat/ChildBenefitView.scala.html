@@ -25,10 +25,7 @@
 
 @(isIvrRedirect: Boolean = false, noChatExperiment: Boolean = false)(implicit request: Request[_], messages: play.api.i18n.Messages)
 
-@main_template(title = messages("child.benefit.title"), showHelpForm = !noChatExperiment) {
-    @if(!isIvrRedirect) {
-        @components.back_link()
-    }
+@main_template(title = messages("child.benefit.title"), showHelpForm = !noChatExperiment, showBackLink = !isIvrRedirect) {
 
     <h1 @if(!isIvrRedirect){class="header-margin-top"}>@messages("child.benefit.title")</h1>
 

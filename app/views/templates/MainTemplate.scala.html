@@ -26,7 +26,8 @@
 
 @(title: String,
     navTitle: Option[String] = None,
-    showHelpForm: Boolean = true)(mainContent: Html)(implicit request : Request[_], messages: Messages)
+    showHelpForm: Boolean = true,
+    showBackLink: Boolean = true)(mainContent: Html)(implicit request : Request[_], messages: Messages)
 
 @scriptElem = {
     @if(!appConfig.performanceTest){
@@ -39,6 +40,7 @@
                title = title,
                navTitle = navTitle,
                mainContent = mainContent,
-               scriptElem = Some(scriptElem),
-               showHelpForm = showHelpForm
+               scriptElem = scriptElem,
+               showHelpForm = showHelpForm,
+               showBackLink = showBackLink
 )

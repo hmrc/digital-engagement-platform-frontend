@@ -25,13 +25,9 @@
 
 @(isIvrRedirect: Boolean = false)(implicit request: Request[_], messages: play.api.i18n.Messages)
 
-@main_template(title = messages("c19EmployerEnquiries.title")) {
+@main_template(title = messages("c19EmployerEnquiries.title"), showBackLink = !isIvrRedirect) {
 
-    @if(!isIvrRedirect) {
-        @components.back_link()
-    }
-
-    <h1 @if(!isIvrRedirect){class="header-margin-top"}>@messages("c19EmployerEnquiries.title")</h1>
+    <h1>@messages("c19EmployerEnquiries.title")</h1>
 
     <div class="govuk-inset-text">
         <p>@messages("global.opening.times.title")</p>
@@ -39,17 +35,17 @@
         <p>@messages("global.opening.times.weekend.p")</p>
     </div>
 
-    <h2 class="margin-top">@messages("global.webchat.title.h2")</h2>
+    <h2>@messages("global.webchat.title.h2")</h2>
 
     @if(!appConfig.performanceTest){
         @{webChatClient.loadWebChatContainer()}
     }
 
-    <p class="margin-top">@messages("global.adviser.busy.p1")</p>
+    <p>@messages("global.adviser.busy.p1")</p>
 
-    <p class="margin-top">@messages("global.adviser.busy.p2")</p>
+    <p>@messages("global.adviser.busy.p2")</p>
 
-    <p class="margin-top">
+    <p>
         <a id="return-link" href=@appConfig.c19EmployerEnquiriesReturnRul>
             @if(isIvrRedirect) {@messages("global.text.link.ivr.to.govuk.p1")} else {@messages("global.text.link.back.to.govuk.p1")}
         </a>

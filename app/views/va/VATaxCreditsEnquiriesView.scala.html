@@ -27,9 +27,7 @@
 
 @main_template(title = messages("va.global.h1.title"), navTitle = Some(messages("global.nav.va.title"))) {
 
-    @components.back_link()
-
-    <h1 class="header-margin-top">@messages("va.global.h1.title")</h1>
+    <h1>@messages("va.global.h1.title")</h1>
 
     @if(!appConfig.performanceTest){
         <div class="margin-bottom">@{webChatClient.loadWebChatContainer()}</div>
@@ -37,7 +35,7 @@
 
     <p class="margin-top">@messages("va.global.h1.bullet.title")</p>
 
-    <ul class="list list-bullet">
+    <ul class="govuk-list govuk-list--bullet">
         <li>
             <a id="tax-credits-enquiries-general-info-link" href="@appConfig.manageYourTaxCreditsUrl">@messages("tax-credits-enquiries.li1")</a>
         </li>

@@ -16,41 +16,43 @@
 
 @import config.AppConfig
 @import play.twirl.api.HtmlFormat
+@import uk.gov.hmrc.hmrcfrontend.views.config.StandardBetaBanner
 @import uk.gov.hmrc.hmrcfrontend.views.html.components._
 @import uk.gov.hmrc.hmrcfrontend.views.html.helpers._
 @import uk.gov.hmrc.govukfrontend.views.html.components.GovukLayout
+@import uk.gov.hmrc.govukfrontend.views.html.components.GovukBackLink
+@import uk.gov.hmrc.govukfrontend.views.html.components.BackLink
+@import uk.gov.hmrc.govukfrontend.views.html.components.Text
 
 @import views.html.components._
 
 @this(
     govukLayout: GovukLayout,
-    hmrcHeader: HmrcHeader,
+    hmrcHead: HmrcHead,
+    hmrcStandardHeader: HmrcStandardHeader,
     hmrcReportTechnicalIssueHelper: HmrcReportTechnicalIssueHelper,
     hmrcStandardFooter: HmrcStandardFooter,
     hmrcBanner: HmrcBanner,
+    standardBetaBanner: StandardBetaBanner,
+    hmrcScripts: HmrcScripts,
     appConfig: AppConfig,
-    hmrcTrackingConsentSnippet: HmrcTrackingConsentSnippet
+    hmrcTrackingConsentSnippet: HmrcTrackingConsentSnippet,
+    govukBackLink : GovukBackLink
 )
 
 @(appConfig: config.AppConfig,
         title: String,
         mainDataAttributes: Option[Html] = None,
         bodyClasses: Option[String] = None,
-        sidebar: Html = HtmlFormat.empty,
         contentHeader: Option[Html] = None,
         mainContent: Html = HtmlFormat.empty,
-        serviceInfoContent: Html = HtmlFormat.empty,
-        scriptElem: Option[Html] = None,
+        scriptElem: Html = HtmlFormat.empty,
         navTitle: Option[String] = None,
-        showHelpForm: Boolean = true)(implicit request: Request[_], messages: play.api.i18n.Messages)
-
-@headContent = {
-    @hmrcTrackingConsentSnippet()
-<!--[if lte IE 8]><link href='@routes.Assets.versioned("stylesheets/application-ie-8.css")' rel="stylesheet" type="text/css" /><![endif]-->
-<!--[if gt IE 8]><!--><link href='@routes.Assets.versioned("stylesheets/main.css")' media="screen" rel="stylesheet" type="text/css" /><!--<![endif]-->
-    }
+        showHelpForm: Boolean = true,
+        showBackLink: Boolean = true)(implicit request: Request[_], messages: play.api.i18n.Messages)
 
 @bodyEnd = {
+
     <script src='@routes.Assets.versioned("lib/govuk-frontend/govuk/all.js")' type="text/javascript"></script>
     <script src='@routes.Assets.versioned("lib/hmrc-frontend/hmrc/all.js")' type="text/javascript"></script>
 
@@ -58,38 +60,39 @@
     <script src='@routes.Assets.versioned("javascripts/bundle.js")' type="text/javascript"></script>
 }
 
-@accessibilityStatementLink = {
-    <li>
-        <a href="@appConfig.accessibilityStatementLink(request.uri)" target="_blank">@messages("global.accessibility.statement")</a>
-    </li>
-}
-
 @bodyEndBlock = {
 }
 
 @content = {
     @mainContent
-    @hmrcReportTechnicalIssueHelper()
+    @if(showHelpForm) { @hmrcReportTechnicalIssueHelper() }
+}
+
+@scriptsBlock = {
+    @scriptElem
 }
 
 @headerBlock = {
-    @hmrcHeader(Header(
-        homepageUrl = "https://www.gov.uk/",
-        language = En,
-        displayHmrcBanner = false,
+    <link href='@routes.Assets.versioned("stylesheets/main.css")' media="screen" rel="stylesheet" type="text/css" />
+
+    @hmrcStandardHeader(
+        phaseBanner = Some(standardBetaBanner(phase=messages("global.banner.phase"), url=appConfig.betaFeedbackUnauthenticatedUrl)),
+        displayHmrcBanner = true,
         serviceName = navTitle.orElse(Some(Messages("global.nav.title")))
-    ))
-    <div class="govuk-width-container">
-        @beta_banner(appConfig)
-        @hmrcBanner(Banner())
-    </div>
+    )
+}
+
+@beforeContentBlock = {
+    @if(showBackLink) { @govukBackLink(BackLink(href="#", content=Text(messages("global.back")))) }
+    @contentHeader.getOrElse(Html(""))
 }
 
 @govukLayout(
     pageTitle = Some(title),
-    headBlock = Some(headContent),
+    headBlock = Some(hmrcHead()),
     headerBlock = Some(headerBlock),
-    scriptsBlock = scriptElem,
+    scriptsBlock = Some(scriptsBlock),
     bodyEndBlock = Some(bodyEndBlock),
-    footerBlock = Some(hmrcStandardFooter())
+    beforeContentBlock = Some(beforeContentBlock),
+    footerBlock = Some(hmrcStandardFooter(accessibilityStatementUrl=Some(appConfig.accessibilityStatementLink(request.uri))))
 )(content)
