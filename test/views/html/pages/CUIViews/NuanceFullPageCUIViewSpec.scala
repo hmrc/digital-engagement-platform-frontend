@@ -33,7 +33,7 @@ class NuanceFullPageCUIViewSpec extends ChatViewBehaviours {
         createView,
         "Ask HMRC",
         "Get help with the Coronavirus Job Retention Scheme - GOV.UK",
-        "Coronavirus Job Retention Scheme: chat"
+        "Get help with the Coronavirus Job Retention Scheme - GOV.UK"
       )
     }
   }

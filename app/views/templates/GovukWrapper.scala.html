@@ -36,7 +36,6 @@
     standardBetaBanner: StandardBetaBanner,
     hmrcScripts: HmrcScripts,
     appConfig: AppConfig,
-    hmrcTrackingConsentSnippet: HmrcTrackingConsentSnippet,
     govukBackLink : GovukBackLink
 )
 
@@ -50,9 +49,6 @@
         navTitle: Option[String] = None,
         showHelpForm: Boolean = true,
         showBackLink: Boolean = true)(implicit request: Request[_], messages: play.api.i18n.Messages)
-
-@bodyEnd = {
-}
 
 @bodyEndBlock = {
 <script src='@routes.Assets.versioned("lib/govuk-frontend/govuk/all.js")' type="text/javascript"></script>
