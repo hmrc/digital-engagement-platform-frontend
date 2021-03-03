@@ -16,27 +16,12 @@
 
 @import config.AppConfig
 @import templates.MainTemplateCUI
-@import uk.gov.hmrc.webchat.client.WebChatClient
 
-@this(
-    main_template: MainTemplateCUI,
-    appConfig: AppConfig,
-    webChatClient: WebChatClient)
+@this(main_template: MainTemplateCUI, appConfig: AppConfig)
 
 @()(implicit request: Request[_], messages: play.api.i18n.Messages)
 
-@contentHeader = {
-    @components.back_link()
-    <div class="govuk-grid-row">
-        <h1 class="heading-margin-top">@Messages("cui.job.retention.scheme.title")</h1>
-    </div>
-}
-
-@main_template(
-    title = messages("cui.job.retention.scheme.title"),
-    navTitle=Some("Ask HMRC"),
-    contentHeader=Some(contentHeader)
-){
+@main_template(messages("cui.job.retention.scheme.title")) {
     <div id="cui-messaging-container">
         <div id="nuanMessagingFrame"></div>
     </div>

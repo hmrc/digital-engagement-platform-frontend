@@ -29,13 +29,7 @@
     webChatClient: WebChatClient
 )
 
-@(title: String,
-    navTitle: Option[String] = None,
-    contentHeader: Option[Html] = None,
-    bodyClasses: Option[String] = None,
-    mainClass: Option[String] = Some("cui-main"))(mainContent: Html)(implicit request : Request[_], messages: Messages)
-
-@serviceInfoContent = {}
+@(title: String, navTitle: Option[String] = Some("Ask HMRC"))(mainContent: Html)(implicit request : Request[_], messages: Messages)
 
 @sidebarContent = {
     @sidebar(cuiSidebar(), Some("sidebar"))
@@ -60,11 +54,8 @@
 @govuk_wrapper(appConfig = appConfig,
                title = title,
                navTitle = navTitle,
-               mainClass = mainClass,
-               bodyClasses = bodyClasses,
+               mainClass = Some("cui-main"),
                sidebar = sidebarContent,
-               contentHeader = contentHeader,
                mainContent = article(mainContent),
-               serviceInfoContent = serviceInfoContent,
                scriptElem = Some(scriptElem)
 )

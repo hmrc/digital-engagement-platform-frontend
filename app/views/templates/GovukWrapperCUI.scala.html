@@ -39,9 +39,7 @@
         title: String,
         mainClass: Option[String] = None,
         mainDataAttributes: Option[Html] = None,
-        bodyClasses: Option[String] = None,
         sidebar: Html = HtmlFormat.empty,
-        contentHeader: Option[Html] = None,
         mainContent: Html = HtmlFormat.empty,
         serviceInfoContent: Html = HtmlFormat.empty,
         scriptElem: Option[Html] = None,
@@ -94,20 +92,25 @@
         serviceInfoContent = None)
 }
 
-@mainContentHeader = {
-    @if(contentHeader.isDefined) {
-        @main_content_header(contentHeader = contentHeader.get)
+@contentHeader = {
+    @components.back_link()
+    <div class="govuk-grid-row">
+        <h1 class="heading-margin-top">@title</h1>
+    </div>
+}
 
-        <style type="text/css">
-          <!--Space at the top of the Nuance chat section-->
-            .gem-c-govspeak .address, .gem-c-govspeak .contact {
-                border-left: 1px solid #b1b4b6;
-                padding-left: 15px;
-                margin-bottom: 30px;
-                margin-top: 30px;
-            }
-        </style>
-    }
+@mainContentHeader = {
+    @main_content_header(contentHeader = contentHeader)
+
+    <style type="text/css">
+      <!--Space at the top of the Nuance chat section-->
+        .gem-c-govspeak .address, .gem-c-govspeak .contact {
+            border-left: 1px solid #b1b4b6;
+            padding-left: 15px;
+            margin-bottom: 30px;
+            margin-top: 30px;
+        }
+    </style>
 }
 
 @getHelpForm = {
@@ -128,7 +131,7 @@
         sidebar = sidebar)
 }
 
-@hmrcGovUkTemplate(Some(title), bodyClasses)(
+@hmrcGovUkTemplate(Some(title), None)(
     head = headContent,
     bodyEnd = bodyEnd,
     insideHeader = insideHeader,
