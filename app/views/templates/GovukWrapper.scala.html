@@ -19,15 +19,15 @@
 @import uk.gov.hmrc.hmrcfrontend.views.config.StandardBetaBanner
 @import uk.gov.hmrc.hmrcfrontend.views.html.components._
 @import uk.gov.hmrc.hmrcfrontend.views.html.helpers._
-@import uk.gov.hmrc.govukfrontend.views.html.components.GovukLayout
 @import uk.gov.hmrc.govukfrontend.views.html.components.GovukBackLink
 @import uk.gov.hmrc.govukfrontend.views.html.components.BackLink
 @import uk.gov.hmrc.govukfrontend.views.html.components.Text
 
 @import views.html.components._
+@import views.html.layouts.OurGovukLayout
 
 @this(
-    govukLayout: GovukLayout,
+    govukLayout: OurGovukLayout,
     hmrcHead: HmrcHead,
     hmrcStandardHeader: HmrcStandardHeader,
     hmrcReportTechnicalIssueHelper: HmrcReportTechnicalIssueHelper,
@@ -83,6 +83,14 @@
     @contentHeader.getOrElse(Html(""))
 }
 
+@wrappedContent = {
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        @content
+    </div>
+</div>
+}
+
 @govukLayout(
     pageTitle = Some(title),
     headBlock = Some(hmrcHead()),
@@ -91,4 +99,4 @@
     bodyEndBlock = Some(bodyEndBlock),
     beforeContentBlock = Some(beforeContentBlock),
     footerBlock = Some(hmrcStandardFooter(accessibilityStatementUrl=Some(appConfig.accessibilityStatementLink(request.uri))))
-)(content)
+)(wrappedContent)
