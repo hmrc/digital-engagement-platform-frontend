@@ -16,5 +16,8 @@ $govuk-typography-use-rem: false;
   h2 {
     @extend .govuk-heading-m
   }
+  a {
+    @extend .govuk-link
+  }
 }
 
