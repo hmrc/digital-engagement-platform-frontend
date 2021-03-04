@@ -39,16 +39,17 @@
     govukBackLink : GovukBackLink
 )
 
-@(appConfig: config.AppConfig,
-        title: String,
-        mainDataAttributes: Option[Html] = None,
-        bodyClasses: Option[String] = None,
-        contentHeader: Option[Html] = None,
-        mainContent: Html = HtmlFormat.empty,
-        scriptElem: Html = HtmlFormat.empty,
-        navTitle: Option[String] = None,
-        showHelpForm: Boolean = true,
-        showBackLink: Boolean = true)(implicit request: Request[_], messages: play.api.i18n.Messages)
+@(
+    title: String,
+    mainDataAttributes: Option[Html] = None,
+    bodyClasses: Option[String] = None,
+    contentHeader: Option[Html] = None,
+    mainContent: Html = HtmlFormat.empty,
+    scriptElem: Html = HtmlFormat.empty,
+    navTitle: Option[String] = None,
+    showHelpForm: Boolean = true,
+    showBackLink: Boolean = true
+)(implicit request: Request[_], messages: play.api.i18n.Messages)
 
 @bodyEndBlock = {
 <script src='@routes.Assets.versioned("lib/govuk-frontend/govuk/all.js")' type="text/javascript"></script>

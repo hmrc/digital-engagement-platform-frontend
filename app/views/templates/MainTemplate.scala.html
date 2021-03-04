@@ -15,7 +15,6 @@
  *@
 
 @import config.AppConfig
-@import uk.gov.hmrc.play.views.html.layouts
 @import uk.gov.hmrc.webchat.client.WebChatClient
 
 @this(
@@ -40,8 +39,7 @@
     }
 }
 
-@govuk_wrapper(appConfig = appConfig,
-               title = title,
+@govuk_wrapper(title = title,
                navTitle = navTitle,
                mainContent = mainContent,
                scriptElem = scriptElem,

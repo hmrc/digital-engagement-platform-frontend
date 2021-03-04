@@ -18,18 +18,14 @@
 @import views.html.templates.GovukWrapper
 
 @this(
-  govuk_wrapper: GovukWrapper,
-  appConfig: AppConfig
+  govuk_wrapper: GovukWrapper
 )
 
 @(pageTitle: String, heading: String, message: String)(implicit request: Request[_], messages: Messages)
 
-@contentHeader = {
-   <h1>@heading</h1>
-}
-
 @mainContent = {
-   <p>@message</p>
+ <h1>@heading</h1>
+ <p>@message</p>
 }
 
-@govuk_wrapper(appConfig = appConfig, title = pageTitle, contentHeader = Some(contentHeader), mainContent = mainContent)
+@govuk_wrapper(title = pageTitle, mainContent = mainContent)

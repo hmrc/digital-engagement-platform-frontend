@@ -15,16 +15,11 @@
  *@
 
 @import config.AppConfig
-@import uk.gov.hmrc.play.views.html.layouts
 @import uk.gov.hmrc.webchat.client.WebChatClient
-@import uk.gov.hmrc.play.views.html.layouts._
-@import uk.gov.hmrc.play.views.html.helpers._
 @import views.html.includes.cuiSidebar
 
 @this(
     govuk_wrapper: GovukWrapperCUI,
-    sidebar: Sidebar,
-    article: Article,
     appConfig: AppConfig,
     webChatClient: WebChatClient
 )
@@ -32,7 +27,7 @@
 @(title: String, navTitle: Option[String] = Some("Ask HMRC"))(mainContent: Html)(implicit request : Request[_], messages: Messages)
 
 @sidebarContent = {
-    @sidebar(cuiSidebar(), Some("sidebar"))
+    @cuiSidebar()
 }
 
 @scriptElem = {
@@ -51,11 +46,10 @@
     }
 }
 
-@govuk_wrapper(appConfig = appConfig,
-               title = title,
+@govuk_wrapper(title = title,
                navTitle = navTitle,
                mainClass = Some("cui-main"),
                sidebar = sidebarContent,
-               mainContent = article(mainContent),
+               mainContent = mainContent,
                scriptElem = Some(scriptElem)
 )
