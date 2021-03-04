@@ -4,35 +4,35 @@ window.HMRCFrontend.initAll();
 
 window.addEventListener('DOMContentLoaded', function() {
 
-      // =====================================================
-      // Back link mimics browser back functionality
-      // =====================================================
-      // store referrer value to cater for IE - https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/10474810/  */
-      var docReferrer = document.referrer
-      // prevent resubmit warning
-      if (window.history && window.history.replaceState && typeof window.history.replaceState === 'function') {
-        window.history.replaceState(null, null, window.location.href);
-      }
-      var back_link = document.querySelector('#back-link');
-      if (back_link !== null) {
-          back_link.addEventListener('click', function(e){
-            e.preventDefault();
-            window.history.back();
-          });
-      }
+    // =====================================================
+    // Back link mimics browser back functionality
+    // =====================================================
 
-      // ------------------------------------
-      // Introduce direct skip link control, to work around voiceover failing of hash links
-      // https://bugs.webkit.org/show_bug.cgi?id=179011
-      // https://axesslab.com/skip-links/
-      // ------------------------------------
-      var skip_link = document.querySelector('.skiplink');
-      if (skip_link !== null) {
-          skip_link.addEventListener('click', function(e) {
-              e.preventDefault();
-              $(':header:first').attr('tabindex', '-1').focus();
-          });
-      }
+    // back link
+    var backLink = document.querySelector('.govuk-back-link');
+    if(backLink){
+        backLink.addEventListener('click', function(e){
+            e.preventDefault();
+            if (window.history && window.history.back && typeof window.history.back === 'function'){
+                window.history.back();
+            }
+        });
+    }
+    
+    // Introduce direct skip link control, to work around voiceover failing of hash links
+    // https://bugs.webkit.org/show_bug.cgi?id=179011
+    // https://axesslab.com/skip-links/
+    document.querySelector('.govuk-skip-link').addEventListener('click',function(e) {
+        e.preventDefault();
+        var header = [].slice.call(document.querySelectorAll('h1'))[0];
+        if(header!=undefined){
+            header.setAttribute('tabindex', '-1')
+            header.focus();
+            setTimeout(function(){
+                header.removeAttribute('tabindex')
+            }, 1000)
+        }
+    });
 
 });
 
