@@ -89,7 +89,7 @@ export var chatListener = {
         }
         this.showNuanceDiv();
     },
-    showElement: function(selector, displayState) {
+    showElements: function(selector, displayState) {
         var elements = document.querySelectorAll(selector);
         for (var i = 0; i < elements.length; ++i) {
             elements[i].style.display = (displayState ? "block": "none");
@@ -97,12 +97,12 @@ export var chatListener = {
     },
     showNuanceDiv: function() {
         console.log("show Nuance Div text...");
-        this.showElement(this.loadingTextSelector, false);
-        this.showElement(this.messagingContainerSelector, true);
+        this.showElements(this.loadingTextSelector, false);
+        this.showElements(this.messagingContainerSelector, true);
     },
     showLoadingText: function() {
-        this.showElement(this.messagingContainerSelector, false);
-        this.showElement(this.loadingTextSelector, true);
+        this.showElements(this.messagingContainerSelector, false);
+        this.showElements(this.loadingTextSelector, true);
     },
     technicalError: function() {
         console.log("technicalError");
