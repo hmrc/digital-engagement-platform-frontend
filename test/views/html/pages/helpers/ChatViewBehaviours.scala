@@ -37,12 +37,6 @@ trait ChatViewBehaviours extends ViewSpecBase {
         val doc = asDocument(view())
         assertContainsText(doc, betaBannerText)
       }
-
-//      "display the 'Get help with this page' text" in {
-//        val doc = asDocument(view())
-//        val helpTextExists = doc.getElementById("get-help-action") != null
-//        helpTextExists mustBe hasGetHelpWithPageText
-//      }
     }
   }
 

@@ -30,7 +30,7 @@ describe("Webchat listener", () => {
         });
         afterEach(() => {
             jest.clearAllTimers();
-//            testListener.shutdown(window);
+            testListener.shutdown(window);
             $.fx.off = false;
         });
 

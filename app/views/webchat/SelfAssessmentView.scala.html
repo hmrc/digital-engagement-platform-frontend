@@ -17,13 +17,11 @@
 @import config.AppConfig
 @import uk.gov.hmrc.webchat.client.WebChatClient
 @import views.html.templates.MainTemplate
-@import uk.gov.hmrc.govukfrontend.views.html.components.govukBackLink
 
 @this(
  main_template: MainTemplate,
  appConfig: AppConfig,
- webChatClient: WebChatClient,
- backLink: govukBackLink)
+ webChatClient: WebChatClient)
 
 @(isIvrRedirect: Boolean = false)(implicit request: Request[_], messages: play.api.i18n.Messages)
 

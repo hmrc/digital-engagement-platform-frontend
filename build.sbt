@@ -29,12 +29,6 @@ lazy val microservice = Project(appName, file("."))
     scalaVersion := "2.12.9",
     SilencerSettings(),
     PlayKeys.playDefaultPort := 9956,
-//    TwirlKeys.templateImports ++= Seq(
-//      "play.twirl.api.HtmlFormat",
-//      "play.twirl.api.HtmlFormat._",
-//      "uk.gov.hmrc.play.views.html.helpers._",
-//      "uk.gov.hmrc.play.views.html.layouts._"
-//    ),
     Concat.groups := Seq("javascripts/bundle.js" -> group(Seq("javascripts/bundle/gtm_dl.js"))),
     pipelineStages in Assets := Seq(concat),
     scoverageSettings,
