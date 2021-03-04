@@ -89,22 +89,20 @@ export var chatListener = {
         }
         this.showNuanceDiv();
     },
-    showAndHide(showSelector, hideSelector) {
-        var showElement = document.querySelector(showSelector);
-        var hideElement = document.querySelector(hideSelector);
-        if (hideElement !== null) {
-            hideElement.style.display = "none";
-        }
-        if (showElement !== null) {
-            showElement.style.display = "block";
+    showElement: function(selector, displayState) {
+        var elements = document.querySelectorAll(selector);
+        for (var i = 0; i < elements.length; ++i) {
+            elements[i].style.display = (displayState ? "block": "none");
         }
     },
     showNuanceDiv: function() {
         console.log("show Nuance Div text...");
-        this.showAndHide(this.messagingContainerSelector, this.loadingTextSelector);
+        this.showElement(this.loadingTextSelector, false);
+        this.showElement(this.messagingContainerSelector, true);
     },
     showLoadingText: function() {
-        this.showAndHide(this.loadingTextSelector, this.messagingContainerSelector);
+        this.showElement(this.messagingContainerSelector, false);
+        this.showElement(this.loadingTextSelector, true);
     },
     technicalError: function() {
         console.log("technicalError");
