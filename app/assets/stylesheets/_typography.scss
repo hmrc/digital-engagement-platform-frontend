@@ -6,7 +6,6 @@
 $govuk-typography-use-rem: false;
 
 #main-content {
-  padding-top: 0px;
   p, div {
     @extend .govuk-body
   }
