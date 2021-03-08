@@ -35,13 +35,6 @@ global.webchat.unavailable=Webchat is currently unavailable.
 
 #Beta Banner
 global.banner.phase = BETA
-global.banner.text = This is a new service – your
-global.banner.feedback = feedback
-global.banner.helpimprove = will help us to improve it.
-
-phase.banner.before=This is a new service – your
-phase.banner.link=feedback
-phase.banner.after=will help us to improve it.
 
 #Webchat pages
 #Self Assessment Webchat
