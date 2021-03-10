@@ -31,7 +31,7 @@ global.opening.time.bankholidays.8to4=Bank Holidays, 8am to 4pm.
 global.opening.time.sat.bankholidays.8to4=Saturdays and Bank Holidays, 8am to 4pm
 global.closed.time.sun=Closed Sundays.
 global.closed.time.bankholidays=Closed bank holidays.
-global.webchat.unavailable=Webchat is currently unavailable.
+global.webchat.unavailable=Webchat is not available at the moment.
 
 #Beta Banner
 global.banner.phase = BETA

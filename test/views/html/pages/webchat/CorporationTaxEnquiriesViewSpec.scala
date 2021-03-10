@@ -24,14 +24,15 @@ class CorporationTaxEnquiriesViewSpec extends ChatViewBehaviours {
 
   private val view = app.injector.instanceOf[CorporationTaxEnquiriesView]
 
-  private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
+  private def createView(noChatExperiment: Boolean = false): () =>
+    HtmlFormat.Appendable = () => view(noChatExperiment = noChatExperiment)(fakeRequest, messages)
 
   "Corporation Tax Enquiries view" must {
     val returnUrl: String =
       "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/corporation-tax-enquiries"
 
     behave like normalPage(
-      createView,
+      createView(),
       "Ask HMRC - Webchat",
       "Corporation Tax: webchat",
       "Corporation Tax: webchat",
@@ -43,5 +44,12 @@ class CorporationTaxEnquiriesViewSpec extends ChatViewBehaviours {
         "Closed weekends and bank holidays."
       )
     )
+    "with chat experiment" must {
+      behave like generalContent(
+        view = createView(true),
+        messageHeading = "Corporation Tax: webchat",
+        hasGetHelpWithPageText = false
+      )
+    }
   }
 }

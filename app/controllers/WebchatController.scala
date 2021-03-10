@@ -75,7 +75,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def childBenefit: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(childBenefitView(isIvrRedirect(), appConfig.featureChildBenefitsExperiment)))
+    Future.successful(Ok(childBenefitView(isIvrRedirect())))
   }
 
   def employerEnquiries: Action[AnyContent] = Action.async { implicit request =>
@@ -131,7 +131,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def corporationTaxEnquiries: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(corporationTaxEnquiriesView()))
+    Future.successful(Ok(corporationTaxEnquiriesView(appConfig.featureNoChatExperiment)))
   }
 
   def constructionIndustryScheme: Action[AnyContent] = Action.async { implicit request =>

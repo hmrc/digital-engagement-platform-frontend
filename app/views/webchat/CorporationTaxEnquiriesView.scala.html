@@ -23,24 +23,32 @@
     appConfig: AppConfig,
     webChatClient: WebChatClient)
 
-@()(implicit request: Request[_], messages: play.api.i18n.Messages)
+@(noChatExperiment: Boolean = false)(implicit request: Request[_], messages: play.api.i18n.Messages)
 
-@main_template(title = messages("corporation.tax.enquiries.title")) {
+@main_template(title = messages("corporation.tax.enquiries.title"), showHelpForm = !noChatExperiment) {
 
     <h1 class="header-margin-top">@messages("corporation.tax.enquiries.title")</h1>
 
-    <div class="govuk-inset-text">
-        <p>@messages("global.opening.times.title")</p>
-        <p>@messages("global.opening.times.8to6")</p>
-        <p>@messages("global.opening.times.weekend.p")</p>
+    @if(!noChatExperiment) {
+        <div class="govuk-inset-text">
+            <p>@messages("global.opening.times.title")</p>
+            <p>@messages("global.opening.times.8to6")</p>
+            <p>@messages("global.opening.times.weekend.p")</p>
+        </div>
+        <h2 class="margin-top">@messages("global.webchat.title.h2")</h2>
+        <p class="margin-top">@messages("corporation.tax.enquiries.p1")</p>
+    }
+
+    @if(noChatExperiment) {
+    <p class="margin-top">@messages("global.webchat.unavailable")</p>
+    <div class="webchat-unavailable">
+        @components.webchat_container(appConfig, webChatClient)
+        @components.webchat_loading_text()
     </div>
-
-    <h2 class="margin-top">@messages("global.webchat.title.h2")</h2>
-
-    <p class="margin-top">@messages("corporation.tax.enquiries.p1")</p>
-
-    @components.webchat_container(appConfig, webChatClient)
-    @components.webchat_loading_text()
+    } else {
+        @components.webchat_container(appConfig, webChatClient)
+        @components.webchat_loading_text()
+    }
 
     <p class="margin-top">
         <a id="return-link" href=@appConfig.corporationTaxEnquiriesReturnUrl>@messages("global.text.link.back.to.govuk.p1")</a>

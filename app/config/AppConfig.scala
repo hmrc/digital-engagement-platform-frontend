@@ -41,7 +41,7 @@ class AppConfig @Inject()(config: Configuration,
   val reportAProblemNonJSUrl: String = s"$contactHost/contact/problem_reports_nonjs?service=$serviceIdentifier"
   val betaFeedbackUnauthenticatedUrl = s"$contactHost/contact/beta-feedback-unauthenticated?service=$serviceIdentifier"
 
-  var featureChildBenefitsExperiment: Boolean = config.getOptional[Boolean]("features.childBenefitsExperiment").getOrElse(false)
+  var featureNoChatExperiment: Boolean = config.getOptional[Boolean]("features.noChatExperiment").getOrElse(false)
 
   val payeOnlineUrl: String = "https://www.gov.uk/paye-online"
 
