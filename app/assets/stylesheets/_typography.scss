@@ -9,6 +9,9 @@ $govuk-typography-use-rem: false;
   p, div {
     @extend .govuk-body
   }
+  h1.govuk-heading-xl {
+    @extend .govuk-heading-xl
+  }
   h1 {
     @extend .govuk-heading-l
   }
