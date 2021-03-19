@@ -109,6 +109,8 @@ class AppConfig @Inject()(config: Configuration,
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/get-help-with-the-eat-out-to-help-out-scheme"
   val personalTransportUnitEnquiriesReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/personal-transport-unit-enquiries"
+  val ir35EnquiriesReturnUrl: String =
+    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/ir35-enquiries"
 
   val stampDutyLAndTaxReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/stamp-duty-land-tax"

@@ -32,6 +32,7 @@ GET         /webchat/inheritance-tax                                            
 GET         /webchat/help-for-users-with-additional-needs                               controllers.WebchatController.additionalNeedsHelp
 GET         /webchat/c19-employer-enquiries                                             controllers.WebchatController.c19EmployerEnquiries
 GET         /webchat/personal-transport-unit-enquiries                                  controllers.WebchatController.personalTransportUnitEnquiries
+GET         /webchat/ir35-enquiries                                                     controllers.WebchatController.ir35Enquiries
 
 GET         /webchat/stamp-duty/land-tax                                                controllers.StampDutyController.landTax
 GET         /webchat/stamp-duty/reserve-tax                                             controllers.StampDutyController.reserveTax
