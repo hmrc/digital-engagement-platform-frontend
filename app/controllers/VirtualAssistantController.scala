@@ -17,10 +17,11 @@
 package controllers
 
 import config.AppConfig
+
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
-import views.html.va.{VASupportForCoronavirusView, VATaxCreditsEnquiriesView}
+import views.html.va.{VACustomesInternationalTradeView, VASupportForCoronavirusView, VATaxCreditsEnquiriesView}
 
 import scala.concurrent.Future
 
@@ -28,7 +29,8 @@ import scala.concurrent.Future
 class VirtualAssistantController @Inject()(appConfig: AppConfig,
                                            mcc: MessagesControllerComponents,
                                            supportForCoronavirusView: VASupportForCoronavirusView,
-                                           taxCreditsEnquiriesView: VATaxCreditsEnquiriesView) extends FrontendController(mcc) {
+                                           taxCreditsEnquiriesView: VATaxCreditsEnquiriesView,
+                                           customesInternationalTradeView: VACustomesInternationalTradeView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
@@ -38,6 +40,10 @@ class VirtualAssistantController @Inject()(appConfig: AppConfig,
 
   def taxCreditsEnquiries: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(taxCreditsEnquiriesView()))
+  }
+
+  def customesInternationalTrade: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(customesInternationalTradeView()))
   }
 }
 

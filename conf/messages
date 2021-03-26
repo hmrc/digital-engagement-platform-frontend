@@ -184,6 +184,11 @@ support.for.coronavirus.linkto.coronavirus.help=contact HMRC for coronavirus hel
 tax-credits-enquiries.li1=manage your tax credits online
 tax-credits-enquiries.li2=find more ways to contact HMRC
 
+#Customs International Trade
+custom.international.trade.li1=find out how to get an EORI (opens in a new tab)
+custom.international.trade.li2=look up commodity codes, duty and VAT rates (opens in a new tab)
+custom.international.trade.li3=find more ways to contact HMRC (opens in a new tab)
+
 #Nuance Full Page CUI Test Page
 nuance.full.page.cui.test.page.title=Test full page CUI for webchat
 

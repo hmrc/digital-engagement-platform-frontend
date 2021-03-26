@@ -45,5 +45,13 @@ class VirtualAssistantControllerSpec
       status(result) mustBe OK
       doc.select("h1").text() mustBe "Use HMRC’s digital assistant"
     }
+
+    "render customs and international trade" in {
+      val result = controller.customesInternationalTrade(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
+      status(result) mustBe OK
+      doc.select("h1").text() mustBe "Use HMRC’s digital assistant"
+    }
   }
 }

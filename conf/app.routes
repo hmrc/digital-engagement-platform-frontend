@@ -55,8 +55,9 @@ GET         /ivr/c19employer                                                    
 
 GET         /virtual-assistant/support-for-coronavirus                                  controllers.VirtualAssistantController.supportForCoronavirus
 GET         /virtual-assistant/tax-credits-enquiries                                    controllers.VirtualAssistantController.taxCreditsEnquiries
+GET         /virtual-assistant/customs-and-international-trade-enquiries                controllers.VirtualAssistantController.customesInternationalTrade
 
 GET         /accessibility-statement                                                    controllers.AccessibilityStatementController.accessibility(userAction: Option[String])
 
-GET         /chat/job-retention-scheme-help                                    controllers.CuiController.CuiController.jobRetentionSchemeHelp
-GET         /chat/help-job-retention-scheme                                    controllers.CuiController.CuiController.helpJobRetentionScheme
+GET         /chat/job-retention-scheme-help                                             controllers.CuiController.CuiController.jobRetentionSchemeHelp
+GET         /chat/help-job-retention-scheme                                             controllers.CuiController.CuiController.helpJobRetentionScheme
