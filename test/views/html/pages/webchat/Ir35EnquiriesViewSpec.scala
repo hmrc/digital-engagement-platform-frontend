@@ -33,8 +33,8 @@ class Ir35EnquiriesViewSpec extends ChatViewBehaviours {
     behave like normalPage(
       createView,
       "Ask HMRC - Webchat",
-      "IR35: webchat",
-      "IR35: webchat",
+      "Off-payroll working (IR35): webchat",
+      "Off-payroll working (IR35): webchat",
       "Return to Contact HMRC",
       returnUrl,
       Seq(
