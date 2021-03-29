@@ -59,7 +59,7 @@ class VATaxCreditsEnquiriesViewSpec extends ChatViewBehaviours {
         val href = a.attr("href")
         href mustBe taxCreditsEnquiriesUrl1
       }
-      
+
       "display coronavirus helpline link" in {
         val doc = asDocument(createView())
         val a = doc.getElementById("tax-credits-enquiries-contact-link")
