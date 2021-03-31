@@ -9,7 +9,7 @@ function ChatSkin() {
   // Header
   ChatSkin.header = document.createElement("div");
   ChatSkin.header.id = "ciapiSkinHeader";
-  ChatSkin.header.innerHTML = `<div id="ciapiSkinTitleBar"><i class="icono-disqus"></i><span>Ask HMRC</span></div><div id="ciapiSkinCloseButton"><i class="icono-cross"></i></div>`;
+  ChatSkin.header.innerHTML = `<div id="ciapiSkinTitleBar"><i class="icono-disqus"></i><span>Ask HMRC</span></div><div id="ciapiSkinCloseButton">(X)</div>`;
 
   // Chat Transcript
   ChatSkin.content = document.createElement("div");
@@ -18,7 +18,7 @@ function ChatSkin() {
   // Footer
   ChatSkin.footer = document.createElement("div");
   ChatSkin.footer.id = "ciapiSkinFooter"
-  ChatSkin.footer.innerHTML = `<textarea id="custMsg" rows="5" cols="50" wrap="physical" name="comments"></textarea><div id="ciapiSkinSendButton"><i class="icono-check" style="color:white;"></i></div>`;
+  ChatSkin.footer.innerHTML = `<textarea id="custMsg" rows="5" cols="50" wrap="physical" name="comments"></textarea><div id="ciapiSkinSendButton">Send</div>`;
 
   // Append elements to container
   ChatSkin.container.appendChild(ChatSkin.header);
@@ -26,17 +26,7 @@ function ChatSkin() {
   ChatSkin.container.appendChild(ChatSkin.footer);
 }
 
-ChatSkin.LoadCSS = function() {
-  var head = document.head,
-    link = document.createElement('link');
-  link.type = 'text/css'
-  link.rel = 'stylesheet'
-  link.href = "https://icono-49d6.kxcdn.com/icono.min.css";
-  head.appendChild(link)
-}
-
 ChatSkin.main = function() {
-  ChatSkin.LoadCSS();
   ChatSkin();
   document.getElementsByTagName("body")[0].appendChild(ChatSkin.container);
   ChatSkin.registerEventListener();
