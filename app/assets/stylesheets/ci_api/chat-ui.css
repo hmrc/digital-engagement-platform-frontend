@@ -7,13 +7,12 @@ body {
   height: 550px;
   width: 400px;
   position: fixed;
-  right: 20px;
+  right: 10px;
   bottom: 0px;
   z-index: 2000;
   background-color: #fff;
   border: 2px solid #333;
   font-family: Arial;
-  border-bottom: none;
 }
 
 #ciapiSkinHeader {

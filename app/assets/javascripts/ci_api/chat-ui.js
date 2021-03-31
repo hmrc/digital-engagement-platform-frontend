@@ -9,7 +9,7 @@ function ChatSkin() {
   // Header
   ChatSkin.header = document.createElement("div");
   ChatSkin.header.id = "ciapiSkinHeader";
-  ChatSkin.header.innerHTML = `<div id="ciapiSkinTitleBar"><i class="icono-disqus"></i><span>Ask HMRC</span></div><div id="ciapiSkinCloseButton">(X)</div>`;
+  ChatSkin.header.innerHTML = `<div id="ciapiSkinTitleBar"><span>Ask HMRC</span></div><div id="ciapiSkinCloseButton">(X)</div>`;
 
   // Chat Transcript
   ChatSkin.content = document.createElement("div");
