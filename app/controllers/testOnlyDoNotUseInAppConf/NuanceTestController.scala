@@ -17,12 +17,12 @@
 package controllers.testOnlyDoNotUseInAppConf
 
 import config.AppConfig
-
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 import views.html.CUIViews.{JobRetentionSchemeHelpView, NuanceFullPageCUIView}
 import views.html.IdTestView
+import views.html.ci_api.CiApiDemoView
 import views.html.testOnly.NuanceFile
 
 import scala.concurrent.Future
@@ -33,6 +33,7 @@ class NuanceTestController @Inject()(
   mcc: MessagesControllerComponents,
   nuanceFullPageCUIView: NuanceFullPageCUIView,
   idTestView: IdTestView,
+  ciApiDemoView: CiApiDemoView,
   jobRetentionSchemeHelpView: JobRetentionSchemeHelpView,
   nuanceFile: NuanceFile) extends FrontendController(mcc) {
 
@@ -43,6 +44,9 @@ class NuanceTestController @Inject()(
   }
   def idTest: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(idTestView()))
+  }
+  def ciApiTest: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(ciApiDemoView()))
   }
   def nuanceHtml: Action[AnyContent] = Action.async {
     Future.successful(Ok(nuanceFile()))
