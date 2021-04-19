@@ -22,10 +22,10 @@ import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
 import play.api.test.Helpers._
 import views.html.pages.helpers.AppBuilderSpecBase
 
-class NuanceTestControllerSpec
+class TestControllerSpec
   extends AppBuilderSpecBase with ScalaCheckPropertyChecks {
 
-  private val controller = app.injector.instanceOf[NuanceTestController]
+  private val controller = app.injector.instanceOf[TestController]
 
   def asDocument(html: String): Document = Jsoup.parse(html)
 

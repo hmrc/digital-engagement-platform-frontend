@@ -28,7 +28,7 @@ import views.html.testOnly.NuanceFile
 import scala.concurrent.Future
 
 @Singleton
-class NuanceTestController @Inject()(
+class TestController @Inject()(
   appConfig: AppConfig,
   mcc: MessagesControllerComponents,
   nuanceFullPageCUIView: NuanceFullPageCUIView,
