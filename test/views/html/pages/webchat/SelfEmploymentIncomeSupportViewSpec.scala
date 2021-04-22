@@ -39,7 +39,8 @@ class SelfEmploymentIncomeSupportViewSpec extends ChatViewBehaviours {
       Seq(
         "Opening times:",
         "Monday to Friday, 8am to 8pm",
-        "Closed weekends and bank holidays"
+        "Saturday, 8am to 4pm",
+        "Closed Sundays and bank holidays."
       )
     )
   }
