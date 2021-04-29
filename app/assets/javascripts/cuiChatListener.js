@@ -105,8 +105,9 @@ export var chatListener = {
         var loadingAnimation = $(this.loadingAnimationSelector)
         var messagingContainer = $(this.messagingContainerSelector)
         messagingContainer.fadeTo(2000, 1.0);
-        loadingAnimation.fadeTo(1500, 0.0);
-        loadingAnimation.hide();
+        loadingAnimation.fadeTo(1500, 0.0, function() {
+            loadingAnimation.hide();
+        });
     },
     showLoadingAnimation: function() {
         var loadingAnimation = $(this.loadingAnimationSelector);
