@@ -15,7 +15,9 @@ object JavaScriptBuild {
   }
 
   val javaScriptTestRunnerHook: Seq[sbt.Def.Setting[_]] = Seq(
-    configDirectory := {(baseDirectory in Compile)}.value,
+    configDirectory := {
+      baseDirectory in Compile
+    }.value,
 
     npmInstall := runOperation("npm install", Gulp.npmProcess(configDirectory.value, "install").run().exitValue()),
     runAllTests := runOperation("JavaScript Jest tests", Gulp.gulpProcess(configDirectory.value, "jest").run().exitValue()),
@@ -26,7 +28,9 @@ object JavaScriptBuild {
   )
 
   val javaScriptBundler: Seq[sbt.Def.Setting[_]] = Seq(
-    configDirectory := {(baseDirectory in Compile)}.value,
+    configDirectory := {
+      baseDirectory in Compile
+    }.value,
 
     bundleJs := runOperation("JS bundling", Gulp.gulpProcess(configDirectory.value, "bundle").run().exitValue()),
 
