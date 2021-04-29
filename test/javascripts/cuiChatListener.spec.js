@@ -93,7 +93,6 @@ describe("CUI chat listener", () => {
             jest.runOnlyPendingTimers();
             expect($('#cui-messaging-container').css("opacity")).toBe("1");
             expect($('.cui-technical-error').length).toBe(0);
-            expect($('#cui-loading-animation').css("display")).toBe("none")
 
             // Make sure there are no lingering behaviours.
             jest.runOnlyPendingTimers();
