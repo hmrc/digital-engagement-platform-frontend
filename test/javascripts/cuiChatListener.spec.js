@@ -101,6 +101,23 @@ describe("CUI chat listener", () => {
             expect($('.cui-technical-error').length).toBe(0);
         });
 
+        it("will hide the loading animation on chat load", () => {
+            testListener.startup(window);
+            window.dispatchEvent(new Event('load'));
+            expect($('#cui-loading-animation').css("display")).toBe("block");
+
+            testListener.onAnyEvent({});
+
+            testListener.onChatLaunched({});
+            testListener.onAnyEvent({});
+
+            testListener.onChatShown({});
+            testListener.onAnyEvent({});
+
+            jest.runOnlyPendingTimers();
+            expect($('#cui-loading-animation').css("display")).toBe("none")
+         });
+
         it("will show an error if activity and then not engaged or shown", () => {
             testListener.startup(window);
             window.dispatchEvent(new Event('load'));
