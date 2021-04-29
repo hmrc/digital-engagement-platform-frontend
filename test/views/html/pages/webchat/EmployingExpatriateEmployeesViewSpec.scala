@@ -16,16 +16,16 @@
 
 package views.html.pages.webchat
 
-import play.api.mvc.Cookie
+import play.api.mvc.{AnyContentAsEmpty, Cookie}
 import play.api.test.FakeRequest
 import play.twirl.api.HtmlFormat
 import views.html.pages.helpers.ChatViewBehaviours
 import views.html.webchat.EmployingExpatriateEmployeesView
 
 class EmployingExpatriateEmployeesViewSpec extends ChatViewBehaviours {
-  implicit override val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
+  implicit override val fakeRequest: FakeRequest[AnyContentAsEmpty.type] = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
 
-  val view = app.injector.instanceOf[EmployingExpatriateEmployeesView]
+  val view: EmployingExpatriateEmployeesView = app.injector.instanceOf[EmployingExpatriateEmployeesView]
 
   def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
