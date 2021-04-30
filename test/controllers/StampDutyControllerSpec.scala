@@ -14,42 +14,35 @@
  * limitations under the License.
  */
 
-package controllers.testOnlyDoNotUseInAppConf
+package controllers
 
-import org.jsoup.Jsoup
-import org.jsoup.nodes.Document
 import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
 import play.api.test.Helpers._
 import views.html.pages.helpers.AppBuilderSpecBase
 
-class TestControllerSpec
-  extends AppBuilderSpecBase with ScalaCheckPropertyChecks {
+class StampDutyControllerSpec
+    extends AppBuilderSpecBase with ScalaCheckPropertyChecks {
 
-  private val controller = app.injector.instanceOf[TestController]
+  private val controller = app.injector.instanceOf[StampDutyController]
 
-  def asDocument(html: String): Document = Jsoup.parse(html)
-
-  "Nuance Full Page CUI Test Controller" should {
-    "render Nuance test page" in {
-      val result = controller.nuanceFullPageCUI(fakeRequest)
+  "fixed URLs" should {
+    "render land tax page" in {
+      val result = controller.landTax(fakeRequest)
 
       status(result) mustBe OK
     }
-
-    "render idTest page" in {
-      val result = controller.idTest(fakeRequest)
-
-      status(result) mustBe OK
-    }
-
-    "render ciApiTest page" in {
-      val result = controller.ciApiTest(fakeRequest)
+    "render reserve tax page" in {
+      val result = controller.reserveTax(fakeRequest)
 
       status(result) mustBe OK
     }
+    "render shares and land page" in {
+      val result = controller.sharesAndLand(fakeRequest)
 
-    "render nuanceHtml page" in {
-      val result = controller.nuanceHtml(fakeRequest)
+      status(result) mustBe OK
+    }
+    "render annual tax on enveloped dwellings page" in {
+      val result = controller.annualTaxOnEnvelopedDwellings(fakeRequest)
 
       status(result) mustBe OK
     }
