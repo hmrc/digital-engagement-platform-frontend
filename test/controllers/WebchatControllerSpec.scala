@@ -254,5 +254,10 @@ class WebchatControllerSpec
       status (result) mustBe OK
       doc.select ("h1").text () mustBe "Personal Transport Unit: webchat"
     }
+
+    "IR-35 Enquiries page" in {
+      val result = controller.ir35Enquiries (fakeRequest)
+      status (result) mustBe OK
+    }
   }
 }
