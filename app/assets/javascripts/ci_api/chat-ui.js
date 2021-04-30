@@ -27,6 +27,7 @@ var ChatSkin = {
         this.isConnected = false;
         this.isQueued = false;
 
+        console.log("in main: ", this);
         this.initContainer();
         document.getElementsByTagName("body")[0].appendChild(this.container);
         this.registerEventListener();
@@ -86,17 +87,17 @@ var ChatSkin = {
       var msgDiv = "";
       if (agent) {
         console.log("Add agent text: ", msg);
-        msgDiv = "<div class='ciapiSkinTranscriptAgentLine'><div class='ciapiSkinAgentMsg'>" + msg + "</div></div>";
+        msgDiv = "<div class='ciapiSkinTranscriptAgentLine'><div class='bubble agent-bubble background-img enter'>" + msg + "</div></div>";
       } else {
         console.log("Add customer text: ", msg);
-        msgDiv = "<div class='ciapiSkinTranscriptCustLine'><div class='ciapiSkinCustMsg'>" + msg + "</div></div>";
+        msgDiv = "<div class='ciapiSkinTranscriptCustLine'><div class='bubble customer-bubble background-img enter'>" + msg + "</div></div>";
       }
       this.addTextAndScroll(msgDiv);
     },
 
     addAutomatonText: function(msg) {
         console.log("Add automaton text: ", msg);
-        var msgDiv = "<div class='ciapiSkinTranscriptAgentLine'><div class='ciapiSkinAgentMsg'>" + msg + "</div></div>";
+        msgDiv = "<div class='ciapiSkinTranscriptAgentLine'><div class='bubble agent-bubble background-img enter'>" + msg + "</div></div>";
         this.addTextAndScroll(msgDiv);
     },
 
@@ -107,7 +108,7 @@ var ChatSkin = {
 
     displayOpenerScripts: function(openerScripts) {
       if (openerScripts != null && openerScripts.length > 0) {
-        for (i = 0; i < openerScripts.length; i++) {
+        for (var i = 0; i < openerScripts.length; i++) {
           var msgDiv = "<div class='ciapiSkinTranscriptOpener'><div class='ciapiSkinOpener'>" + openerScripts[i] + "</div></div>";
           this.addTextAndScroll(msgDiv);
         }
@@ -235,18 +236,12 @@ function nuanceTobiC2CLaunch(c2cObj, divID) {
 }
 
 var chatListener = {
-  onAnyEvent: function(evt) {
-    console.log("Chat any event:", evt);
-    if (this.nuanceDownTimeout) {
-      clearTimeout(this.nuanceDownTimeout);
-      this.nuanceDownTimeout = null;
-      var self = this;
-      this.engageTimeout = setTimeout(function() {
-        console.log("Chat did not start...");
-        self.technicalError();
-      }, 5000);
+    onAnyEvent: function(evt) {
+        console.log("Chat any event:", evt);
+    },
+    onC2CStateChanged: function(evt) {
+        ChatSkin.updateC2CButtonsToInProgress();
     }
-  }
 };
 
 var InqRegistry = {
@@ -254,9 +249,9 @@ var InqRegistry = {
 };
 
 function nuanceFrameworkLoaded() {
-	console.log(`### framework loaded`);
+	console.log("### framework loaded");
 
 	if (Inq.SDK.isChatInProgress()) {
-		setTimeout(ChatSkin.main, 2000);
+		setTimeout(function() { ChatSkin.main() }, 2000);
 	}
 }
