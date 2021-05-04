@@ -95,10 +95,41 @@ var ChatSkin = {
       this.addTextAndScroll(msgDiv);
     },
 
+    fixUpVALinks: function(div) {
+        var links = div.getElementsByTagName('a');
+
+        for (var i = 0; i < links.length; ++i) {
+            var link = links[i];
+            var attributes = link.attributes;
+            for (var anum = 0; anum < attributes.length; ++anum) {
+                var attribute = attributes[anum];
+                if (attribute.name === "data-vtz-link-type" && attribute.value === "Dialog") {
+                    link.onclick = this.onClickHandler
+                }
+            }
+        }
+    },
+
     addAutomatonText: function(msg) {
         console.log("Add automaton text: ", msg);
-        msgDiv = "<div class='ciapiSkinTranscriptAgentLine'><div class='bubble agent-bubble background-img enter'>" + msg + "</div></div>";
-        this.addTextAndScroll(msgDiv);
+
+        var msgDiv = "<div class='bubble agent-bubble background-img enter'>" + msg + "</div>";
+        var agentDiv = document.createElement("div")
+        agentDiv.classList.add('ciapiSkinTranscriptAgentLine');
+        agentDiv.insertAdjacentHTML("beforeend", msgDiv);
+
+        this.fixUpVALinks(agentDiv);
+
+        this.content.appendChild(agentDiv);
+        this.content.scrollTo(0, this.content.scrollHeight);
+    },
+
+    linkCallback: function(data1, data2, data3) {
+        console.log("link callback: ", data1, data2, data3);
+    },
+
+    onClickHandler: function(e) {
+        Inq.SDK.sendVALinkMessage(e, this.linkCallback)
     },
 
     addSystemMsg: function(msg) {
