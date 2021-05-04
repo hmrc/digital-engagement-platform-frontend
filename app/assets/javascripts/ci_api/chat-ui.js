@@ -1,157 +1,212 @@
-function ChatSkin() {
-  ChatSkin.isConnected = false;
-  ChatSkin.isQueued = false;
+var ChatSkin = {
+    initContainer: function() {
+        // Container
+        this.container = document.createElement("div");
+        this.container.id = "ciapiSkinContainer";
 
-  // Container
-  ChatSkin.container = document.createElement("div");
-  ChatSkin.container.id = "ciapiSkinContainer";
+        // Header
+        this.header = document.createElement("div");
+        this.header.id = "ciapiSkinHeader";
+        this.header.innerHTML = `<div id="ciapiSkinTitleBar"><span>Ask HMRC</span></div><div id="ciapiSkinCloseButton">(X)</div>`;
 
-  // Header
-  ChatSkin.header = document.createElement("div");
-  ChatSkin.header.id = "ciapiSkinHeader";
-  ChatSkin.header.innerHTML = `<div id="ciapiSkinTitleBar"><span>Ask HMRC</span></div><div id="ciapiSkinCloseButton">(X)</div>`;
+        // Chat Transcript
+        this.content = document.createElement("div");
+        this.content.id = "ciapiSkinChatTranscript"
 
-  // Chat Transcript
-  ChatSkin.content = document.createElement("div");
-  ChatSkin.content.id = "ciapiSkinChatTranscript"
+        // Footer
+        this.footer = document.createElement("div");
+        this.footer.id = "ciapiSkinFooter"
+        this.footer.innerHTML = `<textarea id="custMsg" rows="5" cols="50" wrap="physical" name="comments"></textarea><div id="ciapiSkinSendButton">Send</div>`;
 
-  // Footer
-  ChatSkin.footer = document.createElement("div");
-  ChatSkin.footer.id = "ciapiSkinFooter"
-  ChatSkin.footer.innerHTML = `<textarea id="custMsg" rows="5" cols="50" wrap="physical" name="comments"></textarea><div id="ciapiSkinSendButton">Send</div>`;
+        // Append elements to container
+        this.container.appendChild(this.header);
+        this.container.appendChild(this.content);
+        this.container.appendChild(this.footer);
+    },
+    main: function() {
+        this.isConnected = false;
+        this.isQueued = false;
 
-  // Append elements to container
-  ChatSkin.container.appendChild(ChatSkin.header);
-  ChatSkin.container.appendChild(ChatSkin.content);
-  ChatSkin.container.appendChild(ChatSkin.footer);
-}
+        console.log("in main: ", this);
+        this.initContainer();
+        document.getElementsByTagName("body")[0].appendChild(this.container);
+        this.registerEventListener();
 
-ChatSkin.main = function() {
-  ChatSkin();
-  document.getElementsByTagName("body")[0].appendChild(ChatSkin.container);
-  ChatSkin.registerEventListener();
+        var self = this;
 
-  Inq.SDK.getOpenerScripts(ChatSkin.displayOpenerScripts);
+        Inq.SDK.getOpenerScripts(function(openerScripts) { self.displayOpenerScripts(openerScripts) });
 
-  ChatSkin.updateC2CButtonsToInProgress();
+        this.updateC2CButtonsToInProgress();
 
-  try {
-    Inq.SDK.chatDisplayed({
-      "customerName": "You",
-      "previousMessagesCb": function(resp) {
-        console.log("previous messages");
-        console.log(resp);
-        var arr = resp.messages;
-        for (var i = 0; i < arr.length; i++) {
-          ChatSkin.handleMsgs(arr[i].data);
+        try {
+            Inq.SDK.chatDisplayed({
+              "customerName": "You",
+              "previousMessagesCb": function(resp) {
+                console.log("previous messages");
+                console.log(resp);
+                var arr = resp.messages;
+                for (var i = 0; i < arr.length; i++) {
+                  this.handleMsgs(arr[i].data);
+                }
+                this.isConnected = true;
+                this.getMessage();
+              },
+              "disconnectCb": function() {},
+              "reConnectCb": function() {},
+              "failedCb": function() {},
+              "openerScripts": null,
+              "defaultAgentAlias": "HMRC"
+            });
+        } catch (e) {
+            console.error(e);
         }
-        ChatSkin.isConnected = true;
-        ChatSkin.getMessage();
-      },
-      "disconnectCb": function() {},
-      "reConnectCb": function() {},
-      "failedCb": function() {},
-      "openerScripts": null,
-      "defaultAgentAlias": "HMRC"
-    });
-  } catch (e) {
-    console.error(e);
-  }
-}
-ChatSkin.registerEventListener = function() {
-  ChatSkin.custInput = document.getElementById("custMsg");
-  document.getElementById("ciapiSkinSendButton").addEventListener("click", (e) => {
-    ChatSkin.actionSendButton();
-  });
-  document.getElementById("ciapiSkinCloseButton").addEventListener("click", (e) => {
-    ChatSkin.closeChat();
-    ChatSkin.container.parentElement.removeChild(ChatSkin.container);
-  });
-  ChatSkin.custInput.addEventListener('keypress', (e) => {
-    if (e.which == 13) {
-      ChatSkin.actionSendButton();
-      e.preventDefault()
+    },
+    registerEventListener: function() {
+      this.custInput = document.getElementById("custMsg");
+      document.getElementById("ciapiSkinSendButton").addEventListener("click", (e) => {
+        this.actionSendButton();
+      });
+      document.getElementById("ciapiSkinCloseButton").addEventListener("click", (e) => {
+        this.closeChat();
+        this.container.parentElement.removeChild(this.container);
+      });
+      this.custInput.addEventListener('keypress', (e) => {
+        if (e.which == 13) {
+          this.actionSendButton();
+          e.preventDefault()
+        }
+      })
+    },
+
+    addTextAndScroll: function(msg) {
+      this.content.insertAdjacentHTML("beforeend", msg);
+      this.content.scrollTo(0, this.content.scrollHeight);
+    },
+
+    addText: function(msg, agent) {
+      var msgDiv = "";
+      if (agent) {
+        console.log("Add agent text: ", msg);
+        msgDiv = "<div class='ciapiSkinTranscriptAgentLine'><div class='bubble agent-bubble background-img enter'>" + msg + "</div></div>";
+      } else {
+        console.log("Add customer text: ", msg);
+        msgDiv = "<div class='ciapiSkinTranscriptCustLine'><div class='bubble customer-bubble background-img enter'>" + msg + "</div></div>";
+      }
+      this.addTextAndScroll(msgDiv);
+    },
+
+    fixUpVALinks: function(div) {
+        var links = div.getElementsByTagName('a');
+
+        for (var i = 0; i < links.length; ++i) {
+            var link = links[i];
+            var attributes = link.attributes;
+            for (var anum = 0; anum < attributes.length; ++anum) {
+                var attribute = attributes[anum];
+                if (attribute.name === "data-vtz-link-type" && attribute.value === "Dialog") {
+                    link.onclick = this.onClickHandler
+                }
+            }
+        }
+    },
+
+    addAutomatonText: function(msg) {
+        console.log("Add automaton text: ", msg);
+
+        var msgDiv = "<div class='bubble agent-bubble background-img enter'>" + msg + "</div>";
+        var agentDiv = document.createElement("div")
+        agentDiv.classList.add('ciapiSkinTranscriptAgentLine');
+        agentDiv.insertAdjacentHTML("beforeend", msgDiv);
+
+        this.fixUpVALinks(agentDiv);
+
+        this.content.appendChild(agentDiv);
+        this.content.scrollTo(0, this.content.scrollHeight);
+    },
+
+    linkCallback: function(data1, data2, data3) {
+        console.log("link callback: ", data1, data2, data3);
+    },
+
+    onClickHandler: function(e) {
+        Inq.SDK.sendVALinkMessage(e, this.linkCallback)
+    },
+
+    addSystemMsg: function(msg) {
+      var msgDiv = "<div class='ciapiSkinTranscriptSysMsg'><div class='ciapiSkinSysMsg'>" + msg + "</div></div>";
+      this.addTextAndScroll(msgDiv);
+    },
+
+    displayOpenerScripts: function(openerScripts) {
+      if (openerScripts != null && openerScripts.length > 0) {
+        for (var i = 0; i < openerScripts.length; i++) {
+          var msgDiv = "<div class='ciapiSkinTranscriptOpener'><div class='ciapiSkinOpener'>" + openerScripts[i] + "</div></div>";
+          this.addTextAndScroll(msgDiv);
+        }
+      }
+    },
+
+    actionSendButton: function() {
+      if (this.isConnected) {
+        this.sendMessage();
+      } else {
+        this.engageRequest();
+      }
+    },
+
+    engageRequest: function() {
+      var self = this;
+      Inq.SDK.engageChat(this.custInput.value, function(resp) {
+        if (resp.httpStatus == 200) {
+          self.custInput.value = "";
+          self.isConnected = true;
+          self.getMessage();
+        }
+      })
+    },
+
+    sendMessage: function() {
+      this.sequenceNo += 1;
+      Inq.SDK.sendMessage(this.custInput.value)
+      this.custInput.value = "";
+    },
+
+    closeChat: function() {
+      Inq.SDK.closeChat();
+    },
+
+    getMessage: function() {
+      var self = this;
+      Inq.SDK.getMessages(function(resp) {
+        self.handleMsgs(resp.data);
+      });
+    },
+
+    handleMsgs: function(msg) {
+      console.log(msg);
+      if (msg.messageType === "chat.communication") {
+        this.addText(msg.messageText, msg.agentID);
+      } else if (msg.messageType === "chat.automaton_request") {
+        this.addAutomatonText(msg["automaton.data"]);
+      } else if (msg.state === "closed") {
+        this.addSystemMsg("Agent Left Chat.");
+      } else if (msg.messageType === "chat.communication.queue") {
+        this.addSystemMsg(msg.messageText);
+      }
+    },
+
+    updateC2CButtonsToInProgress: function() {
+      var c2cIds = Object.keys(c2cButtons);
+      c2cIds.forEach(function(c2cId) {
+        let c2cObj = {
+          c2cIdx: c2cId,
+          displayState: "chatactive",
+          launchable: false
+        };
+        nuanceTobiC2CLaunch(c2cObj, c2cButtons[c2cId]);
+      });
     }
-  })
-
 };
-ChatSkin.addText = function(msg, agent) {
-  var msgDiv = "";
-  if (agent) {
-    msgDiv = "<div class='ciapiSkinTranscriptAgentLine'><div class='ciapiSkinAgentMsg'>" + msg + "</div></div>";
-  } else {
-    msgDiv = "<div class='ciapiSkinTranscriptCustLine'><div class='ciapiSkinCustMsg'>" + msg + "</div></div>";
-  }
-  ChatSkin.content.insertAdjacentHTML("beforeend", msgDiv);
-  ChatSkin.content.scrollTo(0, ChatSkin.content.scrollHeight);
-};
-ChatSkin.addSystemMsg = function(msg) {
-  var msgDiv = "<div class='ciapiSkinTranscriptSysMsg'><div class='ciapiSkinSysMsg'>" + msg + "</div></div>";
-  ChatSkin.content.insertAdjacentHTML("beforeend", msgDiv);
-  ChatSkin.content.scrollTo(0, ChatSkin.content.scrollHeight);
-}
-ChatSkin.displayOpenerScripts = function(openerScripts) {
-  if (openerScripts != null && openerScripts.length > 0) {
-    for (i = 0; i < openerScripts.length; i++) {
-      var msgDiv = "<div class='ciapiSkinTranscriptOpener'><div class='ciapiSkinOpener'>" + openerScripts[i] + "</div></div>";
-      ChatSkin.content.insertAdjacentHTML("beforeend", msgDiv);
-    }
-  }
-}
-ChatSkin.actionSendButton = function() {
-  if (ChatSkin.isConnected) {
-    ChatSkin.sendMessage();
-  } else {
-    ChatSkin.engageRequest();
-  }
-};
-ChatSkin.engageRequest = function() {
-  Inq.SDK.engageChat(ChatSkin.custInput.value, function(resp) {
-    if (resp.httpStatus == 200) {
-      ChatSkin.custInput.value = "";
-      ChatSkin.isConnected = true;
-      ChatSkin.getMessage();
-    }
-  })
-}
-ChatSkin.sendMessage = function() {
-  ChatSkin.sequenceNo += 1;
-  Inq.SDK.sendMessage(ChatSkin.custInput.value)
-  ChatSkin.custInput.value = "";
-}
-ChatSkin.closeChat = function() {
-  Inq.SDK.closeChat();
-}
-ChatSkin.getMessage = function() {
-  Inq.SDK.getMessages(function(resp) {
-    ChatSkin.handleMsgs(resp.data);
-  });
-}
-ChatSkin.handleMsgs = function(msg) {
-  console.log(msg);
-  if (msg.messageType == "chat.communication") {
-    ChatSkin.addText(msg.messageText, msg.agentID);
-  } else if (msg.state == "closed") {
-    ChatSkin.addSystemMsg("Agent Left Chat.");
-  } else if (msg.messageType == "chat.communication.queue") {
-    ChatSkin.addSystemMsg(msg.messageText);
-  }
-}
-
-ChatSkin.updateC2CButtonsToInProgress = function() {
-  var c2cIds = Object.keys(c2cButtons);
-  c2cIds.forEach(function(c2cId) {
-    let c2cObj = {
-      c2cIdx: c2cId,
-      displayState: "chatactive",
-      launchable: false
-    };
-    nuanceTobiC2CLaunch(c2cObj, c2cButtons[c2cId]);
-  });
-}
-
-
-
 
 //launch proactive chat
 function nuanceProactive(obj) {
@@ -212,30 +267,22 @@ function nuanceTobiC2CLaunch(c2cObj, divID) {
 }
 
 var chatListener = {
-  onAnyEvent: function(evt) {
-    console.log("Chat any event:", evt);
-    if (this.nuanceDownTimeout) {
-      clearTimeout(this.nuanceDownTimeout);
-      this.nuanceDownTimeout = null;
-      var self = this;
-      this.engageTimeout = setTimeout(function() {
-        console.log("Chat did not start...");
-        self.technicalError();
-      }, 5000);
+    onAnyEvent: function(evt) {
+        console.log("Chat any event:", evt);
+    },
+    onC2CStateChanged: function(evt) {
+        ChatSkin.updateC2CButtonsToInProgress();
     }
-  }
 };
 
 var InqRegistry = {
   listeners: [chatListener]
 };
 
-
-
 function nuanceFrameworkLoaded() {
-	console.log(`### framework loaded`);
+	console.log("### framework loaded");
 
 	if (Inq.SDK.isChatInProgress()) {
-		setTimeout(ChatSkin.main, 2000);
+		setTimeout(function() { ChatSkin.main() }, 2000);
 	}
 }
