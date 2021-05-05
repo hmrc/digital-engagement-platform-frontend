@@ -1,4 +1,43 @@
 var ChatSkin = {
+    main: function() {
+        if (this.container) {
+            return
+        }
+        this.isConnected = false;
+        this.isQueued = false;
+
+        console.log("in main: ", this);
+        this.initContainer();
+
+        var self = this;
+
+        Inq.SDK.getOpenerScripts(function(openerScripts) { self.displayOpenerScripts(openerScripts) });
+
+        this.updateC2CButtonsToInProgress();
+
+        try {
+            Inq.SDK.chatDisplayed({
+              "customerName": "You",
+              "previousMessagesCb": function(resp) {
+                console.log("previous messages");
+                console.log(resp);
+                var arr = resp.messages;
+                for (var i = 0; i < arr.length; i++) {
+                  self.handleMsgs(arr[i].data);
+                }
+                self.isConnected = true;
+                self.getMessage();
+              },
+              "disconnectCb": function() {},
+              "reConnectCb": function() {},
+              "failedCb": function() {},
+              "openerScripts": null,
+              "defaultAgentAlias": "HMRC"
+            });
+        } catch (e) {
+            console.error("!!!! chat displayed got exception: ", e);
+        }
+    },
     initContainer: function() {
         // Container
         this.container = document.createElement("div");
@@ -22,44 +61,9 @@ var ChatSkin = {
         this.container.appendChild(this.header);
         this.container.appendChild(this.content);
         this.container.appendChild(this.footer);
-    },
-    main: function() {
-        this.isConnected = false;
-        this.isQueued = false;
 
-        console.log("in main: ", this);
-        this.initContainer();
         document.getElementsByTagName("body")[0].appendChild(this.container);
         this.registerEventListener();
-
-        var self = this;
-
-        Inq.SDK.getOpenerScripts(function(openerScripts) { self.displayOpenerScripts(openerScripts) });
-
-        this.updateC2CButtonsToInProgress();
-
-        try {
-            Inq.SDK.chatDisplayed({
-              "customerName": "You",
-              "previousMessagesCb": function(resp) {
-                console.log("previous messages");
-                console.log(resp);
-                var arr = resp.messages;
-                for (var i = 0; i < arr.length; i++) {
-                  this.handleMsgs(arr[i].data);
-                }
-                this.isConnected = true;
-                this.getMessage();
-              },
-              "disconnectCb": function() {},
-              "reConnectCb": function() {},
-              "failedCb": function() {},
-              "openerScripts": null,
-              "defaultAgentAlias": "HMRC"
-            });
-        } catch (e) {
-            console.error(e);
-        }
     },
     registerEventListener: function() {
       this.custInput = document.getElementById("custMsg");
@@ -148,8 +152,10 @@ var ChatSkin = {
 
     actionSendButton: function() {
       if (this.isConnected) {
+        console.log("connected: send message")
         this.sendMessage();
       } else {
+        console.log("not connected: engage request")
         this.engageRequest();
       }
     },
@@ -283,6 +289,9 @@ function nuanceFrameworkLoaded() {
 	console.log("### framework loaded");
 
 	if (Inq.SDK.isChatInProgress()) {
-		setTimeout(function() { ChatSkin.main() }, 2000);
+	    console.log("chat is in progress")
+		setTimeout(function() {
+		    ChatSkin.main();
+		}, 2000);
 	}
 }
