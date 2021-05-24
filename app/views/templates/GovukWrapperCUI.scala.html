@@ -63,6 +63,14 @@
 @headerBlock = {
     <link href='@routes.Assets.versioned("stylesheets/main.css")' media="screen" rel="stylesheet" type="text/css" />
 
+    <script>
+        // TODO: somehow integrate this with tested code.
+        if (navigator.userAgent.indexOf('Mobile') >= 0 && navigator.userAgent.indexOf('iPad') < 0) {
+            var body = document.getElementsByClassName("govuk-template__body")[0]
+            body.classList.add('cui-mobile-popup');
+        }
+    </script>
+
     @hmrcStandardHeader(
         phaseBanner = Some(standardBetaBanner(phase=messages("global.banner.phase"), url=appConfig.betaFeedbackUnauthenticatedUrl)),
         displayHmrcBanner = false,

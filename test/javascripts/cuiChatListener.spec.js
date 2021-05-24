@@ -5,6 +5,16 @@ protoListener.name = "protoListener";
 let index = 0;
 
 describe("CUI chat listener", () => {
+    var originalUserAgent = navigator.userAgent
+    function setUserAgent(userAgent) {
+        Object.defineProperty(global.navigator, 'userAgent', {
+          configurable: true,
+          get() {
+            return userAgent;
+          },
+        })
+    }
+
     describe("initialisation", () => {
         it("will create the InqRegistry", () => {
             initChatListener(window);
@@ -19,17 +29,22 @@ describe("CUI chat listener", () => {
             testListener = Object.assign({}, protoListener)
             testListener.name = "test listener #" + index++;
             document.body.innerHTML = `
-                <div id="cui-messaging-container">
-                    <div id="nuanMessagingFrame"></div>
-                </div>
-                <div id="cui-loading-animation" style="display:none">
-                    <img src='@routes.Assets.versioned("media/cui_animation.svg")' alt="Chat is loading">
+                <div class='govuk-template__body'>
+                    <div id="cui-messaging-container">
+                        <div id="nuanMessagingFrame"></div>
+                    </div>
+                    <div id="cui-loading-animation" style="display:none">
+                        <img src='@routes.Assets.versioned("media/cui_animation.svg")' alt="Chat is loading">
+                    </div>
                 </div>
             `;
             jest.useFakeTimers();
             $.fx.off = true;
         });
         afterEach(() => {
+            if (navigator.userAgent !== originalUserAgent) {
+                setUserAgent(originalUserAgent);
+            }
             jest.clearAllTimers();
             testListener.shutdown(window);
             $.fx.off = false;
@@ -203,5 +218,34 @@ describe("CUI chat listener", () => {
             jest.runOnlyPendingTimers();
             expect($('.cui-technical-error').length).toBe(0);
         });
+
+        it ("will set the mobile class on body if it's a mobile device", () => {
+            setUserAgent("Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.30 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1");
+
+            testListener.startup(window);
+
+            expect($('.govuk-template__body').hasClass('cui-mobile-popup')).toBeTruthy();
+        });
+
+        it ("will not set the mobile class on body if it's not a mobile device", () => {
+            setUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36");
+
+            testListener.startup(window);
+
+            expect($('.govuk-template__body').hasClass('cui-mobile-popup')).toBeFalsy();
+        });
+
+        it ("will remove the mobile class on body if the wait times out", () => {
+            setUserAgent("Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.30 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1");
+
+            testListener.startup(window);
+            window.dispatchEvent(new Event('load'));
+
+            jest.runOnlyPendingTimers();
+
+            expect($('.govuk-template__body').hasClass('cui-mobile-popup')).toBeFalsy();
+
+        });
+
     });
 });

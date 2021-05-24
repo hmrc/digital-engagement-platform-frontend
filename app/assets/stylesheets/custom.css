@@ -79,3 +79,12 @@
 .form-group-error {
   padding-left: 15px;
 }
+
+.cui-mobile-popup .govuk-heading-xl,
+.cui-mobile-popup .govuk-back-link,
+.cui-mobile-popup .govuk-grid-column-one-third,
+.cui-mobile-popup .hmrc-report-technical-issue,
+.cui-mobile-popup header,
+.cui-mobile-popup footer {
+  display: none;
+}

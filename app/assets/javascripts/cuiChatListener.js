@@ -1,3 +1,5 @@
+import * as deviceIdentification from './deviceIdentification'
+
 export var chatListener = {
     downTimeoutDuration: 15000,
     engagementTimeoutDuration: 10000,
@@ -119,6 +121,8 @@ export var chatListener = {
     technicalError: function() {
         console.log("technicalError");
         this.showNuanceDiv();
+        var body = document.getElementsByClassName("govuk-template__body")[0]
+        body.classList.remove('cui-mobile-popup');
         var newDiv = $("<p>", {"class": "cui-technical-error error-message"})
         newDiv.text('There’s a problem with chat. Try again later.')
         $('#nuanMessagingFrame').append(newDiv);
@@ -136,9 +140,18 @@ export var chatListener = {
 //        localStorage.enableJSLogging = true;
         var self = this;
         this.loadFunction = function() {
+            console.log("++++++++++ userAgent: ", navigator.userAgent);
+
             self.showLoadingAnimation();
             self.waitForSignsOfLife();
         }
+
+        if (deviceIdentification.isMobile(navigator.userAgent)) {
+            var body = document.getElementsByClassName("govuk-template__body")[0]
+            console.log("******* add mobile style ********")
+            body.classList.add('cui-mobile-popup');
+        }
+
         w.addEventListener("load", this.loadFunction);
     },
     shutdown: function(w) {
