@@ -11,8 +11,22 @@ export var chatListener = {
     onPageLanding: function(evt) {
         console.log("On Page Landing: data=", evt.data, "page=", evt.page, "reinitialized=", evt.reinitialized);
     },
+    addMobileStyle: function() {
+        var body = document.getElementsByClassName("govuk-template__body")[0]
+        body.classList.add('cui-mobile-popup');
+    },
+    removeMobileStyle: function() {
+        var body = document.getElementsByClassName("govuk-template__body")[0]
+        body.classList.remove('cui-mobile-popup');
+    },
     onRuleSatisfied: function(evt) {
         console.log("On Rule Satisfied:", evt);
+        // Match, for example, "HMRC-C-VA-CUI-O-P-S-Embedded-T0-TEST_A"
+        if (evt.rule.name.indexOf("-S-") === -1) {
+            this.removeMobileStyle();
+        } else {
+            this.addMobileStyle();
+        }
     },
     onExposureQualified: function(evt) {
         console.log("On Exposure Qualified:", evt);
@@ -140,16 +154,12 @@ export var chatListener = {
 //        localStorage.enableJSLogging = true;
         var self = this;
         this.loadFunction = function() {
-            console.log("++++++++++ userAgent: ", navigator.userAgent);
-
             self.showLoadingAnimation();
             self.waitForSignsOfLife();
         }
 
         if (deviceIdentification.isMobile(navigator.userAgent)) {
-            var body = document.getElementsByClassName("govuk-template__body")[0]
-            console.log("******* add mobile style ********")
-            body.classList.add('cui-mobile-popup');
+            this.addMobileStyle();
         }
 
         w.addEventListener("load", this.loadFunction);

@@ -3,6 +3,8 @@ import {chatListener, initChatListener} from '../../app/assets/javascripts/cuiCh
 var protoListener = Object.assign({}, chatListener)
 protoListener.name = "protoListener";
 let index = 0;
+const SampleMobileUserAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.30 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1"
+const SampleNonMobileUserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36"
 
 describe("CUI chat listener", () => {
     var originalUserAgent = navigator.userAgent
@@ -220,7 +222,7 @@ describe("CUI chat listener", () => {
         });
 
         it ("will set the mobile class on body if it's a mobile device", () => {
-            setUserAgent("Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.30 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1");
+            setUserAgent(SampleMobileUserAgent);
 
             testListener.startup(window);
 
@@ -228,7 +230,7 @@ describe("CUI chat listener", () => {
         });
 
         it ("will not set the mobile class on body if it's not a mobile device", () => {
-            setUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36");
+            setUserAgent(SampleNonMobileUserAgent);
 
             testListener.startup(window);
 
@@ -236,7 +238,7 @@ describe("CUI chat listener", () => {
         });
 
         it ("will remove the mobile class on body if the wait times out", () => {
-            setUserAgent("Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.30 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1");
+            setUserAgent(SampleMobileUserAgent);
 
             testListener.startup(window);
             window.dispatchEvent(new Event('load'));
@@ -247,5 +249,36 @@ describe("CUI chat listener", () => {
 
         });
 
+        it ("will remove the mobile class on body if the normal business rule comes in", () => {
+            setUserAgent(SampleMobileUserAgent);
+
+            testListener.startup(window);
+            window.dispatchEvent(new Event('load'));
+
+            var evt = {
+                rule: {
+                    name: "HMRC-C-VA-CUI-O-P-Embedded-T0-TEST_A"        // non-mobile rule (no "-S-")
+                }
+            }
+            testListener.onRuleSatisfied(evt);
+
+            expect($('.govuk-template__body').hasClass('cui-mobile-popup')).toBeFalsy();
+        });
+
+        it ("will add the mobile class on body if the mobile business rule comes in", () => {
+            setUserAgent(SampleNonMobileUserAgent);
+
+            testListener.startup(window);
+            window.dispatchEvent(new Event('load'));
+
+            var evt = {
+                rule: {
+                    name: "HMRC-C-VA-CUI-O-P-S-Embedded-T0-TEST_A"        // mobile rule ("-S-")
+                }
+            }
+            testListener.onRuleSatisfied(evt);
+
+            expect($('.govuk-template__body').hasClass('cui-mobile-popup')).toBeTruthy();
+        });
     });
 });
