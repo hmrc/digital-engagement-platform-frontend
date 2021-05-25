@@ -88,3 +88,9 @@
 .cui-mobile-popup footer {
   display: none;
 }
+
+.cui-mobile-popup .cbanner-govuk-cookie-banner {
+    position: fixed;
+    z-index: 10000000;
+    box-shadow: 0px 4px 12px #555;
+}
