@@ -24,12 +24,16 @@ lazy val microservice = Project(appName, file("."))
     libraryDependencies ++= AppDependencies.all,
     publishingSettings,
     javaScriptBundler,
+    ciApiJavaScriptBundler,
     javaScriptTestRunnerHook,
     defaultSettings(),
     scalaVersion := "2.12.9",
     SilencerSettings(),
     PlayKeys.playDefaultPort := 9956,
-    Concat.groups := Seq("javascripts/bundle.js" -> group(Seq("javascripts/bundle/gtm_dl.js"))),
+    Concat.groups := Seq(
+      "javascripts/bundle.js" -> group(Seq("javascripts/bundle/gtm_dl.js")),
+      "javascripts/ci_api.js" -> group(Seq("javascripts/ci_api_bundle/ci_api.js"))
+    ),
     pipelineStages in Assets := Seq(concat),
     scoverageSettings,
     resolvers += Resolver.jcenterRepo

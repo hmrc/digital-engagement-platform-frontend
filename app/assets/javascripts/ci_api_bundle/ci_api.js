@@ -1,4 +1,7 @@
-export var ChatSkin = {
+(function () {
+'use strict';
+
+var ChatSkin = {
     main: function() {
         if (this.container) {
             return
@@ -11,7 +14,7 @@ export var ChatSkin = {
 
         var self = this;
 
-        Inq.SDK.getOpenerScripts(function(openerScripts) { self.displayOpenerScripts(openerScripts) });
+        Inq.SDK.getOpenerScripts(function(openerScripts) { self.displayOpenerScripts(openerScripts); });
 
         this.updateC2CButtonsToInProgress();
 
@@ -50,11 +53,11 @@ export var ChatSkin = {
 
         // Chat Transcript
         this.content = document.createElement("div");
-        this.content.id = "ciapiSkinChatTranscript"
+        this.content.id = "ciapiSkinChatTranscript";
 
         // Footer
         this.footer = document.createElement("div");
-        this.footer.id = "ciapiSkinFooter"
+        this.footer.id = "ciapiSkinFooter";
         this.footer.innerHTML = `<textarea id="custMsg" rows="5" cols="50" wrap="physical" name="comments"></textarea><div id="ciapiSkinSendButton">Send</div>`;
 
         // Append elements to container
@@ -77,9 +80,9 @@ export var ChatSkin = {
       this.custInput.addEventListener('keypress', (e) => {
         if (e.which == 13) {
           this.actionSendButton();
-          e.preventDefault()
+          e.preventDefault();
         }
-      })
+      });
     },
 
     addTextAndScroll: function(msg) {
@@ -108,7 +111,7 @@ export var ChatSkin = {
             for (var anum = 0; anum < attributes.length; ++anum) {
                 var attribute = attributes[anum];
                 if (attribute.name === "data-vtz-link-type" && attribute.value === "Dialog") {
-                    link.onclick = this.onClickHandler
+                    link.onclick = this.onClickHandler;
                 }
             }
         }
@@ -118,7 +121,7 @@ export var ChatSkin = {
         console.log("Add automaton text: ", msg);
 
         var msgDiv = "<div class='bubble agent-bubble background-img enter'>" + msg + "</div>";
-        var agentDiv = document.createElement("div")
+        var agentDiv = document.createElement("div");
         agentDiv.classList.add('ciapiSkinTranscriptAgentLine');
         agentDiv.insertAdjacentHTML("beforeend", msgDiv);
 
@@ -133,7 +136,7 @@ export var ChatSkin = {
     },
 
     onClickHandler: function(e) {
-        Inq.SDK.sendVALinkMessage(e, this.linkCallback)
+        Inq.SDK.sendVALinkMessage(e, this.linkCallback);
     },
 
     addSystemMsg: function(msg) {
@@ -152,10 +155,10 @@ export var ChatSkin = {
 
     actionSendButton: function() {
       if (this.isConnected) {
-        console.log("connected: send message")
+        console.log("connected: send message");
         this.sendMessage();
       } else {
-        console.log("not connected: engage request")
+        console.log("not connected: engage request");
         this.engageRequest();
       }
     },
@@ -168,12 +171,12 @@ export var ChatSkin = {
           self.isConnected = true;
           self.getMessage();
         }
-      })
+      });
     },
 
     sendMessage: function() {
       this.sequenceNo += 1;
-      Inq.SDK.sendMessage(this.custInput.value)
+      Inq.SDK.sendMessage(this.custInput.value);
       this.custInput.value = "";
     },
 
@@ -269,7 +272,7 @@ function nuanceTobiC2CLaunch(c2cObj, divID) {
         // create chat window
         ChatSkin.main();
       });
-    }
+    };
   }
 }
 
@@ -290,17 +293,21 @@ function nuanceFrameworkLoaded() {
 	console.log("### framework loaded");
 
 	if (Inq.SDK.isChatInProgress()) {
-	    console.log("chat is in progress")
+	    console.log("chat is in progress");
 		setTimeout(function() {
 		    ChatSkin.main();
 		}, 2000);
 	}
 }
 
-export function hookWindow(w) {
+function hookWindow(w) {
     w.InqRegistry = InqRegistry;
     w.nuanceFrameworkLoaded = nuanceFrameworkLoaded;
     w.nuanceReactive_HMRC_CIAPI_Fixed_1 = nuanceReactive_HMRC_CIAPI_Fixed_1;
     w.nuanceReactive_HMRC_CIAPI_Anchored_1 = nuanceReactive_HMRC_CIAPI_Anchored_1;
     w.nuanceProactive = nuanceProactive;
 }
+
+hookWindow(window);
+
+}());

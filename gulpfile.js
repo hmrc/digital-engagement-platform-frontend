@@ -38,3 +38,10 @@ gulp.task('bundle', rollupJS('gtm_dl.js', {
   distPath: './app/assets/javascripts/bundle',
   sourcemap: false
 }));
+
+gulp.task('bundle_ci_api', rollupJS('ci_api.js', {
+  basePath: './app/assets/javascripts/ci_api/',
+  format: 'iife',
+  distPath: './app/assets/javascripts/ci_api_bundle',
+  sourcemap: false
+}));
