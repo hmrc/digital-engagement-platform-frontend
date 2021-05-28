@@ -14,9 +14,7 @@ class ChatController {
         console.log("in main: ", this);
         this.initContainer();
 
-        var self = this;
-
-        this.sdk.getOpenerScripts(function(openerScripts) { self.displayOpenerScripts(openerScripts) });
+        this.sdk.getOpenerScripts(this.displayOpenerScripts.bind(this));
 
         this.updateC2CButtonsToInProgress();
 
@@ -26,13 +24,12 @@ class ChatController {
               "previousMessagesCb": function(resp) {
                 console.log("previous messages");
                 console.log(resp);
-                var arr = resp.messages;
-                for (var i = 0; i < arr.length; i++) {
-                  self.handleMsgs(arr[i].data);
-                }
-                self.isConnected = true;
-                self.getMessage();
-              },
+                for (var message of resp.messages) {
+                  this.handleMessage(message);
+                };
+                this.isConnected = true;
+                this.getMessage();
+              }.bind(this),
               "disconnectCb": function() {},
               "reConnectCb": function() {},
               "failedCb": function() {},
@@ -89,7 +86,7 @@ class ChatController {
     }
 
     addText(msg, agent) {
-      var msgDiv = "";
+      let msgDiv = "";
       if (agent) {
         console.log("Add agent text: ", msg);
         msgDiv = "<div class='ciapiSkinTranscriptAgentLine'><div class='bubble agent-bubble background-img enter'>" + msg + "</div></div>";
@@ -101,15 +98,11 @@ class ChatController {
     }
 
     fixUpVALinks(div) {
-        var links = div.getElementsByTagName('a');
+        const links = div.getElementsByTagName('a');
 
-        var self = this;
-        var clickHandler = function(e) { self.onClickHandler(e); };
-        for (var i = 0; i < links.length; ++i) {
-            var link = links[i];
-            var attributes = link.attributes;
-            for (var anum = 0; anum < attributes.length; ++anum) {
-                var attribute = attributes[anum];
+        const clickHandler = this.onClickHandler.bind(this);
+        for (var link of links) {
+            for (var attribute of link.attributes) {
                 if (attribute.name === "data-vtz-link-type" && attribute.value === "Dialog") {
                     link.onclick = clickHandler;
                 }
@@ -120,8 +113,9 @@ class ChatController {
     addAutomatonText(msg) {
         console.log("Add automaton text: ", msg);
 
-        var msgDiv = "<div class='bubble agent-bubble background-img enter'>" + msg + "</div>";
-        var agentDiv = document.createElement("div")
+        const msgDiv = "<div class='bubble agent-bubble background-img enter'>" + msg + "</div>";
+
+        let agentDiv = document.createElement("div")
         agentDiv.classList.add('ciapiSkinTranscriptAgentLine');
         agentDiv.insertAdjacentHTML("beforeend", msgDiv);
 
@@ -140,14 +134,14 @@ class ChatController {
     }
 
     addSystemMsg(msg) {
-      var msgDiv = "<div class='ciapiSkinTranscriptSysMsg'><div class='ciapiSkinSysMsg'>" + msg + "</div></div>";
+      const msgDiv = "<div class='ciapiSkinTranscriptSysMsg'><div class='ciapiSkinSysMsg'>" + msg + "</div></div>";
       this.addTextAndScroll(msgDiv);
     }
 
     displayOpenerScripts(openerScripts) {
       if (openerScripts != null && openerScripts.length > 0) {
-        for (var i = 0; i < openerScripts.length; i++) {
-          var msgDiv = "<div class='ciapiSkinTranscriptOpener'><div class='ciapiSkinOpener'>" + openerScripts[i] + "</div></div>";
+        for (var openerScript of openerScripts) {
+          const msgDiv = "<div class='ciapiSkinTranscriptOpener'><div class='ciapiSkinOpener'>" + openerScript + "</div></div>";
           this.addTextAndScroll(msgDiv);
         }
       }
@@ -164,14 +158,13 @@ class ChatController {
     }
 
     engageRequest() {
-      var self = this;
       this.sdk.engageChat(this.custInput.value, function(resp) {
         if (resp.httpStatus == 200) {
-          self.custInput.value = "";
-          self.isConnected = true;
-          self.getMessage();
+          this.custInput.value = "";
+          this.isConnected = true;
+          this.getMessage();
         }
-      })
+      }.bind(this));
     }
 
     sendMessage() {
@@ -185,13 +178,11 @@ class ChatController {
     }
 
     getMessage() {
-      var self = this;
-      this.sdk.getMessages(function(resp) {
-        self.handleMsgs(resp.data);
-      });
+      this.sdk.getMessages(this.handleMessage.bind(this));
     }
 
-    handleMsgs(msg) {
+    handleMessage(msg_in) {
+      const msg = msg_in.data;
       console.log(msg);
       if (msg.messageType === "chat.communication") {
         this.addText(msg.messageText, msg.agentID);
@@ -222,12 +213,9 @@ class ChatController {
 
     nuanceFrameworkLoaded(w) {
         this.setSDK(w);
-        var self = this;
         if (this.sdk.isChatInProgress()) {
             console.log("chat is in progress")
-            setTimeout(function() {
-                self.main();
-            }, 2000);
+            setTimeout(this.main.bind(this), 2000);
         }
     }
 
@@ -268,7 +256,7 @@ class ChatController {
 
                     // create chat window
                     this.main();
-                });
+                }.bind(this));
             }
         }
     }
