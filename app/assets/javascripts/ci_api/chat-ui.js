@@ -1,4 +1,7 @@
-export var ChatSkin = {
+let chatController = {
+    sdk: null,          // Filled in at launch
+    c2cButtons: {},     // Reactive callbacks
+
     main: function() {
         if (this.container) {
             return
@@ -11,12 +14,12 @@ export var ChatSkin = {
 
         var self = this;
 
-        Inq.SDK.getOpenerScripts(function(openerScripts) { self.displayOpenerScripts(openerScripts) });
+        this.sdk.getOpenerScripts(function(openerScripts) { self.displayOpenerScripts(openerScripts) });
 
         this.updateC2CButtonsToInProgress();
 
         try {
-            Inq.SDK.chatDisplayed({
+            this.sdk.chatDisplayed({
               "customerName": "You",
               "previousMessagesCb": function(resp) {
                 console.log("previous messages");
@@ -96,13 +99,15 @@ export var ChatSkin = {
     fixUpVALinks: function(div) {
         var links = div.getElementsByTagName('a');
 
+        var self = this;
+        var clickHandler = function(e) { self.onClickHandler(e); };
         for (var i = 0; i < links.length; ++i) {
             var link = links[i];
             var attributes = link.attributes;
             for (var anum = 0; anum < attributes.length; ++anum) {
                 var attribute = attributes[anum];
                 if (attribute.name === "data-vtz-link-type" && attribute.value === "Dialog") {
-                    link.onclick = this.onClickHandler
+                    link.onclick = clickHandler;
                 }
             }
         }
@@ -127,7 +132,7 @@ export var ChatSkin = {
     },
 
     onClickHandler: function(e) {
-        Inq.SDK.sendVALinkMessage(e, this.linkCallback)
+        this.sdk.sendVALinkMessage(e, this.linkCallback)
     },
 
     addSystemMsg: function(msg) {
@@ -156,7 +161,7 @@ export var ChatSkin = {
 
     engageRequest: function() {
       var self = this;
-      Inq.SDK.engageChat(this.custInput.value, function(resp) {
+      this.sdk.engageChat(this.custInput.value, function(resp) {
         if (resp.httpStatus == 200) {
           self.custInput.value = "";
           self.isConnected = true;
@@ -167,17 +172,17 @@ export var ChatSkin = {
 
     sendMessage: function() {
       this.sequenceNo += 1;
-      Inq.SDK.sendMessage(this.custInput.value)
+      this.sdk.sendMessage(this.custInput.value)
       this.custInput.value = "";
     },
 
     closeChat: function() {
-      Inq.SDK.closeChat();
+      this.sdk.closeChat();
     },
 
     getMessage: function() {
       var self = this;
-      Inq.SDK.getMessages(function(resp) {
+      this.sdk.getMessages(function(resp) {
         self.handleMsgs(resp.data);
       });
     },
@@ -196,83 +201,81 @@ export var ChatSkin = {
     },
 
     updateC2CButtonsToInProgress: function() {
-      var c2cIds = Object.keys(c2cButtons);
+      var c2cIds = Object.keys(this.c2cButtons);
       c2cIds.forEach(function(c2cId) {
         let c2cObj = {
           c2cIdx: c2cId,
           displayState: "chatactive",
           launchable: false
         };
-        nuanceTobiC2CLaunch(c2cObj, c2cButtons[c2cId]);
+        nuanceTobiC2CLaunch(c2cObj, this.c2cButtons[c2cId]);
       });
+    },
+
+    setSDK: function(w) {
+        this.sdk = w.Inq.SDK;
+    },
+
+    nuanceFrameworkLoaded: function(w) {
+        this.setSDK(w);
+        var self = this;
+        if (this.sdk.isChatInProgress()) {
+            console.log("chat is in progress")
+            setTimeout(function() {
+                self.main();
+            }, 2000);
+        }
+    },
+
+    nuanceTobiC2CLaunch: function(c2cObj, divID) {
+        console.log("****** Launch ", divID);
+        console.log(c2cObj);
+        this.c2cButtons[c2cObj.c2cIdx] = divID;
+
+        let btn = document.getElementById(divID);
+        let div = top.document.createElement("DIV");
+
+        let btnType = (divID.toLowerCase().match(/anchored/)) ? "anchored" : "fixed";
+
+        div.setAttribute("class", "c2cButton");
+        switch (c2cObj.displayState) {
+            case 'outofhours':
+              div.innerHTML = `<div class="${btnType} ${c2cObj.displayState}">Out of hours</div>`;
+              break;
+            case 'ready':
+              div.innerHTML = `<div class="${btnType} ${c2cObj.displayState}">Ask HMRC a question</div>`;
+              break;
+            case 'busy':
+              div.innerHTML = `<div class="${btnType} ${c2cObj.displayState}">All advisers are busy</div>`;
+              break;
+            case 'chatactive':
+              div.innerHTML = `<div class="${btnType} ${c2cObj.displayState}">In progress</div>`;
+        }
+        btn.innerHTML = "";
+        btn.appendChild(div);
+
+        if (c2cObj.launchable) {
+            let btn = document.getElementById(divID);
+            btn.onclick = function() {
+                console.log(this);
+                ths.sdk.onC2CClicked(c2cObj.c2cIdx, function(state) {
+                    console.log("onC2CClicked callback:");
+                    console.log(state);
+
+                    // create chat window
+                    this.main();
+                });
+            }
+        }
     }
 };
-
-//launch proactive chat
-function nuanceProactive(obj) {
-  console.log(`### PROACTIVE`, obj);
-  ChatSkin.main();
-}
-
-// Reactive callbacks
-var c2cButtons = {};
-
-function nuanceReactive_HMRC_CIAPI_Fixed_1(c2cObj) {
-  nuanceTobiC2CLaunch(c2cObj, "HMRC_CIAPI_Fixed_1");
-}
-
-function nuanceReactive_HMRC_CIAPI_Anchored_1(c2cObj) {
-  nuanceTobiC2CLaunch(c2cObj, "HMRC_CIAPI_Anchored_1");
-}
-
-function nuanceTobiC2CLaunch(c2cObj, divID) {
-    console.log("****** Launch ", divID);
-  console.log(c2cObj);
-  c2cButtons[c2cObj.c2cIdx] = divID;
-
-  let btn = document.getElementById(divID);
-  let div = top.document.createElement("DIV");
-
-  let btnType = (divID.toLowerCase().match(/anchored/)) ? "anchored" : "fixed";
-
-  div.setAttribute("class", "c2cButton");
-  switch (c2cObj.displayState) {
-    case 'outofhours':
-      div.innerHTML = `<div class="${btnType} ${c2cObj.displayState}">Out of hours</div>`;
-      break;
-    case 'ready':
-      div.innerHTML = `<div class="${btnType} ${c2cObj.displayState}">Ask HMRC a question</div>`;
-      break;
-    case 'busy':
-      div.innerHTML = `<div class="${btnType} ${c2cObj.displayState}">All advisers are busy</div>`;
-      break;
-    case 'chatactive':
-      div.innerHTML = `<div class="${btnType} ${c2cObj.displayState}">In progress</div>`;
-  }
-  btn.innerHTML = "";
-  btn.appendChild(div);
-
-  if (c2cObj.launchable) {
-    let btn = document.getElementById(divID);
-    btn.onclick = function() {
-      console.log(this);
-      Inq.SDK.onC2CClicked(c2cObj.c2cIdx, function(state) {
-        console.log("onC2CClicked callback:");
-        console.log(state);
-
-        // create chat window
-        ChatSkin.main();
-      });
-    }
-  }
-}
 
 const chatListener = {
     onAnyEvent: function(evt) {
         console.log("Chat any event:", evt);
     },
     onC2CStateChanged: function(evt) {
-        ChatSkin.updateC2CButtonsToInProgress();
+        chatController.updateC2CButtonsToInProgress();
     }
 };
 
@@ -280,21 +283,24 @@ var InqRegistry = {
   listeners: [chatListener]
 };
 
-function nuanceFrameworkLoaded() {
-	console.log("### framework loaded");
-
-	if (Inq.SDK.isChatInProgress()) {
-	    console.log("chat is in progress")
-		setTimeout(function() {
-		    ChatSkin.main();
-		}, 2000);
-	}
-}
-
 export function hookWindow(w) {
     w.InqRegistry = InqRegistry;
-    w.nuanceFrameworkLoaded = nuanceFrameworkLoaded;
-    w.nuanceReactive_HMRC_CIAPI_Fixed_1 = nuanceReactive_HMRC_CIAPI_Fixed_1;
-    w.nuanceReactive_HMRC_CIAPI_Anchored_1 = nuanceReactive_HMRC_CIAPI_Anchored_1;
-    w.nuanceProactive = nuanceProactive;
+    w.nuanceFrameworkLoaded = function nuanceFrameworkLoaded() {
+        console.log("### framework loaded");
+        chatController.nuanceFrameworkLoaded(w);
+    };
+    w.nuanceReactive_HMRC_CIAPI_Fixed_1 = function nuanceReactive_HMRC_CIAPI_Fixed_1(c2cObj) {
+        this.setSDK(w);
+        chatController.nuanceTobiC2CLaunch(w, c2cObj, "HMRC_CIAPI_Fixed_1");
+    };
+    w.nuanceReactive_HMRC_CIAPI_Anchored_1 = function nuanceReactive_HMRC_CIAPI_Anchored_1(c2cObj) {
+        this.setSDK(w);
+        chatController.nuanceTobiC2CLaunch(w, c2cObj, "HMRC_CIAPI_Anchored_1");
+    };
+    //launch proactive chat
+    w.nuanceProactive = function nuanceProactive(obj) {
+        console.log(`### PROACTIVE`, obj);
+        chatController.setSDK(w);
+        chatController.main();
+    };
 }
