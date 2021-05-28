@@ -1,8 +1,10 @@
-let chatController = {
-    sdk: null,          // Filled in at launch
-    c2cButtons: {},     // Reactive callbacks
+class ChatController {
+    constructor() {
+        this.sdk = null;
+        this.c2cButtons = {};
+    }
 
-    main: function() {
+    main() {
         if (this.container) {
             return
         }
@@ -40,8 +42,9 @@ let chatController = {
         } catch (e) {
             console.error("!!!! chat displayed got exception: ", e);
         }
-    },
-    initContainer: function() {
+    }
+
+    initContainer() {
         let containerHtml = `
         <div id="ciapiSkinContainer">
             <div id="ciapiSkinHeader">
@@ -62,8 +65,9 @@ let chatController = {
         this.custInput = document.getElementById("custMsg");
 
         this.registerEventListener();
-    },
-    registerEventListener: function() {
+    }
+
+    registerEventListener() {
       document.getElementById("ciapiSkinSendButton").addEventListener("click", (e) => {
         this.actionSendButton();
       });
@@ -77,14 +81,14 @@ let chatController = {
           e.preventDefault()
         }
       })
-    },
+    }
 
-    addTextAndScroll: function(msg) {
+    addTextAndScroll(msg) {
       this.content.insertAdjacentHTML("beforeend", msg);
       this.content.scrollTo(0, this.content.scrollHeight);
-    },
+    }
 
-    addText: function(msg, agent) {
+    addText(msg, agent) {
       var msgDiv = "";
       if (agent) {
         console.log("Add agent text: ", msg);
@@ -94,9 +98,9 @@ let chatController = {
         msgDiv = "<div class='ciapiSkinTranscriptCustLine'><div class='bubble customer-bubble background-img enter'>" + msg + "</div></div>";
       }
       this.addTextAndScroll(msgDiv);
-    },
+    }
 
-    fixUpVALinks: function(div) {
+    fixUpVALinks(div) {
         var links = div.getElementsByTagName('a');
 
         var self = this;
@@ -111,9 +115,9 @@ let chatController = {
                 }
             }
         }
-    },
+    }
 
-    addAutomatonText: function(msg) {
+    addAutomatonText(msg) {
         console.log("Add automaton text: ", msg);
 
         var msgDiv = "<div class='bubble agent-bubble background-img enter'>" + msg + "</div>";
@@ -125,31 +129,31 @@ let chatController = {
 
         this.content.appendChild(agentDiv);
         this.content.scrollTo(0, this.content.scrollHeight);
-    },
+    }
 
-    linkCallback: function(data1, data2, data3) {
+    linkCallback(data1, data2, data3) {
         console.log("link callback: ", data1, data2, data3);
-    },
+    }
 
-    onClickHandler: function(e) {
+    onClickHandler(e) {
         this.sdk.sendVALinkMessage(e, this.linkCallback)
-    },
+    }
 
-    addSystemMsg: function(msg) {
+    addSystemMsg(msg) {
       var msgDiv = "<div class='ciapiSkinTranscriptSysMsg'><div class='ciapiSkinSysMsg'>" + msg + "</div></div>";
       this.addTextAndScroll(msgDiv);
-    },
+    }
 
-    displayOpenerScripts: function(openerScripts) {
+    displayOpenerScripts(openerScripts) {
       if (openerScripts != null && openerScripts.length > 0) {
         for (var i = 0; i < openerScripts.length; i++) {
           var msgDiv = "<div class='ciapiSkinTranscriptOpener'><div class='ciapiSkinOpener'>" + openerScripts[i] + "</div></div>";
           this.addTextAndScroll(msgDiv);
         }
       }
-    },
+    }
 
-    actionSendButton: function() {
+    actionSendButton() {
       if (this.isConnected) {
         console.log("connected: send message")
         this.sendMessage();
@@ -157,9 +161,9 @@ let chatController = {
         console.log("not connected: engage request")
         this.engageRequest();
       }
-    },
+    }
 
-    engageRequest: function() {
+    engageRequest() {
       var self = this;
       this.sdk.engageChat(this.custInput.value, function(resp) {
         if (resp.httpStatus == 200) {
@@ -168,26 +172,26 @@ let chatController = {
           self.getMessage();
         }
       })
-    },
+    }
 
-    sendMessage: function() {
+    sendMessage() {
       this.sequenceNo += 1;
       this.sdk.sendMessage(this.custInput.value)
       this.custInput.value = "";
-    },
+    }
 
-    closeChat: function() {
+    closeChat() {
       this.sdk.closeChat();
-    },
+    }
 
-    getMessage: function() {
+    getMessage() {
       var self = this;
       this.sdk.getMessages(function(resp) {
         self.handleMsgs(resp.data);
       });
-    },
+    }
 
-    handleMsgs: function(msg) {
+    handleMsgs(msg) {
       console.log(msg);
       if (msg.messageType === "chat.communication") {
         this.addText(msg.messageText, msg.agentID);
@@ -198,9 +202,9 @@ let chatController = {
       } else if (msg.messageType === "chat.communication.queue") {
         this.addSystemMsg(msg.messageText);
       }
-    },
+    }
 
-    updateC2CButtonsToInProgress: function() {
+    updateC2CButtonsToInProgress() {
       var c2cIds = Object.keys(this.c2cButtons);
       c2cIds.forEach(function(c2cId) {
         let c2cObj = {
@@ -210,13 +214,13 @@ let chatController = {
         };
         nuanceTobiC2CLaunch(c2cObj, this.c2cButtons[c2cId]);
       });
-    },
+    }
 
-    setSDK: function(w) {
+    setSDK(w) {
         this.sdk = w.Inq.SDK;
-    },
+    }
 
-    nuanceFrameworkLoaded: function(w) {
+    nuanceFrameworkLoaded(w) {
         this.setSDK(w);
         var self = this;
         if (this.sdk.isChatInProgress()) {
@@ -225,9 +229,9 @@ let chatController = {
                 self.main();
             }, 2000);
         }
-    },
+    }
 
-    nuanceTobiC2CLaunch: function(c2cObj, divID) {
+    nuanceTobiC2CLaunch(c2cObj, divID) {
         console.log("****** Launch ", divID);
         console.log(c2cObj);
         this.c2cButtons[c2cObj.c2cIdx] = divID;
@@ -284,6 +288,8 @@ var InqRegistry = {
 };
 
 export function hookWindow(w) {
+    var chatController = new ChatController;
+
     w.InqRegistry = InqRegistry;
     w.nuanceFrameworkLoaded = function nuanceFrameworkLoaded() {
         console.log("### framework loaded");
