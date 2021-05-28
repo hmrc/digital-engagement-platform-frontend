@@ -273,7 +273,7 @@ function nuanceTobiC2CLaunch(c2cObj, divID) {
   }
 }
 
-var chatListener = {
+const chatListener = {
     onAnyEvent: function(evt) {
         console.log("Chat any event:", evt);
     },
