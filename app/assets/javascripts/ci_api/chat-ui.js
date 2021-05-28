@@ -39,34 +39,28 @@ export var ChatSkin = {
         }
     },
     initContainer: function() {
-        // Container
-        this.container = document.createElement("div");
-        this.container.id = "ciapiSkinContainer";
+        let containerHtml = `
+        <div id="ciapiSkinContainer">
+            <div id="ciapiSkinHeader">
+                <div id="ciapiSkinTitleBar"><span>Ask HMRC</span></div>
+                <div id="ciapiSkinCloseButton">(X)</div>
+            </div>
+            <div id="ciapiSkinChatTranscript"></div>
+            <div id="ciapiSkinFooter">
+                <textarea id="custMsg" rows="5" cols="50" wrap="physical" name="comments"></textarea>
+                <div id="ciapiSkinSendButton">Send</div>
+            </div>
+        </div>
+        `
+        document.getElementsByTagName("body")[0].insertAdjacentHTML("beforeend", containerHtml);
 
-        // Header
-        this.header = document.createElement("div");
-        this.header.id = "ciapiSkinHeader";
-        this.header.innerHTML = `<div id="ciapiSkinTitleBar"><span>Ask HMRC</span></div><div id="ciapiSkinCloseButton">(X)</div>`;
+        this.container = document.getElementById("ciapiSkinContainer");
+        this.content = document.getElementById("ciapiSkinChatTranscript");
+        this.custInput = document.getElementById("custMsg");
 
-        // Chat Transcript
-        this.content = document.createElement("div");
-        this.content.id = "ciapiSkinChatTranscript"
-
-        // Footer
-        this.footer = document.createElement("div");
-        this.footer.id = "ciapiSkinFooter"
-        this.footer.innerHTML = `<textarea id="custMsg" rows="5" cols="50" wrap="physical" name="comments"></textarea><div id="ciapiSkinSendButton">Send</div>`;
-
-        // Append elements to container
-        this.container.appendChild(this.header);
-        this.container.appendChild(this.content);
-        this.container.appendChild(this.footer);
-
-        document.getElementsByTagName("body")[0].appendChild(this.container);
         this.registerEventListener();
     },
     registerEventListener: function() {
-      this.custInput = document.getElementById("custMsg");
       document.getElementById("ciapiSkinSendButton").addEventListener("click", (e) => {
         this.actionSendButton();
       });
