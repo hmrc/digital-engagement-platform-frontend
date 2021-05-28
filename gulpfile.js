@@ -3,6 +3,7 @@
 var gulp = require('gulp');
 const del = require('del');
 var jest = require('gulp-jest').default;
+const babel = require('gulp-babel');
 const rollup = require('rollup-stream');
 const source = require('vinyl-source-stream');
 const buffer = require('vinyl-buffer');
@@ -16,6 +17,9 @@ const rollupJS = (inputFile, options) => {
     })
     .pipe(source(inputFile, options.basePath))
     .pipe(buffer())
+    .pipe(babel({
+       "plugins": [ "@babel/plugin-transform-template-literals"]
+	}))
     .pipe(gulp.dest(options.distPath));
   };
 }
