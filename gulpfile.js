@@ -18,7 +18,14 @@ const rollupJS = (inputFile, options) => {
     .pipe(source(inputFile, options.basePath))
     .pipe(buffer())
     .pipe(babel({
-       "plugins": [ "@babel/plugin-transform-template-literals"]
+       "presets": [
+         [
+           "@babel/preset-env",
+           {
+            "targets": "ie >= 11"
+           }
+         ]
+       ]
 	}))
     .pipe(gulp.dest(options.distPath));
   };
