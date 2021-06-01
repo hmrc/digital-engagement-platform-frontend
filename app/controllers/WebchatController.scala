@@ -53,7 +53,6 @@ class WebchatController @Inject()(appConfig: AppConfig,
                                   probateView: ProbateView,
                                   inheritanceTaxView: InheritanceTaxView,
                                   additionalNeedsHelpView: AdditionalNeedsHelpView,
-                                  eatOutToHelpOutView: EatOutToHelpOutView,
                                   personalTransportUnitEnquiriesView: PersonalTransportUnitEnquiriesView,
                                   ir35EnquriesView: Ir35EnquiriesView) extends FrontendController(mcc) {
 
@@ -169,10 +168,6 @@ class WebchatController @Inject()(appConfig: AppConfig,
 
   def additionalNeedsHelp: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(additionalNeedsHelpView()))
-  }
-
-  def eatOutToHelpOut: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(eatOutToHelpOutView(isIvrRedirect())))
   }
 
   def personalTransportUnitEnquiries: Action[AnyContent] = Action.async { implicit request =>

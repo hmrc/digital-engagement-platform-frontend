@@ -239,14 +239,6 @@ class WebchatControllerSpec
       doc.select("h1").text() mustBe "HMRC’s Extra Support team: webchat"
     }
 
-    "Eat Out To Help Out page" in {
-      val result = controller.eatOutToHelpOut(fakeRequest)
-      val doc = asDocument(contentAsString(result))
-
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Eat Out to Help Out scheme: webchat"
-    }
-
     "Personal Transport Unit Enquiries page" in {
       val result = controller.personalTransportUnitEnquiries (fakeRequest)
       val doc = asDocument (contentAsString (result) )
