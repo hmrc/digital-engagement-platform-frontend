@@ -39,7 +39,7 @@ class ChildBenefitViewSpec extends ChatViewBehaviours {
       returnUrl,
       Seq(
         "Opening times:",
-        "Monday to Friday, 8am to 8pm",
+        "Monday to Friday, 8am to 7:30pm",
         "Saturday, 8am to 4pm",
         "Closed Sundays and bank holidays."
       )
