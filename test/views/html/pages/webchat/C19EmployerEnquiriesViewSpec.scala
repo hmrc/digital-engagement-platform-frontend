@@ -39,7 +39,7 @@ class C19EmployerEnquiriesViewSpec extends ChatViewBehaviours {
       returnUrl,
       Seq(
         "Opening times:",
-        "Monday to Friday, 8am to 7:30pm",
+        "Monday to Friday, 8am to 4pm",
         "Closed weekends and bank holidays."
       )
     )
