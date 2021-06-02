@@ -1,7 +1,70 @@
+class Click2ChatButtons {
+    constructor(sdk, controller) {
+        this.buttons = {};
+        this.sdk = sdk;
+        this.controller = controller;
+    }
+
+    updateC2CButtonsToInProgress() {
+      for (const c2dId of Object.keys(this.buttons)) {
+        const c2cObj = {
+          c2cIdx: c2cId,
+          displayState: "chatactive",
+          launchable: false
+        };
+        updateC2CButton(c2cObj, this.buttons[c2cId]);
+      };
+    }
+
+    updateC2CButton(c2cObj, divID) {
+        let btn = document.getElementById(divID);
+        let div = window.top.document.createElement("DIV");
+
+        const btnType = (divID.toLowerCase().match(/anchored/)) ? "anchored" : "fixed";
+
+        div.setAttribute("class", "c2cButton");
+        switch (c2cObj.displayState) {
+            case 'outofhours':
+              div.innerHTML = `<div class="${btnType} ${c2cObj.displayState}">Out of hours</div>`;
+              break;
+            case 'ready':
+              div.innerHTML = `<div class="${btnType} ${c2cObj.displayState}">Ask HMRC a question</div>`;
+              break;
+            case 'busy':
+              div.innerHTML = `<div class="${btnType} ${c2cObj.displayState}">All advisers are busy</div>`;
+              break;
+            case 'chatactive':
+              div.innerHTML = `<div class="${btnType} ${c2cObj.displayState}">In progress</div>`;
+        }
+        btn.innerHTML = "";
+        btn.appendChild(div);
+
+        if (c2cObj.launchable) {
+            let btn = document.getElementById(divID);
+            btn.onclick = function() {
+                console.log(this);
+                ths.sdk.onC2CClicked(c2cObj.c2cIdx, function(state) {
+                    console.log("onC2CClicked callback:");
+                    console.log(state);
+
+                    // create chat window
+                    this.controller.main();
+                }.bind(this));
+            }
+        }
+    }
+
+    addC2CButton(c2cObj, divID) {
+        console.log("SetC2CButton for", divID, ":", c2cObj);
+        this.buttons[c2cObj.c2cIdx] = divID;
+        this.updateC2CButton(c2cObj, divID);
+    }
+};
+
 class ChatController {
     constructor() {
         this.sdk = null;
-        this.c2cButtons = {};
+        this.c2cButtons = null;
     }
 
     main() {
@@ -16,13 +79,14 @@ class ChatController {
 
         this.sdk.getOpenerScripts(this.displayOpenerScripts.bind(this));
 
-        this.updateC2CButtonsToInProgress();
+//        this.c2cButtons.updateC2CButtonsToInProgress();
 
         try {
+            console.log("===== chatDisplayed =====");
             this.sdk.chatDisplayed({
               "customerName": "You",
               "previousMessagesCb": function(resp) {
-                console.log("previous messages");
+                console.log("--- previous messages");
                 console.log(resp);
                 for (var message of resp.messages) {
                   this.handleMessage(message);
@@ -30,9 +94,15 @@ class ChatController {
                 this.isConnected = true;
                 this.getMessage();
               }.bind(this),
-              "disconnectCb": function() {},
-              "reConnectCb": function() {},
-              "failedCb": function() {},
+              "disconnectCb": function() {
+                console.log("%%%%%% disconnectCb %%%%%%");
+              },
+              "reConnectCb": function() {
+                console.log("%%%%%% reConnectCb %%%%%%");
+              },
+              "failedCb": function() {
+                console.log("%%%%%% failedCb %%%%%%");
+              },
               "openerScripts": null,
               "defaultAgentAlias": "HMRC"
             });
@@ -48,7 +118,7 @@ class ChatController {
                 <div id="ciapiSkinTitleBar"><span>Ask HMRC</span></div>
                 <div id="ciapiSkinCloseButton">(X)</div>
             </div>
-            <div id="ciapiSkinChatTranscript"></div>
+            <div id="ciapiSkinChatTranscript" role="log"></div>
             <div id="ciapiSkinFooter">
                 <textarea id="custMsg" rows="5" cols="50" wrap="physical" name="comments"></textarea>
                 <div id="ciapiSkinSendButton">Send</div>
@@ -61,10 +131,10 @@ class ChatController {
         this.content = document.getElementById("ciapiSkinChatTranscript");
         this.custInput = document.getElementById("custMsg");
 
-        this.registerEventListener();
+        this.registerEventListeners();
     }
 
-    registerEventListener() {
+    registerEventListeners() {
       document.getElementById("ciapiSkinSendButton").addEventListener("click", (e) => {
         this.actionSendButton();
       });
@@ -148,17 +218,20 @@ class ChatController {
     }
 
     actionSendButton() {
-      if (this.isConnected) {
-        console.log("connected: send message")
-        this.sendMessage();
-      } else {
-        console.log("not connected: engage request")
-        this.engageRequest();
-      }
+        var text = this.custInput.value;
+        if (this.isConnected) {
+            console.log("connected: send message")
+            this.sendMessage(text);
+            this.custInput.value = "";
+        } else {
+            console.log("not connected: engage request")
+            this.engageRequest(text);
+        }
     }
 
-    engageRequest() {
-      this.sdk.engageChat(this.custInput.value, function(resp) {
+    engageRequest(text) {
+      this.sdk.engageChat(text, function(resp) {
+        console.log("++++ ENGAGED ++++ ->", resp);
         if (resp.httpStatus == 200) {
           this.custInput.value = "";
           this.isConnected = true;
@@ -167,10 +240,8 @@ class ChatController {
       }.bind(this));
     }
 
-    sendMessage() {
-      this.sequenceNo += 1;
-      this.sdk.sendMessage(this.custInput.value)
-      this.custInput.value = "";
+    sendMessage(text) {
+      this.sdk.sendMessage(text)
     }
 
     closeChat() {
@@ -192,19 +263,10 @@ class ChatController {
         this.addSystemMsg("Agent Left Chat.");
       } else if (msg.messageType === "chat.communication.queue") {
         this.addSystemMsg(msg.messageText);
+      } else if (msg.messageType === "chat.denied") {
+        this.isConnected = false;
+        this.addSystemMsg("No agents are available.");
       }
-    }
-
-    updateC2CButtonsToInProgress() {
-      var c2cIds = Object.keys(this.c2cButtons);
-      c2cIds.forEach(function(c2cId) {
-        let c2cObj = {
-          c2cIdx: c2cId,
-          displayState: "chatactive",
-          launchable: false
-        };
-        nuanceTobiC2CLaunch(c2cObj, this.c2cButtons[c2cId]);
-      });
     }
 
     setSDK(w) {
@@ -215,50 +277,18 @@ class ChatController {
         this.setSDK(w);
         if (this.sdk.isChatInProgress()) {
             console.log("chat is in progress")
-            setTimeout(this.main.bind(this), 2000);
+//            setTimeout(this.main.bind(this), 2000);
         }
     }
 
-    nuanceTobiC2CLaunch(c2cObj, divID) {
-        console.log("****** Launch ", divID);
-        console.log(c2cObj);
-        this.c2cButtons[c2cObj.c2cIdx] = divID;
-
-        let btn = document.getElementById(divID);
-        let div = top.document.createElement("DIV");
-
-        let btnType = (divID.toLowerCase().match(/anchored/)) ? "anchored" : "fixed";
-
-        div.setAttribute("class", "c2cButton");
-        switch (c2cObj.displayState) {
-            case 'outofhours':
-              div.innerHTML = `<div class="${btnType} ${c2cObj.displayState}">Out of hours</div>`;
-              break;
-            case 'ready':
-              div.innerHTML = `<div class="${btnType} ${c2cObj.displayState}">Ask HMRC a question</div>`;
-              break;
-            case 'busy':
-              div.innerHTML = `<div class="${btnType} ${c2cObj.displayState}">All advisers are busy</div>`;
-              break;
-            case 'chatactive':
-              div.innerHTML = `<div class="${btnType} ${c2cObj.displayState}">In progress</div>`;
+    addC2CButton(w, c2cObj, divID) {
+        console.log("---- Add C2C Button: ", c2cObj, divID);
+        this.setSDK(w);
+        if (this.c2cButtons === null) {
+            this.c2cButtons = new Click2ChatButtons(this.sdk, this);
         }
-        btn.innerHTML = "";
-        btn.appendChild(div);
 
-        if (c2cObj.launchable) {
-            let btn = document.getElementById(divID);
-            btn.onclick = function() {
-                console.log(this);
-                ths.sdk.onC2CClicked(c2cObj.c2cIdx, function(state) {
-                    console.log("onC2CClicked callback:");
-                    console.log(state);
-
-                    // create chat window
-                    this.main();
-                }.bind(this));
-            }
-        }
+        this.c2cButtons.addC2CButton(c2cObj, divID);
     }
 };
 
@@ -267,7 +297,8 @@ const chatListener = {
         console.log("Chat any event:", evt);
     },
     onC2CStateChanged: function(evt) {
-        chatController.updateC2CButtonsToInProgress();
+        console.log("C2C state changed...")
+//        chatController.updateC2CButtonsToInProgress();
     }
 };
 
@@ -275,26 +306,46 @@ var InqRegistry = {
   listeners: [chatListener]
 };
 
+function safeHandler(f, helpful_name) {
+    return function() {
+        try {
+            f.apply(null, arguments)
+        } catch(e) {
+            console.error(`!!!! handler for ${f.name}: got exception `, e);
+        }
+    }
+}
+
 export function hookWindow(w) {
     var chatController = new ChatController;
 
     w.InqRegistry = InqRegistry;
-    w.nuanceFrameworkLoaded = function nuanceFrameworkLoaded() {
-        console.log("### framework loaded");
-        chatController.nuanceFrameworkLoaded(w);
-    };
-    w.nuanceReactive_HMRC_CIAPI_Fixed_1 = function nuanceReactive_HMRC_CIAPI_Fixed_1(c2cObj) {
-        this.setSDK(w);
-        chatController.nuanceTobiC2CLaunch(w, c2cObj, "HMRC_CIAPI_Fixed_1");
-    };
-    w.nuanceReactive_HMRC_CIAPI_Anchored_1 = function nuanceReactive_HMRC_CIAPI_Anchored_1(c2cObj) {
-        this.setSDK(w);
-        chatController.nuanceTobiC2CLaunch(w, c2cObj, "HMRC_CIAPI_Anchored_1");
-    };
+
+    w.nuanceFrameworkLoaded = safeHandler(
+        function nuanceFrameworkLoaded() {
+            console.log("### framework loaded");
+            chatController.nuanceFrameworkLoaded(w);
+        }
+    );
+
+    w.nuanceReactive_HMRC_CIAPI_Fixed_1 = safeHandler(
+        function nuanceReactive_HMRC_CIAPI_Fixed_1(c2cObj) {
+            chatController.addC2CButton(w, c2cObj, "HMRC_CIAPI_Fixed_1");
+        }
+    );
+
+    w.nuanceReactive_HMRC_CIAPI_Anchored_1 = safeHandler(
+        function nuanceReactive_HMRC_CIAPI_Anchored_1(c2cObj) {
+            chatController.addC2CButton(w, c2cObj, "HMRC_CIAPI_Anchored_1");
+        }
+    );
+
     //launch proactive chat
-    w.nuanceProactive = function nuanceProactive(obj) {
-        console.log(`### PROACTIVE`, obj);
-        chatController.setSDK(w);
-        chatController.main();
-    };
+    w.nuanceProactive =  safeHandler(
+        function nuanceProactive(obj) {
+            console.log("### PROACTIVE", obj);
+            chatController.setSDK(w);
+            chatController.main();
+        }
+    );
 }
