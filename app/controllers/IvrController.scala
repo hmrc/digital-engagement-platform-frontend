@@ -34,8 +34,7 @@ class IvrController @Inject()(appConfig: AppConfig,
                               vatEnquiriesView: VatEnquiriesView,
                               nationalInsuranceNumbersView: NationalInsuranceNumbersView,
                               exciseEnquiriesView: ExciseEnquiriesView,
-                              selfAssessmentView: SelfAssessmentView,
-                              eatOutToHelpOut: EatOutToHelpOutView) extends FrontendController(mcc) {
+                              selfAssessmentView: SelfAssessmentView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
@@ -84,9 +83,4 @@ class IvrController @Inject()(appConfig: AppConfig,
   def c19EmployerEnquiries: Action[AnyContent] = Action.async {
     Future.successful(Redirect(controllers.routes.WebchatController.c19EmployerEnquiries().url + param))
   }
-
- //TODO: Once Eat Out to Help Out scheme is confirmed decomissioned, remove the below. Commented as referencing non existent route.
- /* def eatOutToHelpOut: Action[AnyContent] = Action.async {
-    Future.successful(Redirect(controllers.routes.WebchatController.eatOutToHelpOut().url + param))
-  }*/
 }

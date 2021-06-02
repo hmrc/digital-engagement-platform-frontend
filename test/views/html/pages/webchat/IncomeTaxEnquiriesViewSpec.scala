@@ -39,7 +39,7 @@ class IncomeTaxEnquiriesViewSpec extends ChatViewBehaviours {
       returnUrl,
       Seq(
         "Opening times:",
-        "Monday to Saturday, 8am to 8pm",
+        "Monday to Saturday, 8am to 7:30pm",
         "Closed Sundays and bank holidays."
       )
     )
