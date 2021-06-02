@@ -26,8 +26,6 @@ class ChatController {
             this.sdk.chatDisplayed({
               "customerName": "You",
               "previousMessagesCb": function(resp) {
-                console.log("--- previous messages");
-                console.log(resp);
                 for (var message of resp.messages) {
                   this.handleMessage(message);
                 };
@@ -103,11 +101,11 @@ class ChatController {
     actionSendButton() {
         var text = this.custInput.value;
         if (this.isConnected) {
-            console.log("connected: send message")
+            console.log(">>> connected: send message")
             this.sendMessage(text);
             this.custInput.value = "";
         } else {
-            console.log("not connected: engage request")
+            console.log(">>> not connected: engage request")
             this.engageRequest(text);
         }
     }
@@ -137,6 +135,9 @@ class ChatController {
 
     handleMessage(msg) {
         this.transcript.handleMessage(msg.data);
+        if (msg.data.messageType === "chat.denied") {
+            this.isConnected = false;
+        }
     }
 
     setSDK(w) {

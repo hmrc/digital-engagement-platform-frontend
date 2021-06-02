@@ -12,10 +12,8 @@ export default class Transcript {
     addText(msg, agent) {
       let msgDiv = "";
       if (agent) {
-        console.log("Add agent text: ", msg);
         msgDiv = "<div class='ciapiSkinTranscriptAgentLine'><div class='bubble agent-bubble background-img enter'>" + msg + "</div></div>";
       } else {
-        console.log("Add customer text: ", msg);
         msgDiv = "<div class='ciapiSkinTranscriptCustLine'><div class='bubble customer-bubble background-img enter'>" + msg + "</div></div>";
       }
       this.addTextAndScroll(msgDiv);
@@ -32,7 +30,8 @@ export default class Transcript {
     }
 
     linkCallback(data1, data2, data3) {
-        console.log("link callback: ", data1, data2, data3);
+        // data1 seems to be the text clicked on.
+//        console.log("link callback: ", data1, data2, data3);
     }
 
     onClickHandler(e) {
@@ -53,8 +52,6 @@ export default class Transcript {
     }
 
     addAutomatonText(msg) {
-        console.log("Add automaton text: ", msg);
-
         const msgDiv = "<div class='bubble agent-bubble background-img enter'>" + msg + "</div>";
 
         let agentDiv = document.createElement("div")
@@ -68,7 +65,7 @@ export default class Transcript {
     }
 
     handleMessage(msg) {
-      console.log(msg);
+//      console.log(msg);
       if (msg.messageType === "chat.communication") {
         this.addText(msg.messageText, msg.agentID);
       } else if (msg.messageType === "chat.automaton_request") {
@@ -78,7 +75,6 @@ export default class Transcript {
       } else if (msg.messageType === "chat.communication.queue") {
         this.addSystemMsg(msg.messageText);
       } else if (msg.messageType === "chat.denied") {
-        this.isConnected = false;
         this.addSystemMsg("No agents are available.");
       }
     }
