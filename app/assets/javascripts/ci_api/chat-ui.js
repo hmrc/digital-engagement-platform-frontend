@@ -71,7 +71,7 @@ class ChatController {
 
         this.registerEventListeners();
 
-        this.transcript = new Transcript(this.content, this.sdk);
+        this.transcript = new Transcript(this.content, this.onClickHandler.bind(this));
     }
 
     registerEventListeners() {
@@ -88,6 +88,15 @@ class ChatController {
           e.preventDefault()
         }
       })
+    }
+
+    linkCallback(data1, data2, data3) {
+        // data1 seems to be the text clicked on.
+//        console.log("link callback: ", data1, data2, data3);
+    }
+
+    onClickHandler(e) {
+        this.sdk.sendVALinkMessage(e, this.linkCallback)
     }
 
     displayOpenerScripts(openerScripts) {

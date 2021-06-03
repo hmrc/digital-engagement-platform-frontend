@@ -25,9 +25,9 @@ const Classes = {
 };
 
 export default class Transcript {
-    constructor(content, sdk) {
+    constructor(content, vaLinkCallback) {
         this.content = content;
-        this.sdk = sdk;
+        this.vaLinkCallback = vaLinkCallback;
     }
 
     addTextAndScroll(msg) {
@@ -56,23 +56,13 @@ export default class Transcript {
       this.addTextWithClass(msg, Classes.Opener);
     }
 
-    linkCallback(data1, data2, data3) {
-        // data1 seems to be the text clicked on.
-//        console.log("link callback: ", data1, data2, data3);
-    }
-
-    onClickHandler(e) {
-        this.sdk.sendVALinkMessage(e, this.linkCallback)
-    }
-
     fixUpVALinks(div) {
         const links = div.getElementsByTagName('a');
 
-        const clickHandler = this.onClickHandler.bind(this);
         for (var link of links) {
             for (var attribute of link.attributes) {
                 if (attribute.name === "data-vtz-link-type" && attribute.value === "Dialog") {
-                    link.onclick = clickHandler;
+                    link.onclick = this.vaLinkCallback;
                 }
             }
         }
@@ -92,7 +82,6 @@ export default class Transcript {
     }
 
     handleMessage(msg) {
-//      console.log(msg);
       if (msg.messageType === MessageType.Chat_Communication) {
         this.addText(msg.messageText, msg.agentID);
       } else if (msg.messageType === MessageType.Chat_AutomationRequest) {
