@@ -6,19 +6,19 @@ export default class Transcript {
     }
 
     addAgentMsg(msg, agent) {
-        this._addTextWithClass(msg, this.classes.Agent);
+        this._appendMessage(msg, this.classes.Agent);
     }
 
     addCustomerMsg(msg, agent) {
-        this._addTextWithClass(msg, this.classes.Customer);
+        this._appendMessage(msg, this.classes.Customer);
     }
 
     addSystemMsg(msg) {
-        this._addTextWithClass(msg, this.classes.System);
+        this._appendMessage(msg, this.classes.System);
     }
 
     addOpenerScript(msg) {
-        this._addTextWithClass(msg, this.classes.Opener);
+        this._appendMessage(msg, this.classes.Opener);
     }
 
     addAutomatonMsg(msg) {
@@ -46,15 +46,9 @@ export default class Transcript {
         }
     }
 
-    _addTextAndScroll(msg) {
-        this.content.insertAdjacentHTML("beforeend", msg);
+    _appendMessage(msg, msg_class) {
+        const msgDiv = `<div class='${msg_class.Outer}'><div class='${msg_class.Inner}'>${msg}</div></div>`;
+        this.content.insertAdjacentHTML("beforeend", msgDiv);
         this.content.scrollTo(0, this.content.scrollHeight);
     }
-
-    _addTextWithClass(msg, msg_class) {
-        const msgDiv = `<div class='${msg_class.Outer}'><div class='${msg_class.Inner}'>${msg}</div></div>`;
-        this._addTextAndScroll(msgDiv);
-    }
-
-
 }
