@@ -1,4 +1,5 @@
 import ClickToChatButtons from './ClickToChatButtons'
+import ClickToChatButton from './ClickToChatButton'
 import Transcript from './Transcript'
 import * as MessageType from './NuanceMessageType'
 import * as MessageClasses from './DefaultClasses'
@@ -6,7 +7,7 @@ import * as MessageClasses from './DefaultClasses'
 class ChatController {
     constructor() {
         this.sdk = null;
-        this.c2cButtons = null;
+        this.c2cButtons = new ClickToChatButtons(this.onC2CButtonClicked.bind(this));
     }
 
     main() {
@@ -73,7 +74,6 @@ class ChatController {
 
         this.registerEventListeners();
 
-        console.error("MessageClasses is ", MessageClasses);
         this.transcript = new Transcript(this.content, this.onClickHandler.bind(this), MessageClasses);
     }
 
@@ -167,9 +167,16 @@ class ChatController {
 
     setSDK(w) {
         this.sdk = w.Inq.SDK;
-        if (this.c2cButtons === null) {
-            this.c2cButtons = new ClickToChatButtons(this.sdk, this);
-        }
+    }
+
+    onC2CButtonClicked(c2cIdx) {
+        this.sdk.onC2CClicked(c2cIdx, function(state) {
+            console.log("onC2CClicked callback:");
+            console.log(state);
+
+            // create chat window
+            this.main();
+        }.bind(this));
     }
 
     nuanceFrameworkLoaded(w) {
@@ -181,9 +188,9 @@ class ChatController {
         }
     }
 
-    addC2CButton(c2cObj, divID) {
-        console.log("---- Add C2C Button: ", c2cObj, divID);
-        this.c2cButtons.addC2CButton(c2cObj, divID);
+    addC2CButton(c2cObj, divID, buttonClass) {
+        const button = new ClickToChatButton(document.getElementById(divID), buttonClass);
+        this.c2cButtons.addButton(c2cObj, button);
     }
 };
 
@@ -224,13 +231,13 @@ export function hookWindow(w) {
 
     w.nuanceReactive_HMRC_CIAPI_Fixed_1 = safeHandler(
         function nuanceReactive_HMRC_CIAPI_Fixed_1(c2cObj) {
-            chatController.addC2CButton(c2cObj, "HMRC_CIAPI_Fixed_1");
+            chatController.addC2CButton(c2cObj, "HMRC_CIAPI_Fixed_1", "fixed");
         }
     );
 
     w.nuanceReactive_HMRC_CIAPI_Anchored_1 = safeHandler(
         function nuanceReactive_HMRC_CIAPI_Anchored_1(c2cObj) {
-            chatController.addC2CButton(c2cObj, "HMRC_CIAPI_Anchored_1");
+            chatController.addC2CButton(c2cObj, "HMRC_CIAPI_Anchored_1", "anchored");
         }
     );
 

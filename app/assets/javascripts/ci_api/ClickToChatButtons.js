@@ -1,69 +1,56 @@
-const DisplayState = {
-    OutOfHours: 'outofhours',
-    Ready: 'ready',
-    Busy: 'busy',
-    ChatActive: 'chatactive'
-};
+import * as DisplayState from './NuanceDisplayState'
 
 export default class ClickToChatButtons {
-    constructor(sdk, controller) {
+    constructor(onClicked) {
         this.buttons = {};
-        this.sdk = sdk;
-        this.controller = controller;
+        this.onClicked = onClicked;
     }
 
     updateC2CButtonsToInProgress() {
-      for (const c2dId of Object.keys(this.buttons)) {
+      for (const c2cId of Object.keys(this.buttons)) {
         const c2cObj = {
           c2cIdx: c2cId,
           displayState: DisplayState.ChatActive,
           launchable: false
         };
-        updateC2CButton(c2cObj, this.buttons[c2cId]);
+        this.updateButton(c2cObj, this.buttons[c2cId]);
       };
     }
 
-    updateC2CButton(c2cObj, divID) {
-        const btn = document.getElementById(divID);
-        const div = window.top.document.createElement("DIV");
-
-        const btnType = (divID.toLowerCase().match(/anchored/)) ? "anchored" : "fixed";
-
-        div.setAttribute("class", "c2cButton");
-        switch (c2cObj.displayState) {
+    getDisplayStateText(displayState) {
+        switch (displayState) {
             case DisplayState.OutOfHours:
-              div.innerHTML = `<div class="${btnType} ${c2cObj.displayState}">Out of hours</div>`;
-              break;
+                return "Out of hours";
             case DisplayState.Ready:
-              div.innerHTML = `<div class="${btnType} ${c2cObj.displayState}">Ask HMRC a question</div>`;
-              break;
+                return "Ask HMRC a question";
             case DisplayState.Busy:
-              div.innerHTML = `<div class="${btnType} ${c2cObj.displayState}">All advisers are busy</div>`;
-              break;
+                return "All advisers are busy";
             case DisplayState.ChatActive:
-              div.innerHTML = `<div class="${btnType} ${c2cObj.displayState}">In progress</div>`;
-        }
-        btn.innerHTML = "";
-        btn.appendChild(div);
-
-        if (c2cObj.launchable) {
-            const btn = document.getElementById(divID);
-            btn.onclick = function() {
-                console.log(this);
-                ths.sdk.onC2CClicked(c2cObj.c2cIdx, function(state) {
-                    console.log("onC2CClicked callback:");
-                    console.log(state);
-
-                    // create chat window
-                    this.controller.main();
-                }.bind(this));
-            }
+                return "In progress";
+            default:
+                return "Unknown display state: " + displayState;
         }
     }
 
-    addC2CButton(c2cObj, divID) {
-        console.log("SetC2CButton for", divID, ":", c2cObj);
-        this.buttons[c2cObj.c2cIdx] = divID;
-        this.updateC2CButton(c2cObj, divID);
+    updateButton(c2cObj, button) {
+
+        const buttonText = this.getDisplayStateText(c2cObj.displayState);
+
+        const innerHTML = `<div class="${button.buttonClass} ${c2cObj.displayState}">${buttonText}</div>`;
+
+        const div = button.replaceChild(innerHTML);
+
+        if (c2cObj.launchable) {
+            div.onclick = function() {
+                console.log(this);
+                this.onClicked(c2cObj.c2cIdx);
+            }.bind(this);
+        }
+    }
+
+    addButton(c2cObj, button) {
+        console.log("SetC2CButton for", button, ":", c2cObj);
+        this.buttons[c2cObj.c2cIdx] = button;
+        this.updateButton(c2cObj, button);
     }
 }
