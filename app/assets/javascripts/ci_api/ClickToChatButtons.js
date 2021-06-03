@@ -1,9 +1,10 @@
 import * as DisplayState from './NuanceDisplayState'
 
 export default class ClickToChatButtons {
-    constructor(onClicked) {
+    constructor(onClicked, displayStateMessages) {
         this.buttons = {};
         this.onClicked = onClicked;
+        this.displayStateMessages = displayStateMessages;
     }
 
     updateC2CButtonsToInProgress() {
@@ -18,18 +19,7 @@ export default class ClickToChatButtons {
     }
 
     getDisplayStateText(displayState) {
-        switch (displayState) {
-            case DisplayState.OutOfHours:
-                return "Out of hours";
-            case DisplayState.Ready:
-                return "Ask HMRC a question";
-            case DisplayState.Busy:
-                return "All advisers are busy";
-            case DisplayState.ChatActive:
-                return "In progress";
-            default:
-                return "Unknown display state: " + displayState;
-        }
+        return this.displayStateMessages[displayState] || ("Unknown display state: " + displayState);
     }
 
     updateButton(c2cObj, button) {

@@ -3,11 +3,19 @@ import ClickToChatButton from './ClickToChatButton'
 import Transcript from './Transcript'
 import * as MessageType from './NuanceMessageType'
 import * as MessageClasses from './DefaultClasses'
+import * as DisplayState from './NuanceDisplayState'
+
+const c2cDisplayStateMessages = {
+    [DisplayState.OutOfHours]: "Out of hours",
+    [DisplayState.Ready]: "Ask HMRC a question",
+    [DisplayState.Busy]: "All advisers are busy",
+    [DisplayState.ChatActive]: "In progress"
+};
 
 class ChatController {
     constructor() {
         this.sdk = null;
-        this.c2cButtons = new ClickToChatButtons(this.onC2CButtonClicked.bind(this));
+        this.c2cButtons = new ClickToChatButtons(this.onC2CButtonClicked.bind(this), c2cDisplayStateMessages);
     }
 
     main() {
