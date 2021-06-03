@@ -31,14 +31,14 @@ export default class Transcript {
         this._fixUpVALinks(agentDiv);
 
         this.content.appendChild(agentDiv);
-        this.content.scrollTo(0, this.content.scrollHeight);
+        this._showLatestContent();
     }
 
     _fixUpVALinks(div) {
         const links = div.getElementsByTagName('a');
 
-        for (var link of links) {
-            for (var attribute of link.attributes) {
+        for (const link of links) {
+            for (const attribute of link.attributes) {
                 if (attribute.name === "data-vtz-link-type" && attribute.value === "Dialog") {
                     link.onclick = this.vaLinkCallback;
                 }
@@ -49,6 +49,10 @@ export default class Transcript {
     _appendMessage(msg, msg_class) {
         const msgDiv = `<div class='${msg_class.Outer}'><div class='${msg_class.Inner}'>${msg}</div></div>`;
         this.content.insertAdjacentHTML("beforeend", msgDiv);
+        this._showLatestContent();
+    }
+
+    _showLatestContent() {
         this.content.scrollTo(0, this.content.scrollHeight);
     }
 }
