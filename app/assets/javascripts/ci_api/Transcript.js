@@ -23,33 +23,36 @@ export default class Transcript {
         this.vaLinkCallback = vaLinkCallback;
     }
 
-    addTextAndScroll(msg) {
-      this.content.insertAdjacentHTML("beforeend", msg);
-      this.content.scrollTo(0, this.content.scrollHeight);
+    addAgentMsg(msg, agent) {
+        this._addTextWithClass(msg, Classes.Agent);
     }
 
-    addTextWithClass(msg, msg_class) {
-      const msgDiv = `<div class='${msg_class.Outer}'><div class='${msg_class.Inner}'>${msg}</div></div>`;
-      this.addTextAndScroll(msgDiv);
-    }
-
-    addText(msg, agent) {
-      if (agent) {
-        this.addTextWithClass(msg, Classes.Agent);
-      } else {
-        this.addTextWithClass(msg, Classes.Customer);
-      }
+    addCustomerMsg(msg, agent) {
+        this._addTextWithClass(msg, Classes.Customer);
     }
 
     addSystemMsg(msg) {
-      this.addTextWithClass(msg, Classes.System);
+        this._addTextWithClass(msg, Classes.System);
     }
 
     addOpenerScript(msg) {
-      this.addTextWithClass(msg, Classes.Opener);
+        this._addTextWithClass(msg, Classes.Opener);
     }
 
-    fixUpVALinks(div) {
+    addAutomatonMsg(msg) {
+        const msgDiv = `<div class='${Classes.Agent.Inner}'>${msg}</div>`;
+
+        let agentDiv = document.createElement("div")
+        agentDiv.classList.add(Classes.Agent.Outer);
+        agentDiv.insertAdjacentHTML("beforeend", msgDiv);
+
+        this._fixUpVALinks(agentDiv);
+
+        this.content.appendChild(agentDiv);
+        this.content.scrollTo(0, this.content.scrollHeight);
+    }
+
+    _fixUpVALinks(div) {
         const links = div.getElementsByTagName('a');
 
         for (var link of links) {
@@ -61,16 +64,15 @@ export default class Transcript {
         }
     }
 
-    addAutomatonText(msg) {
-        const msgDiv = `<div class='${Classes.Agent.Inner}'>${msg}</div>`;
-
-        let agentDiv = document.createElement("div")
-        agentDiv.classList.add(Classes.Agent.Outer);
-        agentDiv.insertAdjacentHTML("beforeend", msgDiv);
-
-        this.fixUpVALinks(agentDiv);
-
-        this.content.appendChild(agentDiv);
+    _addTextAndScroll(msg) {
+        this.content.insertAdjacentHTML("beforeend", msg);
         this.content.scrollTo(0, this.content.scrollHeight);
     }
+
+    _addTextWithClass(msg, msg_class) {
+        const msgDiv = `<div class='${msg_class.Outer}'><div class='${msg_class.Inner}'>${msg}</div></div>`;
+        this._addTextAndScroll(msgDiv);
+    }
+
+
 }

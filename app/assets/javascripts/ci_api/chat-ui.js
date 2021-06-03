@@ -146,9 +146,13 @@ class ChatController {
     handleMessage(msg_in) {
       const msg = msg_in.data
       if (msg.messageType === MessageType.Chat_Communication) {
-        this.transcript.addText(msg.messageText, msg.agentID);
+        if (msg.agentID) {
+            this.transcript.addAgentMsg(msg.messageText)
+        } else {
+            this.transcript.addCustomerMsg(msg.messageText)
+        }
       } else if (msg.messageType === MessageType.Chat_AutomationRequest) {
-        this.transcript.addAutomatonText(msg["automaton.data"]);
+        this.transcript.addAutomatonMsg(msg["automaton.data"]);
       } else if (msg.state === "closed") {
         this.transcript.addSystemMsg("Agent Left Chat.");
       } else if (msg.messageType === MessageType.Chat_CommunicationQueue) {
