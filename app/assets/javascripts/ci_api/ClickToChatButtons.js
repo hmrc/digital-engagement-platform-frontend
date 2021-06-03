@@ -1,3 +1,10 @@
+const DisplayState = {
+    OutOfHours: 'outofhours',
+    Ready: 'ready',
+    Busy: 'busy',
+    ChatActive: 'chatactive'
+};
+
 export default class ClickToChatButtons {
     constructor(sdk, controller) {
         this.buttons = {};
@@ -9,7 +16,7 @@ export default class ClickToChatButtons {
       for (const c2dId of Object.keys(this.buttons)) {
         const c2cObj = {
           c2cIdx: c2cId,
-          displayState: "chatactive",
+          displayState: DisplayState.ChatActive,
           launchable: false
         };
         updateC2CButton(c2cObj, this.buttons[c2cId]);
@@ -24,16 +31,16 @@ export default class ClickToChatButtons {
 
         div.setAttribute("class", "c2cButton");
         switch (c2cObj.displayState) {
-            case 'outofhours':
+            case DisplayState.OutOfHours:
               div.innerHTML = `<div class="${btnType} ${c2cObj.displayState}">Out of hours</div>`;
               break;
-            case 'ready':
+            case DisplayState.Ready:
               div.innerHTML = `<div class="${btnType} ${c2cObj.displayState}">Ask HMRC a question</div>`;
               break;
-            case 'busy':
+            case DisplayState.Busy:
               div.innerHTML = `<div class="${btnType} ${c2cObj.displayState}">All advisers are busy</div>`;
               break;
-            case 'chatactive':
+            case DisplayState.ChatActive:
               div.innerHTML = `<div class="${btnType} ${c2cObj.displayState}">In progress</div>`;
         }
         btn.innerHTML = "";
@@ -59,4 +66,4 @@ export default class ClickToChatButtons {
         this.buttons[c2cObj.c2cIdx] = divID;
         this.updateC2CButton(c2cObj, divID);
     }
-};
+}

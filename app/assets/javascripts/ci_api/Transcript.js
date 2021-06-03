@@ -1,3 +1,29 @@
+const MessageType = {
+    Chat_Communication: 'chat.communication',
+    Chat_AutomationRequest: 'chat.automaton_request',
+    Chat_CommunicationQueue: 'chat.communication.queue',
+    Chat_Denied: 'chat.denied'
+};
+
+const Classes = {
+    Agent: {
+        Outer: 'ciapiSkinTranscriptAgentLine',
+        Inner: 'bubble agent-bubble background-img enter'
+    },
+    Customer: {
+        Outer: 'ciapiSkinTranscriptCustLine',
+        Inner: 'bubble customer-bubble background-img enter'
+    },
+    System: {
+        Outer: 'ciapiSkinTranscriptSysMsg',
+        Inner: 'ciapiSkinSysMsg'
+    },
+    Opener: {
+        Outer: 'ciapiSkinTranscriptOpener',
+        Inner: 'ciapiSkinOpener'
+    }
+};
+
 export default class Transcript {
     constructor(content, sdk) {
         this.content = content;
@@ -9,24 +35,25 @@ export default class Transcript {
       this.content.scrollTo(0, this.content.scrollHeight);
     }
 
-    addText(msg, agent) {
-      let msgDiv = "";
-      if (agent) {
-        msgDiv = "<div class='ciapiSkinTranscriptAgentLine'><div class='bubble agent-bubble background-img enter'>" + msg + "</div></div>";
-      } else {
-        msgDiv = "<div class='ciapiSkinTranscriptCustLine'><div class='bubble customer-bubble background-img enter'>" + msg + "</div></div>";
-      }
+    addTextWithClass(msg, msg_class) {
+      const msgDiv = `<div class='${msg_class.Outer}'><div class='${msg_class.Inner}'>${msg}</div></div>`;
       this.addTextAndScroll(msgDiv);
+    }
+
+    addText(msg, agent) {
+      if (agent) {
+        this.addTextWithClass(msg, Classes.Agent);
+      } else {
+        this.addTextWithClass(msg, Classes.Customer);
+      }
     }
 
     addSystemMsg(msg) {
-      const msgDiv = "<div class='ciapiSkinTranscriptSysMsg'><div class='ciapiSkinSysMsg'>" + msg + "</div></div>";
-      this.addTextAndScroll(msgDiv);
+      this.addTextWithClass(msg, Classes.System);
     }
 
-    addOpenerScript(openerScript) {
-      const msgDiv = "<div class='ciapiSkinTranscriptOpener'><div class='ciapiSkinOpener'>" + openerScript + "</div></div>";
-      this.addTextAndScroll(msgDiv);
+    addOpenerScript(msg) {
+      this.addTextWithClass(msg, Classes.Opener);
     }
 
     linkCallback(data1, data2, data3) {
@@ -52,10 +79,10 @@ export default class Transcript {
     }
 
     addAutomatonText(msg) {
-        const msgDiv = "<div class='bubble agent-bubble background-img enter'>" + msg + "</div>";
+        const msgDiv = `<div class='${Classes.Agent.Inner}'>${msg}</div>`;
 
         let agentDiv = document.createElement("div")
-        agentDiv.classList.add('ciapiSkinTranscriptAgentLine');
+        agentDiv.classList.add(Classes.Agent.Outer);
         agentDiv.insertAdjacentHTML("beforeend", msgDiv);
 
         this.fixUpVALinks(agentDiv);
@@ -66,15 +93,15 @@ export default class Transcript {
 
     handleMessage(msg) {
 //      console.log(msg);
-      if (msg.messageType === "chat.communication") {
+      if (msg.messageType === MessageType.Chat_Communication) {
         this.addText(msg.messageText, msg.agentID);
-      } else if (msg.messageType === "chat.automaton_request") {
+      } else if (msg.messageType === MessageType.Chat_AutomationRequest) {
         this.addAutomatonText(msg["automaton.data"]);
       } else if (msg.state === "closed") {
         this.addSystemMsg("Agent Left Chat.");
-      } else if (msg.messageType === "chat.communication.queue") {
+      } else if (msg.messageType === MessageType.Chat_CommunicationQueue) {
         this.addSystemMsg(msg.messageText);
-      } else if (msg.messageType === "chat.denied") {
+      } else if (msg.messageType === MessageType.Chat_Denied) {
         this.addSystemMsg("No agents are available.");
       }
     }

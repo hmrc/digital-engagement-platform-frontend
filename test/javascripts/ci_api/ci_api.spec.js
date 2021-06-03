@@ -1,4 +1,4 @@
- import * as SUT from '../../../app/assets/javascripts/ci_api/chat-ui'
+import * as SUT from '../../../app/assets/javascripts/ci_api/chat-ui'
 
 describe("CI API Implementation", () => {
     describe("hookWindow", () => {
