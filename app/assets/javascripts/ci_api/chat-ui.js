@@ -1,5 +1,6 @@
 import ClickToChatButtons from './ClickToChatButtons'
 import Transcript from './Transcript'
+import * as MessageType from './NuanceMessageType'
 
 class ChatController {
     constructor() {
@@ -142,11 +143,20 @@ class ChatController {
       this.sdk.getMessages(this.handleMessage.bind(this));
     }
 
-    handleMessage(msg) {
-        this.transcript.handleMessage(msg.data);
-        if (msg.data.messageType === "chat.denied") {
-            this.isConnected = false;
-        }
+    handleMessage(msg_in) {
+      const msg = msg_in.data
+      if (msg.messageType === MessageType.Chat_Communication) {
+        this.transcript.addText(msg.messageText, msg.agentID);
+      } else if (msg.messageType === MessageType.Chat_AutomationRequest) {
+        this.transcript.addAutomatonText(msg["automaton.data"]);
+      } else if (msg.state === "closed") {
+        this.transcript.addSystemMsg("Agent Left Chat.");
+      } else if (msg.messageType === MessageType.Chat_CommunicationQueue) {
+        this.transcript.addSystemMsg(msg.messageText);
+      } else if (msg.messageType === MessageType.Chat_Denied) {
+        this.isConnected = false;
+        this.transcript.addSystemMsg("No agents are available.");
+      }
     }
 
     setSDK(w) {

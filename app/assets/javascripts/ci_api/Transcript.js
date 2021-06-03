@@ -1,10 +1,3 @@
-const MessageType = {
-    Chat_Communication: 'chat.communication',
-    Chat_AutomationRequest: 'chat.automaton_request',
-    Chat_CommunicationQueue: 'chat.communication.queue',
-    Chat_Denied: 'chat.denied'
-};
-
 const Classes = {
     Agent: {
         Outer: 'ciapiSkinTranscriptAgentLine',
@@ -79,19 +72,5 @@ export default class Transcript {
 
         this.content.appendChild(agentDiv);
         this.content.scrollTo(0, this.content.scrollHeight);
-    }
-
-    handleMessage(msg) {
-      if (msg.messageType === MessageType.Chat_Communication) {
-        this.addText(msg.messageText, msg.agentID);
-      } else if (msg.messageType === MessageType.Chat_AutomationRequest) {
-        this.addAutomatonText(msg["automaton.data"]);
-      } else if (msg.state === "closed") {
-        this.addSystemMsg("Agent Left Chat.");
-      } else if (msg.messageType === MessageType.Chat_CommunicationQueue) {
-        this.addSystemMsg(msg.messageText);
-      } else if (msg.messageType === MessageType.Chat_Denied) {
-        this.addSystemMsg("No agents are available.");
-      }
     }
 }
