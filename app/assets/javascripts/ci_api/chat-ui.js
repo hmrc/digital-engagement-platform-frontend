@@ -1,6 +1,7 @@
 import ClickToChatButtons from './ClickToChatButtons'
 import Transcript from './Transcript'
 import * as MessageType from './NuanceMessageType'
+import * as MessageClasses from './DefaultClasses'
 
 class ChatController {
     constructor() {
@@ -72,7 +73,8 @@ class ChatController {
 
         this.registerEventListeners();
 
-        this.transcript = new Transcript(this.content, this.onClickHandler.bind(this));
+        console.error("MessageClasses is ", MessageClasses);
+        this.transcript = new Transcript(this.content, this.onClickHandler.bind(this), MessageClasses);
     }
 
     registerEventListeners() {

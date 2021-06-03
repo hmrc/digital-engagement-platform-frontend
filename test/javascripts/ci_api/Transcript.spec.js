@@ -1,5 +1,24 @@
 import Transcript from '../../../app/assets/javascripts/ci_api/Transcript'
 
+const messageClasses = {
+    Agent: {
+        Outer: 'agent-outer',
+        Inner: 'agent-inner'
+    },
+    Customer: {
+        Outer: 'customer-outer',
+        Inner: 'customer-inner'
+    },
+    System: {
+        Outer: 'system-outer',
+        Inner: 'system-inner'
+    },
+    Opener: {
+        Outer: 'opener-outer',
+        Inner: 'opener-inner'
+    }
+};
+
 describe("Transcript", () => {
     it("appends system messages", () => {
         const content = {
@@ -8,13 +27,13 @@ describe("Transcript", () => {
             scrollHeight: 42
         };
         const vaLinkCallback = jest.fn();
-        const transcript = new Transcript(content, vaLinkCallback);
+        const transcript = new Transcript(content, vaLinkCallback, messageClasses);
 
         transcript.addSystemMsg("System Message");
 
         expect(content.insertAdjacentHTML).toHaveBeenCalledWith(
             "beforeend",
-             "<div class='ciapiSkinTranscriptSysMsg'><div class='ciapiSkinSysMsg'>System Message</div></div>"
+             "<div class='system-outer'><div class='system-inner'>System Message</div></div>"
         );
         expect(content.scrollTo).toHaveBeenCalledWith(0, 42);
     });
@@ -26,13 +45,13 @@ describe("Transcript", () => {
             scrollHeight: 50
         };
         const vaLinkCallback = jest.fn();
-        const transcript = new Transcript(content, vaLinkCallback);
+        const transcript = new Transcript(content, vaLinkCallback, messageClasses);
 
         transcript.addOpenerScript("An Opener Script");
 
         expect(content.insertAdjacentHTML).toHaveBeenCalledWith(
             "beforeend",
-            "<div class='ciapiSkinTranscriptOpener'><div class='ciapiSkinOpener'>An Opener Script</div></div>"
+            "<div class='opener-outer'><div class='opener-inner'>An Opener Script</div></div>"
         );
         expect(content.scrollTo).toHaveBeenCalledWith(0, 50);
     });
@@ -44,13 +63,13 @@ describe("Transcript", () => {
             scrollHeight: 314
         };
         const vaLinkCallback = jest.fn();
-        const transcript = new Transcript(content, vaLinkCallback);
+        const transcript = new Transcript(content, vaLinkCallback, messageClasses);
 
         transcript.addAgentMsg("Some agent message");
 
         expect(content.insertAdjacentHTML).toHaveBeenCalledWith(
             "beforeend",
-            "<div class='ciapiSkinTranscriptAgentLine'><div class='bubble agent-bubble background-img enter'>Some agent message</div></div>"
+            "<div class='agent-outer'><div class='agent-inner'>Some agent message</div></div>"
         );
         expect(content.scrollTo).toHaveBeenCalledWith(0, 314);
     });
@@ -62,13 +81,13 @@ describe("Transcript", () => {
             scrollHeight: 666
         };
         const vaLinkCallback = jest.fn();
-        const transcript = new Transcript(content, vaLinkCallback);
+        const transcript = new Transcript(content, vaLinkCallback, messageClasses);
 
         transcript.addCustomerMsg("Some customer message");
 
         expect(content.insertAdjacentHTML).toHaveBeenCalledWith(
             "beforeend",
-            "<div class='ciapiSkinTranscriptCustLine'><div class='bubble customer-bubble background-img enter'>Some customer message</div></div>"
+            "<div class='customer-outer'><div class='customer-inner'>Some customer message</div></div>"
         );
         expect(content.scrollTo).toHaveBeenCalledWith(0, 666);
     });
@@ -80,7 +99,7 @@ describe("Transcript", () => {
             scrollHeight: 1024
         };
         const vaLinkCallback = jest.fn();
-        const transcript = new Transcript(content, vaLinkCallback);
+        const transcript = new Transcript(content, vaLinkCallback, messageClasses);
 
         transcript.addAutomatonMsg("I'm not a real person");
 

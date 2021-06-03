@@ -1,49 +1,31 @@
-const Classes = {
-    Agent: {
-        Outer: 'ciapiSkinTranscriptAgentLine',
-        Inner: 'bubble agent-bubble background-img enter'
-    },
-    Customer: {
-        Outer: 'ciapiSkinTranscriptCustLine',
-        Inner: 'bubble customer-bubble background-img enter'
-    },
-    System: {
-        Outer: 'ciapiSkinTranscriptSysMsg',
-        Inner: 'ciapiSkinSysMsg'
-    },
-    Opener: {
-        Outer: 'ciapiSkinTranscriptOpener',
-        Inner: 'ciapiSkinOpener'
-    }
-};
-
 export default class Transcript {
-    constructor(content, vaLinkCallback) {
+    constructor(content, vaLinkCallback, classes) {
         this.content = content;
         this.vaLinkCallback = vaLinkCallback;
+        this.classes = classes
     }
 
     addAgentMsg(msg, agent) {
-        this._addTextWithClass(msg, Classes.Agent);
+        this._addTextWithClass(msg, this.classes.Agent);
     }
 
     addCustomerMsg(msg, agent) {
-        this._addTextWithClass(msg, Classes.Customer);
+        this._addTextWithClass(msg, this.classes.Customer);
     }
 
     addSystemMsg(msg) {
-        this._addTextWithClass(msg, Classes.System);
+        this._addTextWithClass(msg, this.classes.System);
     }
 
     addOpenerScript(msg) {
-        this._addTextWithClass(msg, Classes.Opener);
+        this._addTextWithClass(msg, this.classes.Opener);
     }
 
     addAutomatonMsg(msg) {
-        const msgDiv = `<div class='${Classes.Agent.Inner}'>${msg}</div>`;
+        const msgDiv = `<div class='${this.classes.Agent.Inner}'>${msg}</div>`;
 
         let agentDiv = document.createElement("div")
-        agentDiv.classList.add(Classes.Agent.Outer);
+        agentDiv.classList.add(this.classes.Agent.Outer);
         agentDiv.insertAdjacentHTML("beforeend", msgDiv);
 
         this._fixUpVALinks(agentDiv);
