@@ -72,11 +72,17 @@ class ChatController {
 
     initContainer() {
 
-        this.container = new ChatContainer(MessageClasses, (e) => this.onClickHandler(e));
+        this.container = new ChatContainer(MessageClasses);
 
         document.getElementsByTagName("body")[0].appendChild(this.container.element());
 
-        this.container.registerEventListeners(() => this.onSend(), () => this.onCloseChat());
+        const eventHandler = {
+            onSend: () => this.onSend(),
+            onCloseChat: () => this.onCloseChat(),
+            onVALinkClick: (e) => this.onClickHandler(e)
+        };
+
+        this.container.setEventHandler(eventHandler);
     }
 
     onSend() {

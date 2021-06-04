@@ -1,9 +1,16 @@
 import Transcript from './Transcript'
 
+const nullEventHandler = {
+    onSend: function() {},
+    onCloseChat: function() {},
+    onVALinkClick: function(e) {},
+};
+
 export default class ChatContainer {
-    constructor(messageClasses, onVAClickHandler) {
+    constructor(messageClasses) {
         this.container = document.createElement("div")
         this.container.id = "ciapiSkinContainer";
+        this.eventHandler = nullEventHandler;
 
         let containerHtml = `
         <div id="ciapiSkinHeader">
@@ -20,7 +27,8 @@ export default class ChatContainer {
         this.container.insertAdjacentHTML("beforeend", containerHtml);
         this.content = this.container.querySelector("#ciapiSkinChatTranscript");
         this.custInput = this.container.querySelector("#custMsg");
-        this.transcript = new Transcript(this.content, onVAClickHandler, messageClasses);
+        this.transcript = new Transcript(this.content, (e) => this.eventHandler.onVALinkClick(e), messageClasses);
+        this._registerEventListeners();
     }
 
     element() {
@@ -47,18 +55,22 @@ export default class ChatContainer {
        this.container.parentElement.removeChild(this.container);
     }
 
-    registerEventListeners(onSend, onCloseChat) {
+    setEventHandler(eventHandler) {
+        this.eventHandler = eventHandler;
+    }
+
+    _registerEventListeners() {
         this.container.querySelector("#ciapiSkinSendButton").addEventListener("click", (e) => {
-            onSend();
+            this.eventHandler.onSend();
         });
 
         this.container.querySelector("#ciapiSkinCloseButton").addEventListener("click", (e) => {
-            onCloseChat();
+            this.eventHandler.onCloseChat();
         });
 
         this.custInput.addEventListener('keypress', (e) => {
             if (e.which == 13) {
-                onSend();
+                this.eventHandler.onSend();
                 e.preventDefault()
             }
         });
