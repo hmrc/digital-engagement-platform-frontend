@@ -8,7 +8,6 @@ export default class ClickToChatButtons {
     }
 
     addButton(c2cObj, button) {
-//        console.log("SetC2CButton for", button, ":", c2cObj);
         this.buttons[c2cObj.c2cIdx] = button;
         this._updateButton(c2cObj, button);
     }
