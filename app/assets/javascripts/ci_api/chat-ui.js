@@ -12,10 +12,68 @@ const c2cDisplayStateMessages = {
     [DisplayState.ChatActive]: "In progress"
 };
 
+class ChatContainer {
+    constructor() {
+        this.container = document.createElement("div")
+        this.container.id = "ciapiSkinContainer";
+        let containerHtml = `
+        <div id="ciapiSkinHeader">
+            <div id="ciapiSkinTitleBar"><span>Ask HMRC</span></div>
+            <div id="ciapiSkinCloseButton">(X)</div>
+        </div>
+        <div id="ciapiSkinChatTranscript" role="log"></div>
+        <div id="ciapiSkinFooter">
+            <textarea id="custMsg" rows="5" cols="50" wrap="physical" name="comments"></textarea>
+            <div id="ciapiSkinSendButton">Send</div>
+        </div>
+        `
+        this.container.insertAdjacentHTML("beforeend", containerHtml);
+        this.content = this.container.querySelector("#ciapiSkinChatTranscript");
+        this.custInput = this.container.querySelector("#custMsg");
+    }
+
+    element() {
+        return this.container;
+    }
+
+    contentElement() {
+        return this.content;
+    }
+
+    currentInputText() {
+        return this.custInput.value;
+    }
+
+    clearCurrentInputText() {
+        this.custInput.value = ""
+    }
+
+    destroy() {
+        this.container.parentElement.removeChild(this.container);
+    }
+
+    registerEventListeners(onSend, onCloseChat) {
+      this.container.querySelector("#ciapiSkinSendButton").addEventListener("click", (e) => {
+        onSend();
+      });
+
+      this.container.querySelector("#ciapiSkinCloseButton").addEventListener("click", (e) => {
+        onCloseChat();
+      });
+
+      this.custInput.addEventListener('keypress', (e) => {
+        if (e.which == 13) {
+          onSend();
+          e.preventDefault()
+        }
+      })
+    }
+}
+
 class ChatController {
     constructor() {
         this.sdk = null;
-        this.c2cButtons = new ClickToChatButtons(this.onC2CButtonClicked.bind(this), c2cDisplayStateMessages);
+        this.c2cButtons = new ClickToChatButtons((c2cIdx) => this.onC2CButtonClicked(c2cIdx), c2cDisplayStateMessages);
     }
 
     launchChat() {
@@ -28,7 +86,7 @@ class ChatController {
         console.log("in launchChat: ", this);
         this.initContainer();
 
-        this.sdk.getOpenerScripts(this.displayOpenerScripts.bind(this));
+        this.sdk.getOpenerScripts((openerScripts) => this.displayOpenerScripts(openerScripts));
 
         try {
             console.log("===== chatDisplayed =====");
@@ -41,10 +99,10 @@ class ChatController {
     chatDisplayedContext() {
         return {
             "customerName": "You",
-            "previousMessagesCb": this.onPreviousMessages.bind(this),
-            "disconnectCb": this.onDisconnected.bind(this),
-            "reConnectCb": this.onReconnected.bind(this),
-            "failedCb": this.onFailed.bind(this),
+            "previousMessagesCb": (resp) => this.onPreviousMessages(resp),
+            "disconnectCb": () => this.onDisconnected(),
+            "reConnectCb": () => this.onReconnected(),
+            "failedCb": () => this.onFailed(),
             "openerScripts": null,
             "defaultAgentAlias": "HMRC"
         }
@@ -71,44 +129,23 @@ class ChatController {
     }
 
     initContainer() {
-        let containerHtml = `
-        <div id="ciapiSkinContainer">
-            <div id="ciapiSkinHeader">
-                <div id="ciapiSkinTitleBar"><span>Ask HMRC</span></div>
-                <div id="ciapiSkinCloseButton">(X)</div>
-            </div>
-            <div id="ciapiSkinChatTranscript" role="log"></div>
-            <div id="ciapiSkinFooter">
-                <textarea id="custMsg" rows="5" cols="50" wrap="physical" name="comments"></textarea>
-                <div id="ciapiSkinSendButton">Send</div>
-            </div>
-        </div>
-        `
-        document.getElementsByTagName("body")[0].insertAdjacentHTML("beforeend", containerHtml);
 
-        this.container = document.getElementById("ciapiSkinContainer");
-        this.content = document.getElementById("ciapiSkinChatTranscript");
-        this.custInput = document.getElementById("custMsg");
+        this.container = new ChatContainer();
 
-        this.registerEventListeners();
+        document.getElementsByTagName("body")[0].appendChild(this.container.element());
 
-        this.transcript = new Transcript(this.content, this.onClickHandler.bind(this), MessageClasses);
+        this.container.registerEventListeners(() => this.onSend(), () => this.onCloseChat());
+
+        this.transcript = new Transcript(this.container.contentElement(), (e) => this.onClickHandler(e), MessageClasses);
     }
 
-    registerEventListeners() {
-      document.getElementById("ciapiSkinSendButton").addEventListener("click", (e) => {
+    onSend() {
         this.actionSendButton();
-      });
-      document.getElementById("ciapiSkinCloseButton").addEventListener("click", (e) => {
+    }
+
+    onCloseChat() {
         this.closeChat();
-        this.container.parentElement.removeChild(this.container);
-      });
-      this.custInput.addEventListener('keypress', (e) => {
-        if (e.which == 13) {
-          this.actionSendButton();
-          e.preventDefault()
-        }
-      })
+        this.container.destroy();
     }
 
     linkCallback(data1, data2, data3) {
@@ -129,11 +166,11 @@ class ChatController {
     }
 
     actionSendButton() {
-        var text = this.custInput.value;
+        var text = this.container.currentInputText();
         if (this.isConnected) {
             console.log(">>> connected: send message")
             this.sendMessage(text);
-            this.custInput.value = "";
+            this.container.clearCurrentInputText();
         } else {
             console.log(">>> not connected: engage request")
             this.engageRequest(text);
@@ -143,14 +180,14 @@ class ChatController {
     onChatEngaged(resp) {
         console.log("++++ ENGAGED ++++ ->", resp);
         if (resp.httpStatus == 200) {
-          this.custInput.value = "";
+          this.container.clearCurrentInputText();
           this.isConnected = true;
           this.getMessages();
         }
     }
 
     engageRequest(text) {
-        this.sdk.engageChat(text, this.onChatEngaged.bind(this));
+        this.sdk.engageChat(text, (resp) => this.onChatEngaged(resp));
     }
 
     sendMessage(text) {
@@ -162,7 +199,7 @@ class ChatController {
     }
 
     getMessages() {
-        this.sdk.getMessages(this.handleMessage.bind(this));
+        this.sdk.getMessages((msg_in) => this.handleMessage(msg_in));
     }
 
     handleMessage(msg_in) {
@@ -190,11 +227,11 @@ class ChatController {
     }
 
     onC2CButtonClicked(c2cIdx) {
-        this.sdk.onC2CClicked(c2cIdx, function(state) {
+        this.sdk.onC2CClicked(c2cIdx, (state) => {
             console.log("onC2CClicked callback:");
             console.log(state);
             this.launchChat();
-        }.bind(this));
+        });
     }
 
     nuanceFrameworkLoaded(w) {
@@ -202,7 +239,7 @@ class ChatController {
         this.setSDK(w);
         if (this.sdk.isChatInProgress()) {
             console.log("chat is in progress")
-//            setTimeout(this.launchChat.bind(this), 2000);
+//            setTimeout(() => this.launchChat(), 2000);
         }
     }
 
