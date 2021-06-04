@@ -7,6 +7,12 @@ export default class ClickToChatButtons {
         this.displayStateMessages = displayStateMessages;
     }
 
+    addButton(c2cObj, button) {
+//        console.log("SetC2CButton for", button, ":", c2cObj);
+        this.buttons[c2cObj.c2cIdx] = button;
+        this._updateButton(c2cObj, button);
+    }
+
     updateC2CButtonsToInProgress() {
       for (const c2cId of Object.keys(this.buttons)) {
         const c2cObj = {
@@ -14,17 +20,16 @@ export default class ClickToChatButtons {
           displayState: DisplayState.ChatActive,
           launchable: false
         };
-        this.updateButton(c2cObj, this.buttons[c2cId]);
+        this._updateButton(c2cObj, this.buttons[c2cId]);
       };
     }
 
-    getDisplayStateText(displayState) {
+    _getDisplayStateText(displayState) {
         return this.displayStateMessages[displayState] || ("Unknown display state: " + displayState);
     }
 
-    updateButton(c2cObj, button) {
-
-        const buttonText = this.getDisplayStateText(c2cObj.displayState);
+    _updateButton(c2cObj, button) {
+        const buttonText = this._getDisplayStateText(c2cObj.displayState);
 
         const innerHTML = `<div class="${button.buttonClass} ${c2cObj.displayState}">${buttonText}</div>`;
 
@@ -36,11 +41,5 @@ export default class ClickToChatButtons {
                 this.onClicked(c2cObj.c2cIdx);
             }.bind(this);
         }
-    }
-
-    addButton(c2cObj, button) {
-        console.log("SetC2CButton for", button, ":", c2cObj);
-        this.buttons[c2cObj.c2cIdx] = button;
-        this.updateButton(c2cObj, button);
     }
 }
