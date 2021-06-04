@@ -18,46 +18,56 @@ class ChatController {
         this.c2cButtons = new ClickToChatButtons(this.onC2CButtonClicked.bind(this), c2cDisplayStateMessages);
     }
 
-    main() {
+    launchChat() {
         if (this.container) {
             return
         }
         this.isConnected = false;
         this.isQueued = false;
 
-        console.log("in main: ", this);
+        console.log("in launchChat: ", this);
         this.initContainer();
 
         this.sdk.getOpenerScripts(this.displayOpenerScripts.bind(this));
 
-//        this.c2cButtons.updateC2CButtonsToInProgress();
-
         try {
             console.log("===== chatDisplayed =====");
-            this.sdk.chatDisplayed({
-              "customerName": "You",
-              "previousMessagesCb": function(resp) {
-                for (var message of resp.messages) {
-                  this.handleMessage(message);
-                };
-                this.isConnected = true;
-                this.getMessage();
-              }.bind(this),
-              "disconnectCb": function() {
-                console.log("%%%%%% disconnectCb %%%%%%");
-              },
-              "reConnectCb": function() {
-                console.log("%%%%%% reConnectCb %%%%%%");
-              },
-              "failedCb": function() {
-                console.log("%%%%%% failedCb %%%%%%");
-              },
-              "openerScripts": null,
-              "defaultAgentAlias": "HMRC"
-            });
+            this.sdk.chatDisplayed(this.chatDisplayedContext());
         } catch (e) {
             console.error("!!!! chat displayed got exception: ", e);
         }
+    }
+
+    chatDisplayedContext() {
+        return {
+            "customerName": "You",
+            "previousMessagesCb": this.onPreviousMessages.bind(this),
+            "disconnectCb": this.onDisconnected.bind(this),
+            "reConnectCb": this.onReconnected.bind(this),
+            "failedCb": this.onFailed.bind(this),
+            "openerScripts": null,
+            "defaultAgentAlias": "HMRC"
+        }
+    }
+
+    onPreviousMessages(resp) {
+        for (const message of resp.messages) {
+          this.handleMessage(message);
+        };
+        this.isConnected = true;
+        this.getMessages();
+    }
+
+    onDisconnected() {
+        console.log("%%%%%% disconnected %%%%%%");
+    }
+
+    onReconnected() {
+        console.log("%%%%%% reconnected %%%%%%");
+    }
+
+    onFailed() {
+        console.log("%%%%%% failed %%%%%%");
     }
 
     initContainer() {
@@ -130,27 +140,29 @@ class ChatController {
         }
     }
 
-    engageRequest(text) {
-      this.sdk.engageChat(text, function(resp) {
+    onChatEngaged(resp) {
         console.log("++++ ENGAGED ++++ ->", resp);
         if (resp.httpStatus == 200) {
           this.custInput.value = "";
           this.isConnected = true;
-          this.getMessage();
+          this.getMessages();
         }
-      }.bind(this));
+    }
+
+    engageRequest(text) {
+        this.sdk.engageChat(text, this.onChatEngaged.bind(this));
     }
 
     sendMessage(text) {
-      this.sdk.sendMessage(text)
+        this.sdk.sendMessage(text)
     }
 
     closeChat() {
-      this.sdk.closeChat();
+        this.sdk.closeChat();
     }
 
-    getMessage() {
-      this.sdk.getMessages(this.handleMessage.bind(this));
+    getMessages() {
+        this.sdk.getMessages(this.handleMessage.bind(this));
     }
 
     handleMessage(msg_in) {
@@ -181,9 +193,7 @@ class ChatController {
         this.sdk.onC2CClicked(c2cIdx, function(state) {
             console.log("onC2CClicked callback:");
             console.log(state);
-
-            // create chat window
-            this.main();
+            this.launchChat();
         }.bind(this));
     }
 
@@ -192,7 +202,7 @@ class ChatController {
         this.setSDK(w);
         if (this.sdk.isChatInProgress()) {
             console.log("chat is in progress")
-//            setTimeout(this.main.bind(this), 2000);
+//            setTimeout(this.launchChat.bind(this), 2000);
         }
     }
 
@@ -213,7 +223,7 @@ const chatListener = {
 };
 
 var InqRegistry = {
-  listeners: [chatListener]
+  listeners: []
 };
 
 function safeHandler(f, helpful_name) {
@@ -228,6 +238,8 @@ function safeHandler(f, helpful_name) {
 
 export function hookWindow(w) {
     var chatController = new ChatController;
+
+    InqRegistry.listeners.push(chatListener);
 
     w.InqRegistry = InqRegistry;
 
@@ -249,11 +261,10 @@ export function hookWindow(w) {
         }
     );
 
-    //launch proactive chat
     w.nuanceProactive =  safeHandler(
         function nuanceProactive(obj) {
             console.log("### PROACTIVE", obj);
-            chatController.main();
+            chatController.launchChat();
         }
     );
 }

@@ -47,6 +47,7 @@ describe("ClickToChatButtons", () => {
 
         expect(button.replaceChild).toHaveBeenCalledWith('<div class="button-class outofhours">OutOfHoursText</div>');
     });
+
     it("adds a button with ready state", () => {
         const [, buttons, button] = setup();
 
@@ -54,6 +55,7 @@ describe("ClickToChatButtons", () => {
 
         expect(button.replaceChild).toHaveBeenCalledWith('<div class="button-class ready">ReadyText</div>');
     });
+
     it("adds a button with busy state", () => {
         const [, buttons, button] = setup();
 
