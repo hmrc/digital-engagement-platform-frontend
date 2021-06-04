@@ -23,10 +23,9 @@ class ChatController {
             return
         }
         this.isConnected = false;
-        this.isQueued = false;
 
         console.log("in launchChat: ", this);
-        this.initContainer();
+        this.showChat();
 
         this.sdk.getOpenerScripts((openerScripts) => this.displayOpenerScripts(openerScripts));
 
@@ -70,7 +69,7 @@ class ChatController {
         console.log("%%%%%% failed %%%%%%");
     }
 
-    initContainer() {
+    showChat() {
 
         this.container = new ChatContainer(MessageClasses);
 
@@ -86,7 +85,15 @@ class ChatController {
     }
 
     onSend() {
-        this.actionSendButton();
+        var text = this.container.currentInputText();
+        if (this.isConnected) {
+            console.log(">>> connected: send message")
+            this.sendMessage(text);
+            this.container.clearCurrentInputText();
+        } else {
+            console.log(">>> not connected: engage request")
+            this.engageRequest(text);
+        }
     }
 
     onCloseChat() {
@@ -109,18 +116,6 @@ class ChatController {
           this.container.getTranscript().addOpenerScript(openerScript);
         }
       }
-    }
-
-    actionSendButton() {
-        var text = this.container.currentInputText();
-        if (this.isConnected) {
-            console.log(">>> connected: send message")
-            this.sendMessage(text);
-            this.container.clearCurrentInputText();
-        } else {
-            console.log(">>> not connected: engage request")
-            this.engageRequest(text);
-        }
     }
 
     onChatEngaged(resp) {
@@ -169,10 +164,6 @@ class ChatController {
         }
     }
 
-    setSDK(w) {
-        this.sdk = w.Inq.SDK;
-    }
-
     onC2CButtonClicked(c2cIdx) {
         this.sdk.onC2CClicked(c2cIdx, (state) => {
             console.log("onC2CClicked callback:");
@@ -183,7 +174,7 @@ class ChatController {
 
     nuanceFrameworkLoaded(w) {
         console.log("### framework loaded");
-        this.setSDK(w);
+        this.sdk = w.Inq.SDK;
         if (this.sdk.isChatInProgress()) {
             console.log("chat is in progress")
 //            setTimeout(() => this.launchChat(), 2000);
@@ -191,8 +182,10 @@ class ChatController {
     }
 
     addC2CButton(c2cObj, divID, buttonClass) {
-        const button = new ClickToChatButton(document.getElementById(divID), buttonClass);
-        this.c2cButtons.addButton(c2cObj, button);
+        this.c2cButtons.addButton(
+            c2cObj,
+            new ClickToChatButton(document.getElementById(divID), buttonClass)
+        );
     }
 };
 
