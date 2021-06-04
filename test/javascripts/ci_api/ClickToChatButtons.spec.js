@@ -8,53 +8,57 @@ const displayStateMessages = {
     [DisplayState.ChatActive]: "ChatActiveText"
 };
 
-class TestContext {
-    constructor() {
-        this.onClicked = jest.fn();
-        this.buttons = new ClickToChatButtons(this.onClicked, displayStateMessages),
-        this.button = {
+function setup() {
+    const onClicked = jest.fn();
+    return [
+        // onClicked
+        onClicked,
+        // buttons
+        new ClickToChatButtons(onClicked, displayStateMessages),
+        // button
+        {
             buttonClass: 'button-class',
             replaceChild: jest.fn()
         }
-    }
-};
+    ];
+}
 
-function c2cObj(displayState) {
+function c2cObj(displayState, launchable=false) {
     return {
         c2cIdx: 'c2c-id',
         displayState: displayState,
-        launchable: false
+        launchable: launchable
     };
 }
 
 describe("ClickToChatButtons", () => {
     it("adds a button with active state", () => {
-        const context = new TestContext();
+        const [, buttons, button] = setup();
 
-        context.buttons.addButton(c2cObj(DisplayState.ChatActive), context.button);
+        buttons.addButton(c2cObj(DisplayState.ChatActive), button);
 
-        expect(context.button.replaceChild).toHaveBeenCalledWith('<div class="button-class chatactive">ChatActiveText</div>');
+        expect(button.replaceChild).toHaveBeenCalledWith('<div class="button-class chatactive">ChatActiveText</div>');
     });
 
     it("adds a button with out-of-hours state", () => {
-        const context = new TestContext();
+        const [, buttons, button] = setup();
 
-        context.buttons.addButton(c2cObj(DisplayState.OutOfHours), context.button);
+        buttons.addButton(c2cObj(DisplayState.OutOfHours), button);
 
-        expect(context.button.replaceChild).toHaveBeenCalledWith('<div class="button-class outofhours">OutOfHoursText</div>');
+        expect(button.replaceChild).toHaveBeenCalledWith('<div class="button-class outofhours">OutOfHoursText</div>');
     });
     it("adds a button with ready state", () => {
-        const context = new TestContext();
+        const [, buttons, button] = setup();
 
-        context.buttons.addButton(c2cObj(DisplayState.Ready), context.button);
+        buttons.addButton(c2cObj(DisplayState.Ready), button);
 
-        expect(context.button.replaceChild).toHaveBeenCalledWith('<div class="button-class ready">ReadyText</div>');
+        expect(button.replaceChild).toHaveBeenCalledWith('<div class="button-class ready">ReadyText</div>');
     });
     it("adds a button with busy state", () => {
-        const context = new TestContext();
+        const [, buttons, button] = setup();
 
-        context.buttons.addButton(c2cObj(DisplayState.Busy), context.button);
+        buttons.addButton(c2cObj(DisplayState.Busy), button);
 
-        expect(context.button.replaceChild).toHaveBeenCalledWith('<div class="button-class busy">BusyText</div>');
+        expect(button.replaceChild).toHaveBeenCalledWith('<div class="button-class busy">BusyText</div>');
     });
 });
