@@ -1,6 +1,6 @@
 import ClickToChatButtons from './ClickToChatButtons'
 import ClickToChatButton from './ClickToChatButton'
-import Transcript from './Transcript'
+import ChatContainer from './ChatContainer'
 import * as MessageType from './NuanceMessageType'
 import * as MessageClasses from './DefaultClasses'
 import * as DisplayState from './NuanceDisplayState'
@@ -11,64 +11,6 @@ const c2cDisplayStateMessages = {
     [DisplayState.Busy]: "All advisers are busy",
     [DisplayState.ChatActive]: "In progress"
 };
-
-class ChatContainer {
-    constructor() {
-        this.container = document.createElement("div")
-        this.container.id = "ciapiSkinContainer";
-        let containerHtml = `
-        <div id="ciapiSkinHeader">
-            <div id="ciapiSkinTitleBar"><span>Ask HMRC</span></div>
-            <div id="ciapiSkinCloseButton">(X)</div>
-        </div>
-        <div id="ciapiSkinChatTranscript" role="log"></div>
-        <div id="ciapiSkinFooter">
-            <textarea id="custMsg" rows="5" cols="50" wrap="physical" name="comments"></textarea>
-            <div id="ciapiSkinSendButton">Send</div>
-        </div>
-        `
-        this.container.insertAdjacentHTML("beforeend", containerHtml);
-        this.content = this.container.querySelector("#ciapiSkinChatTranscript");
-        this.custInput = this.container.querySelector("#custMsg");
-    }
-
-    element() {
-        return this.container;
-    }
-
-    contentElement() {
-        return this.content;
-    }
-
-    currentInputText() {
-        return this.custInput.value;
-    }
-
-    clearCurrentInputText() {
-        this.custInput.value = ""
-    }
-
-    destroy() {
-        this.container.parentElement.removeChild(this.container);
-    }
-
-    registerEventListeners(onSend, onCloseChat) {
-      this.container.querySelector("#ciapiSkinSendButton").addEventListener("click", (e) => {
-        onSend();
-      });
-
-      this.container.querySelector("#ciapiSkinCloseButton").addEventListener("click", (e) => {
-        onCloseChat();
-      });
-
-      this.custInput.addEventListener('keypress', (e) => {
-        if (e.which == 13) {
-          onSend();
-          e.preventDefault()
-        }
-      })
-    }
-}
 
 class ChatController {
     constructor() {
@@ -130,13 +72,11 @@ class ChatController {
 
     initContainer() {
 
-        this.container = new ChatContainer();
+        this.container = new ChatContainer(MessageClasses, (e) => this.onClickHandler(e));
 
         document.getElementsByTagName("body")[0].appendChild(this.container.element());
 
         this.container.registerEventListeners(() => this.onSend(), () => this.onCloseChat());
-
-        this.transcript = new Transcript(this.container.contentElement(), (e) => this.onClickHandler(e), MessageClasses);
     }
 
     onSend() {
@@ -160,7 +100,7 @@ class ChatController {
     displayOpenerScripts(openerScripts) {
       if (openerScripts != null) {
         for (var openerScript of openerScripts) {
-          this.transcript.addOpenerScript(openerScript);
+          this.container.getTranscript().addOpenerScript(openerScript);
         }
       }
     }
@@ -203,23 +143,24 @@ class ChatController {
     }
 
     handleMessage(msg_in) {
-      const msg = msg_in.data
-      if (msg.messageType === MessageType.Chat_Communication) {
-        if (msg.agentID) {
-            this.transcript.addAgentMsg(msg.messageText)
-        } else {
-            this.transcript.addCustomerMsg(msg.messageText)
+        const msg = msg_in.data
+        const transcript = this.container.getTranscript();
+        if (msg.messageType === MessageType.Chat_Communication) {
+            if (msg.agentID) {
+                transcript.addAgentMsg(msg.messageText)
+            } else {
+                transcript.addCustomerMsg(msg.messageText)
+            }
+        } else if (msg.messageType === MessageType.Chat_AutomationRequest) {
+            transcript.addAutomatonMsg(msg["automaton.data"]);
+        } else if (msg.state === "closed") {
+            transcript.addSystemMsg("Agent Left Chat.");
+        } else if (msg.messageType === MessageType.Chat_CommunicationQueue) {
+            transcript.addSystemMsg(msg.messageText);
+        } else if (msg.messageType === MessageType.Chat_Denied) {
+            this.isConnected = false;
+            transcript.addSystemMsg("No agents are available.");
         }
-      } else if (msg.messageType === MessageType.Chat_AutomationRequest) {
-        this.transcript.addAutomatonMsg(msg["automaton.data"]);
-      } else if (msg.state === "closed") {
-        this.transcript.addSystemMsg("Agent Left Chat.");
-      } else if (msg.messageType === MessageType.Chat_CommunicationQueue) {
-        this.transcript.addSystemMsg(msg.messageText);
-      } else if (msg.messageType === MessageType.Chat_Denied) {
-        this.isConnected = false;
-        this.transcript.addSystemMsg("No agents are available.");
-      }
     }
 
     setSDK(w) {
