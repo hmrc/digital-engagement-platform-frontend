@@ -1,9 +1,9 @@
 import ClickToChatButtons from './ClickToChatButtons'
 import ClickToChatButton from './ClickToChatButton'
 import ChatContainer from './ChatContainer'
-import * as MessageType from './NuanceMessageType'
 import * as MessageClasses from './DefaultClasses'
 import * as DisplayState from './NuanceDisplayState'
+import * as ChatStates from './ChatStates'
 
 const c2cDisplayStateMessages = {
     [DisplayState.OutOfHours]: "Out of hours",
@@ -16,98 +16,88 @@ class ChatController {
     constructor() {
         this.sdk = null;
         this.c2cButtons = new ClickToChatButtons((c2cIdx) => this.onC2CButtonClicked(c2cIdx), c2cDisplayStateMessages);
+        this.state = new ChatStates.NullState();
     }
 
     launchChat() {
         if (this.container) {
             return
         }
-        this.isConnected = false;
-
-        console.log("in launchChat: ", this);
-        this.showChat();
-
-        this.sdk.getOpenerScripts((openerScripts) => this.displayOpenerScripts(openerScripts));
-
         try {
+            console.log("in launchChat: ", this);
+            this.showChat();
+
+            this.sdk.getOpenerScripts((openerScripts) => this.displayOpenerScripts(openerScripts));
+
             console.log("===== chatDisplayed =====");
             this.sdk.chatDisplayed(this.chatDisplayedContext());
         } catch (e) {
-            console.error("!!!! chat displayed got exception: ", e);
+            console.error("!!!! launchChat got exception: ", e);
         }
     }
 
     chatDisplayedContext() {
         return {
             "customerName": "You",
-            "previousMessagesCb": (resp) => this.onPreviousMessages(resp),
-            "disconnectCb": () => this.onDisconnected(),
-            "reConnectCb": () => this.onReconnected(),
-            "failedCb": () => this.onFailed(),
+            "previousMessagesCb": (resp) => this.moveToChatEngagedState(resp.messages),
+            "disconnectCb": () => console.log("%%%%%% disconnected %%%%%%"),
+            "reConnectCb": () => console.log("%%%%%% reconnected %%%%%%"),
+            "failedCb": () => console.log("%%%%%% failed %%%%%%"),
             "openerScripts": null,
             "defaultAgentAlias": "HMRC"
         }
     }
 
-    onPreviousMessages(resp) {
-        for (const message of resp.messages) {
-          this.handleMessage(message);
-        };
-        this.isConnected = true;
-        this.getMessages();
+    moveToState(state) {
+        // Clean up previous state?
+        this.state = state;
     }
 
-    onDisconnected() {
-        console.log("%%%%%% disconnected %%%%%%");
+    moveToChatNullState() {
+        this.moveToState(new ChatStates.NullState());
     }
 
-    onReconnected() {
-        console.log("%%%%%% reconnected %%%%%%");
+    moveToChatShownState() {
+        this.moveToState(new ChatStates.ShownState((text) => this.engageChat(text)));
     }
 
-    onFailed() {
-        console.log("%%%%%% failed %%%%%%");
+    moveToChatEngagedState(previousMessages = []) {
+        this.moveToState(new ChatStates.EngagedState(this.sdk, this.container, previousMessages));
     }
 
     showChat() {
-
         this.container = new ChatContainer(MessageClasses);
 
         document.getElementsByTagName("body")[0].appendChild(this.container.element());
 
         const eventHandler = {
-            onSend: () => this.onSend(),
-            onCloseChat: () => this.onCloseChat(),
-            onVALinkClick: (e) => this.onClickHandler(e)
+            onSend: () => this._onSend(),
+            onCloseChat: () => this._onCloseChat(),
+            onVALinkClick: (e) => this._onClickedVALink(e)
         };
 
         this.container.setEventHandler(eventHandler);
+
+        this.moveToChatShownState();
     }
 
-    onSend() {
-        var text = this.container.currentInputText();
-        if (this.isConnected) {
-            console.log(">>> connected: send message")
-            this.sendMessage(text);
-            this.container.clearCurrentInputText();
-        } else {
-            console.log(">>> not connected: engage request")
-            this.engageRequest(text);
-        }
+    _onSend() {
+        const text = this.container.currentInputText()
+        this.container.clearCurrentInputText();
+        this.state.onSend(text);
     }
 
-    onCloseChat() {
+    _onCloseChat() {
         this.closeChat();
+
         this.container.destroy();
+        this.container = null;
+
+        this.moveToChatNullState();
     }
 
-    linkCallback(data1, data2, data3) {
-        // data1 seems to be the text clicked on.
-//        console.log("link callback: ", data1, data2, data3);
-    }
-
-    onClickHandler(e) {
-        this.sdk.sendVALinkMessage(e, this.linkCallback)
+    _onClickedVALink(e) {
+        this.state.onClickedVALink(e);
     }
 
     displayOpenerScripts(openerScripts) {
@@ -121,47 +111,16 @@ class ChatController {
     onChatEngaged(resp) {
         console.log("++++ ENGAGED ++++ ->", resp);
         if (resp.httpStatus == 200) {
-          this.container.clearCurrentInputText();
-          this.isConnected = true;
-          this.getMessages();
+          this.moveToChatEngagedState();
         }
     }
 
-    engageRequest(text) {
+    engageChat(text) {
         this.sdk.engageChat(text, (resp) => this.onChatEngaged(resp));
-    }
-
-    sendMessage(text) {
-        this.sdk.sendMessage(text)
     }
 
     closeChat() {
         this.sdk.closeChat();
-    }
-
-    getMessages() {
-        this.sdk.getMessages((msg_in) => this.handleMessage(msg_in));
-    }
-
-    handleMessage(msg_in) {
-        const msg = msg_in.data
-        const transcript = this.container.getTranscript();
-        if (msg.messageType === MessageType.Chat_Communication) {
-            if (msg.agentID) {
-                transcript.addAgentMsg(msg.messageText)
-            } else {
-                transcript.addCustomerMsg(msg.messageText)
-            }
-        } else if (msg.messageType === MessageType.Chat_AutomationRequest) {
-            transcript.addAutomatonMsg(msg["automaton.data"]);
-        } else if (msg.state === "closed") {
-            transcript.addSystemMsg("Agent Left Chat.");
-        } else if (msg.messageType === MessageType.Chat_CommunicationQueue) {
-            transcript.addSystemMsg(msg.messageText);
-        } else if (msg.messageType === MessageType.Chat_Denied) {
-            this.isConnected = false;
-            transcript.addSystemMsg("No agents are available.");
-        }
     }
 
     onC2CButtonClicked(c2cIdx) {
