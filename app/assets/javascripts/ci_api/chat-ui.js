@@ -36,7 +36,7 @@ class ChatController {
     }
 
     launchProactiveChat() {
-        _launchChat();
+        this._launchChat();
     }
 
     _launchChat() {
@@ -53,7 +53,7 @@ class ChatController {
 
             this.sdk.chatDisplayed({
                 "customerName": "You",
-                "previousMessagesCb": (resp) => this.moveToChatEngagedState(resp.messages),
+                "previousMessagesCb": (resp) => this._moveToChatEngagedState(resp.messages),
                 "disconnectCb": () => console.log("%%%%%% disconnected %%%%%%"),
                 "reConnectCb": () => console.log("%%%%%% reconnected %%%%%%"),
                 "failedCb": () => console.log("%%%%%% failed %%%%%%"),
