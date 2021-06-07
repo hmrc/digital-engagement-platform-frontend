@@ -15,64 +15,81 @@ const c2cDisplayStateMessages = {
 class ChatController {
     constructor() {
         this.sdk = null;
-        this.c2cButtons = new ClickToChatButtons((c2cIdx) => this.onC2CButtonClicked(c2cIdx), c2cDisplayStateMessages);
+        this.c2cButtons = new ClickToChatButtons((c2cIdx) => this._onC2CButtonClicked(c2cIdx), c2cDisplayStateMessages);
         this.state = new ChatStates.NullState();
     }
 
-    launchChat() {
+    nuanceFrameworkLoaded(w) {
+        console.log("### framework loaded");
+        this.sdk = w.Inq.SDK;
+        if (this.sdk.isChatInProgress()) {
+            console.log("chat is in progress")
+//            setTimeout(() => this._launchChat(), 2000);
+        }
+    }
+
+    addC2CButton(c2cObj, divID, buttonClass) {
+        this.c2cButtons.addButton(
+            c2cObj,
+            new ClickToChatButton(document.getElementById(divID), buttonClass)
+        );
+    }
+
+    launchProactiveChat() {
+        _launchChat();
+    }
+
+    _launchChat() {
         if (this.container) {
             return
         }
         try {
             console.log("in launchChat: ", this);
-            this.showChat();
+            this._showChat();
 
-            this.sdk.getOpenerScripts((openerScripts) => this.displayOpenerScripts(openerScripts));
+            this._displayOpenerScripts();
 
             console.log("===== chatDisplayed =====");
-            this.sdk.chatDisplayed(this.chatDisplayedContext());
+
+            this.sdk.chatDisplayed({
+                "customerName": "You",
+                "previousMessagesCb": (resp) => this.moveToChatEngagedState(resp.messages),
+                "disconnectCb": () => console.log("%%%%%% disconnected %%%%%%"),
+                "reConnectCb": () => console.log("%%%%%% reconnected %%%%%%"),
+                "failedCb": () => console.log("%%%%%% failed %%%%%%"),
+                "openerScripts": null,
+                "defaultAgentAlias": "HMRC"
+            });
         } catch (e) {
             console.error("!!!! launchChat got exception: ", e);
         }
     }
 
-    chatDisplayedContext() {
-        return {
-            "customerName": "You",
-            "previousMessagesCb": (resp) => this.moveToChatEngagedState(resp.messages),
-            "disconnectCb": () => console.log("%%%%%% disconnected %%%%%%"),
-            "reConnectCb": () => console.log("%%%%%% reconnected %%%%%%"),
-            "failedCb": () => console.log("%%%%%% failed %%%%%%"),
-            "openerScripts": null,
-            "defaultAgentAlias": "HMRC"
-        }
-    }
-
-    moveToState(state) {
+    _moveToState(state) {
         // Clean up previous state?
         this.state = state;
     }
 
-    moveToChatNullState() {
-        this.moveToState(new ChatStates.NullState());
+    _moveToChatNullState() {
+        this._moveToState(new ChatStates.NullState());
     }
 
-    moveToChatShownState() {
-        this.moveToState(new ChatStates.ShownState((text) => this.engageChat(text)));
+    _moveToChatShownState() {
+        this._moveToState(new ChatStates.ShownState((text) => this._engageChat(text)));
     }
 
-    moveToChatEngagedState(previousMessages = []) {
-        this.moveToState(new ChatStates.EngagedState(this.sdk, this.container, previousMessages));
+    _moveToChatEngagedState(previousMessages = []) {
+        this._moveToState(new ChatStates.EngagedState(this.sdk, this.container, previousMessages));
     }
 
-    showChat() {
+    _showChat() {
         this.container = new ChatContainer(MessageClasses);
 
         document.getElementsByTagName("body")[0].appendChild(this.container.element());
 
         this.container.setEventHandler(this);
 
-        this.moveToChatShownState();
+        this._moveToChatShownState();
     }
 
     // Begin event handler method
@@ -83,12 +100,12 @@ class ChatController {
     }
 
     onCloseChat() {
-        this.closeChat();
+        this.sdk.closeChat();
 
         this.container.destroy();
         this.container = null;
 
-        this.moveToChatNullState();
+        this._moveToChatNullState();
     }
 
     onClickedVALink(e) {
@@ -96,51 +113,32 @@ class ChatController {
     }
     // End event handler method
 
-    displayOpenerScripts(openerScripts) {
-      if (openerScripts != null) {
-        for (var openerScript of openerScripts) {
-          this.container.getTranscript().addOpenerScript(openerScript);
-        }
-      }
-    }
+    _displayOpenerScripts() {
+        this.sdk.getOpenerScripts((openerScripts) => {
+            if (openerScripts == null)
+                return;
 
-    onChatEngaged(resp) {
-        console.log("++++ ENGAGED ++++ ->", resp);
-        if (resp.httpStatus == 200) {
-          this.moveToChatEngagedState();
-        }
-    }
-
-    engageChat(text) {
-        this.sdk.engageChat(text, (resp) => this.onChatEngaged(resp));
-    }
-
-    closeChat() {
-        this.sdk.closeChat();
-    }
-
-    onC2CButtonClicked(c2cIdx) {
-        this.sdk.onC2CClicked(c2cIdx, (state) => {
-            console.log("onC2CClicked callback:");
-            console.log(state);
-            this.launchChat();
+            for (var openerScript of openerScripts) {
+                this.container.getTranscript().addOpenerScript(openerScript);
+            }
         });
     }
 
-    nuanceFrameworkLoaded(w) {
-        console.log("### framework loaded");
-        this.sdk = w.Inq.SDK;
-        if (this.sdk.isChatInProgress()) {
-            console.log("chat is in progress")
-//            setTimeout(() => this.launchChat(), 2000);
-        }
+    _engageChat(text) {
+        this.sdk.engageChat(text, (resp) => {
+            console.log("++++ ENGAGED ++++ ->", resp);
+            if (resp.httpStatus == 200) {
+              this._moveToChatEngagedState();
+            }
+        });
     }
 
-    addC2CButton(c2cObj, divID, buttonClass) {
-        this.c2cButtons.addButton(
-            c2cObj,
-            new ClickToChatButton(document.getElementById(divID), buttonClass)
-        );
+    _onC2CButtonClicked(c2cIdx) {
+        this.sdk.onC2CClicked(c2cIdx, (state) => {
+            console.log("onC2CClicked callback:");
+            console.log(state);
+            this._launchChat();
+        });
     }
 };
 
@@ -196,7 +194,7 @@ export function hookWindow(w) {
     w.nuanceProactive =  safeHandler(
         function nuanceProactive(obj) {
             console.log("### PROACTIVE", obj);
-            chatController.launchChat();
+            chatController.launchProactiveChat();
         }
     );
 }
