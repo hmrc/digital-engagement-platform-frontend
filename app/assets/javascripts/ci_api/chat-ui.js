@@ -70,24 +70,19 @@ class ChatController {
 
         document.getElementsByTagName("body")[0].appendChild(this.container.element());
 
-        const eventHandler = {
-            onSend: () => this._onSend(),
-            onCloseChat: () => this._onCloseChat(),
-            onVALinkClick: (e) => this._onClickedVALink(e)
-        };
-
-        this.container.setEventHandler(eventHandler);
+        this.container.setEventHandler(this);
 
         this.moveToChatShownState();
     }
 
-    _onSend() {
+    // Begin event handler method
+    onSend() {
         const text = this.container.currentInputText()
         this.container.clearCurrentInputText();
         this.state.onSend(text);
     }
 
-    _onCloseChat() {
+    onCloseChat() {
         this.closeChat();
 
         this.container.destroy();
@@ -96,9 +91,10 @@ class ChatController {
         this.moveToChatNullState();
     }
 
-    _onClickedVALink(e) {
+    onClickedVALink(e) {
         this.state.onClickedVALink(e);
     }
+    // End event handler method
 
     displayOpenerScripts(openerScripts) {
       if (openerScripts != null) {

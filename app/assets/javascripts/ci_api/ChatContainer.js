@@ -3,7 +3,7 @@ import Transcript from './Transcript'
 const nullEventHandler = {
     onSend: function() {},
     onCloseChat: function() {},
-    onVALinkClick: function(e) {},
+    onClickedVALink: function(e) {},
 };
 
 export default class ChatContainer {
@@ -27,7 +27,7 @@ export default class ChatContainer {
         this.container.insertAdjacentHTML("beforeend", containerHtml);
         this.content = this.container.querySelector("#ciapiSkinChatTranscript");
         this.custInput = this.container.querySelector("#custMsg");
-        this.transcript = new Transcript(this.content, (e) => this.eventHandler.onVALinkClick(e), messageClasses);
+        this.transcript = new Transcript(this.content, (e) => this.eventHandler.onClickedVALink(e), messageClasses);
         this._registerEventListeners();
     }
 
