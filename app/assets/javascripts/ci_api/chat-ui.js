@@ -23,7 +23,9 @@ class ChatController {
         console.log("### framework loaded");
         this.sdk = w.Inq.SDK;
         if (this.sdk.isChatInProgress()) {
-            console.log("chat is in progress")
+            console.log("************************************")
+            console.log("******* chat is in progress ********")
+            console.log("************************************")
 //            setTimeout(() => this._launchChat(), 2000);
         }
     }
@@ -92,7 +94,7 @@ class ChatController {
         this._moveToChatShownState();
     }
 
-    // Begin event handler method
+    // Begin event handler methods
     onSend() {
         const text = this.container.currentInputText()
         this.container.clearCurrentInputText();
