@@ -45,7 +45,7 @@ class sidebarLinksSpec extends ViewSpecBase {
       val doc = asDocument(createView())
       doc.getElementById("chatbot-cannot")
       assertContainsText(doc, "If it cannot help you, you can ask to transfer to an HMRC adviser " +
-        "by typing ‘adviser’. Advisers work 8am to 8pm, Monday to Friday and do not work bank holidays.")
+        "by typing ‘adviser’. Advisers work 8am to 7:30pm, Monday to Friday and do not work bank holidays.")
     }
   }
 }

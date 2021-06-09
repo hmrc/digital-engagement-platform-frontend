@@ -194,7 +194,7 @@ nuance.full.page.cui.test.page.title=Test full page CUI for webchat
 #Sidebar
 cui.sidebar.h2.header=Help for businesses and employers
 cui.sidebar.p1=The HMRC chatbot is available at any time to answer your questions about the Coronavirus Job Retention Scheme.
-cui.sidebar.p2=If it cannot help you, you can ask to transfer to an HMRC adviser by typing ‘adviser’. Advisers work 8am to 8pm, Monday to Friday and do not work bank holidays.
+cui.sidebar.p2=If it cannot help you, you can ask to transfer to an HMRC adviser by typing ‘adviser’. Advisers work 8am to 7:30pm, Monday to Friday and do not work bank holidays.
 
 #JRSVariant test pages
 cui.job.retention.scheme.title=Coronavirus Job Retention Scheme: chat
