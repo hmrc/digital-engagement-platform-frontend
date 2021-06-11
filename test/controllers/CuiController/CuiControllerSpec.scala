@@ -22,7 +22,7 @@ import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
 import play.api.test.Helpers._
 import views.html.pages.helpers.AppBuilderSpecBase
 
-class NuanceFullPageCUIControllerSpec
+class CuiControllerSpec
   extends AppBuilderSpecBase with ScalaCheckPropertyChecks {
 
   private val controller = app.injector.instanceOf[CuiController]
@@ -39,7 +39,8 @@ class NuanceFullPageCUIControllerSpec
     "render JRS Variant Two Test page" in {
       val result = controller.helpJobRetentionScheme(fakeRequest)
 
-      status(result) mustBe OK
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.CuiController.jobRetentionSchemeHelp().url)
     }
   }
 }
