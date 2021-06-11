@@ -20,15 +20,14 @@ import config.AppConfig
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
-import views.html.CUIViews.{HelpJobRetentionSchemeView, JobRetentionSchemeHelpView}
+import views.html.CUIViews.JobRetentionSchemeHelpView
 
 import scala.concurrent.Future
 
 @Singleton
 class CuiController @Inject()(appConfig: AppConfig,
                               mcc: MessagesControllerComponents,
-                              jobRetentionSchemeHelpView: JobRetentionSchemeHelpView,
-                              helpJobRetentionSchemeView: HelpJobRetentionSchemeView) extends FrontendController(mcc) {
+                              jobRetentionSchemeHelpView: JobRetentionSchemeHelpView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
@@ -37,7 +36,6 @@ class CuiController @Inject()(appConfig: AppConfig,
   }
 
   def helpJobRetentionScheme: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(helpJobRetentionSchemeView()))
+    Future.successful(Redirect(routes.CuiController.jobRetentionSchemeHelp().url))
   }
-
 }
