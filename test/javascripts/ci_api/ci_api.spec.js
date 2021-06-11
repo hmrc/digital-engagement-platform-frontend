@@ -13,6 +13,19 @@ describe("CI API Implementation", () => {
             expect(window.nuanceProactive).toBeDefined();
         });
     });
+    describe("launchProactive", () => {
+        const sdk = {
+            isChatInProgress: jest.fn().mockReturnValue(false),
+            getOpenerScripts: jest.fn().mockReturnValue(null),
+            chatDisplayed: jest.fn()
+        };
+        window.Inq = {
+            SDK: sdk
+        };
+        SUT.hookWindow(window);
 
+        window.nuanceFrameworkLoaded();
+        window.nuanceProactive();
+    });
     
 });
