@@ -42,6 +42,7 @@ export default class ChatController {
     }
 
     _launchChat() {
+        // TODO: Do we need this any more, now that the above timeout is gone?
         if (this.container) {
             return
         }
