@@ -39,7 +39,7 @@ class CustomsEnquiriesViewSpec extends ChatViewBehaviours {
       returnUrl,
       Seq(
         "Opening times:",
-        "Monday to Friday, 8am to 10pm",
+        "Monday to Friday, 8am to 6pm",
         "Saturday and Sunday, 8am to 4pm",
         "Bank holidays, 8am to 4pm"
       )
