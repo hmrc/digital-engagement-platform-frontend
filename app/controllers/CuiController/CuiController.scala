@@ -17,19 +17,25 @@
 package controllers.CuiController
 
 import config.AppConfig
+
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
-import views.html.CUIViews.JobRetentionSchemeHelpView
+import views.html.CUIViews.{AskHmrcOnlineCUIView, JobRetentionSchemeHelpView}
 
 import scala.concurrent.Future
 
 @Singleton
 class CuiController @Inject()(appConfig: AppConfig,
                               mcc: MessagesControllerComponents,
+                              askHmrcOnlineCUIView: AskHmrcOnlineCUIView,
                               jobRetentionSchemeHelpView: JobRetentionSchemeHelpView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
+
+  def askHmrcOnline: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(askHmrcOnlineCUIView()))
+  }
 
   def jobRetentionSchemeHelp: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(jobRetentionSchemeHelpView()))
