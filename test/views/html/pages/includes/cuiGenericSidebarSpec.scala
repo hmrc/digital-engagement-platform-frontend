@@ -26,11 +26,6 @@ class cuiGenericSidebarSpec extends ViewSpecBase {
 
   private def createView: () => HtmlFormat.Appendable = () => viewWithTemplate()(fakeRequest, messages)
 
-//  cui.generic.sidebar.header=HMRC’s digital assistant is available at any time to answer your questions.
-//  cui.generic.sidebar.p1=If it cannot help you, you can ask to transfer to an HMRC adviser by typing ‘adviser’.
-//  cui.generic.sidebar.p2=Advisers are available:
-//    cui.generic.sidebar.p3=Advisers are not available on Sundays or Bank holidays.
-
   "behave like an include" when {
     "show the sidebar header" in {
       val doc = asDocument(createView())
