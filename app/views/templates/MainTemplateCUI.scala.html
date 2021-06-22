@@ -16,6 +16,7 @@
 
 @import config.AppConfig
 @import uk.gov.hmrc.webchat.client.WebChatClient
+@import views.html.includes.cuiGenericSidebar
 @import views.html.includes.cuiSidebar
 
 @this(
@@ -24,10 +25,14 @@
     webChatClient: WebChatClient
 )
 
-@(title: String, navTitle: Option[String] = Some("Ask HMRC"))(mainContent: Html)(implicit request : Request[_], messages: Messages)
+@(title: String, navTitle: Option[String] = Some("Ask HMRC online"), mainSidebarContent: Boolean = true)(mainContent: Html)(implicit request : Request[_], messages: Messages)
 
 @sidebarContent = {
-    @cuiSidebar()
+    @if(mainSidebarContent) {
+        @cuiGenericSidebar()
+    } else {
+        @cuiSidebar()
+    }
 }
 
 @scriptElem = {

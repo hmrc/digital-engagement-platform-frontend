@@ -15,13 +15,13 @@
 *@
 
 @import config.AppConfig
-@import templates.MainGenericTemplateCUI
+@import templates.MainTemplateCUI
 
-@this(main_template: MainGenericTemplateCUI, appConfig: AppConfig)
+@this(main_template: MainTemplateCUI, appConfig: AppConfig)
 
 @()(implicit request: Request[_], messages: play.api.i18n.Messages)
 
-@main_template(messages("cui.generic.page.title")) {
+@main_template(title = messages("cui.generic.page.title")) {
     <div id="cui-messaging-container">
         <div id="nuanMessagingFrame"></div>
     </div>

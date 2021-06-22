@@ -21,7 +21,11 @@
 
 @()(implicit request: Request[_], messages: play.api.i18n.Messages)
 
-@main_template("Get help with the Coronavirus Job Retention Scheme - GOV.UK") {
+@main_template(
+    title = messages("cui.job.retention.scheme.header"),
+    navTitle = Some("Ask HMRC"),
+    mainSidebarContent = false) {
+
     <div id="cui-messaging-container">
         <div id="nuanMessagingFrame"></div>
     </div>
