@@ -16,6 +16,7 @@
 
 @import config.AppConfig
 @import templates.MainTemplateCUI
+@import includes.cuiSidebar
 
 @this(main_template: MainTemplateCUI, appConfig: AppConfig)
 
@@ -24,7 +25,7 @@
 @main_template(
     title = messages("cui.job.retention.scheme.title"),
     navTitle = Some(messages("cui.page.title")),
-    mainSidebarContent = false) {
+    sidebar = cuiSidebar()) {
 
     <div id="cui-messaging-container">
         <div id="nuanMessagingFrame"></div>
