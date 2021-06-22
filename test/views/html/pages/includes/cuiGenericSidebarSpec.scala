@@ -26,42 +26,41 @@ class cuiGenericSidebarSpec extends ViewSpecBase {
 
   private def createView: () => HtmlFormat.Appendable = () => viewWithTemplate()(fakeRequest, messages)
 
-
   "behave like an include" when {
     "show the sidebar header" in {
       val doc = asDocument(createView())
-      doc.getElementById("cui-subsection-title")
-      assertContainsText(doc, "HMRC’s digital assistant is available at any time to answer your questions.")
+      assertEqualsValue(
+        doc,
+        "#cui-subsection-title",
+        "HMRC’s digital assistant is available at any time to answer your questions.")
     }
 
     "show the sidebar chatbot cannot paragraph" in {
       val doc = asDocument(createView())
-      doc.getElementById("chatbot-cannot")
-      assertContainsText(doc, "If it cannot help you, you can ask to transfer to an HMRC adviser by typing ‘adviser’.")
+      assertEqualsValue(
+        doc,
+        "#chatbot-cannot",
+        "If it cannot help you, you can ask to transfer to an HMRC adviser by typing ‘adviser’.")
     }
 
     "show advisor availablility header" in {
       val doc = asDocument(createView())
-      doc.getElementById("chatbot-cannot")
-      assertContainsText(doc, "")
+      assertEqualsValue(doc, "#opening-times-title", "Advisers are available:")
     }
 
     "Show opening times Monday to Friday" in {
       val doc = asDocument(createView())
-      doc.getElementById("opening-times-weekdays")
-      assertContainsText(doc, "")
+      assertContainsValue(doc, "#opening-times-weekdays", "Monday to Friday, 8am to 7:30pm")
     }
 
     "Show opening times Saturday" in {
       val doc = asDocument(createView())
-      doc.getElementById("opening-times-saturday")
-      assertContainsText(doc, "")
+      assertContainsValue(doc, "#opening-times-saturday", "Saturday, 8am to 4pm")
     }
 
     "Show not open Sunday paragraph" in {
       val doc = asDocument(createView())
-      doc.getElementById("closed-sundays")
-      assertContainsText(doc, "")
+      assertEqualsValue(doc, "#closed-sundays", "Advisers are not available on Sundays or Bank holidays.")
     }
   }
 }
