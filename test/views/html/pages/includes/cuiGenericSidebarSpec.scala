@@ -43,25 +43,25 @@ class cuiGenericSidebarSpec extends ViewSpecBase {
     "show advisor availablility header" in {
       val doc = asDocument(createView())
       doc.getElementById("chatbot-cannot")
-      assertContainsText(doc, "")
+      assertContainsText(doc, "Advisers are available:")
     }
 
     "Show opening times Monday to Friday" in {
       val doc = asDocument(createView())
       doc.getElementById("opening-times-weekdays")
-      assertContainsText(doc, "")
+      assertContainsText(doc, "Monday to Friday, 8am to 7:30pm")
     }
 
     "Show opening times Saturday" in {
       val doc = asDocument(createView())
       doc.getElementById("opening-times-saturday")
-      assertContainsText(doc, "")
+      assertContainsText(doc, "Saturday, 8am to 4pm")
     }
 
     "Show not open Sunday paragraph" in {
       val doc = asDocument(createView())
       doc.getElementById("closed-sundays")
-      assertContainsText(doc, "")
+      assertContainsText(doc, "Advisers are not available on Sundays or Bank holidays.")
     }
   }
 }
