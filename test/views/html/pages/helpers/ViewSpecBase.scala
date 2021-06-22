@@ -44,4 +44,10 @@ trait ViewSpecBase extends AppBuilderSpecBase {
 
   def assertContainsText(doc: Document, text: String): Assertion =
     assert(doc.toString.contains(text), "\n\ntext " + text + " was not rendered on the page.\n")
+
+  def assertContainsValue(doc: Document, cssSelector: String, expectedValue: String): Assertion = {
+    val elements = doc.select(cssSelector)
+    if (elements.isEmpty) throw new IllegalArgumentException(s"CSS Selector $cssSelector wasn't rendered.")
+    assert(elements.first().html().contains(expectedValue))
+  }
 }

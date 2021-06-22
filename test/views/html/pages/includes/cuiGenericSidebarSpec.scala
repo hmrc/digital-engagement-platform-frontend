@@ -55,12 +55,12 @@ class cuiGenericSidebarSpec extends ViewSpecBase {
 
     "Show opening times Monday to Friday" in {
       val doc = asDocument(createView())
-      assertEqualsValue(doc, "#opening-times-weekdays", "<a>Monday to Friday, 8am to 7:30pm</a>")
+      assertContainsValue(doc, "#opening-times-weekdays", "Monday to Friday, 8am to 7:30pm")
     }
 
     "Show opening times Saturday" in {
       val doc = asDocument(createView())
-      assertEqualsValue(doc, "#opening-times-saturday", "<a>Saturday, 8am to 4pm</a>")
+      assertContainsValue(doc, "#opening-times-saturday", "Saturday, 8am to 4pm")
     }
 
     "Show not open Sunday paragraph" in {
