@@ -26,42 +26,46 @@ class cuiGenericSidebarSpec extends ViewSpecBase {
 
   private def createView: () => HtmlFormat.Appendable = () => viewWithTemplate()(fakeRequest, messages)
 
+//  cui.generic.sidebar.header=HMRC’s digital assistant is available at any time to answer your questions.
+//  cui.generic.sidebar.p1=If it cannot help you, you can ask to transfer to an HMRC adviser by typing ‘adviser’.
+//  cui.generic.sidebar.p2=Advisers are available:
+//    cui.generic.sidebar.p3=Advisers are not available on Sundays or Bank holidays.
 
   "behave like an include" when {
     "show the sidebar header" in {
       val doc = asDocument(createView())
-      doc.getElementById("cui-subsection-title")
-      assertContainsText(doc, "HMRC’s digital assistant is available at any time to answer your questions.")
+      assertEqualsValue(
+        doc,
+        "#cui-subsection-title",
+        "HMRC’s digital assistant is available at any time to answer your questions.")
     }
 
     "show the sidebar chatbot cannot paragraph" in {
       val doc = asDocument(createView())
-      doc.getElementById("chatbot-cannot")
-      assertContainsText(doc, "If it cannot help you, you can ask to transfer to an HMRC adviser by typing ‘adviser’.")
+      assertEqualsValue(
+        doc,
+        "#chatbot-cannot",
+        "If it cannot help you, you can ask to transfer to an HMRC adviser by typing ‘adviser’.")
     }
 
     "show advisor availablility header" in {
       val doc = asDocument(createView())
-      doc.getElementById("chatbot-cannot")
-      assertContainsText(doc, "Advisers are available:")
+      assertEqualsValue(doc, "#opening-times-title", "Advisers are available:")
     }
 
     "Show opening times Monday to Friday" in {
       val doc = asDocument(createView())
-      doc.getElementById("opening-times-weekdays")
-      assertContainsText(doc, "Monday to Friday, 8am to 7:30pm")
+      assertEqualsValue(doc, "#opening-times-weekdays", "<a>Monday to Friday, 8am to 7:30pm</a>")
     }
 
     "Show opening times Saturday" in {
       val doc = asDocument(createView())
-      doc.getElementById("opening-times-saturday")
-      assertContainsText(doc, "Saturday, 8am to 4pm")
+      assertEqualsValue(doc, "#opening-times-saturday", "<a>Saturday, 8am to 4pm</a>")
     }
 
     "Show not open Sunday paragraph" in {
       val doc = asDocument(createView())
-      doc.getElementById("closed-sundays")
-      assertContainsText(doc, "Advisers are not available on Sundays or Bank holidays.")
+      assertEqualsValue(doc, "#closed-sundays", "Advisers are not available on Sundays or Bank holidays.")
     }
   }
 }
