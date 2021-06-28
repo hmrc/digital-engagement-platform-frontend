@@ -1,16 +1,16 @@
 export const Agent = {
-    Outer: 'ciapiSkinTranscriptAgentLine',
-    Inner: 'bubble agent-bubble background-img enter'
+    Outer: 'ciapi-agent-container',
+    Inner: 'ciapi-agent-message'
 };
 export const Customer = {
-    Outer: 'ciapiSkinTranscriptCustLine',
-    Inner: 'bubble customer-bubble background-img enter'
+    Outer: 'ciapi-customer-container',
+    Inner: 'ciapi-customer-message'
 };
 export const System = {
-    Outer: 'ciapiSkinTranscriptSysMsg',
-    Inner: 'ciapiSkinSysMsg'
+    Outer: 'ciapi-system-container',
+    Inner: 'ciapi-system-message'
 };
 export const Opener = {
-    Outer: 'ciapiSkinTranscriptOpener',
-    Inner: 'ciapiSkinOpener'
+    Outer: 'ciapi-opener-container',
+    Inner: 'ciapi-opener-message'
 };
