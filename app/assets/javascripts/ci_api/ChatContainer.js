@@ -20,7 +20,7 @@ export default class ChatContainer {
         <div id="ciapiSkinChatTranscript" role="log"></div>
         <div id="ciapiSkinFooter">
            <textarea id="custMsg" rows="5" cols="50" wrap="physical" name="comments"></textarea>
-           <div id="ciapiSkinSendButton">Send</div>
+           <button id="ciapiSkinSendButton">Send</div>
         </div>
         `
 
