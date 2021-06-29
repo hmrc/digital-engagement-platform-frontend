@@ -22,47 +22,47 @@ body {
 }
 
 #ciapiSkinHeader {
-  width: 100%;
-  height: 50px;
-  background: #008670;
-  font-family: Arial;
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    border-bottom: 5px solid #008670 !important;
+    font-family: Arial;
 }
 
 #ciapiSkinTitleBar {
-  width: calc(100% - 65px);
-  font-weight: bold;
-  height: 100%;
-  float: left;
-  padding: 0 20px;
-  box-sizing: border-box;
-}
-
-#ciapiSkinTitleBar i.icono-comment {
-  color: #fff;
-  height: 20px;
-  margin: 0 10px 10px 0;
-}
-
-#ciapiSkinTitleBar i.icono-disqus {
-  color: #fff;
-  margin: 0 10px 10px 0;
+    height: 100%;
+    display: inline-block;
+    padding: 5px 8px;
+    box-sizing: border-box;
+    vertical-align: middle;
 }
 
 #ciapiSkinTitleBar span {
+  left: 76px;
+  top: 0px;
   line-height: 50px;
-  font-size: 26px;
-  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  color: #0B0C0C;
+  width: 205px;
 }
 
 #ciapiSkinCloseButton {
-  width: 65px;
-  height: 100%;
-  float: left;
-  padding: 8px 15px;
+  width: 40px;
+  height: 40px;
+  float: right;
+  margin: 8px 15px;
   box-sizing: border-box;
+  background-origin: border-box;
+  border: none;
+  background-color: transparent;
   color: white;
   font-size: 20px;
   cursor: pointer;
+  background-image: url('/ask-hmrc/assets/media/close.svg');
+  &:hover {
+    background-color: #DBDAD9 !important;
+  }
 }
 
 #ciapiSkinCloseButton i {
@@ -74,9 +74,20 @@ body {
   cursor: pointer;
 }
 
+#ciapiTitleBarLogo {
+    display: inline-block;
+    padding-left: 8px;
+    padding-top: 3px;
+    vertical-align: middle;
+}
+
+#ciapiTitleBarLogo img {
+    height: 50px;
+}
+
 #ciapiSkinChatTranscript {
   width: 100%;
-  height: calc(100% - 100px);
+  height: calc(100% - 150px);
   background-color: #fff;
   box-sizing: border-box;
   overflow: auto;
@@ -87,20 +98,19 @@ body {
 
 #ciapiSkinFooter {
   width: 100%;
-  height: 50px;
+  height: 36px;
 }
 
 #ciapiSkinFooter textarea {
-  margin: 3px;
-  float: left;
-  width: calc(100% - 70px);
-  height: 44px;
-  box-sizing: border-box;
-  resize: none;
-  border: none;
-  padding: 4px;
-  font-size: 20px;
-  font-family: Arial;
+    margin: 3px;
+    width: 92%;
+    height: 29px;
+    box-sizing: border-box;
+    resize: none;
+    border: solid 1px rgba(128,128,128,0.25);
+    font-size: 16px;
+    font-family: Arial;
+    margin-left: 7%;
 }
 
 #ciapiSkinFooter textarea:focus {
@@ -110,12 +120,12 @@ body {
 #ciapiSkinSendButton {
     background-color: #00703c;
     width: 64px;
-    height: 50px;
-    float: left;
+    height: 40px;
     box-sizing: border-box;
     color: white;
     vertical-align: middle;
     font-size: 20px;
+    margin-left: 7%;
     text-align: center;
 }
 
