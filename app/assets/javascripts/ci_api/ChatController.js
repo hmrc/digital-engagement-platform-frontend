@@ -111,6 +111,10 @@ export default class ChatController {
         this._moveToChatNullState();
     }
 
+    onHideChat() {
+        this.sdk.sendActivityMessage("minimize");
+    }
+
     onClickedVALink(e) {
         this.state.onClickedVALink(e);
     }

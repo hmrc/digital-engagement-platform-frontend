@@ -3,6 +3,7 @@ import Transcript from './Transcript'
 const nullEventHandler = {
     onSend: function() {},
     onCloseChat: function() {},
+    onHideChat: function() {},
     onClickedVALink: function(e) {},
 };
 
@@ -17,6 +18,7 @@ export default class ChatContainer {
            <div id="ciapiTitleBarLogo"><img src='/ask-hmrc/assets/media/logo.png'></div>
            <div id="ciapiSkinTitleBar"><span>Ask HMRC</span></div>
            <button id="ciapiSkinCloseButton" title="Close chat window" aria-label="Close chat window"></button>
+           <button id="ciapiSkinHideButton" title="Hide chat" aria-label="Hide chat"></button>
         </div>
         <div id="ciapiSkinChatTranscript" role="log"></div>
         <div id="ciapiSkinFooter">
@@ -74,6 +76,10 @@ export default class ChatContainer {
 
         this.container.querySelector("#ciapiSkinCloseButton").addEventListener("click", (e) => {
             this.eventHandler.onCloseChat();
+        });
+
+        this.container.querySelector("#ciapiSkinHideButton").addEventListener("click", (e) => {
+            this.eventHandler.onHideChat();
         });
 
         this.custInput.addEventListener('keypress', (e) => {
