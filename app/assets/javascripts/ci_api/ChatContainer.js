@@ -14,13 +14,14 @@ export default class ChatContainer {
 
         let containerHtml = `
         <div id="ciapiSkinHeader">
+           <div id="ciapiTitleBarLogo"><img src='/ask-hmrc/assets/media/logo.png'></div>
            <div id="ciapiSkinTitleBar"><span>Ask HMRC</span></div>
-           <div id="ciapiSkinCloseButton">(X)</div>
+           <button id="ciapiSkinCloseButton"></button>
         </div>
         <div id="ciapiSkinChatTranscript" role="log"></div>
         <div id="ciapiSkinFooter">
-           <textarea id="custMsg" rows="5" cols="50" wrap="physical" name="comments"></textarea>
-           <button id="ciapiSkinSendButton">Send</div>
+            <div><textarea id="custMsg" rows="5" cols="50" wrap="physical" name="comments"></textarea></div>
+           <div><button id="ciapiSkinSendButton">Send</button></div>
         </div>
         `
 
