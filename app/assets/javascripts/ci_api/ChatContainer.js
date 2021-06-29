@@ -16,12 +16,19 @@ export default class ChatContainer {
         <div id="ciapiSkinHeader">
            <div id="ciapiTitleBarLogo"><img src='/ask-hmrc/assets/media/logo.png'></div>
            <div id="ciapiSkinTitleBar"><span>Ask HMRC</span></div>
-           <button id="ciapiSkinCloseButton"></button>
+           <button id="ciapiSkinCloseButton" title="Close chat window" aria-label="Close chat window"></button>
         </div>
         <div id="ciapiSkinChatTranscript" role="log"></div>
         <div id="ciapiSkinFooter">
-            <div><textarea id="custMsg" rows="5" cols="50" wrap="physical" name="comments"></textarea></div>
-           <div><button id="ciapiSkinSendButton">Send</button></div>
+            <div><textarea
+              id="custMsg"
+              aria-label="Type your message here"
+              placeholder="Type your message here"
+              rows="5"
+              cols="50"
+              wrap="physical"
+              name="comments"></textarea></div>
+           <div><button id="ciapiSkinSendButton" title="Send message" aria-label="Send message">Send</button></div>
         </div>
         `
 
