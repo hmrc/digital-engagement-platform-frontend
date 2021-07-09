@@ -4,9 +4,14 @@
 @import 'system-message';
 @import 'c2cbutton';
 
-body {
-  line-height: 1.3;
+@mixin DefaultFont {
   font-family: Arial;
+  font-size: 19px;
+}
+
+body {
+  @include DefaultFont
+  line-height: 1.3;
 }
 
 #ciapiSkinContainer {
@@ -17,14 +22,14 @@ body {
     right: 10px;
     bottom: 0px;
     background-color: #fff;
-    font-family: Arial;
+    @DefaultFont
 }
 
 #ciapiSkinHeader {
+    @include DefaultFont
     width: 100%;
     height: 30px;
     background-color: #fff;
-    font-family: Arial;
     border-bottom-color: rgb(177, 180, 182);
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
@@ -64,7 +69,7 @@ body {
 }
 
 #ciapiSkinFooter textarea {
-    font-size: 19px;
+    @include DefaultFont
     width: 80%;
     line-height: 1.25;
     box-sizing: border-box;
