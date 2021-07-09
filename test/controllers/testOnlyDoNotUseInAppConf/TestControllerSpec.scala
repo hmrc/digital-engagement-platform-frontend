@@ -42,8 +42,14 @@ class TestControllerSpec
       status(result) mustBe OK
     }
 
-    "render ciApiTest page" in {
-      val result = controller.ciApiTest(fakeRequest)
+    "render ciApiTest popup page" in {
+      val result = controller.ciApiTestPopup(fakeRequest)
+
+      status(result) mustBe OK
+    }
+
+    "render ciApiTest embedded page" in {
+      val result = controller.ciApiTestEmbedded(fakeRequest)
 
       status(result) mustBe OK
     }
