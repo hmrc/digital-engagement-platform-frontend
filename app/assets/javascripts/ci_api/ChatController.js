@@ -4,6 +4,7 @@ import ChatContainer from './ChatContainer'
 import * as MessageClasses from './DefaultClasses'
 import * as DisplayState from './NuanceDisplayState'
 import * as ChatStates from './ChatStates'
+import * as ContainerHtml from './ContainerHtml'
 
 const c2cDisplayStateMessages = {
     [DisplayState.OutOfHours]: "Out of hours",
@@ -86,9 +87,14 @@ export default class ChatController {
     }
 
     _showChat() {
-        this.container = new ChatContainer(MessageClasses);
-
-        document.getElementsByTagName("body")[0].appendChild(this.container.element());
+        const embeddedDiv = document.getElementById("HMRC_CIAPI_Embedded_1")
+        if (embeddedDiv) {
+            this.container = new ChatContainer(MessageClasses, ContainerHtml.EmbeddedContainerHtml);
+            embeddedDiv.appendChild(this.container.element());
+        } else {
+            this.container = new ChatContainer(MessageClasses, ContainerHtml.PopupContainerHtml);
+            document.getElementsByTagName("body")[0].appendChild(this.container.element());
+        }
 
         this.container.setEventHandler(this);
 
@@ -97,9 +103,10 @@ export default class ChatController {
 
     // Begin event handler methods
     onSend() {
-        const text = this.container.currentInputText()
+        const text = this.container.currentInputText().trim()
         this.container.clearCurrentInputText();
-        this.state.onSend(text);
+        if (text !== "")
+            this.state.onSend(text);
     }
 
     onCloseChat() {

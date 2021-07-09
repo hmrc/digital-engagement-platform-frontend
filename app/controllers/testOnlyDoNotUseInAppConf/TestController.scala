@@ -22,7 +22,7 @@ import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 import views.html.CUIViews.{JobRetentionSchemeHelpView, NuanceFullPageCUIView}
 import views.html.IdTestView
-import views.html.ci_api.CiApiDemoView
+import views.html.ci_api._
 import views.html.testOnly.NuanceFile
 
 import scala.concurrent.Future
@@ -33,7 +33,8 @@ class TestController @Inject()(
   mcc: MessagesControllerComponents,
   nuanceFullPageCUIView: NuanceFullPageCUIView,
   idTestView: IdTestView,
-  ciApiDemoView: CiApiDemoView,
+  ciApiDemoViewPopup: CiApiDemoViewPopup,
+  ciApiDemoViewEmbedded: CiApiDemoViewEmbedded,
   jobRetentionSchemeHelpView: JobRetentionSchemeHelpView,
   nuanceFile: NuanceFile) extends FrontendController(mcc) {
 
@@ -45,8 +46,11 @@ class TestController @Inject()(
   def idTest: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(idTestView()))
   }
-  def ciApiTest: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(ciApiDemoView()))
+  def ciApiTestPopup: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(ciApiDemoViewPopup()))
+  }
+  def ciApiTestEmbedded: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(ciApiDemoViewEmbedded()))
   }
   def nuanceHtml: Action[AnyContent] = Action.async {
     Future.successful(Ok(nuanceFile()))

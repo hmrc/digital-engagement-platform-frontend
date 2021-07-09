@@ -27,9 +27,9 @@
 @()(implicit request: Request[_], messages: play.api.i18n.Messages)
 
 @mainContent = {
-    <link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/ci_api/chat-ui.css")' type="text/css">
+    <link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/ci_api/chat-ui-popup.css")' type="text/css">
 
-    <h3>HMRC_CIAPI_Fixed_1:</h3>
+    <h1>Popup</h1>
     <div id="HMRC_CIAPI_Fixed_1"></div>
     <div id="HMRC_CIAPI_Anchored_1"></div>
 }
@@ -46,7 +46,7 @@
     }
 }
 
-@govuk_wrapper(title = "CIAPI DEMO",
+@govuk_wrapper(title = "Popup",
     mainContent = mainContent,
     scriptElem = scriptElem,
     showHelpForm = true,

@@ -8,31 +8,10 @@ const nullEventHandler = {
 };
 
 export default class ChatContainer {
-    constructor(messageClasses) {
+    constructor(messageClasses, containerHtml) {
         this.container = document.createElement("div")
         this.container.id = "ciapiSkinContainer";
         this.eventHandler = nullEventHandler;
-
-        let containerHtml = `
-        <div id="ciapiSkinHeader">
-           <div id="ciapiTitleBarLogo"><img src='/ask-hmrc/assets/media/logo.png'></div>
-           <div id="ciapiSkinTitleBar"><span>Ask HMRC</span></div>
-           <button id="ciapiSkinCloseButton" title="Close chat window" aria-label="Close chat window"></button>
-           <button id="ciapiSkinHideButton" title="Hide chat" aria-label="Hide chat"></button>
-        </div>
-        <div id="ciapiSkinChatTranscript" role="log"></div>
-        <div id="ciapiSkinFooter">
-            <div><textarea
-              id="custMsg"
-              aria-label="Type your message here"
-              placeholder="Type your message here"
-              rows="5"
-              cols="50"
-              wrap="physical"
-              name="comments"></textarea></div>
-           <div><button id="ciapiSkinSendButton" title="Send message" aria-label="Send message">Send</button></div>
-        </div>
-        `
 
         this.container.insertAdjacentHTML("beforeend", containerHtml);
         this.content = this.container.querySelector("#ciapiSkinChatTranscript");
@@ -74,13 +53,19 @@ export default class ChatContainer {
             this.eventHandler.onSend();
         });
 
-        this.container.querySelector("#ciapiSkinCloseButton").addEventListener("click", (e) => {
-            this.eventHandler.onCloseChat();
-        });
+        const closeButton = this.container.querySelector("#ciapiSkinCloseButton");
+        if (closeButton) {
+            closeButton.addEventListener("click", (e) => {
+                this.eventHandler.onCloseChat();
+            });
+        }
 
-        this.container.querySelector("#ciapiSkinHideButton").addEventListener("click", (e) => {
-            this.eventHandler.onHideChat();
-        });
+        const hideButton = this.container.querySelector("#ciapiSkinHideButton");
+        if (hideButton) {
+            hideButton.addEventListener("click", (e) => {
+                this.eventHandler.onHideChat();
+            });
+        }
 
         this.custInput.addEventListener('keypress', (e) => {
             if (e.which == 13) {
