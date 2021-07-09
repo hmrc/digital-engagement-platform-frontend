@@ -118,7 +118,7 @@ body {
 
 #ciapiPrintButton {
     @include TopButton
-    background-image: url(/ask-hmrc/assets/media/save-transcript.svg);
+    background-image: url('/ask-hmrc/assets/media/save-transcript.svg');
 }
 
 #ciapiSoundButton {
