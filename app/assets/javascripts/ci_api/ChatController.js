@@ -18,6 +18,7 @@ export default class ChatController {
         this.sdk = null;
         this.c2cButtons = new ClickToChatButtons((c2cIdx) => this._onC2CButtonClicked(c2cIdx), c2cDisplayStateMessages);
         this.state = new ChatStates.NullState();
+        this.minimised = false;
     }
 
     nuanceFrameworkLoaded(w) {
@@ -80,6 +81,7 @@ export default class ChatController {
 
     _moveToChatShownState() {
         this._moveToState(new ChatStates.ShownState((text) => this._engageChat(text)));
+        this.minimised = false;
     }
 
     _moveToChatEngagedState(previousMessages = []) {
@@ -119,7 +121,17 @@ export default class ChatController {
     }
 
     onHideChat() {
-        this.sdk.sendActivityMessage("minimize");
+        const speedInMs = 200;
+        const easing = "linear";
+        if (this.minimised) {
+            $(this.container.element()).animate({'bottom': '0px'}, speedInMs, easing);
+            this.sdk.sendActivityMessage("restore");
+            this.minimised = false;
+        } else {
+            $(this.container.element()).animate({'bottom': '-490px'}, speedInMs, easing);
+            this.sdk.sendActivityMessage("minimize");
+            this.minimised = true;
+        }
     }
 
     onClickedVALink(e) {
