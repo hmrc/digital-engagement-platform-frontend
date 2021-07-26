@@ -31,7 +31,8 @@
   footerBlock: Option[Html] = None,
   footerItems: Seq[FooterItem] = Seq.empty,
   bodyEndBlock: Option[Html] = None,
-  scriptsBlock: Option[Html] = None
+  scriptsBlock: Option[Html] = None,
+  cspNonce: Option[String] = None
 )(contentBlock: Html)(implicit messages: Messages)
 
 @headerDefault = {
@@ -63,6 +64,7 @@
   beforeContentBlock = beforeContentBlock,
   footerBlock = footerDefault,
   mainClasses = Some("govuk-main-wrapper--auto-spacing"),
-  bodyEndBlock = Some(bodyEndDefault)
+  bodyEndBlock = Some(bodyEndDefault),
+  cspNonce = cspNonce
 )(contentBlock)
 

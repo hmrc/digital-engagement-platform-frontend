@@ -47,7 +47,8 @@
     scriptElem: Html = HtmlFormat.empty,
     navTitle: Option[String] = None,
     showHelpForm: Boolean = true,
-    showBackLink: Boolean = true
+    showBackLink: Boolean = true,
+    nonce: Option[String] = None
 )(implicit request: Request[_], messages: play.api.i18n.Messages)
 
 @bodyEndBlock = {
@@ -88,10 +89,11 @@
 
 @govukLayout(
     pageTitle = Some(title),
-    headBlock = Some(hmrcHead()),
+    headBlock = Some(hmrcHead(nonce = nonce)),
     headerBlock = Some(headerBlock),
     scriptsBlock = Some(scriptsBlock),
     bodyEndBlock = Some(bodyEndBlock),
     beforeContentBlock = Some(beforeContentBlock),
-    footerBlock = Some(hmrcStandardFooter(accessibilityStatementUrl=Some(appConfig.accessibilityStatementLink(request.uri))))
+    footerBlock = Some(hmrcStandardFooter(accessibilityStatementUrl=Some(appConfig.accessibilityStatementLink(request.uri)))),
+    cspNonce = nonce
 )(wrappedContent)
