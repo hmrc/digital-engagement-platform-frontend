@@ -17,6 +17,7 @@
 @import config.AppConfig
 @import templates.MainTemplateCUI
 @import includes.cuiSidebar
+@import views.html.helper.CSPNonce
 
 @this(main_template: MainTemplateCUI, appConfig: AppConfig)
 
@@ -27,8 +28,8 @@ title = "Embedded",
 navTitle = Some("Embedded"),
 sidebar = cuiSidebar()) {
 
-<link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/ci_api/chat-ui-embedded.css")' type="text/css">
-<script src='@routes.Assets.versioned("javascripts/ci_api.js")'></script>
+<link @{CSPNonce.attr} rel="stylesheet" href='@routes.Assets.versioned("stylesheets/ci_api/chat-ui-embedded.css")' type="text/css">
+<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/ci_api.js")'></script>
 
 <div id="cui-messaging-container">
  <div id="HMRC_CIAPI_Embedded_1" class="ci-api-embedded"></div>

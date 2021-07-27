@@ -17,6 +17,7 @@
 @import config.AppConfig
 @import uk.gov.hmrc.webchat.client.WebChatClient
 @import templates.GovukWrapper
+@import views.html.helper.CSPNonce
 
 @this(
     govuk_wrapper: GovukWrapper,
@@ -27,7 +28,7 @@
 @()(implicit request: Request[_], messages: play.api.i18n.Messages)
 
 @mainContent = {
-    <link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/ci_api/chat-ui-popup.css")' type="text/css">
+    <link @{CSPNonce.attr} rel="stylesheet" href='@routes.Assets.versioned("stylesheets/ci_api/chat-ui-popup.css")' type="text/css">
 
     <h1>Popup</h1>
     <div id="HMRC_CIAPI_Fixed_1"></div>
@@ -36,12 +37,12 @@
 
 @scriptElem = {
 
-    <script src='@routes.Assets.versioned("javascripts/thirdparty/jquery-3.5.1.min.js")'></script>
-    <script src='@routes.Assets.versioned("javascripts/custom.js")'></script>
-    <script src='@routes.Assets.versioned("javascripts/bundle.js")'></script>
+    <script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/thirdparty/jquery-3.5.1.min.js")'></script>
+    <script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/custom.js")'></script>
+    <script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/bundle.js")'></script>
 
     @if(!appConfig.performanceTest){
-        <script src='@routes.Assets.versioned("javascripts/ci_api.js")'></script>
+        <script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/ci_api.js")'></script>
 
         @{webChatClient.loadRequiredElements()}
     }
