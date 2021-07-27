@@ -15,10 +15,11 @@
  *@
 
 @import config.AppConfig
+@import views.html.helper.CSPNonce
 
 @this(appConfig: AppConfig)
 
-@()
+@()(implicit request: Request[_])
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
@@ -28,13 +29,13 @@
     </head>
     <body>
         @if(!appConfig.performanceTest){
-            <script>
+            <script @{CSPNonce.attr}>
             v3LanderConfig = {
                 mediaUrl: "https://media-hmrc-uk-preprod.digital.nuance.com",
                 vanityDomain: "https://hmrc-uk-preprod.digital.nuance.com"
             };
             </script>
-            <script language="javascript" src="https://hmrc-uk-preprod.digital.nuance.com/chatskins/launch/inqChatLaunch10006719.js"> </script>
+            <script @{CSPNonce.attr} language="javascript" src="https://hmrc-uk-preprod.digital.nuance.com/chatskins/launch/inqChatLaunch10006719.js"> </script>
         }
     </body>
 </html>

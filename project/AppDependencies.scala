@@ -7,8 +7,8 @@ object AppDependencies {
 
   val compile: Seq[ModuleID] = Seq(
     "org.webjars.npm" % "hmrc-frontend" % "1.15.1",
-    "uk.gov.hmrc" %% "bootstrap-frontend-play-28" % "5.0.0",
-    "uk.gov.hmrc" %% "play-frontend-hmrc" % "0.59.0-play-28",
+    "uk.gov.hmrc" %% "bootstrap-frontend-play-28" % "5.7.0",
+    "uk.gov.hmrc" %% "play-frontend-hmrc" % "0.85.0-play-28",
     "uk.gov.hmrc" %% "url-builder" % "3.5.0-play-28",
     "uk.gov.hmrc" %% "digital-engagement-platform-chat" % "0.17.0-play-28"
   )
