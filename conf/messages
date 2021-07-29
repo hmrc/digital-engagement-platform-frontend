@@ -29,7 +29,7 @@ global.closed.time.sun=Closed Sundays.
 global.webchat.unavailable=Webchat is not available at the moment.
 
 global.opening.time.sat.31july=Saturday 31 July, 8am to 4pm
-global.closed.time.sun1aug=Closed Sunday 1 August and bank holidays
+global.closed.time.sun1aug=Closed Sunday 1 August and bank holidays.
 
 #Beta Banner
 global.banner.phase = BETA
