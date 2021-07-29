@@ -6,6 +6,7 @@
     float: right;
   }
   padding: 8px 15px;
+  clear: both;
 }
 .ciapi-customer-message::before, .ciapi-customer-message::after {
     content: " ";

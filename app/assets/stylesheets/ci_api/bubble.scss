@@ -1,7 +1,7 @@
 @mixin bubble {
     background-color: #ffffff;
     max-width: 80%;
-    margin: 0 auto 2em auto;
+    margin: 0 auto 1em auto !important;
     padding: 0.8421052632em 1.0526315789em;
     border-radius: 1.0526315789em;
     border: 0.3157894737em solid #0b0c0c;

@@ -13,7 +13,9 @@ export const PopupContainerHtml = `
             <p><a href='#' title="Turn sound on" aria-label="Turn sound on" class="govuk-body">Turn sound on</a></p>
         </div>
     </div>
-    <div id="ciapiSkinChatTranscript" role="log"></div>
+    <div id="ciapiSkinChatTranscript" role="log">
+        <p class="info"><img src="/ask-hmrc/assets/media/intro-warn.svg">You are currently chatting with a computer.</p>
+    </div>
     <div id="ciapiSkinFooter">
         <div id="ciapiInput"><textarea
             id="custMsg"
