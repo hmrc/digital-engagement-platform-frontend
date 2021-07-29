@@ -3,6 +3,7 @@
 @import 'transcript-opener';
 @import 'system-message';
 @import 'c2cbutton';
+@import "lib/govuk-frontend/govuk/all";
 
 @mixin DefaultFont {
   font-family: Arial;
@@ -58,6 +59,10 @@ body {
   box-sizing: border-box;
   overflow: auto;
   padding: 10px 0;
+  div {
+    margin-bottom: 0px;
+    @extend .govuk-body;
+  }
 }
 
 #ciapiSkinFooter {
@@ -139,4 +144,15 @@ body {
 #ciapiEndChatButton {
     @include IconButton
     background-image: url('/ask-hmrc/assets/media/end-chat.svg');
+}
+
+.info {
+    text-align: center;
+    color: #505a5f;
+}
+
+.info img {
+    width: 1.25em;
+    vertical-align: bottom;
+    padding: 0 0.5em .2em 0;
 }

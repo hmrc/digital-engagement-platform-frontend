@@ -5,6 +5,7 @@
     @include bubble
   }
   padding: 8px 15px;
+  clear: both;
 }
 
 .ciapi-agent-message::before, .ciapi-agent-message::after {
