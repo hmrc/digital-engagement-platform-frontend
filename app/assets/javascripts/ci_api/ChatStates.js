@@ -1,5 +1,6 @@
 import * as MessageType from './NuanceMessageType'
 
+// State at start, before anything happens.
 export class NullState {
     onSend(text) {
         console.error("State Error: Trying to send text with no state.")
@@ -10,6 +11,8 @@ export class NullState {
     }
 }
 
+// Chat skin shown, but not engaged yet.
+// First input from customer should engage chat.
 export class ShownState {
     constructor(engageRequest) {
         this.engageRequest = engageRequest
@@ -25,6 +28,7 @@ export class ShownState {
     }
 }
 
+// Customer is engaged in a chat.
 export class EngagedState {
     constructor(sdk, container, previousMessages) {
         this.sdk = sdk;
@@ -64,6 +68,10 @@ export class EngagedState {
             }
         } else if (msg.messageType === MessageType.Chat_AutomationRequest) {
             transcript.addAutomatonMsg(msg["automaton.data"]);
+        } else if (msg.messageType === MessageType.Chat_Exit) {
+            // This message may also have msg.state === "closed".
+            // Not sure about transfer scenarios.
+            transcript.addSystemMsg(msg["display.text"]);
         } else if (msg.state === "closed") {
             transcript.addSystemMsg("Agent Left Chat.");
         } else if (msg.messageType === MessageType.Chat_CommunicationQueue) {
@@ -71,6 +79,15 @@ export class EngagedState {
         } else if (msg.messageType === MessageType.Chat_Denied) {
 //            this.isConnected = false;
             transcript.addSystemMsg("No agents are available.");
+        } else if ([
+                       MessageType.Chat_System,
+                       MessageType.Chat_TransferResponse,
+                       MessageType.ChatRoom_MemberConnected,
+                       MessageType.ChatRoom_MemberLost
+                   ].includes(msg.messageType)) {
+            transcript.addSystemMsg(msg["client.display.text"]);
+        } else {
+            console.log("==== Unknown message:", msg);
         }
     }
 

@@ -10,6 +10,24 @@ body {
   font-family: Arial;
 }
 
+#ciapiSkin {
+    #ciapiSkinContainer {
+        display: block;
+    }
+    #ciapiSkinMinimised {
+        display: none;
+    }
+}
+
+#ciapiSkin.minimised {
+    #ciapiSkinContainer {
+        display: none;
+    }
+    #ciapiSkinMinimised {
+        display: block;
+    }
+}
+
 #ciapiSkinContainer {
     flex-flow: row wrap;
     justify-content: space-evenly;
@@ -80,11 +98,10 @@ body {
     float: left;
     padding-left: 0.9em;
     padding-top: 0.4em;
-}
-
-#ciapiTitleBarLogo img {
-    height: 44px;
-    width: 44px;
+    img {
+        height: 44px;
+        width: 44px;
+    }
 }
 
 #ciapiSkinChatTranscript {
@@ -96,21 +113,22 @@ body {
     overflow-x: hidden;
     padding-right: 14px;
     padding-left: 1em;
+
     div {
         margin-bottom: 0px;
         @extend .govuk-body;
     }
-}
 
-#ciapiSkinFooter {
-    width: calc(100% - 12px);
-    height: 80px;
-    padding: 5px;
-}
+    .info {
+        text-align: center;
+        color: #505a5f;
+    }
 
-#ciapiSkinFooter textarea {
-    height: 80px;
-    resize: none;
+    .info img {
+        width: 1.25em;
+        vertical-align: bottom;
+        padding: 0 0.5em .2em 0;
+    }
 }
 
 #HMRC_CIAPI_Anchored_1 {
@@ -119,62 +137,100 @@ body {
   right: 50px;
 }
 
-#print a {
-    background-image: url('/ask-hmrc/assets/media/save-transcript.svg');
-    background-size: 0.8em;
-}
-
-#sound a {
-    background-image: url('/ask-hmrc/assets/media/hmrc-alert_on.svg');
-}
-
-#print p, #sound p {
-    margin: 0;
-    padding: 0 0 0.3em 0;
-}
-
-#print a, #sound a, #end a {
-    border: 0px solid green;
-    background-size: 1em;
-    background-repeat: no-repeat;
-    padding-left: 1.2em;
-}
-
-#print, #sound {
-    max-width: 50%;
-    width: 49%;
-    float: left;
-}
-
-#sound {
-    text-align: right;
-}
 
 #tools {
     height: 23px;
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 5px;
+
+    #print a {
+        background-image: url('/ask-hmrc/assets/media/save-transcript.svg');
+        background-size: 0.8em;
+    }
+
+    #sound a {
+        background-image: url('/ask-hmrc/assets/media/hmrc-alert_on.svg');
+    }
+
+    #print p, #sound p {
+        margin: 0;
+        padding: 0 0 0.3em 0;
+    }
+
+    #print a, #sound a, #end a {
+        border: 0px solid green;
+        background-size: 1em;
+        background-repeat: no-repeat;
+        padding-left: 1.2em;
+    }
+
+    #print, #sound {
+        max-width: 50%;
+        width: 49%;
+        float: left;
+    }
+
+    #sound {
+        text-align: right;
+    }
 }
 
-#ciapiInput {
-    width: 80%;
-    float: left;
+
+#ciapiSkinFooter {
+    width: calc(100% - 12px);
+    height: 80px;
+    padding: 5px;
+
+    #ciapiInput {
+        width: 80%;
+        float: left;
+
+        textarea {
+            height: 80px;
+            resize: none;
+        }
+    }
+
+    #ciapiSend {
+        width: 18%;
+        float: left;
+        text-align: right;
+    }
+
 }
 
-#ciapiSend {
-    width: 18%;
-    float: left;
-    text-align: right;
-}
+#ciapiSkinMinimised {
+    width: 100%;
+    max-width: 400px;
+    height: 57px;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    background-color: #00703c;
+    #ciapiSkinRestoreButton {
+        z-index: 1000;
+        width: 100%;
+        height: 57px;
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        #logo-white {
+            float: left;
+            padding-left: 0.7em;
+            padding-top: 0.4em;
+            img {
+                height: 44px;
+                width: 44px;
+            }
+        }
+        h2 {
+            color: white;
+            float: left;
+            padding-top: 0.9em;
+            padding-left: 0.6em;
+        }
+    }
 
-.info {
-    text-align: center;
-    color: #505a5f;
-}
-
-.info img {
-    width: 1.25em;
-    vertical-align: bottom;
-    padding: 0 0.5em .2em 0;
 }

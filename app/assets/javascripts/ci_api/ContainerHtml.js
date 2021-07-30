@@ -1,4 +1,5 @@
 export const PopupContainerHtml = `
+<div id="ciapiSkinContainer">
     <div id="ciapiSkinHeader">
         <div id="ciapiTitleBarLogo"><img src='/ask-hmrc/assets/media/logo.png'></div>
         <div id="ciapiSkinTitleBar" class="govuk-heading-s"><span>Ask HMRC</span></div>
@@ -32,9 +33,17 @@ export const PopupContainerHtml = `
             title="Send message"
             aria-label="Send message">Send</button></div>
     </div>
-  `
+</div>
+<div id="ciapiSkinMinimised">
+    <button id="ciapiSkinRestoreButton" type="button" draggable="false" role="button" title="Show chat window" aria-label="Show chat window">
+        <div id="logo-white"><img src="/ask-hmrc/assets/media/logo-white.png"></div>
+        <h2 class="govuk-heading-s">Ask HMRC a Question</h2>
+    </button>
+</div>
+`
 
 export const EmbeddedContainerHtml = `
+<div id="ciapiSkinContainer">
     <div id="ciapiSkinHeader">
         <button id="ciapiPrintButton" title="Print or save" aria-label="Print or save">Print or save</button>
         <button id="ciapiSoundButton" title="Turn sound on" aria-label="Turn sound on">Turn sound on</button>
@@ -57,5 +66,6 @@ export const EmbeddedContainerHtml = `
             <button id="ciapiEndChatButton" title="End chat" aria-label="End chat">End chat</button>
         </div>
     </div>
-    `
+</div>
+`
 
