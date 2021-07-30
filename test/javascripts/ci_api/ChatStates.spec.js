@@ -314,5 +314,24 @@ describe("Chat States", () => {
             handleMessage(message);
             expect(container.transcript.addSystemMsg).toHaveBeenCalledWith("You were disconnected. Please wait while we attempt to reconnect you.");
         });
+
+        it("reports chat system messages", () => {
+            const [sdk, container] = createEngagedStateDependencies();
+
+            const state = new ChatStates.EngagedState(sdk, container, []);
+
+            const handleMessage = sdk.getMessages.mock.calls[0][0];
+            const message = {
+                data:  {
+                    "messageType": "chat.system",
+                    "engagementID": "388260663047034009",
+                    "messageTimestamp": "1627654732000",
+                    "client.display.text": "Sorry for the delay. An adviser should be with you soon."
+                }
+            };
+
+            handleMessage(message);
+            expect(container.transcript.addSystemMsg).toHaveBeenCalledWith("Sorry for the delay. An adviser should be with you soon.");
+        });
     });
 });

@@ -80,6 +80,7 @@ export class EngagedState {
 //            this.isConnected = false;
             transcript.addSystemMsg("No agents are available.");
         } else if ([
+                       MessageType.Chat_System,
                        MessageType.Chat_TransferResponse,
                        MessageType.ChatRoom_MemberConnected,
                        MessageType.ChatRoom_MemberLost
