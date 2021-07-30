@@ -81,7 +81,8 @@ export class EngagedState {
             transcript.addSystemMsg("No agents are available.");
         } else if ([
                        MessageType.Chat_TransferResponse,
-                       MessageType.ChatRoom_MemberConnected
+                       MessageType.ChatRoom_MemberConnected,
+                       MessageType.ChatRoom_MemberLost
                    ].includes(msg.messageType)) {
             transcript.addSystemMsg(msg["client.display.text"]);
         } else {

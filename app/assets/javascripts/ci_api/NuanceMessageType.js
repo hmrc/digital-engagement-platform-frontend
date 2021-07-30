@@ -7,3 +7,4 @@ export const Chat_Denied = 'chat.denied';
 export const Chat_Exit = 'chat.exit';
 export const Chat_TransferResponse = "chat.transfer_response";
 export const ChatRoom_MemberConnected = "chatroom.member_connected";
+export const ChatRoom_MemberLost = "chatroom.member_lost";

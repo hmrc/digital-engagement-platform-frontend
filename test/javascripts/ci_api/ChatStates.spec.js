@@ -291,5 +291,28 @@ describe("Chat States", () => {
             handleMessage(message);
             expect(container.transcript.addSystemMsg).toHaveBeenCalledWith("Agent 'Jay' exits chat");
         });
+
+        it("reports agent has been lost", () => {
+            const [sdk, container] = createEngagedStateDependencies();
+
+            const state = new ChatStates.EngagedState(sdk, container, []);
+
+            const handleMessage = sdk.getMessages.mock.calls[0][0];
+            const message = {
+                data: {
+                    "ltime": "1656350",
+                    "messageType": "chatroom.member_lost",
+                    "display.text": "Agent 'JayNabonne' loses connection",
+                    "engagementID": "388260663047034009",
+                    "messageTimestamp": "1627654612000",
+                    "chatroom.member.id": "42391918",
+                    "client.display.text": "You were disconnected. Please wait while we attempt to reconnect you.",
+                    "chatroom.member.type": "agent"
+                }
+            };
+
+            handleMessage(message);
+            expect(container.transcript.addSystemMsg).toHaveBeenCalledWith("You were disconnected. Please wait while we attempt to reconnect you.");
+        });
     });
 });
