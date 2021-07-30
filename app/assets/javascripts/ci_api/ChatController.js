@@ -121,16 +121,18 @@ export default class ChatController {
     }
 
     onHideChat() {
-        const speedInMs = 200;
-        const easing = "linear";
-        if (this.minimised) {
-            $(this.container.element()).animate({'bottom': '0px'}, speedInMs, easing);
-            this.sdk.sendActivityMessage("restore");
-            this.minimised = false;
-        } else {
-            $(this.container.element()).animate({'bottom': '-490px'}, speedInMs, easing);
+        if (!this.minimised) {
+            this.container.minimise();
             this.sdk.sendActivityMessage("minimize");
             this.minimised = true;
+        }
+    }
+
+    onRestoreChat() {
+        if (this.minimised) {
+            this.container.restore();
+            this.sdk.sendActivityMessage("restore");
+            this.minimised = false;
         }
     }
 
