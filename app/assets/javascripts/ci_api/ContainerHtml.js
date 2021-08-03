@@ -50,22 +50,28 @@ export const EmbeddedContainerHtml = `
         <button id="ciapiPrintButton" title="Print or save" aria-label="Print or save">Print or save</button>
         <button id="ciapiSoundButton" title="Turn sound on" aria-label="Turn sound on">Turn sound on</button>
     </div>
-    <div id="ciapiSkinChatTranscript" role="log">
-        <p class="info"><img src="/ask-hmrc/assets/media/intro-warn.svg">You are currently chatting with a computer.</p>
-    </div>
-    <div id="ciapiSkinFooter">
-        <div>
-            <textarea
-                id="custMsg"
-                aria-label="Type your message here"
-                placeholder="Type your message here"
-                cols="50"
-                wrap="physical"
-                name="comments"></textarea>
-            <button id="ciapiSkinSendButton" title="Send message" aria-label="Send message">Send</button>
+    <div id="ciapiChatComponents">
+        <div id="ciapiSkinChatTranscript" role="log">
+            <p class="info"><img src="/ask-hmrc/assets/media/intro-warn.svg">You are currently chatting with a computer.</p>
         </div>
-        <div>
-            <button id="ciapiSkinCloseButton" title="End chat" aria-label="End chat">End chat</button>
+        <div id="ciapiSkinFooter">
+            <div>
+                <div id="ciapiInput"><textarea
+                    id="custMsg"
+                    aria-label="Type your message here"
+                    placeholder="Type your message here"
+                    class="govuk-textarea"
+                    cols="50"
+                    wrap="physical"
+                    name="comments"></textarea>
+                </div>
+                <div id="ciapiSend">
+                    <button id="ciapiSkinSendButton" class="govuk-button" title="Send message" aria-label="Send message">Send</button>
+                </div>
+            </div>
+            <div id="ciapiClose">
+                <button id="ciapiSkinCloseButton" title="End chat" aria-label="End chat">End chat</button>
+            </div>
         </div>
     </div>
 </div>
