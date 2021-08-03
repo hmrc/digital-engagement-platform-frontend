@@ -7,7 +7,6 @@ const nullEventHandler = {
     onHideChat: function() {},
     onRestoreChat: function() {},
     onClickedVALink: function(e) {},
-    onCancelEndChat: function() {},
     onConfirmEndChat: function() {}
 };
 
