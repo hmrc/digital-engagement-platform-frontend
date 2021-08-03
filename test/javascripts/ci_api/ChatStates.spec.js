@@ -292,6 +292,25 @@ describe("Chat States", () => {
             expect(container.transcript.addSystemMsg).toHaveBeenCalledWith("Agent 'Jay' exits chat");
         });
 
+        it("reports chat exit in transcript when from digital assistant", () => {
+            const [sdk, container] = createEngagedStateDependencies();
+
+            const state = new ChatStates.EngagedState(sdk, container, []);
+
+            const handleMessage = sdk.getMessages.mock.calls[0][0];
+            const message = {
+                data: {
+                    "state": "closed",
+                    "messageType": "chat.exit",
+                    "engagementID": "388260685642079244",
+                    "messageTimestamp": "1628001005000"
+                }
+            };
+
+            handleMessage(message);
+            expect(container.transcript.addSystemMsg).toHaveBeenCalledWith("Adviser exited chat");
+        });
+
         it("reports agent has been lost", () => {
             const [sdk, container] = createEngagedStateDependencies();
 

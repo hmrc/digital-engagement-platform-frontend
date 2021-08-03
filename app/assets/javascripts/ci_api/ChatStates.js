@@ -71,7 +71,7 @@ export class EngagedState {
         } else if (msg.messageType === MessageType.Chat_Exit) {
             // This message may also have msg.state === "closed".
             // Not sure about transfer scenarios.
-            transcript.addSystemMsg(msg["display.text"]);
+            transcript.addSystemMsg(msg["display.text"] || "Adviser exited chat");
         } else if (msg.state === "closed") {
             transcript.addSystemMsg("Agent Left Chat.");
         } else if (msg.messageType === MessageType.Chat_CommunicationQueue) {
