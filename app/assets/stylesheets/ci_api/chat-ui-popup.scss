@@ -103,8 +103,13 @@
     }
 }
 
+#ciapiChatComponents {
+    height: calc(100% - 96px);
+    width: 100%;
+}
+
 #ciapiSkinChatTranscript {
-    height: calc(100% - 194px);
+    height: calc(100% - 100px);
     width: calc(100% - 33px);
     border-top: 4px solid #b1b4b6;
     border-bottom: 4px solid #000;
@@ -135,7 +140,6 @@
   bottom: 0;
   right: 50px;
 }
-
 
 #tools {
     height: 23px;
@@ -174,7 +178,6 @@
         text-align: right;
     }
 }
-
 
 #ciapiSkinFooter {
     width: calc(100% - 12px);

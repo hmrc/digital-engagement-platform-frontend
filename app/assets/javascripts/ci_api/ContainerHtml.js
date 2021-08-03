@@ -14,24 +14,26 @@ export const PopupContainerHtml = `
             <p><a href='#' title="Turn sound on" aria-label="Turn sound on" class="govuk-body">Turn sound on</a></p>
         </div>
     </div>
-    <div id="ciapiSkinChatTranscript" role="log">
-        <p class="info"><img src="/ask-hmrc/assets/media/intro-warn.svg">You are currently chatting with a computer.</p>
-    </div>
-    <div id="ciapiSkinFooter">
-        <div id="ciapiInput"><textarea
-            id="custMsg"
-            class="govuk-textarea"
-            aria-label="Type your message here"
-            placeholder="Type your message here"
-            rows="5"
-            cols="50"
-            wrap="physical"
-            name="comments"></textarea></div>
-        <div id="ciapiSend"><button
-            id="ciapiSkinSendButton"
-            class="govuk-button"
-            title="Send message"
-            aria-label="Send message">Send</button></div>
+    <div id="ciapiChatComponents">
+        <div id="ciapiSkinChatTranscript" role="log">
+            <p class="info"><img src="/ask-hmrc/assets/media/intro-warn.svg">You are currently chatting with a computer.</p>
+        </div>
+        <div id="ciapiSkinFooter">
+            <div id="ciapiInput"><textarea
+                id="custMsg"
+                class="govuk-textarea"
+                aria-label="Type your message here"
+                placeholder="Type your message here"
+                rows="5"
+                cols="50"
+                wrap="physical"
+                name="comments"></textarea></div>
+            <div id="ciapiSend"><button
+                id="ciapiSkinSendButton"
+                class="govuk-button"
+                title="Send message"
+                aria-label="Send message">Send</button></div>
+        </div>
     </div>
 </div>
 <div id="ciapiSkinMinimised">
