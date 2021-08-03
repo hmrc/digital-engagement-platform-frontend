@@ -39,7 +39,7 @@
     height: 100%;
     min-width: 272px;
     width: 400px;
-    bottom: 0px;
+    bottom: 50px;
     right: 0px;
     background-color: white;
 }
@@ -233,5 +233,16 @@
             padding-top: 0.8em;
             padding-left: 0.6em;
         }
+    }
+}
+
+#postChatSurveyWrapper {
+    height: calc(100% - 2em - 6px);
+    overflow-y: scroll;
+    padding: 1em;
+    border-top: 2px solid #b1b4b6;
+
+    fieldset.govuk-fieldset {
+        margin-top: 2em;
     }
 }

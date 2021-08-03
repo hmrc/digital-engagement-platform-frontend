@@ -104,4 +104,10 @@ export default class ChatContainer {
         this.endChatPopup.hide();
         this.eventHandler.onConfirmEndChat();
     }
+
+    showPostChatSurvey(postChatSurvey) {
+        this.container.querySelector("#ciapiSkinChatTranscript").style.display = "none";
+        this.container.querySelector("#ciapiSkinFooter").style.display = "none";
+        postChatSurvey.attach(this.container.querySelector("#ciapiChatComponents"))
+    }
 }

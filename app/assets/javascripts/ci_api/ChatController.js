@@ -5,6 +5,7 @@ import * as MessageClasses from './DefaultClasses'
 import * as DisplayState from './NuanceDisplayState'
 import * as ChatStates from './ChatStates'
 import * as ContainerHtml from './ContainerHtml'
+import PostChatSurvey from './PostChatSurvey'
 
 const c2cDisplayStateMessages = {
     [DisplayState.OutOfHours]: "Out of hours",
@@ -146,7 +147,11 @@ export default class ChatController {
 
     onConfirmEndChat() {
         console.log("End chat confirmed!")
-        // for now
+        this.container.showPostChatSurvey(new PostChatSurvey(() => this.onPostChatSurveySubmitted()));
+    }
+
+    onPostChatSurveySubmitted() {
+        console.log("Post chat survey submitted!")
         this.closeChat();
     }
 
