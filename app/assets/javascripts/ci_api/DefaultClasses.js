@@ -11,6 +11,6 @@ export const System = {
     Inner: 'ciapi-system-message'
 };
 export const Opener = {
-    Outer: 'ciapi-opener-container',
-    Inner: 'ciapi-opener-message'
+    Outer: 'ciapi-agent-container',
+    Inner: 'ciapi-agent-message'
 };

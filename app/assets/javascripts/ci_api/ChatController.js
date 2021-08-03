@@ -112,6 +112,10 @@ export default class ChatController {
     }
 
     onCloseChat() {
+        this.container.confirmEndChat();
+    }
+
+    closeChat() {
         this.sdk.closeChat();
 
         this.container.destroy();
@@ -139,6 +143,13 @@ export default class ChatController {
     onClickedVALink(e) {
         this.state.onClickedVALink(e);
     }
+
+    onConfirmEndChat() {
+        console.log("End chat confirmed!")
+        // for now
+        this.closeChat();
+    }
+
     // End event handler method
 
     _displayOpenerScripts() {

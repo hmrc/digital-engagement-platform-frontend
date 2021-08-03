@@ -63,9 +63,8 @@ export const EmbeddedContainerHtml = `
             <button id="ciapiSkinSendButton" title="Send message" aria-label="Send message">Send</button>
         </div>
         <div>
-            <button id="ciapiEndChatButton" title="End chat" aria-label="End chat">End chat</button>
+            <button id="ciapiSkinCloseButton" title="End chat" aria-label="End chat">End chat</button>
         </div>
     </div>
 </div>
 `
-
