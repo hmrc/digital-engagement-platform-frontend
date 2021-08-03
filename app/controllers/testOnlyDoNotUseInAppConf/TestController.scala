@@ -52,7 +52,7 @@ class TestController @Inject()(
   def ciApiTestEmbedded: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(ciApiDemoViewEmbedded()))
   }
-  def nuanceHtml: Action[AnyContent] = Action.async {
+  def nuanceHtml: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(nuanceFile()))
   }
 }

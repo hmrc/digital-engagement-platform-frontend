@@ -22,6 +22,7 @@
 @import uk.gov.hmrc.govukfrontend.views.html.components.GovukBackLink
 @import uk.gov.hmrc.govukfrontend.views.html.components.BackLink
 @import uk.gov.hmrc.govukfrontend.views.html.components.Text
+@import views.html.helper.CSPNonce
 
 @import views.html.components._
 @import views.html.layouts.OurGovukLayout
@@ -51,8 +52,8 @@
 )(implicit request: Request[_], messages: play.api.i18n.Messages)
 
 @bodyEndBlock = {
-<script src='@routes.Assets.versioned("lib/govuk-frontend/govuk/all.js")' type="text/javascript"></script>
-<script src='@routes.Assets.versioned("lib/hmrc-frontend/hmrc/all.js")' type="text/javascript"></script>
+<script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/govuk-frontend/govuk/all.js")'></script>
+<script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/hmrc-frontend/hmrc/all.js")'></script>
 }
 
 @content = {
@@ -65,7 +66,7 @@
 }
 
 @headerBlock = {
-    <link href='@routes.Assets.versioned("stylesheets/main.css")' media="screen" rel="stylesheet" type="text/css" />
+    <link @{CSPNonce.attr} href='@routes.Assets.versioned("stylesheets/main.css")' media="screen" rel="stylesheet" type="text/css" />
 
     @hmrcStandardHeader(
         phaseBanner = Some(standardBetaBanner(phase=messages("global.banner.phase"), url=appConfig.betaFeedbackUnauthenticatedUrl)),
@@ -88,10 +89,11 @@
 
 @govukLayout(
     pageTitle = Some(title),
-    headBlock = Some(hmrcHead()),
+    headBlock = Some(hmrcHead(nonce = CSPNonce.get)),
     headerBlock = Some(headerBlock),
     scriptsBlock = Some(scriptsBlock),
     bodyEndBlock = Some(bodyEndBlock),
     beforeContentBlock = Some(beforeContentBlock),
-    footerBlock = Some(hmrcStandardFooter(accessibilityStatementUrl=Some(appConfig.accessibilityStatementLink(request.uri))))
+    footerBlock = Some(hmrcStandardFooter(accessibilityStatementUrl=Some(appConfig.accessibilityStatementLink(request.uri)))),
+    cspNonce = CSPNonce.get
 )(wrappedContent)
