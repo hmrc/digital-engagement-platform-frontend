@@ -1,4 +1,5 @@
 import Transcript from './Transcript'
+import EndChatPopup from './EndChatPopup'
 
 const nullEventHandler = {
     onSend: function() {},
@@ -6,6 +7,8 @@ const nullEventHandler = {
     onHideChat: function() {},
     onRestoreChat: function() {},
     onClickedVALink: function(e) {},
+    onCancelEndChat: function() {},
+    onConfirmEndChat: function() {}
 };
 
 export default class ChatContainer {
@@ -19,6 +22,7 @@ export default class ChatContainer {
         this.custInput = this.container.querySelector("#custMsg");
         this.transcript = new Transcript(this.content, (e) => this.eventHandler.onClickedVALink(e), messageClasses);
         this._registerEventListeners();
+        this.endChatPopup = new EndChatPopup(this.container.querySelector("#ciapiSkinContainer"), this);
     }
 
     element() {
@@ -87,5 +91,18 @@ export default class ChatContainer {
                 e.preventDefault()
             }
         });
+    }
+
+    confirmEndChat() {
+        this.endChatPopup.show();
+    }
+
+    onCancelEndChat() {
+        this.endChatPopup.hide();
+    }
+
+    onConfirmEndChat() {
+        this.endChatPopup.hide();
+        this.eventHandler.onConfirmEndChat();
     }
 }

@@ -1,8 +1,8 @@
 @import 'transcript-agent';
 @import 'transcript-customer';
-@import 'transcript-opener';
 @import 'system-message';
 @import 'c2cbutton';
+@import 'end-chat-popup';
 @import "lib/govuk-frontend/govuk/all";
 
 @mixin DefaultFont {
@@ -141,7 +141,7 @@ body {
     float: right;
 }
 
-#ciapiEndChatButton {
+#ciapiSkinCloseButton {
     @include IconButton
     background-image: url('/ask-hmrc/assets/media/end-chat.svg');
 }
