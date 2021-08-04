@@ -84,7 +84,7 @@ export default class PostChatSurvey {
         this.onSubmitted = onSubmitted;
     }
 
-    attach(container) {
+    attachTo(container) {
         this.container = container;
 
         this.wrapper = document.createElement("div")
@@ -94,7 +94,11 @@ export default class PostChatSurvey {
 
         this.wrapper.querySelector("#submitPostChatSurvey").addEventListener(
             "click",
-             (e) => this.onSubmitted()
+             (e) => this.onSubmitted(this)
         );
+    }
+
+    detach() {
+        this.container.removeChild(this.wrapper)
     }
 }
