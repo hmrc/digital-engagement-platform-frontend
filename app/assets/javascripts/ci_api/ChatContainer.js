@@ -104,4 +104,10 @@ export default class ChatContainer {
         this.endChatPopup.hide();
         this.eventHandler.onConfirmEndChat();
     }
+
+    showPage(page) {
+        this.container.querySelector("#ciapiSkinChatTranscript").style.display = "none";
+        this.container.querySelector("#ciapiSkinFooter").style.display = "none";
+        page.attachTo(this.container.querySelector("#ciapiChatComponents"))
+    }
 }
