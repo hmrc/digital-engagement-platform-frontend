@@ -9,13 +9,18 @@ export class NullState {
     onClickedVALink(text) {
         console.error("State Error: Trying to handle VA link with no state.")
     }
+
+    onClickedClose() {
+        console.error("State Error: Trying to close chat with no state.")
+    }
 }
 
 // Chat skin shown, but not engaged yet.
 // First input from customer should engage chat.
 export class ShownState {
-    constructor(engageRequest) {
+    constructor(engageRequest, closeChat) {
         this.engageRequest = engageRequest
+        this.closeChat = closeChat;
     }
 
     onSend(text) {
@@ -26,13 +31,18 @@ export class ShownState {
     onClickedVALink(e) {
         console.error("State Error: Trying to handle VA link before engaged.")
     }
+
+    onClickedClose() {
+        this.closeChat();
+    }
 }
 
 // Customer is engaged in a chat.
 export class EngagedState {
-    constructor(sdk, container, previousMessages) {
+    constructor(sdk, container, previousMessages, closeChat) {
         this.sdk = sdk;
         this.container = container;
+        this.closeChat = closeChat;
 
         this._displayPreviousMessages(previousMessages);
         this._getMessages();
@@ -45,6 +55,10 @@ export class EngagedState {
 
     onClickedVALink(e) {
         this.sdk.sendVALinkMessage(e, () => this._linkCallback);
+    }
+
+    onClickedClose() {
+        this.closeChat();
     }
 
     _displayPreviousMessages(messages) {

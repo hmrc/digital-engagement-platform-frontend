@@ -82,12 +82,18 @@ export default class ChatController {
     }
 
     _moveToChatShownState() {
-        this._moveToState(new ChatStates.ShownState((text) => this._engageChat(text)));
+        this._moveToState(new ChatStates.ShownState(
+            (text) => this._engageChat(text),
+            () => this.closeChat()));
         this.minimised = false;
     }
 
     _moveToChatEngagedState(previousMessages = []) {
-        this._moveToState(new ChatStates.EngagedState(this.sdk, this.container, previousMessages));
+        this._moveToState(new ChatStates.EngagedState(
+            this.sdk,
+            this.container,
+            previousMessages,
+            () => this.container.confirmEndChat()));
     }
 
     _showChat() {
@@ -114,7 +120,7 @@ export default class ChatController {
     }
 
     onCloseChat() {
-        this.container.confirmEndChat();
+        this.state.onClickedClose();
     }
 
     closeChat() {
