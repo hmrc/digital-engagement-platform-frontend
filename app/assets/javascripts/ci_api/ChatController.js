@@ -82,12 +82,22 @@ export default class ChatController {
     }
 
     _moveToChatShownState() {
-        this._moveToState(new ChatStates.ShownState((text) => this._engageChat(text)));
+        this._moveToState(new ChatStates.ShownState(
+            (text) => this._engageChat(text),
+            () => this.closeChat()));
         this.minimised = false;
     }
 
     _moveToChatEngagedState(previousMessages = []) {
-        this._moveToState(new ChatStates.EngagedState(this.sdk, this.container, previousMessages));
+        this._moveToState(new ChatStates.EngagedState(
+            this.sdk,
+            this.container,
+            previousMessages,
+            () => this.container.confirmEndChat()));
+    }
+
+    _moveToClosingState() {
+        this._moveToState(new ChatStates.ClosingState(() => this.closeChat() ))
     }
 
     _showChat() {
@@ -114,7 +124,7 @@ export default class ChatController {
     }
 
     onCloseChat() {
-        this.container.confirmEndChat();
+        this.state.onClickedClose();
     }
 
     closeChat() {
@@ -147,16 +157,14 @@ export default class ChatController {
     }
 
     onConfirmEndChat() {
-        console.log("End chat confirmed!")
+        this._moveToClosingState();
         this.container.showPage(new PostChatSurvey((page) => this.onPostChatSurveySubmitted(page)));
     }
 
     onPostChatSurveySubmitted(surveyPage) {
-        console.log("Post chat survey submitted!")
         surveyPage.detach();
 
         this.container.showPage(new PostPCSPage());
-//        this.closeChat();
     }
 
     // End event handler method

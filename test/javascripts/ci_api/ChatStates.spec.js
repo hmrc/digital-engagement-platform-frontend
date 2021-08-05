@@ -40,6 +40,15 @@ describe("Chat States", () => {
             state.onClickedVALink("Some text that will be ignored");
             expect(console.error).toHaveBeenCalledWith("State Error: Trying to handle VA link with no state.");
         });
+
+        it("logs error for onClickedClose", () => {
+            console.error = jest.fn();
+
+            const state = new ChatStates.NullState();
+
+            state.onClickedClose();
+            expect(console.error).toHaveBeenCalledWith("State Error: Trying to close chat with no state.");
+        });
     });
 
     describe("ShownState", () => {
@@ -47,8 +56,9 @@ describe("Chat States", () => {
             console.error = jest.fn();
 
             const onEngage = jest.fn();
+            const onCloseChat = jest.fn();
 
-            const state = new ChatStates.ShownState(onEngage);
+            const state = new ChatStates.ShownState(onEngage, onCloseChat);
 
             state.onSend("Please help me.");
             expect(onEngage).toHaveBeenCalledWith("Please help me.");
@@ -58,11 +68,24 @@ describe("Chat States", () => {
             console.error = jest.fn();
 
             const onEngage = jest.fn();
+            const onCloseChat = jest.fn();
 
-            const state = new ChatStates.ShownState(onEngage);
+            const state = new ChatStates.ShownState(onEngage, onCloseChat);
 
             state.onClickedVALink("Some text that will be ignored");
             expect(console.error).toHaveBeenCalledWith("State Error: Trying to handle VA link before engaged.");
+        });
+
+        it("closes the chat for onClickedClose", () => {
+            console.error = jest.fn();
+
+            const onEngage = jest.fn();
+            const onCloseChat = jest.fn();
+
+            const state = new ChatStates.ShownState(onEngage, onCloseChat);
+
+            state.onClickedClose();
+            expect(onCloseChat).toHaveBeenCalled();
         });
     });
 
@@ -70,7 +93,7 @@ describe("Chat States", () => {
         it("calls getMessages on creation", () => {
             const [sdk, container] = createEngagedStateDependencies();
 
-            const state = new ChatStates.EngagedState(sdk, container, []);
+            const state = new ChatStates.EngagedState(sdk, container, [], jest.fn());
 
             expect(sdk.getMessages).toHaveBeenCalledWith(expect.any(Function));
         });
@@ -78,7 +101,7 @@ describe("Chat States", () => {
         it("sends the message passed to onSend", () => {
             const [sdk, container] = createEngagedStateDependencies();
 
-            const state = new ChatStates.EngagedState(sdk, container, []);
+            const state = new ChatStates.EngagedState(sdk, container, [], jest.fn());
 
             state.onSend("Please help me.");
             expect(sdk.sendMessage).toHaveBeenCalledWith("Please help me.");
@@ -87,7 +110,7 @@ describe("Chat States", () => {
         it("sends agent messages to the transcript", () => {
             const [sdk, container] = createEngagedStateDependencies();
 
-            const state = new ChatStates.EngagedState(sdk, container, []);
+            const state = new ChatStates.EngagedState(sdk, container, [], jest.fn());
 
             const handleMessage = sdk.getMessages.mock.calls[0][0];
             const message = {
@@ -105,7 +128,7 @@ describe("Chat States", () => {
         it("sends customer messages to the transcript", () => {
             const [sdk, container] = createEngagedStateDependencies();
 
-            const state = new ChatStates.EngagedState(sdk, container, []);
+            const state = new ChatStates.EngagedState(sdk, container, [], jest.fn());
 
             const handleMessage = sdk.getMessages.mock.calls[0][0];
             const message = {
@@ -122,7 +145,7 @@ describe("Chat States", () => {
         it("sends automaton messages to the transcript", () => {
             const [sdk, container] = createEngagedStateDependencies();
 
-            const state = new ChatStates.EngagedState(sdk, container, []);
+            const state = new ChatStates.EngagedState(sdk, container, [], jest.fn());
 
             const handleMessage = sdk.getMessages.mock.calls[0][0];
             const message = {
@@ -139,7 +162,7 @@ describe("Chat States", () => {
         it("sends customer messages to the transcript", () => {
             const [sdk, container] = createEngagedStateDependencies();
 
-            const state = new ChatStates.EngagedState(sdk, container, []);
+            const state = new ChatStates.EngagedState(sdk, container, [], jest.fn());
 
             const handleMessage = sdk.getMessages.mock.calls[0][0];
             const message = {
@@ -156,7 +179,7 @@ describe("Chat States", () => {
         it("reports Chat Denied to the transcript", () => {
             const [sdk, container] = createEngagedStateDependencies();
 
-            const state = new ChatStates.EngagedState(sdk, container, []);
+            const state = new ChatStates.EngagedState(sdk, container, [], jest.fn());
 
             const handleMessage = sdk.getMessages.mock.calls[0][0];
             const message = {
@@ -172,7 +195,7 @@ describe("Chat States", () => {
         it("reports Closed to the transcript", () => {
             const [sdk, container] = createEngagedStateDependencies();
 
-            const state = new ChatStates.EngagedState(sdk, container, []);
+            const state = new ChatStates.EngagedState(sdk, container, [], jest.fn());
 
             const handleMessage = sdk.getMessages.mock.calls[0][0];
             const message = {
@@ -200,7 +223,7 @@ describe("Chat States", () => {
                 }
             }];
 
-            const state = new ChatStates.EngagedState(sdk, container, messages);
+            const state = new ChatStates.EngagedState(sdk, container, messages, jest.fn());
 
             expect(container.transcript.addAutomatonMsg).toHaveBeenCalledWith("Beep boop. I am a robot.");
             expect(container.transcript.addCustomerMsg).toHaveBeenCalledWith("Hello to you");
@@ -209,7 +232,7 @@ describe("Chat States", () => {
         it("sends TransferResponse to the transcript", () => {
             const [sdk, container] = createEngagedStateDependencies();
 
-            const state = new ChatStates.EngagedState(sdk, container, []);
+            const state = new ChatStates.EngagedState(sdk, container, [], jest.fn());
 
             const handleMessage = sdk.getMessages.mock.calls[0][0];
             const message = {
@@ -233,7 +256,7 @@ describe("Chat States", () => {
         it("sends MemberConnected to the transcript", () => {
             const [sdk, container] = createEngagedStateDependencies();
 
-            const state = new ChatStates.EngagedState(sdk, container, []);
+            const state = new ChatStates.EngagedState(sdk, container, [], jest.fn());
 
             const handleMessage = sdk.getMessages.mock.calls[0][0];
             const message = {
@@ -262,7 +285,7 @@ describe("Chat States", () => {
         it("reports chat exit in transcript", () => {
             const [sdk, container] = createEngagedStateDependencies();
 
-            const state = new ChatStates.EngagedState(sdk, container, []);
+            const state = new ChatStates.EngagedState(sdk, container, [], jest.fn());
 
             const handleMessage = sdk.getMessages.mock.calls[0][0];
             const message = {
@@ -295,7 +318,7 @@ describe("Chat States", () => {
         it("reports chat exit in transcript when from digital assistant", () => {
             const [sdk, container] = createEngagedStateDependencies();
 
-            const state = new ChatStates.EngagedState(sdk, container, []);
+            const state = new ChatStates.EngagedState(sdk, container, [], jest.fn());
 
             const handleMessage = sdk.getMessages.mock.calls[0][0];
             const message = {
@@ -314,7 +337,7 @@ describe("Chat States", () => {
         it("reports agent has been lost", () => {
             const [sdk, container] = createEngagedStateDependencies();
 
-            const state = new ChatStates.EngagedState(sdk, container, []);
+            const state = new ChatStates.EngagedState(sdk, container, [], jest.fn());
 
             const handleMessage = sdk.getMessages.mock.calls[0][0];
             const message = {
@@ -337,7 +360,7 @@ describe("Chat States", () => {
         it("reports chat system messages", () => {
             const [sdk, container] = createEngagedStateDependencies();
 
-            const state = new ChatStates.EngagedState(sdk, container, []);
+            const state = new ChatStates.EngagedState(sdk, container, [], jest.fn());
 
             const handleMessage = sdk.getMessages.mock.calls[0][0];
             const message = {
@@ -351,6 +374,46 @@ describe("Chat States", () => {
 
             handleMessage(message);
             expect(container.transcript.addSystemMsg).toHaveBeenCalledWith("Sorry for the delay. An adviser should be with you soon.");
+        });
+
+        it("closes the chat when clicked", () => {
+            const [sdk, container] = createEngagedStateDependencies();
+
+            const onCloseChat = jest.fn();
+
+            const state = new ChatStates.EngagedState(sdk, container, [], onCloseChat);
+
+            state.onClickedClose();
+            expect(onCloseChat).toHaveBeenCalled();
+        });
+    });
+    describe("ClosingState", () => {
+        it("logs error for onSend", () => {
+            console.error = jest.fn();
+
+            const state = new ChatStates.ClosingState(jest.fn());
+
+            state.onSend("Some text that will be ignored");
+            expect(console.error).toHaveBeenCalledWith("State Error: Trying to send text when closing.");
+        });
+
+        it("logs error for onClickedVALink", () => {
+            console.error = jest.fn();
+
+            const state = new ChatStates.ClosingState(jest.fn());
+
+            state.onClickedVALink("Some text that will be ignored");
+            expect(console.error).toHaveBeenCalledWith("State Error: Trying to handle VA link when closing.");
+        });
+
+        it("closes the window onClickedClose", () => {
+            console.error = jest.fn();
+
+            const onCloseChat = jest.fn();
+            const state = new ChatStates.ClosingState(onCloseChat);
+
+            state.onClickedClose();
+            expect(onCloseChat).toHaveBeenCalled();
         });
     });
 });

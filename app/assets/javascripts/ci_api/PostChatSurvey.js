@@ -9,7 +9,7 @@ const html = `
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
 
-              <form action="chat-ended" method="post" novalidate="">
+              <form>
 
                 <div class="govuk-form-group">
 
@@ -19,11 +19,11 @@ const html = `
                     </legend>
                     <div class="govuk-radios govuk-radios--inline">
                       <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" id="q1-" name="q1-" type="radio" value="england">
+                        <input class="govuk-radios__input" id="q1-" name="q1-" type="radio" value="yes">
                         <label class="govuk-label govuk-radios__label" for="formItem-">Yes</label>
                       </div>
                       <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" id="q1--2" name="q1-" type="radio" value="scotland">
+                        <input class="govuk-radios__input" id="q1--2" name="q1-" type="radio" value="no">
                         <label class="govuk-label govuk-radios__label" for="q1--2">No</label>
                       </div>
                     </div>
@@ -35,11 +35,11 @@ const html = `
                     </legend>
                     <div class="govuk-radios govuk-radios--inline">
                       <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" id="q2-" name="q2-" type="radio" value="england">
+                        <input class="govuk-radios__input" id="q2-" name="q2-" type="radio" value="yes">
                         <label class="govuk-label govuk-radios__label" for="formItem-">Yes</label>
                       </div>
                       <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" id="q2--2" name="q2-" type="radio" value="scotland">
+                        <input class="govuk-radios__input" id="q2--2" name="q2-" type="radio" value="no">
                         <label class="govuk-label govuk-radios__label" for="q2--2">No</label>
                       </div>
                     </div>
@@ -51,19 +51,19 @@ const html = `
                     </legend>
                     <div class="govuk-radios">
                       <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" id="q3-" name="q3-" type="radio" value="england">
+                        <input class="govuk-radios__input" id="q3-" name="q3-" type="radio" value="phone">
                         <label class="govuk-label govuk-radios__label" for="q3-">Phone</label>
                       </div>
                       <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" id="q3--2" name="q3-" type="radio" value="england">
+                        <input class="govuk-radios__input" id="q3--2" name="q3-" type="radio" value="webchat">
                         <label class="govuk-label govuk-radios__label" for="q3--2">Webchat</label>
                       </div>
                       <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" id="q3--3" name="q3-" type="radio" value="england">
+                        <input class="govuk-radios__input" id="q3--3" name="q3-" type="radio" value="social media">
                         <label class="govuk-label govuk-radios__label" for="q3--3">Social media</label>
                       </div>
                       <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" id="q3--4" name="q3-" type="radio" value="scotland">
+                        <input class="govuk-radios__input" id="q3--4" name="q3-" type="radio" value="other">
                         <label class="govuk-label govuk-radios__label" for="q3--4">Other</label>
                       </div>
                     </div>
@@ -94,7 +94,9 @@ export default class PostChatSurvey {
 
         this.wrapper.querySelector("#submitPostChatSurvey").addEventListener(
             "click",
-             (e) => this.onSubmitted(this)
+             (e) => {
+                this.onSubmitted(this);
+             }
         );
     }
 
