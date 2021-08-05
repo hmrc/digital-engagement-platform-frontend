@@ -111,3 +111,22 @@ export class EngagedState {
     }
 }
 
+// In the process of closing (post-chat survey, etc.)
+export class ClosingState {
+    constructor(closeChat) {
+        this.closeChat = closeChat;
+    }
+
+    onSend(text) {
+        console.error("State Error: Trying to send text when closing.")
+    }
+
+    onClickedVALink(e) {
+        console.error("State Error: Trying to handle VA link when closing.")
+    }
+
+    onClickedClose() {
+        this.closeChat();
+    }
+}
+

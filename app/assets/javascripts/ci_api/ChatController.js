@@ -96,6 +96,10 @@ export default class ChatController {
             () => this.container.confirmEndChat()));
     }
 
+    _moveToClosingState() {
+        this._moveToState(new ChatStates.ClosingState(() => this.closeChat() ))
+    }
+
     _showChat() {
         const embeddedDiv = document.getElementById("HMRC_CIAPI_Embedded_1")
         if (embeddedDiv) {
@@ -154,6 +158,7 @@ export default class ChatController {
 
     onConfirmEndChat() {
         console.log("End chat confirmed!")
+        this._moveToClosingState();
         this.container.showPage(new PostChatSurvey((page) => this.onPostChatSurveySubmitted(page)));
     }
 
