@@ -157,17 +157,14 @@ export default class ChatController {
     }
 
     onConfirmEndChat() {
-        console.log("End chat confirmed!")
         this._moveToClosingState();
         this.container.showPage(new PostChatSurvey((page) => this.onPostChatSurveySubmitted(page)));
     }
 
     onPostChatSurveySubmitted(surveyPage) {
-        console.log("Post chat survey submitted!")
         surveyPage.detach();
 
         this.container.showPage(new PostPCSPage());
-//        this.closeChat();
     }
 
     // End event handler method
