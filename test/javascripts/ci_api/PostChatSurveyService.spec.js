@@ -22,6 +22,26 @@ const chatParams = {
     thisCustomerID: "ThisCustomerID",
 };
 
+const survey = {
+    id: "SurveyId",
+    questions: [
+        { id: "q1", text: "Was the chatbot useful?", freeform: false},
+        { id: "q2", text: "Was the chatbot your first contact choice?", freeform: false},
+        { id: "q3", text: "If you had not used chatbot today, how else would you have contacted us?", freeform: false}
+    ]
+};
+
+const answers = [
+    "Yes",
+    "No",
+    "Phone"
+];
+
+const automaton = {
+    id: "AutomatonID",
+    name: "AutomatonName"
+};
+
 describe("PostChatSurveyService", () => {
     it("sends event for begining a post chat survey", () => {
         const sdk = {
@@ -31,25 +51,6 @@ describe("PostChatSurveyService", () => {
         };
 
         const service = new PostChatSurveyService(sdk);
-
-        const automaton = {
-            id: "AutomatonID",
-            name: "AutomatonName"
-        };
-
-        const survey = {
-            id: "SurveyId",
-            questions: [
-                { id: "q1", text: "Was the chatbot useful?", freeform: false},
-                { id: "q2", text: "Was the chatbot your first contact choice?", freeform: false},
-                { id: "q3", text: "If you had not used chatbot today, how else would you have contacted us?", freeform: false}
-            ],
-            answers: [
-                "Yes",
-                "No",
-                "Phone"
-            ]
-        }
 
         const timestamp = Date.now();
 
