@@ -6,8 +6,7 @@ const html = `
         </h1>
     </div>
 
-    <p class="govuk-body">
-        Thank you for your feedback.</p>
+    <p id="endpage-thanks" class="govuk-body">Thank you for your feedback.</p>
 
     <div onclick="window.print();">
         <p><a href="#">Print or save a copy of this chat</a></p>
@@ -17,12 +16,18 @@ const html = `
 `
 
 export default class PostPCSPage {
+    constructor(showThanks) {
+        this.showThanks = showThanks;
+    }
     attachTo(container) {
         this.container = container;
 
         this.wrapper = document.createElement("div")
         this.wrapper.id = "postPCSPageWrapper";
         this.wrapper.insertAdjacentHTML("beforeend", html);
+        if (!this.showThanks) {
+            this.wrapper.querySelector('#endpage-thanks').style.display = 'none';
+        }
         container.appendChild(this.wrapper);
     }
 
