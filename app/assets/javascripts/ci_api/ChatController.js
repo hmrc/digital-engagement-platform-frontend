@@ -106,7 +106,7 @@ export default class ChatController {
     }
 
     _showChat() {
-        var embeddedDiv = this._getEmbeddedDiv();
+        const embeddedDiv = this._getEmbeddedDiv();
         if (embeddedDiv) {
             this.container = new ChatContainer(MessageClasses, ContainerHtml.EmbeddedContainerHtml);
             embeddedDiv.appendChild(this.container.element());
