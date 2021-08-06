@@ -48,6 +48,7 @@ export default class ChatController {
     _launchChat() {
         // TODO: Do we need this any more, now that the above timeout is gone?
         if (this.container) {
+            console.error("This should never happen. If it doesn't, then remove this 'if'")
             return
         }
         try {
@@ -100,8 +101,12 @@ export default class ChatController {
         this._moveToState(new ChatStates.ClosingState(() => this.closeChat() ))
     }
 
+    _getEmbeddedDiv() {
+        return document.getElementById("HMRC_CIAPI_Embedded_1")
+    }
+
     _showChat() {
-        const embeddedDiv = document.getElementById("HMRC_CIAPI_Embedded_1")
+        var embeddedDiv = this._getEmbeddedDiv();
         if (embeddedDiv) {
             this.container = new ChatContainer(MessageClasses, ContainerHtml.EmbeddedContainerHtml);
             embeddedDiv.appendChild(this.container.element());
@@ -128,10 +133,15 @@ export default class ChatController {
     }
 
     closeChat() {
-        this.sdk.closeChat();
+        this.closeNuanceChat();
 
-        this.container.destroy();
-        this.container = null;
+        if (this._getEmbeddedDiv()) {
+            // Embedded view never dies.
+            this.showEndChatPage(false);
+        } else {
+            this.container.destroy();
+            this.container = null;
+        }
 
         this._moveToChatNullState();
     }
@@ -163,8 +173,18 @@ export default class ChatController {
 
     onPostChatSurveySubmitted(surveyPage) {
         surveyPage.detach();
+        this.showEndChatPage(true);
+    }
 
-        this.container.showPage(new PostPCSPage());
+    showEndChatPage(showThanks) {
+        this.container.showPage(new PostPCSPage(showThanks));
+        this.closeNuanceChat();
+    }
+
+    closeNuanceChat() {
+        if (this.sdk.isChatInProgress()) {
+            this.sdk.closeChat();
+        }
     }
 
     // End event handler method
