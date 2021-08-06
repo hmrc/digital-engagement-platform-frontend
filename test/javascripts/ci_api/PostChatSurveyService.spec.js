@@ -40,9 +40,9 @@ describe("PostChatSurveyService", () => {
         const survey = {
             id: "SurveyId",
             questions: [
-                { id: "q1", text: "Was the chatbot useful?"},
-                { id: "q2", text: "Was the chatbot your first contact choice?"},
-                { id: "q3", text: "If you had not used chatbot today, how else would you have contacted us?"}
+                { id: "q1", text: "Was the chatbot useful?", freeform: false},
+                { id: "q2", text: "Was the chatbot your first contact choice?", freeform: false},
+                { id: "q3", text: "If you had not used chatbot today, how else would you have contacted us?", freeform: false}
             ],
             answers: [
                 "Yes",
