@@ -44,6 +44,45 @@ export default class PostChatSurveyService {
             automatonName: automaton.name
         };
 
+        const contentSentToCustomerEvent = {
+            _domain: "automaton"
+            evt: "contentSentToCustomer"
+            unique_node_id: "node_1"
+            custom.decisiontree.nodeID: ""
+            custom.decisiontree.questions: "0.How much did you like your broker?,1.How likely are you to visit us again?,2.Write any comments you have below"
+            custom.decisiontree.questionIDs: ""
+            clientTimestamp
+            automatonType
+            chatID
+            customerID
+            agentID
+            custID
+            incAssignmentID
+            sessionID
+            visitorAttributes
+            automatonAttributes
+            siteID
+            ClientID
+            pageID
+            businessUnitID
+            businessRuleID
+            busUnitID
+            BRName
+            agentGroupID
+            availableAgentAttributes
+            brAttributes
+            countryCode
+            regionCode
+            deviceType
+            operatingSystemType
+            browserType
+            browserVersion
+            preassigned
+            surveyId
+            automatonID
+            automatonName
+        }
+
         this.sdk.logEventToDW([
             startedEvent,
             // contentSentToCustomerEvent
