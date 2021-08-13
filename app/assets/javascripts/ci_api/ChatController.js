@@ -7,6 +7,7 @@ import * as ChatStates from './ChatStates'
 import * as ContainerHtml from './ContainerHtml'
 import PostChatSurvey from './PostChatSurvey'
 import PostPCSPage from './PostPCSPage'
+import PostChatSurveyService from './PostChatSurveyService'
 
 const c2cDisplayStateMessages = {
     [DisplayState.OutOfHours]: "Out of hours",
@@ -14,6 +15,22 @@ const c2cDisplayStateMessages = {
     [DisplayState.Busy]: "All advisers are busy",
     [DisplayState.ChatActive]: "In progress"
 };
+
+const survey = {
+    id: "SurveyId",
+    questions: [
+        { id: "q1", text: "Was the chatbot useful?", freeform: false},
+        { id: "q2", text: "Was the chatbot your first contact choice?", freeform: false},
+        { id: "q3", text: "If you had not used chatbot today, how else would you have contacted us?", freeform: false}
+    ]
+};
+
+const automaton = {
+    id: "AutomatonID",
+    name: "AutomatonName"
+};
+
+const timestamp = Date.now();
 
 export default class ChatController {
     constructor() {
@@ -168,6 +185,7 @@ export default class ChatController {
 
     onConfirmEndChat() {
         this._moveToClosingState();
+        this._sendPostChatSurvey(this.sdk).beginPostChatSurvey(survey, automaton, timestamp);
         this.container.showPage(new PostChatSurvey((page) => this.onPostChatSurveySubmitted(page)));
     }
 
@@ -188,6 +206,10 @@ export default class ChatController {
     }
 
     // End event handler method
+
+    _sendPostChatSurvey() {
+        return new PostChatSurveyService();
+    }
 
     _displayOpenerScripts() {
         this.sdk.getOpenerScripts((openerScripts) => {

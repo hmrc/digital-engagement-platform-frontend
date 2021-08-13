@@ -65,7 +65,7 @@ describe("PostChatSurveyService", () => {
             chatID: "ChatId",
             customerID: "ThisCustomerID",
             agentID: "AgentId",
-            cust: "ThisCustomerID",
+            custID: "ThisCustomerID",
             incAssignmentID: "SessionID",
             sessionID: "SessionID",
             visitorAttributes: "VisitorAttributes",
@@ -93,16 +93,50 @@ describe("PostChatSurveyService", () => {
         };
 
         const expectedContentSentToCustomerEvent = {
-            _domain: "automaton",
-            evt: "automaton.contentSentToCustomer",
-            /// .... All the rest of the fields
+        _domain: "automaton",
+            evt: "contentSentToCustomer",
+            unique_node_id: "node_1",
+            "custom.decisiontree.nodeID": "",
+            "custom.decisiontree.questions": "0.Was the chatbot useful?,1.Was the chatbot your first contact choice?,2.If you had not used chatbot today, how else would you have contacted us?",
+            "custom.decisiontree.questionIDs": "0.q1,1.q2,2.q3",
+            clientTimestamp: timestamp,
+            automatonType: "satisfactionSurvey",
+            chatID: "ChatId",
+            customerID: "ThisCustomerID",
+            agentID: "AgentId",
+            custID: "ThisCustomerID",
+            incAssignmentID: "SessionID",
+            sessionID: "SessionID",
+            visitorAttributes: "VisitorAttributes",
+            automatonAttributes: "",
+            siteID: "SiteID",
+            clientID: "SiteID",
+            pageID: "LaunchPageId",
+            businessUnitID: "BusinessUnitID",
+            businessRuleID: "BrID",
+            busUnitID: "BusinessUnitID",
+            BRName: "ChatTitle",
+            agentGroupID: "AgId",
+            availableAgentAttributes: "AgentAttributes",
+            brAttributes: "RuleAttributes",
+            countryCode: "CountryCode",
+            regionCode: "RegionCode",
+            deviceType: "DeviceType",
+            operatingSystemType: "OperatingSystemType",
+            browserType: "BrowserType",
+            browserVersion: "BrowserVersion",
+            preassigned: false,
+            surveyId: "SurveyId",
+            automatonID: "AutomatonID",
+            automatonName: "AutomatonName"
         };
+
 
         service.beginPostChatSurvey(survey, automaton, timestamp);
 
         expect(sdk.logEventToDW).toHaveBeenCalledWith([
             expectedStartedEvent,
-            //expectedContentSentToCustomerEvent
+            expectedContentSentToCustomerEvent
         ]);
     });
 });
