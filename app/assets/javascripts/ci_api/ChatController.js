@@ -207,8 +207,8 @@ export default class ChatController {
 
     // End event handler method
 
-    _sendPostChatSurvey() {
-        return new PostChatSurveyService();
+    _sendPostChatSurvey(sdk) {
+        return new PostChatSurveyService(sdk);
     }
 
     _displayOpenerScripts() {

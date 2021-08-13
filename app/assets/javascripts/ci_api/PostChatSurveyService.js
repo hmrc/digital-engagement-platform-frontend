@@ -6,6 +6,27 @@ export default class PostChatSurveyService {
     beginPostChatSurvey(survey, automaton, timestamp) {
         const chatParams = this.sdk.getChatParams();
 
+        console.log("ChatID---------------------" + chatParams.getChatId())
+        console.log("thisCustomerID---------------------" + chatParams.thisCustomerID)
+        console.log("agentId---------------------" + chatParams.agentId)
+        console.log("thisCustomerID---------------------" + chatParams.thisCustomerID)
+        console.log("sessionID---------------------" + chatParams.sessionID)
+        console.log("getVisitorAttributes---------------------" + chatParams.getVisitorAttributes())
+        console.log("siteID---------------------" + chatParams.siteID)
+        console.log("launchPageId---------------------" + chatParams.launchPageId)
+        console.log("businessUnitID---------------------" + chatParams.businessUnitID)
+        console.log("chatTitle---------------------" + chatParams.chatTitle)
+        console.log("agId---------------------" + chatParams.agId)
+        console.log("agentAttributes---------------------" + chatParams.agentAttributes)
+        console.log("ruleAttributes---------------------" + chatParams.ruleAttributes)
+        console.log("countryCode---------------------" + chatParams.countryCode)
+        console.log("regionCode---------------------" + chatParams.regionCode)
+        console.log("deviceType---------------------" + chatParams.deviceType)
+        console.log("operatingSystemType---------------------" + chatParams.operatingSystemType)
+        console.log("browserType---------------------" + chatParams.browserType)
+        console.log("browserVersion---------------------" + chatParams.browserVersion)
+
+
         const startedEvent = {
             _domain: "automaton",
             evt: "started",
@@ -53,7 +74,7 @@ export default class PostChatSurveyService {
             "custom.decisiontree.questionIDs": "0." + survey.questions[0].id + ",1." + survey.questions[1].id + ",2." + survey.questions[2].id,
             clientTimestamp: timestamp,
             automatonType: "satisfactionSurvey",
-            chatID: chatParams.getChatId(),
+            chatID: chatParams.getChatId,
             customerID: chatParams.thisCustomerID,
             agentID: chatParams.agentId,
             custID: chatParams.thisCustomerID,
@@ -88,8 +109,8 @@ export default class PostChatSurveyService {
        console.error("===== beginPostChatSurvey =====");
 
         this.sdk.logEventToDW([
-            startedEvent,
-            contentSentToCustomerEvent
+            startedEvent
+            //contentSentToCustomerEvent
         ]);
     }
 }
