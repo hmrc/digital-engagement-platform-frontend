@@ -13,9 +13,9 @@ export default class PostChatSurveyService {
         console.log("sessionID---------------------" + chatParams.sessionID)
         console.log("getVisitorAttributes---------------------" + chatParams.getVisitorAttributes())
         console.log("siteID---------------------" + chatParams.siteID)
-        console.log("launchPageId---------------------" + chatParams.launchPageId)
+        console.log("pageID---------------------" + chatParams.launchPageId)
         console.log("businessUnitID---------------------" + chatParams.businessUnitID)
-        console.log("chatTitle---------------------" + chatParams.chatTitle)
+        console.log("BRName---------------------" + chatParams.chatTitle)
         console.log("agId---------------------" + chatParams.agId)
         console.log("agentAttributes---------------------" + chatParams.agentAttributes)
         console.log("ruleAttributes---------------------" + chatParams.ruleAttributes)
@@ -28,41 +28,41 @@ export default class PostChatSurveyService {
 
 
         const startedEvent = {
-            "_domain": "automaton",
-            "evt": "started",
-            "automatonType": "satisfactionSurvey",
-            "automatonStartedBy": "survey, survey",
-            "startedIn": "chat",
-            "type": "satisfactionSurvey",
-            "clientTimestamp": timestamp,
-            "chatID": chatParams.getChatId,
-            "customerID": chatParams.thisCustomerID,
-            "agentID": chatParams.agentId,
-            "custID": chatParams.thisCustomerID,
-            "incAssignmentID": chatParams.sessionID,
-            "sessionID": chatParams.sessionID,
-            "visitorAttributes": chatParams.getVisitorAttributes(),
-            "automatonAttributes": "",
-            "siteID": chatParams.siteID,
-            "clientID": chatParams.siteID,
-            "pageID": chatParams.launchPageId,
-            "businessUnitID": chatParams.businessUnitID,
-            "businessRuleID": chatParams.brID,
-            "busUnitID": chatParams.businessUnitID,
-            "BRName": chatParams.chatTitle,
-            "agentGroupID": chatParams.agId,
-            "availableAgentAttributes": chatParams.agentAttributes,
-            "brAttributes": chatParams.ruleAttributes,
-            "countryCode": chatParams.countryCode,
-            "regionCode": chatParams.regionCode,
-            "deviceType": chatParams.deviceType,
-            "operatingSystemType": chatParams.operatingSystemType,
-            "browserType": chatParams.browserType,
-            "browserVersion": chatParams.browserVersion,
-            "preassigned": this.sdk.isConnected() && !chatParams.agentId,
-            "surveyId": survey.id,
-            "automatonID": automaton.id,
-            "automatonName": automaton.name
+            _domain: "automaton",
+            evt: "started",
+            automatonType: "satisfactionSurvey",
+            automatonStartedBy: "survey, survey",
+            startedIn: "chat",
+            type: "satisfactionSurvey",
+            clientTimestamp: timestamp,
+            chatID: chatParams.getChatId,
+            customerID: chatParams.thisCustomerID,
+            agentID: chatParams.agentId,
+            custID: chatParams.thisCustomerID,
+            incAssignmentID: chatParams.sessionID,
+            sessionID: chatParams.sessionID,
+            visitorAttributes: chatParams.getVisitorAttributes(),
+            automatonAttributes: "",
+            siteID: chatParams.siteID,
+            clientID: chatParams.siteID,
+            pageID: chatParams.launchPageId,
+            businessUnitID: chatParams.businessUnitID,
+            businessRuleID: chatParams.brID,
+            busUnitID: chatParams.businessUnitID,
+            BRName: chatParams.chatTitle,
+            agentGroupID: chatParams.agId,
+            availableAgentAttributes: chatParams.agentAttributes,
+            brAttributes: chatParams.ruleAttributes,
+            countryCode: chatParams.countryCode,
+            regionCode: chatParams.regionCode,
+            deviceType: chatParams.deviceType,
+            operatingSystemType: chatParams.operatingSystemType,
+            browserType: chatParams.browserType,
+            browserVersion: chatParams.browserVersion,
+            preassigned: this.sdk.isConnected() && !chatParams.agentId,
+            surveyId: survey.id,
+            automatonID: automaton.id,
+            automatonName: automaton.name
         };
 
         const contentSentToCustomerEvent = {
@@ -106,12 +106,50 @@ export default class PostChatSurveyService {
         }
 
 
-       console.error("===== beginPostChatSurvey =====");
-       console.log("STARTEDEVENT--------------------------" + startedEvent);
+       console.log("===== beginPostChatSurvey =====");
 
-        this.sdk.logEventToDW([
-            startedEvent
-            //contentSentToCustomerEvent
-        ]);
+        try {
+
+            this.sdk.logEventToDW([
+                {"_domain":"automaton",
+                "evt":"started",
+                "automatonType":"satisfactionSurvey",
+                "automatonStartedBy":"survey,survey",
+                "startedIn":"chat",
+                "type":"satisfactionSurvey",
+                "clientTimestamp":"2021-08-04T16:00",
+                "chatID":90000001,
+                "customerID":"ThisCustomerID",
+                "agentID":"AgentId",
+                "custID":"ThisCustomerID",
+                "incAssignmentID":"SessionID",
+                "sessionID":"SessionID",
+                "visitorAttributes":"VisitorAttributes",
+                "automatonAttributes":"",
+                "siteID":10006719,
+                "clientID":12345566,
+                "pageID":"1234",
+                "businessUnitID":"BusinessUnitID",
+                "businessRuleID":123455,
+                "busUnitID":1233435,
+                "BRName":"ChatTitle",
+                "agentGroupID":1234535,
+                "availableAgentAttributes":"AgentAttributes",
+                "brAttributes":"RuleAttributes",
+                "countryCode":"CountryCode",
+                "regionCode":"RegionCode",
+                "deviceType":"DeviceType",
+                "operatingSystemType":"OperatingSystemType",
+                "browserType":"BrowserType",
+                "browserVersion":"BrowserVersion",
+                "preassigned":false,
+                "surveyId":"SurveyId",
+                "automatonID":444445,
+                "automatonName":"AutomatonName"}
+            ]);
+        } catch (e) {
+            console.error("!!!! logEventToDW got exception: ", e);
+        }
+
     }
 }
