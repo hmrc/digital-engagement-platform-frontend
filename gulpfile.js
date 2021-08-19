@@ -43,18 +43,16 @@ gulp.task('clean:node_modules', function () {
   return del(['node_modules'], {force: true});
 });
 
-var task1 = gulp.task('bundle', rollupJS('gtm_dl.js', {
+gulp.task('bundle', rollupJS('gtm_dl.js', {
   basePath: './app/assets/javascripts/',
   format: 'iife',
   distPath: './app/assets/javascripts/bundle',
   sourcemap: false
 }));
 
-var task2 = gulp.task('bundle_ci_api', rollupJS('ci_api.js', {
+gulp.task('bundle_ci_api', rollupJS('ci_api.js', {
   basePath: './app/assets/javascripts/ci_api/',
   format: 'iife',
   distPath: './app/assets/javascripts/ci_api_bundle',
   sourcemap: false
 }));
-
-[task1, task2];
