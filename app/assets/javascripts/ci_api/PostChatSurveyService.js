@@ -6,6 +6,7 @@ export default class PostChatSurveyService {
     beginPostChatSurvey(survey, automaton, timestamp) {
         const chatParams = this.sdk.getChatParams();
 
+        //TEMP LOGGING #TODO REMOVE THIS LATER
         console.log("ChatID---------------------" + chatParams.getChatId)
         console.log("thisCustomerID---------------------" + chatParams.thisCustomerID)
         console.log("agentId---------------------" + chatParams.agentId)
@@ -65,51 +66,10 @@ export default class PostChatSurveyService {
             automatonName: automaton.name
         };
 
-        const contentSentToCustomerEvent = {
-            _domain: "automaton",
-            evt: "contentSentToCustomer",
-            unique_node_id: "node_1",
-            "custom.decisiontree.nodeID": "",
-            "custom.decisiontree.questions": "0." + survey.questions[0].text + ",1." + survey.questions[1].text + ",2." + survey.questions[2].text,
-            "custom.decisiontree.questionIDs": "0." + survey.questions[0].id + ",1." + survey.questions[1].id + ",2." + survey.questions[2].id,
-            clientTimestamp: timestamp,
-            automatonType: "satisfactionSurvey",
-            chatID: chatParams.getChatId,
-            customerID: chatParams.thisCustomerID,
-            agentID: chatParams.agentId,
-            custID: chatParams.thisCustomerID,
-            incAssignmentID: chatParams.sessionID,
-            sessionID: chatParams.sessionID,
-            visitorAttributes: chatParams.getVisitorAttributes(),
-            automatonAttributes: "",
-            siteID: chatParams.siteID,
-            clientID: chatParams.siteID,
-            pageID: chatParams.launchPageId,
-            businessUnitID: chatParams.businessUnitID,
-            businessRuleID: chatParams.brID,
-            busUnitID: chatParams.businessUnitID,
-            BRName: chatParams.chatTitle,
-            agentGroupID: chatParams.agId,
-            availableAgentAttributes: chatParams.agentAttributes,
-            brAttributes: chatParams.ruleAttributes,
-            brAttributes: chatParams.ruleAttributes,
-            countryCode: chatParams.countryCode,
-            regionCode: chatParams.regionCode,
-            deviceType: chatParams.deviceType,
-            operatingSystemType: chatParams.operatingSystemType,
-            browserType: chatParams.browserType,
-            browserVersion: chatParams.browserVersion,
-            preassigned: this.sdk.isConnected() && !chatParams.agentId,
-            surveyId: survey.id,
-            automatonID: automaton.id,
-            automatonName: automaton.name
-        }
-
-
        console.log("===== beginPostChatSurvey =====");
 
         try {
-
+            //TEMP started object just to get the call working. This returned successfully using Postman. Replace this with 'startedEvent' when we get this working
             this.sdk.logEventToDW([
                 {"_domain":"automaton",
                 "evt":"started",
