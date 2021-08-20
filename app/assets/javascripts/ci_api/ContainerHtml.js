@@ -3,8 +3,10 @@ export const PopupContainerHtml = `
     <div id="ciapiSkinHeader">
         <div id="ciapiTitleBarLogo"><img src='/ask-hmrc/assets/media/logo.png'></div>
         <div id="ciapiSkinTitleBar" class="govuk-heading-s"><span>Ask HMRC</span></div>
-        <button id="ciapiSkinCloseButton" title="Close chat window" aria-label="Close chat window"></button>
-        <button id="ciapiSkinHideButton" title="Hide chat" aria-label="Hide chat"></button>
+        <div id="hideCloseContainer">
+            <button id="ciapiSkinHideButton" title="Hide chat" aria-label="Hide chat"></button>
+            <button id="ciapiSkinCloseButton" title="Close chat window" aria-label="Close chat window"></button>
+        </div>
     </div>
     <div id="tools">
         <div id="print" class="govuk-link">
