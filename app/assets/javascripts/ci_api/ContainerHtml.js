@@ -28,7 +28,6 @@ export const PopupContainerHtml = `
                 placeholder="Type your message here"
                 rows="5"
                 cols="50"
-                wrap="physical"
                 name="comments"></textarea></div>
             <div id="ciapiSend"><button
                 id="ciapiSkinSendButton"
@@ -64,7 +63,6 @@ export const EmbeddedContainerHtml = `
                     placeholder="Type your message here"
                     class="govuk-textarea"
                     cols="50"
-                    wrap="physical"
                     name="comments"></textarea>
                 </div>
                 <div id="ciapiSend">
