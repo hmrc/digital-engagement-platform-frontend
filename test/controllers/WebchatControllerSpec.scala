@@ -44,7 +44,7 @@ class WebchatControllerSpec
     }
 
     "render tax-credits page" when {
-      "ivr query param is available "in {
+      "ivr query param is available " in {
         val ivrFakeRequest: Request[AnyContent] = FakeRequest("GET", "?nuance=ivr")
 
         val result = controller.taxCredits(ivrFakeRequest)
@@ -53,7 +53,9 @@ class WebchatControllerSpec
         status(result) mustBe OK
         doc.select("h1").text() mustBe "Tax credits: webchat"
       }
+    }
 
+    "redirect to cui" when {
       "ivr query param is not available "in {
 
         val result = controller.taxCredits(fakeRequest)
