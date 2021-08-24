@@ -59,7 +59,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
 
   implicit val config: AppConfig = appConfig
 
-  def isIvrRedirect()(implicit request: RequestHeader): Boolean = {
+  private def isIvrRedirect()(implicit request: RequestHeader): Boolean = {
     request.getQueryString("nuance").contains("ivr")
   }
 
