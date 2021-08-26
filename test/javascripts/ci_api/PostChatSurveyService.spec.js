@@ -11,7 +11,7 @@ const chatParams = {
     chatTitle: "ChatTitle",
     countryCode: "CountryCode",
     deviceType: "DeviceType",
-    getChatId: () => { return "ChatId"; },
+    getChatId: "ChatId",
     getVisitorAttributes: () => { return "VisitorAttributes"; },
     launchPageId: "LaunchPageId",
     operatingSystemType: "OperatingSystemType",
@@ -62,7 +62,7 @@ describe("PostChatSurveyService", () => {
             startedIn: "chat",
             type: "satisfactionSurvey",
             clientTimestamp: timestamp,
-            chatID: chatParams.getChatId,
+            chatID: "ChatId",
             customerID: "ThisCustomerID",
             agentID: "AgentId",
             custID: "ThisCustomerID",
@@ -96,7 +96,7 @@ describe("PostChatSurveyService", () => {
         _domain: "automaton",
             evt: "contentSentToCustomer",
             unique_node_id: "node_1",
-            "custom.decisiontree.nodeID": "",
+            "custom.decisiontree.nodeID": "HMRC_PostChat_Guidance - Initial",
             "custom.decisiontree.questions": "0.Was the chatbot useful?,1.Was the chatbot your first contact choice?,2.If you had not used chatbot today, how else would you have contacted us?",
             "custom.decisiontree.questionIDs": "0.q1,1.q2,2.q3",
             clientTimestamp: timestamp,
@@ -134,9 +134,9 @@ describe("PostChatSurveyService", () => {
 
         service.beginPostChatSurvey(survey, automaton, timestamp);
 
-        //expect(sdk.logEventToDW).toHaveBeenCalledWith([
-         //   expectedStartedEvent,
-            //expectedContentSentToCustomerEvent
-        //]);
+        expect(sdk.logEventToDW).toHaveBeenCalledWith({eventList:[
+            expectedStartedEvent,
+            expectedContentSentToCustomerEvent
+        ]});
     });
 });
