@@ -10,10 +10,10 @@ export const PopupContainerHtml = `
     </div>
     <div id="tools">
         <div id="print" class="govuk-link">
-            <p><a href='#' title="Print or save" aria-label="Print or save" class="govuk-body">Print or save</a></p>
+            <p><a href='#' class="govuk-body">Print or save</a></p>
         </div>
         <div id="sound" class="govuk-link">
-            <p><a href='#' title="Turn sound on" aria-label="Turn sound on" class="govuk-body">Turn sound on</a></p>
+            <p><a href='#' class="govuk-body">Turn sound on</a></p>
         </div>
     </div>
     <div id="ciapiChatComponents">
@@ -48,8 +48,8 @@ export const PopupContainerHtml = `
 export const EmbeddedContainerHtml = `
 <div id="ciapiSkinContainer">
     <div id="ciapiSkinHeader">
-        <button id="ciapiPrintButton" title="Print or save" aria-label="Print or save">Print or save</button>
-        <button id="ciapiSoundButton" title="Turn sound on" aria-label="Turn sound on">Turn sound on</button>
+        <button id="ciapiPrintButton">Print or save</button>
+        <button id="ciapiSoundButton">Turn sound on</button>
     </div>
     <div id="ciapiChatComponents">
         <div id="ciapiSkinChatTranscript" role="log">
@@ -66,11 +66,11 @@ export const EmbeddedContainerHtml = `
                     name="comments"></textarea>
                 </div>
                 <div id="ciapiSend">
-                    <button id="ciapiSkinSendButton" class="govuk-button" title="Send message" aria-label="Send message">Send</button>
+                    <button id="ciapiSkinSendButton" class="govuk-button" aria-label="Send message">Send</button>
                 </div>
             </div>
             <div id="ciapiClose">
-                <button id="ciapiSkinCloseButton" title="End chat" aria-label="End chat">End chat</button>
+                <button id="ciapiSkinCloseButton">End chat</button>
             </div>
         </div>
     </div>
