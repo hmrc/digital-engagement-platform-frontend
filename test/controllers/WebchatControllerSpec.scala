@@ -16,9 +16,12 @@
 
 package controllers
 
+import controllers.CuiController.{routes => cuiRoutes}
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
+import play.api.mvc.{AnyContent, Request}
+import play.api.test.FakeRequest
 import play.api.test.Helpers._
 import views.html.pages.helpers.AppBuilderSpecBase
 
@@ -27,6 +30,7 @@ class WebchatControllerSpec
     with ScalaCheckPropertyChecks {
 
   private val controller = app.injector.instanceOf[WebchatController]
+
   def asDocument(html: String): Document = Jsoup.parse(html)
 
   "fixed URLs" should {
@@ -39,12 +43,26 @@ class WebchatControllerSpec
       doc.select("h1").text() mustBe "Self Assessment: webchat"
     }
 
-    "render tax-credits page" in {
-      val result = controller.taxCredits(fakeRequest)
-      val doc = asDocument(contentAsString(result))
+    "render tax-credits page" when {
+      "ivr query param is available " in {
+        val ivrFakeRequest: Request[AnyContent] = FakeRequest("GET", "?nuance=ivr")
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Tax credits: webchat"
+        val result = controller.taxCredits(ivrFakeRequest)
+        val doc = asDocument(contentAsString(result))
+
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Tax credits: webchat"
+      }
+    }
+
+    "redirect to cui" when {
+      "ivr query param is not available "in {
+
+        val result = controller.taxCredits(fakeRequest)
+
+        status(result) mustBe SEE_OTHER
+        redirectLocation(result) mustBe Some(cuiRoutes.CuiController.askHmrcOnline().url)
+      }
     }
 
     "render child benefit page" in {

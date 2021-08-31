@@ -17,10 +17,12 @@
 package controllers
 
 import config.AppConfig
+import controllers.CuiController.{routes => cuiRoutes}
+
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
-import views.html.va.{VACustomsInternationalTradeView, VASelfEmploymentIncomeSupportSchemeView, VASupportForCoronavirusView, VATaxCreditsEnquiriesView}
+import views.html.va.{VACustomsInternationalTradeView, VASelfEmploymentIncomeSupportSchemeView, VASupportForCoronavirusView}
 
 import scala.concurrent.Future
 
@@ -28,7 +30,6 @@ import scala.concurrent.Future
 class VirtualAssistantController @Inject()(appConfig: AppConfig,
                                            mcc: MessagesControllerComponents,
                                            supportForCoronavirusView: VASupportForCoronavirusView,
-                                           taxCreditsEnquiriesView: VATaxCreditsEnquiriesView,
                                            customsInternationalTradeView: VACustomsInternationalTradeView,
                                            selfEmploymentIncomeSupportSchemeView: VASelfEmploymentIncomeSupportSchemeView) extends FrontendController(mcc) {
 
@@ -39,7 +40,7 @@ class VirtualAssistantController @Inject()(appConfig: AppConfig,
   }
 
   def taxCreditsEnquiries: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(taxCreditsEnquiriesView()))
+    Future.successful(Redirect(cuiRoutes.CuiController.askHmrcOnline().url))
   }
 
   def customesInternationalTrade: Action[AnyContent] = Action.async { implicit request =>
