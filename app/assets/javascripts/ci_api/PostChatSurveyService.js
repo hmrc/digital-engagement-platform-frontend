@@ -3,7 +3,44 @@ export default class PostChatSurveyService {
         this.sdk = sdk;
     }
 
-    //submitPostChatSurvey()
+    submitPostChatSurvey(survey, automaton, timestamp) {
+        const chatParams = this.sdk.getChatParams();
+
+        const customerResponded = {
+            _domain:"automaton",
+            evt:"customerResponded",
+            automatonType:"satisfactionSurvey",
+            siteID: chatParams.siteID,
+            customerID: chatParams.thisCustomerID,
+            incAssignmentID: chatParams.sessionID,
+            pageID: chatParams.launchPageId,
+            sessionID: chatParams.sessionID,
+            chatID: chatParams.getChatId,
+            preAssigned: this.sdk.isConnected() && !chatParams.agentId,
+            automatonID: automaton.id,
+            unique_node_id: "node_1",
+            custom.decisiontree.nodeID: "HMRC_PostChat_Guidance - Initial",
+            automatonNodeAttributes: "",
+            custom.decisiontree.questionIDs: "0." + survey.questions[0].id + ",1." + survey.questions[1].id + ",2." + survey.questions[2].id,
+            custom.decisiontree.questions: "0." + survey.questions[0].text + ",1." + survey.questions[1].text + ",2." + survey.questions[2].text,
+            custom.decisiontree.answerIDs: "yes%2C%2Cphone",
+            custom.decisiontree.answers: "Yes%2Cyou%2520can%2520improve%2520nothing.%2520it's%2520great%2CPhone",
+            custom.decisiontree.answerTypes: "0,1,0",
+            custom.decisiontree.answersNumeric: "1%2C1%2C1",
+            clientTimestamp: 1629815811563,
+            attempts: 1
+        }
+
+        const contentSentToCustomer = {
+
+        }
+
+        const ended = {
+
+        }
+
+
+    }
 
     beginPostChatSurvey(survey, automaton, timestamp) {
         const chatParams = this.sdk.getChatParams();
