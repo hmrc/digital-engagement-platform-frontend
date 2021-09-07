@@ -105,6 +105,8 @@ vat.registration.title=VAT registration: webchat
 
 #National Clearance Hub
 national.clearance.hub.title=National Clearance Hub: webchat
+national.clearance.hub.p1=This service will be unavailable from 11pm 8 September 2021 to 1am 9 September 2021 for scheduled maintenance.
+national.clearance.hub.p2=You may experience connectivity issues during this time if you are already chatting with an adviser.
 
 #Job Retention Scheme
 job.retention.scheme.title=Coronavirus (COVID-19): Job Retention Scheme
