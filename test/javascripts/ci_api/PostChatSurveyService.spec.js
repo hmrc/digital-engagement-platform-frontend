@@ -139,4 +139,40 @@ describe("PostChatSurveyService", () => {
             expectedContentSentToCustomerEvent
         ]});
     });
+
+    it("sends event for submitting a post chat survey", () => {
+        const sdk = {
+            getChatParams: () => { return chatParams; },
+            isConnected: () => { return true; },
+            logEventToDW: jest.fn()
+        };
+
+        const service = new PostChatSurveyService(sdk);
+        const timestamp = Date.now();
+
+        const expectedCustomerRespondedEvent = {
+            _domain:"automaton",
+            evt:"customerResponded",
+            automatonType:"satisfactionSurvey",
+            siteID: "siteID",
+            customerID: "customerID",
+            incAssignmentID: "sessionID",
+            pageID: "pageID",
+            sessionID: "sessionID",
+            chatID: "chatID",
+            preAssigned: false,
+            automatonID: "automatonID",
+            unique_node_id: "node_1",
+            "custom.decisiontree.nodeID": "HMRC_PostChat_Guidance - Initial",
+            automatonNodeAttributes: "",
+            "custom.decisiontree.questionIDs": "0.q1,1.q2,2.q3",
+            "custom.decisiontree.questions": "0.Was the chatbot useful?,1.Was the chatbot your first contact choice?,2.If you had not used chatbot today, how else would you have contacted us?",
+            "custom.decisiontree.answerIDs": "0.a1,1.a2,3.a3",
+            "custom.decisiontree.answers": "Yes,yes,phone",
+            "custom.decisiontree.answerTypes": "0,1,0",
+            "custom.decisiontree.answersNumeric": "1,1,1",
+            clientTimestamp: timestamp
+
+        }
+    });
 });

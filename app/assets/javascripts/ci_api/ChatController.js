@@ -190,6 +190,7 @@ export default class ChatController {
     }
 
     onPostChatSurveySubmitted(surveyPage) {
+        this._sendPostChatSurvey(this.sdk).submitPostChatSurvey(survey, automaton, timestamp);
         surveyPage.detach();
         this.showEndChatPage(true);
     }
