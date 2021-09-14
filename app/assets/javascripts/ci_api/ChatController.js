@@ -32,6 +32,19 @@ const automaton = {
 
 const timestamp = Date.now();
 
+function getRadioValue(radioGroup)
+{
+    var elements = document.getElementsByName(radioGroup);
+
+    for (var i = 0, l = elements.length; i < l; i++)
+    {
+        if (elements[i].checked)
+        {
+            return elements[i].value;
+        }
+    }
+}
+
 export default class ChatController {
     constructor() {
         this.sdk = null;
@@ -150,6 +163,11 @@ export default class ChatController {
     }
 
     closeChat() {
+
+        if(document.body.contains(document.getElementById("postChatSurveyWrapper"))) {
+            this._sendPostChatSurvey(this.sdk).closePostChatSurvey(automaton, timestamp);
+        }
+
         this.closeNuanceChat();
 
         if (this._getEmbeddedDiv()) {
@@ -190,7 +208,17 @@ export default class ChatController {
     }
 
     onPostChatSurveySubmitted(surveyPage) {
-        this._sendPostChatSurvey(this.sdk).submitPostChatSurvey(survey, automaton, timestamp);
+        const answers = {
+            answers: [
+                {id: "a1", text: getRadioValue("q1-"), freeform: false},
+                {id: "a2", text: getRadioValue("q2-"), freeform: false},
+                {id: "a3", text: getRadioValue("q3-"), freeform: false}
+            ]
+        };
+
+        var surveyWithAnswers = Object.assign(answers, survey);
+
+        this._sendPostChatSurvey(this.sdk).submitPostChatSurvey(surveyWithAnswers, automaton, timestamp);
         surveyPage.detach();
         this.showEndChatPage(true);
     }
