@@ -3,30 +3,112 @@ export default class PostChatSurveyService {
         this.sdk = sdk;
     }
 
-    beginPostChatSurvey(survey, automaton, timestamp) {
+    closePostChatSurvey(automaton, timestamp) {
         const chatParams = this.sdk.getChatParams();
 
-        //TEMP LOGGING #TODO REMOVE THIS LATER
-        console.log("ChatID---------------------" + chatParams.getChatId)
-        console.log("thisCustomerID---------------------" + chatParams.thisCustomerID)
-        console.log("agentId---------------------" + chatParams.agentId)
-        console.log("thisCustomerID---------------------" + chatParams.thisCustomerID)
-        console.log("sessionID---------------------" + chatParams.sessionID)
-        console.log("getVisitorAttributes---------------------" + chatParams.getVisitorAttributes())
-        console.log("siteID---------------------" + chatParams.siteID)
-        console.log("pageID---------------------" + chatParams.launchPageId)
-        console.log("businessUnitID---------------------" + chatParams.businessUnitID)
-        console.log("BRName---------------------" + chatParams.chatTitle)
-        console.log("agId---------------------" + chatParams.agId)
-        console.log("agentAttributes---------------------" + chatParams.agentAttributes)
-        console.log("ruleAttributes---------------------" + chatParams.ruleAttributes)
-        console.log("countryCode---------------------" + chatParams.countryCode)
-        console.log("regionCode---------------------" + chatParams.regionCode)
-        console.log("deviceType---------------------" + chatParams.deviceType)
-        console.log("operatingSystemType---------------------" + chatParams.operatingSystemType)
-        console.log("browserType---------------------" + chatParams.browserType)
-        console.log("browserVersion---------------------" + chatParams.browserVersion)
+        const endedEvent = {
+            _domain: "automaton",
+            evt: "ended",
+            automatonType: "satisfactionSurvey",
+            siteID: chatParams.siteID,
+            customerID: chatParams.thisCustomerID,
+            incAssignmentID: chatParams.sessionID,
+            pageID: chatParams.launchPageId,
+            sessionID: chatParams.sessionID,
+            chatID: chatParams.getChatId,
+            preAssigned: this.sdk.isConnected() && !chatParams.agentId,
+            automatonID: automaton.id,
+            "automaton.outcomeType": "Refused",
+            clientTimestamp: timestamp
+        };
 
+        console.log("===== closePostChatSurvey =====");
+
+        try {
+            this.sdk.logEventToDW({eventList:[endedEvent]});
+        } catch (e) {
+            console.error("!!!! logEventToDW got exception: ", e);
+        }
+
+    }
+
+    submitPostChatSurvey(survey, automaton, timestamp) {
+        const chatParams = this.sdk.getChatParams();
+
+        const customerRespondedEvent = {
+            _domain:"automaton",
+            evt:"customerResponded",
+            automatonType:"satisfactionSurvey",
+            siteID: chatParams.siteID,
+            customerID: chatParams.thisCustomerID,
+            incAssignmentID: chatParams.sessionID,
+            pageID: chatParams.launchPageId,
+            sessionID: chatParams.sessionID,
+            chatID: chatParams.getChatId,
+            preAssigned: this.sdk.isConnected() && !chatParams.agentId,
+            automatonID: automaton.id,
+            unique_node_id: "node_1",
+            "custom.decisiontree.nodeID": "HMRC_PostChat_Guidance - Initial",
+            automatonNodeAttributes: "",
+            "custom.decisiontree.questionIDs": "0." + survey.questions[0].id + ",1." + survey.questions[1].id + ",2." + survey.questions[2].id,
+            "custom.decisiontree.questions": "0." + survey.questions[0].text + ",1." + survey.questions[1].text + ",2." + survey.questions[2].text,
+            "custom.decisiontree.answerIDs":"0." + survey.answers[0].id + ",1." + survey.answers[1].id + ",2." + survey.answers[2].id,
+            "custom.decisiontree.answers": "0." + survey.answers[0].text + ",1." + survey.answers[1].text + ",2." + survey.answers[2].text,
+            "custom.decisiontree.answerTypes": "0,0,0",
+            "custom.decisiontree.answersNumeric": "0,1,2",
+            clientTimestamp: timestamp
+        };
+
+        const contentSentToCustomerEvent = {
+            _domain: "automaton",
+            evt: "contentSentToCustomer",
+            automatonType: "satisfactionSurvey",
+            siteID: chatParams.siteID,
+            customerID: chatParams.thisCustomerID,
+            incAssignmentID: chatParams.sessionID,
+            pageID: chatParams.launchPageId,
+            sessionID: chatParams.sessionID,
+            chatID: chatParams.getChatId,
+            preAssigned: this.sdk.isConnected() && !chatParams.agentId,
+            automatonID: automaton.id,
+            unique_node_id: "node_1",
+            "custom.decisiontree.nodeID": "HMRC_PostChat_Guidance - Thank You",
+            automatonNodeAttributes: "node_id,node_1;node_name,HMRC_PostChat_Guidance - Thank You;node_type,thankyou;node_is_outcome,1",
+            "custom.decisiontree.questions": "Thank you",
+            "custom.decisiontree.questionIDs": "node_1",
+            clientTimestamp: timestamp
+        };
+
+        const endedEvent = {
+            _domain: "automaton",
+            evt: "ended",
+            automatonType: "satisfactionSurvey",
+            siteID: chatParams.siteID,
+            customerID: chatParams.thisCustomerID,
+            incAssignmentID: chatParams.sessionID,
+            pageID: chatParams.launchPageId,
+            sessionID: chatParams.sessionID,
+            chatID: chatParams.getChatId,
+            preAssigned: this.sdk.isConnected() && !chatParams.agentId,
+            automatonID: automaton.id,
+            "automaton.outcomeType": "Completed",
+            "automaton.outcome": "User has submitted postchat feedback.",
+            clientTimestamp: timestamp
+        };
+
+        console.log("===== submitPostChatSurvey =====");
+
+        try {
+            this.sdk.logEventToDW({eventList:[customerRespondedEvent, contentSentToCustomerEvent, endedEvent]});
+        } catch (e) {
+            console.error("!!!! logEventToDW got exception: ", e);
+        }
+
+
+    }
+
+    beginPostChatSurvey(survey, automaton, timestamp) {
+        const chatParams = this.sdk.getChatParams();
 
         const startedEvent = {
             _domain: "automaton",
@@ -66,47 +148,51 @@ export default class PostChatSurveyService {
             automatonName: automaton.name
         };
 
+        const contentSentToCustomerEvent = {
+            _domain: "automaton",
+            evt: "contentSentToCustomer",
+            unique_node_id: "node_1",
+            "custom.decisiontree.nodeID": "HMRC_PostChat_Guidance - Initial",
+            "custom.decisiontree.questions": "0." + survey.questions[0].text + ",1." + survey.questions[1].text + ",2." + survey.questions[2].text,
+            "custom.decisiontree.questionIDs": "0." + survey.questions[0].id + ",1." + survey.questions[1].id + ",2." + survey.questions[2].id,
+            clientTimestamp: timestamp,
+            automatonType: "satisfactionSurvey",
+            chatID: chatParams.getChatId,
+            customerID: chatParams.thisCustomerID,
+            agentID: chatParams.agentId,
+            custID: chatParams.thisCustomerID,
+            incAssignmentID: chatParams.sessionID,
+            sessionID: chatParams.sessionID,
+            visitorAttributes: chatParams.getVisitorAttributes(),
+            automatonAttributes: "",
+            siteID: chatParams.siteID,
+            clientID: chatParams.siteID,
+            pageID: chatParams.launchPageId,
+            businessUnitID: chatParams.businessUnitID,
+            businessRuleID: chatParams.brID,
+            busUnitID: chatParams.businessUnitID,
+            BRName: chatParams.chatTitle,
+            agentGroupID: chatParams.agId,
+            availableAgentAttributes: chatParams.agentAttributes,
+            brAttributes: chatParams.ruleAttributes,
+            brAttributes: chatParams.ruleAttributes,
+            countryCode: chatParams.countryCode,
+            regionCode: chatParams.regionCode,
+            deviceType: chatParams.deviceType,
+            operatingSystemType: chatParams.operatingSystemType,
+            browserType: chatParams.browserType,
+            browserVersion: chatParams.browserVersion,
+            preassigned: this.sdk.isConnected() && !chatParams.agentId,
+            surveyId: survey.id,
+            automatonID: automaton.id,
+            automatonName: automaton.name
+        }
+
+
        console.log("===== beginPostChatSurvey =====");
 
         try {
-            //TEMP started object just to get the call working. This returned successfully using Postman. Replace this with 'startedEvent' when we get this working
-            this.sdk.logEventToDW([
-                {"_domain":"automaton",
-                "evt":"started",
-                "automatonType":"satisfactionSurvey",
-                "automatonStartedBy":"survey,survey",
-                "startedIn":"chat",
-                "type":"satisfactionSurvey",
-                "clientTimestamp":"2021-08-04T16:00",
-                "chatID":90000001,
-                "customerID":"ThisCustomerID",
-                "agentID":"AgentId",
-                "custID":"ThisCustomerID",
-                "incAssignmentID":"SessionID",
-                "sessionID":"SessionID",
-                "visitorAttributes":"VisitorAttributes",
-                "automatonAttributes":"",
-                "siteID":10006719,
-                "clientID":12345566,
-                "pageID":"1234",
-                "businessUnitID":"BusinessUnitID",
-                "businessRuleID":123455,
-                "busUnitID":1233435,
-                "BRName":"ChatTitle",
-                "agentGroupID":1234535,
-                "availableAgentAttributes":"AgentAttributes",
-                "brAttributes":"RuleAttributes",
-                "countryCode":"CountryCode",
-                "regionCode":"RegionCode",
-                "deviceType":"DeviceType",
-                "operatingSystemType":"OperatingSystemType",
-                "browserType":"BrowserType",
-                "browserVersion":"BrowserVersion",
-                "preassigned":false,
-                "surveyId":"SurveyId",
-                "automatonID":444445,
-                "automatonName":"AutomatonName"}
-            ]);
+            this.sdk.logEventToDW({eventList:[startedEvent, contentSentToCustomerEvent]});
         } catch (e) {
             console.error("!!!! logEventToDW got exception: ", e);
         }
