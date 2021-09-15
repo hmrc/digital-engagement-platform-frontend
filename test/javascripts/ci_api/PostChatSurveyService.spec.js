@@ -28,14 +28,13 @@ const survey = {
         { id: "q1", text: "Was the chatbot useful?", freeform: false},
         { id: "q2", text: "Was the chatbot your first contact choice?", freeform: false},
         { id: "q3", text: "If you had not used chatbot today, how else would you have contacted us?", freeform: false}
+    ],
+    answers: [
+        { id: "a1", text: "Yes", freeform: false},
+        { id: "a2", text: "No", freeform: false},
+        { id: "a3", text: "Phone", freeform: false},
     ]
 };
-
-const answers = [
-    "Yes",
-    "No",
-    "Phone"
-];
 
 const automaton = {
     id: "AutomatonID",
@@ -43,7 +42,7 @@ const automaton = {
 };
 
 describe("PostChatSurveyService", () => {
-    it("sends event for begining a post chat survey", () => {
+    it("sends event for beginning a post chat survey", () => {
         const sdk = {
             getChatParams: () => { return chatParams; },
             isConnected: () => { return true; },
@@ -154,25 +153,103 @@ describe("PostChatSurveyService", () => {
             _domain:"automaton",
             evt:"customerResponded",
             automatonType:"satisfactionSurvey",
-            siteID: "siteID",
-            customerID: "customerID",
-            incAssignmentID: "sessionID",
-            pageID: "pageID",
-            sessionID: "sessionID",
-            chatID: "chatID",
+            siteID: "SiteID",
+            customerID: "ThisCustomerID",
+            incAssignmentID: "SessionID",
+            pageID: "LaunchPageId",
+            sessionID: "SessionID",
+            chatID: "ChatId",
             preAssigned: false,
-            automatonID: "automatonID",
+            automatonID: "AutomatonID",
             unique_node_id: "node_1",
             "custom.decisiontree.nodeID": "HMRC_PostChat_Guidance - Initial",
             automatonNodeAttributes: "",
             "custom.decisiontree.questionIDs": "0.q1,1.q2,2.q3",
             "custom.decisiontree.questions": "0.Was the chatbot useful?,1.Was the chatbot your first contact choice?,2.If you had not used chatbot today, how else would you have contacted us?",
-            "custom.decisiontree.answerIDs": "0.a1,1.a2,3.a3",
-            "custom.decisiontree.answers": "Yes,yes,phone",
-            "custom.decisiontree.answerTypes": "0,1,0",
-            "custom.decisiontree.answersNumeric": "1,1,1",
+            "custom.decisiontree.answerIDs": "0.a1,1.a2,2.a3",
+            "custom.decisiontree.answers": "0.Yes,1.No,2.Phone",
+            "custom.decisiontree.answerTypes": "0,0,0",
+            "custom.decisiontree.answersNumeric": "0,1,2",
             clientTimestamp: timestamp
+        };
 
-        }
+        const expectedContentSentToCustomerEvent = {
+            _domain: "automaton",
+            evt: "contentSentToCustomer",
+            automatonType: "satisfactionSurvey",
+            siteID: "SiteID",
+            customerID: "ThisCustomerID",
+            incAssignmentID: "SessionID",
+            pageID: "LaunchPageId",
+            sessionID: "SessionID",
+            chatID: "ChatId",
+            preAssigned: false,
+            automatonID: "AutomatonID",
+            unique_node_id: "node_1",
+            "custom.decisiontree.nodeID": "HMRC_PostChat_Guidance - Thank You",
+            automatonNodeAttributes: "node_id,node_1;node_name,HMRC_PostChat_Guidance - Thank You;node_type,thankyou;node_is_outcome,1",
+            "custom.decisiontree.questions": "Thank you",
+            "custom.decisiontree.questionIDs": "node_1",
+            clientTimestamp: timestamp
+        };
+
+        const expectedEndedEvent = {
+            _domain: "automaton",
+            evt: "ended",
+            automatonType: "satisfactionSurvey",
+            siteID: "SiteID",
+            customerID: "ThisCustomerID",
+            incAssignmentID: "SessionID",
+            pageID: "LaunchPageId",
+            sessionID: "SessionID",
+            chatID: "ChatId",
+            preAssigned: false,
+            automatonID: "AutomatonID",
+            "automaton.outcomeType": "Completed",
+            "automaton.outcome": "User has submitted postchat feedback.",
+            clientTimestamp: timestamp
+        };
+
+        service.submitPostChatSurvey(survey, automaton, timestamp);
+
+        expect(sdk.logEventToDW).toHaveBeenCalledWith({eventList:[
+            expectedCustomerRespondedEvent,
+            expectedContentSentToCustomerEvent,
+            expectedEndedEvent
+        ]});
+    });
+
+    it("sends event for closing webchat and not submitting post chat survey", () => {
+        const sdk = {
+            getChatParams: () => { return chatParams; },
+            isConnected: () => { return true; },
+            logEventToDW: jest.fn()
+        };
+
+        const service = new PostChatSurveyService(sdk);
+        const timestamp = Date.now();
+
+        const expectedEndedEvent = {
+            _domain: "automaton",
+            evt: "ended",
+            automatonType: "satisfactionSurvey",
+            siteID: "SiteID",
+            customerID: "ThisCustomerID",
+            incAssignmentID: "SessionID",
+            pageID: "LaunchPageId",
+            sessionID: "SessionID",
+            chatID: "ChatId",
+            preAssigned: false,
+            automatonID: "AutomatonID",
+            "automaton.outcomeType": "Refused",
+            clientTimestamp: timestamp
+        };
+
+        service.closePostChatSurvey(automaton, timestamp);
+
+        expect(sdk.logEventToDW).toHaveBeenCalledWith({eventList:[
+            expectedEndedEvent
+        ]});
+
     });
 });
