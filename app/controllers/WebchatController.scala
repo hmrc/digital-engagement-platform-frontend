@@ -16,6 +16,7 @@
 
 package controllers
 
+import controllers.CuiController.{routes => cuiRoutes}
 import config.AppConfig
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents, RequestHeader}
@@ -71,7 +72,11 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def taxCredits: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(taxCreditsView(isIvrRedirect())))
+    if(isIvrRedirect()) {
+      Future.successful(Ok(taxCreditsView(isIvrRedirect())))
+    } else {
+      Future.successful(Redirect(cuiRoutes.CuiController.askHmrcOnline().url))
+    }
   }
 
   def childBenefit: Action[AnyContent] = Action.async { implicit request =>

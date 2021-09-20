@@ -16,6 +16,7 @@
 
 package controllers
 
+import controllers.CuiController.{routes => cuiRoutes}
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
@@ -40,10 +41,9 @@ class VirtualAssistantControllerSpec
 
     "render tax credits enquiries page" in {
       val  result = controller.taxCreditsEnquiries(fakeRequest)
-      val doc = asDocument(contentAsString(result))
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Use HMRC’s digital assistant"
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(cuiRoutes.CuiController.askHmrcOnline().url)
     }
   }
 

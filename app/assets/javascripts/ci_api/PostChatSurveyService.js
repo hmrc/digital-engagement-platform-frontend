@@ -103,8 +103,6 @@ export default class PostChatSurveyService {
         } catch (e) {
             console.error("!!!! logEventToDW got exception: ", e);
         }
-
-
     }
 
     beginPostChatSurvey(survey, automaton, timestamp) {
