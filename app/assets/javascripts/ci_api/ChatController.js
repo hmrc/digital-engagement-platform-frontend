@@ -17,7 +17,7 @@ const c2cDisplayStateMessages = {
 };
 
 const survey = {
-    id: "SurveyId",
+    id: "300001",
     questions: [
         { id: "q1", text: "Was the chatbot useful?", freeform: false},
         { id: "q2", text: "Was the chatbot your first contact choice?", freeform: false},
@@ -26,7 +26,7 @@ const survey = {
 };
 
 const automaton = {
-    id: "AutomatonID",
+    id: "survey-300001",
     name: "AutomatonName"
 };
 
