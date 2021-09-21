@@ -4,8 +4,8 @@ export const PopupContainerHtml = `
         <div id="ciapiTitleBarLogo"><img src='/ask-hmrc/assets/media/logo.png'></div>
         <div id="ciapiSkinTitleBar" class="govuk-heading-s"><span>Ask HMRC</span></div>
         <div id="hideCloseContainer">
-            <button id="ciapiSkinHideButton" title="Hide chat" aria-label="Hide chat"></button>
-            <button id="ciapiSkinCloseButton" title="Close chat window" aria-label="Close chat window"></button>
+            <button id="ciapiSkinHideButton" aria-label="Hide chat"></button>
+            <button id="ciapiSkinCloseButton" aria-label="Close chat window"></button>
         </div>
     </div>
     <div id="tools">
@@ -31,14 +31,12 @@ export const PopupContainerHtml = `
                 name="comments"></textarea></div>
             <div id="ciapiSend"><button
                 id="ciapiSkinSendButton"
-                class="govuk-button"
-                title="Send message"
-                aria-label="Send message">Send</button></div>
+                class="govuk-button">Send</button></div>
         </div>
     </div>
 </div>
 <div id="ciapiSkinMinimised">
-    <button id="ciapiSkinRestoreButton" type="button" draggable="false" role="button" title="Show chat window" aria-label="Show chat window">
+    <button id="ciapiSkinRestoreButton" type="button" draggable="false" role="button" aria-label="Show chat window">
         <div id="logo-white"><img src="/ask-hmrc/assets/media/logo-white.png"></div>
         <h2 class="govuk-heading-s">Ask HMRC a Question</h2>
     </button>
@@ -66,7 +64,7 @@ export const EmbeddedContainerHtml = `
                     name="comments"></textarea>
                 </div>
                 <div id="ciapiSend">
-                    <button id="ciapiSkinSendButton" class="govuk-button" aria-label="Send message">Send</button>
+                    <button id="ciapiSkinSendButton" class="govuk-button">Send</button>
                 </div>
             </div>
             <div id="ciapiClose">
