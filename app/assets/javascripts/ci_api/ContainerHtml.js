@@ -64,7 +64,7 @@ export const EmbeddedContainerHtml = `
                     name="comments"></textarea>
                 </div>
                 <div id="ciapiSend">
-                    <button id="ciapiSkinSendButton" class="govuk-button" aria-label="Send message">Send</button>
+                    <button id="ciapiSkinSendButton" class="govuk-button">Send</button>
                 </div>
             </div>
             <div id="ciapiClose">
