@@ -17,9 +17,11 @@ $components-sub-height: $header-height + $header-bottom-border-height + $tools-h
 $footer-height: 80px;
 $footer-padding: 5px;
 $textarea-height: $footer-height;
-$transcript-border-height: 4px;
-$transcript-sub-height: $footer-height + 2*$footer-padding  + 2*$transcript-border-height + 2px;
+$transcript-border-height: 2px;
+$transcript-sub-height: $footer-height + 2*$footer-padding  + 2*($transcript-border-height*2) + 2px;
 $page-height: calc(100% - 2em - 5px);
+
+
 
 #ciapiSkin {
     font-family: "GDS Transport",arial,sans-serif;
@@ -58,6 +60,14 @@ $page-height: calc(100% - 2em - 5px);
     bottom: 0px;
     right: 0px;
     background-color: white;
+
+    @media screen and (max-width: 767px) {
+        width: 100%;
+        height: 100%;
+        border: none;
+        max-height: 100%;
+    }
+
 }
 
 #ciapiSkinHeader {
@@ -74,42 +84,50 @@ $page-height: calc(100% - 2em - 5px);
     padding-left: 0.6em;
 }
 
+#print {
+    height: 5px;
+    margin-top: -0.2em;
+    margin-left: -5px;
+    float: left;
+    margin-bottom: 1.6em;
+}
+
+#sound {
+    height: 5px;
+    margin-top: -0.2em;
+    float: right;
+    margin-bottom: 1.6em;
+    text-align: right;
+}
+
+#print .govuk-button--secondary {
+    height: 31px;
+    background: url('/ask-hmrc/assets/media/save-transcript.svg') no-repeat;
+    background-size: 1em;
+    padding-left: 1.2em;
+    padding-top: 0.3em;
+    background-color: #f3f2f1;
+}
+
+#print .govuk-button--secondary:hover,
+#sound .govuk-button--secondary:hover {
+    background-color: #dbdad9;
+}
+
+#sound .govuk-button--secondary {
+    height: 31px;
+    background: url('/ask-hmrc/assets/media/hmrc-alert_on.svg') no-repeat;
+    background-size: 1.2em;
+    padding-left: 1.3em;
+    padding-top: 0.3em;
+    background-color: #f3f2f1;
+}
+
 #tools {
     height: $tools-height;
     padding-top: $tools-padding-y;
     padding-bottom: $tools-padding-y;
     padding-left: 5px;
-
-    #print a {
-        background-image: url('/ask-hmrc/assets/media/save-transcript.svg');
-        background-size: 0.8em;
-    }
-
-    #sound a {
-        background-image: url('/ask-hmrc/assets/media/hmrc-alert_on.svg');
-    }
-
-    #print p, #sound p {
-        margin: 0;
-        padding: 0 0 0.3em 0;
-    }
-
-    #print a, #sound a, #end a {
-        border: 0px solid green;
-        background-size: 1em;
-        background-repeat: no-repeat;
-        padding-left: 1.2em;
-    }
-
-    #print, #sound {
-        max-width: 50%;
-        width: 49%;
-        float: left;
-    }
-
-    #sound {
-        text-align: right;
-    }
 }
 
 @mixin TopButton {
@@ -169,6 +187,7 @@ $page-height: calc(100% - 2em - 5px);
 
 #ciapiSkinChatTranscript {
     height: calc(100% - #{$transcript-sub-height});
+    width: calc(100% - 33px);
     border-top: $transcript-border-height solid #b1b4b6;
     border-bottom: $transcript-border-height solid #000;
     overflow: scroll;
@@ -251,6 +270,11 @@ $page-height: calc(100% - 2em - 5px);
             padding-top: 0.8em;
             padding-left: 0.6em;
         }
+    }
+
+    @media screen and (max-width: 767px)
+    {
+        max-width: 100% !important;
     }
 }
 
