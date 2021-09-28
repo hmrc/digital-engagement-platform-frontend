@@ -189,6 +189,7 @@ $transcript-sub-height: $footer-height + 2*$footer-padding + $footer-top-border-
     background: url('/ask-hmrc/assets/media/save-transcript.svg') no-repeat;
     background-size: 1em;
     padding-left: 1.2em;
+    padding-top: 0.3em;
     background-color: #f3f2f1;
 }
 
@@ -202,5 +203,6 @@ $transcript-sub-height: $footer-height + 2*$footer-padding + $footer-top-border-
     background: url('/ask-hmrc/assets/media/hmrc-alert_on.svg') no-repeat;
     background-size: 1.2em;
     padding-left: 1.3em;
+    padding-top: 0.3em;
     background-color: #f3f2f1;
 }

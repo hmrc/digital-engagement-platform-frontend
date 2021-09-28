@@ -10,6 +10,8 @@ const nullEventHandler = {
     onConfirmEndChat: function() {}
 };
 
+
+
 export default class ChatContainer {
     constructor(messageClasses, containerHtml) {
         this.container = document.createElement("div")
@@ -73,6 +75,13 @@ export default class ChatContainer {
         });
 
         this._registerEventListener("#ciapiSkinCloseButton", (e) => {
+
+             var ciapiSkinContainer = document.querySelector("#ciapiSkin");
+
+             ciapiSkinContainer.querySelectorAll('a[href], input, textarea, button:not([id="cancelEndChat"]):not([id="confirmEndChat"]').forEach(function(element) {
+                 element.tabIndex = -1;
+             });
+
              this.eventHandler.onCloseChat();
         });
 
