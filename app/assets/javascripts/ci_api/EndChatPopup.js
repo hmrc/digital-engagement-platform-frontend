@@ -2,12 +2,12 @@ const html = `
     <div id="endChatPopup">
       <h1 class="govuk-heading-xl">End chat?</h1>
 
+      <button id="confirmEndChat" class="govuk-button">
+              End chat
+            </button>
+
       <button id="cancelEndChat" class="govuk-button govuk-!-margin-right-1 govuk-button--secondary">
         Return to chat
-      </button>
-
-      <button id="confirmEndChat" class="govuk-button">
-        End chat
       </button>
 
     </div>
