@@ -73,6 +73,11 @@ export default class ChatContainer {
         });
 
         this._registerEventListener("#ciapiSkinCloseButton", (e) => {
+             var ciapiSkinContainer = document.querySelector("#ciapiSkin");
+             var endChatNonFocusable = ciapiSkinContainer.querySelectorAll('a[href], input, textarea, button:not([id="cancelEndChat"]):not([id="confirmEndChat"]');
+             endChatNonFocusable.forEach(function(element) {
+                 element.tabIndex = -1;
+             });
              this.eventHandler.onCloseChat();
         });
 
@@ -97,6 +102,11 @@ export default class ChatContainer {
     }
 
     onCancelEndChat() {
+        var ciapiSkinContainer = document.querySelector("#ciapiSkin");
+        var endChatNonFocusable = ciapiSkinContainer.querySelectorAll('a[href], input, textarea, button');
+        endChatNonFocusable.forEach(function(element) {
+            element.removeAttribute("tabindex");
+        });
         this.endChatPopup.hide();
     }
 
