@@ -9,11 +9,15 @@ export const PopupContainerHtml = `
         </div>
     </div>
     <div id="tools">
-        <div id="print" class="govuk-link">
-            <p><a href='#' class="govuk-body">Print or save</a></p>
+        <div id="print">
+            <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                Print or save
+            </button>
         </div>
-        <div id="sound" class="govuk-link">
-            <p><a href='#' class="govuk-body">Turn sound on</a></p>
+        <div id="sound">
+            <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                Turn sound on
+            </button>
         </div>
     </div>
     <div id="ciapiChatComponents">
@@ -46,8 +50,16 @@ export const PopupContainerHtml = `
 export const EmbeddedContainerHtml = `
 <div id="ciapiSkinContainer">
     <div id="ciapiSkinHeader">
-        <button id="ciapiPrintButton">Print or save</button>
-        <button id="ciapiSoundButton">Turn sound on</button>
+        <div id="print">
+            <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                Print or save
+            </button>
+        </div>
+        <div id="sound">
+            <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                Turn sound on
+            </button>
+        </div>
     </div>
     <div id="ciapiChatComponents">
         <div id="ciapiSkinChatTranscript" role="log">
