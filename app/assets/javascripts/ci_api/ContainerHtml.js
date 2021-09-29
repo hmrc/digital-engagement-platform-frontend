@@ -4,8 +4,8 @@ export const PopupContainerHtml = `
         <div id="ciapiTitleBarLogo"><img src='/ask-hmrc/assets/media/logo.png'></div>
         <div id="ciapiSkinTitleBar" class="govuk-heading-s"><span>Ask HMRC</span></div>
         <div id="hideCloseContainer">
-            <button id="ciapiSkinHideButton" aria-label="Hide chat"></button>
-            <button id="ciapiSkinCloseButton" aria-label="Close chat window"></button>
+            <button id="ciapiSkinHideButton"  draggable="false" role="button" type="button" aria-label="Hide chat"></button>
+            <button id="ciapiSkinCloseButton" draggable="false" role="button" type="button" aria-label="Close chat window"></button>
         </div>
     </div>
     <div id="tools">
@@ -21,7 +21,7 @@ export const PopupContainerHtml = `
         </div>
     </div>
     <div id="ciapiChatComponents">
-        <div id="ciapiSkinChatTranscript" role="log">
+        <div id="ciapiSkinChatTranscript" role="log" tabindex="0">
             <p class="info"><img src="/ask-hmrc/assets/media/intro-warn.svg">You are currently chatting with a computer.</p>
         </div>
         <div id="ciapiSkinFooter">
@@ -62,7 +62,7 @@ export const EmbeddedContainerHtml = `
         </div>
     </div>
     <div id="ciapiChatComponents">
-        <div id="ciapiSkinChatTranscript" role="log">
+        <div id="ciapiSkinChatTranscript" role="log" tabindex="0">
             <p class="info"><img src="/ask-hmrc/assets/media/intro-warn.svg">You are currently chatting with a computer.</p>
         </div>
         <div id="ciapiSkinFooter">

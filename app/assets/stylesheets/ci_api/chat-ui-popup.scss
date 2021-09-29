@@ -114,6 +114,11 @@ $page-height: calc(100% - 2em - 5px);
     background-color: #dbdad9;
 }
 
+#print .govuk-button--secondary:focus:not(:active):not(:hover),
+#sound .govuk-button--secondary:focus:not(:active):not(:hover){
+    background-color: #ffdd00;
+}
+
 #sound .govuk-button--secondary {
     height: 31px;
     background: url('/ask-hmrc/assets/media/hmrc-alert_on.svg') no-repeat;
@@ -152,18 +157,48 @@ $page-height: calc(100% - 2em - 5px);
 
 #ciapiSkinCloseButton {
   background-image: url('/ask-hmrc/assets/media/close.svg');
-  margin-left: 8px;
-  margin-right: 15px;
-  margin-top: 7px;
-  margin-bottom: 7px;
+  margin: 8px 0px;
+  float: none !important;
+    z-index: 1000;
+    position: static;
+    box-shadow: none;
   @include TopButton
+}
+
+#ciapiSkinCloseButton:focus:not(:active):not(:hover) {
+    border-color: #ffdd00;
+    color: #0b0c0c;
+    background-color: #ffdd00;
+    box-shadow: 0 2px 0 #0b0c0c;
+}
+
+#ciapiSkinCloseButton:focus {
+    border-color: #ffdd00;
+    outline: 3px solid transparent;
+    box-shadow: inset 0 0 0 1px #ffdd00;
 }
 
 #ciapiSkinHideButton {
   background-image: url('/ask-hmrc/assets/media/minimise.svg');
   margin: 8px 0px;
   float: none !important;
+  z-index: 1000;
+  position: static;
+  box-shadow: none;
   @include TopButton
+}
+
+#ciapiSkinHideButton:focus:not(:active):not(:hover) {
+    border-color: #ffdd00;
+    color: #0b0c0c;
+    background-color: #ffdd00;
+    box-shadow: 0 2px 0 #0b0c0c;
+}
+
+#ciapiSkinHideButton:focus {
+    border-color: #ffdd00;
+    outline: 3px solid transparent;
+    box-shadow: inset 0 0 0 1px #ffdd00;
 }
 
 #ciapiSkinCloseButton i {
@@ -184,6 +219,15 @@ $page-height: calc(100% - 2em - 5px);
     height: calc(100% - #{$components-sub-height});
     width: 100%;
     }
+
+#ciapiSkinChatTranscript:focus {
+    outline: 3px solid #fd0;
+    outline-offset: 0;
+    -webkit-box-shadow: inset 0 0 0 2px;
+    box-shadow: inset 0 0 0 2px;
+    border-top: none;
+    border-bottom: none;
+}
 
 #ciapiSkinChatTranscript {
     height: calc(100% - #{$transcript-sub-height});
