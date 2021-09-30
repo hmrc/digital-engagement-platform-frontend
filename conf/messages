@@ -18,7 +18,6 @@ global.opening.times.8to7_30=Monday to Friday, 8am to 7:30pm
 global.opening.times.8to4.includesat=Monday to Saturday, 8am to 4pm
 global.opening.times.mon.sat.8to7_30=Monday to Saturday, 8am to 7:30pm
 global.opening.times.saturday.8to4=Saturday, 8am to 4pm
-global.opening.times.saturday.8to330=Saturday, 8am to 3:30pm
 global.opening.times.sat.sun.8to4=Saturday and Sunday, 8am to 4pm
 global.opening.times.weekend.p=Closed weekends and bank holidays.
 global.opening.times.bankholidays=Closed bank holidays.
