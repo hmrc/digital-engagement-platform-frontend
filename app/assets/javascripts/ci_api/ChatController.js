@@ -19,9 +19,9 @@ const c2cDisplayStateMessages = {
 const survey = {
     id: "300001",
     questions: [
-        { id: "q1", text: "Was the chatbot useful?", freeform: false},
-        { id: "q2", text: "Was the chatbot your first contact choice?", freeform: false},
-        { id: "q3", text: "If you had not used chatbot today, how else would you have contacted us?", freeform: false}
+        { id: ["q1-","q1--2"], text: "Was the chatbot useful?", freeform: false},
+        { id: ["q2-","q2--2"], text: "Was the chatbot your first contact choice?", freeform: false},
+        { id: ["q3-", "q3--2","q3--3","q3--4"], text: "If you had not used chatbot today, how else would you have contacted us?", freeform: false}
     ]
 };
 
@@ -268,4 +268,3 @@ export default class ChatController {
         });
     }
 };
-
