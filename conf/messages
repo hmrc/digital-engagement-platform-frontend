@@ -42,6 +42,7 @@ tax.credits.title=Tax credits: webchat
 
 #Child Benefit Webchat
 child.benefit.title=Child Benefit: webchat
+child.benefit.opening.times.saturday.8to3_30 = Saturday, 8am to 3:30pm
 
 #Employers Webchat
 employers.enquiries.title=Employers: webchat
