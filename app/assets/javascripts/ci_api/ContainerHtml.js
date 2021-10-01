@@ -1,7 +1,7 @@
 export const PopupContainerHtml = `
 <div id="ciapiSkinContainer">
     <div id="ciapiSkinHeader">
-        <div id="ciapiTitleBarLogo"><img src='/ask-hmrc/assets/media/logo.png'></div>
+        <div id="ciapiTitleBarLogo"><img src='/ask-hmrc/assets/media/logo.png' alt=""></div>
         <div id="ciapiSkinTitleBar" class="govuk-heading-s"><span>Ask HMRC</span></div>
         <div id="hideCloseContainer">
             <button id="ciapiSkinHideButton"  draggable="false" role="button" type="button" aria-label="Hide chat"></button>
@@ -22,7 +22,7 @@ export const PopupContainerHtml = `
     </div>
     <div id="ciapiChatComponents">
         <div id="ciapiSkinChatTranscript" role="log" tabindex="0">
-            <p class="info"><img src="/ask-hmrc/assets/media/intro-warn.svg">You are currently chatting with a computer.</p>
+            <p class="info"><img src="/ask-hmrc/assets/media/intro-warn.svg" alt="">You are currently chatting with a computer.</p>
         </div>
         <div id="ciapiSkinFooter">
             <div id="ciapiInput"><textarea
@@ -41,7 +41,7 @@ export const PopupContainerHtml = `
 </div>
 <div id="ciapiSkinMinimised">
     <button id="ciapiSkinRestoreButton" type="button" draggable="false" role="button" aria-label="Show chat window">
-        <div id="logo-white"><img src="/ask-hmrc/assets/media/logo-white.png"></div>
+        <div id="logo-white"><img src="/ask-hmrc/assets/media/logo-white.png" alt=""></div>
         <h2 class="govuk-heading-s">Ask HMRC a Question</h2>
     </button>
 </div>
@@ -63,7 +63,7 @@ export const EmbeddedContainerHtml = `
     </div>
     <div id="ciapiChatComponents">
         <div id="ciapiSkinChatTranscript" role="log" tabindex="0">
-            <p class="info"><img src="/ask-hmrc/assets/media/intro-warn.svg">You are currently chatting with a computer.</p>
+            <p class="info"><img src="/ask-hmrc/assets/media/intro-warn.svg" alt="">You are currently chatting with a computer.</p>
         </div>
         <div id="ciapiSkinFooter">
             <div>
