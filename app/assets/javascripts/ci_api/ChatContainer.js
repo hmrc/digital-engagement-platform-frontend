@@ -78,6 +78,8 @@ export default class ChatContainer {
              endChatNonFocusable.forEach(function(element) {
                  element.tabIndex = -1;
              });
+
+             document.getElementById("ciapiSkinChatTranscript").setAttribute("tabindex", -1);
              this.eventHandler.onCloseChat();
         });
 
@@ -107,6 +109,8 @@ export default class ChatContainer {
         endChatNonFocusable.forEach(function(element) {
             element.removeAttribute("tabindex");
         });
+
+        document.getElementById("ciapiSkinChatTranscript").setAttribute("tabindex", 0);
         this.endChatPopup.hide();
     }
 
