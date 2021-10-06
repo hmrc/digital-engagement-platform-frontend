@@ -4,7 +4,7 @@ export const PopupContainerHtml = `
         <div id="ciapiTitleBarLogo"><img src='/ask-hmrc/assets/media/logo.png' alt=""></div>
         <div id="ciapiSkinTitleBar" class="govuk-heading-s"><span>Ask HMRC</span></div>
         <div id="hideCloseContainer">
-            <button id="ciapiSkinHideButton"  draggable="false" role="button" type="button" aria-label="Hide chat"></button>
+            <button id="ciapiSkinHideButton"  draggable="false" role="button" type="button" aria-label="Minimise chat window"></button>
             <button id="ciapiSkinCloseButton" draggable="false" role="button" type="button" aria-label="Close chat window"></button>
         </div>
     </div>

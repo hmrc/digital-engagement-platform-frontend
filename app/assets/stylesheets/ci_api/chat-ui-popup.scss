@@ -21,8 +21,6 @@ $transcript-border-height: 2px;
 $transcript-sub-height: $footer-height + 2*$footer-padding  + 2*($transcript-border-height*2) + 2px;
 $page-height: calc(100% - 2em - 5px);
 
-
-
 #ciapiSkin {
     font-family: "GDS Transport",arial,sans-serif;
     font-size: 19px;
@@ -60,14 +58,6 @@ $page-height: calc(100% - 2em - 5px);
     bottom: 0px;
     right: 0px;
     background-color: white;
-
-    @media screen and (max-width: 767px) {
-        width: 100%;
-        height: 100%;
-        border: none;
-        max-height: 100%;
-    }
-
 }
 
 #ciapiSkinHeader {
@@ -262,27 +252,28 @@ $page-height: calc(100% - 2em - 5px);
   right: 50px;
 }
 
+#ciapiInput {
+    width: 80%;
+    float: left;
+
+    textarea {
+        height: $textarea-height;
+        resize: none;
+        margin-bottom: 0px;
+    }
+}
+
+#ciapiSend {
+    width: 18%;
+    height: 40px;
+    float: left;
+    text-align: right;
+}
+
 #ciapiSkinFooter {
+    width: calc(100% - 12px);
     height: $footer-height;
     padding: $footer-padding;
-
-    #ciapiInput {
-        width: 80%;
-        float: left;
-
-        textarea {
-            height: $textarea-height;
-            resize: none;
-            margin-bottom: 0px;
-        }
-    }
-
-    #ciapiSend {
-        width: 18%;
-        float: left;
-        text-align: right;
-    }
-
 }
 
 #ciapiSkinMinimised {
@@ -315,17 +306,15 @@ $page-height: calc(100% - 2em - 5px);
             padding-left: 0.6em;
         }
     }
-
-    @media screen and (max-width: 767px)
-    {
-        max-width: 100% !important;
-    }
 }
 
 #postChatSurveyWrapper {
     height: $page-height;
-    overflow-y: scroll;
-    padding: 1em;
+    width: calc(100% - 30px);
+    overflow: scroll;
+    overflow-x: hidden;
+    padding-right:14px;
+    padding-left:1em;
     border-top: 2px solid #b1b4b6;
     border-bottom: 2px solid #000;
 
@@ -341,4 +330,28 @@ $page-height: calc(100% - 2em - 5px);
     border-bottom: 2px solid #000;
     padding-right: 14px;
     padding: 1em;
+}
+
+@media screen and (max-width: 767px)
+{
+	#ciapiSkinContainer {
+        width:100%;
+        height:100%;
+        border:none;
+        max-height:100%
+	}
+
+	#ciapiChatComponents p{
+	    font-size:16px;
+	}
+
+	#ciapiSkinSendButton {
+        width: 100%;
+        min-width: 60px;
+        margin-left: 5px;
+    }
+
+    #ciapiSkinMinimised {
+        max-width: 100% !important;
+    }
 }
