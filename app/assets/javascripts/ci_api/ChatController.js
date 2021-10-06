@@ -235,7 +235,6 @@ export default class ChatController {
     }
 
     // End event handler method
-
     _sendPostChatSurvey(sdk) {
         return new PostChatSurveyService(sdk);
     }
