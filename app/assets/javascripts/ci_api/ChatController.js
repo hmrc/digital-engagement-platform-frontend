@@ -10,10 +10,10 @@ import PostPCSPage from './PostPCSPage'
 import PostChatSurveyService from './PostChatSurveyService'
 
 const c2cDisplayStateMessages = {
-    [DisplayState.OutOfHours]: "Out of hours",
-    [DisplayState.Ready]: "Ask HMRC a question",
-    [DisplayState.Busy]: "All advisers are busy",
-    [DisplayState.ChatActive]: "In progress"
+    [DisplayState.OutOfHours]: "Out of hours from our code",
+    [DisplayState.Ready]: "Ask HMRC a question from our code",
+    [DisplayState.Busy]: "All advisers are busy from our code",
+    [DisplayState.ChatActive]: "In progress from our code"
 };
 
 const survey = {
