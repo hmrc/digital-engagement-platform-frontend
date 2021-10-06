@@ -19,7 +19,8 @@ $footer-padding: 5px;
 $textarea-height: $footer-height;
 $transcript-border-height: 2px;
 $transcript-sub-height: $footer-height + 2*$footer-padding  + 2*($transcript-border-height*2) + 2px;
-$page-height: calc(100% - 2em - 5px);
+$page-height: calc(100% - 5px);
+
 
 #ciapiSkin {
     font-family: "GDS Transport",arial,sans-serif;
@@ -310,7 +311,7 @@ $page-height: calc(100% - 2em - 5px);
 
 #postChatSurveyWrapper {
     height: $page-height;
-    width: calc(100% - 30px);
+    width: calc(100% - 34px);
     overflow: scroll;
     overflow-x: hidden;
     padding-right:14px;
