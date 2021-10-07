@@ -17,17 +17,17 @@ const c2cDisplayStateMessages = {
 };
 
 const survey = {
-    id: "300001",
+    id: "13000303",
     questions: [
-        { id: ["q1-","q1--2"], text: "Was the chatbot useful?", freeform: false},
-        { id: ["q2-","q2--2"], text: "Was the chatbot your first contact choice?", freeform: false},
-        { id: ["q3-", "q3--2","q3--3","q3--4"], text: "If you had not used chatbot today, how else would you have contacted us?", freeform: false}
+        { id: ["question1"], text: "Was the chatbot useful?", freeform: false},
+        { id: ["question2"], text: "Was the chatbot your first contact choice?", freeform: false},
+        { id: ["question3"], text: "If you had not used chatbot today, how else would you have contacted us?", freeform: false}
     ]
 };
 
 const automaton = {
-    id: "survey-300001",
-    name: "AutomatonName"
+    id: "survey-13000303",
+    name: "HMRC_PostChat_Transactional-CUI"
 };
 
 const timestamp = Date.now();
@@ -41,6 +41,19 @@ function getRadioValue(radioGroup)
         if (elements[i].checked)
         {
             return elements[i].value;
+        }
+    }
+}
+
+function getRadioId(radioGroup)
+{
+    var elements = document.getElementsByName(radioGroup);
+
+    for (var i = 0, l = elements.length; i < l; i++)
+    {
+        if (elements[i].checked)
+        {
+            return elements[i].id;
         }
     }
 }
@@ -210,9 +223,9 @@ export default class ChatController {
     onPostChatSurveySubmitted(surveyPage) {
         const answers = {
             answers: [
-                {id: "a1", text: getRadioValue("q1-"), freeform: false},
-                {id: "a2", text: getRadioValue("q2-"), freeform: false},
-                {id: "a3", text: getRadioValue("q3-"), freeform: false}
+                {id: getRadioId("q1-"), text: getRadioValue("q1-"), freeform: false},
+                {id: getRadioId("q2-"), text: getRadioValue("q2-"), freeform: false},
+                {id: getRadioId("q3-"), text: getRadioValue("q3-"), freeform: false}
             ]
         };
 

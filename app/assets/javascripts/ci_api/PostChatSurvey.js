@@ -13,7 +13,7 @@ const html = `
 
                 <div class="govuk-form-group">
 
-                  <fieldset class="govuk-fieldset">
+                  <fieldset class="govuk-fieldset" id="question1">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                       <h2 class="govuk-fieldset__heading">Was the chatbot useful?</h2>
                     </legend>
@@ -29,7 +29,7 @@ const html = `
                     </div>
                   </fieldset>
 
-                  <fieldset class="govuk-fieldset">
+                  <fieldset class="govuk-fieldset" id="question2">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                       <h2 class="govuk-fieldset__heading">Was the chatbot your first contact choice?</h2>
                     </legend>
@@ -45,7 +45,7 @@ const html = `
                     </div>
                   </fieldset>
 
-                  <fieldset class="govuk-fieldset">
+                  <fieldset class="govuk-fieldset" id="question3">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                       <h2 class="govuk-fieldset__heading">If you had not used chatbot today, how else would you have contacted us?</h2>
                     </legend>
