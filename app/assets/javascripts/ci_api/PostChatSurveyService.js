@@ -41,7 +41,8 @@ export default class PostChatSurveyService {
                 preAssigned: this.sdk.isConnected() && !chatParams.agentID,
                 surveyId: Number(survey.id),
                 automatonID: automaton.id,
-                automatonName: automaton.name
+                automatonName: automaton.name,
+                automatonOrigin: "richMedia"
             };
 
             const contentSentToCustomerEvent = {
@@ -81,7 +82,8 @@ export default class PostChatSurveyService {
                 preAssigned: this.sdk.isConnected() && !chatParams.agentID,
                 surveyId: Number(survey.id),
                 automatonID: automaton.id,
-                automatonName: automaton.name
+                automatonName: automaton.name,
+                automatonOrigin: "richMedia"
             }
 
            console.log("===== beginPostChatSurvey =====");
@@ -135,7 +137,8 @@ export default class PostChatSurveyService {
                 "custom.decisiontree.answerIDs": encodeURIComponent(survey.answers[0].id + "," + survey.answers[1].id + "," + survey.answers[2].id),
                 "custom.decisiontree.answers": encodeURIComponent(survey.answers[0].text + "," + survey.answers[1].text + "," + survey.answers[2].text),
                 "custom.decisiontree.answerTypes": encodeURIComponent(("0,0,0")),
-                clientTimestamp: timestamp
+                clientTimestamp: timestamp,
+                automatonOrigin: "richMedia"
             };
 
             const endedEvent = {
@@ -172,7 +175,8 @@ export default class PostChatSurveyService {
                 surveyId: Number(survey.id),
                 "automaton.outcomeType": "Completed",
                 "automaton.outcome": "User has submitted postchat feedback.",
-                clientTimestamp: timestamp
+                clientTimestamp: timestamp,
+                automatonOrigin: "richMedia"
             };
 
             console.log("===== submitPostChatSurvey =====");
@@ -200,7 +204,8 @@ export default class PostChatSurveyService {
             preAssigned: this.sdk.isConnected() && !chatParams.agentID,
             automatonID: automaton.id,
             "automaton.outcomeType": "Refused",
-            clientTimestamp: timestamp
+            clientTimestamp: timestamp,
+            automatonOrigin: "richMedia"
         };
 
         console.log("===== closePostChatSurvey =====");
@@ -210,7 +215,6 @@ export default class PostChatSurveyService {
         } catch (e) {
             console.error("!!!! logEventToDW got exception: ", e);
         }
-
     }
 }
 

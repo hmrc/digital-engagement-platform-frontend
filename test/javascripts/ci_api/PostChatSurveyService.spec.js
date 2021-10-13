@@ -88,7 +88,8 @@ describe("PostChatSurveyService", () => {
             preAssigned: false,
             surveyId: 123456,
             automatonID: "AutomatonID",
-            automatonName: "AutomatonName"
+            automatonName: "AutomatonName",
+            automatonOrigin: "richMedia"
         };
 
         const expectedContentSentToCustomerEvent = {
@@ -127,7 +128,8 @@ describe("PostChatSurveyService", () => {
             preAssigned: false,
             surveyId: 123456,
             automatonID: "AutomatonID",
-            automatonName: "AutomatonName"
+            automatonName: "AutomatonName",
+            automatonOrigin: "richMedia"
         };
 
 
@@ -163,6 +165,7 @@ describe("PostChatSurveyService", () => {
             automatonType:"satisfactionSurvey",
             automatonID: "AutomatonID",
             automatonName: "AutomatonName",
+            automatonOrigin: "richMedia",
             chatID: "ChatID",
             customerID: "ThisCustomerID",
             agentID: "AgentId",
@@ -200,6 +203,7 @@ describe("PostChatSurveyService", () => {
             "automaton.outcome": "User has submitted postchat feedback.",
             automatonID: "AutomatonID",
             automatonName: "AutomatonName",
+            automatonOrigin: "richMedia",
             chatID: "ChatID",
             customerID: "ThisCustomerID",
             agentID: "AgentId",
@@ -259,7 +263,8 @@ describe("PostChatSurveyService", () => {
             preAssigned: false,
             automatonID: "AutomatonID",
             "automaton.outcomeType": "Refused",
-            clientTimestamp: timestamp
+            clientTimestamp: timestamp,
+            automatonOrigin: "richMedia"
         };
 
         service.closePostChatSurvey(automaton, timestamp);
