@@ -40,7 +40,10 @@ class NationalInsuranceNumbersViewSpec extends ChatViewBehaviours {
         "Opening times:",
         "Monday to Friday, 8am to 7:30pm",
         "Saturday, 8am to 4pm",
-        "Closed Sundays and bank holidays."
+        "Closed Sundays and bank holidays.",
+        "If you need help with a National Insurance number application, you will need to contact the Department for Work and Pensions. It can take up to 16 weeks to get your National Insurance number after you have proven your identity.",
+        "Find out more information about",
+        "how to apply for a National Insurance number (opens in a new tab)."
       )
     )
   }

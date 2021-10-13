@@ -61,6 +61,8 @@ class AppConfig @Inject()(config: Configuration,
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/online-services-helpdesk"
   val nationalInsuranceReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/national-insurance-numbers"
+  val nationalInsuranceApplyUrl: String =
+    "https://www.gov.uk/apply-national-insurance-number"
   val customsEnquiriesReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/customs-international-trade-and-excise-enquiries"
   val exciseEnquiriesReturnUrl: String =
