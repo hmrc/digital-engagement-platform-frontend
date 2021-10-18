@@ -133,9 +133,9 @@ export default class PostChatSurveyService {
                 browserVersion: chatParams.browserVersion,
                 surveyId: Number(survey.id),
                 "custom.decisiontree.questionIDs": encodeURIComponent(survey.questions[0].id + "," + survey.questions[1].id + "," + survey.questions[2].id),
-                "custom.decisiontree.questions": escape(encodeURIComponent(encodeURIComponent(survey.questions[0].text + "," + survey.questions[1].text + "," + survey.questions[2].text))),
-                "custom.decisiontree.answerIDs": encodeURIComponent(survey.answers[0].id + "," + survey.answers[1].id + "," + survey.answers[2].id),
-                "custom.decisiontree.answers": encodeURIComponent(survey.answers[0].text + "," + survey.answers[1].text + "," + survey.answers[2].text),
+                "custom.decisiontree.questions": escape(encodeURIComponent(survey.questions[0].text + "," + survey.questions[1].text + "," + survey.questions[2].text)),
+                "custom.decisiontree.answerIDs": encodeURIComponent(survey.answers[0].text + "," + survey.answers[1].text + "," + survey.answers[2].text),
+                "custom.decisiontree.answers": encodeURIComponent(encodeURIComponent(survey.answers[0].text + "," + survey.answers[1].text + "," + survey.answers[2].text)),
                 "custom.decisiontree.answerTypes": encodeURIComponent(("0,0,0")),
                 clientTimestamp: timestamp,
                 automatonOrigin: "richMedia"
