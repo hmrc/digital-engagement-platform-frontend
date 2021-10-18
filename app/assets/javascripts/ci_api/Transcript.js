@@ -53,6 +53,8 @@ export default class Transcript {
     }
 
     _showLatestContent() {
-        this.content.scrollTo(0, this.content.scrollHeight);
+        $('.ciapi-agent-message').last()[0].scrollIntoView({block: 'nearest'});
+        
+        //this.content.scrollTo(0, this.content.scrollHeight);
     }
 }
