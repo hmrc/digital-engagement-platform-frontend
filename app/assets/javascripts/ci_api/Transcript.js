@@ -30,6 +30,8 @@ export default class Transcript {
 
         this._fixUpVALinks(agentDiv);
 
+        console.log("---- agentDiv ", agentDiv)
+
         this.content.appendChild(agentDiv);
         this._showLatestContent();
     }
@@ -53,8 +55,17 @@ export default class Transcript {
     }
 
     _showLatestContent() {
-        $('.ciapi-agent-message').last()[0].scrollIntoView({block: 'nearest'});
-        
-        //this.content.scrollTo(0, this.content.scrollHeight);
+        const heightOfLastMessage = $('.ciapi-agent-message').last()[0].clientHeight;
+        console.log("height of last message ", heightOfLastMessage);
+
+        const heightOfSkinChat = document.getElementById('ciapiSkinChatTranscript').clientHeight;
+        console.log("height of skin chat ", heightOfSkinChat);
+
+        if (heightOfLastMessage > heightOfSkinChat) {
+            $('.ciapi-agent-message').last()[0].scrollIntoView({block: 'nearest'});
+        } else {
+            this.content.scrollTo(0, this.content.scrollHeight);
+        }
+
     }
 }
