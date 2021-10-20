@@ -52,6 +52,7 @@ export default class Transcript {
         this._showLatestContent(msg_class);
     }
 
+
     _showLatestContent(msg_class) {
         const agentInner = msg_class.Inner;
         const innerClassArray = document.getElementsByClassName(agentInner);
