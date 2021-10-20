@@ -73,10 +73,11 @@ export class EngagedState {
 
     _displayMessage(msg_in) {
         const msg = msg_in.data
+        console.log("---- Received message:", msg);
         const transcript = this.container.getTranscript();
         if (msg.messageType === MessageType.Chat_Communication) {
             if (msg.agentID) {
-                transcript.addAgentMsg(msg.messageText);
+                transcript.addAgentMsg(msg.messageText)
             } else {
                 transcript.addCustomerMsg(msg.messageText)
             }
