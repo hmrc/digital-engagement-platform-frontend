@@ -106,4 +106,6 @@ describe("Transcript", () => {
         expect(content.appendChild).toHaveBeenCalledWith(expect.any(Element));
         expect(content.scrollTo).toHaveBeenCalledWith(0, 1024);
     });
+
+    //TODO create a test for each of the above scenarios where the incoming message is higher than the parent div
 });

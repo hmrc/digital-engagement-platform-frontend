@@ -53,6 +53,28 @@ export default class Transcript {
     }
 
     _showLatestContent() {
-        this.content.scrollTo(0, this.content.scrollHeight);
+        const agentInner = this.classes.Agent.Inner;
+        const innerClassArray = document.getElementsByClassName(agentInner);
+        const outerAgent = this.classes.Agent.Outer;
+        const outerClassArray = document.getElementsByClassName(outerAgent);
+
+        if(innerClassArray.length > 0 && outerClassArray.length > 0) {
+            const lengthOfAgentInnerArray = innerClassArray.length - 1;
+            const heightOfLastMessage = innerClassArray[lengthOfAgentInnerArray].clientHeight;
+            const outerAgentParentId = outerClassArray[0].parentElement;
+            const heightOfSkinChat = outerAgentParentId.clientHeight;
+
+            if (typeof heightOfLastMessage !== 'undefined' && typeof heightOfSkinChat !== 'undefined') {
+                if (heightOfLastMessage > heightOfSkinChat) {
+                    innerClassArray[lengthOfAgentInnerArray].scrollIntoView({block: 'nearest'});
+                } else {
+                    this.content.scrollTo(0, this.content.scrollHeight);
+                }
+            } else {
+                this.content.scrollTo(0, this.content.scrollHeight);
+            }
+        } else {
+            this.content.scrollTo(0, this.content.scrollHeight);
+        }
     }
 }
