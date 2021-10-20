@@ -31,7 +31,7 @@ export default class Transcript {
         this._fixUpVALinks(agentDiv);
 
         this.content.appendChild(agentDiv);
-        this._showLatestContent();
+        this._showLatestContent(this.classes.Agent);
     }
 
     _fixUpVALinks(div) {
@@ -49,13 +49,14 @@ export default class Transcript {
     _appendMessage(msg, msg_class) {
         const msgDiv = `<div class='${msg_class.Outer}'><div class='${msg_class.Inner}'>${msg}</div></div>`;
         this.content.insertAdjacentHTML("beforeend", msgDiv);
-        this._showLatestContent();
+        this._showLatestContent(msg_class);
     }
 
-    _showLatestContent() {
-        const agentInner = this.classes.Agent.Inner;
+
+    _showLatestContent(msg_class) {
+        const agentInner = msg_class.Inner;
         const innerClassArray = document.getElementsByClassName(agentInner);
-        const outerAgent = this.classes.Agent.Outer;
+        const outerAgent = msg_class.Outer;
         const outerClassArray = document.getElementsByClassName(outerAgent);
 
         if(innerClassArray.length > 0 && outerClassArray.length > 0) {
