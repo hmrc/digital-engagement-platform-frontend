@@ -73,18 +73,14 @@ export class EngagedState {
 
     _displayMessage(msg_in) {
         const msg = msg_in.data
-        console.log("---- Received message:", msg);
         const transcript = this.container.getTranscript();
         if (msg.messageType === MessageType.Chat_Communication) {
             if (msg.agentID) {
-                console.log("---- Chat Communication Agent");
                 transcript.addAgentMsg(msg.messageText);
             } else {
-            console.log("---- Chat Communication Customer");
                 transcript.addCustomerMsg(msg.messageText)
             }
         } else if (msg.messageType === MessageType.Chat_AutomationRequest) {
-            console.log("---- Chat Automation Request");
             transcript.addAutomatonMsg(msg["automaton.data"]);
         } else if (msg.messageType === MessageType.Chat_Exit) {
             // This message may also have msg.state === "closed".
@@ -103,7 +99,6 @@ export class EngagedState {
                        MessageType.ChatRoom_MemberConnected,
                        MessageType.ChatRoom_MemberLost
                    ].includes(msg.messageType)) {
-                   console.log("---- Chat System Message");
             transcript.addSystemMsg(msg["client.display.text"]);
         } else {
             console.log("==== Unknown message:", msg);
