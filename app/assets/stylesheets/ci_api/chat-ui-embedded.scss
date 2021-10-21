@@ -136,9 +136,9 @@ $transcript-sub-height: $footer-height + 2*$footer-padding + $footer-top-border-
     float: right;
 }
 
-#ciapiSkinCloseButton {
-    @include IconButton
-    background-image: url('/ask-hmrc/assets/media/end-chat.svg');
+#ciapiClose {
+    padding-top: 10px;
+    width: 100px;
 }
 
 .info {

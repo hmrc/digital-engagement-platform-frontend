@@ -80,7 +80,7 @@ export const EmbeddedContainerHtml = `
                 </div>
             </div>
             <div id="ciapiClose">
-                <button id="ciapiSkinCloseButton">End chat</button>
+                <button id="ciapiSkinCloseButton" class="govuk-button govuk-button--secondary" data-module="govuk-button">End chat</button>
             </div>
         </div>
     </div>

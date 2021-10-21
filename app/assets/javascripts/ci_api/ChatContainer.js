@@ -104,6 +104,7 @@ export default class ChatContainer {
     }
 
     onCancelEndChat() {
+
         var ciapiSkinContainer = document.querySelector("#ciapiSkin");
         var endChatNonFocusable = ciapiSkinContainer.querySelectorAll('a[href], input, textarea, button');
         endChatNonFocusable.forEach(function(element) {
@@ -112,6 +113,8 @@ export default class ChatContainer {
 
         document.getElementById("ciapiSkinChatTranscript").setAttribute("tabindex", 0);
         this.endChatPopup.hide();
+
+        document.getElementById("ciapiSkinCloseButton").focus();
     }
 
     onConfirmEndChat() {
