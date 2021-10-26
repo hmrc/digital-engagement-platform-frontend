@@ -14,7 +14,7 @@ $components-sub-height: $header-height + $header-border-bottom-height;
 $footer-height: 130px;
 $footer-padding: 5px;
 $footer-top-border-height: 3px;
-$transcript-sub-height: $footer-height + 2*$footer-padding + $footer-top-border-height;
+$transcript-sub-height: $footer-height + 2*$footer-padding + $footer-top-border-height + 50;
 
 #ciapiSkin {
     font-family: "GDS Transport",arial,sans-serif;
@@ -137,6 +137,7 @@ $transcript-sub-height: $footer-height + 2*$footer-padding + $footer-top-border-
 }
 
 #ciapiClose {
+    padding-top: 10px;
     width: 100px;
 }
 
