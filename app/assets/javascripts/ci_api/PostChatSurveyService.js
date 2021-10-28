@@ -91,7 +91,6 @@ export default class PostChatSurveyService {
                 automatonName: automaton.name,
                 automatonOrigin: "richMedia"
             }
-
            console.log("===== beginPostChatSurvey =====");
 
             try {
@@ -199,7 +198,6 @@ export default class PostChatSurveyService {
                 clientTimestamp: timestamp,
                 automatonOrigin: "richMedia"
             };
-
             console.log("===== submitPostChatSurvey =====");
 
             try {
@@ -228,7 +226,6 @@ export default class PostChatSurveyService {
             clientTimestamp: timestamp,
             automatonOrigin: "richMedia"
         };
-
         console.log("===== closePostChatSurvey =====");
 
         try {
