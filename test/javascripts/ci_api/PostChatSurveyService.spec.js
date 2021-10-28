@@ -97,7 +97,10 @@ describe("PostChatSurveyService", () => {
             evt: "contentSentToCustomer",
             unique_node_id: "node_1",
             "custom.decisiontree.nodeID": "HMRC_PostChat_Guidance%20-%20Initial",
-            "custom.decisiontree.questions": "Was%2520the%2520chatbot%2520useful%253F%2CWas%2520the%2520chatbot%2520your%2520first%2520contact%2520choice%253F%2CIf%2520you%2520had%2520not%2520used%2520chatbot%2520today%252C%2520how%2520else%2520would%2520you%2520have%2520contacted%2520us%253F",
+            "custom.decisiontree.questions":
+                "Was%2520the%2520chatbot%2520useful%253F%2C" +
+                "Was%2520the%2520chatbot%2520your%2520first%2520contact%2520choice%253F%2C" +
+                "If%2520you%2520had%2520not%2520used%2520chatbot%2520today%252C%2520how%2520else%2520would%2520you%2520have%2520contacted%2520us%253F",
             "custom.decisiontree.questionIDs": "q1%2Cq2%2Cq3",
             clientTimestamp: timestamp,
             automatonType: "satisfactionSurvey",
@@ -157,7 +160,10 @@ describe("PostChatSurveyService", () => {
             unique_node_id: "node_1",
             "custom.decisiontree.nodeID": "HMRC_PostChat_Guidance%20-%20Initial",
             "custom.decisiontree.questionIDs": "q1%2Cq2%2Cq3",
-            "custom.decisiontree.questions": "Was%2520the%2520chatbot%2520useful%253F%2CWas%2520the%2520chatbot%2520your%2520first%2520contact%2520choice%253F%2CIf%2520you%2520had%2520not%2520used%2520chatbot%2520today%252C%2520how%2520else%2520would%2520you%2520have%2520contacted%2520us%253F",
+            "custom.decisiontree.questions":
+                "Was%2520the%2520chatbot%2520useful%253F%2C" +
+                "Was%2520the%2520chatbot%2520your%2520first%2520contact%2520choice%253F%2C" +
+                "If%2520you%2520had%2520not%2520used%2520chatbot%2520today%252C%2520how%2520else%2520would%2520you%2520have%2520contacted%2520us%253F",
             "custom.decisiontree.answers": "Yes%2CNo%2CPhone",
             "custom.decisiontree.answerIDs": "Yes%2CNo%2CPhone",
             "custom.decisiontree.answerTypes": "0,0,0",
