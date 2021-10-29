@@ -40,8 +40,8 @@ export const PopupContainerHtml = `
     </div>
 </div>
 <div id="ciapiSkinMinimised">
-    <button id="ciapiSkinRestoreButton" type="button" draggable="false" role="button" aria-label="Show chat window">
-        <div id="logo-white"><img src="/ask-hmrc/assets/media/logo-white.png" alt=""></div>
+    <button id="ciapiSkinRestoreButton" type="button" draggable="false" role="button">
+        <div id="logo-white"><img src="/ask-hmrc/assets/media/logo-white.png" alt="" aria-hidden="true"></div>
         <h2 class="govuk-heading-s">Ask HMRC a Question</h2>
     </button>
 </div>
