@@ -48,10 +48,18 @@ export default class Transcript {
 
     _appendMessage(msg, msg_class) {
         const msgDiv = `<div class='${msg_class.Outer}'><div class='${msg_class.Inner}'>${msg}</div></div>`;
-        this.content.insertAdjacentHTML("beforeend", msgDiv);
-        this._showLatestContent(msg_class);
-    }
+        const skipToTop = document.getElementById("skipToTop");
+        const chatContainer = document.getElementById("ciapiSkinChatTranscript")
 
+         this.content.insertAdjacentHTML("beforeend", msgDiv);
+
+         if(skipToTop != null){
+             chatContainer.removeChild(skipToTop)
+         }
+         this.content.insertAdjacentHTML("beforeend", '<div id="skipToTop" style="margin-left:5px;" class="skipToTop"><a id="skipToTopLink" href="#skipToBottomLink" class="govuk-skip-link">Skip to top of conversation</a></div>');
+
+         this._showLatestContent(msg_class);
+    }
 
     _showLatestContent(msg_class) {
         const agentInner = msg_class.Inner;

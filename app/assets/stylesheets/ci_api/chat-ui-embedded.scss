@@ -66,12 +66,16 @@ $transcript-sub-height: $footer-height + 2*$footer-padding + $footer-top-border-
   background-color: #fff;
   box-sizing: border-box;
   overflow: auto;
-  padding: 10px 0;
+  padding: 0;
   margin-bottom: 0px !important;
   div {
     margin-bottom: 0px;
     @extend .govuk-body;
   }
+  .skipToTop{
+      position:relative;
+      top: calc(100% - #{$transcript-sub-height})
+   }
 }
 
 #ciapiSkinFooter {
@@ -142,8 +146,10 @@ $transcript-sub-height: $footer-height + 2*$footer-padding + $footer-top-border-
 }
 
 .info {
-    text-align: center;
-    color: #505a5f;
+     text-align: center;
+        color: #505a5f;
+        border: 0px solid green;
+        padding: 1em 0 1em 0;
 }
 
 .info img {
