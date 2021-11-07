@@ -245,6 +245,11 @@ $page-height: calc(100% - 5px);
         vertical-align: bottom;
         padding: 0 0.5em .2em 0;
     }
+    .skipToTop{
+        position:relative;
+        top: calc(100% - #{$transcript-sub-height});
+        white-space: nowrap;
+     }
 }
 
 #HMRC_CIAPI_Anchored_1 {
