@@ -23,6 +23,8 @@ export default class Transcript {
 
     addAutomatonMsg(msg) {
         const msgDiv = `<div class='${this.classes.Agent.Inner}'>${msg}</div>`;
+        const skipToTop = document.getElementById("skipToTop");
+        const chatContainer = document.getElementById("ciapiSkinChatTranscript")
 
         let agentDiv = document.createElement("div")
         agentDiv.classList.add(this.classes.Agent.Outer);
@@ -31,6 +33,13 @@ export default class Transcript {
         this._fixUpVALinks(agentDiv);
 
         this.content.appendChild(agentDiv);
+
+        if(skipToTop != null){
+            chatContainer.removeChild(skipToTop)
+        }
+        this.content.insertAdjacentHTML("beforeend", '<div id="skipToTop" class="skipToTop"><a id="skipToTopLink" href="#skipToBottomLink" class="govuk-skip-link">Skip to top of conversation</a></div>');
+
+
         this._showLatestContent(this.classes.Agent);
     }
 
