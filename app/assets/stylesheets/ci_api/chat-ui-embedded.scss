@@ -219,6 +219,11 @@ $transcript-sub-height: $footer-height + 2*$footer-padding + $footer-top-border-
     background-color: #dbdad9;
 }
 
+#print .govuk-button--secondary:focus,
+#sound .govuk-button--secondary:focus {
+    background-color: #ffdd00;
+}
+
 #sound .govuk-button--secondary {
     height: 31px;
     background: url('/ask-hmrc/assets/media/hmrc-alert_on.svg') no-repeat;
