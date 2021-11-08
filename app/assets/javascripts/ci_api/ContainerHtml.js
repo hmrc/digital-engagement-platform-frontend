@@ -22,7 +22,7 @@ export const PopupContainerHtml = `
     </div>
     <div id="ciapiChatComponents">
         <div id="ciapiSkinChatTranscript" role="log" tabindex="0">
-            <div id="skipToBottom" style="margin-left:5px;"><a id="skipToBottomLink" href="#skipToTopLink" class="govuk-skip-link">Skip to bottom of conversation</a></div>
+            <div id="skipToBottom"><a id="skipToBottomLink" href="#skipToTopLink" class="govuk-skip-link">Skip to bottom of conversation</a></div>
             <p class="info"><img src="/ask-hmrc/assets/media/intro-warn.svg" alt="">You are currently chatting with a computer.</p>
         </div>
         <div id="ciapiSkinFooter">
@@ -64,7 +64,7 @@ export const EmbeddedContainerHtml = `
     </div>
     <div id="ciapiChatComponents">
         <div id="ciapiSkinChatTranscript" role="log" tabindex="0">
-            <div id="skipToBottom" style="margin-left:5px;"><a id="skipToBottomLink" href="#skipToTopLink" class="govuk-skip-link">Skip to bottom of conversation</a></div>
+            <div id="skipToBottom"><a id="skipToBottomLink" href="#skipToTopLink" class="govuk-skip-link">Skip to bottom of conversation</a></div>
             <p class="info"><img src="/ask-hmrc/assets/media/intro-warn.svg" alt="">You are currently chatting with a computer.</p>
         </div>
         <div id="ciapiSkinFooter">

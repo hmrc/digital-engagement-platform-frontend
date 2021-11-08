@@ -56,7 +56,7 @@ export default class Transcript {
          if(skipToTop != null){
              chatContainer.removeChild(skipToTop)
          }
-         this.content.insertAdjacentHTML("beforeend", '<div id="skipToTop" style="margin-left:5px;" class="skipToTop"><a id="skipToTopLink" href="#skipToBottomLink" class="govuk-skip-link">Skip to top of conversation</a></div>');
+         this.content.insertAdjacentHTML("beforeend", '<div id="skipToTop" class="skipToTop"><a id="skipToTopLink" href="#skipToBottomLink" class="govuk-skip-link">Skip to top of conversation</a></div>');
 
          this._showLatestContent(msg_class);
     }

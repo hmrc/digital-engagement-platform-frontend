@@ -74,7 +74,13 @@ $transcript-sub-height: $footer-height + 2*$footer-padding + $footer-top-border-
   }
   .skipToTop{
       position:relative;
-      top: calc(100% - #{$transcript-sub-height})
+      top: calc(100% - #{$transcript-sub-height});
+      margin-left:5px;
+      margin-right:5px;
+   }
+   #skipToBottom {
+      margin-left:5px;
+      margin-right:5px;
    }
 }
 

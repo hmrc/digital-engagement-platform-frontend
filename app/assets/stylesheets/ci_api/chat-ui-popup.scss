@@ -249,6 +249,12 @@ $page-height: calc(100% - 5px);
         position:relative;
         top: calc(100% - #{$transcript-sub-height});
         white-space: nowrap;
+        margin-left:5px;
+        margin-right:5px;
+     }
+     #skipToBottom {
+        margin-left:5px;
+        margin-right:5px;
      }
 }
 
