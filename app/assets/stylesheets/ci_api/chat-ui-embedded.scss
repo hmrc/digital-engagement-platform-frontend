@@ -68,16 +68,25 @@ $transcript-sub-height: $footer-height + 2*$footer-padding + $footer-top-border-
   overflow: auto;
   padding: 0;
   margin-bottom: 0px !important;
+  position: relative;
   div {
     margin-bottom: 0px;
     @extend .govuk-body;
   }
-  .skipToTop{
+
+  .skipToTopWithScroll{
       position:relative;
-      top: calc(100% - #{$transcript-sub-height});
+      bottom : 0;
       margin-left:5px;
       margin-right:5px;
    }
+   .skipToTopWithOutScroll{
+    position:absolute;
+    bottom : 0;
+    margin-left:5px;
+    margin-right:5px;
+    width:96%;
+ }
    #skipToBottom {
       margin-left:5px;
       margin-right:5px;

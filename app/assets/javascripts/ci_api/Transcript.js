@@ -37,8 +37,10 @@ export default class Transcript {
         if(skipToTop != null){
             chatContainer.removeChild(skipToTop)
         }
-        agentDiv.insertAdjacentHTML("beforeend", '<div id="skipToTop" class="skipToTop"><a id="skipToTopLink" href="#skipToBottomLink" class="govuk-skip-link">Skip to top of conversation</a></div>');
-
+        if(chatContainer.scrollHeight > chatContainer.clientHeight)
+        chatContainer.insertAdjacentHTML("beforeend", '<div id="skipToTop" class="skipToTopWithScroll"><a id="skipToTopLink" href="#skipToBottomLink" class="govuk-skip-link">Skip to top of conversation</a></div>');
+        else
+        chatContainer.insertAdjacentHTML("beforeend", '<div id="skipToTop" class="skipToTopWithOutScroll"><a id="skipToTopLink" href="#skipToBottomLink" class="govuk-skip-link">Skip to top of conversation</a></div>');
 
         this._showLatestContent(this.classes.Agent);
     }
@@ -65,7 +67,12 @@ export default class Transcript {
          if(skipToTop != null){
              chatContainer.removeChild(skipToTop)
          }
-         this.content.insertAdjacentHTML("beforeend", '<div id="skipToTop" class="skipToTop"><a id="skipToTopLink" href="#skipToBottomLink" class="govuk-skip-link">Skip to top of conversation</a></div>');
+         
+         if(chatContainer.scrollHeight > chatContainer.clientHeight)
+        chatContainer.insertAdjacentHTML("beforeend", '<div id="skipToTop" class="skipToTopWithScroll"><a id="skipToTopLink" href="#skipToBottomLink" class="govuk-skip-link">Skip to top of conversation</a></div>');
+        else
+        chatContainer.insertAdjacentHTML("beforeend", '<div id="skipToTop" class="skipToTopWithOutScroll"><a id="skipToTopLink" href="#skipToBottomLink" class="govuk-skip-link">Skip to top of conversation</a></div>');
+
 
          this._showLatestContent(msg_class);
     }
