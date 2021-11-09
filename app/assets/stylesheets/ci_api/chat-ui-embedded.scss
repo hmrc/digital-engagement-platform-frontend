@@ -61,6 +61,10 @@ $transcript-sub-height: $footer-height + 2*$footer-padding + $footer-top-border-
     border-bottom: none;
 }
 
+#skipToBottomLink:focus, #skipToBottomLink:focus {
+    box-shadow : none !important;
+}
+
 #ciapiSkinChatTranscript {
   height: calc(100% - #{$transcript-sub-height});
   background-color: #fff;
