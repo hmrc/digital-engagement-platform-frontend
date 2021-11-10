@@ -34,10 +34,12 @@ export default class Transcript {
 
         this.content.appendChild(agentDiv);
 
-        if (skipToTop != null) {
-            chatContainer.removeChild(skipToTop)
-        }
         if (chatContainer) {
+
+            if (skipToTop != null) {
+                chatContainer.removeChild(skipToTop)
+            }
+            
             if (chatContainer.scrollHeight > chatContainer.clientHeight)
                 chatContainer.insertAdjacentHTML("beforeend", '<div id="skipToTop" class="skipToTopWithScroll"><a id="skipToTopLink" href="#skipToBottomLink" class="govuk-skip-link">Skip to top of conversation</a></div>');
             else
@@ -65,11 +67,12 @@ export default class Transcript {
 
         this.content.insertAdjacentHTML("beforeend", msgDiv);
 
-        if (skipToTop != null) {
-            chatContainer.removeChild(skipToTop)
-        }
-
         if (chatContainer) {
+
+            if (skipToTop != null) {
+                chatContainer.removeChild(skipToTop)
+            }
+
             if (chatContainer.scrollHeight > chatContainer.clientHeight)
                 chatContainer.insertAdjacentHTML("beforeend", '<div id="skipToTop" class="skipToTopWithScroll"><a id="skipToTopLink" href="#skipToBottomLink" class="govuk-skip-link">Skip to top of conversation</a></div>');
             else
