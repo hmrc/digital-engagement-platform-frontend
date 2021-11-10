@@ -65,12 +65,6 @@
     pointer-events: none;
 }
 
-@media (max-width: 575.98px){
-    #cui-messaging-container {
-        height: 100vh !important;
-    }
-}
-
 #cui-messaging-container {
     width: 100%;
     height: 600px;
