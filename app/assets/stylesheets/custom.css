@@ -70,6 +70,12 @@
     height: 600px;
 }
 
+@media (max-width: 575.98px){
+    #cui-messaging-container {
+        height: 565px !important;
+    }
+}
+
 .form-group-error {
   padding-left: 15px;
 }
