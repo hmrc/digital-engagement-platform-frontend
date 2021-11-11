@@ -229,6 +229,7 @@ $page-height: calc(100% - 5px);
     overflow-x: hidden;
     padding-right: 14px;
     padding-left: 1em;
+    position: relative;
 
     div {
         margin-bottom: 0px;
@@ -245,6 +246,23 @@ $page-height: calc(100% - 5px);
         vertical-align: bottom;
         padding: 0 0.5em .2em 0;
     }
+     .skipToTopWithScroll{
+        position:relative;
+        bottom : 0;
+        margin-left:5px;
+        margin-right:5px;
+     }
+     .skipToTopWithOutScroll{
+      position:absolute;
+      bottom : 0;
+      margin-left:5px;
+      margin-right:5px;
+      width:90%;
+   }
+     #skipToBottom {
+        margin-left:5px;
+        margin-right:5px;
+     }
 }
 
 #HMRC_CIAPI_Anchored_1 {

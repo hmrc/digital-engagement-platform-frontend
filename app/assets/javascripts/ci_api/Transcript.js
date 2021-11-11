@@ -23,6 +23,8 @@ export default class Transcript {
 
     addAutomatonMsg(msg) {
         const msgDiv = `<div class='${this.classes.Agent.Inner}'>${msg}</div>`;
+        const skipToTop = document.getElementById("skipToTop");
+        const chatContainer = document.getElementById("ciapiSkinChatTranscript")
 
         let agentDiv = document.createElement("div")
         agentDiv.classList.add(this.classes.Agent.Outer);
@@ -31,6 +33,18 @@ export default class Transcript {
         this._fixUpVALinks(agentDiv);
 
         this.content.appendChild(agentDiv);
+
+        if (chatContainer) {
+
+            if (skipToTop != null) {
+                chatContainer.removeChild(skipToTop)
+            }
+            
+            if (chatContainer.scrollHeight > chatContainer.clientHeight)
+                chatContainer.insertAdjacentHTML("beforeend", '<div id="skipToTop" class="skipToTopWithScroll"><a id="skipToTopLink" href="#skipToBottomLink" class="govuk-skip-link">Skip to top of conversation</a></div>');
+            else
+                chatContainer.insertAdjacentHTML("beforeend", '<div id="skipToTop" class="skipToTopWithOutScroll"><a id="skipToTopLink" href="#skipToBottomLink" class="govuk-skip-link">Skip to top of conversation</a></div>');
+        }
         this._showLatestContent(this.classes.Agent);
     }
 
@@ -48,10 +62,25 @@ export default class Transcript {
 
     _appendMessage(msg, msg_class) {
         const msgDiv = `<div class='${msg_class.Outer}'><div class='${msg_class.Inner}'>${msg}</div></div>`;
+        const skipToTop = document.getElementById("skipToTop");
+        const chatContainer = document.getElementById("ciapiSkinChatTranscript")
+
         this.content.insertAdjacentHTML("beforeend", msgDiv);
+
+        if (chatContainer) {
+
+            if (skipToTop != null) {
+                chatContainer.removeChild(skipToTop)
+            }
+
+            if (chatContainer.scrollHeight > chatContainer.clientHeight)
+                chatContainer.insertAdjacentHTML("beforeend", '<div id="skipToTop" class="skipToTopWithScroll"><a id="skipToTopLink" href="#skipToBottomLink" class="govuk-skip-link">Skip to top of conversation</a></div>');
+            else
+                chatContainer.insertAdjacentHTML("beforeend", '<div id="skipToTop" class="skipToTopWithOutScroll"><a id="skipToTopLink" href="#skipToBottomLink" class="govuk-skip-link">Skip to top of conversation</a></div>');
+        }
+
         this._showLatestContent(msg_class);
     }
-
 
     _showLatestContent(msg_class) {
         const agentInner = msg_class.Inner;
@@ -59,7 +88,7 @@ export default class Transcript {
         const outerAgent = msg_class.Outer;
         const outerClassArray = document.getElementsByClassName(outerAgent);
 
-        if(innerClassArray.length > 0 && outerClassArray.length > 0) {
+        if (innerClassArray.length > 0 && outerClassArray.length > 0) {
             const lengthOfAgentInnerArray = innerClassArray.length - 1;
             const heightOfLastMessage = innerClassArray[lengthOfAgentInnerArray].clientHeight;
             const outerAgentParentId = outerClassArray[0].parentElement;
@@ -67,7 +96,7 @@ export default class Transcript {
 
             if (typeof heightOfLastMessage !== 'undefined' && typeof heightOfSkinChat !== 'undefined') {
                 if (heightOfLastMessage > heightOfSkinChat) {
-                    innerClassArray[lengthOfAgentInnerArray].scrollIntoView({block: 'nearest'});
+                    innerClassArray[lengthOfAgentInnerArray].scrollIntoView({ block: 'nearest' });
                 } else {
                     this.content.scrollTo(0, this.content.scrollHeight);
                 }
