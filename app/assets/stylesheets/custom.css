@@ -72,7 +72,7 @@
 
 @media (max-width: 575.98px){
     #cui-messaging-container {
-        height: 565px !important;
+        height: 100vh !important;
     }
 }
 
