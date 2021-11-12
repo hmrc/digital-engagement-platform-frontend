@@ -32,7 +32,8 @@
     ]
   },
   "dependencies": {
-    "jquery": "^3.5.1"
+    "jquery": "^3.5.1",
+    "lodash": "^4.17.0"
   },
   "jest": {
     "setupFiles": [

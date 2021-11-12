@@ -1,4 +1,5 @@
-import ChatController from './ChatController'
+import ReactiveChatController from './controllers/ReactiveChatController'
+import ProactiveChatController from './controllers/ProactiveChatController'
 
 function safeHandler(f, helpful_name) {
     return function() {

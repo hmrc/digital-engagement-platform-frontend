@@ -1,4 +1,4 @@
-import ChatController from '../../../app/assets/javascripts/ci_api/ChatController'
+import ChatController from '../../../app/assets/javascripts/ci_api/controllers/ChatController'
 
 describe("ChatController", () => {
     it("launches a proactive chat", () => {
