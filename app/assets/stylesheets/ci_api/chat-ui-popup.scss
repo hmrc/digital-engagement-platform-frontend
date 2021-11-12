@@ -394,3 +394,12 @@ $page-height: calc(100% - 5px);
     box-shadow: 0 -2px #fd0, 0 4px #0b0c0c;
     text-decoration: none;
 }
+#skipToTopLink:focus {
+    box-shadow : none !important;
+    text-decoration: underline !important;
+}
+
+ #skipToBottomLink:focus{
+     box-shadow : none !important;
+     text-decoration: underline !important;
+}
