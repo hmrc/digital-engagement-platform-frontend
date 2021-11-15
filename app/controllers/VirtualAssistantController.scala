@@ -40,7 +40,7 @@ class VirtualAssistantController @Inject()(appConfig: AppConfig,
   }
 
   def taxCreditsEnquiries: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(cuiRoutes.CuiController.askHmrcOnline().url))
+    Future.successful(Redirect(cuiRoutes.CuiController.askHmrcOnline))
   }
 
   def customesInternationalTrade: Action[AnyContent] = Action.async { implicit request =>

@@ -42,6 +42,6 @@ class CuiController @Inject()(appConfig: AppConfig,
   }
 
   def helpJobRetentionScheme: Action[AnyContent] = Action.async { _ =>
-    Future.successful(Redirect(routes.CuiController.jobRetentionSchemeHelp().url))
+    Future.successful(Redirect(routes.CuiController.jobRetentionSchemeHelp))
   }
 }

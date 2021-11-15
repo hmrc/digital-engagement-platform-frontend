@@ -75,7 +75,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
     if(isIvrRedirect()) {
       Future.successful(Ok(taxCreditsView(isIvrRedirect())))
     } else {
-      Future.successful(Redirect(cuiRoutes.CuiController.askHmrcOnline().url))
+      Future.successful(Redirect(cuiRoutes.CuiController.askHmrcOnline))
     }
   }
 
