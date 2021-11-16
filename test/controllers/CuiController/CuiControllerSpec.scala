@@ -40,7 +40,7 @@ class CuiControllerSpec
       val result = controller.helpJobRetentionScheme(fakeRequest)
 
       status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(routes.CuiController.jobRetentionSchemeHelp().url)
+      redirectLocation(result) mustBe Some(routes.CuiController.jobRetentionSchemeHelp.url)
     }
   }
 }
