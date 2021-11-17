@@ -31,7 +31,9 @@ function getRadioValue(radioGroup) {
     var elements = document.getElementsByName(radioGroup);
 
     for (var i = 0, l = elements.length; i < l; i++) {
+        // @ts-ignore
         if (elements[i].checked) {
+            // @ts-ignore
             return elements[i].value;
         }
     }
@@ -41,13 +43,14 @@ function getRadioId(radioGroup) {
     var elements = document.getElementsByName(radioGroup);
 
     for (var i = 0, l = elements.length; i < l; i++) {
+        // @ts-ignore
         if (elements[i].checked) {
             return elements[i].id;
         }
     }
 }
 
-export default class ChatController {
+export default class CommonChatController {
     constructor() {
         this.sdk = null;
         this.state = new ChatStates.NullState();

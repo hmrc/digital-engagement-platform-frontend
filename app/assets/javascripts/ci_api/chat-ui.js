@@ -1,5 +1,6 @@
 import ReactiveChatController from './controllers/ReactiveChatController'
 import ProactiveChatController from './controllers/ProactiveChatController'
+import CommonChatController from './controllers/CommonChatController'
 
 function safeHandler(f, helpful_name) {
     return function() {
@@ -22,7 +23,9 @@ const chatListener = {
 };
 
 export function hookWindow(w) {
-    var chatController = new ChatController;
+    var commonChatController = new CommonChatController;
+    var reactiveChatController = new ReactiveChatController;
+    var proactiveChatController = new ProactiveChatController;
 
     w.InqRegistry = {
       listeners: [chatListener]
@@ -30,26 +33,26 @@ export function hookWindow(w) {
 
     w.nuanceFrameworkLoaded = safeHandler(
         function nuanceFrameworkLoaded() {
-            chatController.nuanceFrameworkLoaded(w);
+            commonChatController.nuanceFrameworkLoaded(w);
         }
     );
 
     w.nuanceReactive_HMRC_CIAPI_Fixed_1 = safeHandler(
         function nuanceReactive_HMRC_CIAPI_Fixed_1(c2cObj) {
-            chatController.addC2CButton(c2cObj, "HMRC_CIAPI_Fixed_1", "fixed");
+            reactiveChatController.addC2CButton(c2cObj, "HMRC_CIAPI_Fixed_1", "fixed");
         }
     );
 
     w.nuanceReactive_HMRC_CIAPI_Anchored_1 = safeHandler(
         function nuanceReactive_HMRC_CIAPI_Anchored_1(c2cObj) {
-            chatController.addC2CButton(c2cObj, "HMRC_CIAPI_Anchored_1", "anchored");
+            reactiveChatController.addC2CButton(c2cObj, "HMRC_CIAPI_Anchored_1", "anchored");
         }
     );
 
     w.nuanceProactive = safeHandler(
         function nuanceProactive(obj) {
             console.log("### PROACTIVE", obj);
-            chatController.launchProactiveChat();
+            proactiveChatController.launchProactiveChat();
         }
     );
 }
