@@ -3,22 +3,22 @@ import ProactiveChatController from './controllers/ProactiveChatController'
 import CommonChatController from './controllers/CommonChatController'
 
 function safeHandler(f, helpful_name) {
-    return function() {
+    return function () {
         try {
             f.apply(null, arguments)
-        } catch(e) {
+        } catch (e) {
             console.error(`!!!! handler for ${f.name}: got exception `, e);
         }
     }
 }
 
 const chatListener = {
-//    onAnyEvent: function(evt) {
-//        console.log("Chat any event:", evt);
-//    },
-    onC2CStateChanged: function(evt) {
+    //    onAnyEvent: function(evt) {
+    //        console.log("Chat any event:", evt);
+    //    },
+    onC2CStateChanged: function (evt) {
         console.log("C2C state changed...")
-//        chatController.updateC2CButtonsToInProgress();
+        //        chatController.updateC2CButtonsToInProgress();
     }
 };
 
@@ -28,7 +28,7 @@ export function hookWindow(w) {
     var proactiveChatController = new ProactiveChatController;
 
     w.InqRegistry = {
-      listeners: [chatListener]
+        listeners: [chatListener]
     };
 
     w.nuanceFrameworkLoaded = safeHandler(

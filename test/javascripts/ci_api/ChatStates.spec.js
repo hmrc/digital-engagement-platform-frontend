@@ -14,7 +14,7 @@ function createEngagedStateDependencies() {
             addAutomatonMsg: jest.fn(),
             addSystemMsg: jest.fn(),
         },
-        getTranscript: function() {
+        getTranscript: function () {
             return this.transcript;
         }
     };
@@ -236,7 +236,7 @@ describe("Chat States", () => {
 
             const handleMessage = sdk.getMessages.mock.calls[0][0];
             const message = {
-                data:  {
+                data: {
                     "ltime": "1651712",
                     "state": "transfer",
                     "reason": "Transfer from Virtual Assistant [HMRC] to agent JayNabonne",
@@ -260,7 +260,7 @@ describe("Chat States", () => {
 
             const handleMessage = sdk.getMessages.mock.calls[0][0];
             const message = {
-                data:  {
+                data: {
                     "owner": "true",
                     "tc.mode": "transfer",
                     "agent.alias": "Jay",
@@ -364,7 +364,7 @@ describe("Chat States", () => {
 
             const handleMessage = sdk.getMessages.mock.calls[0][0];
             const message = {
-                data:  {
+                data: {
                     "messageType": "chat.system",
                     "engagementID": "388260663047034009",
                     "messageTimestamp": "1627654732000",

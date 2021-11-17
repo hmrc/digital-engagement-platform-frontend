@@ -31,9 +31,7 @@ function getRadioValue(radioGroup) {
     var elements = document.getElementsByName(radioGroup);
 
     for (var i = 0, l = elements.length; i < l; i++) {
-        // @ts-ignore
         if (elements[i].checked) {
-            // @ts-ignore
             return elements[i].value;
         }
     }

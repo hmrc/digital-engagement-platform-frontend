@@ -27,12 +27,12 @@ export default class Popup {
 
         this.wrapper.querySelector("#cancelEndChat").addEventListener(
             "click",
-             (e) => this.eventHandler.onCancelEndChat()
+            (e) => this.eventHandler.onCancelEndChat()
         );
 
         this.wrapper.querySelector("#confirmEndChat").addEventListener(
             "click",
-             (e) => this.eventHandler.onConfirmEndChat()
+            (e) => this.eventHandler.onConfirmEndChat()
         );
     }
 

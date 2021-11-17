@@ -33,7 +33,7 @@ describe("Transcript", () => {
 
         expect(content.insertAdjacentHTML).toHaveBeenCalledWith(
             "beforeend",
-             "<div class='system-outer'><div class='system-inner'>System Message</div></div>"
+            "<div class='system-outer'><div class='system-inner'>System Message</div></div>"
         );
         expect(content.scrollTo).toHaveBeenCalledWith(0, 42);
     });

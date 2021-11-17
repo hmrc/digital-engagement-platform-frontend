@@ -5,7 +5,7 @@ describe("ProactiveChatController", () => {
     it("launches a proactive chat", () => {
         const commonChatController = new CommonChatController();
         const proactiveChatController = new ProactiveChatController();
-        
+
         const sdk = {
             isChatInProgress: jest.fn().mockReturnValue(false),
             getOpenerScripts: jest.fn().mockReturnValue(null),

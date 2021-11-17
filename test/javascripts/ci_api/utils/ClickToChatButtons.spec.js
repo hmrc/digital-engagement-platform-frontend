@@ -23,7 +23,7 @@ function setup() {
     ];
 }
 
-function c2cObj(displayState, launchable=false) {
+function c2cObj(displayState, launchable = false) {
     return {
         c2cIdx: 'c2c-id',
         displayState: displayState,
