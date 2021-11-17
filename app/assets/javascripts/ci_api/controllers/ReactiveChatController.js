@@ -1,5 +1,5 @@
-import ClickToChatButtons from '../ClickToChatButtons'
-import ClickToChatButton from '../ClickToChatButton'
+import ClickToChatButtons from '../utils/ClickToChatButtons'
+import ClickToChatButton from '../utils/ClickToChatButton'
 import CommonChatController from './CommonChatController'
 import * as DisplayState from '../NuanceDisplayState'
 

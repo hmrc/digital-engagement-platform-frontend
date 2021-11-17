@@ -1,4 +1,4 @@
-import * as DisplayState from './NuanceDisplayState'
+import * as DisplayState from '../NuanceDisplayState'
 
 export default class ClickToChatButtons {
     constructor(onClicked, displayStateMessages) {

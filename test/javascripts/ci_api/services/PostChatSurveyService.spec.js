@@ -1,4 +1,4 @@
-import PostChatSurveyService from '../../../app/assets/javascripts/ci_api/PostChatSurveyService'
+import PostChatSurveyService from '.../../../app/assets/javascripts/ci_api/services/PostChatSurveyService'
 
 const chatParams = {
     agId: "AgId",

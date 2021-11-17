@@ -1,13 +1,13 @@
 
 
-import PostChatSurvey from '../PostChatSurvey'
-import ChatContainer from '../ChatContainer'
+import PostChatSurvey from '../views/postChatSurvey/PostChatSurvey'
+import ChatContainer from '../utils/ChatContainer'
 import * as MessageClasses from '../DefaultClasses'
 import * as EmbeddedContainerHtml from '../views/embedded/EmbeddedContainerHtml'
 import * as PopupContainerHtml from '../views/popup/PopupContainerHtml'
-import * as ChatStates from '../ChatStates'
-import PostChatSurveyService from '../PostChatSurveyService'
-import PostPCSPage from '../PostPCSPage'
+import * as ChatStates from '../services/ChatStates'
+import PostChatSurveyService from '../services/PostChatSurveyService'
+import PostPCSPage from '../views/postChatSurvey/PostPCSPage'
 
 const automaton = {
     id: "survey-13000303",
@@ -67,7 +67,7 @@ export default class CommonChatController {
             //            console.log("in launchChat: ", this);
             this._showChat();
 
-            this._displayOpenerScripts();
+            this._displayOpenerScripts(window);
 
             console.log("===== chatDisplayed =====");
 
@@ -100,7 +100,9 @@ export default class CommonChatController {
         this._moveToChatShownState();
     }
 
-    _displayOpenerScripts() {
+    _displayOpenerScripts(w) {
+        this.sdk = w.Inq.SDK;
+
         this.sdk.getOpenerScripts((openerScripts) => {
             if (openerScripts == null)
                 return;

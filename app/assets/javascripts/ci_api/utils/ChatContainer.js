@@ -1,5 +1,5 @@
-import Transcript from './Transcript'
-import EndChatPopup from './EndChatPopup'
+import Transcript from '../services/Transcript'
+import EndChatPopup from '../views/EndChatPopup'
 
 const nullEventHandler = {
     onSend: function() {},

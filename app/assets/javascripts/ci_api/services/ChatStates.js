@@ -1,4 +1,4 @@
-import * as MessageType from './NuanceMessageType'
+import * as MessageType from '../NuanceMessageType'
 
 // State at start, before anything happens.
 export class NullState {

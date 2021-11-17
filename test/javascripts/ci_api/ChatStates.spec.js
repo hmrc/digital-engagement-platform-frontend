@@ -1,4 +1,4 @@
-import * as ChatStates from '../../../app/assets/javascripts/ci_api/ChatStates'
+import * as ChatStates from '../../../app/assets/javascripts/ci_api/services/ChatStates'
 import * as MessageType from '../../../app/assets/javascripts/ci_api/NuanceMessageType'
 
 function createEngagedStateDependencies() {

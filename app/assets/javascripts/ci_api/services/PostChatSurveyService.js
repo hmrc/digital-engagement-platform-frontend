@@ -78,7 +78,6 @@ export default class PostChatSurveyService {
                 agentGroupID: chatParams.agId,
                 availableAgentAttributes: chatParams.agentAttributes,
                 brAttributes: chatParams.ruleAttributes,
-                brAttributes: chatParams.ruleAttributes,
                 countryCode: chatParams.countryCode,
                 regionCode: chatParams.regionCode,
                 deviceType: chatParams.deviceType,

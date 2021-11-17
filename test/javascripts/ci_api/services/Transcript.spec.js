@@ -1,4 +1,4 @@
-import Transcript from '../../../app/assets/javascripts/ci_api/Transcript'
+import Transcript from '.../../../app/assets/javascripts/ci_api/services/Transcript'
 
 const messageClasses = {
     Agent: {
