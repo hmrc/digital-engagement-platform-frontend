@@ -1,6 +1,6 @@
 const html = `
     <div id="postChatSurvey">
-        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l" id="legend_give_feedback" tabindex="-1">
           <h2 class="govuk-fieldset__heading">Give feedback</h2>
         </legend>
 

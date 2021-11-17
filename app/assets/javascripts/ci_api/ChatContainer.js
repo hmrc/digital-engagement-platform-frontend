@@ -120,6 +120,7 @@ export default class ChatContainer {
     onConfirmEndChat() {
         this.endChatPopup.hide();
         this.eventHandler.onConfirmEndChat();
+        document.getElementById("legend_give_feedback").focus();
     }
 
     showPage(page) {
