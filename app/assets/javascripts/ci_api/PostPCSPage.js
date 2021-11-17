@@ -1,7 +1,7 @@
 const html = `
 <div id="endPage">
     <div class="govuk-panel govuk-panel--confirmation" style="margin-right:0.8em;">
-        <h1 class="govuk-panel__title">
+        <h1 class="govuk-panel__title" id="heading_chat_ended" tabindex="-1">
             Chat ended
         </h1>
     </div>
@@ -9,7 +9,7 @@ const html = `
     <p id="endpage-thanks" class="govuk-body">Thank you for your feedback.</p>
 
     <div onclick="window.print();">
-        <p><a href="#">Print or save a copy of this chat</a></p>
+        <p><a href="#" class="govuk-link">Print or save a copy of this chat</a></p>
     </div>
 
 </div>
