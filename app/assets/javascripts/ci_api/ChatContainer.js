@@ -101,6 +101,8 @@ export default class ChatContainer {
 
     confirmEndChat() {
         this.endChatPopup.show();
+        document.getElementById("heading_end_chat_popup").focus();
+
     }
 
     onCancelEndChat() {
@@ -120,6 +122,7 @@ export default class ChatContainer {
     onConfirmEndChat() {
         this.endChatPopup.hide();
         this.eventHandler.onConfirmEndChat();
+        document.getElementById("legend_give_feedback").focus();
     }
 
     showPage(page) {

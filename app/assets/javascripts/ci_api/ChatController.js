@@ -238,6 +238,7 @@ export default class ChatController {
 
     showEndChatPage(showThanks) {
         this.container.showPage(new PostPCSPage(showThanks));
+        document.getElementById("heading_chat_ended").focus();
         this.closeNuanceChat();
     }
 
