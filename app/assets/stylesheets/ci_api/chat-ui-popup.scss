@@ -404,6 +404,6 @@ $page-height: calc(100% - 5px);
      text-decoration: underline !important;
 }
 
-#heading_chat_ended:focus, #legend_give_feedback:focus{
+#heading_chat_ended:focus, #legend_give_feedback:focus, #heading_end_chat_popup:focus{
     outline:0;
 }
