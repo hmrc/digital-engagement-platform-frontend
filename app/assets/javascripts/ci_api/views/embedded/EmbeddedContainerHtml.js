@@ -33,7 +33,7 @@ export const ContainerHtml = `
                 </div>
             </div>
             <div id="ciapiClose">
-                <button id="ciapiSkinCloseButton" style="margin-top:-20px;" class="govuk-button govuk-button--secondary" data-module="govuk-button">End chat</button>
+                <button id="ciapiSkinCloseButton" class="govuk-button govuk-button--secondary" data-module="govuk-button">End chat</button>
             </div>
         </div>
     </div>
