@@ -1,5 +1,3 @@
-
-
 import PostChatSurvey from '../views/postChatSurvey/PostChatSurvey'
 import ChatContainer from '../utils/ChatContainer'
 import * as MessageClasses from '../DefaultClasses'
@@ -24,8 +22,6 @@ const survey = {
         { id: ["question3"], text: "If you had not used chatbot today, how else would you have contacted us?", freeform: false }
     ]
 };
-
-
 
 function getRadioValue(radioGroup) {
     var elements = document.getElementsByName(radioGroup);

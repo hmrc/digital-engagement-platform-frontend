@@ -1,6 +1,6 @@
 const html = `
-    <div id="endChatPopup">
-      <h1 class="govuk-heading-xl">End chat?</h1>
+    <div id="endChatPopup" role="dialog" aria-modal="true">
+      <h1 class="govuk-heading-xl" id="heading_end_chat_popup" tabindex="-1">End chat?</h1>
 
       <button id="confirmEndChat" class="govuk-button">
               End chat

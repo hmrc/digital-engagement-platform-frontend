@@ -61,7 +61,7 @@ class WebchatControllerSpec
         val result = controller.taxCredits(fakeRequest)
 
         status(result) mustBe SEE_OTHER
-        redirectLocation(result) mustBe Some(cuiRoutes.CuiController.askHmrcOnline().url)
+        redirectLocation(result) mustBe Some(cuiRoutes.CuiController.askHmrcOnline.url)
       }
     }
 

@@ -251,3 +251,12 @@ $transcript-sub-height: $footer-height + 2*$footer-padding + $footer-top-border-
     padding-top: 0.3em;
     background-color: #f3f2f1;
 }
+
+@media (max-width: 575.98px){
+    #cui-messaging-container {
+        height: 570px !important;
+    }
+}
+#heading_chat_ended:focus, #legend_give_feedback:focus, #heading_end_chat_popup:focus{
+    outline:0;
+}
