@@ -1,4 +1,4 @@
-import Transcript from '../../../app/assets/javascripts/ci_api/Transcript'
+import Transcript from '.../../../app/assets/javascripts/ci_api/services/Transcript'
 
 const messageClasses = {
     Agent: {
@@ -33,7 +33,7 @@ describe("Transcript", () => {
 
         expect(content.insertAdjacentHTML).toHaveBeenCalledWith(
             "beforeend",
-             "<div class='system-outer'><div class='system-inner'>System Message</div></div>"
+            "<div class='system-outer'><div class='system-inner'>System Message</div></div>"
         );
         expect(content.scrollTo).toHaveBeenCalledWith(0, 42);
     });

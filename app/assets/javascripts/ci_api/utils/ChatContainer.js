@@ -1,13 +1,13 @@
-import Transcript from './Transcript'
-import EndChatPopup from './EndChatPopup'
+import Transcript from '../services/Transcript'
+import EndChatPopup from '../views/EndChatPopup'
 
 const nullEventHandler = {
-    onSend: function() {},
-    onCloseChat: function() {},
-    onHideChat: function() {},
-    onRestoreChat: function() {},
-    onClickedVALink: function(e) {},
-    onConfirmEndChat: function() {}
+    onSend: function () { },
+    onCloseChat: function () { },
+    onHideChat: function () { },
+    onRestoreChat: function () { },
+    onClickedVALink: function (e) { },
+    onConfirmEndChat: function () { }
 };
 
 export default class ChatContainer {
@@ -33,11 +33,11 @@ export default class ChatContainer {
     }
 
     currentInputText() {
-       return this.custInput.value;
+        return this.custInput.value;
     }
 
     clearCurrentInputText() {
-       this.custInput.value = "";
+        this.custInput.value = "";
     }
 
     getTranscript() {
@@ -45,7 +45,7 @@ export default class ChatContainer {
     }
 
     destroy() {
-       this.container.parentElement.removeChild(this.container);
+        this.container.parentElement.removeChild(this.container);
     }
 
     minimise() {
@@ -69,26 +69,26 @@ export default class ChatContainer {
 
     _registerEventListeners() {
         this._registerEventListener("#ciapiSkinSendButton", (e) => {
-             this.eventHandler.onSend();
+            this.eventHandler.onSend();
         });
 
         this._registerEventListener("#ciapiSkinCloseButton", (e) => {
-             var ciapiSkinContainer = document.querySelector("#ciapiSkin");
-             var endChatNonFocusable = ciapiSkinContainer.querySelectorAll('a[href], input, textarea, button:not([id="cancelEndChat"]):not([id="confirmEndChat"]');
-             endChatNonFocusable.forEach(function(element) {
-                 element.tabIndex = -1;
-             });
+            var ciapiSkinContainer = document.querySelector("#ciapiSkin");
+            var endChatNonFocusable = ciapiSkinContainer.querySelectorAll('a[href], input, textarea, button:not([id="cancelEndChat"]):not([id="confirmEndChat"]');
+            endChatNonFocusable.forEach(function (element) {
+                element.tabIndex = -1;
+            });
 
-             document.getElementById("ciapiSkinChatTranscript").setAttribute("tabindex", -1);
-             this.eventHandler.onCloseChat();
+            document.getElementById("ciapiSkinChatTranscript").setAttribute("tabindex", -1);
+            this.eventHandler.onCloseChat();
         });
 
         this._registerEventListener("#ciapiSkinHideButton", (e) => {
-             this.eventHandler.onHideChat();
+            this.eventHandler.onHideChat();
         });
 
         this._registerEventListener("#ciapiSkinRestoreButton", (e) => {
-             this.eventHandler.onRestoreChat();
+            this.eventHandler.onRestoreChat();
         });
 
         this.custInput.addEventListener('keypress', (e) => {
@@ -109,7 +109,7 @@ export default class ChatContainer {
 
         var ciapiSkinContainer = document.querySelector("#ciapiSkin");
         var endChatNonFocusable = ciapiSkinContainer.querySelectorAll('a[href], input, textarea, button');
-        endChatNonFocusable.forEach(function(element) {
+        endChatNonFocusable.forEach(function (element) {
             element.removeAttribute("tabindex");
         });
 

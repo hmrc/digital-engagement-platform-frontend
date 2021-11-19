@@ -1,8 +1,8 @@
-@import 'transcript-agent';
-@import 'transcript-customer';
-@import 'system-message';
-@import 'c2cbutton';
-@import 'end-chat-popup';
+@import "transcript-agent";
+@import "transcript-customer";
+@import "system-message";
+@import "c2cbutton";
+@import "end-chat-popup";
 @import "lib/govuk-frontend/govuk/all";
 
 $popup-width: 400px;
@@ -13,17 +13,16 @@ $header-height: 57px;
 $header-bottom-border-height: 6px;
 $tools-height: 23px;
 $tools-padding-y: 5px;
-$components-sub-height: $header-height + $header-bottom-border-height + $tools-height + 2*$tools-padding-y;
+$components-sub-height: $header-height + $header-bottom-border-height + $tools-height + 2 * $tools-padding-y;
 $footer-height: 80px;
 $footer-padding: 5px;
 $textarea-height: $footer-height;
 $transcript-border-height: 2px;
-$transcript-sub-height: $footer-height + 2*$footer-padding  + 2*($transcript-border-height*2) + 2px;
+$transcript-sub-height: $footer-height + 2 * $footer-padding + 2 * ($transcript-border-height * 2) + 2px;
 $page-height: calc(100% - 5px);
 
-
 #ciapiSkin {
-    font-family: "GDS Transport",arial,sans-serif;
+    font-family: "GDS Transport", arial, sans-serif;
     font-size: 19px;
     -webkit-font-smoothing: antialiased;
 
@@ -93,7 +92,7 @@ $page-height: calc(100% - 5px);
 
 #print .govuk-button--secondary {
     height: 31px;
-    background: url('/ask-hmrc/assets/media/save-transcript.svg') no-repeat;
+    background: url("/ask-hmrc/assets/media/save-transcript.svg") no-repeat;
     background-size: 1em;
     padding-left: 1.2em;
     padding-top: 0.3em;
@@ -106,13 +105,13 @@ $page-height: calc(100% - 5px);
 }
 
 #print .govuk-button--secondary:focus:not(:active):not(:hover),
-#sound .govuk-button--secondary:focus:not(:active):not(:hover){
+#sound .govuk-button--secondary:focus:not(:active):not(:hover) {
     background-color: #ffdd00;
 }
 
 #sound .govuk-button--secondary {
     height: 31px;
-    background: url('/ask-hmrc/assets/media/hmrc-alert_on.svg') no-repeat;
+    background: url("/ask-hmrc/assets/media/hmrc-alert_on.svg") no-repeat;
     background-size: 1.2em;
     padding-left: 1.3em;
     padding-top: 0.3em;
@@ -127,19 +126,19 @@ $page-height: calc(100% - 5px);
 }
 
 @mixin TopButton {
-  width: 40px;
-  height: 40px;
-  float: right;
-  box-sizing: border-box;
-  background-origin: border-box;
-  border: none;
-  background-color: transparent;
-  color: white;
-  font-size: 20px;
-  cursor: pointer;
-  &:hover {
-    background-color: #DBDAD9 !important;
-  }
+    width: 40px;
+    height: 40px;
+    float: right;
+    box-sizing: border-box;
+    background-origin: border-box;
+    border: none;
+    background-color: transparent;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    &:hover {
+        background-color: #dbdad9 !important;
+    }
 }
 
 #hideCloseContainer {
@@ -147,13 +146,14 @@ $page-height: calc(100% - 5px);
 }
 
 #ciapiSkinCloseButton {
-  background-image: url('/ask-hmrc/assets/media/close.svg');
-  margin: 8px 0px;
-  float: none !important;
+    background-image: url("/ask-hmrc/assets/media/close.svg");
+    margin: 8px 0px;
+    float: none !important;
     z-index: 1000;
     position: static;
     box-shadow: none;
-  @include TopButton
+    margin-top: -20px;
+    @include TopButton;
 }
 
 #ciapiSkinCloseButton:focus:not(:active):not(:hover) {
@@ -170,13 +170,13 @@ $page-height: calc(100% - 5px);
 }
 
 #ciapiSkinHideButton {
-  background-image: url('/ask-hmrc/assets/media/minimise.svg');
-  margin: 8px 0px;
-  float: none !important;
-  z-index: 1000;
-  position: static;
-  box-shadow: none;
-  @include TopButton
+    background-image: url("/ask-hmrc/assets/media/minimise.svg");
+    margin: 8px 0px;
+    float: none !important;
+    z-index: 1000;
+    position: static;
+    box-shadow: none;
+    @include TopButton;
 }
 
 #ciapiSkinHideButton:focus:not(:active):not(:hover) {
@@ -193,7 +193,7 @@ $page-height: calc(100% - 5px);
 }
 
 #ciapiSkinCloseButton i {
-  color: #fff;
+    color: #fff;
 }
 
 #ciapiTitleBarLogo {
@@ -209,7 +209,7 @@ $page-height: calc(100% - 5px);
 #ciapiChatComponents {
     height: calc(100% - #{$components-sub-height});
     width: 100%;
-    }
+}
 
 #ciapiSkinChatTranscript:focus {
     outline: 3px solid #fd0;
@@ -244,31 +244,31 @@ $page-height: calc(100% - 5px);
     .info img {
         width: 1.25em;
         vertical-align: bottom;
-        padding: 0 0.5em .2em 0;
+        padding: 0 0.5em 0.2em 0;
     }
-     .skipToTopWithScroll{
-        position:relative;
-        bottom : 0;
-        margin-left:5px;
-        margin-right:5px;
-     }
-     .skipToTopWithOutScroll{
-      position:absolute;
-      bottom : 0;
-      margin-left:5px;
-      margin-right:5px;
-      width:90%;
-   }
-     #skipToBottom {
-        margin-left:5px;
-        margin-right:5px;
-     }
+    .skipToTopWithScroll {
+        position: relative;
+        bottom: 0;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    .skipToTopWithOutScroll {
+        position: absolute;
+        bottom: 0;
+        margin-left: 5px;
+        margin-right: 5px;
+        width: 90%;
+    }
+    #skipToBottom {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
 }
 
 #HMRC_CIAPI_Anchored_1 {
-  position: fixed;
-  bottom: 0;
-  right: 50px;
+    position: fixed;
+    bottom: 0;
+    right: 50px;
 }
 
 #ciapiInput {
@@ -332,8 +332,8 @@ $page-height: calc(100% - 5px);
     width: calc(100% - 34px);
     overflow: scroll;
     overflow-x: hidden;
-    padding-right:14px;
-    padding-left:1em;
+    padding-right: 14px;
+    padding-left: 1em;
     border-top: 2px solid #b1b4b6;
     border-bottom: 2px solid #000;
 
@@ -351,20 +351,19 @@ $page-height: calc(100% - 5px);
     padding: 1em;
 }
 
-@media screen and (max-width: 767px)
-{
-	#ciapiSkinContainer {
-        width:100%;
-        height:100%;
-        border:none;
-        max-height:100%
-	}
+@media screen and (max-width: 767px) {
+    #ciapiSkinContainer {
+        width: 100%;
+        height: 100%;
+        border: none;
+        max-height: 100%;
+    }
 
-	#ciapiChatComponents p{
-	    font-size:16px;
-	}
+    #ciapiChatComponents p {
+        font-size: 16px;
+    }
 
-	#ciapiSkinSendButton {
+    #ciapiSkinSendButton {
         width: 100%;
         min-width: 60px;
         margin-left: 5px;

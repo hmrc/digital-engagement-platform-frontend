@@ -1,54 +1,58 @@
-import ChatController from './ChatController'
+import ReactiveChatController from './controllers/ReactiveChatController'
+import ProactiveChatController from './controllers/ProactiveChatController'
+import CommonChatController from './controllers/CommonChatController'
 
 function safeHandler(f, helpful_name) {
-    return function() {
+    return function () {
         try {
             f.apply(null, arguments)
-        } catch(e) {
+        } catch (e) {
             console.error(`!!!! handler for ${f.name}: got exception `, e);
         }
     }
 }
 
 const chatListener = {
-//    onAnyEvent: function(evt) {
-//        console.log("Chat any event:", evt);
-//    },
-    onC2CStateChanged: function(evt) {
+    //    onAnyEvent: function(evt) {
+    //        console.log("Chat any event:", evt);
+    //    },
+    onC2CStateChanged: function (evt) {
         console.log("C2C state changed...")
-//        chatController.updateC2CButtonsToInProgress();
+        //        chatController.updateC2CButtonsToInProgress();
     }
 };
 
 export function hookWindow(w) {
-    var chatController = new ChatController;
+    var commonChatController = new CommonChatController;
+    var reactiveChatController = new ReactiveChatController;
+    var proactiveChatController = new ProactiveChatController;
 
     w.InqRegistry = {
-      listeners: [chatListener]
+        listeners: [chatListener]
     };
 
     w.nuanceFrameworkLoaded = safeHandler(
         function nuanceFrameworkLoaded() {
-            chatController.nuanceFrameworkLoaded(w);
+            commonChatController.nuanceFrameworkLoaded(w);
         }
     );
 
     w.nuanceReactive_HMRC_CIAPI_Fixed_1 = safeHandler(
         function nuanceReactive_HMRC_CIAPI_Fixed_1(c2cObj) {
-            chatController.addC2CButton(c2cObj, "HMRC_CIAPI_Fixed_1", "fixed");
+            reactiveChatController.addC2CButton(c2cObj, "HMRC_CIAPI_Fixed_1", "fixed");
         }
     );
 
     w.nuanceReactive_HMRC_CIAPI_Anchored_1 = safeHandler(
         function nuanceReactive_HMRC_CIAPI_Anchored_1(c2cObj) {
-            chatController.addC2CButton(c2cObj, "HMRC_CIAPI_Anchored_1", "anchored");
+            reactiveChatController.addC2CButton(c2cObj, "HMRC_CIAPI_Anchored_1", "anchored");
         }
     );
 
     w.nuanceProactive = safeHandler(
         function nuanceProactive(obj) {
             console.log("### PROACTIVE", obj);
-            chatController.launchProactiveChat();
+            proactiveChatController.launchProactiveChat();
         }
     );
 }

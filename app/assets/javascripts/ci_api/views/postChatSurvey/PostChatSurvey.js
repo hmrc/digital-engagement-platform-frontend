@@ -80,27 +80,27 @@ const html = `
 `
 
 export default class PostChatSurvey {
-    constructor(onSubmitted) {
-        this.onSubmitted = onSubmitted;
-    }
+  constructor(onSubmitted) {
+    this.onSubmitted = onSubmitted;
+  }
 
-    attachTo(container) {
-        this.container = container;
+  attachTo(container) {
+    this.container = container;
 
-        this.wrapper = document.createElement("div")
-        this.wrapper.id = "postChatSurveyWrapper";
-        this.wrapper.insertAdjacentHTML("beforeend", html);
-        container.appendChild(this.wrapper);
+    this.wrapper = document.createElement("div")
+    this.wrapper.id = "postChatSurveyWrapper";
+    this.wrapper.insertAdjacentHTML("beforeend", html);
+    container.appendChild(this.wrapper);
 
-        this.wrapper.querySelector("#submitPostChatSurvey").addEventListener(
-            "click",
-             (e) => {
-                this.onSubmitted(this);
-             }
-        );
-    }
+    this.wrapper.querySelector("#submitPostChatSurvey").addEventListener(
+      "click",
+      (e) => {
+        this.onSubmitted(this);
+      }
+    );
+  }
 
-    detach() {
-        this.container.removeChild(this.wrapper)
-    }
+  detach() {
+    this.container.removeChild(this.wrapper)
+  }
 }

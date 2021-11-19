@@ -1,5 +1,5 @@
-import ClickToChatButtons from '../../../app/assets/javascripts/ci_api/ClickToChatButtons'
-import * as DisplayState from '../../../app/assets/javascripts/ci_api/NuanceDisplayState'
+import ClickToChatButtons from '.../../../app/assets/javascripts/ci_api/utils/ClickToChatButtons'
+import * as DisplayState from '../../../../app/assets/javascripts/ci_api/NuanceDisplayState'
 
 const displayStateMessages = {
     [DisplayState.OutOfHours]: "OutOfHoursText",
@@ -23,7 +23,7 @@ function setup() {
     ];
 }
 
-function c2cObj(displayState, launchable=false) {
+function c2cObj(displayState, launchable = false) {
     return {
         c2cIdx: 'c2c-id',
         displayState: displayState,

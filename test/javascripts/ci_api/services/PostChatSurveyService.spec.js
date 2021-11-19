@@ -1,4 +1,4 @@
-import PostChatSurveyService from '../../../app/assets/javascripts/ci_api/PostChatSurveyService'
+import PostChatSurveyService from '.../../../app/assets/javascripts/ci_api/services/PostChatSurveyService'
 
 const chatParams = {
     agId: "AgId",
@@ -25,14 +25,14 @@ const chatParams = {
 const survey = {
     id: 123456,
     questions: [
-        { id: "q1", text: "Was the chatbot useful?", freeform: false},
-        { id: "q2", text: "Was the chatbot your first contact choice?", freeform: false},
-        { id: "q3", text: "If you had not used chatbot today, how else would you have contacted us?", freeform: false}
+        { id: "q1", text: "Was the chatbot useful?", freeform: false },
+        { id: "q2", text: "Was the chatbot your first contact choice?", freeform: false },
+        { id: "q3", text: "If you had not used chatbot today, how else would you have contacted us?", freeform: false }
     ],
     answers: [
-        { id: "a1", text: "Yes", freeform: false},
-        { id: "a2", text: "No", freeform: false},
-        { id: "a3", text: "Phone", freeform: false},
+        { id: "a1", text: "Yes", freeform: false },
+        { id: "a2", text: "No", freeform: false },
+        { id: "a3", text: "Phone", freeform: false },
     ]
 };
 
@@ -138,10 +138,12 @@ describe("PostChatSurveyService", () => {
 
         service.beginPostChatSurvey(survey, automaton, timestamp);
 
-        expect(sdk.logEventToDW).toHaveBeenCalledWith({eventList:[
-            expectedStartedEvent,
-            expectedContentSentToCustomerEvent
-        ]});
+        expect(sdk.logEventToDW).toHaveBeenCalledWith({
+            eventList: [
+                expectedStartedEvent,
+                expectedContentSentToCustomerEvent
+            ]
+        });
     });
 
     it("sends event for submitting a post chat survey", () => {
@@ -155,8 +157,8 @@ describe("PostChatSurveyService", () => {
         const timestamp = Date.now();
 
         const expectedCustomerRespondedEvent = {
-            _domain:"automaton",
-            evt:"customerResponded",
+            _domain: "automaton",
+            evt: "customerResponded",
             unique_node_id: "node_1",
             "custom.decisiontree.nodeID": "HMRC_PostChat_Guidance%20-%20Initial",
             "custom.decisiontree.questionIDs": "q1%2Cq2%2Cq3",
@@ -168,7 +170,7 @@ describe("PostChatSurveyService", () => {
             "custom.decisiontree.answerIDs": "Yes%2CNo%2CPhone",
             "custom.decisiontree.answerTypes": "0,0,0",
             clientTimestamp: timestamp,
-            automatonType:"satisfactionSurvey",
+            automatonType: "satisfactionSurvey",
             automatonID: "AutomatonID",
             automatonName: "AutomatonName",
             automatonOrigin: "richMedia",
@@ -240,10 +242,12 @@ describe("PostChatSurveyService", () => {
 
         service.submitPostChatSurvey(survey, automaton, timestamp);
 
-        expect(sdk.logEventToDW).toHaveBeenCalledWith({eventList:[
-            expectedCustomerRespondedEvent,
-            expectedEndedEvent
-        ]});
+        expect(sdk.logEventToDW).toHaveBeenCalledWith({
+            eventList: [
+                expectedCustomerRespondedEvent,
+                expectedEndedEvent
+            ]
+        });
     });
 
     it("sends event for closing webchat and not submitting post chat survey", () => {
@@ -275,9 +279,11 @@ describe("PostChatSurveyService", () => {
 
         service.closePostChatSurvey(automaton, timestamp);
 
-        expect(sdk.logEventToDW).toHaveBeenCalledWith({eventList:[
-            expectedEndedEvent
-        ]});
+        expect(sdk.logEventToDW).toHaveBeenCalledWith({
+            eventList: [
+                expectedEndedEvent
+            ]
+        });
 
     });
 });

@@ -1,4 +1,4 @@
-import * as MessageType from './NuanceMessageType'
+import * as MessageType from '../NuanceMessageType'
 
 // State at start, before anything happens.
 export class NullState {
@@ -92,14 +92,14 @@ export class EngagedState {
         } else if (msg.messageType === MessageType.Chat_CommunicationQueue) {
             transcript.addSystemMsg(msg.messageText);
         } else if (msg.messageType === MessageType.Chat_Denied) {
-//            this.isConnected = false;
+            //            this.isConnected = false;
             transcript.addSystemMsg("No agents are available.");
         } else if ([
-                       MessageType.Chat_System,
-                       MessageType.Chat_TransferResponse,
-                       MessageType.ChatRoom_MemberConnected,
-                       MessageType.ChatRoom_MemberLost
-                   ].includes(msg.messageType)) {
+            MessageType.Chat_System,
+            MessageType.Chat_TransferResponse,
+            MessageType.ChatRoom_MemberConnected,
+            MessageType.ChatRoom_MemberLost
+        ].includes(msg.messageType)) {
             transcript.addSystemMsg(msg["client.display.text"]);
         } else {
             console.log("==== Unknown message:", msg);
@@ -108,7 +108,7 @@ export class EngagedState {
 
     _linkCallback(data) {
         // data seems to be the text clicked on.
-//        console.log("link callback: ", data);
+        //        console.log("link callback: ", data);
     }
 }
 
