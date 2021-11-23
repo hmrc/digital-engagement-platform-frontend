@@ -20,7 +20,7 @@ import play.twirl.api.HtmlFormat
 import views.html.CUIViews.JobRetentionSchemeHelpView
 import views.html.pages.helpers.ViewSpecBase
 
-class sidebarLinksSpec extends ViewSpecBase {
+class cuiCJRSSidebarSpec extends ViewSpecBase {
 
   private val viewWithTemplate = app.injector.instanceOf[JobRetentionSchemeHelpView]
 
