@@ -22,6 +22,8 @@ import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
 import play.api.test.Helpers._
 import views.html.pages.helpers.AppBuilderSpecBase
 
+import scala.language.postfixOps
+
 class CuiControllerSpec
   extends AppBuilderSpecBase with ScalaCheckPropertyChecks {
 
@@ -41,6 +43,12 @@ class CuiControllerSpec
 
       status(result) mustBe SEE_OTHER
       redirectLocation(result) mustBe Some(routes.CuiController.jobRetentionSchemeHelp.url)
+    }
+
+    "render SA Variant page" in {
+      val result = controller.selfAssessment(fakeRequest)
+
+      status(result) mustBe OK
     }
   }
 }
