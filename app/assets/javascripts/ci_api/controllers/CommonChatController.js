@@ -202,6 +202,22 @@ export default class CommonChatController {
             this.state.onSend(text);
     }
 
+
+    onSkipLinkClick(e) {
+        e.preventDefault();
+        if (e.target.id == "skipToTopLink"){
+            document.getElementById("skipToBottomLink").focus();
+
+        }
+         if (e.target.id == "skipToBottomLink"){
+                    document.getElementById("skipToTopLink").focus();
+
+                }
+
+
+
+    }
+
     onCloseChat() {
         this.state.onClickedClose();
     }
