@@ -87,9 +87,10 @@ export default class ChatContainer {
             this.eventHandler.onHideChat();
         });
 
-        this._registerEventListener("#ciapiSkinChatTranscript", (e) => {
-                    this.eventHandler.onSkipLinkClick(e);
+        this._registerEventListener("#skipToBottomLink", (e) => {
+                    this.eventHandler.onSkipToTopLink(e);
                 });
+
 
         this._registerEventListener("#ciapiSkinRestoreButton", (e) => {
             this.eventHandler.onRestoreChat();

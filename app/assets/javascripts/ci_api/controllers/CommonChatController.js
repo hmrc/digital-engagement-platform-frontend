@@ -164,6 +164,12 @@ export default class CommonChatController {
         return new PostChatSurveyService(sdk);
     }
 
+    onSkipToTopLink(e) {
+                e.preventDefault();
+                document.getElementById("skipToTopLink").focus()
+
+    }
+
     closeNuanceChat() {
         if (this.sdk.isChatInProgress()) {
             this.sdk.closeChat();
@@ -200,22 +206,6 @@ export default class CommonChatController {
         this.container.clearCurrentInputText();
         if (text !== "")
             this.state.onSend(text);
-    }
-
-
-    onSkipLinkClick(e) {
-        e.preventDefault();
-        if (e.target.id == "skipToTopLink"){
-            document.getElementById("skipToBottomLink").focus();
-
-        }
-         if (e.target.id == "skipToBottomLink"){
-                    document.getElementById("skipToTopLink").focus();
-
-                }
-
-
-
     }
 
     onCloseChat() {
