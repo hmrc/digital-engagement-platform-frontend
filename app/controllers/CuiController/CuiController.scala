@@ -21,7 +21,7 @@ import config.AppConfig
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
-import views.html.CUIViews._
+import views.html.CUIViews.{AskHmrcOnlineCUIView, JobRetentionSchemeHelpView, SelfAssessmentCUIView}
 
 import scala.concurrent.Future
 
