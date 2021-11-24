@@ -21,6 +21,33 @@ export default class Transcript {
         this._appendMessage(msg, this.classes.Opener);
     }
 
+    addSkipToBottomLink() {
+
+        const chatContainer = document.getElementById("ciapiSkinChatTranscript")
+
+        if (chatContainer.scrollHeight > chatContainer.clientHeight) {
+            this.createSkipLink("skipToTopWithScroll");
+        }
+        else {
+            this.createSkipLink("skipToTopWithOutScroll");
+        }
+
+    }
+
+    createSkipLink(className) {
+
+        const chatContainer = document.getElementById("ciapiSkinChatTranscript")
+
+        chatContainer.insertAdjacentHTML("beforeend", '<div id="skipToTop" class="' + className + '"><a id="skipToTopLink" href="#" class="govuk-skip-link">Skip to top of conversation</a></div>');
+        document.getElementById("skipToTopLink").addEventListener("click",
+            function (e) {
+                e.preventDefault();
+                document.getElementById("skipToBottomLink").focus();
+            })
+
+    }
+
+
     addAutomatonMsg(msg) {
         const msgDiv = `<div class='${this.classes.Agent.Inner}'>${msg}</div>`;
         const skipToTop = document.getElementById("skipToTop");
@@ -40,10 +67,8 @@ export default class Transcript {
                 chatContainer.removeChild(skipToTop)
             }
 
-            if (chatContainer.scrollHeight > chatContainer.clientHeight)
-                chatContainer.insertAdjacentHTML("beforeend", '<div id="skipToTop" class="skipToTopWithScroll"><a id="skipToTopLink" href="#skipToBottomLink" class="govuk-skip-link">Skip to top of conversation</a></div>');
-            else
-                chatContainer.insertAdjacentHTML("beforeend", '<div id="skipToTop" class="skipToTopWithOutScroll"><a id="skipToTopLink" href="#skipToBottomLink" class="govuk-skip-link">Skip to top of conversation</a></div>');
+            this.addSkipToBottomLink();
+
         }
         this._showLatestContent(this.classes.Agent);
     }
@@ -73,14 +98,16 @@ export default class Transcript {
                 chatContainer.removeChild(skipToTop)
             }
 
-            if (chatContainer.scrollHeight > chatContainer.clientHeight)
-                chatContainer.insertAdjacentHTML("beforeend", '<div id="skipToTop" class="skipToTopWithScroll"><a id="skipToTopLink" href="#skipToBottomLink" class="govuk-skip-link">Skip to top of conversation</a></div>');
-            else
-                chatContainer.insertAdjacentHTML("beforeend", '<div id="skipToTop" class="skipToTopWithOutScroll"><a id="skipToTopLink" href="#skipToBottomLink" class="govuk-skip-link">Skip to top of conversation</a></div>');
+            this.addSkipToBottomLink();
+
         }
+
 
         this._showLatestContent(msg_class);
     }
+
+
+
 
     _showLatestContent(msg_class) {
         const agentInner = msg_class.Inner;

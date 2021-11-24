@@ -164,6 +164,12 @@ export default class CommonChatController {
         return new PostChatSurveyService(sdk);
     }
 
+    onSkipToTopLink(e) {
+        e.preventDefault();
+        document.getElementById("skipToTopLink").focus()
+
+    }
+
     closeNuanceChat() {
         if (this.sdk.isChatInProgress()) {
             this.sdk.closeChat();
