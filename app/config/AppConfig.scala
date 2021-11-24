@@ -34,6 +34,9 @@ class AppConfig @Inject()(config: Configuration,
 
   val performanceTest: Boolean = config.get[Boolean]("performance-test.mode")
 
+  // Feature Toggles
+  val showSACUI: Boolean = config.get[Boolean]("feature-toggles.showSACUI")
+
   // Used in wrapper
   val analyticsToken: String = config.get[String]("google-analytics.token")
   val analyticsHost: String = config.get[String]("google-analytics.host")

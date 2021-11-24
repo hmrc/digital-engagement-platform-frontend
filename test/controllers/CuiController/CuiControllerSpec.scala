@@ -48,7 +48,12 @@ class CuiControllerSpec
     "render SA Variant page" in {
       val result = controller.selfAssessment(fakeRequest)
 
-      status(result) mustBe OK
+      if(frontendAppConfig.showSACUI) {
+        status(result) mustBe OK
+      }
+      else {
+        status(result) mustBe NOT_FOUND
+      }
     }
   }
 }
