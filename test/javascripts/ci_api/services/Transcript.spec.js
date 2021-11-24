@@ -107,5 +107,30 @@ describe("Transcript", () => {
         expect(content.scrollTo).toHaveBeenCalledWith(0, 1024);
     });
 
+
+    it("appends skip link to bottom", () => {
+             const content = {
+                        appendChild: jest.fn(),
+                        scrollTo: jest.fn(),
+                        scrollHeight: 4
+                    };
+                    const vaLinkCallback = jest.fn();
+
+            let chatContainer = document.createElement("div");
+                chatContainer.setAttribute("id", "ciapiSkinChatTranscript");
+                chatContainer.setAttribute("scrollHeight", 4);
+                chatContainer.setAttribute("clientHeight", 5);
+                document.body.appendChild(chatContainer);
+
+            const transcript = new Transcript(content, vaLinkCallback, messageClasses);
+
+            transcript.addSkipToBottomLink();
+
+            expect(document.getElementById("ciapiSkinChatTranscript").innerHTML).toBe(
+            "<div id=\"skipToTop\" class=\"skipToTopWithOutScroll\"><a id=\"skipToTopLink\" href=\"#\" class=\"govuk-skip-link\">Skip to top of conversation</a></div>");
+
+        });
+
+
     //TODO create a test for each of the above scenarios where the incoming message is higher than the parent div
 });
