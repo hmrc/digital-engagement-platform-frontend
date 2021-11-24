@@ -165,8 +165,8 @@ export default class CommonChatController {
     }
 
     onSkipToTopLink(e) {
-                e.preventDefault();
-                document.getElementById("skipToTopLink").focus()
+        e.preventDefault();
+        document.getElementById("skipToTopLink").focus()
 
     }
 

@@ -21,9 +21,9 @@ export default class Transcript {
         this._appendMessage(msg, this.classes.Opener);
     }
 
-    addSkipToBottomLink(){
+    addSkipToBottomLink() {
 
-       const chatContainer = document.getElementById("ciapiSkinChatTranscript")
+        const chatContainer = document.getElementById("ciapiSkinChatTranscript")
 
         if (chatContainer.scrollHeight > chatContainer.clientHeight) {
             this.createSkipLink("skipToTopWithScroll");
@@ -32,20 +32,20 @@ export default class Transcript {
             this.createSkipLink("skipToTopWithOutScroll");
         }
 
-     }
+    }
 
-     createSkipLink(className){
+    createSkipLink(className) {
 
-         const chatContainer = document.getElementById("ciapiSkinChatTranscript")
+        const chatContainer = document.getElementById("ciapiSkinChatTranscript")
 
-         chatContainer.insertAdjacentHTML("beforeend", '<div id="skipToTop" class="' + className + '"><a id="skipToTopLink" href="#" class="govuk-skip-link">Skip to top of conversation</a></div>');
-         document.getElementById("skipToTopLink").addEventListener("click",
-                function(e){
-                  e.preventDefault();
-                  document.getElementById("skipToBottomLink").focus();
-                  })
+        chatContainer.insertAdjacentHTML("beforeend", '<div id="skipToTop" class="' + className + '"><a id="skipToTopLink" href="#" class="govuk-skip-link">Skip to top of conversation</a></div>');
+        document.getElementById("skipToTopLink").addEventListener("click",
+            function (e) {
+                e.preventDefault();
+                document.getElementById("skipToBottomLink").focus();
+            })
 
-     }
+    }
 
 
     addAutomatonMsg(msg) {

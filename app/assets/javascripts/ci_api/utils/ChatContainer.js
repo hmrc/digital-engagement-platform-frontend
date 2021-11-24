@@ -88,8 +88,8 @@ export default class ChatContainer {
         });
 
         this._registerEventListener("#skipToBottomLink", (e) => {
-                    this.eventHandler.onSkipToTopLink(e);
-                });
+            this.eventHandler.onSkipToTopLink(e);
+        });
 
 
         this._registerEventListener("#ciapiSkinRestoreButton", (e) => {
