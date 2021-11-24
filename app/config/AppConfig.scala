@@ -34,6 +34,10 @@ class AppConfig @Inject()(config: Configuration,
 
   val performanceTest: Boolean = config.get[Boolean]("performance-test.mode")
 
+  // Feature Toggles
+  val showSACUI: Boolean = config.getOptional[Boolean]("features.showSACUI").getOrElse(false)
+  var featureNoChatExperiment: Boolean = config.getOptional[Boolean]("features.noChatExperiment").getOrElse(false)
+
   // Used in wrapper
   val analyticsToken: String = config.get[String]("google-analytics.token")
   val analyticsHost: String = config.get[String]("google-analytics.host")
@@ -41,7 +45,7 @@ class AppConfig @Inject()(config: Configuration,
   val reportAProblemNonJSUrl: String = s"$contactHost/contact/problem_reports_nonjs?service=$serviceIdentifier"
   val betaFeedbackUnauthenticatedUrl = s"$contactHost/contact/beta-feedback-unauthenticated?service=$serviceIdentifier"
 
-  var featureNoChatExperiment: Boolean = config.getOptional[Boolean]("features.noChatExperiment").getOrElse(false)
+
 
   val selfAssessmentReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/self-assessment"

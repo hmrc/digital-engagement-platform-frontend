@@ -21,7 +21,7 @@ import config.AppConfig
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
-import views.html.CUIViews.{AskHmrcOnlineCUIView, JobRetentionSchemeHelpView}
+import views.html.CUIViews.{AskHmrcOnlineCUIView, JobRetentionSchemeHelpView, SelfAssessmentCUIView}
 
 import scala.concurrent.Future
 
@@ -29,6 +29,7 @@ import scala.concurrent.Future
 class CuiController @Inject()(appConfig: AppConfig,
                               mcc: MessagesControllerComponents,
                               askHmrcOnlineCUIView: AskHmrcOnlineCUIView,
+                              selfAssessmentCUIView: SelfAssessmentCUIView,
                               jobRetentionSchemeHelpView: JobRetentionSchemeHelpView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
@@ -43,5 +44,14 @@ class CuiController @Inject()(appConfig: AppConfig,
 
   def helpJobRetentionScheme: Action[AnyContent] = Action.async { _ =>
     Future.successful(Redirect(routes.CuiController.jobRetentionSchemeHelp))
+  }
+
+  def selfAssessment: Action[AnyContent] = Action.async { implicit request =>
+    if (config.showSACUI) {
+      Future.successful(Ok(selfAssessmentCUIView()))
+    }
+    else {
+      Future.successful(NotFound)
+    }
   }
 }
