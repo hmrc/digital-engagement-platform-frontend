@@ -81,17 +81,33 @@ export default class CommonChatController {
 
     _showChat() {
         const embeddedDiv = this._getEmbeddedDiv();
-        if (embeddedDiv) {
-            this.container = new ChatContainer(MessageClasses, EmbeddedContainerHtml.ContainerHtml);
-            embeddedDiv.appendChild(this.container.element());
-        } else {
-            this.container = new ChatContainer(MessageClasses, PopupContainerHtml.ContainerHtml);
-            document.getElementsByTagName("body")[0].appendChild(this.container.element());
+        const popupDiv = this._getPopupDiv();
+        const anchoredPopupDiv = this._getAnchoredPopupDiv();
+        try {
+            if (embeddedDiv) {
+                this.container = new ChatContainer(MessageClasses, EmbeddedContainerHtml.ContainerHtml);
+                embeddedDiv.appendChild(this.container.element());
+            }
+            else if (popupDiv) {
+                this.container = new ChatContainer(MessageClasses, PopupContainerHtml.ContainerHtml);
+                popupDiv.appendChild(this.container.element());
+            }
+            else if (anchoredPopupDiv && !popupDiv) {
+                this.container = new ChatContainer(MessageClasses, PopupContainerHtml.ContainerHtml);
+                anchoredPopupDiv.appendChild(this.container.element());
+            }
+            else {
+                this.container = new ChatContainer(MessageClasses, PopupContainerHtml.ContainerHtml);
+                document.getElementsByTagName("body")[0].appendChild(this.container.element());
+            }
+
+            this.container.setEventHandler(this);
+
+            this._moveToChatShownState();
         }
-
-        this.container.setEventHandler(this);
-
-        this._moveToChatShownState();
+        catch (e) {
+            console.error("!!!! _showChat got exception: ", e);
+        }
     }
 
     _displayOpenerScripts(w) {
@@ -122,6 +138,14 @@ export default class CommonChatController {
 
     _getEmbeddedDiv() {
         return document.getElementById("HMRC_CIAPI_Embedded_1")
+    }
+
+    _getPopupDiv() {
+        return document.getElementById("HMRC_CIAPI_Fixed_1")
+    }
+
+    _getAnchoredPopupDiv() {
+        return document.getElementById("HMRC_CIAPI_Anchored_1")
     }
 
     _moveToChatShownState() {
