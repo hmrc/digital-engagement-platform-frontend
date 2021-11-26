@@ -81,16 +81,16 @@ export default class CommonChatController {
 
     _showChat() {
         const embeddedDiv = this._getEmbeddedDiv();
-        const popupDiv = this._getPopupDiv();
+        const fixedPopupDiv = this._getFixedPopupDiv();
         const anchoredPopupDiv = this._getAnchoredPopupDiv();
         try {
             if (embeddedDiv) {
                 this.container = new ChatContainer(MessageClasses, EmbeddedContainerHtml.ContainerHtml);
                 embeddedDiv.appendChild(this.container.element());
             }
-            else if (popupDiv) {
+            else if (fixedPopupDiv) {
                 this.container = new ChatContainer(MessageClasses, PopupContainerHtml.ContainerHtml);
-                popupDiv.appendChild(this.container.element());
+                fixedPopupDiv.appendChild(this.container.element());
             }
             else if (anchoredPopupDiv && !popupDiv) {
                 this.container = new ChatContainer(MessageClasses, PopupContainerHtml.ContainerHtml);
@@ -140,7 +140,7 @@ export default class CommonChatController {
         return document.getElementById("HMRC_CIAPI_Embedded_1")
     }
 
-    _getPopupDiv() {
+    _getFixedPopupDiv() {
         return document.getElementById("HMRC_CIAPI_Fixed_1")
     }
 
