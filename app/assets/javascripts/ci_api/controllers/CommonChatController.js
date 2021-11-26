@@ -92,7 +92,7 @@ export default class CommonChatController {
                 this.container = new ChatContainer(MessageClasses, PopupContainerHtml.ContainerHtml);
                 fixedPopupDiv.appendChild(this.container.element());
             }
-            else if (anchoredPopupDiv && !popupDiv) {
+            else if (anchoredPopupDiv && !fixedPopupDiv) {
                 this.container = new ChatContainer(MessageClasses, PopupContainerHtml.ContainerHtml);
                 anchoredPopupDiv.appendChild(this.container.element());
             }
