@@ -3,7 +3,7 @@ export const ContainerHtml = `
 <div id="ciapiSkinContainer">
     <div id="ciapiSkinHeader">
         <div id="ciapiTitleBarLogo"><img src='/ask-hmrc/assets/media/logo.png' alt=""></div>
-        <div id="ciapiSkinTitleBar" class="govuk-heading-s"><span>Ask HMRC</span></div>
+        <div id="ciapiSkinTitleBar"><h2 class="govuk-heading-s govuk-!-font-size-19">Ask HMRC</h2></div>
         <div id="hideCloseContainer">
             <button id="ciapiSkinHideButton"  draggable="false" role="button" type="button" aria-label="Minimise chat window"></button>
             <button id="ciapiSkinCloseButton" draggable="false" role="button" type="button" aria-label="Close chat window"></button>
@@ -44,7 +44,7 @@ export const ContainerHtml = `
 <div id="ciapiSkinMinimised">
     <button id="ciapiSkinRestoreButton" type="button" draggable="false" role="button">
         <div id="logo-white"><img src="/ask-hmrc/assets/media/logo-white.png" alt="" aria-hidden="true"></div>
-        <h2 class="govuk-heading-s">Ask HMRC a Question</h2>
+        <h2 class="govuk-heading-s govuk-!-font-size-19">Ask HMRC a Question</h2>
     </button>
 </div>
 `

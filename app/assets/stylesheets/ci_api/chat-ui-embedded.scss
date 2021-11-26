@@ -89,6 +89,7 @@ $transcript-sub-height: $footer-height + 2*$footer-padding + $footer-top-border-
       bottom : 0;
       margin-left:5px;
       margin-right:5px;
+      clear: both;
    }
    .skipToTopWithOutScroll{
     position:absolute;
@@ -96,6 +97,7 @@ $transcript-sub-height: $footer-height + 2*$footer-padding + $footer-top-border-
     margin-left:5px;
     margin-right:5px;
     width:96%;
+    clear: both;
  }
    #skipToBottom {
       margin-left:5px;
