@@ -42,9 +42,8 @@
     <script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/bundle.js")'></script>
 
     @if(!appConfig.performanceTest){
-        <script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/ci_api.js")'></script>
-
         @{webChatClient.loadRequiredElements()}
+        @{webChatClient.loadHMRCChatSkinElement()}
     }
 }
 
