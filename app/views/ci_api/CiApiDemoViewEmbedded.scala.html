@@ -26,7 +26,7 @@
 @main_template(
 title = "Embedded",
 navTitle = Some("Embedded"),
-sidebar = cuiCJRSSidebar()) {
+sidebar = Some(cuiCJRSSidebar())) {
 
 <link @{CSPNonce.attr} rel="stylesheet" href='@routes.Assets.versioned("stylesheets/ci_api/chat-ui-embedded.css")' type="text/css">
 <script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/ci_api.js")'></script>

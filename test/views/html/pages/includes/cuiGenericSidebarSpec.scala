@@ -26,7 +26,10 @@ class cuiGenericSidebarSpec extends ViewSpecBase {
 
   private def createView: () => HtmlFormat.Appendable = () => viewWithTemplate()(fakeRequest, messages)
 
-  "behave like an include" when {
+/*Tax credits don't have any advisers on so we have disabled the sidebar as a temporary messure.
+The tests will be reenstated when the sidbar is brought back in. */
+
+/*  "behave like an include" when {
     "show the sidebar header" in {
       val doc = asDocument(createView())
       assertEqualsValue(
@@ -62,5 +65,5 @@ class cuiGenericSidebarSpec extends ViewSpecBase {
       val doc = asDocument(createView())
       assertEqualsValue(doc, "#closed-sundays", "Advisers are not available on Sundays or Bank holidays.")
     }
-  }
+  } */
 }
