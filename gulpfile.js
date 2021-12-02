@@ -8,29 +8,6 @@ const rollup = require('rollup-stream');
 const source = require('vinyl-source-stream');
 const buffer = require('vinyl-buffer');
 
-const rollupJS = (inputFile, options) => {
-  return () => {
-    return rollup({
-      input: options.basePath + inputFile,
-      format: options.format,
-      sourcemap: options.sourcemap
-    })
-    .pipe(source(inputFile, options.basePath))
-    .pipe(buffer())
-    .pipe(babel({
-       "presets": [
-         [
-           "@babel/preset-env",
-           {
-            "targets": "ie >= 11"
-           }
-         ]
-       ]
-	}))
-    .pipe(gulp.dest(options.distPath));
-  };
-}
- 
 gulp.task('jest', function () {
   return gulp.src('./test/javascripts/').pipe(jest({
     "testRegex": "((\\.|/*.)(spec))\\.js?$",
@@ -43,9 +20,24 @@ gulp.task('clean:node_modules', function () {
   return del(['node_modules'], {force: true});
 });
 
-gulp.task('bundle', rollupJS('gtm_dl.js', {
-  basePath: './app/assets/javascripts/',
-  format: 'iife',
-  distPath: './app/assets/javascripts/bundle',
-  sourcemap: false
-}));
+gulp.task('bundle', (done) => {
+    return rollup({
+      input: './app/assets/javascripts/gtm_dl.js',
+      format: 'iife',
+      sourcemap: false
+    })
+    .pipe(source('gtm_dl.js', './app/assets/javascripts/'))
+    .pipe(buffer())
+    .pipe(babel({
+       "presets": [
+         [
+           "@babel/preset-env",
+           {
+            "targets": "ie >= 11"
+           }
+         ]
+       ]
+	}))
+    .pipe(gulp.dest('./app/assets/javascripts/bundle'));
+    done();
+});
