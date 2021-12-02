@@ -19,21 +19,21 @@ package views.html.pages.templates
 import play.api.mvc.{AnyContentAsEmpty, Cookie}
 import play.api.test.FakeRequest
 import play.twirl.api.HtmlFormat
-import views.html.CUIViews.JobRetentionSchemeHelpView
+import views.html.CUIViews.SelfAssessmentCUIView
 import views.html.pages.helpers.ChatViewBehaviours
 
 class GovukWrapperCUISpec extends ChatViewBehaviours {
 
   implicit override val fakeRequest: FakeRequest[AnyContentAsEmpty.type] = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
 
-  val view: JobRetentionSchemeHelpView = app.injector.instanceOf[JobRetentionSchemeHelpView]
+  val view: SelfAssessmentCUIView = app.injector.instanceOf[SelfAssessmentCUIView]
 
   def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
   "GovukWrapperCUI" must {
     behave like generalContentCUI(
       createView,
-      "Coronavirus Job Retention Scheme: chat",
+      "Self Assessment: chat",
       "Help for businesses and employers"
     )
   }

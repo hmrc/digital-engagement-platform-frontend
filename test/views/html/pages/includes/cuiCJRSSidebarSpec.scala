@@ -17,12 +17,12 @@
 package views.html.pages.includes
 
 import play.twirl.api.HtmlFormat
-import views.html.CUIViews.JobRetentionSchemeHelpView
+import views.html.ci_api.CiApiDemoViewEmbedded
 import views.html.pages.helpers.ViewSpecBase
 
 class cuiCJRSSidebarSpec extends ViewSpecBase {
 
-  private val viewWithTemplate = app.injector.instanceOf[JobRetentionSchemeHelpView]
+  private val viewWithTemplate = app.injector.instanceOf[CiApiDemoViewEmbedded]
 
   private def createView: () => HtmlFormat.Appendable = () => viewWithTemplate()(fakeRequest, messages)
 
