@@ -20,7 +20,7 @@ import play.twirl.api.HtmlFormat
 import views.html.ci_api.CiApiDemoViewEmbedded
 import views.html.pages.helpers.ViewSpecBase
 
-class cuiCJRSSidebarSpec extends ViewSpecBase {
+class testSidebarSpec extends ViewSpecBase {
 
   private val viewWithTemplate = app.injector.instanceOf[CiApiDemoViewEmbedded]
 
