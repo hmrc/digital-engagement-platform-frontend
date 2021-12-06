@@ -44,7 +44,7 @@ $transcript-sub-height: $footer-height + 2*$footer-padding + $footer-top-border-
     border-bottom-style: solid;
     border-bottom-width: $header-border-bottom-height;
     margin-bottom: 0px !important;
-    padding-bottom: 5px;
+    padding-bottom: 8px;
 }
 
 #ciapiChatComponents {
@@ -53,12 +53,14 @@ $transcript-sub-height: $footer-height + 2*$footer-padding + $footer-top-border-
 }
 
 #ciapiSkinChatTranscript:focus {
-    outline: 3px solid #fd0;
-    outline-offset: 0;
-    -webkit-box-shadow: inset 0 0 0 2px;
-    box-shadow: inset 0 0 0 2px;
-    border-top: none;
-    border-bottom: none;
+
+        box-shadow: 0 0 0 3px #fd0;
+        border: solid #000 4px;
+        outline: none;
+        padding-right: 6px;
+        padding-left: 0px;
+        margin-top: -5px;
+        margin-bottom: 19px;
 }
 
 #skipToTopLink:focus {
