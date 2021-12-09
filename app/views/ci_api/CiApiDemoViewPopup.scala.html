@@ -31,8 +31,7 @@
     <link @{CSPNonce.attr} rel="stylesheet" href='@routes.Assets.versioned("stylesheets/ci_api/chat-ui-popup.css")' type="text/css">
 
     <h1>Popup</h1>
-    <div id="HMRC_CIAPI_Fixed_1"></div>
-    <div id="HMRC_CIAPI_Anchored_1"></div>
+    @components.webchat_container(appConfig, webChatClient)
 }
 
 @scriptElem = {
