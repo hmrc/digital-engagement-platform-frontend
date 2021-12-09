@@ -16,6 +16,7 @@
 
 package controllers
 
+import config.AppConfig
 import controllers.CuiController.{routes => cuiRoutes}
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
@@ -23,30 +24,62 @@ import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
 import play.api.mvc.{AnyContent, Request}
 import play.api.test.FakeRequest
 import play.api.test.Helpers._
+import play.twirl.api.TemplateMagic.anyToDefault
 import views.html.pages.helpers.AppBuilderSpecBase
+
+import scala.language.postfixOps
 
 class WebchatControllerSpec
     extends AppBuilderSpecBase
     with ScalaCheckPropertyChecks {
 
   private val controller = app.injector.instanceOf[WebchatController]
+  lazy val appConfig = app.injector.instanceOf[AppConfig].showSACUI.copy(false)
 
   def asDocument(html: String): Document = Jsoup.parse(html)
-
   "fixed URLs" should {
-    "render self-assessment page" in {
-
-      val result = controller.selfAssessment(fakeRequest)
+    "render self-assessment webchat page if showSACUI is false and IVR false" in {
+      //TODO need to set config.showSACUI to false and not pass in IVR fakeRequest
+      lazy val appConfig = app.injector.instanceOf[AppConfig].showSACUI.copy(false)
+      val showSACUIFakeRequest: Request[AnyContent] = FakeRequest("GET", "appConfig")
+      val result = controller.selfAssessment(showSACUIFakeRequest)
       val doc = asDocument(contentAsString(result))
 
       status(result) mustBe OK
       doc.select("h1").text() mustBe "Self Assessment: webchat"
     }
 
+//    "render self-assessment CUI page if showSACUI is true and IVR false" in {
+//      //TODO need to set config.showSACUI to true and not pass in IVR fakeRequest
+//      val result = controller.selfAssessment(fakeRequest)
+//
+//      status(result) mustBe SEE_OTHER
+//      redirectLocation(result) mustBe Some(cuiRoutes.CuiController.selfAssessment.url)
+//    }
+
+//    "render self-assessment webchat page showSACUI is false and IVR true" in {
+//      //TODO need to set config.showSACUI to false and pass in IVR fakeRequest
+//      val ivrFakeRequest: Request[AnyContent] = FakeRequest("GET", "?nuance=ivr")
+//      val result = controller.selfAssessment(ivrFakeRequest)
+//      val doc = asDocument(contentAsString(result))
+//
+//      status(result) mustBe OK
+//      doc.select("h1").text() mustBe "Self Assessment: webchat"
+//    }
+
+//    "render self-assessment webchat page if showSACUI is true and IVR true" in {
+//      //TODO need to set config.showSACUI to true and pass in IVR fakeRequest
+//      val ivrFakeRequest: Request[AnyContent] = FakeRequest("GET", "?nuance=ivr")
+//      val result = controller.selfAssessment(ivrFakeRequest)
+//      val doc = asDocument(contentAsString(result))
+//
+//      status(result) mustBe OK
+//      doc.select("h1").text() mustBe "Self Assessment: webchat"
+//    }
+
     "render tax-credits page" when {
       "ivr query param is available " in {
         val ivrFakeRequest: Request[AnyContent] = FakeRequest("GET", "?nuance=ivr")
-
         val result = controller.taxCredits(ivrFakeRequest)
         val doc = asDocument(contentAsString(result))
 

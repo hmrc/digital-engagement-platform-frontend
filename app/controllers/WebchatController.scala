@@ -68,7 +68,10 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def selfAssessment: Action[AnyContent] = Action.async { implicit request =>
-      Future.successful(Ok(selfAssessmentView(isIvrRedirect())))
+    (config.showSACUI, isIvrRedirect) match {
+      case (true, false) => Future.successful(Redirect(cuiRoutes.CuiController.selfAssessment))
+      case _ => Future.successful(Ok(selfAssessmentView(isIvrRedirect())))
+    }
   }
 
   def taxCredits: Action[AnyContent] = Action.async { implicit request =>
