@@ -15,11 +15,11 @@
  *@
 
 @import config.AppConfig
-@import templates.MainTemplateCUI
+@import templates.MainTemplateCUIv3
 @import includes.testSidebar
 @import views.html.helper.CSPNonce
 
-@this(main_template: MainTemplateCUI, appConfig: AppConfig)
+@this(main_template: MainTemplateCUIv3, appConfig: AppConfig)
 
 @()(implicit request: Request[_], messages: play.api.i18n.Messages)
 
@@ -29,7 +29,7 @@ navTitle = Some("Embedded"),
 sidebar = Some(testSidebar())) {
 
 <link @{CSPNonce.attr} rel="stylesheet" href='@routes.Assets.versioned("stylesheets/ci_api/chat-ui-embedded.css")' type="text/css">
-<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/ci_api.js")'></script>
+
 
 <div id="cui-messaging-container">
  <div id="HMRC_CIAPI_Embedded_1" class="ci-api-embedded"></div>
