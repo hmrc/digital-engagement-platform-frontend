@@ -209,10 +209,13 @@ test.sidebar.p1=The HMRC chatbot is available at any time to answer your questio
 test.sidebar.p2=If it cannot help you, you can ask to transfer to an HMRC adviser by typing ‘adviser’. Advisers work 8am to 7:30pm, Monday to Friday and do not work bank holidays.
 #CUI pages
 cui.page.title=Ask HMRC
+cui.sidebar.h2.header=Help for businesses and employers
 
 #JRS page
 cui.job.retention.scheme.title=Coronavirus Job Retention Scheme: chat
 cui.job.retention.scheme.header=Get help with the Coronavirus Job Retention Scheme - GOV.UK
+cui.job.retention.sidebar.p1=The HMRC chatbot is available at any time to answer your questions about the Coronavirus Job Retention Scheme.
+cui.job.retention.sidebar.p2=If it cannot help you, you can ask to transfer to an HMRC adviser by typing ‘adviser’. Advisers work 8am to 7:30pm, Monday to Friday and do not work bank holidays.
 
 #Self Assessment pages
 cui.self.assessment.title=Self Assessment: chat

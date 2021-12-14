@@ -16,40 +16,41 @@
 
 @import config.AppConfig
 @import uk.gov.hmrc.webchat.client.WebChatClient
-@import templates.GovukWrapper
 @import views.html.helper.CSPNonce
 
 @this(
-    govuk_wrapper: GovukWrapper,
+    govuk_wrapper: GovukWrapperCUI,
     appConfig: AppConfig,
     webChatClient: WebChatClient
 )
 
-@()(implicit request: Request[_], messages: play.api.i18n.Messages)
+@(title: String, navTitle: Option[String] = Some("Ask HMRC online"), sidebar: Option[Html] = None)(mainContent: Html)(implicit request : Request[_], messages: Messages)
 
-@mainContent = {
-    <link @{CSPNonce.attr} rel="stylesheet" href='@routes.Assets.versioned("stylesheets/ci_api/chat-ui-popup.css")' type="text/css">
-
-    <h1>Popup</h1>
-    <div id="HMRC_CIAPI_Fixed_1"></div>
-    <div id="HMRC_CIAPI_Anchored_1"></div>
+@sidebarContent = {
+    @if(sidebar.isDefined) {
+        @sidebar.get
+    }
 }
 
 @scriptElem = {
 
-    <script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/thirdparty/jquery-3.5.1.min.js")'></script>
-    <script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/custom.js")'></script>
-    <script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/bundle.js")'></script>
+<script @{CSPNonce.attr}>
+    window.isCUI = true;
+</script>
+<!--This is only used for fading elements.-->
+<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/thirdparty/jquery-3.5.1.min.js")'></script>
+<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/custom.js")'></script>
+<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/bundle.js")'></script>
 
-    @if(!appConfig.performanceTest){
+@if(!appConfig.performanceTest){
         @{webChatClient.loadRequiredElements()}
         @{webChatClient.loadHMRCChatSkinElement()}
     }
 }
 
-@govuk_wrapper(title = "Popup",
-    mainContent = mainContent,
-    scriptElem = scriptElem,
-    showHelpForm = true,
-    showBackLink = true
+@govuk_wrapper(title = title,
+               navTitle = navTitle,
+               sidebar = sidebarContent,
+               mainContent = mainContent,
+               scriptElem = Some(scriptElem)
 )
