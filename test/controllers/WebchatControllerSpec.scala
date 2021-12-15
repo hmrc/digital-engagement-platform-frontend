@@ -46,7 +46,7 @@ class WebchatControllerSpec
       //TODO need to set config.showSACUI to false and not pass in IVR fakeRequest
       implicit val appConfig: AppConfig = mock[AppConfig]
       when(appConfig.showSACUI).thenReturn(false)
-      when(controller.selfAssessment).thenReturn(Future.successful(), any())
+      //when(controller.selfAssessment).thenReturn(Future.successful, any())
       val result = controller.selfAssessment(fakeRequest)
       val doc = asDocument(contentAsString(result))
       println(s"====================appConfig.showSACUI = ${appConfig.showSACUI} =================================")
