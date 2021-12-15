@@ -20,6 +20,7 @@ import config.AppConfig
 import controllers.CuiController.{routes => cuiRoutes}
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
+import org.mockito.Matchers.any
 import org.mockito.Mockito.when
 import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
 import play.api.inject.bind
@@ -27,6 +28,8 @@ import play.api.mvc.{AnyContent, Request}
 import play.api.test.FakeRequest
 import play.api.test.Helpers._
 import views.html.pages.helpers.AppBuilderSpecBase
+
+import scala.concurrent.Future
 
 
 class WebchatControllerSpec
@@ -41,8 +44,9 @@ class WebchatControllerSpec
   "fixed URLs" should {
     "render self-assessment webchat page if showSACUI is false and IVR false" in {
       //TODO need to set config.showSACUI to false and not pass in IVR fakeRequest
-      val appConfig: AppConfig = mock[AppConfig]
+      implicit val appConfig: AppConfig = mock[AppConfig]
       when(appConfig.showSACUI).thenReturn(false)
+      when(controller.selfAssessment).thenReturn(Future.successful(), any())
       val result = controller.selfAssessment(fakeRequest)
       val doc = asDocument(contentAsString(result))
       println(s"====================appConfig.showSACUI = ${appConfig.showSACUI} =================================")
