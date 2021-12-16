@@ -219,6 +219,6 @@ cui.job.retention.sidebar.p2=If it cannot help you, you can ask to transfer to a
 
 #Self Assessment pages
 cui.self.assessment.title=Self Assessment: chat
-cui.self.assessment.sidebar.h2.header=Help for businesses and employers
-cui.self.assessment.sidebar.p1=The HMRC chatbot is available at any time to answer your questions about Self Assessment.
+cui.self.assessment.sidebar.h2.header=Self Assessment: chat
+cui.self.assessment.sidebar.p1=The HMRC digital assistant is available at any time to answer your questions about Self Assessment.
 cui.self.assessment.sidebar.p2=If it cannot help you, you can ask to transfer to an HMRC adviser by typing ‘adviser’. Advisers work 8am to 7:30pm, Monday to Saturday and do not work Sundays or bank holidays.
