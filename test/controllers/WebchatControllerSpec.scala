@@ -16,81 +16,69 @@
 
 package controllers
 
-import config.AppConfig
 import controllers.CuiController.{routes => cuiRoutes}
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
-import org.mockito.Matchers.any
-import org.mockito.Mockito.when
 import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
-import play.api.inject.bind
 import play.api.mvc.{AnyContent, Request}
 import play.api.test.FakeRequest
 import play.api.test.Helpers._
 import views.html.pages.helpers.AppBuilderSpecBase
 
-import scala.concurrent.Future
-
-
 class WebchatControllerSpec
-    extends AppBuilderSpecBase
+  extends AppBuilderSpecBase
     with ScalaCheckPropertyChecks {
 
   private val controller = app.injector.instanceOf[WebchatController]
-  //lazy val appConfig = app.injector.instanceOf[AppConfig]
 
   def asDocument(html: String): Document = Jsoup.parse(html)
 
-  "fixed URLs" should {
+  "fixed URLs" must {
     "render self-assessment webchat page if showSACUI is false and IVR false" in {
-      //TODO need to set config.showSACUI to false and not pass in IVR fakeRequest
-      implicit val appConfig: AppConfig = mock[AppConfig]
-      when(appConfig.showSACUI).thenReturn(false)
-      //when(controller.selfAssessment).thenReturn(Future.successful, any())
-      val result = controller.selfAssessment(fakeRequest)
-      val doc = asDocument(contentAsString(result))
-      println(s"====================appConfig.showSACUI = ${appConfig.showSACUI} =================================")
-      println(s"====================appConfig = ${appConfig} =================================")
+      val application = builder.configure("features.showSACUI" -> "false").build()
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Self Assessment: webchat"
+      running(application) {
+        val request = FakeRequest(GET, routes.WebchatController.selfAssessment.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Self Assessment: webchat"
+      }
     }
 
     "render self-assessment CUI page if showSACUI is true and IVR false" in {
-      //TODO need to set config.showSACUI to true and not pass in IVR fakeRequest
-      val appConfig: AppConfig = mock[AppConfig]
-      when(appConfig.showSACUI).thenReturn(true)
-      val result = controller.selfAssessment(fakeRequest)
-      println(s"====================appConfig.showSACUI = ${appConfig.showSACUI} =================================")
+      val application = builder.configure("features.showSACUI" -> "true").build()
 
-      status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(cuiRoutes.CuiController.selfAssessment.url)
+      running(application) {
+        val request = FakeRequest(GET, routes.WebchatController.selfAssessment.url)
+        val result = route(application, request).get
+        status(result) mustBe SEE_OTHER
+        redirectLocation(result) mustBe Some(cuiRoutes.CuiController.selfAssessment.url)
+      }
     }
 
     "render self-assessment webchat page showSACUI is false and IVR true" in {
-      //TODO need to set config.showSACUI to false and pass in IVR fakeRequest
-      val appConfig: AppConfig = mock[AppConfig]
-      when(appConfig.showSACUI).thenReturn(false)
-      val ivrFakeRequest: Request[AnyContent] = FakeRequest("GET", "?nuance=ivr")
-      val result = controller.selfAssessment(ivrFakeRequest)
-      val doc = asDocument(contentAsString(result))
-      println(s"====================appConfig.showSACUI = ${appConfig.showSACUI} =================================")
+      val application = builder.configure("features.showSACUI" -> "false").build()
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Self Assessment: webchat"
+      running(application) {
+        val request = FakeRequest(GET, routes.WebchatController.selfAssessment.url + "?nuance=ivr")
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Self Assessment: webchat"
+      }
     }
 
     "render self-assessment webchat page if showSACUI is true and IVR true" in {
-      //TODO need to set config.showSACUI to true and pass in IVR fakeRequest
-      val appConfig: AppConfig = mock[AppConfig]
-      when(appConfig.showSACUI).thenReturn(true)
-      val ivrFakeRequest: Request[AnyContent] = FakeRequest("GET", "?nuance=ivr")
-      val result = controller.selfAssessment(ivrFakeRequest)
-      val doc = asDocument(contentAsString(result))
-      println(s"====================appConfig.showSACUI = ${appConfig.showSACUI} =================================")
+      val application = builder.configure("features.showSACUI" -> "true").build()
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Self Assessment: webchat"
+      running(application) {
+        val request = FakeRequest(GET, routes.WebchatController.selfAssessment.url + "?nuance=ivr")
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Self Assessment: webchat"
+      }
     }
 
     "render tax-credits page" when {
@@ -105,7 +93,7 @@ class WebchatControllerSpec
     }
 
     "redirect to cui" when {
-      "ivr query param is not available "in {
+      "ivr query param is not available " in {
 
         val result = controller.taxCredits(fakeRequest)
 
@@ -307,16 +295,16 @@ class WebchatControllerSpec
     }
 
     "Personal Transport Unit Enquiries page" in {
-      val result = controller.personalTransportUnitEnquiries (fakeRequest)
-      val doc = asDocument (contentAsString (result) )
+      val result = controller.personalTransportUnitEnquiries(fakeRequest)
+      val doc = asDocument(contentAsString(result))
 
-      status (result) mustBe OK
-      doc.select ("h1").text () mustBe "Personal Transport Unit: webchat"
+      status(result) mustBe OK
+      doc.select("h1").text() mustBe "Personal Transport Unit: webchat"
     }
 
     "IR-35 Enquiries page" in {
-      val result = controller.ir35Enquiries (fakeRequest)
-      status (result) mustBe OK
+      val result = controller.ir35Enquiries(fakeRequest)
+      status(result) mustBe OK
     }
   }
 }
