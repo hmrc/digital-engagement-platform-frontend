@@ -55,5 +55,10 @@ class CuiControllerSpec
         status(result) mustBe NOT_FOUND
       }
     }
+
+    "render Ask HMRC Online page" in {
+      val result = controller.askHmrcOnline(fakeRequest)
+        status(result) mustBe OK
+    }
   }
 }
