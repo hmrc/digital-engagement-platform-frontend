@@ -309,4 +309,3 @@ class WebchatControllerSpec
   }
 }
 
-object ServicesConfig
