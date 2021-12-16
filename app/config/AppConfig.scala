@@ -37,6 +37,7 @@ class AppConfig @Inject()(config: Configuration,
   // Feature Toggles
   val showSACUI: Boolean = config.getOptional[Boolean]("features.showSACUI").getOrElse(false)
   val showCJRSSidebar: Boolean = config.getOptional[Boolean]("features.showCJRSSidebar").getOrElse(false)
+  val useDAv3: Boolean = config.getOptional[Boolean]("features.useDAv3").getOrElse(false)
   var featureNoChatExperiment: Boolean = config.getOptional[Boolean]("features.noChatExperiment").getOrElse(false)
 
   // Used in wrapper
