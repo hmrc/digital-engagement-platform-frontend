@@ -16,6 +16,8 @@
 
 package views.html.pages.helpers
 
+import com.codahale.metrics.MetricRegistry
+import com.kenshoo.play.metrics.Metrics
 import config.AppConfig
 import org.scalatest.{MustMatchers, WordSpec}
 import org.scalatestplus.mockito.MockitoSugar
@@ -28,6 +30,11 @@ import play.api.mvc.{AnyContentAsEmpty, BodyParsers}
 import play.api.test.FakeRequest
 import uk.gov.hmrc.webchat.client.WebChatClient
 import uk.gov.hmrc.webchat.testhelpers.WebChatClientStub
+
+class FakeMetrics extends Metrics {
+  override val defaultRegistry: MetricRegistry = new MetricRegistry
+  override val toJson: String = "{}"
+}
 
 trait SpecBase extends WordSpec with GuiceOneAppPerSuite with MockitoSugar with MustMatchers {
 
@@ -49,7 +56,8 @@ trait AppBuilderSpecBase extends SpecBase {
 
   lazy val builder: GuiceApplicationBuilder = new GuiceApplicationBuilder()
     .overrides(
-      bind[WebChatClient].toInstance(new WebChatClientStub)
+      bind[WebChatClient].toInstance(new WebChatClientStub),
+      bind[Metrics].toInstance(new FakeMetrics)
     )
 
   override lazy val app: Application = builder.build()

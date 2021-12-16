@@ -22,8 +22,6 @@ import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
 import play.api.test.Helpers._
 import views.html.pages.helpers.AppBuilderSpecBase
 
-import scala.language.postfixOps
-
 class CuiControllerSpec
   extends AppBuilderSpecBase with ScalaCheckPropertyChecks {
 
