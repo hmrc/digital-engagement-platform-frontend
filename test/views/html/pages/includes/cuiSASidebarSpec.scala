@@ -30,12 +30,12 @@ class sidebarSACUISpec extends ViewSpecBase {
   "behave like an include" when {
     "show the sidebar header" in {
       val doc = asDocument(createView())
-      assertEqualsValue(doc, "#cui-subsection-title", "Help for businesses and employers")
+      assertEqualsValue(doc, "#cui-subsection-title", "Self Assessment: chat")
     }
 
     "show the sidebar chatbot can paragraph" in {
       val doc = asDocument(createView())
-      assertEqualsValue(doc, "#chatbot-can", "The HMRC chatbot is available at any time to answer " +
+      assertEqualsValue(doc, "#chatbot-can", "The HMRC digital assistant is available at any time to answer " +
         "your questions about Self Assessment.")
     }
 

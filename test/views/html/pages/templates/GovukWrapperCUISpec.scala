@@ -34,7 +34,7 @@ class GovukWrapperCUISpec extends ChatViewBehaviours {
     behave like generalContentCUI(
       createView,
       "Self Assessment: chat",
-      "Help for businesses and employers"
+      "Self Assessment: chat"
     )
   }
 }
