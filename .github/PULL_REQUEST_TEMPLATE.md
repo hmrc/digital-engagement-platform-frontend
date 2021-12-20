@@ -1,32 +1,16 @@
 # DEP-(StoryNumberHere)
 
-## Bug fix / New feature (delete as appropriate)
-
-Please include a summary / description of the change and which issue it fixes.  Include any relevant user needs, context or links to other PRs related to this PR (eg. acceptance tests, environment config).
-
-## PR Suggestions
-- Have you looked at the JIRA story to make sure all Acceptance Criteria has been met?
-- Have you done a visual check of the changes?
-- Is there any still commented or unused code? Lingering printlns?
-- Have things been implemented in a complicated way?
-- Are the test still over the coverage threshold?
-- Does the compiler throw a lot of warnings? 
-- Have methods and tests been named clearly?
-- Were there any changes in the config? Do changes need to be made in app-config-???
-
-
 ## Checklist PR Raiser
- - [ ]  I've made every effort to commit high quality, clean code and I have executed relevant static analyses to be sure
- - [ ]  I've included appropriate tests with any code I've added (Unit, Integration, Acceptance etc.)
- - [ ]  I've executed the acceptance test pack locally to ensure there are no functional regressions (Performance tests where relevant)
- - [ ]  I've squashed my commits - including the JIRA issue number in the commit message
- - [ ]  I've run a dependency check to ensure all dependencies are up to date
- - [ ]  I've added the links for relevant PRs in the description
+ - [ ]  I've ensured code coverage has not decreased
+ - [ ]  I've dealt with any new compilation warnings
+ - [ ]  I've ensured the team's coding standards have been met (TBC)?
+ - [ ]  If relevant, I've created corresponding app-config-XXX changes?
+ - [ ]  If I've created new test data, I've ensured there is no real person's data (see https://confluence.tools.tax.service.gov.uk/display/CD/Test+Data+in+the+Open) 
+ - [ ]  I've considered the impact my changes have on the UI/Journey tests (please do not break them)
+-  [ ]  If relevant, I've added links to associated PRs
 
 ## Checklist PR Reviewer
- - [ ]  I've made every effort to commit high quality, clean code and I have executed relevant static analyses to be sure
- - [ ]  I've included appropriate tests with any code I've added (Unit, Integration, Acceptance etc.)
+ - [ ]  I've checked to ensure all relevant unit tests have been written
+ - [ ]  I've checked to ensure the team's coding standards have been met
  - [ ]  I've executed the acceptance test pack locally to ensure there are no functional regressions (Performance tests where relevant)
- - [ ]  I've squashed my commits - including the JIRA issue number in the commit message
- - [ ]  I've run a dependency check to ensure all dependencies are up to date
- - [ ]  I've verified the links for relevant PRs in the description before approval
+ - [ ]  If I merge I will ensure I use squash and merge
