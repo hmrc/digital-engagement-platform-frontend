@@ -26,7 +26,7 @@ class TaxCreditsCUIViewSpec extends ChatViewBehaviours {
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "Nuance Full Page CUI View" must {
+  "Tax Credits CUI View" must {
     "rendered" must {
       behave like normalCuiPage(
       createView,
