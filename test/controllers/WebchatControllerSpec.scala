@@ -104,7 +104,6 @@ class WebchatControllerSpec
 
     "render child benefit page" in {
       val result = controller.childBenefit(fakeRequest)
-      val doc = asDocument(contentAsString(result))
 
       status(result) mustBe SEE_OTHER
       redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
