@@ -14,16 +14,12 @@
  * limitations under the License.
  *@
 
-@import views.html.includes.christmasNewYearOpenTimes
-
 @()(implicit request: Request[_], messages: play.api.i18n.Messages)
+<br>
+<p>@messages("global.holidays.title")</p>
+<p>@messages("global.holidays.24")</p>
+<p>@messages("global.holidays.25to28")</p>
+<p>@messages("global.holidays.31")</p>
+<p>@messages("global.holidays.1to3")</p>
 
-<div class="app-related-items govuk-body" >
-    <h2 id="cui-subsection-title">@messages("cui.self.assessment.sidebar.h2.header")</h2>
 
-    <p id="chatbot-can">@messages("cui.self.assessment.sidebar.p1")</p>
-
-    <p id="chatbot-cannot">@messages("cui.self.assessment.sidebar.p2")</p>
-
-    @christmasNewYearOpenTimes()
-</div>

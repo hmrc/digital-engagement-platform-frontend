@@ -17,6 +17,7 @@
 @import config.AppConfig
 @import uk.gov.hmrc.webchat.client.WebChatClient
 @import views.html.templates.MainTemplate
+@import views.html.includes.christmasNewYearOpenTimes
 
 @this(
     main_template: MainTemplate,
@@ -38,6 +39,7 @@
         <p>@messages("global.opening.times.title")</p>
         <p>@messages("global.opening.times.8_30to5")</p>
         <p>@messages("global.opening.times.weekend.p")</p>
+        @christmasNewYearOpenTimes()
     </div>
 
     <h2 class="margin-top">@messages("global.webchat.title.h2")</h2>
