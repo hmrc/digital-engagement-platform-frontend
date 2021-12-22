@@ -48,7 +48,7 @@ class christmasNewYearOpenTimesSpec extends ChatViewBehaviours {
           "Friday 24 December: 9am to 3.30pm",
           "Saturday 25 December to Tuesday 28 December: closed",
           "Friday 31 December: 9am to 4pm",
-          "Saturday 1 January to 3 January: closed"
+          "Saturday 1 January to Monday 3 January: closed"
         )
       )
     }

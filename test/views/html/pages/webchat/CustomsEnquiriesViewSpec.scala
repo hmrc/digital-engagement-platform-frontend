@@ -46,7 +46,7 @@ class CustomsEnquiriesViewSpec extends ChatViewBehaviours {
         "Friday 24 December: Business as usual",
         "Saturday 25 December to Tuesday 28 December: closed",
         "Friday 31 December: Business as usual",
-        "Saturday 1 January to 3 January: closed"
+        "Saturday 1 January to Monday 3 January: 8am to 4pm"
       )
     )
   }

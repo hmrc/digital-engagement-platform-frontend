@@ -36,7 +36,8 @@ global.holidays.24BAU=Friday 24 December: Business as usual
 global.holidays.25to28=Saturday 25 December to Tuesday 28 December: closed
 global.holidays.31=Friday 31 December: 9am to 4pm
 global.holidays.31BAU=Friday 31 December: Business as usual
-global.holidays.1to3=Saturday 1 January to 3 January: closed
+global.holidays.1to3=Saturday 1 January to Monday 3 January: closed
+global.holidays.1to3open=Saturday 1 January to Monday 3 January: 8am to 4pm
 
 #Beta Banner
 global.banner.phase = BETA
