@@ -55,7 +55,8 @@ class WebchatController @Inject()(appConfig: AppConfig,
                                   inheritanceTaxView: InheritanceTaxView,
                                   additionalNeedsHelpView: AdditionalNeedsHelpView,
                                   personalTransportUnitEnquiriesView: PersonalTransportUnitEnquiriesView,
-                                  ir35EnquriesView: Ir35EnquiriesView) extends FrontendController(mcc) {
+                                  ir35EnquriesView: Ir35EnquiriesView,
+                                  serviceUnavailableView: ServiceUnavailableView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
@@ -83,7 +84,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def childBenefit: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(childBenefitView(isIvrRedirect())))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def employerEnquiries: Action[AnyContent] = Action.async { implicit request =>
@@ -184,5 +185,9 @@ class WebchatController @Inject()(appConfig: AppConfig,
 
   def ir35Enquiries: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(ir35EnquriesView()))
+  }
+
+  def serviceUnavailable: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(serviceUnavailableView()))
   }
 }

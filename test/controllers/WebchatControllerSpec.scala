@@ -106,8 +106,8 @@ class WebchatControllerSpec
       val result = controller.childBenefit(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Child Benefit: webchat"
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "render employer enquiries page" in {
@@ -305,6 +305,14 @@ class WebchatControllerSpec
     "IR-35 Enquiries page" in {
       val result = controller.ir35Enquiries(fakeRequest)
       status(result) mustBe OK
+    }
+
+    "Service unavailable page" in {
+      val result = controller.serviceUnavailable(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
+      status(result) mustBe OK
+      doc.select("h1").text() mustBe "Sorry, this webchat is unavailable"
     }
   }
 }
