@@ -177,8 +177,8 @@ class WebchatControllerSpec
       val result = controller.charitiesCommunitySports(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Charities and Community Amateur Sports Clubs: webchat"
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "render employing expatriate employees page" in {

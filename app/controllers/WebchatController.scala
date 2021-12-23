@@ -120,7 +120,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def charitiesCommunitySports: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(charitiesCommunitySportsView()))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def employingExpatriateEmployees: Action[AnyContent] = Action.async { implicit request =>

@@ -47,7 +47,7 @@ self.assessment.title=Self Assessment: webchat
 self.assessment.p1=Return to Contact HMRC
 
 service.unavailable.title = Sorry, this webchat is unavailable
-service.unavailable.p1 = You will be able to use this webchat again from April 2022.
+service.unavailable.p1 = We are hoping to provide this webchat from April 2022.
 
 #Tax Credits Webchat
 tax.credits.title=Tax credits: webchat
