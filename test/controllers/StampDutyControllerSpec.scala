@@ -44,7 +44,8 @@ class StampDutyControllerSpec
     "render annual tax on enveloped dwellings page" in {
       val result = controller.annualTaxOnEnvelopedDwellings(fakeRequest)
 
-      status(result) mustBe OK
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
   }
 }

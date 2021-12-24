@@ -161,16 +161,16 @@ class WebchatControllerSpec
       val result = controller.exciseEnquiries(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Excise: webchat"
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "render income tax enquiries page" in {
       val result = controller.incomeTaxEnquiries(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Income tax for individuals, pensioners and employees: webchat"
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "render charities community sports page" in {
@@ -185,9 +185,9 @@ class WebchatControllerSpec
       val result = controller.employingExpatriateEmployees(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Employing expatriate employees: webchat"
-    }
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
+      }
 
     "render employment related securities page" in {
       val result = controller.employmentRelatedSecurities(fakeRequest)
@@ -217,16 +217,16 @@ class WebchatControllerSpec
       val result = controller.corporationTaxEnquiries(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Corporation Tax: webchat"
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "Construction industry scheme page" in {
       val result = controller.constructionIndustryScheme(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Construction Industry Scheme: webchat"
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "VAT registration page" in {

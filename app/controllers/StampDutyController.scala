@@ -48,6 +48,6 @@ class StampDutyController @Inject()(appConfig: AppConfig,
   }
 
   def annualTaxOnEnvelopedDwellings: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(annualTaxOnEnvelopedDwellingsView()))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 }
