@@ -17,14 +17,13 @@
 package controllers.CuiController
 
 import config.AppConfig
-
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 import views.html.CUIViews.{AskHmrcOnlineCUIView, JobRetentionSchemeHelpView, SelfAssessmentCUIView}
 import views.html.CUIHMRCSkinViews.TaxCreditsCUIView
-
 import scala.concurrent.Future
+import views.html.webchat.ServiceUnavailableView
 
 @Singleton
 class CuiController @Inject()(appConfig: AppConfig,
@@ -32,7 +31,8 @@ class CuiController @Inject()(appConfig: AppConfig,
                               askHmrcOnlineCUIView: AskHmrcOnlineCUIView,
                               selfAssessmentCUIView: SelfAssessmentCUIView,
                               jobRetentionSchemeHelpView: JobRetentionSchemeHelpView,
-                              taxCreditsCUIView: TaxCreditsCUIView) extends FrontendController(mcc) {
+                              taxCreditsCUIView: TaxCreditsCUIView,
+                              serviceUnavailableView: ServiceUnavailableView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
@@ -45,7 +45,7 @@ class CuiController @Inject()(appConfig: AppConfig,
   }
 
   def jobRetentionSchemeHelp: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(jobRetentionSchemeHelpView()))
+    Future.successful((Redirect(routes.CuiController.serviceUnavailable)))
   }
 
   def helpJobRetentionScheme: Action[AnyContent] = Action.async { _ =>
@@ -59,5 +59,9 @@ class CuiController @Inject()(appConfig: AppConfig,
     else {
       Future.successful(NotFound)
     }
+  }
+
+  def serviceUnavailable: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(serviceUnavailableView()))
   }
 }

@@ -34,17 +34,17 @@ class StampDutyController @Inject()(appConfig: AppConfig,
 
   def landTax: Action[AnyContent] = Action.async { implicit request =>
     val pagePram: String = "landTax"
-    Future.successful(Ok(landDutyView(pagePram)))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def reserveTax: Action[AnyContent] = Action.async { implicit request =>
     val pagePram: String = "reserveTax"
-    Future.successful(Ok(landDutyView(pagePram)))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def sharesAndLand: Action[AnyContent] = Action.async { implicit request =>
     val pagePram: String = "sharesAndLand"
-    Future.successful(Ok(landDutyView(pagePram)))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def annualTaxOnEnvelopedDwellings: Action[AnyContent] = Action.async { implicit request =>

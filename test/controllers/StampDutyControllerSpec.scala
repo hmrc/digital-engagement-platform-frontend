@@ -29,17 +29,20 @@ class StampDutyControllerSpec
     "render land tax page" in {
       val result = controller.landTax(fakeRequest)
 
-      status(result) mustBe OK
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
     "render reserve tax page" in {
       val result = controller.reserveTax(fakeRequest)
 
-      status(result) mustBe OK
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
     "render shares and land page" in {
       val result = controller.sharesAndLand(fakeRequest)
 
-      status(result) mustBe OK
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
     "render annual tax on enveloped dwellings page" in {
       val result = controller.annualTaxOnEnvelopedDwellings(fakeRequest)

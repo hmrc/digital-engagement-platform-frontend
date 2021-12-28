@@ -34,37 +34,37 @@ class IvrControllerSpec extends AppBuilderSpecBase{
     "render child benefit page" in {
       val result = controller.childBenefit(fakeRequest)
       status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some("/ask-hmrc/webchat/child-benefit?nuance=ivr")
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "render income tax enquiries page" in {
       val result = controller.incomeTaxEnquiries(fakeRequest)
       status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some("/ask-hmrc/webchat/income-tax-enquiries-for-individuals-pensioners-and-employees?nuance=ivr")
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "render employer enquiries page" in {
       val result = controller.employerEnquiries(fakeRequest)
       status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some("/ask-hmrc/webchat/employer-enquiries?nuance=ivr")
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "render vat enquiries page" in {
       val result = controller.vatEnquiries(fakeRequest)
       status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some("/ask-hmrc/webchat/vat-enquiries?nuance=ivr")
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "render national insurance page" in {
       val result = controller.nationalInsuranceNumbers(fakeRequest)
       status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some("/ask-hmrc/webchat/national-insurance-numbers?nuance=ivr")
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "render excise page" in {
       val result = controller.exciseEnquiries(fakeRequest)
       status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some("/ask-hmrc/webchat/excise-enquiries?nuance=ivr")
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "render self-assessment page" in {
@@ -76,19 +76,19 @@ class IvrControllerSpec extends AppBuilderSpecBase{
     "render job retention page" in {
       val result = controller.jobRetentionScheme(fakeRequest)
       status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some("/ask-hmrc/webchat/job-retention-scheme?nuance=ivr")
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "self employment income support scheme page" in {
       val result = controller.selfEmploymentIncomeSupportScheme(fakeRequest)
       status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some("/ask-hmrc/webchat/self-employment-income-support-scheme?nuance=ivr")
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "c19 employer enquiries page" in {
       val result = controller.c19EmployerEnquiries(fakeRequest)
       status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some("/ask-hmrc/webchat/c19-employer-enquiries?nuance=ivr")
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
   }

@@ -45,27 +45,27 @@ class IvrController @Inject()(appConfig: AppConfig,
   }
 
   def childBenefit: Action[AnyContent] = Action.async {
-    Future.successful(Redirect(controllers.routes.WebchatController.childBenefit + param))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def incomeTaxEnquiries: Action[AnyContent] = Action.async {
-    Future.successful(Redirect(controllers.routes.WebchatController.incomeTaxEnquiries + param))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def employerEnquiries: Action[AnyContent] = Action.async {
-    Future.successful(Redirect(controllers.routes.WebchatController.employerEnquiries + param))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def vatEnquiries: Action[AnyContent] = Action.async {
-    Future.successful(Redirect(controllers.routes.WebchatController.vatEnquiries + param))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def nationalInsuranceNumbers: Action[AnyContent] = Action.async {
-    Future.successful(Redirect(controllers.routes.WebchatController.nationalInsuranceNumbers + param))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def exciseEnquiries: Action[AnyContent] = Action.async {
-    Future.successful(Redirect(controllers.routes.WebchatController.exciseEnquiries + param))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def selfAssessment: Action[AnyContent] = Action.async {
@@ -73,14 +73,14 @@ class IvrController @Inject()(appConfig: AppConfig,
   }
 
   def jobRetentionScheme: Action[AnyContent] = Action.async {
-    Future.successful(Redirect(controllers.routes.WebchatController.jobRetentionScheme + param))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def selfEmploymentIncomeSupportScheme: Action[AnyContent] = Action.async {
-    Future.successful(Redirect(controllers.routes.WebchatController.selfEmploymentIncomeSupportScheme + param))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def c19EmployerEnquiries: Action[AnyContent] = Action.async {
-    Future.successful(Redirect(controllers.routes.WebchatController.c19EmployerEnquiries + param))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 }

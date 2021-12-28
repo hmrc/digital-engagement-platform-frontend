@@ -113,24 +113,24 @@ class WebchatControllerSpec
       val result = controller.employerEnquiries(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Employers: webchat"
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "render vat enquiries page" in {
       val result = controller.vatEnquiries(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "VAT: webchat"
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "render vat online helpdesk page" in {
       val result = controller.vatOnlineServicesHelpdesk(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "VAT online services helpdesk: webchat"
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "render online services helpdesk page" in {
@@ -145,8 +145,8 @@ class WebchatControllerSpec
       val result = controller.nationalInsuranceNumbers(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "National Insurance: webchat"
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "render customs page" in {
@@ -201,8 +201,8 @@ class WebchatControllerSpec
       val result = controller.nonUkResidentEmployees(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Non-UK resident employees: webchat"
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "Non-UK resident landlords page" in {
@@ -233,8 +233,8 @@ class WebchatControllerSpec
       val result = controller.vatRegistration(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "VAT registration: webchat"
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "National clearance hub page" in {
@@ -249,16 +249,16 @@ class WebchatControllerSpec
       val result = controller.jobRetentionScheme(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Coronavirus (COVID-19): Job Retention Scheme"
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "Self Employment Income Support Scheme page" in {
       val result = controller.selfEmploymentIncomeSupportScheme(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Coronavirus (COVID-19): Self-Employment Income Support Scheme"
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "C19 Employer Enquiries page" in {
@@ -273,16 +273,16 @@ class WebchatControllerSpec
       val result = controller.probate(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Coronavirus (COVID-19): Probate"
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "Inheritance page" in {
       val result = controller.inheritanceTax(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Coronavirus (COVID-19): Inheritance Tax"
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "Additional Needs page" in {
@@ -303,7 +303,8 @@ class WebchatControllerSpec
 
     "IR-35 Enquiries page" in {
       val result = controller.ir35Enquiries(fakeRequest)
-      status(result) mustBe OK
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "Service unavailable page" in {

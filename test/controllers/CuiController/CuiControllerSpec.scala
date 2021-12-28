@@ -16,6 +16,7 @@
 
 package controllers.CuiController
 
+import controllers.routes
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
@@ -33,7 +34,8 @@ class CuiControllerSpec
     "render JRS Variant One Test page" in {
       val result = controller.jobRetentionSchemeHelp(fakeRequest)
 
-      status(result) mustBe OK
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.CuiController.serviceUnavailable.url)
     }
 
     "render JRS Variant Two Test page" in {
