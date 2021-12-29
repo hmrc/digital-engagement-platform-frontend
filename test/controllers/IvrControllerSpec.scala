@@ -88,7 +88,7 @@ class IvrControllerSpec extends AppBuilderSpecBase{
     "c19 employer enquiries page" in {
       val result = controller.c19EmployerEnquiries(fakeRequest)
       status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
+      redirectLocation(result) mustBe Some("/ask-hmrc/webchat/c19-employer-enquiries?nuance=ivr")
     }
 
   }
