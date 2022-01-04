@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 HM Revenue & Customs
+ * Copyright 2022 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@ class IvrControllerSpec extends AppBuilderSpecBase{
     "render tax-credits page" in {
       val result = controller.taxCredits(fakeRequest)
       status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some("/ask-hmrc/webchat/tax-credits-enquiries?nuance=ivr")
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "render child benefit page" in {

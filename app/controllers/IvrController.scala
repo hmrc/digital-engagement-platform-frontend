@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 HM Revenue & Customs
+ * Copyright 2022 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,28 +20,19 @@ import config.AppConfig
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
-import views.html.webchat._
 
 import scala.concurrent.Future
 
 @Singleton
 class IvrController @Inject()(appConfig: AppConfig,
-                              mcc: MessagesControllerComponents,
-                              taxCreditsView: TaxCreditsView,
-                              childBenefitView: ChildBenefitView,
-                              incomeTaxEnquiriesView: IncomeTaxEnquiriesView,
-                              employerEnquiriesView: EmployerEnquiriesView,
-                              vatEnquiriesView: VatEnquiriesView,
-                              nationalInsuranceNumbersView: NationalInsuranceNumbersView,
-                              exciseEnquiriesView: ExciseEnquiriesView,
-                              selfAssessmentView: SelfAssessmentView) extends FrontendController(mcc) {
+                              mcc: MessagesControllerComponents) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
   val param: String = "?nuance=ivr"
 
   def taxCredits: Action[AnyContent] = Action.async {
-    Future.successful(Redirect(controllers.routes.WebchatController.taxCredits + param))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def childBenefit: Action[AnyContent] = Action.async {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 HM Revenue & Customs
+ * Copyright 2022 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,7 +45,7 @@ class CuiController @Inject()(appConfig: AppConfig,
   }
 
   def jobRetentionSchemeHelp: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful((Redirect(routes.CuiController.serviceUnavailable)))
+    Future.successful(Ok(jobRetentionSchemeHelpView()))
   }
 
   def helpJobRetentionScheme: Action[AnyContent] = Action.async { _ =>

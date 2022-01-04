@@ -29,15 +29,6 @@ global.opening.time.bankholidays.8to4=Bank holidays, 8am to 4pm
 global.closed.time.sun=Closed Sundays.
 global.webchat.unavailable=Webchat is not available at the moment.
 
-#Hoildays over 2021 christmas and new years
-global.holidays.title=The following dates over Christmas and New Year have different opening times:
-global.holidays.24=Friday 24 December: 9am to 3.30pm
-global.holidays.24BAU=Friday 24 December: Business as usual
-global.holidays.25to28=Saturday 25 December to Tuesday 28 December: closed
-global.holidays.31=Friday 31 December: 9am to 4pm
-global.holidays.31BAU=Friday 31 December: Business as usual
-global.holidays.1to3=Saturday 1 January to 3 January: closed
-
 #Beta Banner
 global.banner.phase = BETA
 

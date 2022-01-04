@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 HM Revenue & Customs
+ * Copyright 2022 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 
 package controllers.CuiController
 
-import controllers.routes
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
@@ -34,8 +33,7 @@ class CuiControllerSpec
     "render JRS Variant One Test page" in {
       val result = controller.jobRetentionSchemeHelp(fakeRequest)
 
-      status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(routes.CuiController.serviceUnavailable.url)
+      status(result) mustBe OK
     }
 
     "render JRS Variant Two Test page" in {

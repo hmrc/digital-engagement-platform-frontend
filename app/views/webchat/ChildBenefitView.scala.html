@@ -1,5 +1,5 @@
 @*
- * Copyright 2021 HM Revenue & Customs
+ * Copyright 2022 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@
 @import config.AppConfig
 @import uk.gov.hmrc.webchat.client.WebChatClient
 @import views.html.templates.MainTemplate
-@import views.html.includes.christmasNewYearOpenTimes
 
 @this(
     main_template: MainTemplate,
@@ -35,7 +34,6 @@
         <p>@messages("global.opening.times.8to7_30")</p>
         <p>@messages("child.benefit.opening.times.saturday.8to3_30")</p>
         <p>@messages("global.closed.time.sun.bankholidays")</p>
-        @christmasNewYearOpenTimes()
     </div>
     <h2 class="margin-top">@messages("global.webchat.title.h2")</h2>
 
