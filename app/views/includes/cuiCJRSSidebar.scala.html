@@ -14,6 +14,8 @@
  * limitations under the License.
  *@
 
+@import views.html.includes.christmasNewYearOpenTimes
+
 @()(implicit request: Request[_], messages: play.api.i18n.Messages)
 
 <div class="app-related-items govuk-body" >
@@ -22,4 +24,6 @@
     <p id="chatbot-can">@messages("cui.job.retention.sidebar.p1")</p>
 
     <p id="chatbot-cannot">@messages("cui.job.retention.sidebar.p2")</p>
+
+    @christmasNewYearOpenTimes()
 </div>
