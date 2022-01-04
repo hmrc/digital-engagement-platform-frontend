@@ -60,8 +60,4 @@ class CuiController @Inject()(appConfig: AppConfig,
       Future.successful(NotFound)
     }
   }
-
-  def serviceUnavailable: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(serviceUnavailableView()))
-  }
 }
