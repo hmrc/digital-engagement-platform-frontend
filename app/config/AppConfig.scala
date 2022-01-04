@@ -20,11 +20,9 @@ import java.net.URLEncoder
 
 import javax.inject.{Inject, Singleton}
 import play.api.Configuration
-import uk.gov.hmrc.play.bootstrap.config.ServicesConfig
 
 @Singleton
-class AppConfig @Inject()(config: Configuration,
-                          servicesConfig: ServicesConfig) {
+class AppConfig @Inject()(config: Configuration) {
 
   private val contactHost = config.get[String]("contact-frontend.host")
 

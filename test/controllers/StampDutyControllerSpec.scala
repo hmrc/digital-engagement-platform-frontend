@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 HM Revenue & Customs
+ * Copyright 2022 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,22 +29,26 @@ class StampDutyControllerSpec
     "render land tax page" in {
       val result = controller.landTax(fakeRequest)
 
-      status(result) mustBe OK
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
     "render reserve tax page" in {
       val result = controller.reserveTax(fakeRequest)
 
-      status(result) mustBe OK
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
     "render shares and land page" in {
       val result = controller.sharesAndLand(fakeRequest)
 
-      status(result) mustBe OK
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
     "render annual tax on enveloped dwellings page" in {
       val result = controller.annualTaxOnEnvelopedDwellings(fakeRequest)
 
-      status(result) mustBe OK
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
   }
 }

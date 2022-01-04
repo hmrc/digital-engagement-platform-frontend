@@ -20,52 +20,43 @@ import config.AppConfig
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
-import views.html.webchat._
 
 import scala.concurrent.Future
 
 @Singleton
 class IvrController @Inject()(appConfig: AppConfig,
-                              mcc: MessagesControllerComponents,
-                              taxCreditsView: TaxCreditsView,
-                              childBenefitView: ChildBenefitView,
-                              incomeTaxEnquiriesView: IncomeTaxEnquiriesView,
-                              employerEnquiriesView: EmployerEnquiriesView,
-                              vatEnquiriesView: VatEnquiriesView,
-                              nationalInsuranceNumbersView: NationalInsuranceNumbersView,
-                              exciseEnquiriesView: ExciseEnquiriesView,
-                              selfAssessmentView: SelfAssessmentView) extends FrontendController(mcc) {
+                              mcc: MessagesControllerComponents) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
   val param: String = "?nuance=ivr"
 
   def taxCredits: Action[AnyContent] = Action.async {
-    Future.successful(Redirect(controllers.routes.WebchatController.taxCredits + param))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def childBenefit: Action[AnyContent] = Action.async {
-    Future.successful(Redirect(controllers.routes.WebchatController.childBenefit + param))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def incomeTaxEnquiries: Action[AnyContent] = Action.async {
-    Future.successful(Redirect(controllers.routes.WebchatController.incomeTaxEnquiries + param))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def employerEnquiries: Action[AnyContent] = Action.async {
-    Future.successful(Redirect(controllers.routes.WebchatController.employerEnquiries + param))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def vatEnquiries: Action[AnyContent] = Action.async {
-    Future.successful(Redirect(controllers.routes.WebchatController.vatEnquiries + param))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def nationalInsuranceNumbers: Action[AnyContent] = Action.async {
-    Future.successful(Redirect(controllers.routes.WebchatController.nationalInsuranceNumbers + param))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def exciseEnquiries: Action[AnyContent] = Action.async {
-    Future.successful(Redirect(controllers.routes.WebchatController.exciseEnquiries + param))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def selfAssessment: Action[AnyContent] = Action.async {
@@ -73,11 +64,11 @@ class IvrController @Inject()(appConfig: AppConfig,
   }
 
   def jobRetentionScheme: Action[AnyContent] = Action.async {
-    Future.successful(Redirect(controllers.routes.WebchatController.jobRetentionScheme + param))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def selfEmploymentIncomeSupportScheme: Action[AnyContent] = Action.async {
-    Future.successful(Redirect(controllers.routes.WebchatController.selfEmploymentIncomeSupportScheme + param))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def c19EmployerEnquiries: Action[AnyContent] = Action.async {

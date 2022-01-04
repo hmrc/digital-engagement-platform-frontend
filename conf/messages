@@ -29,16 +29,6 @@ global.opening.time.bankholidays.8to4=Bank holidays, 8am to 4pm
 global.closed.time.sun=Closed Sundays.
 global.webchat.unavailable=Webchat is not available at the moment.
 
-#Hoildays over 2021 christmas and new years
-global.holidays.title=The following dates over Christmas and New Year have different opening times:
-global.holidays.24=Friday 24 December: 9am to 3.30pm
-global.holidays.24BAU=Friday 24 December: Business as usual
-global.holidays.25to28=Saturday 25 December to Tuesday 28 December: closed
-global.holidays.31=Friday 31 December: 9am to 4pm
-global.holidays.31BAU=Friday 31 December: Business as usual
-global.holidays.1to3=Saturday 1 January to Monday 3 January: closed
-global.holidays.1to3open=Saturday 1 January to Monday 3 January: 8am to 4pm
-
 #Beta Banner
 global.banner.phase = BETA
 
@@ -46,6 +36,9 @@ global.banner.phase = BETA
 #Self Assessment Webchat
 self.assessment.title=Self Assessment: webchat
 self.assessment.p1=Return to Contact HMRC
+
+service.unavailable.title = Sorry, this webchat is unavailable
+service.unavailable.p1 = We are hoping to provide this webchat from April 2022.
 
 #Tax Credits Webchat
 tax.credits.title=Tax credits: webchat
