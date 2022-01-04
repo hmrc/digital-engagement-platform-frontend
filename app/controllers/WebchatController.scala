@@ -55,7 +55,8 @@ class WebchatController @Inject()(appConfig: AppConfig,
                                   inheritanceTaxView: InheritanceTaxView,
                                   additionalNeedsHelpView: AdditionalNeedsHelpView,
                                   personalTransportUnitEnquiriesView: PersonalTransportUnitEnquiriesView,
-                                  ir35EnquriesView: Ir35EnquiriesView) extends FrontendController(mcc) {
+                                  ir35EnquriesView: Ir35EnquiriesView,
+                                  serviceUnavailableView: ServiceUnavailableView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
@@ -83,15 +84,15 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def childBenefit: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(childBenefitView(isIvrRedirect())))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def employerEnquiries: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(employerEnquiriesView(isIvrRedirect())))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def vatEnquiries: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(vatEnquiriesView(isIvrRedirect())))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def onlineServicesHelpdesk: Action[AnyContent] = Action.async { implicit request =>
@@ -99,11 +100,11 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def vatOnlineServicesHelpdesk: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(vatOnlineServiceHelpdeskView()))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def nationalInsuranceNumbers: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(nationalInsuranceNumbersView(isIvrRedirect())))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def customsEnquiries: Action[AnyContent] = Action.async { implicit request =>
@@ -111,19 +112,19 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def exciseEnquiries: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(exciseEnquiriesView(isIvrRedirect())))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def incomeTaxEnquiries: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(incomeTaxEnquiriesView(isIvrRedirect())))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def charitiesCommunitySports: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(charitiesCommunitySportsView()))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def employingExpatriateEmployees: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(employingExpatriateEmployeesView()))
+   Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def employmentRelatedSecurities: Action[AnyContent] = Action.async { implicit request =>
@@ -131,7 +132,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def nonUkResidentEmployees: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(nonUkResidentEmployeesView()))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def nonUkResidentLandlords: Action[AnyContent] = Action.async { implicit request =>
@@ -139,15 +140,15 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def corporationTaxEnquiries: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(corporationTaxEnquiriesView(appConfig.featureNoChatExperiment)))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def constructionIndustryScheme: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(constructionIndustrySchemeView()))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def vatRegistration: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(vatRegistrationView()))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def nationalClearanceHub: Action[AnyContent] = Action.async { implicit request =>
@@ -155,11 +156,11 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def jobRetentionScheme: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(jobRetentionSchemeView(isIvrRedirect())))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def selfEmploymentIncomeSupportScheme: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(selfEmploymentIncomeSupportSchemeView(isIvrRedirect())))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def c19EmployerEnquiries: Action[AnyContent] = Action.async { implicit request =>
@@ -167,11 +168,11 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def probate: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(probateView()))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def inheritanceTax: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(inheritanceTaxView()))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def additionalNeedsHelp: Action[AnyContent] = Action.async { implicit request =>
@@ -183,6 +184,10 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def ir35Enquiries: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(ir35EnquriesView()))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
+  }
+
+  def serviceUnavailable: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(serviceUnavailableView()))
   }
 }

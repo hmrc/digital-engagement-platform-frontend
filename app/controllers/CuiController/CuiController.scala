@@ -17,14 +17,13 @@
 package controllers.CuiController
 
 import config.AppConfig
-
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 import views.html.CUIViews.{AskHmrcOnlineCUIView, JobRetentionSchemeHelpView, SelfAssessmentCUIView}
 import views.html.CUIHMRCSkinViews.TaxCreditsCUIView
-
 import scala.concurrent.Future
+import views.html.webchat.ServiceUnavailableView
 
 @Singleton
 class CuiController @Inject()(appConfig: AppConfig,
@@ -32,7 +31,8 @@ class CuiController @Inject()(appConfig: AppConfig,
                               askHmrcOnlineCUIView: AskHmrcOnlineCUIView,
                               selfAssessmentCUIView: SelfAssessmentCUIView,
                               jobRetentionSchemeHelpView: JobRetentionSchemeHelpView,
-                              taxCreditsCUIView: TaxCreditsCUIView) extends FrontendController(mcc) {
+                              taxCreditsCUIView: TaxCreditsCUIView,
+                              serviceUnavailableView: ServiceUnavailableView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 

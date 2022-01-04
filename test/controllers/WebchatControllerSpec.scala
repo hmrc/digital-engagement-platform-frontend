@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 HM Revenue & Customs
+ * Copyright 2022 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -104,34 +104,33 @@ class WebchatControllerSpec
 
     "render child benefit page" in {
       val result = controller.childBenefit(fakeRequest)
-      val doc = asDocument(contentAsString(result))
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Child Benefit: webchat"
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "render employer enquiries page" in {
       val result = controller.employerEnquiries(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Employers: webchat"
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "render vat enquiries page" in {
       val result = controller.vatEnquiries(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "VAT: webchat"
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "render vat online helpdesk page" in {
       val result = controller.vatOnlineServicesHelpdesk(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "VAT online services helpdesk: webchat"
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "render online services helpdesk page" in {
@@ -146,8 +145,8 @@ class WebchatControllerSpec
       val result = controller.nationalInsuranceNumbers(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "National Insurance: webchat"
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "render customs page" in {
@@ -162,33 +161,33 @@ class WebchatControllerSpec
       val result = controller.exciseEnquiries(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Excise: webchat"
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "render income tax enquiries page" in {
       val result = controller.incomeTaxEnquiries(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Income tax for individuals, pensioners and employees: webchat"
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "render charities community sports page" in {
       val result = controller.charitiesCommunitySports(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Charities and Community Amateur Sports Clubs: webchat"
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "render employing expatriate employees page" in {
       val result = controller.employingExpatriateEmployees(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Employing expatriate employees: webchat"
-    }
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
+      }
 
     "render employment related securities page" in {
       val result = controller.employmentRelatedSecurities(fakeRequest)
@@ -202,8 +201,8 @@ class WebchatControllerSpec
       val result = controller.nonUkResidentEmployees(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Non-UK resident employees: webchat"
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "Non-UK resident landlords page" in {
@@ -218,24 +217,24 @@ class WebchatControllerSpec
       val result = controller.corporationTaxEnquiries(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Corporation Tax: webchat"
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "Construction industry scheme page" in {
       val result = controller.constructionIndustryScheme(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Construction Industry Scheme: webchat"
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "VAT registration page" in {
       val result = controller.vatRegistration(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "VAT registration: webchat"
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "National clearance hub page" in {
@@ -250,16 +249,16 @@ class WebchatControllerSpec
       val result = controller.jobRetentionScheme(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Coronavirus (COVID-19): Job Retention Scheme"
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "Self Employment Income Support Scheme page" in {
       val result = controller.selfEmploymentIncomeSupportScheme(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Coronavirus (COVID-19): Self-Employment Income Support Scheme"
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "C19 Employer Enquiries page" in {
@@ -274,16 +273,16 @@ class WebchatControllerSpec
       val result = controller.probate(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Coronavirus (COVID-19): Probate"
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "Inheritance page" in {
       val result = controller.inheritanceTax(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Coronavirus (COVID-19): Inheritance Tax"
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "Additional Needs page" in {
@@ -304,7 +303,16 @@ class WebchatControllerSpec
 
     "IR-35 Enquiries page" in {
       val result = controller.ir35Enquiries(fakeRequest)
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
+    }
+
+    "Service unavailable page" in {
+      val result = controller.serviceUnavailable(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
       status(result) mustBe OK
+      doc.select("h1").text() mustBe "Sorry, this webchat is unavailable"
     }
   }
 }

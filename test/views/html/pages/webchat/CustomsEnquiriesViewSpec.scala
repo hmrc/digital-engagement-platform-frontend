@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 HM Revenue & Customs
+ * Copyright 2022 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,12 +41,7 @@ class CustomsEnquiriesViewSpec extends ChatViewBehaviours {
         "Opening times:",
         "Monday to Friday, 8am to 6pm",
         "Saturday and Sunday, 8am to 4pm",
-        "Bank holidays, 8am to 4pm",
-        "The following dates over Christmas and New Year have different opening times:",
-        "Friday 24 December: Business as usual",
-        "Saturday 25 December to Tuesday 28 December: closed",
-        "Friday 31 December: Business as usual",
-        "Saturday 1 January to Monday 3 January: 8am to 4pm"
+        "Bank holidays, 8am to 4pm"
       )
     )
   }

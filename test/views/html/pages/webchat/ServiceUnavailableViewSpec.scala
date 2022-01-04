@@ -14,27 +14,23 @@
  * limitations under the License.
  */
 
-package views.html.pages.CUIHMRCSkinViews
+package views.html.pages.webchat
 
 import play.twirl.api.HtmlFormat
-import views.html.CUIHMRCSkinViews.TaxCreditsCUIView
 import views.html.pages.helpers.ChatViewBehaviours
+import views.html.webchat.ServiceUnavailableView
 
-class TaxCreditsCUIViewSpec extends ChatViewBehaviours {
+class ServiceUnavailableViewSpec extends ChatViewBehaviours {
 
-  private val view = app.injector.instanceOf[TaxCreditsCUIView]
+  private val view = app.injector.instanceOf[ServiceUnavailableView]
 
-  private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
+  private def createView(): () =>
+    HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "Tax Credits CUI View" must {
-    "rendered" must {
-      behave like normalCuiPage(
-      createView,
-        "Ask HMRC online",
-        "Ask HMRC online",
-        "Ask HMRC online"
-      )
-    }
+  "Service unavailable view" must {
+    behave like generalContent(
+      createView(),
+      "Sorry, this webchat is unavailable"
+    )
   }
-
 }
