@@ -94,6 +94,12 @@ trait ChatViewBehaviours extends ViewSpecBase {
           val doc = asDocument(view())
           doc.getElementById("WEBCHAT_TEST_RequiredElements") must not be null
         }
+
+        "insert the Nuance chat container tag" in {
+          val doc = asDocument(view())
+          doc.getElementById("tc-nuance-chat-container") must not be null
+        }
+
       }
     }
   }
