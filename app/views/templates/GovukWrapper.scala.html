@@ -78,7 +78,6 @@
 
 @beforeContentBlock = {
     @if(showBackLink) { @govukBackLink(BackLink(href="#", content=Text(messages("global.back")))) }
-    <div id="tc-nuance-chat-container"></div>
 }
 
 @wrappedContent = {
@@ -89,6 +88,11 @@
 </div>
 }
 
+@footer = {
+    <div id="tc-nuance-chat-container"></div>
+    @hmrcStandardFooter(accessibilityStatementUrl=Some(appConfig.accessibilityStatementLink(request.uri)))
+}
+
 @govukLayout(
     pageTitle = Some(title),
     headBlock = Some(hmrcHead(nonce = CSPNonce.get)),
@@ -96,6 +100,6 @@
     scriptsBlock = Some(scriptsBlock),
     bodyEndBlock = Some(bodyEndBlock),
     beforeContentBlock = Some(beforeContentBlock),
-    footerBlock = Some(hmrcStandardFooter(accessibilityStatementUrl=Some(appConfig.accessibilityStatementLink(request.uri)))),
+    footerBlock = Some(footer),
     cspNonce = CSPNonce.get
 )(wrappedContent)
