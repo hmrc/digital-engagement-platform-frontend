@@ -79,3 +79,10 @@
 .form-group-error {
   padding-left: 15px;
 }
+
+.hmrc-user-research-banner__close {
+    float:right;
+    margin-top:-76px !important;
+    padding-right:10px !important;
+    padding-top: 30px !important;
+}

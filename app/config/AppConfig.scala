@@ -126,6 +126,8 @@ class AppConfig @Inject()(config: Configuration) {
   "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/stamp-duty-enquiries-shares-and-land"
   val AnnualTaxOnEnvelopedDwellingsReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/annual-tax-on-enveloped-dwellings-ated"
+  val OWUrl: String =
+    "https://zwgy80l7.optimalworkshop.com/chalkmark/ge63628o"
 
   private def accessibilityHost = config.get[String]("accessibility-statement-frontend.host")
   private def accessibilityPath = config.get[String]("accessibility-statement-frontend.path")
