@@ -193,8 +193,8 @@ class WebchatControllerSpec
       val result = controller.employmentRelatedSecurities(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Employment related securities: webchat"
+     status(result) mustBe SEE_OTHER
+     redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "Non-UK resident employees page" in {
@@ -209,8 +209,8 @@ class WebchatControllerSpec
       val result = controller.nonUkResidentLandlords(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Non-UK resident landlords: webchat"
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "Corporation tax enquiries page" in {
