@@ -128,7 +128,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def employmentRelatedSecurities: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(employmentRelatedSecuritiesView()))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def nonUkResidentEmployees: Action[AnyContent] = Action.async { implicit request =>
@@ -136,7 +136,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def nonUkResidentLandlords: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(nonUkResidentLandlordsView(isEntertainersRedirect())))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def corporationTaxEnquiries: Action[AnyContent] = Action.async { implicit request =>
