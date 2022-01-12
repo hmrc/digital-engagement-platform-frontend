@@ -164,7 +164,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def c19EmployerEnquiries: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(c19EmployerEnquiriesView(isIvrRedirect())))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def probate: Action[AnyContent] = Action.async { implicit request =>
