@@ -28,7 +28,7 @@
 @()(implicit request: Request[_], messages: play.api.i18n.Messages)
 
 @mainContent = {
-    <link @{CSPNonce.attr} rel="stylesheet" href='@routes.Assets.versioned("stylesheets/ci_api/chat-ui-popup.css")' type="text/css">
+
 
     <h1>Popup</h1>
     <div id="HMRC_CIAPI_Fixed_1"></div>
@@ -43,7 +43,6 @@
 
     @if(!appConfig.performanceTest){
         @{webChatClient.loadRequiredElements()}
-        @{webChatClient.loadHMRCChatSkinElement()}
     }
 }
 
