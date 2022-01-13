@@ -265,8 +265,8 @@ class WebchatControllerSpec
       val result = controller.c19EmployerEnquiries(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Coronavirus (COVID-19): Statutory Sick Pay rebate scheme"
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "Probate page" in {
