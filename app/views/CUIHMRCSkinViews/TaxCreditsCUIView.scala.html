@@ -24,8 +24,6 @@
 @()(implicit request: Request[_], messages: play.api.i18n.Messages)
 
 @main_template(title = messages("cui.generic.page.title")) {
-    <link @{CSPNonce.attr} rel="stylesheet" href='@routes.Assets.versioned("stylesheets/ci_api/chat-ui-embedded.css")' type="text/css">
-
     <div id="cui-messaging-container">
         <div id="nuanMessagingFrame"></div>
     </div>
