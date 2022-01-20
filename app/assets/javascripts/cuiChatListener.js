@@ -109,8 +109,6 @@ export var chatListener = {
             loadingAnimation.hide();
         });
         $('.cui-technical-error').hide();
-
-
     },
     showLoadingAnimation: function() {
         var loadingAnimation = $(this.loadingAnimationSelector);
