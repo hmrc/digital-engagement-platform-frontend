@@ -16,7 +16,6 @@
 
 package controllers
 
-import controllers.CuiController.{routes => cuiRoutes}
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
@@ -24,6 +23,7 @@ import play.api.mvc.{AnyContent, Request}
 import play.api.test.FakeRequest
 import play.api.test.Helpers._
 import views.html.pages.helpers.AppBuilderSpecBase
+import controllers.CuiController.{routes => cuiRoutes}
 
 class WebchatControllerSpec
   extends AppBuilderSpecBase
@@ -87,8 +87,11 @@ class WebchatControllerSpec
         val result = controller.taxCredits(ivrFakeRequest)
         val doc = asDocument(contentAsString(result))
 
-        status(result) mustBe OK
-        doc.select("h1").text() mustBe "Tax credits: webchat"
+       //  status(result) mustBe OK
+        // doc.select("h1").text() mustBe "Tax credits: webchat"
+
+        status(result) mustBe SEE_OTHER
+        redirectLocation(result) mustBe Some(cuiRoutes.CuiController.askHmrcOnline.url)
       }
     }
 
