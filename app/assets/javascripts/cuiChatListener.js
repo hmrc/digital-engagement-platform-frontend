@@ -108,6 +108,7 @@ export var chatListener = {
         loadingAnimation.fadeTo(1500, 0.0, function() {
             loadingAnimation.hide();
         });
+      
         if($("#ciapiSkinChatTranscript").length){
              $('.cui-technical-error').hide();
         }
