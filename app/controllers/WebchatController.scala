@@ -22,7 +22,6 @@ import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents, RequestHeader}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 import views.html.webchat._
-import views.html.CUIViews.AskHmrcOnlineCUIView
 import scala.concurrent.Future
 
 @Singleton
@@ -56,8 +55,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
                                   additionalNeedsHelpView: AdditionalNeedsHelpView,
                                   personalTransportUnitEnquiriesView: PersonalTransportUnitEnquiriesView,
                                   ir35EnquriesView: Ir35EnquiriesView,
-                                  serviceUnavailableView: ServiceUnavailableView,
-                                  askHmrcOnlineCUIView: AskHmrcOnlineCUIView) extends FrontendController(mcc) {
+                                  serviceUnavailableView: ServiceUnavailableView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 

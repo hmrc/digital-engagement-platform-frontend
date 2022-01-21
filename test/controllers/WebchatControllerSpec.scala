@@ -87,9 +87,6 @@ class WebchatControllerSpec
         val result = controller.taxCredits(ivrFakeRequest)
         val doc = asDocument(contentAsString(result))
 
-       //  status(result) mustBe OK
-        // doc.select("h1").text() mustBe "Tax credits: webchat"
-
         status(result) mustBe SEE_OTHER
         redirectLocation(result) mustBe Some(cuiRoutes.CuiController.askHmrcOnline.url)
       }

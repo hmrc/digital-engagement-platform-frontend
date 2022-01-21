@@ -20,15 +20,12 @@ import config.AppConfig
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
-
 import scala.concurrent.Future
-import views.html.CUIViews.AskHmrcOnlineCUIView
 import controllers.CuiController.{routes => cuiRoutes}
 
 @Singleton
 class IvrController @Inject()(appConfig: AppConfig,
-                              mcc: MessagesControllerComponents,
-                              askHmrcOnlineCUIView: AskHmrcOnlineCUIView) extends FrontendController(mcc) {
+                              mcc: MessagesControllerComponents) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
