@@ -22,7 +22,6 @@ import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents, RequestHeader}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 import views.html.webchat._
-
 import scala.concurrent.Future
 
 @Singleton
@@ -76,11 +75,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def taxCredits: Action[AnyContent] = Action.async { implicit request =>
-    if(isIvrRedirect()) {
-      Future.successful(Ok(taxCreditsView(isIvrRedirect())))
-    } else {
-      Future.successful(Redirect(cuiRoutes.CuiController.askHmrcOnline))
-    }
+   Future.successful(Redirect(cuiRoutes.CuiController.askHmrcOnline))
   }
 
   def childBenefit: Action[AnyContent] = Action.async { implicit request =>

@@ -18,6 +18,7 @@ package controllers
 
 import play.api.test.Helpers._
 import views.html.pages.helpers.AppBuilderSpecBase
+import controllers.CuiController.{routes => cuiRoutes}
 
 class IvrControllerSpec extends AppBuilderSpecBase{
 
@@ -28,7 +29,7 @@ class IvrControllerSpec extends AppBuilderSpecBase{
     "render tax-credits page" in {
       val result = controller.taxCredits(fakeRequest)
       status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
+      redirectLocation(result) mustBe Some(cuiRoutes.CuiController.askHmrcOnline.url)
     }
 
     "render child benefit page" in {
