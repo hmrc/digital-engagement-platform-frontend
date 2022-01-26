@@ -16,10 +16,10 @@
 
 package config
 
-import java.net.URLEncoder
-
-import javax.inject.{Inject, Singleton}
 import play.api.Configuration
+
+import java.net.URLEncoder
+import javax.inject.{Inject, Singleton}
 
 @Singleton
 class AppConfig @Inject()(config: Configuration) {
@@ -44,7 +44,6 @@ class AppConfig @Inject()(config: Configuration) {
   val reportAProblemPartialUrl: String = s"$contactHost/contact/problem_reports_ajax?service=$serviceIdentifier"
   val reportAProblemNonJSUrl: String = s"$contactHost/contact/problem_reports_nonjs?service=$serviceIdentifier"
   val betaFeedbackUnauthenticatedUrl = s"$contactHost/contact/beta-feedback-unauthenticated?service=$serviceIdentifier"
-
 
 
   val selfAssessmentReturnUrl: String =
@@ -97,7 +96,7 @@ class AppConfig @Inject()(config: Configuration) {
   val selfEmploymentIncomeSupportReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/get-help-with-the-self-employment-income-support-scheme"
   val jobRetentionSchemeReturnUrl: String =
-  "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/get-help-with-the-coronavirus-job-retention-scheme"
+    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/get-help-with-the-coronavirus-job-retention-scheme"
   val reportFraudulentActivityUrl: String = "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/report-fraud-to-hmrc"
   val checkCoveredByCoronavirusJRSUrl: String = "https://www.gov.uk/guidance/check-if-you-could-be-covered-by-the-coronavirus-job-retention-scheme"
   val probateReturnUrl: String =
@@ -121,16 +120,19 @@ class AppConfig @Inject()(config: Configuration) {
   val stampDutyLAndTaxReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/stamp-duty-land-tax"
   val stampDutyReserveTaxReturnUrl: String =
-  "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/stamp-duty-reserve-tax"
+    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/stamp-duty-reserve-tax"
   val stampDutySharesAndLAndReturnUrl: String =
-  "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/stamp-duty-enquiries-shares-and-land"
+    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/stamp-duty-enquiries-shares-and-land"
   val AnnualTaxOnEnvelopedDwellingsReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/annual-tax-on-enveloped-dwellings-ated"
   val OWUrl: String =
     "https://zwgy80l7.optimalworkshop.com/chalkmark/ge63628o"
+  val contactHMRC: String = "https://www.gov.uk/contact-hmrc"
 
   private def accessibilityHost = config.get[String]("accessibility-statement-frontend.host")
+
   private def accessibilityPath = config.get[String]("accessibility-statement-frontend.path")
+
   private val accessibilityStatementFrontendUrl: String = s"$accessibilityHost$accessibilityPath/$serviceIdentifier"
 
   def accessibilityStatementUrl(referrerUrl: String): String = {
