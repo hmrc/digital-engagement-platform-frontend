@@ -32,5 +32,10 @@ class ServiceUnavailableViewSpec extends ChatViewBehaviours {
       createView(),
       "Sorry, this webchat is unavailable"
     )
+    "display the correct link text" in {
+      val doc = asDocument(view()(fakeRequest, messages))
+      assertContainsText(doc, "find other contact details for your query")
+    }
   }
+
 }
