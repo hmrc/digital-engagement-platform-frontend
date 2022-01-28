@@ -17,13 +17,14 @@
 package controllers.CuiController
 
 import config.AppConfig
-import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
-import views.html.CUIViews.{AskHmrcOnlineCUIView, JobRetentionSchemeHelpView, SelfAssessmentCUIView}
 import views.html.CUIHMRCSkinViews.TaxCreditsCUIView
-import scala.concurrent.Future
+import views.html.CUIViews.{AskHmrcOnlineCUIView, JobRetentionSchemeHelpView, SelfAssessmentCUIView}
 import views.html.webchat.ServiceUnavailableView
+
+import javax.inject.{Inject, Singleton}
+import scala.concurrent.Future
 
 @Singleton
 class CuiController @Inject()(appConfig: AppConfig,
@@ -37,7 +38,7 @@ class CuiController @Inject()(appConfig: AppConfig,
   implicit val config: AppConfig = appConfig
 
   def askHmrcOnline: Action[AnyContent] = Action.async { implicit request =>
-    if(appConfig.useDAv3) {
+    if (appConfig.useDAv3) {
       Future.successful(Ok(taxCreditsCUIView()))
     } else {
       Future.successful(Ok(askHmrcOnlineCUIView()))
@@ -46,10 +47,6 @@ class CuiController @Inject()(appConfig: AppConfig,
 
   def jobRetentionSchemeHelp: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(jobRetentionSchemeHelpView()))
-  }
-
-  def helpJobRetentionScheme: Action[AnyContent] = Action.async { _ =>
-    Future.successful(Redirect(routes.CuiController.jobRetentionSchemeHelp))
   }
 
   def selfAssessment: Action[AnyContent] = Action.async { implicit request =>
