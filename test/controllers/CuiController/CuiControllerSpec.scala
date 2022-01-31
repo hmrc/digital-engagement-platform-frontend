@@ -36,17 +36,10 @@ class CuiControllerSpec
       status(result) mustBe OK
     }
 
-    "render JRS Variant Two Test page" in {
-      val result = controller.helpJobRetentionScheme(fakeRequest)
-
-      status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(routes.CuiController.jobRetentionSchemeHelp.url)
-    }
-
     "render SA Variant page" in {
       val result = controller.selfAssessment(fakeRequest)
 
-      if(frontendAppConfig.showSACUI) {
+      if (frontendAppConfig.showSACUI) {
         status(result) mustBe OK
       }
       else {
@@ -56,7 +49,7 @@ class CuiControllerSpec
 
     "render Ask HMRC Online page" in {
       val result = controller.askHmrcOnline(fakeRequest)
-        status(result) mustBe OK
+      status(result) mustBe OK
     }
   }
 }

@@ -64,6 +64,5 @@ GET         /accessibility-statement                                            
 
 GET         /chat/ask-hmrc-online                                                       controllers.CuiController.CuiController.askHmrcOnline
 GET         /chat/job-retention-scheme-help                                             controllers.CuiController.CuiController.jobRetentionSchemeHelp
-GET         /chat/help-job-retention-scheme                                             controllers.CuiController.CuiController.helpJobRetentionScheme
 GET         /chat/self-assessment                                                       controllers.CuiController.CuiController.selfAssessment
 
