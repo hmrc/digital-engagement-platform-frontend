@@ -14,13 +14,23 @@
  * limitations under the License.
  *@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+@import config.AppConfig
+@import templates.MainTemplateCUI
+@import includes.cuiSASidebar
 
-</body>
-</html>
+@this(main_template: MainTemplateCUI, appConfig: AppConfig)
+
+@()(implicit request: Request[_], messages: play.api.i18n.Messages)
+
+@main_template(
+title = messages("cui.self.assessment.title"),
+navTitle = Some(messages("cui.page.title")),
+sidebar = Some(cuiSASidebar())) {
+
+<div id="cui-messaging-container">
+ <div id="nuanMessagingFrame"></div>
+</div>
+<div id="cui-loading-animation" style="display:none">
+ <img src='@routes.Assets.versioned("media/cui_animation.svg")' alt="Chat is loading">
+</div>
+}
