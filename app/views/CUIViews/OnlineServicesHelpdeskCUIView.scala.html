@@ -14,21 +14,13 @@
  * limitations under the License.
  *@
 
-@import views.html.templates.MainTemplate
-@import config.AppConfig
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
 
-@this(main_template: MainTemplate, app_config: AppConfig)
-
-@()(implicit request: Request[_], messages: play.api.i18n.Messages)
-
-@main_template(title = messages("service.unavailable.title"), showBackLink = false) {
-
-<h1 class="header-margin-top govuk-heading-l">@messages("service.unavailable.title")</h1>
-
-<p class="govuk-body">@messages("service.unavailable.p1")</p>
-
-<p class="govuk-body">
-    @messages("service.unavailable.p2-1") <a id="contactHMRC" href=@app_config.contactHMRC>@messages("service.unavailable.p2-2")</a>.
-</p>
-
-}
+</body>
+</html>
