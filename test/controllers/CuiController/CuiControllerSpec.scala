@@ -54,7 +54,14 @@ class CuiControllerSpec
 
     "Online Services Helpdesk" in {
       val result = controller.onlineServicesHelpdesk(fakeRequest)
-      status(result) mustBe OK
+
+      if (frontendAppConfig.showOSHCUI) {
+        status(result) mustBe OK
+      } else {
+        status(result) mustBe NOT_FOUND
+      }
     }
   }
 }
+
+
