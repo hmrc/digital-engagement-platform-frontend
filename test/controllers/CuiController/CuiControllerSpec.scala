@@ -51,5 +51,10 @@ class CuiControllerSpec
       val result = controller.askHmrcOnline(fakeRequest)
       status(result) mustBe OK
     }
+
+    "Online Services Helpdesk" in {
+      val result = controller.onlineServicesHelpdesk(fakeRequest)
+      status(result) mustBe OK
+    }
   }
 }
