@@ -33,7 +33,6 @@ class CuiController @Inject()(appConfig: AppConfig,
                               taxCreditsCUIView: TaxCreditsCUIView,
                               onlineServicesHelpdeskCUIView: OnlineServicesHelpdeskCUIView) extends FrontendController(mcc) {
 
-
   implicit val config: AppConfig = appConfig
 
   def askHmrcOnline: Action[AnyContent] = Action.async { implicit request =>
@@ -58,6 +57,10 @@ class CuiController @Inject()(appConfig: AppConfig,
   }
 
   def onlineServicesHelpdesk: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(onlineServicesHelpdeskCUIView()))
+    if(config.showOSHCUI) {
+      Future.successful(Ok(onlineServicesHelpdeskCUIView()))
+    } else {
+      Future.successful(NotFound)
+    }
   }
 }

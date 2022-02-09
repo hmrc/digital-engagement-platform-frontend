@@ -14,7 +14,6 @@
  * limitations under the License.
  *@
 
-@import config.AppConfig
 @import templates.MainTemplateCUI
 @import includes.cuiOSHSidebar
 
@@ -23,14 +22,14 @@
 @()(implicit request: Request[_], messages: play.api.i18n.Messages)
 
 @main_template(
-title = messages("cui.online.services.helpdesk.title"),
-navTitle = Some(messages("cui.page.title")),
-sidebar = Some(cuiOSHSidebar())) {
+    title = messages("cui.online.services.helpdesk.title"),
+    navTitle = Some(messages("cui.page.title")),
+    sidebar = Some(cuiOSHSidebar())) {
 
-<div id="cui-messaging-container">
- <div id="nuanMessagingFrame"></div>
-</div>
-<div id="cui-loading-animation" style="display:none">
- <img src='@routes.Assets.versioned("media/cui_animation.svg")' alt="Chat is loading">
-</div>
+    <div id="cui-messaging-container">
+        <div id="nuanMessagingFrame"></div>
+    </div>
+    <div id="cui-loading-animation" style="display:none">
+        <img src='@routes.Assets.versioned("media/cui_animation.svg")' alt="Chat is loading">
+    </div>
 }
