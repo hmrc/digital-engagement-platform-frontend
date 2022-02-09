@@ -14,21 +14,22 @@
  * limitations under the License.
  *@
 
-@import views.html.templates.MainTemplate
-@import config.AppConfig
+@import templates.MainTemplateCUI
+@import includes.cuiOSHSidebar
 
-@this(main_template: MainTemplate, app_config: AppConfig)
+@this(main_template: MainTemplateCUI)
 
 @()(implicit request: Request[_], messages: play.api.i18n.Messages)
 
-@main_template(title = messages("service.unavailable.title"), showBackLink = false) {
+@main_template(
+    title = messages("cui.online.services.helpdesk.title"),
+    navTitle = Some(messages("cui.page.title")),
+    sidebar = Some(cuiOSHSidebar())) {
 
-<h1 class="header-margin-top govuk-heading-l">@messages("service.unavailable.title")</h1>
-
-<p class="govuk-body">@messages("service.unavailable.p1")</p>
-
-<p class="govuk-body">
-    @messages("service.unavailable.p2-1") <a id="contactHMRC" href=@app_config.contactHMRC>@messages("service.unavailable.p2-2")</a>.
-</p>
-
+    <div id="cui-messaging-container">
+        <div id="nuanMessagingFrame"></div>
+    </div>
+    <div id="cui-loading-animation" style="display:none">
+        <img src='@routes.Assets.versioned("media/cui_animation.svg")' alt="Chat is loading">
+    </div>
 }

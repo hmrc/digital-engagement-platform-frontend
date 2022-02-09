@@ -20,9 +20,7 @@ import config.AppConfig
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 import views.html.CUIHMRCSkinViews.TaxCreditsCUIView
-import views.html.CUIViews.{AskHmrcOnlineCUIView, JobRetentionSchemeHelpView, SelfAssessmentCUIView}
-import views.html.webchat.ServiceUnavailableView
-
+import views.html.CUIViews.{AskHmrcOnlineCUIView, JobRetentionSchemeHelpView, SelfAssessmentCUIView, OnlineServicesHelpdeskCUIView }
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.Future
 
@@ -33,7 +31,7 @@ class CuiController @Inject()(appConfig: AppConfig,
                               selfAssessmentCUIView: SelfAssessmentCUIView,
                               jobRetentionSchemeHelpView: JobRetentionSchemeHelpView,
                               taxCreditsCUIView: TaxCreditsCUIView,
-                              serviceUnavailableView: ServiceUnavailableView) extends FrontendController(mcc) {
+                              onlineServicesHelpdeskCUIView: OnlineServicesHelpdeskCUIView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
@@ -54,6 +52,14 @@ class CuiController @Inject()(appConfig: AppConfig,
       Future.successful(Ok(selfAssessmentCUIView()))
     }
     else {
+      Future.successful(NotFound)
+    }
+  }
+
+  def onlineServicesHelpdesk: Action[AnyContent] = Action.async { implicit request =>
+    if(config.showOSHCUI) {
+      Future.successful(Ok(onlineServicesHelpdeskCUIView()))
+    } else {
       Future.successful(NotFound)
     }
   }
