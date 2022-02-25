@@ -228,6 +228,6 @@ cui.self.assessment.sidebar.p1=The HMRC digital assistant is available at any ti
 cui.self.assessment.sidebar.p2=If it cannot help you, you can ask to transfer to an HMRC adviser by typing ‘adviser’. Advisers work 8am to 7:30pm, Monday to Saturday and do not work Sundays or bank holidays.
 
 #Online Services Helpdesk pages
-cui.online.services.helpdesk.title=Online Services Helpdesk: chat
-cui.online.services.helpdesk.sidebar.p1=The HMRC digital assistant is available at any time to answer your questions about Online Services Helpdesk.
+cui.online.services.helpdesk.title=Technical support with HMRC online services: chat
+cui.online.services.helpdesk.sidebar.p1=The HMRC digital assistant is available at any time to answer your questions about Technical support with HMRC online services.
 cui.online.services.helpdesk.sidebar.p2=If it cannot help you, you can ask to transfer to an HMRC adviser by typing ‘adviser’. Advisers work Monday to Friday, 8am to 7:30pm, Saturday, 8 to 4pm and do not work Sundays or bank holidays.

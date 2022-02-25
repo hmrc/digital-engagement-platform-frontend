@@ -31,7 +31,7 @@ class cuiOSHSidebarSpec extends ViewSpecBase {
     "show the sidebar chatbot can paragraph" in {
       val doc = asDocument(createView())
       assertEqualsValue(doc, "#chatbot-can", "The HMRC digital assistant is available at any time to answer " +
-        "your questions about Online Services Helpdesk.")
+        "your questions about Technical support with HMRC online services.")
     }
 
     "show the sidebar chatbot cannot paragraph" in {
