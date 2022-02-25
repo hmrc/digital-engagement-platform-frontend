@@ -31,8 +31,8 @@ class OnlineServicesHelpdeskCUIViewSpec extends ChatViewBehaviours {
       behave like normalCuiPage(
         createView,
         "Ask HMRC",
-        "Online Services Helpdesk: chat",
-        "Online Services Helpdesk: chat"
+        "Technical support with HMRC online services: chat",
+        "Technical support with HMRC online services: chat"
       )
     }
   }
