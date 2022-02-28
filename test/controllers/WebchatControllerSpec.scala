@@ -133,12 +133,12 @@ class WebchatControllerSpec
       redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
-    "render online services helpdesk page" in {
+    "render technical support with HMRC online services page" in {
       val result = controller.onlineServicesHelpdesk(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
       status(result) mustBe OK
-      doc.select("h1").text() mustBe "Online services helpdesk: webchat"
+      doc.select("h1").text() mustBe "Technical support with HMRC online services: chat"
     }
 
     "render national insurance page" in {
