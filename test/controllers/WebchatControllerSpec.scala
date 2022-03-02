@@ -16,6 +16,7 @@
 
 package controllers
 
+import controllers.CuiController.{routes => cuiRoutes}
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
@@ -23,7 +24,6 @@ import play.api.mvc.{AnyContent, Request}
 import play.api.test.FakeRequest
 import play.api.test.Helpers._
 import views.html.pages.helpers.AppBuilderSpecBase
-import controllers.CuiController.{routes => cuiRoutes}
 
 class WebchatControllerSpec
   extends AppBuilderSpecBase
@@ -54,6 +54,30 @@ class WebchatControllerSpec
         val result = route(application, request).get
         status(result) mustBe SEE_OTHER
         redirectLocation(result) mustBe Some(cuiRoutes.CuiController.selfAssessment.url)
+      }
+    }
+
+    "render technical support with HMRC online services page : if showOSHCUI is true" in {
+      val application = builder.configure("features.showOSHCUI" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.WebchatController.onlineServicesHelpdesk.url)
+        val result = route(application, request).get
+        status(result) mustBe SEE_OTHER
+        redirectLocation(result) mustBe Some(cuiRoutes.CuiController.onlineServicesHelpdesk.url)
+
+      }
+    }
+
+    "render technical support with HMRC online services page : if showOSHCUI is false" in {
+      val application = builder.configure("features.showOSHCUI" -> "false").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.WebchatController.onlineServicesHelpdesk.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Online services helpdesk: webchat"
       }
     }
 
@@ -133,14 +157,6 @@ class WebchatControllerSpec
       redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
-    "render technical support with HMRC online services page" in {
-      val result = controller.onlineServicesHelpdesk(fakeRequest)
-      val doc = asDocument(contentAsString(result))
-
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Technical support with HMRC online services: chat"
-    }
-
     "render national insurance page" in {
       val result = controller.nationalInsuranceNumbers(fakeRequest)
       val doc = asDocument(contentAsString(result))
@@ -187,14 +203,14 @@ class WebchatControllerSpec
 
       status(result) mustBe SEE_OTHER
       redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
-      }
+    }
 
     "render employment related securities page" in {
       val result = controller.employmentRelatedSecurities(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-     status(result) mustBe SEE_OTHER
-     redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "Non-UK resident employees page" in {
@@ -316,4 +332,6 @@ class WebchatControllerSpec
     }
   }
 }
+
+
 

@@ -20,7 +20,6 @@ import config.AppConfig
 import controllers.CuiController.{routes => cuiRoutes}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents, RequestHeader}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
-import views.html.CUIViews.OnlineServicesHelpdeskCUIView
 import views.html.webchat._
 
 import javax.inject.{Inject, Singleton}
@@ -57,8 +56,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
                                   additionalNeedsHelpView: AdditionalNeedsHelpView,
                                   personalTransportUnitEnquiriesView: PersonalTransportUnitEnquiriesView,
                                   ir35EnquriesView: Ir35EnquiriesView,
-                                  serviceUnavailableView: ServiceUnavailableView,
-                                  onlineServicesHelpdeskCUIView: OnlineServicesHelpdeskCUIView) extends FrontendController(mcc) {
+                                  serviceUnavailableView: ServiceUnavailableView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
@@ -95,7 +93,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
 
   def onlineServicesHelpdesk: Action[AnyContent] = Action.async { implicit request =>
     if (config.showOSHCUI) {
-      Future.successful(Ok(onlineServicesHelpdeskCUIView()))
+      Future.successful(Redirect(cuiRoutes.CuiController.onlineServicesHelpdesk))
     } else {
       Future.successful(Ok(onlineServiceHelpdeskView()))
     }
