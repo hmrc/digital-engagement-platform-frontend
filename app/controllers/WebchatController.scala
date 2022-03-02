@@ -16,12 +16,13 @@
 
 package controllers
 
-import controllers.CuiController.{routes => cuiRoutes}
 import config.AppConfig
-import javax.inject.{Inject, Singleton}
+import controllers.CuiController.{routes => cuiRoutes}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents, RequestHeader}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 import views.html.webchat._
+
+import javax.inject.{Inject, Singleton}
 import scala.concurrent.Future
 
 @Singleton
@@ -75,7 +76,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def taxCredits: Action[AnyContent] = Action.async { implicit request =>
-   Future.successful(Redirect(cuiRoutes.CuiController.askHmrcOnline))
+    Future.successful(Redirect(cuiRoutes.CuiController.askHmrcOnline))
   }
 
   def childBenefit: Action[AnyContent] = Action.async { implicit request =>
@@ -91,7 +92,11 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def onlineServicesHelpdesk: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(onlineServiceHelpdeskView()))
+    if (config.showOSHCUI) {
+      Future.successful(Redirect(cuiRoutes.CuiController.onlineServicesHelpdesk))
+    } else {
+      Future.successful(Ok(onlineServiceHelpdeskView()))
+    }
   }
 
   def vatOnlineServicesHelpdesk: Action[AnyContent] = Action.async { implicit request =>
@@ -119,7 +124,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def employingExpatriateEmployees: Action[AnyContent] = Action.async { implicit request =>
-   Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def employmentRelatedSecurities: Action[AnyContent] = Action.async { implicit request =>
