@@ -332,6 +332,3 @@ class WebchatControllerSpec
     }
   }
 }
-
-
-
