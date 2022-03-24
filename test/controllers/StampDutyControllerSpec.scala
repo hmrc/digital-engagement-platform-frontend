@@ -16,12 +16,13 @@
 
 package controllers
 
-import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
+import org.scalatest.matchers.must.Matchers
+import org.scalatest.wordspec.AnyWordSpecLike
 import play.api.test.Helpers._
 import views.html.pages.helpers.AppBuilderSpecBase
 
 class StampDutyControllerSpec
-    extends AppBuilderSpecBase with ScalaCheckPropertyChecks {
+    extends AppBuilderSpecBase with Matchers with AnyWordSpecLike  {
 
   private val controller = app.injector.instanceOf[StampDutyController]
 

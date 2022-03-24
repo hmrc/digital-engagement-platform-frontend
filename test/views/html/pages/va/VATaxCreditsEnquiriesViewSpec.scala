@@ -16,11 +16,13 @@
 
 package views.html.pages.va
 
+import org.scalatest.matchers.must.Matchers
+import org.scalatest.wordspec.AnyWordSpecLike
 import play.twirl.api.HtmlFormat
 import views.html.pages.helpers.ChatViewBehaviours
 import views.html.va.VATaxCreditsEnquiriesView
 
-class VATaxCreditsEnquiriesViewSpec extends ChatViewBehaviours {
+class VATaxCreditsEnquiriesViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike{
 
   private val view = app.injector.instanceOf[VATaxCreditsEnquiriesView]
   private val taxCreditsEnquiriesUrl1: String = "https://www.gov.uk/manage-your-tax-credits"

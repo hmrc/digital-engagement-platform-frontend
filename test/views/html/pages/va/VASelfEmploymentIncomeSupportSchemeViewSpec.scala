@@ -16,11 +16,13 @@
 
 package views.html.pages.va
 
+import org.scalatest.matchers.must.Matchers
+import org.scalatest.wordspec.AnyWordSpecLike
 import play.twirl.api.HtmlFormat
 import views.html.pages.helpers.ChatViewBehaviours
 import views.html.va.VASelfEmploymentIncomeSupportSchemeView
 
-class VASelfEmploymentIncomeSupportSchemeViewSpec extends ChatViewBehaviours {
+class VASelfEmploymentIncomeSupportSchemeViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike {
 
   private val view = app.injector.instanceOf[VASelfEmploymentIncomeSupportSchemeView]
   private val selfEmploymentIncomeSupportSchemeUrl =

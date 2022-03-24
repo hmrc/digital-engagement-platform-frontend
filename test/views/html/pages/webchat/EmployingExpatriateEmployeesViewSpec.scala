@@ -16,13 +16,15 @@
 
 package views.html.pages.webchat
 
+import org.scalatest.matchers.must.Matchers
+import org.scalatest.wordspec.AnyWordSpecLike
 import play.api.mvc.{AnyContentAsEmpty, Cookie}
 import play.api.test.FakeRequest
 import play.twirl.api.HtmlFormat
 import views.html.pages.helpers.ChatViewBehaviours
 import views.html.webchat.EmployingExpatriateEmployeesView
 
-class EmployingExpatriateEmployeesViewSpec extends ChatViewBehaviours {
+class EmployingExpatriateEmployeesViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike {
   implicit override val fakeRequest: FakeRequest[AnyContentAsEmpty.type] = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
 
   val view: EmployingExpatriateEmployeesView = app.injector.instanceOf[EmployingExpatriateEmployeesView]

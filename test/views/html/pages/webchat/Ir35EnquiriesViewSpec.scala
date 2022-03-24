@@ -16,11 +16,13 @@
 
 package views.html.pages.webchat
 
+import org.scalatest.matchers.must.Matchers
+import org.scalatest.wordspec.AnyWordSpecLike
 import play.twirl.api.HtmlFormat
 import views.html.pages.helpers.ChatViewBehaviours
 import views.html.webchat.Ir35EnquiriesView
 
-class Ir35EnquiriesViewSpec extends ChatViewBehaviours {
+class Ir35EnquiriesViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike {
 
   private val view = app.injector.instanceOf[Ir35EnquiriesView]
 
