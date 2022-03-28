@@ -16,11 +16,13 @@
 
 package views.html.pages.CUIViews
 
+import org.scalatest.matchers.must.Matchers
+import org.scalatest.wordspec.AnyWordSpecLike
 import play.twirl.api.HtmlFormat
 import views.html.CUIViews.JobRetentionSchemeHelpView
 import views.html.pages.helpers.ChatViewBehaviours
 
-class JobRetentionSchemeHelpViewSpec extends ChatViewBehaviours {
+class JobRetentionSchemeHelpViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike{
 
   private val view = app.injector.instanceOf[JobRetentionSchemeHelpView]
 

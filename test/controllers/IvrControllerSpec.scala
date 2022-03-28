@@ -19,8 +19,10 @@ package controllers
 import play.api.test.Helpers._
 import views.html.pages.helpers.AppBuilderSpecBase
 import controllers.CuiController.{routes => cuiRoutes}
+import org.scalatest.matchers.must.Matchers
+import org.scalatest.wordspec.AnyWordSpecLike
 
-class IvrControllerSpec extends AppBuilderSpecBase{
+class IvrControllerSpec extends AppBuilderSpecBase with Matchers with AnyWordSpecLike{
 
   private val controller = app.injector.instanceOf[IvrController]
 

@@ -19,8 +19,8 @@ package views.html.pages.helpers
 import com.codahale.metrics.MetricRegistry
 import com.kenshoo.play.metrics.Metrics
 import config.AppConfig
-import org.scalatest.{MustMatchers, WordSpec}
-import org.scalatestplus.mockito.MockitoSugar
+import org.scalatest.matchers.must.Matchers
+import org.scalatest.wordspec.AnyWordSpecLike
 import org.scalatestplus.play.guice.GuiceOneAppPerSuite
 import play.api.Application
 import play.api.i18n.{Messages, MessagesApi}
@@ -36,7 +36,7 @@ class FakeMetrics extends Metrics {
   override val toJson: String = "{}"
 }
 
-trait SpecBase extends WordSpec with GuiceOneAppPerSuite with MockitoSugar with MustMatchers {
+trait SpecBase extends AnyWordSpecLike with GuiceOneAppPerSuite with Matchers {
 
   def injector: Injector = app.injector
 

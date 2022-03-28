@@ -16,11 +16,13 @@
 
 package views.html.pages.va
 
+import org.scalatest.matchers.must.Matchers
+import org.scalatest.wordspec.AnyWordSpecLike
 import views.html.pages.helpers.ChatViewBehaviours
 import views.html.va.VACustomsInternationalTradeView
 import play.twirl.api.HtmlFormat
 
-class VACustomsInternationalTradeViewSpec extends ChatViewBehaviours {
+class VACustomsInternationalTradeViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike {
 
   private val view = app.injector.instanceOf[VACustomsInternationalTradeView]
   private val eoriUrl = "https://www.gov.uk/eori"

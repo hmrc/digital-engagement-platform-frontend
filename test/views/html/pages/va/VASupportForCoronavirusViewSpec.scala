@@ -16,11 +16,13 @@
 
 package views.html.pages.va
 
+import org.scalatest.matchers.must.Matchers
+import org.scalatest.wordspec.AnyWordSpecLike
 import play.twirl.api.HtmlFormat
 import views.html.pages.helpers.ChatViewBehaviours
 import views.html.va.VASupportForCoronavirusView
 
-class VASupportForCoronavirusViewSpec extends ChatViewBehaviours {
+class VASupportForCoronavirusViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike {
 
   private val view = app.injector.instanceOf[VASupportForCoronavirusView]
   private val coronavirusGeneralInfoUrl: String = "https://www.gov.uk/coronavirus"

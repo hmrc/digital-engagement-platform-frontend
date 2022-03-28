@@ -16,13 +16,15 @@
 
 package views.html.pages.templates
 
+import org.scalatest.matchers.must.Matchers
+import org.scalatest.wordspec.AnyWordSpecLike
 import play.api.mvc.{AnyContentAsEmpty, Cookie}
 import play.api.test.FakeRequest
 import play.twirl.api.HtmlFormat
 import views.html.CUIViews.SelfAssessmentCUIView
 import views.html.pages.helpers.ChatViewBehaviours
 
-class GovukWrapperCUISpec extends ChatViewBehaviours {
+class GovukWrapperCUISpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike {
 
   implicit override val fakeRequest: FakeRequest[AnyContentAsEmpty.type] = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
 

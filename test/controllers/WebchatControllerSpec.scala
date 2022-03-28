@@ -19,7 +19,8 @@ package controllers
 import controllers.CuiController.{routes => cuiRoutes}
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
-import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
+import org.scalatest.matchers.must.Matchers
+import org.scalatest.wordspec.AnyWordSpecLike
 import play.api.mvc.{AnyContent, Request}
 import play.api.test.FakeRequest
 import play.api.test.Helpers._
@@ -27,7 +28,8 @@ import views.html.pages.helpers.AppBuilderSpecBase
 
 class WebchatControllerSpec
   extends AppBuilderSpecBase
-    with ScalaCheckPropertyChecks {
+    with Matchers
+    with AnyWordSpecLike {
 
   private val controller = app.injector.instanceOf[WebchatController]
 

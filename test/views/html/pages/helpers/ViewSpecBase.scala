@@ -19,9 +19,11 @@ package views.html.pages.helpers
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.scalatest.Assertion
+import org.scalatest.matchers.must.Matchers
+import org.scalatest.wordspec.AnyWordSpecLike
 import play.twirl.api.Html
 
-trait ViewSpecBase extends AppBuilderSpecBase {
+trait ViewSpecBase extends AppBuilderSpecBase with Matchers with AnyWordSpecLike {
 
   def asDocument(html: Html): Document = Jsoup.parse(html.toString())
 
