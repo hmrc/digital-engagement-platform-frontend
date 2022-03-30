@@ -184,7 +184,11 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def ir35Enquiries: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(ir35EnquriesView()))
+    if (config.shutter) {
+      Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
+    } else {
+      Future.successful(Ok(ir35EnquriesView()))
+    }
   }
 
   def serviceUnavailable: Action[AnyContent] = Action.async { implicit request =>
