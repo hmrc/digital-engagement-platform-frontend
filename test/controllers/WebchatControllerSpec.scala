@@ -319,12 +319,28 @@ class WebchatControllerSpec
       doc.select("h1").text() mustBe "Personal Transport Unit: webchat"
     }
 
-    "IR-35 Enquiries page" in {
-      val result = controller.ir35Enquiries(fakeRequest)
-      val doc = asDocument(contentAsString(result))
+    "IR-35 Enquiries page is displayed if shutter flag is false" in {
+      val application = builder.configure("features.shutter" -> "false").build()
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Off-payroll working (IR35): webchat"
+      running(application) {
+        val request = FakeRequest(GET, routes.WebchatController.ir35Enquiries.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Off-payroll working (IR35): webchat"
+      }
+    }
+
+    "IR-35 Enquiries page is not displayed if shutter flag is true. Shutter page is displayed instead" in {
+      val application = builder.configure("features.shutter" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.WebchatController.ir35Enquiries.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe SEE_OTHER
+        redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
+      }
     }
 
     "Service unavailable page" in {

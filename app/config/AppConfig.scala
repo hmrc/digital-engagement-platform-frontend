@@ -38,6 +38,7 @@ class AppConfig @Inject()(config: Configuration) {
   val useDAv3: Boolean = config.getOptional[Boolean]("features.useDAv3").getOrElse(false)
   var featureNoChatExperiment: Boolean = config.getOptional[Boolean]("features.noChatExperiment").getOrElse(false)
   val showOSHCUI: Boolean = config.getOptional[Boolean]("features.showOSHCUI").getOrElse(false)
+  val shutter: Boolean = config.getOptional[Boolean]("features.shutter").getOrElse(false)
 
   // Used in wrapper
   val analyticsToken: String = config.get[String]("google-analytics.token")
