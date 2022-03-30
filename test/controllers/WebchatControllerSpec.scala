@@ -321,8 +321,10 @@ class WebchatControllerSpec
 
     "IR-35 Enquiries page" in {
       val result = controller.ir35Enquiries(fakeRequest)
-      status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
+      val doc = asDocument(contentAsString(result))
+
+      status(result) mustBe OK
+      doc.select("h1").text() mustBe "Off-payroll working (IR35): webchat"
     }
 
     "Service unavailable page" in {
