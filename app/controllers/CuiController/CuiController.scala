@@ -66,7 +66,7 @@ class CuiController @Inject()(appConfig: AppConfig,
   }
 
   def employerEnquiries: Action[AnyContent] = Action.async { implicit request =>
-    if(config.showOSHCUI) {
+    if(config.showEHLCUI) {
       Future.successful(Ok(employerEnquiriesCUIView()))
     } else {
       Future.successful(NotFound)

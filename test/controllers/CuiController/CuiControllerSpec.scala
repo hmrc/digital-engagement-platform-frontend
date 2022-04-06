@@ -65,7 +65,7 @@ class CuiControllerSpec
 
     "render employer enquiries" in {
       val result = controller.employerEnquiries(fakeRequest)
-      if (frontendAppConfig.showOSHCUI) {
+      if (frontendAppConfig.showEHLCUI) {
         status(result) mustBe OK
       } else {
         status(result) mustBe NOT_FOUND
