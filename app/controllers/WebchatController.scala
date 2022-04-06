@@ -84,7 +84,11 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def employerEnquiries: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
+    if(config.showEHLCUI) {
+      Future.successful(Redirect(cuiRoutes.CuiController.employerEnquiries))
+    } else {
+      Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
+    }
   }
 
   def vatEnquiries: Action[AnyContent] = Action.async { implicit request =>
