@@ -38,7 +38,7 @@ class sidebarEmployerEnquiriesCUISpec extends ViewSpecBase with Matchers with An
     "show the sidebar chatbot can paragraph" in {
       val doc = asDocument(createView())
       assertEqualsValue(doc, "#chatbot-can", "The HMRC digital assistant is available " +
-        "at any time to answer your questions about employers enquiries.")
+        "at any time to answer your questions about employers’ enquiries.")
     }
 
     "show the sidebar chatbot cannot paragraph" in {
