@@ -26,6 +26,8 @@ import play.api.test.FakeRequest
 import play.api.test.Helpers._
 import views.html.pages.helpers.AppBuilderSpecBase
 
+import scala.language.postfixOps
+
 class WebchatControllerSpec
   extends AppBuilderSpecBase
     with Matchers
@@ -135,12 +137,30 @@ class WebchatControllerSpec
       redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
-    "render employer enquiries page" in {
-      val result = controller.employerEnquiries(fakeRequest)
-      val doc = asDocument(contentAsString(result))
+    "render employer enquiries page when showEHLCUI is true" in {
+      val application = builder.configure("features.showEHLCUI" -> "true").build()
 
-      status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
+      running(application) {
+        val request = FakeRequest(GET, routes.WebchatController.employerEnquiries.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+
+        status(result) mustBe SEE_OTHER
+        redirectLocation(result) mustBe Some(cuiRoutes.CuiController.employerEnquiries.url)
+      }
+    }
+
+    "render service unavailable page when showEHLCUI is false" in {
+      val application = builder.configure("features.showEHLCUI" -> "false").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.WebchatController.employerEnquiries.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+
+        status(result) mustBe SEE_OTHER
+        redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
+      }
     }
 
     "render vat enquiries page" in {
