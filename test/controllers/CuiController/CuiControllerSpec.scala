@@ -53,10 +53,19 @@ class CuiControllerSpec
       status(result) mustBe OK
     }
 
-    "Online Services Helpdesk" in {
+    "render online Services Helpdesk" in {
       val result = controller.onlineServicesHelpdesk(fakeRequest)
 
       if (frontendAppConfig.showOSHCUI) {
+        status(result) mustBe OK
+      } else {
+        status(result) mustBe NOT_FOUND
+      }
+    }
+
+    "render employer enquiries" in {
+      val result = controller.employerEnquiries(fakeRequest)
+      if (frontendAppConfig.showEHLCUI) {
         status(result) mustBe OK
       } else {
         status(result) mustBe NOT_FOUND
