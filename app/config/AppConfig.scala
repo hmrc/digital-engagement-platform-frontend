@@ -29,7 +29,6 @@ class AppConfig @Inject()(config: Configuration) {
   private def encodeUrl(url: String): String = URLEncoder.encode(url, "UTF-8")
 
   val serviceIdentifier: String = "digital-engagement-platform-frontend"
-  val serviceIdentifierDav3: String = "digital-engagement-platform-frontend-dav3"
 
   val performanceTest: Boolean = config.get[Boolean]("performance-test.mode")
 
@@ -48,7 +47,6 @@ class AppConfig @Inject()(config: Configuration) {
   val reportAProblemPartialUrl: String = s"$contactHost/contact/problem_reports_ajax?service=$serviceIdentifier"
   val reportAProblemNonJSUrl: String = s"$contactHost/contact/problem_reports_nonjs?service=$serviceIdentifier"
   val betaFeedbackUnauthenticatedUrl = s"$contactHost/contact/beta-feedback-unauthenticated?service=$serviceIdentifier"
-  val betaFeedbackUnauthenticatedUrlDav3 = s"$contactHost/contact/beta-feedback-unauthenticated?service=$serviceIdentifierDav3"
 
 
   val selfAssessmentReturnUrl: String =
