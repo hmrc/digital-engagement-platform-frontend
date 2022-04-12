@@ -1,5 +1,5 @@
 export var chatListener = {
-    downTimeoutDuration: 15000,
+    downTimeoutDuration: 20000,
     engagementTimeoutDuration: 10000,
     loadingAnimationSelector: '#cui-loading-animation',
     messagingContainerSelector: '#cui-messaging-container',
