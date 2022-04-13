@@ -136,11 +136,19 @@ export var chatListener = {
         }, this.downTimeoutDuration);
 
     },
+    removeDAv3Elements: function() {
+        if($('#ciapiSkin').length < 1) {
+            console.log("this is dav2");
+            var elem = document.getElementById("hmrc-webchat-tag");
+            elem.remove();
+        }
+    },
     loadFunction: null,
     startup: function(w) {
 //        localStorage.enableJSLogging = true;
         var self = this;
         this.loadFunction = function() {
+            self.removeDAv3Elements();
             self.showLoadingAnimation();
             self.waitForSignsOfLife();
         }
