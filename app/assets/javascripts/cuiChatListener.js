@@ -139,20 +139,24 @@ export var chatListener = {
     removeDAv3Elements: function() {
         if($('#ciapiSkin').length < 1) {
             console.log("this is dav2");
-            var elem = document.getElementById("hmrc-webchat-tag");
-            elem.remove();
+            if($("#hmrc-webchat-tag").length > 0) {
+                $("#hmrc-webchat-tag").remove();
+            }
+            
         }
     },
     loadFunction: null,
     startup: function(w) {
 //        localStorage.enableJSLogging = true;
         var self = this;
+
         this.loadFunction = function() {
-            self.removeDAv3Elements();
             self.showLoadingAnimation();
             self.waitForSignsOfLife();
+            self.removeDAv3Elements();
         }
         w.addEventListener("load", this.loadFunction);
+        
     },
     shutdown: function(w) {
         w.removeEventListener("load", this.loadFunction);
