@@ -109,7 +109,7 @@ export var chatListener = {
             loadingAnimation.hide();
         });
       
-        if($("#ciapiSkinChatTranscript").length){
+        if($("#inqChatStage").length){
              $('.cui-technical-error').hide();
         }
     },
