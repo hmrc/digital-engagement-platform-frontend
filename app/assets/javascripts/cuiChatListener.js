@@ -1,6 +1,6 @@
 export var chatListener = {
-    downTimeoutDuration: 15000,
-    engagementTimeoutDuration: 10000,
+    downTimeoutDuration: 8000,
+    engagementTimeoutDuration: 4000,
     loadingAnimationSelector: '#cui-loading-animation',
     messagingContainerSelector: '#cui-messaging-container',
     nuanceDownTimeout: null,
@@ -136,15 +136,6 @@ export var chatListener = {
         }, this.downTimeoutDuration);
 
     },
-    removeDAv3Elements: function() {
-        if($('#ciapiSkin').length < 1) {
-            console.log("this is dav2");
-            if($("#hmrc-webchat-tag").length > 0) {
-                $("#hmrc-webchat-tag").remove();
-            }
-            
-        }
-    },
     loadFunction: null,
     startup: function(w) {
 //        localStorage.enableJSLogging = true;
@@ -153,7 +144,6 @@ export var chatListener = {
         this.loadFunction = function() {
             self.showLoadingAnimation();
             self.waitForSignsOfLife();
-            self.removeDAv3Elements();
         }
         w.addEventListener("load", this.loadFunction);
         
