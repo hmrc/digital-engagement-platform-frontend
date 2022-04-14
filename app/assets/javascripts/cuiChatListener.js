@@ -1,6 +1,6 @@
 export var chatListener = {
-    downTimeoutDuration: 15000,
-    engagementTimeoutDuration: 10000,
+    downTimeoutDuration: 8000,
+    engagementTimeoutDuration: 4000,
     loadingAnimationSelector: '#cui-loading-animation',
     messagingContainerSelector: '#cui-messaging-container',
     nuanceDownTimeout: null,
@@ -109,7 +109,7 @@ export var chatListener = {
             loadingAnimation.hide();
         });
       
-        if($("#ciapiSkinChatTranscript").length){
+        if($("#inqChatStage").length){
              $('.cui-technical-error').hide();
         }
     },
@@ -140,11 +140,13 @@ export var chatListener = {
     startup: function(w) {
 //        localStorage.enableJSLogging = true;
         var self = this;
+
         this.loadFunction = function() {
             self.showLoadingAnimation();
             self.waitForSignsOfLife();
         }
         w.addEventListener("load", this.loadFunction);
+        
     },
     shutdown: function(w) {
         w.removeEventListener("load", this.loadFunction);
