@@ -35,7 +35,7 @@ sm --start DIGITAL_ENGAGEMENT_PLATFORM_ALL -r
 To run the application execute
 
 ```
-sbt run
+./run_local.sh
 ```
 
 and then access the application at
