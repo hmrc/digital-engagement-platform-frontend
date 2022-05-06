@@ -21,7 +21,7 @@
 
 @this(hmrcBanner: HmrcBanner, govukPhaseBanner: GovukPhaseBanner, appConfig: AppConfig)
 
-@(params: Header)
+@(params: Header, urBanner: Boolean)
 @import params._
 
 
@@ -144,6 +144,7 @@
     } else {}
     </div>
     </div>
+    @if(urBanner){
     <div class="hmrc-user-research-banner" data-module="hmrc-user-research-banner">
         <div class="hmrc-user-research-banner__container govuk-width-container">
             <div class="hmrc-user-research-banner__text">
@@ -159,6 +160,7 @@
             </button>
         </div>
     </div>
+    }
     @phaseBanner.map { pb =>
     <div class="govuk-width-container">
         @govukPhaseBanner(pb)
@@ -182,4 +184,3 @@
         case _ => {}
     }
 }
-
