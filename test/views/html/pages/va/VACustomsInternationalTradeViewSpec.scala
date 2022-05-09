@@ -26,7 +26,9 @@ class VACustomsInternationalTradeViewSpec extends ChatViewBehaviours with Matche
 
   private val view = app.injector.instanceOf[VACustomsInternationalTradeView]
   private val eoriUrl = "https://www.gov.uk/eori"
+  private val importLink = "https://www.gov.uk/guidance/transfer-of-residence-to-great-britain"
   private val tariffLink = "https://www.gov.uk/trade-tariff"
+  private val withNILink = "https://www.gov.uk/guidance/trading-and-moving-goods-in-and-out-of-northern-ireland"
   private val importsExportsGeneralEnquiries =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/customs-international-trade-and-excise-enquiries"
 
@@ -62,12 +64,28 @@ class VACustomsInternationalTradeViewSpec extends ChatViewBehaviours with Matche
         href mustBe eoriUrl
       }
 
+      "display how to import personal belongings link" in {
+        val doc = asDocument(createView())
+        val a = doc.getElementById("customs-internation-trade-import-link")
+
+        val href = a.attr("href")
+        href mustBe importLink
+      }
+
       "display commodity codes, duty and VAT rates link" in {
         val doc = asDocument(createView())
         val a = doc.getElementById("customs-internation-trade-tariff-link")
 
         val href = a.attr("href")
         href mustBe tariffLink
+      }
+
+      "display trading with NI link" in {
+        val doc = asDocument(createView())
+        val a = doc.getElementById("customs-internation-trade-withni-link")
+
+        val href = a.attr("href")
+        href mustBe withNILink
       }
 
       "display imports and exports general enquiries link" in {

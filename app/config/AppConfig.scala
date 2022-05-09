@@ -118,7 +118,9 @@ class AppConfig @Inject()(config: Configuration) {
   val ir35EnquiriesReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/ir35-enquiries"
   val customsInternationTradeEoriUrl: String = "https://www.gov.uk/eori"
+  val customsInternationTradeImportLink: String = "https://www.gov.uk/guidance/transfer-of-residence-to-great-britain"
   val customsInternationTradeTariffLink: String = "https://www.gov.uk/trade-tariff"
+  val customsInternationTradeWithNILink: String = "https://www.gov.uk/guidance/trading-and-moving-goods-in-and-out-of-northern-ireland"
 
   val stampDutyLAndTaxReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/stamp-duty-land-tax"

@@ -189,8 +189,10 @@ tax-credits-enquiries.li2=find more ways to contact HMRC
 
 #Customs International Trade
 custom.international.trade.li1=find out how to get an EORI number
-custom.international.trade.li2=look up commodity codes, duty and VAT rates
-custom.international.trade.li3=find more ways to contact HMRC
+custom.international.trade.li2=find out how to import your personal belongings
+custom.international.trade.li3=look up commodity codes, duty and VAT rates
+custom.international.trade.li4=trading with Northern Ireland
+custom.international.trade.li5=find more ways to contact HMRC
 
 #Self Employment Income Support
 self-employment-income-support.li1=Find more ways to contact HMRC
