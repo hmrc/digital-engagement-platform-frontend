@@ -21,7 +21,7 @@
 
 @this(hmrcBanner: HmrcBanner, govukPhaseBanner: GovukPhaseBanner, appConfig: AppConfig)
 
-@(params: Header, urBanner: Boolean)
+@(params: Header)
 @import params._
 
 
@@ -144,7 +144,7 @@
     } else {}
     </div>
     </div>
-    @if(urBanner){
+    @if(appConfig.showURBanner){
     <div class="hmrc-user-research-banner" data-module="hmrc-user-research-banner">
         <div class="hmrc-user-research-banner__container govuk-width-container">
             <div class="hmrc-user-research-banner__text">
