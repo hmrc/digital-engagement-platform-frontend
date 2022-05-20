@@ -56,7 +56,7 @@ trait ChatViewBehaviours extends ViewSpecBase {
 
         "have the correct banner title" in {
           val doc = asDocument(view())
-          val nav = doc.getElementsByClass("govuk-header__link--service-name")
+          val nav = doc.getElementsByClass("hmrc-header__service-name")
           val span = nav.first
           span.text mustBe bannerTitle
         }
@@ -131,7 +131,7 @@ trait ChatViewBehaviours extends ViewSpecBase {
 
         "have the correct banner title" in {
           val doc = asDocument(view())
-          val nav = doc.getElementsByClass("govuk-header__link--service-name")
+          val nav = doc.getElementsByClass("hmrc-header__service-name")
           val span = nav.first
           span.text mustBe bannerTitle
         }

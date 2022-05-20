@@ -23,7 +23,6 @@
 @import uk.gov.hmrc.govukfrontend.views.html.components.BackLink
 @import uk.gov.hmrc.govukfrontend.views.html.components.Text
 @import views.html.helper.CSPNonce
-@import views.html.helpers.DepStandardHeader
 
 @import views.html.layouts.OurGovukLayout
 
@@ -31,7 +30,7 @@
 @this(
     govukLayout: OurGovukLayout,
     hmrcHead: HmrcHead,
-    depStandardHeader: DepStandardHeader,
+    hmrcStandardHeader: HmrcStandardHeader,
     hmrcReportTechnicalIssueHelper: HmrcReportTechnicalIssueHelper,
     hmrcStandardFooter: HmrcStandardFooter,
     hmrcBanner: HmrcBanner,
@@ -65,7 +64,7 @@
 @headerBlock = {
     <link @{CSPNonce.attr} href='@routes.Assets.versioned("stylesheets/main.css")' media="screen" rel="stylesheet" type="text/css" />
 
-    @depStandardHeader(
+    @hmrcStandardHeader(
         phaseBanner = Some(standardBetaBanner(phase=messages("global.banner.phase"), url=appConfig.betaFeedbackUnauthenticatedUrl)),
         displayHmrcBanner = false,
         serviceName = navTitle.orElse(Some(Messages("global.nav.title")))

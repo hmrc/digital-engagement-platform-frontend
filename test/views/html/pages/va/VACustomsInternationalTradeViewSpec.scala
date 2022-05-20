@@ -39,7 +39,7 @@ class VACustomsInternationalTradeViewSpec extends ChatViewBehaviours with Matche
       "rendered" must {
         "have the correct banner title" in {
           val doc = asDocument(createView())
-          val nav = doc.getElementsByClass("govuk-header__link--service-name")
+          val nav = doc.getElementsByClass("hmrc-header__service-name")
           val span = nav.first
           span.text mustBe messages("Ask HMRC’s digital assistant")
         }
