@@ -109,7 +109,7 @@ export var chatListener = {
             loadingAnimation.hide();
         });
       
-        if($("#inqChatStage").length){
+        if($("#ciapiSkin").length){
              $('.cui-technical-error').hide();
         }
     },
@@ -121,9 +121,8 @@ export var chatListener = {
         loadingAnimation.show();
     },
     technicalError: function() {
-        console.log("technicalError");
         var newDiv = $("<p>", {"class": "cui-technical-error error-message"})
-        newDiv.text('There’s a problem with chat. Try again later.')
+        newDiv.text('Sorry, there is a problem with this service. Try again later')
         $('#nuanMessagingFrame').append(newDiv);
          this.showNuanceDiv();
     },
@@ -131,7 +130,6 @@ export var chatListener = {
         var self = this;
 
         this.nuanceDownTimeout = setTimeout(function() {
-            console.log("Nuance is down...");
             self.technicalError();
         }, this.downTimeoutDuration);
 

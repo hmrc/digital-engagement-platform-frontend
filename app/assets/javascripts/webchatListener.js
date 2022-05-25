@@ -105,13 +105,11 @@ export var chatListener = {
         this.showElements(this.loadingTextSelector, true);
     },
     technicalError: function() {
-        console.log("technicalError");
         this.showNuanceDiv();
     },
     waitForSignsOfLife: function() {
         var self = this;
         this.nuanceDownTimeout = setTimeout(function() {
-            console.log("Nuance is down...");
             self.showNuanceDiv();
         }, this.downTimeoutDuration);
     },
