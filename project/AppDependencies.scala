@@ -4,16 +4,16 @@ object AppDependencies {
 
   val compile: Seq[ModuleID] = Seq(
     "org.webjars.npm" %  "hmrc-frontend"                    % "1.35.2",
-    "uk.gov.hmrc"     %% "bootstrap-frontend-play-28"       % "5.21.0",
-    "uk.gov.hmrc"     %% "play-frontend-hmrc"               % "3.8.0-play-28",
+    "uk.gov.hmrc"     %% "bootstrap-frontend-play-28"       % "5.24.0",
+    "uk.gov.hmrc"     %% "play-frontend-hmrc"               % "3.20.0-play-28",
     "uk.gov.hmrc"     %% "url-builder"                      % "3.6.0-play-28",
-    "uk.gov.hmrc"     %% "digital-engagement-platform-chat" % "0.27.0-play-28"
+    "uk.gov.hmrc"     %% "digital-engagement-platform-chat" % "0.28.0-play-28"
   )
 
   val test: Seq[ModuleID] = Seq(
-    "org.scalatest"           %% "scalatest"          % "3.2.11"  % "test",
-    "org.scalacheck"          %% "scalacheck"         % "1.15.4"  % "test",
-    "org.jsoup"               %  "jsoup"              % "1.14.3"  % "test",
+    "org.scalatest"           %% "scalatest"          % "3.2.12"  % "test",
+    "org.scalacheck"          %% "scalacheck"         % "1.16.0"  % "test",
+    "org.jsoup"               %  "jsoup"              % "1.15.1"  % "test",
     "org.mockito"             %  "mockito-all"        % "1.10.19" % "test",
     "org.pegdown"             %  "pegdown"            % "1.6.0"   % "test",
     "org.scalatestplus.play"  %% "scalatestplus-play" % "5.1.0"   % "test",
