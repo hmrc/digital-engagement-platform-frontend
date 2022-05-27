@@ -48,11 +48,6 @@ class CuiControllerSpec
       }
     }
 
-    "render Ask HMRC Online page" in {
-      val result = controller.askHmrcOnline(fakeRequest)
-      status(result) mustBe OK
-    }
-
     "render online Services Helpdesk" in {
       val result = controller.onlineServicesHelpdesk(fakeRequest)
 

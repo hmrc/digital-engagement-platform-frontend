@@ -21,7 +21,6 @@ import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 import scala.concurrent.Future
-import controllers.CuiController.{routes => cuiRoutes}
 
 @Singleton
 class IvrController @Inject()(appConfig: AppConfig,
@@ -30,10 +29,6 @@ class IvrController @Inject()(appConfig: AppConfig,
   implicit val config: AppConfig = appConfig
 
   val param: String = "?nuance=ivr"
-
-  def taxCredits: Action[AnyContent] = Action.async {
-    Future.successful(Redirect(cuiRoutes.CuiController.askHmrcOnline))
-  }
 
   def childBenefit: Action[AnyContent] = Action.async {
     Future.successful(Redirect(routes.WebchatController.serviceUnavailable))

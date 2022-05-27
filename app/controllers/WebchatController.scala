@@ -50,10 +50,6 @@ class WebchatController @Inject()(appConfig: AppConfig,
     }
   }
 
-  def taxCredits: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(cuiRoutes.CuiController.askHmrcOnline))
-  }
-
   def childBenefit: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }

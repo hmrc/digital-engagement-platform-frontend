@@ -17,7 +17,6 @@
 package controllers
 
 import config.AppConfig
-import controllers.CuiController.{routes => cuiRoutes}
 
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
@@ -37,10 +36,6 @@ class VirtualAssistantController @Inject()(appConfig: AppConfig,
 
   def supportForCoronavirus: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(supportForCoronavirusView()))
-  }
-
-  def taxCreditsEnquiries: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(cuiRoutes.CuiController.askHmrcOnline))
   }
 
   def customesInternationalTrade: Action[AnyContent] = Action.async { implicit request =>
