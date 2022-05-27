@@ -28,12 +28,6 @@ class IvrControllerSpec extends AppBuilderSpecBase with Matchers with AnyWordSpe
 
   "ivr redirect URLs" should {
 
-    "render tax-credits page" in {
-      val result = controller.taxCredits(fakeRequest)
-      status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(cuiRoutes.CuiController.askHmrcOnline.url)
-    }
-
     "render child benefit page" in {
       val result = controller.childBenefit(fakeRequest)
       status(result) mustBe SEE_OTHER

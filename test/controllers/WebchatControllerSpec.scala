@@ -109,27 +109,6 @@ class WebchatControllerSpec
       }
     }
 
-    "render tax-credits page" when {
-      "ivr query param is available " in {
-        val ivrFakeRequest: Request[AnyContent] = FakeRequest("GET", "?nuance=ivr")
-        val result = controller.taxCredits(ivrFakeRequest)
-        val doc = asDocument(contentAsString(result))
-
-        status(result) mustBe SEE_OTHER
-        redirectLocation(result) mustBe Some(cuiRoutes.CuiController.askHmrcOnline.url)
-      }
-    }
-
-    "redirect to cui" when {
-      "ivr query param is not available " in {
-
-        val result = controller.taxCredits(fakeRequest)
-
-        status(result) mustBe SEE_OTHER
-        redirectLocation(result) mustBe Some(cuiRoutes.CuiController.askHmrcOnline.url)
-      }
-    }
-
     "render child benefit page" in {
       val result = controller.childBenefit(fakeRequest)
 

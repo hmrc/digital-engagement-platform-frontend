@@ -7,7 +7,6 @@ GET         /assets/*file           controllers.Assets.versioned(path="/public",
 GET         /webchat/service-unavailable                                                controllers.WebchatController.serviceUnavailable
 
 GET         /webchat/self-assessment                                                    controllers.WebchatController.selfAssessment
-GET         /webchat/tax-credits-enquiries                                              controllers.WebchatController.taxCredits
 GET         /webchat/child-benefit                                                      controllers.WebchatController.childBenefit
 GET         /webchat/employer-enquiries                                                 controllers.WebchatController.employerEnquiries
 GET         /webchat/vat-enquiries                                                      controllers.WebchatController.vatEnquiries
@@ -42,7 +41,6 @@ GET         /webchat/annual-tax-on-enveloped-dwellings                          
 
 GET         /webchat/payment-problems                                                   controllers.PaymentProblemsController.paymentProblem
 
-GET         /ivr/taxcredits                                                             controllers.IvrController.taxCredits
 GET         /ivr/childbenefit                                                           controllers.IvrController.childBenefit
 GET         /ivr/paye                                                                   controllers.IvrController.incomeTaxEnquiries
 GET         /ivr/employers                                                              controllers.IvrController.employerEnquiries
@@ -55,14 +53,14 @@ GET         /ivr/c19seiss                                                       
 GET         /ivr/c19employer                                                            controllers.IvrController.c19EmployerEnquiries
 
 GET         /virtual-assistant/support-for-coronavirus                                  controllers.VirtualAssistantController.supportForCoronavirus
-GET         /virtual-assistant/tax-credits-enquiries                                    controllers.VirtualAssistantController.taxCreditsEnquiries
 GET         /virtual-assistant/customs-and-international-trade-enquiries                controllers.VirtualAssistantController.customesInternationalTrade
 GET         /virtual-assistant/self-employment-income-support-scheme                    controllers.VirtualAssistantController.selfEmploymentIncomeSupportScheme
 
 GET         /accessibility-statement                                                    controllers.AccessibilityStatementController.accessibility(userAction: Option[String])
 
-GET         /chat/ask-hmrc-online                                                       controllers.CuiController.CuiController.askHmrcOnline
 GET         /chat/job-retention-scheme-help                                             controllers.CuiController.CuiController.jobRetentionSchemeHelp
 GET         /chat/self-assessment                                                       controllers.CuiController.CuiController.selfAssessment
 GET         /chat/online-services-helpdesk                                              controllers.CuiController.CuiController.onlineServicesHelpdesk
 GET         /chat/employer-enquiries                                                    controllers.CuiController.CuiController.employerEnquiries
+
+GET         /chat/ask-hmrc-online                                                       controllers.CiapiController.CiapiController.askHmrcOnline

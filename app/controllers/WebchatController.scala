@@ -29,7 +29,6 @@ import scala.concurrent.Future
 class WebchatController @Inject()(appConfig: AppConfig,
                                   mcc: MessagesControllerComponents,
                                   selfAssessmentView: SelfAssessmentView,
-                                  taxCreditsView: TaxCreditsView,
                                   childBenefitView: ChildBenefitView,
                                   customsEnquiriesView: CustomsEnquiriesView,
                                   exciseEnquiriesView: ExciseEnquiriesView,
@@ -73,10 +72,6 @@ class WebchatController @Inject()(appConfig: AppConfig,
       case (true, false) => Future.successful(Redirect(cuiRoutes.CuiController.selfAssessment))
       case _ => Future.successful(Ok(selfAssessmentView(isIvrRedirect())))
     }
-  }
-
-  def taxCredits: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(cuiRoutes.CuiController.askHmrcOnline))
   }
 
   def childBenefit: Action[AnyContent] = Action.async { implicit request =>

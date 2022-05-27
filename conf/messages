@@ -37,12 +37,11 @@ global.banner.phase = BETA
 self.assessment.title=Self Assessment: webchat
 self.assessment.p1=Return to Contact HMRC
 
+#Service Unavailable Page
 service.unavailable.title = Sorry, this webchat is unavailable
 service.unavailable.p1 = We are hoping to provide this webchat from June 2022.
 service.unavailable.p2-1 = You can
 service.unavailable.p2-2 = find other contact details for your query
-#Tax Credits Webchat
-tax.credits.title=Tax credits: webchat
 
 #Child Benefit Webchat
 child.benefit.title=Child Benefit: webchat
@@ -109,7 +108,7 @@ corporation.tax.enquiries.p1=You’ll need your 10 digit Unique Tax Reference (U
 #Construction Industry Scheme
 construction.industry.scheme.title=Construction Industry Scheme: webchat
 
-#vat.registration
+#VAT registration
 vat.registration.title=VAT registration: webchat
 
 #National Clearance Hub
@@ -183,10 +182,6 @@ support.for.coronavirus.p1=You can also:
 support.for.coronavirus.linkto.general.info=find general coronavirus information
 support.for.coronavirus.linkto.coronavirus.help=contact HMRC for coronavirus help
 
-#Tax Credits Enquiries
-tax-credits-enquiries.li1=manage your tax credits online
-tax-credits-enquiries.li2=find more ways to contact HMRC
-
 #Customs International Trade
 custom.international.trade.li1=find out how to get an EORI number
 custom.international.trade.li2=find out how to import your personal belongings
@@ -200,16 +195,7 @@ self-employment-income-support.li1=Find more ways to contact HMRC
 #Nuance Full Page CUI Test Page
 nuance.full.page.cui.test.page.title=Test full page CUI for webchat
 
-#Generic CUI page
-cui.generic.page.title=Ask HMRC online
-
-#Sidebar
-cui.generic.sidebar.header=HMRC’s digital assistant is available at any time to answer your questions.
-cui.generic.sidebar.p1=If it cannot help you, you can ask to transfer to an HMRC adviser by typing ‘adviser’.
-cui.generic.sidebar.p2=Advisers are available:
-cui.generic.sidebar.p3=Advisers are not available on Sundays or Bank holidays.
-
-#test sidebar
+#Test sidebar
 test.sidebar.h2.header=Help for businesses and employers
 test.sidebar.p1=The HMRC chatbot is available at any time to answer your questions about the Coronavirus Job Retention Scheme.
 test.sidebar.p2=If it cannot help you, you can ask to transfer to an HMRC adviser by typing ‘adviser’. Advisers work 8am to 7:30pm, Monday to Friday and do not work bank holidays.
@@ -238,3 +224,6 @@ cui.online.services.helpdesk.sidebar.p2=If it cannot help you, you can ask to tr
 cui.employer.enquiries.title=Employers enquiries: chat
 cui.employer.enquiries.sidebar.p1=The HMRC digital assistant is available at any time to answer your questions about employers enquiries.
 cui.employer.enquiries.sidebar.p2=If it cannot help you, you can ask to transfer to an HMRC adviser by typing ‘adviser’. Advisers work 8am to 6pm, Monday to Friday and do not work weekends or bank holidays.
+
+#CIAPI
+ciapi.tax.credits.page.title=Ask HMRC online
