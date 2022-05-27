@@ -20,30 +20,24 @@ import config.AppConfig
 import javax.inject.Inject
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
-import views.html.webchat.{AnnualTaxOnEnvelopedDwellingsView, StampDutyView}
 
 import scala.concurrent.Future
 
 
 class StampDutyController @Inject()(appConfig: AppConfig,
-                                   mcc: MessagesControllerComponents,
-                                   landDutyView: StampDutyView,
-                                   annualTaxOnEnvelopedDwellingsView: AnnualTaxOnEnvelopedDwellingsView) extends FrontendController(mcc) {
+                                   mcc: MessagesControllerComponents) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
   def landTax: Action[AnyContent] = Action.async { implicit request =>
-    val pagePram: String = "landTax"
     Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def reserveTax: Action[AnyContent] = Action.async { implicit request =>
-    val pagePram: String = "reserveTax"
     Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def sharesAndLand: Action[AnyContent] = Action.async { implicit request =>
-    val pagePram: String = "sharesAndLand"
     Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 

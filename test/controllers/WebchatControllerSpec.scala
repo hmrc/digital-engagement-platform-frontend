@@ -122,7 +122,6 @@ class WebchatControllerSpec
       running(application) {
         val request = FakeRequest(GET, routes.WebchatController.employerEnquiries.url)
         val result = route(application, request).get
-        val doc = asDocument(contentAsString(result))
 
         status(result) mustBe SEE_OTHER
         redirectLocation(result) mustBe Some(cuiRoutes.CuiController.employerEnquiries.url)
@@ -135,7 +134,6 @@ class WebchatControllerSpec
       running(application) {
         val request = FakeRequest(GET, routes.WebchatController.employerEnquiries.url)
         val result = route(application, request).get
-        val doc = asDocument(contentAsString(result))
 
         status(result) mustBe SEE_OTHER
         redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
@@ -144,7 +142,6 @@ class WebchatControllerSpec
 
     "render vat enquiries page" in {
       val result = controller.vatEnquiries(fakeRequest)
-      val doc = asDocument(contentAsString(result))
 
       status(result) mustBe SEE_OTHER
       redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
@@ -152,7 +149,6 @@ class WebchatControllerSpec
 
     "render vat online helpdesk page" in {
       val result = controller.vatOnlineServicesHelpdesk(fakeRequest)
-      val doc = asDocument(contentAsString(result))
 
       status(result) mustBe SEE_OTHER
       redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
@@ -160,7 +156,6 @@ class WebchatControllerSpec
 
     "render national insurance page" in {
       val result = controller.nationalInsuranceNumbers(fakeRequest)
-      val doc = asDocument(contentAsString(result))
 
       status(result) mustBe SEE_OTHER
       redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
@@ -176,7 +171,6 @@ class WebchatControllerSpec
 
     "render excise page" in {
       val result = controller.exciseEnquiries(fakeRequest)
-      val doc = asDocument(contentAsString(result))
 
       status(result) mustBe SEE_OTHER
       redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
@@ -184,7 +178,6 @@ class WebchatControllerSpec
 
     "render income tax enquiries page" in {
       val result = controller.incomeTaxEnquiries(fakeRequest)
-      val doc = asDocument(contentAsString(result))
 
       status(result) mustBe SEE_OTHER
       redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
@@ -192,7 +185,6 @@ class WebchatControllerSpec
 
     "render charities community sports page" in {
       val result = controller.charitiesCommunitySports(fakeRequest)
-      val doc = asDocument(contentAsString(result))
 
       status(result) mustBe SEE_OTHER
       redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
@@ -200,7 +192,6 @@ class WebchatControllerSpec
 
     "render employing expatriate employees page" in {
       val result = controller.employingExpatriateEmployees(fakeRequest)
-      val doc = asDocument(contentAsString(result))
 
       status(result) mustBe SEE_OTHER
       redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
@@ -208,7 +199,6 @@ class WebchatControllerSpec
 
     "render employment related securities page" in {
       val result = controller.employmentRelatedSecurities(fakeRequest)
-      val doc = asDocument(contentAsString(result))
 
       status(result) mustBe SEE_OTHER
       redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
@@ -216,7 +206,6 @@ class WebchatControllerSpec
 
     "Non-UK resident employees page" in {
       val result = controller.nonUkResidentEmployees(fakeRequest)
-      val doc = asDocument(contentAsString(result))
 
       status(result) mustBe SEE_OTHER
       redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
@@ -224,7 +213,6 @@ class WebchatControllerSpec
 
     "Non-UK resident landlords page" in {
       val result = controller.nonUkResidentLandlords(fakeRequest)
-      val doc = asDocument(contentAsString(result))
 
       status(result) mustBe SEE_OTHER
       redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
@@ -232,7 +220,6 @@ class WebchatControllerSpec
 
     "Corporation tax enquiries page" in {
       val result = controller.corporationTaxEnquiries(fakeRequest)
-      val doc = asDocument(contentAsString(result))
 
       status(result) mustBe SEE_OTHER
       redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
@@ -240,7 +227,6 @@ class WebchatControllerSpec
 
     "Construction industry scheme page" in {
       val result = controller.constructionIndustryScheme(fakeRequest)
-      val doc = asDocument(contentAsString(result))
 
       status(result) mustBe SEE_OTHER
       redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
@@ -248,7 +234,6 @@ class WebchatControllerSpec
 
     "VAT registration page" in {
       val result = controller.vatRegistration(fakeRequest)
-      val doc = asDocument(contentAsString(result))
 
       status(result) mustBe SEE_OTHER
       redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
@@ -264,7 +249,6 @@ class WebchatControllerSpec
 
     "Job Retention Scheme page" in {
       val result = controller.jobRetentionScheme(fakeRequest)
-      val doc = asDocument(contentAsString(result))
 
       status(result) mustBe SEE_OTHER
       redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
@@ -272,7 +256,6 @@ class WebchatControllerSpec
 
     "Self Employment Income Support Scheme page" in {
       val result = controller.selfEmploymentIncomeSupportScheme(fakeRequest)
-      val doc = asDocument(contentAsString(result))
 
       status(result) mustBe SEE_OTHER
       redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
@@ -280,7 +263,6 @@ class WebchatControllerSpec
 
     "C19 Employer Enquiries page" in {
       val result = controller.c19EmployerEnquiries(fakeRequest)
-      val doc = asDocument(contentAsString(result))
 
       status(result) mustBe SEE_OTHER
       redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
@@ -288,7 +270,6 @@ class WebchatControllerSpec
 
     "Probate page" in {
       val result = controller.probate(fakeRequest)
-      val doc = asDocument(contentAsString(result))
 
       status(result) mustBe SEE_OTHER
       redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
@@ -296,7 +277,6 @@ class WebchatControllerSpec
 
     "Inheritance page" in {
       val result = controller.inheritanceTax(fakeRequest)
-      val doc = asDocument(contentAsString(result))
 
       status(result) mustBe SEE_OTHER
       redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
@@ -336,7 +316,6 @@ class WebchatControllerSpec
       running(application) {
         val request = FakeRequest(GET, routes.WebchatController.ir35Enquiries.url)
         val result = route(application, request).get
-        val doc = asDocument(contentAsString(result))
         status(result) mustBe SEE_OTHER
         redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
       }
