@@ -29,7 +29,6 @@ import scala.concurrent.Future
 class WebchatController @Inject()(appConfig: AppConfig,
                                   mcc: MessagesControllerComponents,
                                   selfAssessmentView: SelfAssessmentView,
-                                  childBenefitView: ChildBenefitView,
                                   customsEnquiriesView: CustomsEnquiriesView,
                                   onlineServiceHelpdeskView: OnlineServiceHelpdeskView,
                                   nationalClearanceHubView: NationalClearanceHubView,
