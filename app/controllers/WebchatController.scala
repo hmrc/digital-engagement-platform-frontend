@@ -29,43 +29,18 @@ import scala.concurrent.Future
 class WebchatController @Inject()(appConfig: AppConfig,
                                   mcc: MessagesControllerComponents,
                                   selfAssessmentView: SelfAssessmentView,
-                                  taxCreditsView: TaxCreditsView,
-                                  childBenefitView: ChildBenefitView,
                                   customsEnquiriesView: CustomsEnquiriesView,
-                                  exciseEnquiriesView: ExciseEnquiriesView,
-                                  employerEnquiriesView: EmployerEnquiriesView,
-                                  incomeTaxEnquiriesView: IncomeTaxEnquiriesView,
-                                  nationalInsuranceNumbersView: NationalInsuranceNumbersView,
                                   onlineServiceHelpdeskView: OnlineServiceHelpdeskView,
-                                  vatEnquiriesView: VatEnquiriesView,
-                                  vatOnlineServiceHelpdeskView: VatOnlineServicesHelpdeskView,
-                                  charitiesCommunitySportsView: CharitiesCommunityAmateurSportsView,
-                                  employingExpatriateEmployeesView: EmployingExpatriateEmployeesView,
-                                  employmentRelatedSecuritiesView: EmploymentRelatedSecuritiesView,
-                                  nonUkResidentEmployeesView: NonUkResidentEmployeesView,
-                                  nonUkResidentLandlordsView: NonUkResidentLandlordsView,
-                                  corporationTaxEnquiriesView: CorporationTaxEnquiriesView,
-                                  constructionIndustrySchemeView: ConstructionIndustrySchemeView,
-                                  vatRegistrationView: VatRegistrationView,
                                   nationalClearanceHubView: NationalClearanceHubView,
-                                  jobRetentionSchemeView: JobRetentionSchemeView,
-                                  selfEmploymentIncomeSupportSchemeView: SelfEmploymentIncomeSupportView,
-                                  c19EmployerEnquiriesView: C19EmployerEnquiriesView,
-                                  probateView: ProbateView,
-                                  inheritanceTaxView: InheritanceTaxView,
                                   additionalNeedsHelpView: AdditionalNeedsHelpView,
                                   personalTransportUnitEnquiriesView: PersonalTransportUnitEnquiriesView,
-                                  ir35EnquriesView: Ir35EnquiriesView,
+                                  ir35EnquiriesView: Ir35EnquiriesView,
                                   serviceUnavailableView: ServiceUnavailableView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
   private def isIvrRedirect()(implicit request: RequestHeader): Boolean = {
     request.getQueryString("nuance").contains("ivr")
-  }
-
-  private def isEntertainersRedirect()(implicit request: RequestHeader): Boolean = {
-    request.getQueryString("redirect").contains("entertainers")
   }
 
   def selfAssessment: Action[AnyContent] = Action.async { implicit request =>
@@ -191,7 +166,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
     if (config.shutter) {
       Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
     } else {
-      Future.successful(Ok(ir35EnquriesView()))
+      Future.successful(Ok(ir35EnquiriesView()))
     }
   }
 
