@@ -121,10 +121,14 @@ export var chatListener = {
         loadingAnimation.show();
     },
     technicalError: function() {
-        var newDiv = $("<p>", {"class": "cui-technical-error error-message"})
-        newDiv.text('Sorry, there is a problem with this service. Try again later')
-        $('#nuanMessagingFrame').append(newDiv);
-         this.showNuanceDiv();
+        var errorId = "error-message";
+        var errorMessageDiv = document.createElement("div");
+        errorMessageDiv.setAttribute('id', errorId);
+        errorMessageDiv.setAttribute('aria-live', 'polite');
+        $('#nuanMessagingFrame').append(errorMessageDiv);
+        document.getElementById(errorId).innerHTML = '<p class="cui-technical-error error-message">Sorry, there is a problem with this service. Try again later</p>';
+        
+        this.showNuanceDiv();
     },
     waitForSignsOfLife: function() {
         var self = this;
