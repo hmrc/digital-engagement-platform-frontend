@@ -19,11 +19,13 @@ describe("CUI chat listener", () => {
             testListener = Object.assign({}, protoListener)
             testListener.name = "test listener #" + index++;
             document.body.innerHTML = `
-                <div id="cui-messaging-container">
-                    <div id="nuanMessagingFrame"></div>
-                </div>
-                <div id="cui-loading-animation" style="display:none">
-                    <img src='@routes.Assets.versioned("media/cui_animation.svg")' alt="Chat is loading">
+                <div class="cui-wrapper">
+                    <div id="cui-messaging-container">
+                        <div id="nuanMessagingFrame"></div>
+                    </div>
+                    <div id="cui-loading-animation" style="display:none">
+                        <img src='@routes.Assets.versioned("media/cui_animation.svg")' alt="Chat is loading">
+                    </div>
                 </div>
             `;
             jest.useFakeTimers();
