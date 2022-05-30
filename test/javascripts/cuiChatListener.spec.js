@@ -58,7 +58,7 @@ describe("CUI chat listener", () => {
 
             jest.runOnlyPendingTimers();
             expect($('.cui-technical-error').length).toBe(1);
-            expect(document.body.innerHTML).toContain('aria-live="assertive"')
+            expect(document.body.innerHTML).toContain('aria-live="assertive"');
         });
 
         it("will not show an error if activity and then shown", () => {

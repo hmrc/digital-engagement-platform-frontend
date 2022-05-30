@@ -121,7 +121,7 @@ export var chatListener = {
         loadingAnimation.show();
     },
     technicalError: function() {
-        let errorId = "error-message"
+        let errorId = "error-message";
         var errorMessageDiv = document.createElement("div");
         errorMessageDiv.setAttribute('id', errorId);
         errorMessageDiv.setAttribute('aria-live', 'assertive');
