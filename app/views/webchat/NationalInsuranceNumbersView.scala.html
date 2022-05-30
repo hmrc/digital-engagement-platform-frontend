@@ -45,7 +45,7 @@
     @components.webchat_loading_text()
 
     <p class="margin-top">
-        <a id="return-link" href=@appConfig.nationalInsuranceReturnUrl>
+        <a class="govuk-link" id="return-link" href=@appConfig.nationalInsuranceReturnUrl>
             @if(isIvrRedirect) {@messages("global.text.link.ivr.to.govuk.p1")} else {@messages("global.text.link.back.to.govuk.p1")}
         </a>
     </p>
