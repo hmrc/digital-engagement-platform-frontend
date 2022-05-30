@@ -3,7 +3,6 @@ import sbt._
 object AppDependencies {
 
   val compile: Seq[ModuleID] = Seq(
-    "org.webjars.npm" %  "hmrc-frontend"                    % "1.35.2",
     "uk.gov.hmrc"     %% "bootstrap-frontend-play-28"       % "5.24.0",
     "uk.gov.hmrc"     %% "play-frontend-hmrc"               % "3.20.0-play-28",
     "uk.gov.hmrc"     %% "url-builder"                      % "3.6.0-play-28",

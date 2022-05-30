@@ -14,34 +14,23 @@
  * limitations under the License.
  */
 
-package controllers
+package controllers.CiapiController
 
 import config.AppConfig
-import javax.inject.Inject
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
-
+import views.html.CUIHMRCSkinViews.TaxCreditsCUIView
+import javax.inject.{Inject, Singleton}
 import scala.concurrent.Future
 
-
-class StampDutyController @Inject()(appConfig: AppConfig,
-                                   mcc: MessagesControllerComponents) extends FrontendController(mcc) {
+@Singleton
+class CiapiController @Inject()(appConfig: AppConfig,
+                                mcc: MessagesControllerComponents,
+                                taxCreditsCUIView: TaxCreditsCUIView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
-  def landTax: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
-  }
-
-  def reserveTax: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
-  }
-
-  def sharesAndLand: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
-  }
-
-  def annualTaxOnEnvelopedDwellings: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
+  def askHmrcOnline: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(taxCreditsCUIView()))
   }
 }

@@ -39,13 +39,6 @@ class VirtualAssistantControllerSpec
       status(result) mustBe OK
       doc.select("h1").text() mustBe "Use HMRC’s digital assistant"
     }
-
-    "render tax credits enquiries page" in {
-      val  result = controller.taxCreditsEnquiries(fakeRequest)
-
-      status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(cuiRoutes.CuiController.askHmrcOnline.url)
-    }
   }
 
   "render customs and international trade" in {

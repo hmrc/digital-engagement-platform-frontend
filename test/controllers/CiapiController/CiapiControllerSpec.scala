@@ -14,29 +14,26 @@
  * limitations under the License.
  */
 
-package views.html.pages.CUIViews
+package controllers.CiapiController
 
+import org.jsoup.Jsoup
+import org.jsoup.nodes.Document
 import org.scalatest.matchers.must.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike
-import play.twirl.api.HtmlFormat
-import views.html.pages.helpers.ChatViewBehaviours
-import views.html.CUIViews.AskHmrcOnlineCUIView
+import play.api.test.Helpers._
+import views.html.pages.helpers.AppBuilderSpecBase
 
-class AskHmrcOnlineCUIViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike{
+class CiapiControllerSpec
+  extends AppBuilderSpecBase with Matchers with AnyWordSpecLike {
 
-  private val view = app.injector.instanceOf[AskHmrcOnlineCUIView]
+  private val controller = app.injector.instanceOf[CiapiController]
 
-  private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
+  def asDocument(html: String): Document = Jsoup.parse(html)
 
-  "Nuance Full Page CUI View" must {
-    "rendered" must {
-      behave like normalCuiPage(
-      createView,
-        "Ask HMRC online",
-        "Ask HMRC online",
-        "Ask HMRC online"
-      )
+  "Nuance Full Page CIAPI Test Controller" should {
+    "render Tax Credits Ask HMRC Online page" in {
+      val result = controller.askHmrcOnline(fakeRequest)
+      status(result) mustBe OK
     }
   }
-
 }
