@@ -124,10 +124,10 @@ export var chatListener = {
         var errorId = "error-message";
         var errorMessageDiv = document.createElement("div");
         errorMessageDiv.setAttribute('id', errorId);
-        errorMessageDiv.setAttribute('aria-live', 'polite');
+        errorMessageDiv.setAttribute('aria-live', 'assertive');
         $('#nuanMessagingFrame').append(errorMessageDiv);
         document.getElementById(errorId).innerHTML = '<p class="cui-technical-error error-message">Sorry, there is a problem with this service. Try again later</p>';
-        
+
         this.showNuanceDiv();
     },
     waitForSignsOfLife: function() {
