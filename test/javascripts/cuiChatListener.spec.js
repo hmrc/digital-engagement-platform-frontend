@@ -20,7 +20,9 @@ describe("CUI chat listener", () => {
             testListener.name = "test listener #" + index++;
             document.body.innerHTML = `
                 <div id="cui-messaging-container">
-                    <div id="nuanMessagingFrame"></div>
+                    <div id="nuanMessagingFrame">
+                        <div id="error-message" aria-live="assertive" role="alert"></div>
+                    </div>
                 </div>
                 <div id="cui-loading-animation" style="display:none">
                     <img src='@routes.Assets.versioned("media/cui_animation.svg")' alt="Chat is loading">
