@@ -121,7 +121,11 @@ export var chatListener = {
         loadingAnimation.show();
     },
     technicalError: function() {
-        document.getElementById("error-message").innerHTML = '<p class="cui-technical-error error-message">Sorry, there is a problem with this service. Try again later</p>';
+        var errorEle = document.getElementById("error-message");
+
+        if(errorEle) {
+            document.getElementById("error-message").innerHTML = '<p class="cui-technical-error error-message">Sorry, there is a problem with this service. Try again later</p>';
+        }
 
         this.showNuanceDiv();
     },
