@@ -199,6 +199,7 @@ nuance.full.page.cui.test.page.title=Test full page CUI for webchat
 test.sidebar.h2.header=Help for businesses and employers
 test.sidebar.p1=The HMRC chatbot is available at any time to answer your questions about the Coronavirus Job Retention Scheme.
 test.sidebar.p2=If it cannot help you, you can ask to transfer to an HMRC adviser by typing ‘adviser’. Advisers work 8am to 7:30pm, Monday to Friday and do not work bank holidays.
+
 #CUI pages
 cui.page.title=Ask HMRC
 cui.sidebar.h2.header=Help for businesses and employers
@@ -224,6 +225,9 @@ cui.online.services.helpdesk.sidebar.p2=If it cannot help you, you can ask to tr
 cui.employer.enquiries.title=Employers enquiries: chat
 cui.employer.enquiries.sidebar.p1=The HMRC digital assistant is available at any time to answer your questions about employers enquiries.
 cui.employer.enquiries.sidebar.p2=If it cannot help you, you can ask to transfer to an HMRC adviser by typing ‘adviser’. Advisers work 8am to 6pm, Monday to Friday and do not work weekends or bank holidays.
+
+#Construction Industry Scheme page
+cui.construction.industry.scheme.title=Construction Industry Scheme: chat
 
 #CIAPI
 ciapi.tax.credits.page.title=Ask HMRC online

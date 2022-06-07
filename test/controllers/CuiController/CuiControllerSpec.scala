@@ -66,5 +66,14 @@ class CuiControllerSpec
         status(result) mustBe NOT_FOUND
       }
     }
+
+    "render construction industry scheme" in {
+      val result = controller.constructionIndustryScheme(fakeRequest)
+      if (frontendAppConfig.showDAv2CUI) {
+        status(result) mustBe OK
+      } else {
+        status(result) mustBe OK
+      }
+    }
   }
 }

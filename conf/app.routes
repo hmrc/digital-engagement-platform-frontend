@@ -62,5 +62,6 @@ GET         /chat/job-retention-scheme-help                                     
 GET         /chat/self-assessment                                                       controllers.CuiController.CuiController.selfAssessment
 GET         /chat/online-services-helpdesk                                              controllers.CuiController.CuiController.onlineServicesHelpdesk
 GET         /chat/employer-enquiries                                                    controllers.CuiController.CuiController.employerEnquiries
+GET         /chat/construction-industry-scheme                                          controllers.CuiController.CuiController.constructionIndustryScheme
 
 GET         /chat/ask-hmrc-online                                                       controllers.CiapiController.CiapiController.askHmrcOnline

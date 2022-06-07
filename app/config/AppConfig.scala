@@ -39,6 +39,7 @@ class AppConfig @Inject()(config: Configuration) {
   val showOSHCUI: Boolean = config.getOptional[Boolean]("features.showOSHCUI").getOrElse(false)
   val shutter: Boolean = config.getOptional[Boolean]("features.shutter").getOrElse(false)
   val showEHLCUI: Boolean = config.getOptional[Boolean]("features.showEHLCUI").getOrElse(false)
+  val showDAv2CUI: Boolean = config.getOptional[Boolean]("features.showDAv2CUI").getOrElse(false)
 
   // Used in wrapper
   val analyticsToken: String = config.get[String]("google-analytics.token")
