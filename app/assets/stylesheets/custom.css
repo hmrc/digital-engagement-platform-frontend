@@ -71,7 +71,7 @@
 
 #cui-messaging-container {
     width: 100%;
-    height: calc(max(600px, 50rem));
+    height: calc(max(600px, 37rem));
 }
 
 .form-group-error {
