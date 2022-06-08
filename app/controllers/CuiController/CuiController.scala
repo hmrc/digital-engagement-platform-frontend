@@ -17,7 +17,7 @@
 package controllers.CuiController
 
 import config.AppConfig
-import play.api.mvc.{Action, AnyContent, MessagesControllerComponents, RequestHeader}
+import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 import views.html.CUIViews._
 import views.html.webchat.ServiceUnavailableView
