@@ -225,13 +225,30 @@ class WebchatControllerSpec
       redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
-    "Construction industry scheme page" in {
-      val result = controller.constructionIndustryScheme(fakeRequest)
+    "render construction industry scheme page when showDAv2CUI is true" in {
+      val application = builder.configure("features.showDAv2CUI" -> "true").build()
 
-      status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
+      running(application) {
+        val request = FakeRequest(GET, routes.WebchatController.constructionIndustryScheme.url)
+        val result = route(application, request).get
+
+        status(result) mustBe SEE_OTHER
+        redirectLocation(result) mustBe Some(cuiRoutes.CuiController.constructionIndustryScheme.url)
+      }
     }
 
+    "render service unavailable page when showDAv2CUI is false" in {
+      val application = builder.configure("features.showDAv2CUI" -> "false").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.WebchatController.constructionIndustryScheme.url)
+        val result = route(application, request).get
+
+        status(result) mustBe SEE_OTHER
+        redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
+      }
+    }
+    
     "VAT registration page" in {
       val result = controller.vatRegistration(fakeRequest)
 
