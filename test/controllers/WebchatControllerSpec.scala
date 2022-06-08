@@ -21,12 +21,9 @@ import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.scalatest.matchers.must.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike
-import play.api.mvc.{AnyContent, Request}
 import play.api.test.FakeRequest
 import play.api.test.Helpers._
 import views.html.pages.helpers.AppBuilderSpecBase
-
-import scala.language.postfixOps
 
 class WebchatControllerSpec
   extends AppBuilderSpecBase
@@ -225,28 +222,11 @@ class WebchatControllerSpec
       redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
-    "render construction industry scheme page when showDAv2CUI is true" in {
-      val application = builder.configure("features.showDAv2CUI" -> "true").build()
+    "Construction industry scheme page" in {
+      val result = controller.constructionIndustryScheme(fakeRequest)
 
-      running(application) {
-        val request = FakeRequest(GET, routes.WebchatController.constructionIndustryScheme.url)
-        val result = route(application, request).get
-
-        status(result) mustBe SEE_OTHER
-        redirectLocation(result) mustBe Some(cuiRoutes.CuiController.constructionIndustryScheme.url)
-      }
-    }
-
-    "render service unavailable page when showDAv2CUI is false" in {
-      val application = builder.configure("features.showDAv2CUI" -> "false").build()
-
-      running(application) {
-        val request = FakeRequest(GET, routes.WebchatController.constructionIndustryScheme.url)
-        val result = route(application, request).get
-
-        status(result) mustBe SEE_OTHER
-        redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
-      }
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(cuiRoutes.CuiController.constructionIndustryScheme.url)
     }
     
     "VAT registration page" in {
