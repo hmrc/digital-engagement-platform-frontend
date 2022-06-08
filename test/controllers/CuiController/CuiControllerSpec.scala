@@ -33,11 +33,6 @@ class CuiControllerSpec
   def asDocument(html: String): Document = Jsoup.parse(html)
 
   "Nuance Full Page CUI Test Controller" should {
-//    "render JRS Variant One Test page" in {
-//      val result = controller.jobRetentionSchemeHelp(fakeRequest)
-//
-//      status(result) mustBe OK
-//    }
 
     "render job retention scheme CUI page" in {
       val result = controller.jobRetentionSchemeHelp(fakeRequest)
