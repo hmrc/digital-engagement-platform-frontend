@@ -16,16 +16,16 @@
 
 @import config.AppConfig
 @import templates.MainTemplateCUI
-@import includes.cuiEmployerEnquiriesSidebar
 
 @this(main_template: MainTemplateCUI, appConfig: AppConfig)
 
 @()(implicit request: Request[_], messages: play.api.i18n.Messages)
 
 @main_template(
-    title = messages("cui.employer.enquiries.title"),
-    navTitle = Some(messages("cui.page.title")),
-    sidebar = Some(cuiEmployerEnquiriesSidebar())) {
+    title = messages("cui.construction.industry.scheme.title"),
+    navTitle = Some(messages("cui.construction.industry.scheme.title") + " - " +
+        messages("cui.page.title") + " - " + messages("cui.page.title.gov"))) {
+
     <div class="cui-wrapper">
         <div id="cui-messaging-container">
             <div id="nuanMessagingFrame">

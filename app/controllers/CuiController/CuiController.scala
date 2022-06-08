@@ -20,6 +20,7 @@ import config.AppConfig
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 import views.html.CUIViews._
+import views.html.webchat.ServiceUnavailableView
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.Future
 
@@ -29,7 +30,9 @@ class CuiController @Inject()(appConfig: AppConfig,
                               selfAssessmentCUIView: SelfAssessmentCUIView,
                               jobRetentionSchemeHelpView: JobRetentionSchemeHelpView,
                               onlineServicesHelpdeskCUIView: OnlineServicesHelpdeskCUIView,
-                              employerEnquiriesCUIView: EmployerEnquiriesCUIView) extends FrontendController(mcc) {
+                              employerEnquiriesCUIView: EmployerEnquiriesCUIView,
+                              constructionIndustrySchemeCUIView: ConstructionIndustrySchemeCUIView,
+                              serviceUnavailableView: ServiceUnavailableView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
@@ -59,6 +62,14 @@ class CuiController @Inject()(appConfig: AppConfig,
       Future.successful(Ok(employerEnquiriesCUIView()))
     } else {
       Future.successful(NotFound)
+    }
+  }
+
+  def constructionIndustryScheme: Action[AnyContent] = Action.async { implicit request =>
+    if(config.showDAv2CUI) {
+      Future.successful(Ok(constructionIndustrySchemeCUIView()))
+    } else {
+      Future.successful(Ok(serviceUnavailableView()))
     }
   }
 }
