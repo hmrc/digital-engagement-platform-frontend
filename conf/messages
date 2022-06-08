@@ -202,6 +202,7 @@ test.sidebar.p2=If it cannot help you, you can ask to transfer to an HMRC advise
 
 #CUI pages
 cui.page.title=Ask HMRC
+cui.page.title.gov= GOV.UK
 cui.sidebar.h2.header=Help for businesses and employers
 
 #JRS page
