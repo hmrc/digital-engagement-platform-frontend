@@ -32,8 +32,8 @@ class ConstructionIndustrySchemeCUIViewSpec extends ChatViewBehaviours with Matc
     "rendered" must {
       behave like normalCuiPage(
         createView,
+        "Ask HMRC",
         "Construction Industry Scheme: chat - Ask HMRC - GOV.UK",
-        "Construction Industry Scheme: chat",
         "Construction Industry Scheme: chat"
       )
     }

@@ -34,8 +34,8 @@ class NuanceFullPageCUIViewSpec extends ChatViewBehaviours with Matchers with An
       behave like normalCuiPage(
         createView,
         "Ask HMRC",
-        "Get help with the Coronavirus Job Retention Scheme - GOV.UK",
-        "Get help with the Coronavirus Job Retention Scheme - GOV.UK"
+        "Get help with the Coronavirus Job Retention Scheme - Ask HMRC - GOV.UK",
+        "Get help with the Coronavirus Job Retention Scheme"
       )
     }
   }

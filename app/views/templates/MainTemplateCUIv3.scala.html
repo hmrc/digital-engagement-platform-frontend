@@ -24,7 +24,7 @@
     webChatClient: WebChatClient
 )
 
-@(title: String, navTitle: Option[String] = Some("Ask HMRC online"), sidebar: Option[Html] = None)(mainContent: Html)(implicit request : Request[_], messages: Messages)
+@(title: String, navTitle: Option[String] = Some("Ask HMRC"), sidebar: Option[Html] = None)(mainContent: Html)(implicit request : Request[_], messages: Messages)
 
 @sidebarContent = {
     @if(sidebar.isDefined) {

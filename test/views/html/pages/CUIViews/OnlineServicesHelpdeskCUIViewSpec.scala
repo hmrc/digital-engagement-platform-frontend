@@ -33,7 +33,7 @@ class OnlineServicesHelpdeskCUIViewSpec extends ChatViewBehaviours with Matchers
       behave like normalCuiPage(
         createView,
         "Ask HMRC",
-        "Technical support with HMRC online services: chat",
+        "Technical support with HMRC online services: chat - Ask HMRC - GOV.UK",
         "Technical support with HMRC online services: chat"
       )
     }

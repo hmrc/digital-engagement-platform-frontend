@@ -32,8 +32,8 @@ class TaxCreditsCUIViewSpec extends ChatViewBehaviours with Matchers with AnyWor
     "rendered" must {
       behave like normalCuiPage(
       createView,
-        "Ask HMRC online",
-        "Ask HMRC online",
+        "Ask HMRC",
+        "Ask HMRC online - Ask HMRC - GOV.UK",
         "Ask HMRC online"
       )
     }

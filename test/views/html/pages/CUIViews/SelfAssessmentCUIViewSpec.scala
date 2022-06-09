@@ -33,7 +33,7 @@ class SelfAssessmentCUIViewSpec extends ChatViewBehaviours with Matchers with An
       behave like normalCuiPage(
         createView,
         "Ask HMRC",
-        "Self Assessment: chat",
+        "Self Assessment: chat - Ask HMRC - GOV.UK",
         "Self Assessment: chat"
       )
     }

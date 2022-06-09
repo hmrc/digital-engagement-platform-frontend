@@ -33,7 +33,7 @@ class EmployerEnquiriesCUIViewSpec extends ChatViewBehaviours with Matchers with
       behave like normalCuiPage(
         createView,
         "Ask HMRC",
-        "Employers enquiries: chat",
+        "Employers enquiries: chat - Ask HMRC - GOV.UK",
         "Employers enquiries: chat"
       )
     }
