@@ -119,7 +119,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def constructionIndustryScheme: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
+      Future.successful(Redirect(cuiRoutes.CuiController.constructionIndustryScheme))
   }
 
   def vatRegistration: Action[AnyContent] = Action.async { implicit request =>

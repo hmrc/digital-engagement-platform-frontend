@@ -21,12 +21,9 @@ import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.scalatest.matchers.must.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike
-import play.api.mvc.{AnyContent, Request}
 import play.api.test.FakeRequest
 import play.api.test.Helpers._
 import views.html.pages.helpers.AppBuilderSpecBase
-
-import scala.language.postfixOps
 
 class WebchatControllerSpec
   extends AppBuilderSpecBase
@@ -229,9 +226,9 @@ class WebchatControllerSpec
       val result = controller.constructionIndustryScheme(fakeRequest)
 
       status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
+      redirectLocation(result) mustBe Some(cuiRoutes.CuiController.constructionIndustryScheme.url)
     }
-
+    
     "VAT registration page" in {
       val result = controller.vatRegistration(fakeRequest)
 
