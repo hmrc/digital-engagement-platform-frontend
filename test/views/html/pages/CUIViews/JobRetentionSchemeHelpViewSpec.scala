@@ -34,7 +34,7 @@ class JobRetentionSchemeHelpViewSpec extends ChatViewBehaviours with Matchers wi
       behave like normalCuiPage(
         createView,
         "Ask HMRC",
-        "Coronavirus Job Retention Scheme: chat",
+        "Coronavirus Job Retention Scheme: chat - Ask HMRC - GOV.UK",
         "Coronavirus Job Retention Scheme: chat"
       )
     }

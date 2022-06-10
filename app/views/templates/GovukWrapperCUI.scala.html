@@ -88,7 +88,7 @@
 }
 
 @govukLayout(
-    pageTitle = Some(title),
+    pageTitle = Some(title + " " + messages("cui.page.title.gov")),
     headBlock = Some(hmrcHead(nonce = CSPNonce.get)),
     headerBlock = Some(headerBlock),
     scriptsBlock = Some(scriptsBlock),
