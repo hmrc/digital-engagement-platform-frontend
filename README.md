@@ -57,7 +57,7 @@ The application runs on port 9956
 
 *You need to be on the VPN*
 
-Ensure your service manager config is up to date, and run the following command:
+Ensure your Service Manager config is up to date, and run the following command:
 
 `sm --start DIGITAL_ENGAGEMENT_PLATFORM_ALL -r`
 
