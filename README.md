@@ -33,7 +33,7 @@ Clone the repository using SSH:
 
 `git@github.com:hmrc/digital-engagement-platform-frontend.git`
 
-Run the code from source using
+Run the code from source using:
 
 `./run_local.sh`
 
