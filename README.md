@@ -50,7 +50,7 @@ To access the various types of DAs you can use the following URLs (examples):
 *Embedded with HMRC skin*
 `http://localhost:9956/ask-hmrc/chat/ask-hmrc-online?url=https://www.qa.tax.service.gov.uk/ask-hmrc/chat/ask-hmrc-online`
 
-NOTE: to see the DA on a page in your local environment. This service must be ran from source and you will need to add the url query parameter to any url which states the qa environment equivalent. This is so, locally, you can interact with Nuance's pre-prod environment.
+NOTE: to see the DA on a page in your local environment, this service must be ran from source and you will need to add the url query parameter to any url which states the qa environment equivalent. This is so, locally, you can interact with Nuance's pre-prod environment.
 
 ## Running through service manager
 The application runs on port 9956
