@@ -1,7 +1,14 @@
-digital-engagement-platform-frontend
-=============
+#digital-engagement-platform-frontend
 
-This is a front-end service for supplying webchat to gov.uk users.
+## About
+This is a front-end service for supplying Digital Assistants(DA) and Webchats to gov.uk users. It provides the following types of DAs:
+
+1) Popup - reactive (click to chat)
+2) Popup - proactive (pops up automatically on the page)
+3) Embedded - full page - Nuance skin
+4) Embedded - full page - HMRC skin
+
+URLs containing `\webchat` are used for popup versions of the DA and URLs containing `\chat` are used for embedded DAs.
 
 This application uses `node 12`. Follow these steps if you don't know how to set your local version of node to `12`:
 
@@ -21,28 +28,40 @@ nvm install 12
 nvm use 12
 ```
 
-## Using Service Manager
+## Running from source
+Clone the repository using SSH:
 
-You can use service manager to provide assets to the frontend. The DEP_ALL service is responsible for starting up all services required by the digital engagement platform frontend project.
-This can be started by running:
+`git@github.com:hmrc/digital-engagement-platform-frontend.git`
 
-```
-sm --start DIGITAL_ENGAGEMENT_PLATFORM_ALL -r
-```
+Run the code from source using:
 
-## Run the application
+`./run_local.sh`
 
-To run the application execute
+Dependencies will also need to be started from source or using Service Manager.
 
-```
-./run_local.sh
-```
+To access the various types of DAs you can use the following URLs (examples):
 
-and then access the application at
+*Reactive popup*
+`http://localhost:9956/ask-hmrc/webchat/customs-international-trade?url=https://www.qa.tax.service.gov.uk/ask-hmrc/webchat/customs-international-trade`
 
-```
-http://localhost:9956/ask-hmrc/webchat/self-assessment
-```
+*Embedded with Nuance skin*
+`http://localhost:9956/ask-hmrc/chat/self-assessment?url=https://www.qa.tax.service.gov.uk/ask-hmrc/chat/self-assessment`
+
+*Embedded with HMRC skin*
+`http://localhost:9956/ask-hmrc/chat/ask-hmrc-online?url=https://www.qa.tax.service.gov.uk/ask-hmrc/chat/ask-hmrc-online`
+
+NOTE: to see the DA on a page in your local environment, this service must be ran from source and you will need to add the url query parameter to any URL which states the QA environment equivalent. This is so, locally, you can interact with Nuance's pre-prod environment.
+
+## Running through service manager
+The application runs on port 9956
+
+*You need to be on the VPN*
+
+Ensure your Service Manager config is up to date, and run the following command:
+
+`sm --start DIGITAL_ENGAGEMENT_PLATFORM_ALL -r`
+
+This will start all the required services
 
 ## Unit tests
 
@@ -52,7 +71,7 @@ To run the unit tests execute
 sbt test
 ```
 
-This application has a considerable amount of javascript code, therefore, we have created a set of javascript tests to cover the behaviour the system intends. We use `gulp.js` to pipeline all of our javascript tests into the sbt test pipeline, mentioned above. To be able to run javascript tests in isolation you will need `gulp.js` and also `jest` (the test runner currently used). 
+This application also uses JavaScript code, and there is a set of JavaScript tests to cover the behaviour the system intends. The service uses `gulp.js` to pipeline all the JavaScript tests into the sbt test pipeline. To be able to run JavaScript tests in isolation you will need `gulp.js` and also `jest` (the test runner currently used). 
 
 Let's install `gulp cli` then we can run gulp commands:
 
@@ -66,11 +85,11 @@ Now, all we have left is to install `jest` globally:
 npm install --global jest
 ```
 
-We now can run our `javascripts` tests with:
+We now can run our JavaScripts tests with:
 ```
 gulp jest
 ```
-or, since you have `jest`globally
+or, since you have `jest` globally
 ```
 jest
 ```
@@ -83,7 +102,7 @@ To wipe all your node modules use the below command, after that - if you do `sbt
 gulp clean:node_modules
 ```
 
-Our javascript code is bundled at compile time, if you want to check what the bundled code will look like locally, please run:
+Our JavaScript code is bundled at compile time, if you want to check what the bundled code will look like locally, please run:
 
 ```
 gulp bundle
