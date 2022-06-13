@@ -37,7 +37,7 @@ Run the code from source using:
 
 `./run_local.sh`
 
-Dependencies will also need to be started from source or using service manager.
+Dependencies will also need to be started from source or using Service Manager.
 
 To access the various types of DAs you can use the following URLs (examples):
 
