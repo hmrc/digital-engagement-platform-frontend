@@ -33,11 +33,11 @@ Clone the repository using SSH:
 
 `git@github.com:hmrc/digital-engagement-platform-frontend.git`
 
-Run the code from source using
+Run the code from source using:
 
 `./run_local.sh`
 
-Dependencies will also need to be started from source or using service manager.
+Dependencies will also need to be started from source or using Service Manager.
 
 To access the various types of DAs you can use the following URLs (examples):
 
@@ -57,7 +57,7 @@ The application runs on port 9956
 
 *You need to be on the VPN*
 
-Ensure your service manager config is up to date, and run the following command:
+Ensure your Service Manager config is up to date, and run the following command:
 
 `sm --start DIGITAL_ENGAGEMENT_PLATFORM_ALL -r`
 
