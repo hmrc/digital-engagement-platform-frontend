@@ -6,7 +6,7 @@ This is a front-end service for supplying Digital Assistants(DA) and Webchats to
 1) Popup - reactive (click to chat)
 2) Popup - proactive (pops up automatically on the page)
 3) Embedded - full page - Nuance skin
-3) Embedded - full page - HMRC skin
+4) Embedded - full page - HMRC skin
 
 URLs containing `\webchat` are used for popup versions of the DA and URLs containing `\chat` are used for embedded DAs.
 
@@ -50,7 +50,7 @@ To access the various types of DAs you can use the following URLs (examples):
 *Embedded with HMRC skin*
 `http://localhost:9956/ask-hmrc/chat/ask-hmrc-online?url=https://www.qa.tax.service.gov.uk/ask-hmrc/chat/ask-hmrc-online`
 
-NOTE: to see the DA on a page in your local environment, this service must be ran from source and you will need to add the url query parameter to any url which states the qa environment equivalent. This is so, locally, you can interact with Nuance's pre-prod environment.
+NOTE: to see the DA on a page in your local environment, this service must be ran from source and you will need to add the url query parameter to any URL which states the QA environment equivalent. This is so, locally, you can interact with Nuance's pre-prod environment.
 
 ## Running through service manager
 The application runs on port 9956
@@ -71,7 +71,7 @@ To run the unit tests execute
 sbt test
 ```
 
-This application also uses javascript code, therefore, there are a set of javascript tests to cover the behaviour the system intends. The service uses `gulp.js` to pipeline all of the javascript tests into the sbt test pipeline. To be able to run javascript tests in isolation you will need `gulp.js` and also `jest` (the test runner currently used). 
+This application also uses JavaScript code, and there is a set of JavaScript tests to cover the behaviour the system intends. The service uses `gulp.js` to pipeline all the JavaScript tests into the sbt test pipeline. To be able to run JavaScript tests in isolation you will need `gulp.js` and also `jest` (the test runner currently used). 
 
 Let's install `gulp cli` then we can run gulp commands:
 
@@ -85,7 +85,7 @@ Now, all we have left is to install `jest` globally:
 npm install --global jest
 ```
 
-We now can run our `javascripts` tests with:
+We now can run our JavaScripts tests with:
 ```
 gulp jest
 ```
@@ -102,7 +102,7 @@ To wipe all your node modules use the below command, after that - if you do `sbt
 gulp clean:node_modules
 ```
 
-Our javascript code is bundled at compile time, if you want to check what the bundled code will look like locally, please run:
+Our JavaScript code is bundled at compile time, if you want to check what the bundled code will look like locally, please run:
 
 ```
 gulp bundle
