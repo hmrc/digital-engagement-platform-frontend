@@ -32,6 +32,7 @@ class CuiController @Inject()(appConfig: AppConfig,
                               onlineServicesHelpdeskCUIView: OnlineServicesHelpdeskCUIView,
                               employerEnquiriesCUIView: EmployerEnquiriesCUIView,
                               constructionIndustrySchemeCUIView: ConstructionIndustrySchemeCUIView,
+                              childBenefitCUIView: ChildBenefitCUIView,
                               serviceUnavailableView: ServiceUnavailableView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
@@ -68,6 +69,14 @@ class CuiController @Inject()(appConfig: AppConfig,
   def constructionIndustryScheme: Action[AnyContent] = Action.async { implicit request =>
     if(config.showDAv2CUI) {
       Future.successful(Ok(constructionIndustrySchemeCUIView()))
+    } else {
+      Future.successful(Ok(serviceUnavailableView()))
+    }
+  }
+
+  def childBenefit: Action[AnyContent] = Action.async { implicit request =>
+    if(config.showCHBCUI) {
+      Future.successful(Ok(childBenefitCUIView()))
     } else {
       Future.successful(Ok(serviceUnavailableView()))
     }
