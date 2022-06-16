@@ -120,6 +120,18 @@ class CuiControllerSpec
       }
     }
 
+    "render child benefit CUI page if showCHBCUI is true" in {
+      val application = builder.configure("features.showCHBCUI" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, cuiRoutes.CuiController.childBenefit.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Child Benefit: chat"
+      }
+    }
+
     "render technical support with HMRC online services page : if showDAv2CUI is false" in {
       val application = builder.configure("features.showDAv2CUI" -> "false").build()
 
