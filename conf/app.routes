@@ -63,5 +63,6 @@ GET         /chat/self-assessment                                               
 GET         /chat/online-services-helpdesk                                              controllers.CuiController.CuiController.onlineServicesHelpdesk
 GET         /chat/employer-enquiries                                                    controllers.CuiController.CuiController.employerEnquiries
 GET         /chat/construction-industry-scheme                                          controllers.CuiController.CuiController.constructionIndustryScheme
+GET         /chat/child-benefit                                                         controllers.CuiController.CuiController.childBenefit
 
 GET         /chat/ask-hmrc-online                                                       controllers.CiapiController.CiapiController.askHmrcOnline
