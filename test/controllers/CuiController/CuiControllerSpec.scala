@@ -132,6 +132,16 @@ class CuiControllerSpec
       }
     }
 
+    "render technical support with HMRC online services page : if showCHBCUI is false" in {
+      val application = builder.configure("features.showCHBCUI" -> "false").build()
+
+      running(application) {
+        val request = FakeRequest(GET, cuiRoutes.CuiController.childBenefit.url)
+        val result = route(application, request).get
+        status(result) mustBe NOT_FOUND
+      }
+    }
+
     "render technical support with HMRC online services page : if showDAv2CUI is false" in {
       val application = builder.configure("features.showDAv2CUI" -> "false").build()
 

@@ -78,7 +78,7 @@ class CuiController @Inject()(appConfig: AppConfig,
     if(config.showCHBCUI) {
       Future.successful(Ok(childBenefitCUIView()))
     } else {
-      Future.successful(Ok(serviceUnavailableView()))
+      Future.successful(NotFound)
     }
   }
 }
