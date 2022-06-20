@@ -43,10 +43,6 @@ service.unavailable.p1 = We are hoping to provide this webchat from October 2022
 service.unavailable.p2-1 = You can
 service.unavailable.p2-2 = find other contact details for your query
 
-#Child Benefit Webchat
-child.benefit.title=Child Benefit: webchat
-child.benefit.opening.times.saturday.8to3_30 = Saturday, 8am to 3:30pm
-
 #Employers Webchat
 employers.enquiries.title=Employers: webchat
 

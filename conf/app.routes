@@ -7,7 +7,6 @@ GET         /assets/*file           controllers.Assets.versioned(path="/public",
 GET         /webchat/service-unavailable                                                controllers.WebchatController.serviceUnavailable
 
 GET         /webchat/self-assessment                                                    controllers.WebchatController.selfAssessment
-GET         /webchat/child-benefit                                                      controllers.WebchatController.childBenefit
 GET         /webchat/employer-enquiries                                                 controllers.WebchatController.employerEnquiries
 GET         /webchat/vat-enquiries                                                      controllers.WebchatController.vatEnquiries
 GET         /webchat/vat-online-services-helpdesk                                       controllers.WebchatController.vatOnlineServicesHelpdesk
@@ -41,7 +40,6 @@ GET         /webchat/annual-tax-on-enveloped-dwellings                          
 
 GET         /webchat/payment-problems                                                   controllers.PaymentProblemsController.paymentProblem
 
-GET         /ivr/childbenefit                                                           controllers.IvrController.childBenefit
 GET         /ivr/paye                                                                   controllers.IvrController.incomeTaxEnquiries
 GET         /ivr/employers                                                              controllers.IvrController.employerEnquiries
 GET         /ivr/vat                                                                    controllers.IvrController.vatEnquiries
