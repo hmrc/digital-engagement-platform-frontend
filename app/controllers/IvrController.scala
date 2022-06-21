@@ -30,10 +30,6 @@ class IvrController @Inject()(appConfig: AppConfig,
 
   val param: String = "?nuance=ivr"
 
-  def childBenefit: Action[AnyContent] = Action.async {
-    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
-  }
-
   def incomeTaxEnquiries: Action[AnyContent] = Action.async {
     Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }

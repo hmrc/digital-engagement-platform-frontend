@@ -106,13 +106,6 @@ class WebchatControllerSpec
       }
     }
 
-    "render child benefit page" in {
-      val result = controller.childBenefit(fakeRequest)
-
-      status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
-    }
-
     "render employer enquiries page when showEHLCUI is true" in {
       val application = builder.configure("features.showEHLCUI" -> "true").build()
 

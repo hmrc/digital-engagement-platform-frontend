@@ -16,23 +16,16 @@
 
 package controllers
 
-import play.api.test.Helpers._
-import views.html.pages.helpers.AppBuilderSpecBase
-import controllers.CuiController.{routes => cuiRoutes}
 import org.scalatest.matchers.must.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike
+import play.api.test.Helpers._
+import views.html.pages.helpers.AppBuilderSpecBase
 
 class IvrControllerSpec extends AppBuilderSpecBase with Matchers with AnyWordSpecLike{
 
   private val controller = app.injector.instanceOf[IvrController]
 
   "ivr redirect URLs" should {
-
-    "render child benefit page" in {
-      val result = controller.childBenefit(fakeRequest)
-      status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
-    }
 
     "render income tax enquiries page" in {
       val result = controller.incomeTaxEnquiries(fakeRequest)
