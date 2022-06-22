@@ -42,8 +42,8 @@ class CuiControllerSpec
       doc.select("h1").text() mustBe "Coronavirus Job Retention Scheme: chat"
     }
 
-    "render self assessment CUI page if showSACUI is true" in {
-      val application = builder.configure("features.showSACUI" -> "true").build()
+    "render self assessment CUI page" in {
+      val application = builder.build()
 
       running(application) {
         val request = FakeRequest(GET, cuiRoutes.CuiController.selfAssessment.url)
@@ -51,16 +51,6 @@ class CuiControllerSpec
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
         doc.select("h1").text() mustBe "Self Assessment: chat"
-      }
-    }
-
-    "render technical support with HMRC online services page : if showSACUI is false" in {
-      val application = builder.configure("features.showSACUI" -> "false").build()
-
-      running(application) {
-        val request = FakeRequest(GET, cuiRoutes.CuiController.selfAssessment.url)
-        val result = route(application, request).get
-        status(result) mustBe NOT_FOUND
       }
     }
 

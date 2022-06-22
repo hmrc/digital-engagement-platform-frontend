@@ -50,10 +50,6 @@ class IvrController @Inject()(appConfig: AppConfig,
     Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
-  def selfAssessment: Action[AnyContent] = Action.async {
-    Future.successful(Redirect(controllers.routes.WebchatController.selfAssessment + param))
-  }
-
   def jobRetentionScheme: Action[AnyContent] = Action.async {
     Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }

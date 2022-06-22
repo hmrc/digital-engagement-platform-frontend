@@ -28,7 +28,6 @@ import scala.concurrent.Future
 @Singleton
 class WebchatController @Inject()(appConfig: AppConfig,
                                   mcc: MessagesControllerComponents,
-                                  selfAssessmentView: SelfAssessmentView,
                                   customsEnquiriesView: CustomsEnquiriesView,
                                   onlineServiceHelpdeskView: OnlineServiceHelpdeskView,
                                   nationalClearanceHubView: NationalClearanceHubView,
@@ -41,13 +40,6 @@ class WebchatController @Inject()(appConfig: AppConfig,
 
   private def isIvrRedirect()(implicit request: RequestHeader): Boolean = {
     request.getQueryString("nuance").contains("ivr")
-  }
-
-  def selfAssessment: Action[AnyContent] = Action.async { implicit request =>
-    (config.showSACUI, isIvrRedirect) match {
-      case (true, false) => Future.successful(Redirect(cuiRoutes.CuiController.selfAssessment))
-      case _ => Future.successful(Ok(selfAssessmentView(isIvrRedirect())))
-    }
   }
 
   def employerEnquiries: Action[AnyContent] = Action.async { implicit request =>

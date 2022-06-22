@@ -57,12 +57,6 @@ class IvrControllerSpec extends AppBuilderSpecBase with Matchers with AnyWordSpe
       redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
-    "render self-assessment page" in {
-      val result = controller.selfAssessment(fakeRequest)
-      status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some("/ask-hmrc/webchat/self-assessment?nuance=ivr")
-    }
-
     "render job retention page" in {
       val result = controller.jobRetentionScheme(fakeRequest)
       status(result) mustBe SEE_OTHER

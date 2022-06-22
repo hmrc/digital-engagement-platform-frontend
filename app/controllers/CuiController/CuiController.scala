@@ -42,12 +42,7 @@ class CuiController @Inject()(appConfig: AppConfig,
   }
 
   def selfAssessment: Action[AnyContent] = Action.async { implicit request =>
-    if (config.showSACUI) {
       Future.successful(Ok(selfAssessmentCUIView()))
-    }
-    else {
-      Future.successful(NotFound)
-    }
   }
 
   def onlineServicesHelpdesk: Action[AnyContent] = Action.async { implicit request =>
