@@ -16,22 +16,14 @@
 
 @import config.AppConfig
 @import templates.MainTemplateCUI
-@import includes.cuiCJRSSidebar
 
 @this(main_template: MainTemplateCUI, appConfig: AppConfig)
 
 @()(implicit request: Request[_], messages: play.api.i18n.Messages)
 
-@cJRSSidebar = {
-    @if(appConfig.showCJRSSidebar) {
-        @cuiCJRSSidebar()
-    }
-}
-
 @main_template(
     title = messages("cui.job.retention.scheme.title"),
-    navTitle = Some(messages("cui.page.title")),
-    sidebar = Some(cJRSSidebar)) {
+    navTitle = Some(messages("cui.page.title"))) {
     <div class="cui-wrapper">
         <div id="cui-messaging-container">
             <div id="nuanMessagingFrame">
