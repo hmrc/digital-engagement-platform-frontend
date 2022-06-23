@@ -98,8 +98,8 @@ class CuiControllerSpec
       }
     }
 
-    "render construction industry scheme CUI page if showDAv2CUI is true" in {
-      val application = builder.configure("features.showDAv2CUI" -> "true").build()
+    "render construction industry scheme CUI page" in {
+      val application = builder.build()
 
       running(application) {
         val request = FakeRequest(GET, cuiRoutes.CuiController.constructionIndustryScheme.url)
@@ -132,16 +132,5 @@ class CuiControllerSpec
       }
     }
 
-    "render technical support with HMRC online services page : if showDAv2CUI is false" in {
-      val application = builder.configure("features.showDAv2CUI" -> "false").build()
-
-      running(application) {
-        val request = FakeRequest(GET, cuiRoutes.CuiController.constructionIndustryScheme.url)
-        val result = route(application, request).get
-        val doc = asDocument(contentAsString(result))
-        status(result) mustBe OK
-        doc.select("h1").text() mustBe "Sorry, this webchat is unavailable"
-      }
-    }
   }
 }

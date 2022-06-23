@@ -62,11 +62,7 @@ class CuiController @Inject()(appConfig: AppConfig,
   }
 
   def constructionIndustryScheme: Action[AnyContent] = Action.async { implicit request =>
-    if(config.showDAv2CUI) {
       Future.successful(Ok(constructionIndustrySchemeCUIView()))
-    } else {
-      Future.successful(Ok(serviceUnavailableView()))
-    }
   }
 
   def childBenefit: Action[AnyContent] = Action.async { implicit request =>
