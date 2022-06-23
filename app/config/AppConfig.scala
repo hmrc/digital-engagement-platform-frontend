@@ -34,7 +34,6 @@ class AppConfig @Inject()(config: Configuration) {
 
   // Feature Toggles
   val showCJRSSidebar: Boolean = config.getOptional[Boolean]("features.showCJRSSidebar").getOrElse(false)
-  var featureNoChatExperiment: Boolean = config.getOptional[Boolean]("features.noChatExperiment").getOrElse(false)
   val showOSHCUI: Boolean = config.getOptional[Boolean]("features.showOSHCUI").getOrElse(false)
   val shutter: Boolean = config.getOptional[Boolean]("features.shutter").getOrElse(false)
   val showEHLCUI: Boolean = config.getOptional[Boolean]("features.showEHLCUI").getOrElse(false)
