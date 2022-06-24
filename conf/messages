@@ -32,19 +32,11 @@ global.webchat.unavailable=Webchat is not available at the moment.
 #Beta Banner
 global.banner.phase = BETA
 
-#Webchat pages
-#Self Assessment Webchat
-self.assessment.title=Self Assessment: webchat
-self.assessment.p1=Return to Contact HMRC
-
 #Service Unavailable Page
 service.unavailable.title = Sorry, this webchat is unavailable
 service.unavailable.p1 = We are hoping to provide this webchat from October 2022.
 service.unavailable.p2-1 = You can
 service.unavailable.p2-2 = find other contact details for your query
-
-#Employers Webchat
-employers.enquiries.title=Employers: webchat
 
 #VAT Enquiries Webchat
 vat.enquiries.title=VAT: webchat
@@ -199,13 +191,10 @@ test.sidebar.p2=If it cannot help you, you can ask to transfer to an HMRC advise
 #CUI pages
 cui.page.title=Ask HMRC
 cui.page.title.gov=- Ask HMRC - GOV.UK
-cui.sidebar.h2.header=Help for businesses and employers
 
 #JRS page
 cui.job.retention.scheme.title=Coronavirus Job Retention Scheme: chat
 cui.job.retention.scheme.header=Get help with the Coronavirus Job Retention Scheme
-cui.job.retention.sidebar.p1=The HMRC chatbot is available at any time to answer your questions about the Coronavirus Job Retention Scheme.
-cui.job.retention.sidebar.p2=If it cannot help you, you can ask to transfer to an HMRC adviser by typing ‘adviser’. Advisers work 8am to 7:30pm, Monday to Friday and do not work bank holidays.
 
 #Self Assessment page
 cui.self.assessment.title=Self Assessment: chat

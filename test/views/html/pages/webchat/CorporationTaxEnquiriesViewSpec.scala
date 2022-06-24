@@ -26,8 +26,8 @@ class CorporationTaxEnquiriesViewSpec extends ChatViewBehaviours with Matchers w
 
   private val view = app.injector.instanceOf[CorporationTaxEnquiriesView]
 
-  private def createView(noChatExperiment: Boolean = false): () =>
-    HtmlFormat.Appendable = () => view(noChatExperiment = noChatExperiment)(fakeRequest, messages)
+  private def createView(): () =>
+    HtmlFormat.Appendable = () => view(fakeRequest, messages)
 
   "Corporation Tax Enquiries view" must {
     val returnUrl: String =
@@ -48,7 +48,7 @@ class CorporationTaxEnquiriesViewSpec extends ChatViewBehaviours with Matchers w
     )
     "with chat experiment" must {
       behave like generalContent(
-        view = createView(true),
+        view = createView(),
         messageHeading = "Corporation Tax: webchat",
         hasGetHelpWithPageText = false
       )

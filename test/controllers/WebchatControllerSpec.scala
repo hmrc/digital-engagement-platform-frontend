@@ -35,99 +35,11 @@ class WebchatControllerSpec
   def asDocument(html: String): Document = Jsoup.parse(html)
 
   "fixed URLs" must {
-    "render self-assessment webchat page if showSACUI is false and IVR false" in {
-      val application = builder.configure("features.showSACUI" -> "false").build()
+    "render technical support with HMRC online services page" in {
+      val result = controller.onlineServicesHelpdesk(fakeRequest)
 
-      running(application) {
-        val request = FakeRequest(GET, routes.WebchatController.selfAssessment.url)
-        val result = route(application, request).get
-        val doc = asDocument(contentAsString(result))
-        status(result) mustBe OK
-        doc.select("h1").text() mustBe "Self Assessment: webchat"
-      }
-    }
-
-    "render self-assessment CUI page if showSACUI is true and IVR false" in {
-      val application = builder.configure("features.showSACUI" -> "true").build()
-
-      running(application) {
-        val request = FakeRequest(GET, routes.WebchatController.selfAssessment.url)
-        val result = route(application, request).get
-        status(result) mustBe SEE_OTHER
-        redirectLocation(result) mustBe Some(cuiRoutes.CuiController.selfAssessment.url)
-      }
-    }
-
-    "render technical support with HMRC online services page : if showOSHCUI is true" in {
-      val application = builder.configure("features.showOSHCUI" -> "true").build()
-
-      running(application) {
-        val request = FakeRequest(GET, routes.WebchatController.onlineServicesHelpdesk.url)
-        val result = route(application, request).get
-        status(result) mustBe SEE_OTHER
-        redirectLocation(result) mustBe Some(cuiRoutes.CuiController.onlineServicesHelpdesk.url)
-
-      }
-    }
-
-    "render technical support with HMRC online services page : if showOSHCUI is false" in {
-      val application = builder.configure("features.showOSHCUI" -> "false").build()
-
-      running(application) {
-        val request = FakeRequest(GET, routes.WebchatController.onlineServicesHelpdesk.url)
-        val result = route(application, request).get
-        val doc = asDocument(contentAsString(result))
-        status(result) mustBe OK
-        doc.select("h1").text() mustBe "Online services helpdesk: webchat"
-      }
-    }
-
-    "render self-assessment webchat page showSACUI is false and IVR true" in {
-      val application = builder.configure("features.showSACUI" -> "false").build()
-
-      running(application) {
-        val request = FakeRequest(GET, routes.WebchatController.selfAssessment.url + "?nuance=ivr")
-        val result = route(application, request).get
-        val doc = asDocument(contentAsString(result))
-        status(result) mustBe OK
-        doc.select("h1").text() mustBe "Self Assessment: webchat"
-      }
-    }
-
-    "render self-assessment webchat page if showSACUI is true and IVR true" in {
-      val application = builder.configure("features.showSACUI" -> "true").build()
-
-      running(application) {
-        val request = FakeRequest(GET, routes.WebchatController.selfAssessment.url + "?nuance=ivr")
-        val result = route(application, request).get
-        val doc = asDocument(contentAsString(result))
-        status(result) mustBe OK
-        doc.select("h1").text() mustBe "Self Assessment: webchat"
-      }
-    }
-
-    "render employer enquiries page when showEHLCUI is true" in {
-      val application = builder.configure("features.showEHLCUI" -> "true").build()
-
-      running(application) {
-        val request = FakeRequest(GET, routes.WebchatController.employerEnquiries.url)
-        val result = route(application, request).get
-
-        status(result) mustBe SEE_OTHER
-        redirectLocation(result) mustBe Some(cuiRoutes.CuiController.employerEnquiries.url)
-      }
-    }
-
-    "render service unavailable page when showEHLCUI is false" in {
-      val application = builder.configure("features.showEHLCUI" -> "false").build()
-
-      running(application) {
-        val request = FakeRequest(GET, routes.WebchatController.employerEnquiries.url)
-        val result = route(application, request).get
-
-        status(result) mustBe SEE_OTHER
-        redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
-      }
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(cuiRoutes.CuiController.onlineServicesHelpdesk.url)
     }
 
     "render vat enquiries page" in {
@@ -221,7 +133,7 @@ class WebchatControllerSpec
       status(result) mustBe SEE_OTHER
       redirectLocation(result) mustBe Some(cuiRoutes.CuiController.constructionIndustryScheme.url)
     }
-    
+
     "VAT registration page" in {
       val result = controller.vatRegistration(fakeRequest)
 

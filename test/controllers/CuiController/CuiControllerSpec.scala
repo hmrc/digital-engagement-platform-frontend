@@ -42,8 +42,8 @@ class CuiControllerSpec
       doc.select("h1").text() mustBe "Coronavirus Job Retention Scheme: chat"
     }
 
-    "render self assessment CUI page if showSACUI is true" in {
-      val application = builder.configure("features.showSACUI" -> "true").build()
+    "render self assessment CUI page" in {
+      val application = builder.build()
 
       running(application) {
         val request = FakeRequest(GET, cuiRoutes.CuiController.selfAssessment.url)
@@ -54,70 +54,28 @@ class CuiControllerSpec
       }
     }
 
-    "render technical support with HMRC online services page : if showSACUI is false" in {
-      val application = builder.configure("features.showSACUI" -> "false").build()
+    "render online Services Helpdesk CUI page" in {
+      val result = controller.onlineServicesHelpdesk(fakeRequest)
 
-      running(application) {
-        val request = FakeRequest(GET, cuiRoutes.CuiController.selfAssessment.url)
-        val result = route(application, request).get
-        status(result) mustBe NOT_FOUND
-      }
+      val doc = asDocument(contentAsString(result))
+      status(result) mustBe OK
+      doc.select("h1").text() mustBe "Technical support with HMRC online services: chat"
     }
 
-    "render online Services Helpdesk CUI page if showOSHCUI is true" in {
-      val application = builder.configure("features.showOSHCUI" -> "true").build()
+    "render employer enquiries CUI page" in {
+      val result = controller.employerEnquiries(fakeRequest)
 
-      running(application) {
-        val request = FakeRequest(GET, cuiRoutes.CuiController.onlineServicesHelpdesk.url)
-        val result = route(application, request).get
-        val doc = asDocument(contentAsString(result))
-        status(result) mustBe OK
-        doc.select("h1").text() mustBe "Technical support with HMRC online services: chat"
-      }
+      val doc = asDocument(contentAsString(result))
+      status(result) mustBe OK
+      doc.select("h1").text() mustBe "Employers enquiries: chat"
     }
 
-    "render technical support with HMRC online services page : if showOSHCUI is false" in {
-      val application = builder.configure("features.showOSHCUI" -> "false").build()
+    "render construction industry scheme CUI page" in {
+      val result = controller.constructionIndustryScheme(fakeRequest)
 
-      running(application) {
-        val request = FakeRequest(GET, cuiRoutes.CuiController.onlineServicesHelpdesk.url)
-        val result = route(application, request).get
-        status(result) mustBe NOT_FOUND
-      }
-    }
-
-    "render employer enquiries CUI page if showEHLCUI is true" in {
-      val application = builder.configure("features.showEHLCUI" -> "true").build()
-
-      running(application) {
-        val request = FakeRequest(GET, cuiRoutes.CuiController.employerEnquiries.url)
-        val result = route(application, request).get
-        val doc = asDocument(contentAsString(result))
-        status(result) mustBe OK
-        doc.select("h1").text() mustBe "Employers enquiries: chat"
-      }
-    }
-
-    "render technical support with HMRC online services page : if showEHLCUI is false" in {
-      val application = builder.configure("features.showEHLCUI" -> "false").build()
-
-      running(application) {
-        val request = FakeRequest(GET, cuiRoutes.CuiController.employerEnquiries.url)
-        val result = route(application, request).get
-        status(result) mustBe NOT_FOUND
-      }
-    }
-
-    "render construction industry scheme CUI page if showDAv2CUI is true" in {
-      val application = builder.configure("features.showDAv2CUI" -> "true").build()
-
-      running(application) {
-        val request = FakeRequest(GET, cuiRoutes.CuiController.constructionIndustryScheme.url)
-        val result = route(application, request).get
-        val doc = asDocument(contentAsString(result))
-        status(result) mustBe OK
-        doc.select("h1").text() mustBe "Construction Industry Scheme: chat"
-      }
+      val doc = asDocument(contentAsString(result))
+      status(result) mustBe OK
+      doc.select("h1").text() mustBe "Construction Industry Scheme: chat"
     }
 
     "render child benefit CUI page if showCHBCUI is true" in {
@@ -142,16 +100,5 @@ class CuiControllerSpec
       }
     }
 
-    "render technical support with HMRC online services page : if showDAv2CUI is false" in {
-      val application = builder.configure("features.showDAv2CUI" -> "false").build()
-
-      running(application) {
-        val request = FakeRequest(GET, cuiRoutes.CuiController.constructionIndustryScheme.url)
-        val result = route(application, request).get
-        val doc = asDocument(contentAsString(result))
-        status(result) mustBe OK
-        doc.select("h1").text() mustBe "Sorry, this webchat is unavailable"
-      }
-    }
   }
 }

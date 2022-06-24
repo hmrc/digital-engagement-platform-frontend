@@ -33,13 +33,7 @@ class AppConfig @Inject()(config: Configuration) {
   val performanceTest: Boolean = config.get[Boolean]("performance-test.mode")
 
   // Feature Toggles
-  val showSACUI: Boolean = config.getOptional[Boolean]("features.showSACUI").getOrElse(false)
-  val showCJRSSidebar: Boolean = config.getOptional[Boolean]("features.showCJRSSidebar").getOrElse(false)
-  var featureNoChatExperiment: Boolean = config.getOptional[Boolean]("features.noChatExperiment").getOrElse(false)
-  val showOSHCUI: Boolean = config.getOptional[Boolean]("features.showOSHCUI").getOrElse(false)
   val shutter: Boolean = config.getOptional[Boolean]("features.shutter").getOrElse(false)
-  val showEHLCUI: Boolean = config.getOptional[Boolean]("features.showEHLCUI").getOrElse(false)
-  val showDAv2CUI: Boolean = config.getOptional[Boolean]("features.showDAv2CUI").getOrElse(false)
   val showCHBCUI: Boolean = config.getOptional[Boolean]("features.showCHBCUI").getOrElse(false)
 
   // Used in wrapper
