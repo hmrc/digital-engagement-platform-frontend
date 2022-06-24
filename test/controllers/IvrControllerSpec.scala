@@ -33,12 +33,6 @@ class IvrControllerSpec extends AppBuilderSpecBase with Matchers with AnyWordSpe
       redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
-    "render employer enquiries page" in {
-      val result = controller.employerEnquiries(fakeRequest)
-      status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
-    }
-
     "render vat enquiries page" in {
       val result = controller.vatEnquiries(fakeRequest)
       status(result) mustBe SEE_OTHER

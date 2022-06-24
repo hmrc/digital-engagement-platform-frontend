@@ -34,10 +34,6 @@ class IvrController @Inject()(appConfig: AppConfig,
     Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
-  def employerEnquiries: Action[AnyContent] = Action.async {
-    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
-  }
-
   def vatEnquiries: Action[AnyContent] = Action.async {
     Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }

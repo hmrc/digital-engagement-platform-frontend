@@ -38,9 +38,6 @@ service.unavailable.p1 = We are hoping to provide this webchat from October 2022
 service.unavailable.p2-1 = You can
 service.unavailable.p2-2 = find other contact details for your query
 
-#Employers Webchat
-employers.enquiries.title=Employers: webchat
-
 #VAT Enquiries Webchat
 vat.enquiries.title=VAT: webchat
 
