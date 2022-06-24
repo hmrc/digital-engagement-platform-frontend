@@ -29,7 +29,6 @@ import scala.concurrent.Future
 class WebchatController @Inject()(appConfig: AppConfig,
                                   mcc: MessagesControllerComponents,
                                   customsEnquiriesView: CustomsEnquiriesView,
-                                  onlineServiceHelpdeskView: OnlineServiceHelpdeskView,
                                   nationalClearanceHubView: NationalClearanceHubView,
                                   additionalNeedsHelpView: AdditionalNeedsHelpView,
                                   personalTransportUnitEnquiriesView: PersonalTransportUnitEnquiriesView,
@@ -42,24 +41,12 @@ class WebchatController @Inject()(appConfig: AppConfig,
     request.getQueryString("nuance").contains("ivr")
   }
 
-  def employerEnquiries: Action[AnyContent] = Action.async { implicit request =>
-    if(config.showEHLCUI) {
-      Future.successful(Redirect(cuiRoutes.CuiController.employerEnquiries))
-    } else {
-      Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
-    }
-  }
-
   def vatEnquiries: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def onlineServicesHelpdesk: Action[AnyContent] = Action.async { implicit request =>
-    if (config.showOSHCUI) {
       Future.successful(Redirect(cuiRoutes.CuiController.onlineServicesHelpdesk))
-    } else {
-      Future.successful(Ok(onlineServiceHelpdeskView()))
-    }
   }
 
   def vatOnlineServicesHelpdesk: Action[AnyContent] = Action.async { implicit request =>
