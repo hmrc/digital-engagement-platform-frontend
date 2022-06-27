@@ -41,89 +41,60 @@ class WebchatController @Inject()(appConfig: AppConfig,
     request.getQueryString("nuance").contains("ivr")
   }
 
-  def vatEnquiries: Action[AnyContent] = Action.async { implicit request =>
+  def serviceUnavailableRedirect: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
+
+  def vatEnquiries: Action[AnyContent] = serviceUnavailableRedirect
+
 
   def onlineServicesHelpdesk: Action[AnyContent] = Action.async { implicit request =>
       Future.successful(Redirect(cuiRoutes.CuiController.onlineServicesHelpdesk))
   }
 
-  def vatOnlineServicesHelpdesk: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
-  }
+  def vatOnlineServicesHelpdesk: Action[AnyContent] = serviceUnavailableRedirect
 
-  def nationalInsuranceNumbers: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
-  }
+  def nationalInsuranceNumbers: Action[AnyContent] = serviceUnavailableRedirect
 
   def customsEnquiries: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(customsEnquiriesView(isIvrRedirect())))
   }
 
-  def exciseEnquiries: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
-  }
+  def exciseEnquiries: Action[AnyContent] = serviceUnavailableRedirect
 
-  def incomeTaxEnquiries: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
-  }
+  def incomeTaxEnquiries: Action[AnyContent] = serviceUnavailableRedirect
 
-  def charitiesCommunitySports: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
-  }
+  def charitiesCommunitySports: Action[AnyContent] = serviceUnavailableRedirect
 
-  def employingExpatriateEmployees: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
-  }
+  def employingExpatriateEmployees: Action[AnyContent] = serviceUnavailableRedirect
 
-  def employmentRelatedSecurities: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
-  }
+  def employmentRelatedSecurities: Action[AnyContent] = serviceUnavailableRedirect
 
-  def nonUkResidentEmployees: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
-  }
+  def nonUkResidentEmployees: Action[AnyContent] = serviceUnavailableRedirect
 
-  def nonUkResidentLandlords: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
-  }
+  def nonUkResidentLandlords: Action[AnyContent] = serviceUnavailableRedirect
 
-  def corporationTaxEnquiries: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
-  }
+  def corporationTaxEnquiries: Action[AnyContent] = serviceUnavailableRedirect
 
   def constructionIndustryScheme: Action[AnyContent] = Action.async { implicit request =>
       Future.successful(Redirect(cuiRoutes.CuiController.constructionIndustryScheme))
   }
 
-  def vatRegistration: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
-  }
+  def vatRegistration: Action[AnyContent] = serviceUnavailableRedirect
 
   def nationalClearanceHub: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(nationalClearanceHubView()))
   }
 
-  def jobRetentionScheme: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
-  }
+  def jobRetentionScheme: Action[AnyContent] = serviceUnavailableRedirect
 
-  def selfEmploymentIncomeSupportScheme: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
-  }
+  def selfEmploymentIncomeSupportScheme: Action[AnyContent] = serviceUnavailableRedirect
 
-  def c19EmployerEnquiries: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
-  }
+  def c19EmployerEnquiries: Action[AnyContent] = serviceUnavailableRedirect
 
-  def probate: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
-  }
+  def probate: Action[AnyContent] = serviceUnavailableRedirect
 
-  def inheritanceTax: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
-  }
+  def inheritanceTax: Action[AnyContent] = serviceUnavailableRedirect
 
   def additionalNeedsHelp: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(additionalNeedsHelpView()))
