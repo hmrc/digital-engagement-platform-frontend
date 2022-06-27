@@ -23,9 +23,9 @@
     appConfig: AppConfig,
     webChatClient: WebChatClient)
 
-@(isIvrRedirect: Boolean = false)(implicit request: Request[_], messages: play.api.i18n.Messages)
+@()(implicit request: Request[_], messages: play.api.i18n.Messages)
 
-@main_template(title = messages("c19EmployerEnquiries.title"), showBackLink = !isIvrRedirect) {
+@main_template(title = messages("c19EmployerEnquiries.title")) {
 
     <h1>@messages("c19EmployerEnquiries.title")</h1>
 
@@ -42,7 +42,7 @@
 
     <p>
         <a class="govuk-link" id="return-link" href=@appConfig.c19EmployerEnquiriesReturnRul>
-            @if(isIvrRedirect) {@messages("global.text.link.ivr.to.govuk.p1")} else {@messages("global.text.link.back.to.govuk.p1")}
+            @messages("global.text.link.back.to.govuk.p1")
         </a>
     </p>
 }

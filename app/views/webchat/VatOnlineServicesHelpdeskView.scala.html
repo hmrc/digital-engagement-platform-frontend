@@ -23,11 +23,11 @@
   appConfig: AppConfig,
   webChatClient: WebChatClient)
 
-@(isIvrRedirect: Boolean = false)(implicit request: Request[_], messages: play.api.i18n.Messages)
+@()(implicit request: Request[_], messages: play.api.i18n.Messages)
 
-@main_template(title = messages("vat.online.helpdesk.title"), showBackLink = !isIvrRedirect) {
+@main_template(title = messages("vat.online.helpdesk.title")) {
 
-    <h1 @if(!isIvrRedirect){class="header-margin-top"}>@messages("vat.online.helpdesk.title")</h1>
+    <h1 class="header-margin-top">@messages("vat.online.helpdesk.title")</h1>
 
     <div class="govuk-inset-text">
         <p>@messages("global.opening.times.title")</p>
@@ -42,7 +42,7 @@
 
     <p class="margin-top">
         <a class="govuk-link" id="return-link" href="@appConfig.vatOnlineServicesHelpdeskReturnUrl">
-            @if(isIvrRedirect) {@messages("global.text.link.ivr.to.govuk.p1")} else {@messages("global.text.link.back.to.govuk.p1")}
+            @messages("global.text.link.back.to.govuk.p1")
         </a>
     </p>
  }

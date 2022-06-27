@@ -37,10 +37,6 @@ class WebchatController @Inject()(appConfig: AppConfig,
 
   implicit val config: AppConfig = appConfig
 
-  private def isIvrRedirect()(implicit request: RequestHeader): Boolean = {
-    request.getQueryString("nuance").contains("ivr")
-  }
-
   def vatEnquiries: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
@@ -58,7 +54,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def customsEnquiries: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(customsEnquiriesView(isIvrRedirect())))
+    Future.successful(Ok(customsEnquiriesView()))
   }
 
   def exciseEnquiries: Action[AnyContent] = Action.async { implicit request =>

@@ -2,7 +2,6 @@
 global.nav.title=Ask HMRC - Webchat
 global.nav.va.title=Ask HMRC’s digital assistant
 global.text.link.back.to.govuk.p1=Return to Contact HMRC
-global.text.link.ivr.to.govuk.p1=More ways to contact HMRC
 global.text.link.online=online
 global.back = Back
 global.nuance.div.loading.text=Checking adviser availability.
