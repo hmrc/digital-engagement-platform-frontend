@@ -30,7 +30,6 @@ class JobRetentionSchemeHelpViewSpec extends ChatViewBehaviours with Matchers wi
 
   "JRS Variant One Test View" must {
     "rendered" must {
-      //TODO add title when decided what it will be
       behave like normalCuiPage(
         createView,
         "Ask HMRC",

@@ -41,14 +41,14 @@ class WebchatController @Inject()(appConfig: AppConfig,
     request.getQueryString("nuance").contains("ivr")
   }
 
-  def serviceUnavailableRedirect: Action[AnyContent] = Action.async { implicit request =>
+  def serviceUnavailableRedirect: Action[AnyContent] = Action.async {
     Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
   def vatEnquiries: Action[AnyContent] = serviceUnavailableRedirect
 
 
-  def onlineServicesHelpdesk: Action[AnyContent] = Action.async { implicit request =>
+  def onlineServicesHelpdesk: Action[AnyContent] = Action.async {
       Future.successful(Redirect(cuiRoutes.CuiController.onlineServicesHelpdesk))
   }
 
@@ -76,7 +76,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
 
   def corporationTaxEnquiries: Action[AnyContent] = serviceUnavailableRedirect
 
-  def constructionIndustryScheme: Action[AnyContent] = Action.async { implicit request =>
+  def constructionIndustryScheme: Action[AnyContent] = Action.async {
       Future.successful(Redirect(cuiRoutes.CuiController.constructionIndustryScheme))
   }
 
