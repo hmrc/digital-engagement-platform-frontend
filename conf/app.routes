@@ -38,14 +38,6 @@ GET         /webchat/annual-tax-on-enveloped-dwellings                          
 
 GET         /webchat/payment-problems                                                   controllers.PaymentProblemsController.paymentProblem
 
-GET         /ivr/paye                                                                   controllers.IvrController.incomeTaxEnquiries
-GET         /ivr/vat                                                                    controllers.IvrController.vatEnquiries
-GET         /ivr/nino                                                                   controllers.IvrController.nationalInsuranceNumbers
-GET         /ivr/excise                                                                 controllers.IvrController.exciseEnquiries
-GET         /ivr/jobretention                                                           controllers.IvrController.jobRetentionScheme
-GET         /ivr/c19seiss                                                               controllers.IvrController.selfEmploymentIncomeSupportScheme
-GET         /ivr/c19employer                                                            controllers.IvrController.c19EmployerEnquiries
-
 GET         /virtual-assistant/support-for-coronavirus                                  controllers.VirtualAssistantController.supportForCoronavirus
 GET         /virtual-assistant/customs-and-international-trade-enquiries                controllers.VirtualAssistantController.customesInternationalTrade
 GET         /virtual-assistant/self-employment-income-support-scheme                    controllers.VirtualAssistantController.selfEmploymentIncomeSupportScheme

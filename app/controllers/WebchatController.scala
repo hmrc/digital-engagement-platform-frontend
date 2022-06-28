@@ -47,7 +47,6 @@ class WebchatController @Inject()(appConfig: AppConfig,
 
   def vatEnquiries: Action[AnyContent] = serviceUnavailableRedirect
 
-
   def onlineServicesHelpdesk: Action[AnyContent] = Action.async {
       Future.successful(Redirect(cuiRoutes.CuiController.onlineServicesHelpdesk))
   }
@@ -57,7 +56,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
   def nationalInsuranceNumbers: Action[AnyContent] = serviceUnavailableRedirect
 
   def customsEnquiries: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(customsEnquiriesView(isIvrRedirect())))
+    Future.successful(Ok(customsEnquiriesView()))
   }
 
   def exciseEnquiries: Action[AnyContent] = serviceUnavailableRedirect
