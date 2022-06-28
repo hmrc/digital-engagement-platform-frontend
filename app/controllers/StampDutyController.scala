@@ -29,19 +29,15 @@ class StampDutyController @Inject()(appConfig: AppConfig,
 
   implicit val config: AppConfig = appConfig
 
-  def landTax: Action[AnyContent] = Action.async { implicit request =>
+  def serviceUnavailableRedirect: Action[AnyContent] = Action.async {
     Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
-  def reserveTax: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
-  }
+  def landTax: Action[AnyContent] = serviceUnavailableRedirect
 
-  def sharesAndLand: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
-  }
+  def reserveTax: Action[AnyContent] = serviceUnavailableRedirect
 
-  def annualTaxOnEnvelopedDwellings: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
-  }
+  def sharesAndLand: Action[AnyContent] = serviceUnavailableRedirect
+
+  def annualTaxOnEnvelopedDwellings: Action[AnyContent] = serviceUnavailableRedirect
 }

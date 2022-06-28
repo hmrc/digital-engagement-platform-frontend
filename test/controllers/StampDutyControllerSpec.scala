@@ -26,6 +26,15 @@ class StampDutyControllerSpec
 
   private val controller = app.injector.instanceOf[StampDutyController]
 
+  "service unavailable redirect" must {
+    "show the service unavailable page" in {
+      val result = controller.serviceUnavailableRedirect(fakeRequest)
+
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
+    }
+  }
+
   "fixed URLs" should {
     "render land tax page" in {
       val result = controller.landTax(fakeRequest)
