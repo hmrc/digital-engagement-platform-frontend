@@ -24,7 +24,6 @@ import views.html.pages.helpers.ChatViewBehaviours
 
 class NuanceFullPageCUIViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike{
 
-//TODO this needs refactoring to work with ChatViewBehaviours
   private val view = app.injector.instanceOf[NuanceFullPageCUIView]
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)

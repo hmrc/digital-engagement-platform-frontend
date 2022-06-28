@@ -96,7 +96,7 @@ export var chatListener = {
             this.engageTimeout = null;
         }
         this.engaged = true;
-        $('.cui-technical-error').hide();   // If we showed the technical error, clear it.
+        $('.cui-technical-error').hide();
         this.showNuanceDiv();
     },
     showNuanceDiv: function() {
@@ -139,7 +139,6 @@ export var chatListener = {
     },
     loadFunction: null,
     startup: function(w) {
-//        localStorage.enableJSLogging = true;
         var self = this;
 
         this.loadFunction = function() {
