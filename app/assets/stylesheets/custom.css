@@ -60,13 +60,23 @@
     display: none;
 }
 
+#cui-loading-animation-image {
+    width: 50px;
+    float: left;
+    margin-left: 5px;
+    padding-top: 21px;
+    padding-right: 5px;
+}
+
+#cui-loading-animation-text {
+    float: left;
+    padding-left: 10px;
+    padding-top: 15px;
+}
+
 #cui-loading-animation {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
+    margin-top: 20px;
+    display:none;
 }
 
 #cui-messaging-container {
