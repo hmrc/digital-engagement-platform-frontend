@@ -19,7 +19,7 @@ package views.html.pages.CUIHMRCSkinViews
 import org.scalatest.matchers.must.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike
 import play.twirl.api.HtmlFormat
-import views.html.CUIHMRCSkinViews.TaxCreditsCUIView
+import views.html.CIAPIViews.TaxCreditsCUIView
 import views.html.pages.helpers.ChatViewBehaviours
 
 class TaxCreditsCUIViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike{

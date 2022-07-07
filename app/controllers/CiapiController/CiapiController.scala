@@ -19,18 +19,27 @@ package controllers.CiapiController
 import config.AppConfig
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
-import views.html.CUIHMRCSkinViews.TaxCreditsCUIView
+import views.html.CIAPIViews.{TaxCreditsCUIView, CustomsInternationalTradeCUIView}
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.Future
 
 @Singleton
 class CiapiController @Inject()(appConfig: AppConfig,
                                 mcc: MessagesControllerComponents,
-                                taxCreditsCUIView: TaxCreditsCUIView) extends FrontendController(mcc) {
+                                taxCreditsCUIView: TaxCreditsCUIView,
+                                customsInternationalTradeCUIView: CustomsInternationalTradeCUIView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
   def askHmrcOnline: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(taxCreditsCUIView()))
+  }
+
+  def customsInternationalTrade : Action[AnyContent] = Action.async { implicit request =>
+    if(config.showCITCUI) {
+      Future.successful(Ok(customsInternationalTradeCUIView()))
+    } else {
+      Future.successful(NotFound)
+    }
   }
 }

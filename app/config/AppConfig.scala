@@ -35,6 +35,7 @@ class AppConfig @Inject()(config: Configuration) {
   // Feature Toggles
   val shutter: Boolean = config.getOptional[Boolean]("features.shutter").getOrElse(false)
   val showCHBCUI: Boolean = config.getOptional[Boolean]("features.showCHBCUI").getOrElse(false)
+  val showCITCUI: Boolean = config.getOptional[Boolean]("features.showCITCUI").getOrElse(false)
 
   // Used in wrapper
   val analyticsToken: String = config.get[String]("google-analytics.token")
@@ -42,7 +43,6 @@ class AppConfig @Inject()(config: Configuration) {
   val reportAProblemPartialUrl: String = s"$contactHost/contact/problem_reports_ajax?service=$serviceIdentifier"
   val reportAProblemNonJSUrl: String = s"$contactHost/contact/problem_reports_nonjs?service=$serviceIdentifier"
   val betaFeedbackUnauthenticatedUrl = s"$contactHost/contact/beta-feedback-unauthenticated?service=$serviceIdentifier"
-
 
   val selfAssessmentReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/self-assessment"
