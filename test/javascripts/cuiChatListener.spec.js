@@ -40,8 +40,8 @@ describe("CUI chat listener", () => {
         });
 
         it("will have basic properties", () => {
-            expect(testListener.downTimeoutDuration).toBe(8*1000);
-            expect(testListener.engagementTimeoutDuration).toBe(4*1000);
+            expect(testListener.downTimeoutDuration).toBe(10*1000);
+            expect(testListener.engagementTimeoutDuration).toBe(6*1000);
             expect(testListener.loadingAnimationSelector).toBe('#cui-loading-animation');
             expect(testListener.messagingContainerSelector).toBe('#cui-messaging-container');
         });
