@@ -34,8 +34,8 @@ class ExciseEnquiriesViewSpec extends ChatViewBehaviours with Matchers with AnyW
 
     behave like normalPage(
       createView,
-      "Ask HMRC - Webchat",
-      "Excise: webchat",
+      "Ask HMRC",
+      "Excise: webchat - GOV.UK",
       "Excise: webchat",
       "Return to Contact HMRC",
       returnUrl,

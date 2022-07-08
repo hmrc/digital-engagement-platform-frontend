@@ -37,8 +37,8 @@ class EmployingExpatriateEmployeesViewSpec extends ChatViewBehaviours with Match
 
     behave like normalPage(
       createView,
-      "Ask HMRC - Webchat",
-      "Employing expatriate employees: webchat",
+      "Ask HMRC",
+      "Employing expatriate employees: webchat - GOV.UK",
       "Employing expatriate employees: webchat",
       "Return to Contact HMRC",
       returnUrl,

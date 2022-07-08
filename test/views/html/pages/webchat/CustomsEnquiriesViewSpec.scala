@@ -34,8 +34,8 @@ class CustomsEnquiriesViewSpec extends ChatViewBehaviours with Matchers with Any
 
     behave like normalPage(
       createView,
-      "Ask HMRC - Webchat",
-      "Imports and exports: webchat",
+      "Ask HMRC",
+      "Imports and exports: webchat - GOV.UK",
       "Imports and exports: webchat",
       "Return to Contact HMRC",
       returnUrl,

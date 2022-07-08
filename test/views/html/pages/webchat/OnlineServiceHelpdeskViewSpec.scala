@@ -33,8 +33,8 @@ class OnlineServiceHelpdeskViewSpec extends ChatViewBehaviours with Matchers wit
 
     behave like normalPage(
       createView,
-      "Ask HMRC - Webchat",
-      "Online services helpdesk: webchat",
+      "Ask HMRC",
+      "Online services helpdesk: webchat - GOV.UK",
       "Online services helpdesk: webchat",
       "Return to Contact HMRC",
       returnUrl,

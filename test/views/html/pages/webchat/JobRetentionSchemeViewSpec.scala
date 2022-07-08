@@ -33,8 +33,8 @@ class JobRetentionSchemeViewSpec extends ChatViewBehaviours with Matchers with A
 
     behave like normalPage(
       createView,
-      "Ask HMRC - Webchat",
-      "Coronavirus (COVID-19): Job Retention Scheme",
+      "Ask HMRC",
+      "Coronavirus (COVID-19): Job Retention Scheme - GOV.UK",
       "Coronavirus (COVID-19): Job Retention Scheme",
       "",
       returnUrl,

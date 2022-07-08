@@ -34,8 +34,8 @@ class InheritanceTaxViewSpec extends ChatViewBehaviours with Matchers with AnyWo
 
     behave like normalPage(
       createView,
-      "Ask HMRC - Webchat",
-      "Coronavirus (COVID-19): Inheritance Tax",
+      "Ask HMRC",
+      "Coronavirus (COVID-19): Inheritance Tax - GOV.UK",
       "Coronavirus (COVID-19): Inheritance Tax",
       "Return to Contact HMRC",
       returnUrl,

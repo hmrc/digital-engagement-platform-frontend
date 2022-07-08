@@ -34,8 +34,8 @@ class AnnualTaxOnEnvelopedDwellingsViewSpec extends ChatViewBehaviours with Matc
 
     behave like normalPage(
       createView,
-      "Ask HMRC - Webchat",
-      "Annual Tax on Enveloped Dwellings: webchat",
+      "Ask HMRC",
+      "Annual Tax on Enveloped Dwellings: webchat - GOV.UK",
       "Annual Tax on Enveloped Dwellings: webchat",
       "Return to Contact HMRC",
       returnUrl,

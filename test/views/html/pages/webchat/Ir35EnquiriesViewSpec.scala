@@ -34,8 +34,8 @@ class Ir35EnquiriesViewSpec extends ChatViewBehaviours with Matchers with AnyWor
 
     behave like normalPage(
       createView,
-      "Ask HMRC - Webchat",
-      "Off-payroll working (IR35): webchat",
+      "Ask HMRC",
+      "Off-payroll working (IR35): webchat - GOV.UK",
       "Off-payroll working (IR35): webchat",
       "Return to Contact HMRC",
       returnUrl,

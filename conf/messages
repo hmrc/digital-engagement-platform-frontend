@@ -1,6 +1,7 @@
 #global values
-global.nav.title=Ask HMRC - Webchat
-global.nav.va.title=Ask HMRC’s digital assistant
+global.title.suffix=- GOV.UK
+global.nav.title=Ask HMRC
+global.nav.va.title=Ask HMRC
 global.text.link.back.to.govuk.p1=Return to Contact HMRC
 global.text.link.online=online
 global.back = Back

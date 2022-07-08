@@ -34,8 +34,8 @@ class VatRegistrationViewSpec extends ChatViewBehaviours with Matchers with AnyW
 
     behave like normalPage(
       createView,
-      "Ask HMRC - Webchat",
-      "VAT registration: webchat",
+      "Ask HMRC",
+      "VAT registration: webchat - GOV.UK",
       "VAT registration: webchat",
       "Return to Contact HMRC",
       returnUrl,
