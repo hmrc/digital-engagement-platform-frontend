@@ -52,3 +52,4 @@ GET         /chat/construction-industry-scheme                                  
 GET         /chat/child-benefit                                                         controllers.CuiController.CuiController.childBenefit
 
 GET         /chat/ask-hmrc-online                                                       controllers.CiapiController.CiapiController.askHmrcOnline
+GET         /chat/customs-and-international-trade                                       controllers.CiapiController.CiapiController.customsInternationalTrade
