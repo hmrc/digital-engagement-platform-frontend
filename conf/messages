@@ -219,4 +219,8 @@ cui.construction.industry.scheme.title=Construction Industry Scheme: chat
 cui.child.benefit.title=Child Benefit: chat
 
 #CIAPI
+#Tax Credits
 ciapi.tax.credits.page.title=Ask HMRC online
+
+#Customs and International Trade
+ciapi.customs.international.trade.title=Customs and international trade: chat
