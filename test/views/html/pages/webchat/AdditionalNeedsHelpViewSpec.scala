@@ -34,8 +34,8 @@ class AdditionalNeedsHelpViewSpec extends ChatViewBehaviours with Matchers with 
 
     behave like normalPage(
       createView,
-      "Ask HMRC - Webchat",
-      "HMRC’s Extra Support team: webchat",
+      "Ask HMRC",
+      "HMRC’s Extra Support team: webchat - GOV.UK",
       "HMRC’s Extra Support team: webchat",
       "Return to Contact HMRC",
       returnUrl,

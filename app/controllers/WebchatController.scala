@@ -18,7 +18,7 @@ package controllers
 
 import config.AppConfig
 import controllers.CuiController.{routes => cuiRoutes}
-import play.api.mvc.{Action, AnyContent, MessagesControllerComponents, RequestHeader}
+import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 import views.html.webchat._
 

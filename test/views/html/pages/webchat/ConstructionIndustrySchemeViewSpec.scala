@@ -33,8 +33,8 @@ class ConstructionIndustrySchemeViewSpec extends ChatViewBehaviours with Matcher
 
     behave like normalPage(
       createView,
-      "Ask HMRC - Webchat",
-      "Construction Industry Scheme: webchat",
+      "Ask HMRC",
+      "Construction Industry Scheme: webchat - GOV.UK",
       "Construction Industry Scheme: webchat",
       "Return to Contact HMRC",
       returnUrl,

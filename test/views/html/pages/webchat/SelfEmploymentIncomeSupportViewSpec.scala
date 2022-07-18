@@ -33,8 +33,8 @@ class SelfEmploymentIncomeSupportViewSpec extends ChatViewBehaviours with Matche
 
     behave like normalPage(
       createView,
-      "Ask HMRC - Webchat",
-      "Coronavirus (COVID-19): Self-Employment Income Support Scheme",
+      "Ask HMRC",
+      "Coronavirus (COVID-19): Self-Employment Income Support Scheme - GOV.UK",
       "Coronavirus (COVID-19): Self-Employment Income Support Scheme",
       "Return to Contact HMRC",
       returnUrl,

@@ -33,8 +33,8 @@ class VatEnquirirsViewSpec extends ChatViewBehaviours with Matchers with AnyWord
 
     behave like normalPage(
       createView,
-      "Ask HMRC - Webchat",
-      "VAT: webchat",
+      "Ask HMRC",
+      "VAT: webchat - GOV.UK",
       "VAT: webchat",
       "Return to Contact HMRC",
       returnUrl,

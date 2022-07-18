@@ -34,8 +34,8 @@ class CharitiesCommunityAmateurSportsViewSpec extends ChatViewBehaviours with Ma
 
     behave like normalPage(
       createView,
-      "Ask HMRC - Webchat",
-      "Charities and Community Amateur Sports Clubs: webchat",
+      "Ask HMRC",
+      "Charities and Community Amateur Sports Clubs: webchat - GOV.UK",
       "Charities and Community Amateur Sports Clubs: webchat",
       "Return to Contact HMRC",
       returnUrl,

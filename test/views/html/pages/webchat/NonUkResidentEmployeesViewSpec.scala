@@ -34,8 +34,8 @@ class NonUkResidentEmployeesViewSpec extends ChatViewBehaviours with Matchers wi
 
     behave like normalPage(
       createView,
-      "Ask HMRC - Webchat",
-      "Non-UK resident employees: webchat",
+      "Ask HMRC",
+      "Non-UK resident employees: webchat - GOV.UK",
       "Non-UK resident employees: webchat",
       "Return to Contact HMRC",
       returnUrl,

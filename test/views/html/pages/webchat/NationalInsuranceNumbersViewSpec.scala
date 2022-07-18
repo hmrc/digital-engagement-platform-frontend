@@ -33,8 +33,8 @@ class NationalInsuranceNumbersViewSpec extends ChatViewBehaviours with Matchers 
 
     behave like normalPage(
       createView,
-      "Ask HMRC - Webchat",
-      "National Insurance: webchat",
+      "Ask HMRC",
+      "National Insurance: webchat - GOV.UK",
       "National Insurance: webchat",
       "Return to Contact HMRC",
       returnUrl,

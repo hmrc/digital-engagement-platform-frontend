@@ -34,8 +34,8 @@ class ProbateViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecL
 
     behave like normalPage(
       createView,
-      "Ask HMRC - Webchat",
-      "Coronavirus (COVID-19): Probate",
+      "Ask HMRC",
+      "Coronavirus (COVID-19): Probate - GOV.UK",
       "Coronavirus (COVID-19): Probate",
       "Return to Contact HMRC",
       returnUrl,

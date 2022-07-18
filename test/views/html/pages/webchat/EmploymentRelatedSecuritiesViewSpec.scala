@@ -34,8 +34,8 @@ class EmploymentRelatedSecuritiesViewSpec extends ChatViewBehaviours with Matche
 
     behave like normalPage(
       createView,
-      "Ask HMRC - Webchat",
-      "Employment related securities: webchat",
+      "Ask HMRC",
+      "Employment related securities: webchat - GOV.UK",
       "Employment related securities: webchat",
       "Return to Contact HMRC",
       returnUrl,

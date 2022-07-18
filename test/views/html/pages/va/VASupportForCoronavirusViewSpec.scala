@@ -39,12 +39,12 @@ class VASupportForCoronavirusViewSpec extends ChatViewBehaviours with Matchers w
           val doc = asDocument(createView())
           val nav = doc.getElementsByClass("hmrc-header__service-name")
           val span = nav.first
-          span.text mustBe messages("Ask HMRC’s digital assistant")
+          span.text mustBe messages("Ask HMRC")
         }
 
         "display the correct browser title" in {
           val doc = asDocument(createView())
-          assertEqualsMessage(doc, "title", "Use HMRC’s digital assistant")
+          assertEqualsMessage(doc, "title", "Use HMRC’s digital assistant - GOV.UK")
         }
 
         "display the correct page title" in {

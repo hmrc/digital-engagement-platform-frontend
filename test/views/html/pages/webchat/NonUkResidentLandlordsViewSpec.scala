@@ -34,8 +34,8 @@ class NonUkResidentLandlordsViewSpec extends ChatViewBehaviours with Matchers wi
 
     behave like normalPage(
       createView(false),
-      "Ask HMRC - Webchat",
-      "Non-UK resident landlords: webchat",
+      "Ask HMRC",
+      "Non-UK resident landlords: webchat - GOV.UK",
       "Non-UK resident landlords: webchat",
       "Return to Contact HMRC",
       returnUrl,
@@ -53,8 +53,8 @@ class NonUkResidentLandlordsViewSpec extends ChatViewBehaviours with Matchers wi
 
     behave like normalPage(
       createView(true),
-      "Ask HMRC - Webchat",
-      "Non-UK resident entertainers: webchat",
+      "Ask HMRC",
+      "Non-UK resident entertainers: webchat - GOV.UK",
       "Non-UK resident entertainers: webchat",
       "Return to Contact HMRC",
       returnUrl,

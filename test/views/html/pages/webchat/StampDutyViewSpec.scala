@@ -33,8 +33,8 @@ class StampDutyViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpe
 
     behave like normalPage(
       createView,
-      "Ask HMRC - Webchat",
-      "Stamp Duty Land Tax: webchat",
+      "Ask HMRC",
+      "Stamp Duty Land Tax: webchat - GOV.UK",
       "Stamp Duty Land Tax: webchat",
       "Return to Contact HMRC",
       returnUrl,
@@ -49,8 +49,8 @@ class StampDutyViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpe
 
     behave like normalPage(
       createView,
-      "Ask HMRC - Webchat",
-      "Stamp Duty Reserve Tax: webchat",
+      "Ask HMRC",
+      "Stamp Duty Reserve Tax: webchat - GOV.UK",
       "Stamp Duty Reserve Tax: webchat",
       "Return to Contact HMRC",
       returnUrl,
@@ -65,8 +65,8 @@ class StampDutyViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpe
 
     behave like normalPage(
       createView,
-      "Ask HMRC - Webchat",
-      "Stamp Duty shares and land: webchat",
+      "Ask HMRC",
+      "Stamp Duty shares and land: webchat - GOV.UK",
       "Stamp Duty shares and land: webchat",
       "Return to Contact HMRC",
       returnUrl,
