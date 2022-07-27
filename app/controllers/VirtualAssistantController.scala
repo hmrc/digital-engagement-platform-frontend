@@ -21,29 +21,19 @@ import config.AppConfig
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
-import views.html.va.{VACustomsInternationalTradeView, VASelfEmploymentIncomeSupportSchemeView, VASupportForCoronavirusView}
+import views.html.va.VACustomsInternationalTradeView
 
 import scala.concurrent.Future
 
 @Singleton
 class VirtualAssistantController @Inject()(appConfig: AppConfig,
                                            mcc: MessagesControllerComponents,
-                                           supportForCoronavirusView: VASupportForCoronavirusView,
-                                           customsInternationalTradeView: VACustomsInternationalTradeView,
-                                           selfEmploymentIncomeSupportSchemeView: VASelfEmploymentIncomeSupportSchemeView) extends FrontendController(mcc) {
+                                           customsInternationalTradeView: VACustomsInternationalTradeView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
-  def supportForCoronavirus: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(supportForCoronavirusView()))
-  }
-
-  def customesInternationalTrade: Action[AnyContent] = Action.async { implicit request =>
+  def customsInternationalTrade: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(customsInternationalTradeView()))
-  }
-
-  def selfEmploymentIncomeSupportScheme: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(selfEmploymentIncomeSupportSchemeView()))
   }
 }
 

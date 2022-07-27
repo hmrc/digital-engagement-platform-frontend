@@ -34,14 +34,6 @@ class CuiControllerSpec
 
   "Nuance Full Page CUI Test Controller" should {
 
-    "render job retention scheme CUI page" in {
-      val result = controller.jobRetentionSchemeHelp(fakeRequest)
-      val doc = asDocument(contentAsString(result))
-
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Coronavirus Job Retention Scheme: chat"
-    }
-
     "render self assessment CUI page" in {
       val application = builder.build()
 

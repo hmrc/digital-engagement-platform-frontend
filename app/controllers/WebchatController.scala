@@ -81,10 +81,6 @@ class WebchatController @Inject()(appConfig: AppConfig,
     Future.successful(Ok(nationalClearanceHubView()))
   }
 
-  def jobRetentionScheme: Action[AnyContent] = serviceUnavailableRedirect
-
-  def selfEmploymentIncomeSupportScheme: Action[AnyContent] = serviceUnavailableRedirect
-
   def c19EmployerEnquiries: Action[AnyContent] = serviceUnavailableRedirect
 
   def probate: Action[AnyContent] = serviceUnavailableRedirect

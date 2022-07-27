@@ -20,7 +20,7 @@ import config.AppConfig
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
-import views.html.CUIViews.{JobRetentionSchemeHelpView, NuanceFullPageCUIView}
+import views.html.CUIViews.NuanceFullPageCUIView
 import views.html.IdTestView
 import views.html.ci_api._
 import views.html.testOnly.NuanceFile
@@ -35,7 +35,6 @@ class TestController @Inject()(
   idTestView: IdTestView,
   ciApiDemoViewPopup: CiApiDemoViewPopup,
   ciApiDemoViewEmbedded: CiApiDemoViewEmbedded,
-  jobRetentionSchemeHelpView: JobRetentionSchemeHelpView,
   nuanceFile: NuanceFile) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
