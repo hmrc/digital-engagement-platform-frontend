@@ -59,5 +59,27 @@ class CiapiControllerSpec
         status(result) mustBe NOT_FOUND
       }
     }
+
+		"render Vat Online CUI page if showVATCUI is true" in {
+			val application = builder.configure("features.showVATCUI" -> "true").build()
+
+			running(application) {
+				val request = FakeRequest(GET, ciapiRoutes.CiapiController.vatOnline.url)
+				val result = route(application, request).get
+				val doc = asDocument(contentAsString(result))
+				status(result) mustBe OK
+				doc.select("h1").text() mustBe "Customs and international trade: chat"
+			}
+		}
+
+		"render technical support with HMRC online services page : if showVATCUI is false" in {
+			val application = builder.configure("features.showVATCUI" -> "false").build()
+
+			running(application) {
+				val request = FakeRequest(GET, ciapiRoutes.CiapiController.vatOnline.url)
+				val result = route(application, request).get
+				status(result) mustBe NOT_FOUND
+			}
+		}
   }
 }
