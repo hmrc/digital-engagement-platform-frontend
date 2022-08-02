@@ -19,7 +19,7 @@ package views.html.pages.CIAPIViews
 import org.scalatest.matchers.must.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike
 import play.twirl.api.HtmlFormat
-import views.html.CIAPIViews.{CustomsInternationalTradeCUIView, VatOnlineCuiView}
+import views.html.CIAPIViews.VatOnlineCuiView
 import views.html.pages.helpers.ChatViewBehaviours
 
 class VatOnlineCuiViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike{
