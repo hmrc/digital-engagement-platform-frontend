@@ -19,12 +19,12 @@ package views.html.pages.CIAPIViews
 import org.scalatest.matchers.must.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike
 import play.twirl.api.HtmlFormat
-import views.html.CIAPIViews.CustomsInternationalTradeCUIView
+import views.html.CIAPIViews.{CustomsInternationalTradeCUIView, VatOnlineCuiView}
 import views.html.pages.helpers.ChatViewBehaviours
 
 class VatOnlineCuiViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike{
 
-  private val view = app.injector.instanceOf[CustomsInternationalTradeCUIView]
+  private val view = app.injector.instanceOf[VatOnlineCuiView]
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 

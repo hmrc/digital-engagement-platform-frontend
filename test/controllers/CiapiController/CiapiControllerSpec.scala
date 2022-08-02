@@ -68,7 +68,7 @@ class CiapiControllerSpec
 				val result = route(application, request).get
 				val doc = asDocument(contentAsString(result))
 				status(result) mustBe OK
-				doc.select("h1").text() mustBe "Customs and international trade: chat"
+				doc.select("h1").text() mustBe "VAT Online: chat"
 			}
 		}
 
