@@ -224,3 +224,6 @@ ciapi.tax.credits.page.title=Ask HMRC online
 
 #Customs and International Trade
 ciapi.customs.international.trade.title=Customs and international trade: chat
+
+#VAT Online
+ciapi.vat.online.title=VAT Online: chat
