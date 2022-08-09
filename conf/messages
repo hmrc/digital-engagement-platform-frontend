@@ -102,17 +102,6 @@ vat.registration.title=VAT registration: webchat
 #National Clearance Hub
 national.clearance.hub.title=National Clearance Hub: webchat
 
-#Job Retention Scheme
-job.retention.scheme.title=Coronavirus (COVID-19): Job Retention Scheme
-job.retention.scheme.p1=This webchat is for employers.
-job.retention.scheme.p2=If you are an employee, advisers cannot answer specific questions about your employer, or advise if your employer is participating in the Coronavirus Job Retention Scheme.
-job.retention.scheme.p3=For more information you can:
-job.retention.scheme.li1=report fraudulent activity
-job.retention.scheme.li2=check if your employer can use the Coronavirus Job Retention Scheme
-
-#Self Employment Income Support Scheme
-self.employment.income.support.scheme.title=Coronavirus (COVID-19): Self-Employment Income Support Scheme
-
 #Probate
 probate.title=Coronavirus (COVID-19): Probate
 
@@ -165,20 +154,12 @@ payment.problems.p8=If you do not select the link to open the chat, you will hav
 va.global.h1.title=Use HMRC’s digital assistant
 va.global.h1.bullet.title=You can also:
 
-#Support for Coronavirus
-support.for.coronavirus.p1=You can also:
-support.for.coronavirus.linkto.general.info=find general coronavirus information
-support.for.coronavirus.linkto.coronavirus.help=contact HMRC for coronavirus help
-
 #Customs International Trade
 custom.international.trade.li1=find out how to get an EORI number
 custom.international.trade.li2=find out how to import your personal belongings
 custom.international.trade.li3=look up commodity codes, duty and VAT rates
 custom.international.trade.li4=trading with Northern Ireland
 custom.international.trade.li5=find more ways to contact HMRC
-
-#Self Employment Income Support
-self-employment-income-support.li1=Find more ways to contact HMRC
 
 #Nuance Full Page CUI Test Page
 nuance.full.page.cui.test.page.title=Test full page CUI for webchat
@@ -192,8 +173,7 @@ test.sidebar.p2=If it cannot help you, you can ask to transfer to an HMRC advise
 cui.page.title=Ask HMRC
 cui.page.title.gov=- Ask HMRC - GOV.UK
 
-#JRS page
-cui.job.retention.scheme.title=Coronavirus Job Retention Scheme: chat
+#Nuance Test Full Page
 cui.job.retention.scheme.header=Get help with the Coronavirus Job Retention Scheme
 
 #Self Assessment page
