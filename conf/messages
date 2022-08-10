@@ -227,3 +227,6 @@ ciapi.customs.international.trade.title=Customs and international trade: chat
 
 #VAT Online
 ciapi.vat.online.title=VAT Online: chat
+
+#Corporation Tax
+ciapi.corporation.tax.title=Corporation Tax: chat

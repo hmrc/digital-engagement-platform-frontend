@@ -19,7 +19,7 @@ package controllers.CiapiController
 import config.AppConfig
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
-import views.html.CIAPIViews.{CustomsInternationalTradeCUIView, TaxCreditsCUIView, VatOnlineCuiView}
+import views.html.CIAPIViews.{CustomsInternationalTradeCUIView, TaxCreditsCUIView, VatOnlineCuiView, CorporationTaxCuiView}
 import javax.inject.{Inject, Singleton}
 
 import scala.concurrent.Future
@@ -29,7 +29,8 @@ class CiapiController @Inject()(appConfig: AppConfig,
                                 mcc: MessagesControllerComponents,
                                 taxCreditsCUIView: TaxCreditsCUIView,
                                 customsInternationalTradeCUIView: CustomsInternationalTradeCUIView,
-															 	vatOnlineCuiView: VatOnlineCuiView) extends FrontendController(mcc) {
+															 	vatOnlineCuiView: VatOnlineCuiView,
+                                corporationTaxCuiView: CorporationTaxCuiView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
@@ -52,4 +53,12 @@ class CiapiController @Inject()(appConfig: AppConfig,
 			Future.successful(NotFound)
 		}
 	}
+
+  def corporationTax: Action[AnyContent] = Action.async { implicit request =>
+    if(config.showCTCUI) {
+      Future.successful(Ok(corporationTaxCuiView()))
+    } else {
+      Future.successful(NotFound)
+    }
+  }
 }
