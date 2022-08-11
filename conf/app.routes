@@ -54,3 +54,4 @@ GET         /chat/child-benefit                                                 
 GET         /chat/ask-hmrc-online                                                       controllers.CiapiController.CiapiController.askHmrcOnline
 GET         /chat/customs-and-international-trade                                       controllers.CiapiController.CiapiController.customsInternationalTrade
 GET			/chat/vat-online															controllers.CiapiController.CiapiController.vatOnline
+GET         /chat/corporation-tax-enquiries                                             controllers.CiapiController.CiapiController.corporationTax

@@ -37,6 +37,7 @@ class AppConfig @Inject()(config: Configuration) {
   val showCHBCUI: Boolean = config.getOptional[Boolean]("features.showCHBCUI").getOrElse(false)
   val showCITCUI: Boolean = config.getOptional[Boolean]("features.showCITCUI").getOrElse(false)
   val showVATCUI: Boolean = config.getOptional[Boolean]("features.showVATCUI").getOrElse(false)
+  val showCTCUI: Boolean = config.getOptional[Boolean]("features.showCTCUI").getOrElse(false)
 
   // Used in wrapper
   val analyticsToken: String = config.get[String]("google-analytics.token")
