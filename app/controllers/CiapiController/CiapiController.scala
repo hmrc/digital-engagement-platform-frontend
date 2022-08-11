@@ -29,7 +29,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
                                 mcc: MessagesControllerComponents,
                                 taxCreditsCUIView: TaxCreditsCUIView,
                                 customsInternationalTradeCUIView: CustomsInternationalTradeCUIView,
-															 	vatOnlineCuiView: VatOnlineCuiView,
+                                vatOnlineCuiView: VatOnlineCuiView,
                                 corporationTaxCuiView: CorporationTaxCuiView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
