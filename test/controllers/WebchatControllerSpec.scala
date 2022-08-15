@@ -17,6 +17,7 @@
 package controllers
 
 import controllers.CuiController.{routes => cuiRoutes}
+import controllers.CiapiController.{routes => ciapiRoutes}
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.scalatest.matchers.must.Matchers
@@ -74,10 +75,9 @@ class WebchatControllerSpec
 
     "render customs page" in {
       val result = controller.customsEnquiries(fakeRequest)
-      val doc = asDocument(contentAsString(result))
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Imports and exports: webchat"
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(ciapiRoutes.CiapiController.customsInternationalTrade.url)
     }
 
     "render excise page" in {
