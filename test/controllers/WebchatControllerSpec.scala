@@ -158,20 +158,6 @@ class WebchatControllerSpec
       doc.select("h1").text() mustBe "National Clearance Hub: webchat"
     }
 
-    "Job Retention Scheme page" in {
-      val result = controller.jobRetentionScheme(fakeRequest)
-
-      status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
-    }
-
-    "Self Employment Income Support Scheme page" in {
-      val result = controller.selfEmploymentIncomeSupportScheme(fakeRequest)
-
-      status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
-    }
-
     "C19 Employer Enquiries page" in {
       val result = controller.c19EmployerEnquiries(fakeRequest)
 

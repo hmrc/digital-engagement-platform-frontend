@@ -27,17 +27,12 @@ import scala.concurrent.Future
 class CuiController @Inject()(appConfig: AppConfig,
                               mcc: MessagesControllerComponents,
                               selfAssessmentCUIView: SelfAssessmentCUIView,
-                              jobRetentionSchemeHelpView: JobRetentionSchemeHelpView,
                               onlineServicesHelpdeskCUIView: OnlineServicesHelpdeskCUIView,
                               employerEnquiriesCUIView: EmployerEnquiriesCUIView,
                               constructionIndustrySchemeCUIView: ConstructionIndustrySchemeCUIView,
                               childBenefitCUIView: ChildBenefitCUIView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
-
-    def jobRetentionSchemeHelp: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(jobRetentionSchemeHelpView()))
-  }
 
   def selfAssessment: Action[AnyContent] = Action.async { implicit request =>
       Future.successful(Ok(selfAssessmentCUIView()))

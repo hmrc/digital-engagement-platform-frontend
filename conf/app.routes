@@ -22,8 +22,6 @@ GET         /webchat/corporation-tax-enquiries                                  
 GET         /webchat/construction-industry-scheme-enquiries                             controllers.WebchatController.constructionIndustryScheme
 GET         /webchat/vat-registration                                                   controllers.WebchatController.vatRegistration
 GET         /webchat/national-clearance-hub                                             controllers.WebchatController.nationalClearanceHub
-GET         /webchat/job-retention-scheme                                               controllers.WebchatController.jobRetentionScheme
-GET         /webchat/self-employment-income-support-scheme                              controllers.WebchatController.selfEmploymentIncomeSupportScheme
 GET         /webchat/probate                                                            controllers.WebchatController.probate
 GET         /webchat/inheritance-tax                                                    controllers.WebchatController.inheritanceTax
 GET         /webchat/help-for-users-with-additional-needs                               controllers.WebchatController.additionalNeedsHelp
@@ -38,13 +36,10 @@ GET         /webchat/annual-tax-on-enveloped-dwellings                          
 
 GET         /webchat/payment-problems                                                   controllers.PaymentProblemsController.paymentProblem
 
-GET         /virtual-assistant/support-for-coronavirus                                  controllers.VirtualAssistantController.supportForCoronavirus
-GET         /virtual-assistant/customs-and-international-trade-enquiries                controllers.VirtualAssistantController.customesInternationalTrade
-GET         /virtual-assistant/self-employment-income-support-scheme                    controllers.VirtualAssistantController.selfEmploymentIncomeSupportScheme
+GET         /virtual-assistant/customs-and-international-trade-enquiries                controllers.VirtualAssistantController.customsInternationalTrade
 
 GET         /accessibility-statement                                                    controllers.AccessibilityStatementController.accessibility(userAction: Option[String])
 
-GET         /chat/job-retention-scheme-help                                             controllers.CuiController.CuiController.jobRetentionSchemeHelp
 GET         /chat/self-assessment                                                       controllers.CuiController.CuiController.selfAssessment
 GET         /chat/online-services-helpdesk                                              controllers.CuiController.CuiController.onlineServicesHelpdesk
 GET         /chat/employer-enquiries                                                    controllers.CuiController.CuiController.employerEnquiries
