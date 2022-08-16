@@ -18,6 +18,7 @@ package controllers
 
 import config.AppConfig
 import controllers.CuiController.{routes => cuiRoutes}
+import controllers.CiapiController.{routes => ciapiRoutes}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 import views.html.webchat._
@@ -28,7 +29,6 @@ import scala.concurrent.Future
 @Singleton
 class WebchatController @Inject()(appConfig: AppConfig,
                                   mcc: MessagesControllerComponents,
-                                  customsEnquiriesView: CustomsEnquiriesView,
                                   nationalClearanceHubView: NationalClearanceHubView,
                                   additionalNeedsHelpView: AdditionalNeedsHelpView,
                                   personalTransportUnitEnquiriesView: PersonalTransportUnitEnquiriesView,
@@ -52,7 +52,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
   def nationalInsuranceNumbers: Action[AnyContent] = serviceUnavailableRedirect
 
   def customsEnquiries: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(customsEnquiriesView()))
+    Future.successful(Redirect(ciapiRoutes.CiapiController.customsInternationalTrade))
   }
 
   def exciseEnquiries: Action[AnyContent] = serviceUnavailableRedirect
