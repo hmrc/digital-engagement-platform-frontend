@@ -66,8 +66,6 @@ class AppConfig @Inject()(config: Configuration) {
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/national-insurance-numbers"
   val nationalInsuranceApplyUrl: String =
     "https://www.gov.uk/apply-national-insurance-number"
-  val customsEnquiriesReturnUrl: String =
-    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/customs-international-trade-and-excise-enquiries"
   val exciseEnquiriesReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/excise-enquiries"
   val charitiesCommunityAmateurSportsUrl: String =
@@ -108,10 +106,6 @@ class AppConfig @Inject()(config: Configuration) {
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/personal-transport-unit-enquiries"
   val ir35EnquiriesReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/ir35-enquiries"
-  val customsInternationTradeEoriUrl: String = "https://www.gov.uk/eori"
-  val customsInternationTradeImportLink: String = "https://www.gov.uk/guidance/transfer-of-residence-to-great-britain"
-  val customsInternationTradeTariffLink: String = "https://www.gov.uk/trade-tariff"
-  val customsInternationTradeWithNILink: String = "https://www.gov.uk/guidance/trading-and-moving-goods-in-and-out-of-northern-ireland"
 
   val stampDutyLAndTaxReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/stamp-duty-land-tax"
