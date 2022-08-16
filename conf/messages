@@ -53,9 +53,6 @@ national.insurance.para1=If you need help with a National Insurance number appli
 national.insurance.para2=Find out more information about
 national.insurance.link=how to apply for a National Insurance number (opens in a new tab).
 
-#Imports and Exports Webchat
-customs.title=Imports and exports: webchat
-
 #Excise Enquiries
 excise.enquiries.title=Excise: webchat
 
@@ -149,17 +146,9 @@ payment.problems.p6=If you cannot pay in full before your payment deadline call 
 payment.problems.p7=When an adviser is available, select the ‘speak to an adviser’ link to open the chat.
 payment.problems.p8=If you do not select the link to open the chat, you will have to wait for the next available adviser.
 
-#VA
 #General
 va.global.h1.title=Use HMRC’s digital assistant
 va.global.h1.bullet.title=You can also:
-
-#Customs International Trade
-custom.international.trade.li1=find out how to get an EORI number
-custom.international.trade.li2=find out how to import your personal belongings
-custom.international.trade.li3=look up commodity codes, duty and VAT rates
-custom.international.trade.li4=trading with Northern Ireland
-custom.international.trade.li5=find more ways to contact HMRC
 
 #Nuance Full Page CUI Test Page
 nuance.full.page.cui.test.page.title=Test full page CUI for webchat
