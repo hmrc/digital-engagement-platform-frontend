@@ -86,10 +86,6 @@ payment.problems.paye.enquiries.title=Payment Problems PAYE Enquiries: webchat
 #Payment Problems corporation Tax Enquiries
 payment.problems.corporation.tax.enquiries.title=Payment Problems Corporation Tax Enquiries: webchat
 
-#Corporation Tax Enquiries
-corporation.tax.enquiries.title=Corporation Tax: webchat
-corporation.tax.enquiries.p1=You’ll need your 10 digit Unique Tax Reference (UTR).
-
 #Construction Industry Scheme
 construction.industry.scheme.title=Construction Industry Scheme: webchat
 
