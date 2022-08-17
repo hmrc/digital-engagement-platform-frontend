@@ -3,10 +3,8 @@ global.title.suffix=- GOV.UK
 global.nav.title=Ask HMRC
 global.nav.va.title=Ask HMRC
 global.text.link.back.to.govuk.p1=Return to Contact HMRC
-global.text.link.online=online
 global.back = Back
 global.nuance.div.loading.text=Checking adviser availability.
-global.accessibility.statement = Accessibility statement
 global.webchat.title.h2=Webchat
 global.opening.times.title=Opening times:
 global.opening.times.8to4=Monday to Friday, 8am to 4pm
@@ -18,16 +16,13 @@ global.opening.times.8to7_30=Monday to Friday, 8am to 7:30pm
 global.opening.times.8to4.includesat=Monday to Saturday, 8am to 4pm
 global.opening.times.mon.sat.8to7_30=Monday to Saturday, 8am to 7:30pm
 global.opening.times.saturday.8to4=Saturday, 8am to 4pm
-global.opening.times.saturday.8to3_30=Saturday, 8am to 3:30pm
 global.opening.times.sat.sun.8to4=Saturday and Sunday, 8am to 4pm
 global.opening.times.weekend.p=Closed weekends and bank holidays.
-global.opening.times.bankholidays=Closed bank holidays.
 global.opening.times.24_7=24 hours a day, 7 days a week
 global.closed.time.sun.bankholidays=Closed Sundays and bank holidays.
 global.opening.time.sat.bankholidays.8to4=Saturdays and Bank Holidays, 8am to 4pm
 global.opening.time.bankholidays.8to4=Bank holidays, 8am to 4pm
 global.closed.time.sun=Closed Sundays.
-global.webchat.unavailable=Webchat is not available at the moment.
 
 #Beta Banner
 global.banner.phase = BETA
@@ -37,12 +32,6 @@ service.unavailable.title = Sorry, this webchat is unavailable
 service.unavailable.p1 = We are hoping to provide this webchat from October 2022.
 service.unavailable.p2-1 = You can
 service.unavailable.p2-2 = find other contact details for your query
-
-#VAT Enquiries Webchat
-vat.enquiries.title=VAT: webchat
-
-#VAT Online Service Webchat
-vat.online.helpdesk.title=VAT online services helpdesk: webchat
 
 #Online Service Helpdesk Webchat
 online.services.title=Online services helpdesk: webchat
@@ -88,9 +77,6 @@ payment.problems.corporation.tax.enquiries.title=Payment Problems Corporation Ta
 
 #Construction Industry Scheme
 construction.industry.scheme.title=Construction Industry Scheme: webchat
-
-#VAT registration
-vat.registration.title=VAT registration: webchat
 
 #National Clearance Hub
 national.clearance.hub.title=National Clearance Hub: webchat

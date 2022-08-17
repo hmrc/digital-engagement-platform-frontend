@@ -41,13 +41,9 @@ class WebchatController @Inject()(appConfig: AppConfig,
     Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
-  def vatEnquiries: Action[AnyContent] = serviceUnavailableRedirect
-
   def onlineServicesHelpdesk: Action[AnyContent] = Action.async {
       Future.successful(Redirect(cuiRoutes.CuiController.onlineServicesHelpdesk))
   }
-
-  def vatOnlineServicesHelpdesk: Action[AnyContent] = serviceUnavailableRedirect
 
   def nationalInsuranceNumbers: Action[AnyContent] = serviceUnavailableRedirect
 
@@ -72,8 +68,6 @@ class WebchatController @Inject()(appConfig: AppConfig,
   def constructionIndustryScheme: Action[AnyContent] = Action.async {
       Future.successful(Redirect(cuiRoutes.CuiController.constructionIndustryScheme))
   }
-
-  def vatRegistration: Action[AnyContent] = serviceUnavailableRedirect
 
   def nationalClearanceHub: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(nationalClearanceHubView()))
