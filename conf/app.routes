@@ -6,8 +6,6 @@ GET         /assets/*file           controllers.Assets.versioned(path="/public",
 
 GET         /webchat/service-unavailable                                                controllers.WebchatController.serviceUnavailable
 
-GET         /webchat/vat-enquiries                                                      controllers.WebchatController.vatEnquiries
-GET         /webchat/vat-online-services-helpdesk                                       controllers.WebchatController.vatOnlineServicesHelpdesk
 GET         /webchat/online-services-helpdesk                                           controllers.WebchatController.onlineServicesHelpdesk
 GET         /webchat/national-insurance-numbers                                         controllers.WebchatController.nationalInsuranceNumbers
 GET         /webchat/customs-international-trade                                        controllers.WebchatController.customsEnquiries
@@ -19,7 +17,6 @@ GET         /webchat/employment-related-securities                              
 GET         /webchat/non-UK-resident-employees                                          controllers.WebchatController.nonUkResidentEmployees
 GET         /webchat/non-UK-resident-landlords                                          controllers.WebchatController.nonUkResidentLandlords
 GET         /webchat/construction-industry-scheme-enquiries                             controllers.WebchatController.constructionIndustryScheme
-GET         /webchat/vat-registration                                                   controllers.WebchatController.vatRegistration
 GET         /webchat/national-clearance-hub                                             controllers.WebchatController.nationalClearanceHub
 GET         /webchat/probate                                                            controllers.WebchatController.probate
 GET         /webchat/inheritance-tax                                                    controllers.WebchatController.inheritanceTax

@@ -56,10 +56,6 @@ class AppConfig @Inject()(config: Configuration) {
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/income-tax-enquiries-for-individuals-pensioners-and-employees"
   val employerEnquiriesReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/employer-enquiries"
-  val vatEnquiriesReturnUrl: String =
-    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/vat-enquiries"
-  val vatOnlineServicesHelpdeskReturnUrl: String =
-    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/vat-online-services-helpdesk"
   val onlineServicesHelpdeskReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/online-services-helpdesk"
   val nationalInsuranceReturnUrl: String =
@@ -86,8 +82,6 @@ class AppConfig @Inject()(config: Configuration) {
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/corporation-tax-enquiries"
   val constructionIndustrySchemeReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/construction-industry-scheme"
-  val vatRegistrationReturnUrl: String =
-    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/vat-registration-applications-exceptions-and-changes"
   val nationalClearanceHubReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/national-clearance-hub"
   val reportFraudulentActivityUrl: String = "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/report-fraud-to-hmrc"

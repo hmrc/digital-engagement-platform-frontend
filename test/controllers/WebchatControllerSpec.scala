@@ -52,20 +52,6 @@ class WebchatControllerSpec
       redirectLocation(result) mustBe Some(cuiRoutes.CuiController.onlineServicesHelpdesk.url)
     }
 
-    "render vat enquiries page" in {
-      val result = controller.vatEnquiries(fakeRequest)
-
-      status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
-    }
-
-    "render vat online helpdesk page" in {
-      val result = controller.vatOnlineServicesHelpdesk(fakeRequest)
-
-      status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
-    }
-
     "render national insurance page" in {
       val result = controller.nationalInsuranceNumbers(fakeRequest)
 
@@ -134,13 +120,6 @@ class WebchatControllerSpec
 
       status(result) mustBe SEE_OTHER
       redirectLocation(result) mustBe Some(cuiRoutes.CuiController.constructionIndustryScheme.url)
-    }
-
-    "VAT registration page" in {
-      val result = controller.vatRegistration(fakeRequest)
-
-      status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "National clearance hub page" in {
