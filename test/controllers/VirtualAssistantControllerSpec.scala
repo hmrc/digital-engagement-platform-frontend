@@ -35,7 +35,6 @@ class VirtualAssistantControllerSpec
 
     "render customs and international trade" in {
       val result = controller.customsInternationalTrade(fakeRequest)
-      val doc = asDocument(contentAsString(result))
 
       status(result) mustBe SEE_OTHER
       redirectLocation(result) mustBe Some(ciapiRoutes.CiapiController.customsInternationalTrade.url)
