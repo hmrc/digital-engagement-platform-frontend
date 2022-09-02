@@ -30,6 +30,8 @@ GET         /webchat/stamp-duty/reserve-tax                                     
 GET         /webchat/stamp-duty/shares-and-land                                         controllers.StampDutyController.sharesAndLand
 GET         /webchat/annual-tax-on-enveloped-dwellings                                  controllers.StampDutyController.annualTaxOnEnvelopedDwellings
 
+GET         /virtual-assistant/customs-and-international-trade-enquiries                controllers.VirtualAssistantController.customsInternationalTrade
+
 GET         /webchat/payment-problems                                                   controllers.PaymentProblemsController.paymentProblem
 
 GET         /accessibility-statement                                                    controllers.AccessibilityStatementController.accessibility(userAction: Option[String])
