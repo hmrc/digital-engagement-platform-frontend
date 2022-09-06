@@ -19,12 +19,12 @@ package views.html.pages.CUIViews
 import org.scalatest.matchers.must.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike
 import play.twirl.api.HtmlFormat
-import views.html.CUIViews.ChildBenefitCUIView
+import views.html.CUIViews.childBenefitCUIDAv2View
 import views.html.pages.helpers.ChatViewBehaviours
 
 class ChildBenefitCUIViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike {
 
-  private val view = app.injector.instanceOf[ChildBenefitCUIView]
+  private val view = app.injector.instanceOf[childBenefitCUIDAv2View]
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
