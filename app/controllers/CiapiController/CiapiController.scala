@@ -19,7 +19,8 @@ package controllers.CiapiController
 import config.AppConfig
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
-import views.html.CIAPIViews.{CustomsInternationalTradeCUIView, TaxCreditsCUIView, VatOnlineCuiView, CorporationTaxCuiView}
+import views.html.CIAPIViews._
+import views.html.CUIViews.childBenefitCUIDAv2View
 import javax.inject.{Inject, Singleton}
 
 import scala.concurrent.Future
@@ -30,7 +31,9 @@ class CiapiController @Inject()(appConfig: AppConfig,
                                 taxCreditsCUIView: TaxCreditsCUIView,
                                 customsInternationalTradeCUIView: CustomsInternationalTradeCUIView,
                                 vatOnlineCuiView: VatOnlineCuiView,
-                                corporationTaxCuiView: CorporationTaxCuiView) extends FrontendController(mcc) {
+                                corporationTaxCuiView: CorporationTaxCuiView,
+                                childBenefitCUIDAv2View: childBenefitCUIDAv2View,
+                                childBenefitCUIView: ChildBenefitCUIView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
@@ -59,6 +62,14 @@ class CiapiController @Inject()(appConfig: AppConfig,
       Future.successful(Ok(corporationTaxCuiView()))
     } else {
       Future.successful(NotFound)
+    }
+  }
+
+  def childBenefit: Action[AnyContent] = Action.async { implicit request =>
+    if (config.showCHBCUI) {
+      Future.successful(Ok(childBenefitCUIView()))
+    } else {
+      Future.successful(Ok(childBenefitCUIDAv2View()))
     }
   }
 }
