@@ -61,13 +61,5 @@ class CuiControllerSpec
       status(result) mustBe OK
       doc.select("h1").text() mustBe "Employers enquiries: chat"
     }
-
-    "render construction industry scheme CUI page" in {
-      val result = controller.constructionIndustryScheme(fakeRequest)
-
-      val doc = asDocument(contentAsString(result))
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Construction Industry Scheme: chat"
-    }
   }
 }

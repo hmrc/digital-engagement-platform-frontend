@@ -20,7 +20,7 @@ import config.AppConfig
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 import views.html.CIAPIViews._
-import views.html.CUIViews.childBenefitCUIDAv2View
+import views.html.CUIViews.{childBenefitCUIDAv2View,ConstructionIndustrySchemeCUIDAv2View}
 import javax.inject.{Inject, Singleton}
 
 import scala.concurrent.Future
@@ -33,7 +33,9 @@ class CiapiController @Inject()(appConfig: AppConfig,
                                 vatOnlineCuiView: VatOnlineCuiView,
                                 corporationTaxCuiView: CorporationTaxCuiView,
                                 childBenefitCUIDAv2View: childBenefitCUIDAv2View,
-                                childBenefitCUIView: ChildBenefitCUIView) extends FrontendController(mcc) {
+                                childBenefitCUIView: ChildBenefitCUIView,
+                                constructionIndustrySchemeCUIDAv2View: ConstructionIndustrySchemeCUIDAv2View,
+                                constructionIndustrySchemeCUIView: ConstructionIndustrySchemeCUIView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
@@ -70,6 +72,14 @@ class CiapiController @Inject()(appConfig: AppConfig,
       Future.successful(Ok(childBenefitCUIView()))
     } else {
       Future.successful(Ok(childBenefitCUIDAv2View()))
+    }
+  }
+
+  def constructionIndustryScheme: Action[AnyContent] = Action.async { implicit request =>
+    if (config.showCISCUI) {
+      Future.successful(Ok(constructionIndustrySchemeCUIView()))
+    } else {
+      Future.successful(Ok(constructionIndustrySchemeCUIDAv2View()))
     }
   }
 }

@@ -14,27 +14,27 @@
  * limitations under the License.
  */
 
-package views.html.pages.CIAPIViews
+package views.html.pages.CUIViews
 
 import org.scalatest.matchers.must.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike
 import play.twirl.api.HtmlFormat
-import views.html.CIAPIViews.TaxCreditsCUIView
+import views.html.CUIViews.ConstructionIndustrySchemeCUIDAv2View
 import views.html.pages.helpers.ChatViewBehaviours
 
-class TaxCreditsCUIViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike{
+class ConstructionIndustrySchemeCUIDAv2ViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike {
 
-  private val view = app.injector.instanceOf[TaxCreditsCUIView]
+  private val view = app.injector.instanceOf[ConstructionIndustrySchemeCUIDAv2View]
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "Tax Credits CUI View" must {
+  "Construction Industry scheme CUI View" must {
     "rendered" must {
       behave like normalCuiPage(
-      createView,
+        createView,
         "Ask HMRC",
-        "Ask HMRC online - Ask HMRC - GOV.UK",
-        "Ask HMRC online"
+        "Construction Industry Scheme: chat - Ask HMRC - GOV.UK",
+        "Construction Industry Scheme: chat"
       )
     }
   }
