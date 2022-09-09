@@ -151,5 +151,29 @@ class CiapiControllerSpec
         doc.select("h1").text() mustBe "Construction Industry Scheme: chat"
       }
     }
+
+    "render self assessment CUI page if showSACUI is true" in {
+      val application = builder.configure("features.showSACUI" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, ciapiRoutes.CiapiController.selfAssessment.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Self Assessment: chat"
+      }
+    }
+
+    "render self assessment CUI page if showCISCUI is false" in {
+      val application = builder.configure("features.showSACUI" -> "false").build()
+
+      running(application) {
+        val request = FakeRequest(GET, ciapiRoutes.CiapiController.selfAssessment.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Self Assessment: chat"
+      }
+    }
   }
 }

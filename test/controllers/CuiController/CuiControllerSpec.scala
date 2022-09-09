@@ -34,18 +34,6 @@ class CuiControllerSpec
 
   "Nuance Full Page CUI Test Controller" should {
 
-    "render self assessment CUI page" in {
-      val application = builder.build()
-
-      running(application) {
-        val request = FakeRequest(GET, cuiRoutes.CuiController.selfAssessment.url)
-        val result = route(application, request).get
-        val doc = asDocument(contentAsString(result))
-        status(result) mustBe OK
-        doc.select("h1").text() mustBe "Self Assessment: chat"
-      }
-    }
-
     "render online Services Helpdesk CUI page" in {
       val result = controller.onlineServicesHelpdesk(fakeRequest)
 
