@@ -47,7 +47,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
 
   def nationalInsuranceNumbers: Action[AnyContent] = serviceUnavailableRedirect
 
-  def customsEnquiries: Action[AnyContent] = Action.async { implicit request =>
+  def customsEnquiries: Action[AnyContent] = Action.async {
     Future.successful(Redirect(ciapiRoutes.CiapiController.customsInternationalTrade))
   }
 
@@ -66,7 +66,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
   def nonUkResidentLandlords: Action[AnyContent] = serviceUnavailableRedirect
 
   def constructionIndustryScheme: Action[AnyContent] = Action.async {
-      Future.successful(Redirect(cuiRoutes.CuiController.constructionIndustryScheme))
+      Future.successful(Redirect(ciapiRoutes.CiapiController.constructionIndustryScheme))
   }
 
   def nationalClearanceHub: Action[AnyContent] = Action.async { implicit request =>

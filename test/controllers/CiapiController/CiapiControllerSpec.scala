@@ -60,27 +60,27 @@ class CiapiControllerSpec
       }
     }
 
-		"render Vat Online CUI page if showVATCUI is true" in {
-			val application = builder.configure("features.showVATCUI" -> "true").build()
+    "render Vat Online CUI page if showVATCUI is true" in {
+        val application = builder.configure("features.showVATCUI" -> "true").build()
 
-			running(application) {
-				val request = FakeRequest(GET, ciapiRoutes.CiapiController.vatOnline.url)
-				val result = route(application, request).get
-				val doc = asDocument(contentAsString(result))
-				status(result) mustBe OK
-				doc.select("h1").text() mustBe "VAT Online: chat"
-			}
-		}
+        running(application) {
+            val request = FakeRequest(GET, ciapiRoutes.CiapiController.vatOnline.url)
+            val result = route(application, request).get
+            val doc = asDocument(contentAsString(result))
+            status(result) mustBe OK
+            doc.select("h1").text() mustBe "VAT Online: chat"
+        }
+    }
 
-		"render technical support with HMRC online services page : if showVATCUI is false" in {
-			val application = builder.configure("features.showVATCUI" -> "false").build()
+    "render technical support with HMRC online services page : if showVATCUI is false" in {
+        val application = builder.configure("features.showVATCUI" -> "false").build()
 
-			running(application) {
-				val request = FakeRequest(GET, ciapiRoutes.CiapiController.vatOnline.url)
-				val result = route(application, request).get
-				status(result) mustBe NOT_FOUND
-			}
-		}
+        running(application) {
+            val request = FakeRequest(GET, ciapiRoutes.CiapiController.vatOnline.url)
+            val result = route(application, request).get
+            status(result) mustBe NOT_FOUND
+        }
+    }
 
     "render Corporation Tax CUI page if showCTCUI is true" in {
       val application = builder.configure("features.showCTCUI" -> "true").build()
@@ -125,6 +125,30 @@ class CiapiControllerSpec
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
         doc.select("h1").text() mustBe "Child Benefit: chat"
+      }
+    }
+
+    "render construction industry scheme CUI page if showCISCUI is true" in {
+      val application = builder.configure("features.showCISCUI" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, ciapiRoutes.CiapiController.constructionIndustryScheme.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Construction Industry Scheme: chat"
+      }
+    }
+
+    "render construction industry scheme CUI page if showCISCUI is false" in {
+      val application = builder.configure("features.showCISCUI" -> "false").build()
+
+      running(application) {
+        val request = FakeRequest(GET, ciapiRoutes.CiapiController.constructionIndustryScheme.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Construction Industry Scheme: chat"
       }
     }
   }

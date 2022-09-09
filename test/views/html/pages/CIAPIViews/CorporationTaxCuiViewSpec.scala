@@ -38,5 +38,4 @@ class CorporationTaxCuiViewSpec extends ChatViewBehaviours with Matchers with An
       )
     }
   }
-
 }

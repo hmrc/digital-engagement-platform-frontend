@@ -28,8 +28,7 @@ class CuiController @Inject()(appConfig: AppConfig,
                               mcc: MessagesControllerComponents,
                               selfAssessmentCUIView: SelfAssessmentCUIView,
                               onlineServicesHelpdeskCUIView: OnlineServicesHelpdeskCUIView,
-                              employerEnquiriesCUIView: EmployerEnquiriesCUIView,
-                              constructionIndustrySchemeCUIView: ConstructionIndustrySchemeCUIView) extends FrontendController(mcc) {
+                              employerEnquiriesCUIView: EmployerEnquiriesCUIView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
@@ -43,9 +42,5 @@ class CuiController @Inject()(appConfig: AppConfig,
 
   def employerEnquiries: Action[AnyContent] = Action.async { implicit request =>
       Future.successful(Ok(employerEnquiriesCUIView()))
-  }
-
-  def constructionIndustryScheme: Action[AnyContent] = Action.async { implicit request =>
-      Future.successful(Ok(constructionIndustrySchemeCUIView()))
   }
 }

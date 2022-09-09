@@ -38,5 +38,4 @@ class CustomsInternationalTradeCUIViewSpec extends ChatViewBehaviours with Match
       )
     }
   }
-
 }

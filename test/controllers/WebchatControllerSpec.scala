@@ -119,7 +119,7 @@ class WebchatControllerSpec
       val result = controller.constructionIndustryScheme(fakeRequest)
 
       status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(cuiRoutes.CuiController.constructionIndustryScheme.url)
+      redirectLocation(result) mustBe Some(ciapiRoutes.CiapiController.constructionIndustryScheme.url)
     }
 
     "National clearance hub page" in {

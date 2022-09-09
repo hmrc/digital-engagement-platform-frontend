@@ -38,5 +38,4 @@ class VatOnlineCuiViewSpec extends ChatViewBehaviours with Matchers with AnyWord
       )
     }
   }
-
 }

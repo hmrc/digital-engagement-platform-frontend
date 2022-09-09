@@ -31,7 +31,7 @@ class VirtualAssistantController @Inject()(appConfig: AppConfig,
 
   implicit val config: AppConfig = appConfig
 
-  def customsInternationalTrade: Action[AnyContent] = Action.async { implicit request =>
+  def customsInternationalTrade: Action[AnyContent] = Action.async {
     Future.successful(Redirect(ciapiRoutes.CiapiController.customsInternationalTrade))
   }
 }

@@ -39,10 +39,10 @@ GET         /accessibility-statement                                            
 GET         /chat/self-assessment                                                       controllers.CuiController.CuiController.selfAssessment
 GET         /chat/online-services-helpdesk                                              controllers.CuiController.CuiController.onlineServicesHelpdesk
 GET         /chat/employer-enquiries                                                    controllers.CuiController.CuiController.employerEnquiries
-GET         /chat/construction-industry-scheme                                          controllers.CuiController.CuiController.constructionIndustryScheme
 
 GET         /chat/ask-hmrc-online                                                       controllers.CiapiController.CiapiController.askHmrcOnline
 GET         /chat/customs-and-international-trade                                       controllers.CiapiController.CiapiController.customsInternationalTrade
 GET			/chat/vat-online															controllers.CiapiController.CiapiController.vatOnline
 GET         /chat/corporation-tax                                                       controllers.CiapiController.CiapiController.corporationTax
 GET         /chat/child-benefit                                                         controllers.CiapiController.CiapiController.childBenefit
+GET         /chat/construction-industry-scheme                                          controllers.CiapiController.CiapiController.constructionIndustryScheme
