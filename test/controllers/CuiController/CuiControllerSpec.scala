@@ -16,12 +16,10 @@
 
 package controllers.CuiController
 
-import controllers.CuiController.{routes => cuiRoutes}
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.scalatest.matchers.must.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike
-import play.api.test.FakeRequest
 import play.api.test.Helpers._
 import views.html.pages.helpers.AppBuilderSpecBase
 
@@ -40,14 +38,6 @@ class CuiControllerSpec
       val doc = asDocument(contentAsString(result))
       status(result) mustBe OK
       doc.select("h1").text() mustBe "Technical support with HMRC online services: chat"
-    }
-
-    "render employer enquiries CUI page" in {
-      val result = controller.employerEnquiries(fakeRequest)
-
-      val doc = asDocument(contentAsString(result))
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Employers enquiries: chat"
     }
   }
 }
