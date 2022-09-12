@@ -14,29 +14,28 @@
  * limitations under the License.
  */
 
-package views.html.pages.templates
+package views.html.pages.CIAPIViews
 
 import org.scalatest.matchers.must.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike
-import play.api.mvc.{AnyContentAsEmpty, Cookie}
-import play.api.test.FakeRequest
 import play.twirl.api.HtmlFormat
-import views.html.CUIViews.SelfAssessmentCUIDAv2View
+import views.html.CIAPIViews.SelfAssessmentCUIView
 import views.html.pages.helpers.ChatViewBehaviours
 
-class GovukWrapperCUISpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike {
+class SelfAssessmentCUIViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike{
 
-  implicit override val fakeRequest: FakeRequest[AnyContentAsEmpty.type] = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
+  private val view = app.injector.instanceOf[SelfAssessmentCUIView]
 
-  val view: SelfAssessmentCUIDAv2View = app.injector.instanceOf[SelfAssessmentCUIDAv2View]
+  private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
-
-  "GovukWrapperCUI" must {
-    behave like generalContentCUI(
+  "Self Assessment View" must {
+    "rendered" must {
+      behave like normalCuiPage(
       createView,
-      "Self Assessment: chat",
-      "Self Assessment: chat"
-    )
+        "Ask HMRC",
+        "Self Assessment: chat - Ask HMRC - GOV.UK",
+        "Self Assessment: chat"
+      )
+    }
   }
 }
