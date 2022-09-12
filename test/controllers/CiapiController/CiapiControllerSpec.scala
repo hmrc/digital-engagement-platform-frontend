@@ -164,7 +164,7 @@ class CiapiControllerSpec
       }
     }
 
-    "render self assessment CUI page if showCISCUI is false" in {
+    "render self assessment CUI page if showSACUI is false" in {
       val application = builder.configure("features.showSACUI" -> "false").build()
 
       running(application) {
