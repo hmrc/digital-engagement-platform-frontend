@@ -49,7 +49,7 @@ class WebchatControllerSpec
       val result = controller.onlineServicesHelpdesk(fakeRequest)
 
       status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(cuiRoutes.CuiController.onlineServicesHelpdesk.url)
+      redirectLocation(result) mustBe Some(ciapiRoutes.CiapiController.onlineServicesHelpdesk.url)
     }
 
     "render national insurance page" in {
