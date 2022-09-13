@@ -176,8 +176,8 @@ class CiapiControllerSpec
       }
     }
 
-    "render online services helpdesk CUI page if showOSHDUI is true" in {
-      val application = builder.configure("features.showOSHDUI" -> "true").build()
+    "render online services helpdesk CUI page if showOSHCUI is true" in {
+      val application = builder.configure("features.showOSHCUI" -> "true").build()
 
       running(application) {
         val request = FakeRequest(GET, ciapiRoutes.CiapiController.onlineServicesHelpdesk.url)
@@ -188,8 +188,8 @@ class CiapiControllerSpec
       }
     }
 
-    "render online services helpdesk DAv2 page if showOSHDUI is false" in {
-      val application = builder.configure("features.showOSHDUI" -> "false").build()
+    "render online services helpdesk DAv2 page if showOSHCUI is false" in {
+      val application = builder.configure("features.showOSHCUI" -> "false").build()
 
       running(application) {
         val request = FakeRequest(GET, ciapiRoutes.CiapiController.onlineServicesHelpdesk.url)
