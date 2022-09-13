@@ -17,7 +17,6 @@
 package controllers
 
 import config.AppConfig
-import controllers.CuiController.{routes => cuiRoutes}
 import controllers.CiapiController.{routes => ciapiRoutes}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController

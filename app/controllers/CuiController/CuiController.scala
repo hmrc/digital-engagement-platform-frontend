@@ -19,14 +19,13 @@ package controllers.CuiController
 import config.AppConfig
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
-import views.html.CUIViews._
+import views.html.CUIViews.EmployerEnquiriesCUIView
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.Future
 
 @Singleton
 class CuiController @Inject()(appConfig: AppConfig,
                               mcc: MessagesControllerComponents,
-                              onlineServicesHelpdeskCUIView: OnlineServicesHelpdeskCUIDAv2View,
                               employerEnquiriesCUIView: EmployerEnquiriesCUIView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
