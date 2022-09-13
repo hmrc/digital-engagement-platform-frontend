@@ -96,7 +96,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   }
 
   def onlineServicesHelpdesk: Action[AnyContent] = Action.async { implicit request =>
-    if (config.showOSHDCUI) {
+    if (config.showOSHCUI) {
       Future.successful(Ok(onlineServicesHelpdeskCUIView()))
     } else {
       Future.successful(Ok(onlineServicesHelpdeskDav2View()))
