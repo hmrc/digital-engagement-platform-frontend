@@ -26,14 +26,10 @@ import scala.concurrent.Future
 @Singleton
 class CuiController @Inject()(appConfig: AppConfig,
                               mcc: MessagesControllerComponents,
-                              onlineServicesHelpdeskCUIView: OnlineServicesHelpdeskCUIView,
+                              onlineServicesHelpdeskCUIView: OnlineServicesHelpdeskCUIDAv2View,
                               employerEnquiriesCUIView: EmployerEnquiriesCUIView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
-
-  def onlineServicesHelpdesk: Action[AnyContent] = Action.async { implicit request =>
-      Future.successful(Ok(onlineServicesHelpdeskCUIView()))
-  }
 
   def employerEnquiries: Action[AnyContent] = Action.async { implicit request =>
       Future.successful(Ok(employerEnquiriesCUIView()))

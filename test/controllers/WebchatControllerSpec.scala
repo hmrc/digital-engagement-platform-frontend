@@ -45,12 +45,12 @@ class WebchatControllerSpec
   }
 
   "fixed URLs" must {
-    "render technical support with HMRC online services page" in {
-      val result = controller.onlineServicesHelpdesk(fakeRequest)
-
-      status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(cuiRoutes.CuiController.onlineServicesHelpdesk.url)
-    }
+//    "render technical support with HMRC online services page" in {
+//      val result = controller.onlineServicesHelpdesk(fakeRequest)
+//
+//      status(result) mustBe SEE_OTHER
+//      redirectLocation(result) mustBe Some(cuiRoutes.CuiController.onlineServicesHelpdesk.url)
+//    }
 
     "render national insurance page" in {
       val result = controller.nationalInsuranceNumbers(fakeRequest)

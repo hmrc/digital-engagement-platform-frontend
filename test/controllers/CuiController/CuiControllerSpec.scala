@@ -34,14 +34,6 @@ class CuiControllerSpec
 
   "Nuance Full Page CUI Test Controller" should {
 
-    "render online Services Helpdesk CUI page" in {
-      val result = controller.onlineServicesHelpdesk(fakeRequest)
-
-      val doc = asDocument(contentAsString(result))
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Technical support with HMRC online services: chat"
-    }
-
     "render employer enquiries CUI page" in {
       val result = controller.employerEnquiries(fakeRequest)
 

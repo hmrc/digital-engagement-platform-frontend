@@ -175,5 +175,30 @@ class CiapiControllerSpec
         doc.select("h1").text() mustBe "Self Assessment: chat"
       }
     }
+
+    "render online services helpdesk CUI page if showOSHDUI is true" in {
+      val application = builder.configure("features.showOSHDUI" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, ciapiRoutes.CiapiController.onlineServicesHelpdesk.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Technical support with HMRC online services: chat"
+      }
+    }
+
+    "render online services helpdesk DAv2 page if showOSHDUI is false" in {
+      val application = builder.configure("features.showOSHDUI" -> "false").build()
+
+      running(application) {
+        val request = FakeRequest(GET, ciapiRoutes.CiapiController.onlineServicesHelpdesk.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Technical support with HMRC online services: chat"
+      }
+    }
+
   }
 }
