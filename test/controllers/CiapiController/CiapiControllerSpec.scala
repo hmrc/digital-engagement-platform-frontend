@@ -200,5 +200,28 @@ class CiapiControllerSpec
       }
     }
 
+    "render employee enquiries CUI page if showEHLCUI is true" in {
+      val application = builder.configure("features.showEHLCUI" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, ciapiRoutes.CiapiController.employerEnquiries.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Employers enquiries: chat"
+      }
+    }
+
+    "render employee enquiries DAv2 CUI page if showEHLCUI is false" in {
+      val application = builder.configure("features.showEHLCUI" -> "false").build()
+
+      running(application) {
+        val request = FakeRequest(GET, ciapiRoutes.CiapiController.employerEnquiries.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Employers enquiries: chat"
+      }
+    }
   }
 }

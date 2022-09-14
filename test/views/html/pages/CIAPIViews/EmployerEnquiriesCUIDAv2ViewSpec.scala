@@ -22,7 +22,7 @@ import play.twirl.api.HtmlFormat
 import views.html.CUIViews.EmployerEnquiriesCUIDAv2View
 import views.html.pages.helpers.ChatViewBehaviours
 
-class EmployerEnquiriesCUIViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike {
+class EmployerEnquiriesCUIDAv2ViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike {
 
   private val view = app.injector.instanceOf[EmployerEnquiriesCUIDAv2View]
 

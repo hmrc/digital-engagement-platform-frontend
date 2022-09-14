@@ -19,12 +19,12 @@ package views.html.pages.includes
 import org.scalatest.matchers.must.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike
 import play.twirl.api.HtmlFormat
-import views.html.CUIViews.EmployerEnquiriesCUIView
+import views.html.CUIViews.EmployerEnquiriesCUIDAv2View
 import views.html.pages.helpers.ViewSpecBase
 
 class sidebarEmployerEnquiriesCUISpec extends ViewSpecBase with Matchers with AnyWordSpecLike {
 
-  private val viewWithTemplate = app.injector.instanceOf[EmployerEnquiriesCUIView]
+  private val viewWithTemplate = app.injector.instanceOf[EmployerEnquiriesCUIDAv2View]
 
   private def createView: () => HtmlFormat.Appendable = () => viewWithTemplate()(fakeRequest, messages)
 

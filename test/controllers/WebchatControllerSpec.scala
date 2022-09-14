@@ -16,7 +16,6 @@
 
 package controllers
 
-import controllers.CuiController.{routes => cuiRoutes}
 import controllers.CiapiController.{routes => ciapiRoutes}
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
