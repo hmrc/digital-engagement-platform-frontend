@@ -39,7 +39,9 @@ class CiapiController @Inject()(appConfig: AppConfig,
                                 selfAssessmentCUIDAv2View: SelfAssessmentCUIDAv2View,
                                 selfAssessmentCUIView: SelfAssessmentCUIView,
                                 onlineServicesHelpdeskDav2View: OnlineServicesHelpdeskCUIDAv2View,
-                                onlineServicesHelpdeskCUIView: OnlineServicesHelpdeskCUIView) extends FrontendController(mcc) {
+                                onlineServicesHelpdeskCUIView: OnlineServicesHelpdeskCUIView,
+                                employerEnquiriesCUIView: EmployerEnquiriesCUIView,
+                                employerEnquiriesCUIDAv2View: EmployerEnquiriesCUIDAv2View) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
@@ -100,6 +102,14 @@ class CiapiController @Inject()(appConfig: AppConfig,
       Future.successful(Ok(onlineServicesHelpdeskCUIView()))
     } else {
       Future.successful(Ok(onlineServicesHelpdeskDav2View()))
+    }
+  }
+
+  def employerEnquiries: Action[AnyContent] = Action.async { implicit request =>
+    if (config.showEHLCUI) {
+      Future.successful(Ok(employerEnquiriesCUIView()))
+    } else {
+      Future.successful(Ok(employerEnquiriesCUIDAv2View()))
     }
   }
 }
