@@ -188,7 +188,7 @@ class CiapiControllerSpec
       }
     }
 
-    "render employee enquiries CUI page if showEHLCUI is false" in {
+    "render employee enquiries DAv2 CUI page if showEHLCUI is false" in {
       val application = builder.configure("features.showEHLCUI" -> "false").build()
 
       running(application) {
