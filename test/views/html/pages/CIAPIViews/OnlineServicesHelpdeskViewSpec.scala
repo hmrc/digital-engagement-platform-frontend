@@ -14,21 +14,21 @@
  * limitations under the License.
  */
 
-package views.html.pages.CUIViews
+package views.html.pages.CIAPIViews
 
 import org.scalatest.matchers.must.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike
 import play.twirl.api.HtmlFormat
-import views.html.CUIViews.OnlineServicesHelpdeskCUIDAv2View
+import views.html.CIAPIViews.OnlineServicesHelpdeskCUIView
 import views.html.pages.helpers.ChatViewBehaviours
 
-class OnlineServicesHelpdeskCUIViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike{
+class OnlineServicesHelpdeskViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike{
 
-  private val view = app.injector.instanceOf[OnlineServicesHelpdeskCUIDAv2View]
+  private val view = app.injector.instanceOf[OnlineServicesHelpdeskCUIView]
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "OSH CUI View" must {
+  "Online Services Helpdesk View" must {
     "rendered" must {
       behave like normalCuiPage(
         createView,

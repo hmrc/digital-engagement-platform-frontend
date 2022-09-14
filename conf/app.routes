@@ -6,7 +6,7 @@ GET         /assets/*file           controllers.Assets.versioned(path="/public",
 
 GET         /webchat/service-unavailable                                                controllers.WebchatController.serviceUnavailable
 
-GET         /webchat/online-services-helpdesk                                           controllers.WebchatController.onlineServicesHelpdesk
+GET         /webchat/online-services-helpdesk                                           controllers.CiapiController.CiapiController.onlineServicesHelpdesk
 GET         /webchat/national-insurance-numbers                                         controllers.WebchatController.nationalInsuranceNumbers
 GET         /webchat/customs-international-trade                                        controllers.WebchatController.customsEnquiries
 GET         /webchat/excise-enquiries                                                   controllers.WebchatController.exciseEnquiries
@@ -36,8 +36,6 @@ GET         /webchat/payment-problems                                           
 
 GET         /accessibility-statement                                                    controllers.AccessibilityStatementController.accessibility(userAction: Option[String])
 
-GET         /chat/online-services-helpdesk                                              controllers.CuiController.CuiController.onlineServicesHelpdesk
-
 GET         /chat/ask-hmrc-online                                                       controllers.CiapiController.CiapiController.askHmrcOnline
 GET         /chat/customs-and-international-trade                                       controllers.CiapiController.CiapiController.customsInternationalTrade
 GET			/chat/vat-online															controllers.CiapiController.CiapiController.vatOnline
@@ -46,3 +44,4 @@ GET         /chat/child-benefit                                                 
 GET         /chat/construction-industry-scheme                                          controllers.CiapiController.CiapiController.constructionIndustryScheme
 GET         /chat/self-assessment                                                       controllers.CiapiController.CiapiController.selfAssessment
 GET         /chat/employer-enquiries                                                    controllers.CiapiController.CiapiController.employerEnquiries
+GET         /chat/online-services-helpdesk                                              controllers.CiapiController.CiapiController.onlineServicesHelpdesk

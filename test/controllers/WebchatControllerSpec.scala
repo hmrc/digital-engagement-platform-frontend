@@ -16,7 +16,6 @@
 
 package controllers
 
-import controllers.CuiController.{routes => cuiRoutes}
 import controllers.CiapiController.{routes => ciapiRoutes}
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
@@ -49,7 +48,7 @@ class WebchatControllerSpec
       val result = controller.onlineServicesHelpdesk(fakeRequest)
 
       status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(cuiRoutes.CuiController.onlineServicesHelpdesk.url)
+      redirectLocation(result) mustBe Some(ciapiRoutes.CiapiController.onlineServicesHelpdesk.url)
     }
 
     "render national insurance page" in {

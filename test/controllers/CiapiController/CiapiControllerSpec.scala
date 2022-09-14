@@ -176,8 +176,8 @@ class CiapiControllerSpec
       }
     }
 
-    "render employee enquiries CUI page if showELHCUI is true" in {
-      val application = builder.configure("features.showELHCUI" -> "true").build()
+    "render employee enquiries CUI page if showEHLCUI is true" in {
+      val application = builder.configure("features.showEHLCUI" -> "true").build()
 
       running(application) {
         val request = FakeRequest(GET, ciapiRoutes.CiapiController.employerEnquiries.url)
@@ -188,8 +188,8 @@ class CiapiControllerSpec
       }
     }
 
-    "render employee enquiries CUI page if showELHCUI is false" in {
-      val application = builder.configure("features.showELHCUI" -> "false").build()
+    "render employee enquiries CUI page if showEHLCUI is false" in {
+      val application = builder.configure("features.showEHLCUI" -> "false").build()
 
       running(application) {
         val request = FakeRequest(GET, ciapiRoutes.CiapiController.employerEnquiries.url)
@@ -197,6 +197,30 @@ class CiapiControllerSpec
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
         doc.select("h1").text() mustBe "Employers enquiries: chat"
+      }
+    }
+
+    "render online services helpdesk CUI page if showOSHCUI is true" in {
+      val application = builder.configure("features.showOSHCUI" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, ciapiRoutes.CiapiController.onlineServicesHelpdesk.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Technical support with HMRC online services: chat"
+      }
+    }
+
+    "render online services helpdesk DAv2 page if showOSHCUI is false" in {
+      val application = builder.configure("features.showOSHCUI" -> "false").build()
+
+      running(application) {
+        val request = FakeRequest(GET, ciapiRoutes.CiapiController.onlineServicesHelpdesk.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Technical support with HMRC online services: chat"
       }
     }
   }

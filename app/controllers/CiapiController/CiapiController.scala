@@ -20,7 +20,7 @@ import config.AppConfig
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 import views.html.CIAPIViews._
-import views.html.CUIViews.{ConstructionIndustrySchemeCUIDAv2View, EmployerEnquiriesCUIDAv2View, SelfAssessmentCUIDAv2View, childBenefitCUIDAv2View}
+import views.html.CUIViews._
 
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.Future
@@ -39,7 +39,9 @@ class CiapiController @Inject()(appConfig: AppConfig,
                                 selfAssessmentCUIDAv2View: SelfAssessmentCUIDAv2View,
                                 selfAssessmentCUIView: SelfAssessmentCUIView,
                                 employerEnquiriesCUIView: EmployerEnquiriesCUIView,
-                                employerEnquiriesCUIDAv2View: EmployerEnquiriesCUIDAv2View) extends FrontendController(mcc) {
+                                employerEnquiriesCUIDAv2View: EmployerEnquiriesCUIDAv2View,
+                                onlineServicesHelpdeskDAv2View: OnlineServicesHelpdeskCUIDAv2View,
+                                onlineServicesHelpdeskCUIView: OnlineServicesHelpdeskCUIView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
@@ -96,10 +98,18 @@ class CiapiController @Inject()(appConfig: AppConfig,
   }
 
   def employerEnquiries: Action[AnyContent] = Action.async { implicit request =>
-    if (config.showELHCUI) {
+    if (config.showEHLCUI) {
       Future.successful(Ok(employerEnquiriesCUIView()))
     } else {
       Future.successful(Ok(employerEnquiriesCUIDAv2View()))
+    }
+  }
+
+  def onlineServicesHelpdesk: Action[AnyContent] = Action.async { implicit request =>
+    if (config.showOSHCUI) {
+      Future.successful (Ok (onlineServicesHelpdeskCUIView () ) )
+    } else {
+      Future.successful (Ok (onlineServicesHelpdeskDAv2View () ) )
     }
   }
 }

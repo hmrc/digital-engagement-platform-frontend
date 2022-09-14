@@ -17,7 +17,6 @@
 package controllers
 
 import config.AppConfig
-import controllers.CuiController.{routes => cuiRoutes}
 import controllers.CiapiController.{routes => ciapiRoutes}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
@@ -42,7 +41,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def onlineServicesHelpdesk: Action[AnyContent] = Action.async {
-      Future.successful(Redirect(cuiRoutes.CuiController.onlineServicesHelpdesk))
+      Future.successful(Redirect(ciapiRoutes.CiapiController.onlineServicesHelpdesk))
   }
 
   def nationalInsuranceNumbers: Action[AnyContent] = serviceUnavailableRedirect
