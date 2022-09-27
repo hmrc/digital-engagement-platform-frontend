@@ -50,8 +50,6 @@ class WebchatController @Inject()(appConfig: AppConfig,
     Future.successful(Redirect(ciapiRoutes.CiapiController.customsInternationalTrade))
   }
 
-  def exciseEnquiries: Action[AnyContent] = serviceUnavailableRedirect
-
   def incomeTaxEnquiries: Action[AnyContent] = serviceUnavailableRedirect
 
   def employingExpatriateEmployees: Action[AnyContent] = serviceUnavailableRedirect

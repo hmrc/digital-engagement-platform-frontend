@@ -9,7 +9,6 @@ GET         /webchat/service-unavailable                                        
 GET         /webchat/online-services-helpdesk                                           controllers.CiapiController.CiapiController.onlineServicesHelpdesk
 GET         /webchat/national-insurance-numbers                                         controllers.WebchatController.nationalInsuranceNumbers
 GET         /webchat/customs-international-trade                                        controllers.WebchatController.customsEnquiries
-GET         /webchat/excise-enquiries                                                   controllers.WebchatController.exciseEnquiries
 GET         /webchat/income-tax-enquiries-for-individuals-pensioners-and-employees      controllers.WebchatController.incomeTaxEnquiries
 GET         /webchat/employing-expatriate-employees                                     controllers.WebchatController.employingExpatriateEmployees
 GET         /webchat/employment-related-securities                                      controllers.WebchatController.employmentRelatedSecurities

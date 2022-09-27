@@ -65,13 +65,6 @@ class WebchatControllerSpec
       redirectLocation(result) mustBe Some(ciapiRoutes.CiapiController.customsInternationalTrade.url)
     }
 
-    "render excise page" in {
-      val result = controller.exciseEnquiries(fakeRequest)
-
-      status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
-    }
-
     "render income tax enquiries page" in {
       val result = controller.incomeTaxEnquiries(fakeRequest)
 
