@@ -11,7 +11,6 @@ GET         /webchat/national-insurance-numbers                                 
 GET         /webchat/customs-international-trade                                        controllers.WebchatController.customsEnquiries
 GET         /webchat/excise-enquiries                                                   controllers.WebchatController.exciseEnquiries
 GET         /webchat/income-tax-enquiries-for-individuals-pensioners-and-employees      controllers.WebchatController.incomeTaxEnquiries
-GET         /webchat/charities-and-community-sports                                     controllers.WebchatController.charitiesCommunitySports
 GET         /webchat/employing-expatriate-employees                                     controllers.WebchatController.employingExpatriateEmployees
 GET         /webchat/employment-related-securities                                      controllers.WebchatController.employmentRelatedSecurities
 GET         /webchat/non-UK-resident-employees                                          controllers.WebchatController.nonUkResidentEmployees

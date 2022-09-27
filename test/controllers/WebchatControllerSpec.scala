@@ -79,13 +79,6 @@ class WebchatControllerSpec
       redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
-    "render charities community sports page" in {
-      val result = controller.charitiesCommunitySports(fakeRequest)
-
-      status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
-    }
-
     "render employing expatriate employees page" in {
       val result = controller.employingExpatriateEmployees(fakeRequest)
 
