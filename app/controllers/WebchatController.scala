@@ -66,8 +66,6 @@ class WebchatController @Inject()(appConfig: AppConfig,
 
   def c19EmployerEnquiries: Action[AnyContent] = serviceUnavailableRedirect
 
-  def probate: Action[AnyContent] = serviceUnavailableRedirect
-
   def additionalNeedsHelp: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(additionalNeedsHelpView()))
   }

@@ -14,7 +14,6 @@ GET         /webchat/employing-expatriate-employees                             
 GET         /webchat/non-UK-resident-employees                                          controllers.WebchatController.nonUkResidentEmployees
 GET         /webchat/construction-industry-scheme-enquiries                             controllers.WebchatController.constructionIndustryScheme
 GET         /webchat/national-clearance-hub                                             controllers.WebchatController.nationalClearanceHub
-GET         /webchat/probate                                                            controllers.WebchatController.probate
 GET         /webchat/help-for-users-with-additional-needs                               controllers.WebchatController.additionalNeedsHelp
 GET         /webchat/c19-employer-enquiries                                             controllers.WebchatController.c19EmployerEnquiries
 GET         /webchat/personal-transport-unit-enquiries                                  controllers.WebchatController.personalTransportUnitEnquiries
