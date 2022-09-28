@@ -93,13 +93,6 @@ class WebchatControllerSpec
       redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
-    "Non-UK resident landlords page" in {
-      val result = controller.nonUkResidentLandlords(fakeRequest)
-
-      status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
-    }
-
     "Construction industry scheme page" in {
       val result = controller.constructionIndustryScheme(fakeRequest)
 

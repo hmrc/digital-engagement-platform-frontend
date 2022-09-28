@@ -13,7 +13,6 @@ GET         /webchat/income-tax-enquiries-for-individuals-pensioners-and-employe
 GET         /webchat/employing-expatriate-employees                                     controllers.WebchatController.employingExpatriateEmployees
 GET         /webchat/employment-related-securities                                      controllers.WebchatController.employmentRelatedSecurities
 GET         /webchat/non-UK-resident-employees                                          controllers.WebchatController.nonUkResidentEmployees
-GET         /webchat/non-UK-resident-landlords                                          controllers.WebchatController.nonUkResidentLandlords
 GET         /webchat/construction-industry-scheme-enquiries                             controllers.WebchatController.constructionIndustryScheme
 GET         /webchat/national-clearance-hub                                             controllers.WebchatController.nationalClearanceHub
 GET         /webchat/probate                                                            controllers.WebchatController.probate

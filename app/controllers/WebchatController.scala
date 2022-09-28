@@ -58,8 +58,6 @@ class WebchatController @Inject()(appConfig: AppConfig,
 
   def nonUkResidentEmployees: Action[AnyContent] = serviceUnavailableRedirect
 
-  def nonUkResidentLandlords: Action[AnyContent] = serviceUnavailableRedirect
-
   def constructionIndustryScheme: Action[AnyContent] = Action.async {
       Future.successful(Redirect(ciapiRoutes.CiapiController.constructionIndustryScheme))
   }
