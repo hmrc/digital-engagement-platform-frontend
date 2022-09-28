@@ -129,13 +129,6 @@ class WebchatControllerSpec
       redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
-    "Inheritance page" in {
-      val result = controller.inheritanceTax(fakeRequest)
-
-      status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
-    }
-
     "Additional Needs page" in {
       val result = controller.additionalNeedsHelp(fakeRequest)
       val doc = asDocument(contentAsString(result))

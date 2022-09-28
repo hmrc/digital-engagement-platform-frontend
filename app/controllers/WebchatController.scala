@@ -72,8 +72,6 @@ class WebchatController @Inject()(appConfig: AppConfig,
 
   def probate: Action[AnyContent] = serviceUnavailableRedirect
 
-  def inheritanceTax: Action[AnyContent] = serviceUnavailableRedirect
-
   def additionalNeedsHelp: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(additionalNeedsHelpView()))
   }
