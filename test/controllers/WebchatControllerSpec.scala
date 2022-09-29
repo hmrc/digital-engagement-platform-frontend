@@ -73,13 +73,6 @@ class WebchatControllerSpec
       doc.select("h1").text() mustBe "National Clearance Hub: webchat"
     }
 
-    "C19 Employer Enquiries page" in {
-      val result = controller.c19EmployerEnquiries(fakeRequest)
-
-      status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
-    }
-
     "Additional Needs page" in {
       val result = controller.additionalNeedsHelp(fakeRequest)
       val doc = asDocument(contentAsString(result))

@@ -73,12 +73,8 @@ class AppConfig @Inject()(config: Configuration) {
   val nationalClearanceHubReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/national-clearance-hub"
   val reportFraudulentActivityUrl: String = "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/report-fraud-to-hmrc"
-  val c19EmployerEnquiriesReturnRul: String =
-    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/get-help-with-the-statutory-sick-pay-rebate-scheme"
   val additionalNeedsReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/get-help-from-hmrc-s-extra-support-team"
-  val nonUkResidentEntertainersUrl: String =
-    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/non-uk-resident-entertainers"
   val manageYourTaxCreditsUrl: String = "https://www.gov.uk/manage-your-tax-credits"
   val personalTransportUnitEnquiriesReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/personal-transport-unit-enquiries"

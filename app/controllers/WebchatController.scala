@@ -56,8 +56,6 @@ class WebchatController @Inject()(appConfig: AppConfig,
     Future.successful(Ok(nationalClearanceHubView()))
   }
 
-  def c19EmployerEnquiries: Action[AnyContent] = serviceUnavailableRedirect
-
   def additionalNeedsHelp: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(additionalNeedsHelpView()))
   }
