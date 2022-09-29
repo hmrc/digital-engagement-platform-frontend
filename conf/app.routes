@@ -10,7 +10,6 @@ GET         /webchat/online-services-helpdesk                                   
 GET         /webchat/national-insurance-numbers                                         controllers.WebchatController.nationalInsuranceNumbers
 GET         /webchat/customs-international-trade                                        controllers.WebchatController.customsEnquiries
 GET         /webchat/income-tax-enquiries-for-individuals-pensioners-and-employees      controllers.WebchatController.incomeTaxEnquiries
-GET         /webchat/non-UK-resident-employees                                          controllers.WebchatController.nonUkResidentEmployees
 GET         /webchat/construction-industry-scheme-enquiries                             controllers.WebchatController.constructionIndustryScheme
 GET         /webchat/national-clearance-hub                                             controllers.WebchatController.nationalClearanceHub
 GET         /webchat/help-for-users-with-additional-needs                               controllers.WebchatController.additionalNeedsHelp
