@@ -51,13 +51,6 @@ class WebchatControllerSpec
       redirectLocation(result) mustBe Some(ciapiRoutes.CiapiController.onlineServicesHelpdesk.url)
     }
 
-    "render national insurance page" in {
-      val result = controller.nationalInsuranceNumbers(fakeRequest)
-
-      status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
-    }
-
     "render customs page" in {
       val result = controller.customsEnquiries(fakeRequest)
 

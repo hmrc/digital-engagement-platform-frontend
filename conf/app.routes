@@ -7,7 +7,6 @@ GET         /assets/*file           controllers.Assets.versioned(path="/public",
 GET         /webchat/service-unavailable                                                controllers.WebchatController.serviceUnavailable
 
 GET         /webchat/online-services-helpdesk                                           controllers.CiapiController.CiapiController.onlineServicesHelpdesk
-GET         /webchat/national-insurance-numbers                                         controllers.WebchatController.nationalInsuranceNumbers
 GET         /webchat/customs-international-trade                                        controllers.WebchatController.customsEnquiries
 GET         /webchat/income-tax-enquiries-for-individuals-pensioners-and-employees      controllers.WebchatController.incomeTaxEnquiries
 GET         /webchat/construction-industry-scheme-enquiries                             controllers.WebchatController.constructionIndustryScheme

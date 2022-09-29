@@ -36,12 +36,6 @@ service.unavailable.p2-2 = find other contact details for your query
 #Online Service Helpdesk Webchat
 online.services.title=Online services helpdesk: webchat
 
-#National Insurance Webchat
-national.insurance.title=National Insurance: webchat
-national.insurance.para1=If you need help with a National Insurance number application, you will need to contact the Department for Work and Pensions. It can take up to 16 weeks to get your National Insurance number after you have proven your identity.
-national.insurance.para2=Find out more information about
-national.insurance.link=how to apply for a National Insurance number (opens in a new tab).
-
 #Income Tax Enquiries
 income.tax.title=Income tax for individuals, pensioners and employees: webchat
 
