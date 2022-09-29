@@ -8,7 +8,6 @@ GET         /webchat/service-unavailable                                        
 
 GET         /webchat/online-services-helpdesk                                           controllers.CiapiController.CiapiController.onlineServicesHelpdesk
 GET         /webchat/customs-international-trade                                        controllers.WebchatController.customsEnquiries
-GET         /webchat/income-tax-enquiries-for-individuals-pensioners-and-employees      controllers.WebchatController.incomeTaxEnquiries
 GET         /webchat/construction-industry-scheme-enquiries                             controllers.WebchatController.constructionIndustryScheme
 GET         /webchat/national-clearance-hub                                             controllers.WebchatController.nationalClearanceHub
 GET         /webchat/help-for-users-with-additional-needs                               controllers.WebchatController.additionalNeedsHelp

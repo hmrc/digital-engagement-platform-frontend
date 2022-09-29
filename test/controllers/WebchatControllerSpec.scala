@@ -58,13 +58,6 @@ class WebchatControllerSpec
       redirectLocation(result) mustBe Some(ciapiRoutes.CiapiController.customsInternationalTrade.url)
     }
 
-    "render income tax enquiries page" in {
-      val result = controller.incomeTaxEnquiries(fakeRequest)
-
-      status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
-    }
-
     "Construction industry scheme page" in {
       val result = controller.constructionIndustryScheme(fakeRequest)
 

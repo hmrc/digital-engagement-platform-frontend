@@ -48,8 +48,6 @@ class WebchatController @Inject()(appConfig: AppConfig,
     Future.successful(Redirect(ciapiRoutes.CiapiController.customsInternationalTrade))
   }
 
-  def incomeTaxEnquiries: Action[AnyContent] = serviceUnavailableRedirect
-
   def constructionIndustryScheme: Action[AnyContent] = Action.async {
       Future.successful(Redirect(ciapiRoutes.CiapiController.constructionIndustryScheme))
   }
