@@ -52,8 +52,6 @@ class WebchatController @Inject()(appConfig: AppConfig,
 
   def incomeTaxEnquiries: Action[AnyContent] = serviceUnavailableRedirect
 
-  def employingExpatriateEmployees: Action[AnyContent] = serviceUnavailableRedirect
-
   def nonUkResidentEmployees: Action[AnyContent] = serviceUnavailableRedirect
 
   def constructionIndustryScheme: Action[AnyContent] = Action.async {

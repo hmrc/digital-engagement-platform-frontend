@@ -45,9 +45,6 @@ national.insurance.link=how to apply for a National Insurance number (opens in a
 #Income Tax Enquiries
 income.tax.title=Income tax for individuals, pensioners and employees: webchat
 
-#Employing Expatriate Employees
-employing.expatriate.employees.title=Employing expatriate employees: webchat
-
 #Non-Uk Resident Employees
 nonuk.resident.employees.title=Non-UK resident employees: webchat
 
@@ -86,12 +83,6 @@ personal.transport.unit.enquiries.title=Personal Transport Unit: webchat
 
 #IR35 Enquiries
 ir35.enquiries.title=Off-payroll working (IR35): webchat
-
-#Stamp Duty & Annual Tax on Enveloped Dwellings
-stamp.duty.land.tax.title=Stamp Duty Land Tax: webchat
-stamp.duty.reserve.tax.title=Stamp Duty Reserve Tax: webchat
-stamp.duty.shares.and.land.tax.title=Stamp Duty shares and land: webchat
-annual.tax.enveloped.dwellings.title=Annual Tax on Enveloped Dwellings: webchat
 
 #Payment Problems
 payment.problems.title=Coronavirus (COVID-19): tax support for businesses and self-employed

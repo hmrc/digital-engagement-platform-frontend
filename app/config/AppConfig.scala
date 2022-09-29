@@ -66,8 +66,6 @@ class AppConfig @Inject()(config: Configuration) {
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/national-insurance-numbers"
   val nationalInsuranceApplyUrl: String =
     "https://www.gov.uk/apply-national-insurance-number"
-  val employingExpatriateEmployeesUrl: String =
-    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/enquiries-from-employers-with-expatriate-employees"
   val nonUkResidentEmployeesUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/non-uk-expatriate-employees-expats"
   val paymentProblemsCoronavirusHelplineReturnUrl: String =
@@ -93,14 +91,6 @@ class AppConfig @Inject()(config: Configuration) {
   val ir35EnquiriesReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/ir35-enquiries"
 
-  val stampDutyLAndTaxReturnUrl: String =
-    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/stamp-duty-land-tax"
-  val stampDutyReserveTaxReturnUrl: String =
-    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/stamp-duty-reserve-tax"
-  val stampDutySharesAndLAndReturnUrl: String =
-    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/stamp-duty-enquiries-shares-and-land"
-  val AnnualTaxOnEnvelopedDwellingsReturnUrl: String =
-    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/annual-tax-on-enveloped-dwellings-ated"
   val contactHMRC: String = "https://www.gov.uk/contact-hmrc"
 
   private def accessibilityHost = config.get[String]("accessibility-statement-frontend.host")
