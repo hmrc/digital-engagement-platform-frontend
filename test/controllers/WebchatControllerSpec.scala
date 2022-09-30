@@ -51,67 +51,11 @@ class WebchatControllerSpec
       redirectLocation(result) mustBe Some(ciapiRoutes.CiapiController.onlineServicesHelpdesk.url)
     }
 
-    "render national insurance page" in {
-      val result = controller.nationalInsuranceNumbers(fakeRequest)
-
-      status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
-    }
-
     "render customs page" in {
       val result = controller.customsEnquiries(fakeRequest)
 
       status(result) mustBe SEE_OTHER
       redirectLocation(result) mustBe Some(ciapiRoutes.CiapiController.customsInternationalTrade.url)
-    }
-
-    "render excise page" in {
-      val result = controller.exciseEnquiries(fakeRequest)
-
-      status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
-    }
-
-    "render income tax enquiries page" in {
-      val result = controller.incomeTaxEnquiries(fakeRequest)
-
-      status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
-    }
-
-    "render charities community sports page" in {
-      val result = controller.charitiesCommunitySports(fakeRequest)
-
-      status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
-    }
-
-    "render employing expatriate employees page" in {
-      val result = controller.employingExpatriateEmployees(fakeRequest)
-
-      status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
-    }
-
-    "render employment related securities page" in {
-      val result = controller.employmentRelatedSecurities(fakeRequest)
-
-      status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
-    }
-
-    "Non-UK resident employees page" in {
-      val result = controller.nonUkResidentEmployees(fakeRequest)
-
-      status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
-    }
-
-    "Non-UK resident landlords page" in {
-      val result = controller.nonUkResidentLandlords(fakeRequest)
-
-      status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "Construction industry scheme page" in {
@@ -127,27 +71,6 @@ class WebchatControllerSpec
 
       status(result) mustBe OK
       doc.select("h1").text() mustBe "National Clearance Hub: webchat"
-    }
-
-    "C19 Employer Enquiries page" in {
-      val result = controller.c19EmployerEnquiries(fakeRequest)
-
-      status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
-    }
-
-    "Probate page" in {
-      val result = controller.probate(fakeRequest)
-
-      status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
-    }
-
-    "Inheritance page" in {
-      val result = controller.inheritanceTax(fakeRequest)
-
-      status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
     }
 
     "Additional Needs page" in {

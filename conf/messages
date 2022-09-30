@@ -36,33 +36,6 @@ service.unavailable.p2-2 = find other contact details for your query
 #Online Service Helpdesk Webchat
 online.services.title=Online services helpdesk: webchat
 
-#National Insurance Webchat
-national.insurance.title=National Insurance: webchat
-national.insurance.para1=If you need help with a National Insurance number application, you will need to contact the Department for Work and Pensions. It can take up to 16 weeks to get your National Insurance number after you have proven your identity.
-national.insurance.para2=Find out more information about
-national.insurance.link=how to apply for a National Insurance number (opens in a new tab).
-
-#Excise Enquiries
-excise.enquiries.title=Excise: webchat
-
-#Income Tax Enquiries
-income.tax.title=Income tax for individuals, pensioners and employees: webchat
-
-#Charities & community amateur sports
-charities.community.amateur.sports.title=Charities and Community Amateur Sports Clubs: webchat
-
-#Employing Expatriate Employees
-employing.expatriate.employees.title=Employing expatriate employees: webchat
-
-#Employment Related Securities
-employment.related.securities.title=Employment related securities: webchat
-
-#Non-Uk Resident Employees
-nonuk.resident.employees.title=Non-UK resident employees: webchat
-
-#Non-UK resident landlords
-nonUk.resident.landlords.title=Non-UK resident landlords: webchat
-
 #Payment Problems Self Assessment
 payment.problems.self.assessment.title=Payment Problems Self Assessment: webchat
 
@@ -81,20 +54,8 @@ construction.industry.scheme.title=Construction Industry Scheme: webchat
 #National Clearance Hub
 national.clearance.hub.title=National Clearance Hub: webchat
 
-#Probate
-probate.title=Coronavirus (COVID-19): Probate
-
-#Inheritance Tax View
-inheritance.tax.title=Coronavirus (COVID-19): Inheritance Tax
-
-#C19 Employer Enquiries
-c19EmployerEnquiries.title=Coronavirus (COVID-19): Statutory Sick Pay rebate scheme
-
 #Additional Needs View
 additional.needs.title=HMRC’s Extra Support team: webchat
-
-#Non-UK resident entertainers
-nonUk.resident.entertainers.title=Non-UK resident entertainers: webchat
 
 #Eat Out To Help Out Webchat
 eat.out.to.help.out.title=Eat Out to Help Out scheme: webchat
@@ -104,12 +65,6 @@ personal.transport.unit.enquiries.title=Personal Transport Unit: webchat
 
 #IR35 Enquiries
 ir35.enquiries.title=Off-payroll working (IR35): webchat
-
-#Stamp Duty & Annual Tax on Enveloped Dwellings
-stamp.duty.land.tax.title=Stamp Duty Land Tax: webchat
-stamp.duty.reserve.tax.title=Stamp Duty Reserve Tax: webchat
-stamp.duty.shares.and.land.tax.title=Stamp Duty shares and land: webchat
-annual.tax.enveloped.dwellings.title=Annual Tax on Enveloped Dwellings: webchat
 
 #Payment Problems
 payment.problems.title=Coronavirus (COVID-19): tax support for businesses and self-employed

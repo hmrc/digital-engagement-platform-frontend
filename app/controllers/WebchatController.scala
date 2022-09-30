@@ -44,25 +44,9 @@ class WebchatController @Inject()(appConfig: AppConfig,
       Future.successful(Redirect(ciapiRoutes.CiapiController.onlineServicesHelpdesk))
   }
 
-  def nationalInsuranceNumbers: Action[AnyContent] = serviceUnavailableRedirect
-
   def customsEnquiries: Action[AnyContent] = Action.async {
     Future.successful(Redirect(ciapiRoutes.CiapiController.customsInternationalTrade))
   }
-
-  def exciseEnquiries: Action[AnyContent] = serviceUnavailableRedirect
-
-  def incomeTaxEnquiries: Action[AnyContent] = serviceUnavailableRedirect
-
-  def charitiesCommunitySports: Action[AnyContent] = serviceUnavailableRedirect
-
-  def employingExpatriateEmployees: Action[AnyContent] = serviceUnavailableRedirect
-
-  def employmentRelatedSecurities: Action[AnyContent] = serviceUnavailableRedirect
-
-  def nonUkResidentEmployees: Action[AnyContent] = serviceUnavailableRedirect
-
-  def nonUkResidentLandlords: Action[AnyContent] = serviceUnavailableRedirect
 
   def constructionIndustryScheme: Action[AnyContent] = Action.async {
       Future.successful(Redirect(ciapiRoutes.CiapiController.constructionIndustryScheme))
@@ -71,12 +55,6 @@ class WebchatController @Inject()(appConfig: AppConfig,
   def nationalClearanceHub: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(nationalClearanceHubView()))
   }
-
-  def c19EmployerEnquiries: Action[AnyContent] = serviceUnavailableRedirect
-
-  def probate: Action[AnyContent] = serviceUnavailableRedirect
-
-  def inheritanceTax: Action[AnyContent] = serviceUnavailableRedirect
 
   def additionalNeedsHelp: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(additionalNeedsHelpView()))

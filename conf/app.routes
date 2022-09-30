@@ -7,28 +7,12 @@ GET         /assets/*file           controllers.Assets.versioned(path="/public",
 GET         /webchat/service-unavailable                                                controllers.WebchatController.serviceUnavailable
 
 GET         /webchat/online-services-helpdesk                                           controllers.CiapiController.CiapiController.onlineServicesHelpdesk
-GET         /webchat/national-insurance-numbers                                         controllers.WebchatController.nationalInsuranceNumbers
 GET         /webchat/customs-international-trade                                        controllers.WebchatController.customsEnquiries
-GET         /webchat/excise-enquiries                                                   controllers.WebchatController.exciseEnquiries
-GET         /webchat/income-tax-enquiries-for-individuals-pensioners-and-employees      controllers.WebchatController.incomeTaxEnquiries
-GET         /webchat/charities-and-community-sports                                     controllers.WebchatController.charitiesCommunitySports
-GET         /webchat/employing-expatriate-employees                                     controllers.WebchatController.employingExpatriateEmployees
-GET         /webchat/employment-related-securities                                      controllers.WebchatController.employmentRelatedSecurities
-GET         /webchat/non-UK-resident-employees                                          controllers.WebchatController.nonUkResidentEmployees
-GET         /webchat/non-UK-resident-landlords                                          controllers.WebchatController.nonUkResidentLandlords
 GET         /webchat/construction-industry-scheme-enquiries                             controllers.WebchatController.constructionIndustryScheme
 GET         /webchat/national-clearance-hub                                             controllers.WebchatController.nationalClearanceHub
-GET         /webchat/probate                                                            controllers.WebchatController.probate
-GET         /webchat/inheritance-tax                                                    controllers.WebchatController.inheritanceTax
 GET         /webchat/help-for-users-with-additional-needs                               controllers.WebchatController.additionalNeedsHelp
-GET         /webchat/c19-employer-enquiries                                             controllers.WebchatController.c19EmployerEnquiries
 GET         /webchat/personal-transport-unit-enquiries                                  controllers.WebchatController.personalTransportUnitEnquiries
 GET         /webchat/ir35-enquiries                                                     controllers.WebchatController.ir35Enquiries
-
-GET         /webchat/stamp-duty/land-tax                                                controllers.StampDutyController.landTax
-GET         /webchat/stamp-duty/reserve-tax                                             controllers.StampDutyController.reserveTax
-GET         /webchat/stamp-duty/shares-and-land                                         controllers.StampDutyController.sharesAndLand
-GET         /webchat/annual-tax-on-enveloped-dwellings                                  controllers.StampDutyController.annualTaxOnEnvelopedDwellings
 
 GET         /virtual-assistant/customs-and-international-trade-enquiries                controllers.VirtualAssistantController.customsInternationalTrade
 
