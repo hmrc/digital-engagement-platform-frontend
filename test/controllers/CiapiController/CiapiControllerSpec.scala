@@ -16,19 +16,44 @@
 
 package controllers.CiapiController
 
+import audit.AuditHelper
+import config.AppConfig
 import controllers.CiapiController.{routes => ciapiRoutes}
+import mocks.MockAuditService
+import models.DAv3AuditModel
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
-import org.scalatest.matchers.must.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import org.scalatest.MustMatchers.convertToAnyMustWrapper
+import org.scalatest.{Matchers, WordSpecLike}
+import play.api.mvc.MessagesControllerComponents
 import play.api.test.FakeRequest
 import play.api.test.Helpers._
+import views.html.CIAPIViews.{ChildBenefitCUIView, ConstructionIndustrySchemeCUIView, CorporationTaxCuiView, CustomsInternationalTradeCUIView, EmployerEnquiriesCUIView, OnlineServicesHelpdeskCUIView, SelfAssessmentCUIView, TaxCreditsCUIView, VatOnlineCuiView}
+import views.html.CUIViews.{ConstructionIndustrySchemeCUIDAv2View, EmployerEnquiriesCUIDAv2View, OnlineServicesHelpdeskCUIDAv2View, SelfAssessmentCUIDAv2View, childBenefitCUIDAv2View}
 import views.html.pages.helpers.AppBuilderSpecBase
 
 class CiapiControllerSpec
-  extends AppBuilderSpecBase with Matchers with AnyWordSpecLike {
+  extends AppBuilderSpecBase with Matchers with WordSpecLike with MockAuditService {
 
-  private val controller = app.injector.instanceOf[CiapiController]
+  def controller = new CiapiController(
+    app.injector.instanceOf[AppConfig],
+    app.injector.instanceOf[MessagesControllerComponents],
+    app.injector.instanceOf[TaxCreditsCUIView],
+    app.injector.instanceOf[CustomsInternationalTradeCUIView],
+    app.injector.instanceOf[VatOnlineCuiView],
+    app.injector.instanceOf[CorporationTaxCuiView],
+    app.injector.instanceOf[childBenefitCUIDAv2View],
+    app.injector.instanceOf[ChildBenefitCUIView],
+    app.injector.instanceOf[ConstructionIndustrySchemeCUIDAv2View],
+    app.injector.instanceOf[ConstructionIndustrySchemeCUIView],
+    app.injector.instanceOf[SelfAssessmentCUIDAv2View],
+    app.injector.instanceOf[SelfAssessmentCUIView],
+    app.injector.instanceOf[OnlineServicesHelpdeskCUIDAv2View],
+    app.injector.instanceOf[OnlineServicesHelpdeskCUIView],
+    app.injector.instanceOf[EmployerEnquiriesCUIView],
+    app.injector.instanceOf[EmployerEnquiriesCUIDAv2View],
+    mockAuditingService
+  )
 
   def asDocument(html: String): Document = Jsoup.parse(html)
 
@@ -47,6 +72,7 @@ class CiapiControllerSpec
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
         doc.select("h1").text() mustBe "Customs and international trade: chat"
+        verifyAudit(DAv3AuditModel("customsInternationalTrade"))
       }
     }
 
@@ -69,6 +95,7 @@ class CiapiControllerSpec
             val doc = asDocument(contentAsString(result))
             status(result) mustBe OK
             doc.select("h1").text() mustBe "VAT Online: chat"
+            verifyAudit(DAv3AuditModel("vatOnline"))
         }
     }
 
@@ -91,6 +118,7 @@ class CiapiControllerSpec
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
         doc.select("h1").text() mustBe "Corporation Tax: chat"
+        verifyAudit(DAv3AuditModel("corporationTax"))
       }
     }
 
@@ -113,6 +141,7 @@ class CiapiControllerSpec
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
         doc.select("h1").text() mustBe "Child Benefit: chat"
+        verifyAudit(DAv3AuditModel("childBenefit"))
       }
     }
 
@@ -137,6 +166,7 @@ class CiapiControllerSpec
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
         doc.select("h1").text() mustBe "Construction Industry Scheme: chat"
+        verifyAudit(DAv3AuditModel("constructionIndustryScheme"))
       }
     }
 
@@ -161,6 +191,7 @@ class CiapiControllerSpec
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
         doc.select("h1").text() mustBe "Self Assessment: chat"
+        verifyAudit(DAv3AuditModel("selfAssessment"))
       }
     }
 
@@ -185,6 +216,7 @@ class CiapiControllerSpec
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
         doc.select("h1").text() mustBe "Technical support with HMRC online services: chat"
+        verifyAudit(DAv3AuditModel("onlineServicesHelpdesk"))
       }
     }
 
@@ -209,6 +241,7 @@ class CiapiControllerSpec
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
         doc.select("h1").text() mustBe "Employers enquiries: chat"
+        verifyAudit(DAv3AuditModel("employerEnquiries"))
       }
     }
 
