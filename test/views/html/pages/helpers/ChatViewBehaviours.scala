@@ -16,6 +16,7 @@
 
 package views.html.pages.helpers
 
+import org.scalatest.MustMatchers.convertToAnyMustWrapper
 import play.twirl.api.HtmlFormat
 
 trait ChatViewBehaviours extends ViewSpecBase {

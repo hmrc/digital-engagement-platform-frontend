@@ -87,7 +87,7 @@ class SessionIdFilterSpec extends WordSpecLike with Matchers with OneAppPerSuite
       .build()
   }
 
-  ".apply" must {
+  ".apply" should {
 
     "add a sessionId if one doesn't already exist" in  {
 

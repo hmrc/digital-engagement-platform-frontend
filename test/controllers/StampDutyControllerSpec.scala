@@ -26,7 +26,7 @@ class StampDutyControllerSpec
 
   private val controller = app.injector.instanceOf[StampDutyController]
 
-  "service unavailable redirect" must {
+  "service unavailable redirect" should {
     "show the service unavailable page" in {
       val result = controller.serviceUnavailableRedirect(fakeRequest)
 

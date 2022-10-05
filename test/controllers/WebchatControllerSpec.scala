@@ -34,7 +34,7 @@ class WebchatControllerSpec
 
   def asDocument(html: String): Document = Jsoup.parse(html)
 
-  "service unavailable redirect" must {
+  "service unavailable redirect" should {
     "show the service unavailable page" in {
       val result = controller.serviceUnavailableRedirect(fakeRequest)
 
@@ -43,7 +43,7 @@ class WebchatControllerSpec
     }
   }
 
-  "fixed URLs" must {
+  "fixed URLs" should {
     "render technical support with HMRC online services page" in {
       val result = controller.onlineServicesHelpdesk(fakeRequest)
 
