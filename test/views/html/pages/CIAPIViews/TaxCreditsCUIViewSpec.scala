@@ -16,13 +16,12 @@
 
 package views.html.pages.CIAPIViews
 
-import org.scalatest.matchers.must.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import org.scalatest.{Matchers, WordSpecLike}
 import play.twirl.api.HtmlFormat
 import views.html.CIAPIViews.TaxCreditsCUIView
 import views.html.pages.helpers.ChatViewBehaviours
 
-class TaxCreditsCUIViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike{
+class TaxCreditsCUIViewSpec extends ChatViewBehaviours with Matchers with WordSpecLike{
 
   private val view = app.injector.instanceOf[TaxCreditsCUIView]
 

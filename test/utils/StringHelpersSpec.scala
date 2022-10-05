@@ -16,10 +16,9 @@
 
 package utils
 
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import org.scalatest.{Matchers, WordSpecLike}
 
-class StringHelpersSpec extends AnyWordSpecLike with Matchers {
+class StringHelpersSpec extends WordSpecLike with Matchers {
 
   "StringHelperSpec" should {
     "tidyUpString shor replace any // and %2F with /" in {

@@ -16,13 +16,12 @@
 
 package views.html.pages.CUIViews
 
-import org.scalatest.matchers.must.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import org.scalatest.{Matchers, WordSpecLike}
 import play.twirl.api.HtmlFormat
 import views.html.CUIViews.EmployerEnquiriesCUIDAv2View
 import views.html.pages.helpers.ChatViewBehaviours
 
-class EmployerEnquiriesCUIViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike {
+class EmployerEnquiriesCUIViewSpec extends ChatViewBehaviours with Matchers with WordSpecLike {
 
   private val view = app.injector.instanceOf[EmployerEnquiriesCUIDAv2View]
 

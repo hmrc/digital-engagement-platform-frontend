@@ -19,13 +19,13 @@ package controllers
 import controllers.CiapiController.{routes => ciapiRoutes}
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
-import org.scalatest.matchers.must.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import org.scalatest.MustMatchers.convertToAnyMustWrapper
+import org.scalatest.{Matchers, WordSpecLike}
 import play.api.test.Helpers._
 import views.html.pages.helpers.AppBuilderSpecBase
 
 class VirtualAssistantControllerSpec
-  extends AppBuilderSpecBase with Matchers with AnyWordSpecLike {
+  extends AppBuilderSpecBase with Matchers with WordSpecLike {
 
   private val controller = app.injector.instanceOf[VirtualAssistantController]
 

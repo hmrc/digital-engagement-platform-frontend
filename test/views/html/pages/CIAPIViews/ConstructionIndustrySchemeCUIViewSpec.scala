@@ -16,25 +16,24 @@
 
 package views.html.pages.CIAPIViews
 
-import org.scalatest.matchers.must.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import org.scalatest.{Matchers, WordSpecLike}
 import play.twirl.api.HtmlFormat
-import views.html.CIAPIViews.SelfAssessmentCUIView
+import views.html.CIAPIViews.ConstructionIndustrySchemeCUIView
 import views.html.pages.helpers.ChatViewBehaviours
 
-class SelfAssessmentCUIViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike{
+class ConstructionIndustrySchemeCUIViewSpec extends ChatViewBehaviours with Matchers with WordSpecLike {
 
-  private val view = app.injector.instanceOf[SelfAssessmentCUIView]
+  private val view = app.injector.instanceOf[ConstructionIndustrySchemeCUIView]
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "Self Assessment View" must {
+  "Construction Industry Scheme View" must {
     "rendered" must {
       behave like normalCuiPage(
       createView,
         "Ask HMRC",
-        "Self Assessment: chat - Ask HMRC - GOV.UK",
-        "Self Assessment: chat"
+        "Construction Industry Scheme: chat - Ask HMRC - GOV.UK",
+        "Construction Industry Scheme: chat"
       )
     }
   }

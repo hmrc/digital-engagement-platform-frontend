@@ -18,8 +18,6 @@ package filters
 
 import akka.stream.Materializer
 import com.google.inject.Inject
-import org.scalatest.matchers.must.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
 import org.scalatestplus.play.components.OneAppPerSuiteWithComponents
 import play.api.http.{DefaultHttpFilters, HttpFilters}
 import play.api.inject._
@@ -31,8 +29,11 @@ import play.api.test.FakeRequest
 import play.api.test.Helpers._
 import play.api.{Application, BuiltInComponents, BuiltInComponentsFromContext, NoHttpFiltersComponents}
 import uk.gov.hmrc.http.{HeaderNames, SessionKeys}
-
 import java.util.UUID
+
+import org.scalatest.MustMatchers.convertToAnyMustWrapper
+import org.scalatest.{Matchers, WordSpecLike}
+
 import scala.concurrent.ExecutionContext
 
 object SessionIdFilterSpec {
@@ -45,7 +46,7 @@ object SessionIdFilterSpec {
     extends SessionIdFilter(mat, UUID.fromString(sessionId), ec)
 }
 
-class SessionIdFilterSpec extends AnyWordSpecLike with Matchers with OneAppPerSuiteWithComponents {
+class SessionIdFilterSpec extends WordSpecLike with Matchers with OneAppPerSuiteWithComponents {
   import SessionIdFilterSpec.sessionId
 
   override def components: BuiltInComponents = new BuiltInComponentsFromContext(context) with NoHttpFiltersComponents {

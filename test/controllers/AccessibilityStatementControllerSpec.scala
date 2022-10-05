@@ -16,8 +16,8 @@
 
 package controllers
 
-import org.scalatest.matchers.must.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import org.scalatest.MustMatchers.convertToAnyMustWrapper
+import org.scalatest.{Matchers, WordSpecLike}
 import play.api.mvc.Result
 import play.api.test.Helpers._
 import views.html.pages.helpers.AppBuilderSpecBase
@@ -25,7 +25,7 @@ import views.html.pages.helpers.AppBuilderSpecBase
 import scala.concurrent.Future
 
 class AccessibilityStatementControllerSpec
-  extends AppBuilderSpecBase with Matchers with AnyWordSpecLike {
+  extends AppBuilderSpecBase with Matchers with WordSpecLike {
 
   private val controller = app.injector.instanceOf[AccessibilityStatementController]
 

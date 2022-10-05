@@ -16,13 +16,12 @@
 
 package views.html.pages.includes
 
-import org.scalatest.matchers.must.Matchers
-import org.scalatest.wordspec.AnyWordSpecLike
+import org.scalatest.{Matchers, WordSpecLike}
 import play.twirl.api.HtmlFormat
 import views.html.CUIViews.SelfAssessmentCUIDAv2View
 import views.html.pages.helpers.ViewSpecBase
 
-class sidebarSACUISpec extends ViewSpecBase with Matchers with AnyWordSpecLike {
+class sidebarSACUISpec extends ViewSpecBase with Matchers with WordSpecLike {
 
   private val viewWithTemplate = app.injector.instanceOf[SelfAssessmentCUIDAv2View]
 
