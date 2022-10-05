@@ -28,7 +28,7 @@ class ServiceUnavailableViewSpec extends ChatViewBehaviours with Matchers with W
   private def createView(): () =>
     HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "Service unavailable view" must {
+  "Service unavailable view" should {
     behave like generalContent(
       createView(),
       "Sorry, this webchat is unavailable"

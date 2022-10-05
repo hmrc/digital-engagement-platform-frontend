@@ -27,8 +27,8 @@ class ConstructionIndustrySchemeCUIViewSpec extends ChatViewBehaviours with Matc
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "Construction Industry Scheme View" must {
-    "rendered" must {
+  "Construction Industry Scheme View" should {
+    "rendered" should {
       behave like normalCuiPage(
       createView,
         "Ask HMRC",

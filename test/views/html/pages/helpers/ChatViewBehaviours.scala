@@ -27,7 +27,7 @@ trait ChatViewBehaviours extends ViewSpecBase {
                      hasGetHelpWithPageText: Boolean = true,
                      betaBannerText: String = "This is a new service"
                     ): Unit = {
-    "the view" must {
+    "the view" should {
 
       "display the correct page title" in {
         val doc = asDocument(view())
@@ -51,7 +51,7 @@ trait ChatViewBehaviours extends ViewSpecBase {
                  chatIds: Seq[String] = Seq("HMRC_Fixed_1")): Unit = {
 
     "behave like a normal page" when {
-      "rendered" must {
+      "rendered" should {
 
         behave like generalContent(view, messageHeading)
 
@@ -109,7 +109,7 @@ trait ChatViewBehaviours extends ViewSpecBase {
                      messageHeading: String,
                      sidebarText: String
                     ): Unit = {
-    "the view" must {
+    "the view" should {
       behave like generalContent(view, messageHeading)
 
       "display the sidebar text" in {
@@ -126,7 +126,7 @@ trait ChatViewBehaviours extends ViewSpecBase {
                     chatIds: Seq[String] = Seq("nuanMessagingFrame")): Unit = {
 
     "behave like a normal CUI page" when {
-      "rendered" must {
+      "rendered" should {
 
         behave like generalContent(view, messageHeading)
 

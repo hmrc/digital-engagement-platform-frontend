@@ -27,8 +27,8 @@ class EmployerEnquiriesCUIViewSpec extends ChatViewBehaviours with Matchers with
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "Employer enquiries CUI View" must {
-    "rendered" must {
+  "Employer enquiries CUI View" should {
+    "rendered" should {
       behave like normalCuiPage(
         createView,
         "Ask HMRC",

@@ -27,8 +27,8 @@ class CustomsInternationalTradeCUIViewSpec extends ChatViewBehaviours with Match
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "Customs and International Trade View" must {
-    "rendered" must {
+  "Customs and International Trade View" should {
+    "rendered" should {
       behave like normalCuiPage(
       createView,
         "Ask HMRC",

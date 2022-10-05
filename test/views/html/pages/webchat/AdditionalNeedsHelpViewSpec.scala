@@ -27,7 +27,7 @@ class AdditionalNeedsHelpViewSpec extends ChatViewBehaviours with Matchers with 
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "Additional Needs Help view" must {
+  "Additional Needs Help view" should {
     val returnUrl: String =
       "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/get-help-from-hmrc-s-extra-support-team"
 

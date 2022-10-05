@@ -27,8 +27,8 @@ class CorporationTaxCuiViewSpec extends ChatViewBehaviours with Matchers with Wo
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "Corporation Tax View" must {
-    "rendered" must {
+  "Corporation Tax View" should {
+    "rendered" should {
       behave like normalCuiPage(
       createView,
         "Ask HMRC",

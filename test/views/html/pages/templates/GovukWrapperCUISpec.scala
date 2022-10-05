@@ -31,7 +31,7 @@ class GovukWrapperCUISpec extends ChatViewBehaviours with Matchers with WordSpec
 
   def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "GovukWrapperCUI" must {
+  "GovukWrapperCUI" should {
     behave like generalContentCUI(
       createView,
       "Self Assessment: chat",

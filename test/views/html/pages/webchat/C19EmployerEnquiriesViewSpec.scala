@@ -27,7 +27,7 @@ class C19EmployerEnquiriesViewSpec extends ChatViewBehaviours with Matchers with
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "C19 Employer Enquiries view" must {
+  "C19 Employer Enquiries view" should {
     val returnUrl: String =
       "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/get-help-with-the-statutory-sick-pay-rebate-scheme"
 

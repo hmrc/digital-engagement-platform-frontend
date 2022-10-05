@@ -30,9 +30,9 @@ class VATaxCreditsEnquiriesViewSpec extends ChatViewBehaviours with Matchers wit
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "VA Tax credits enquiries view" must {
+  "VA Tax credits enquiries view" should {
     "behave like a normal page" when {
-      "rendered" must {
+      "rendered" should {
 
         "have the correct banner title" in {
           val doc = asDocument(createView())

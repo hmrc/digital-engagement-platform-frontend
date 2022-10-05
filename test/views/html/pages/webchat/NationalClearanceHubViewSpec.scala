@@ -27,7 +27,7 @@ class NationalClearanceHubViewSpec extends ChatViewBehaviours with Matchers with
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "Non Uk Resident Employees view" must {
+  "Non Uk Resident Employees view" should {
     val returnUrl: String =
       "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/national-clearance-hub"
 

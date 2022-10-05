@@ -27,8 +27,8 @@ class VatOnlineCuiViewSpec extends ChatViewBehaviours with Matchers with WordSpe
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "Vat Online View" must {
-    "rendered" must {
+  "Vat Online View" should {
+    "rendered" should {
       behave like normalCuiPage(
       createView,
         "Ask HMRC",

@@ -27,7 +27,7 @@ class ExciseEnquiriesViewSpec extends ChatViewBehaviours with Matchers with Word
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "Excise Enquiries View" must {
+  "Excise Enquiries View" should {
     val returnUrl: String =
       "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/excise-enquiries"
 

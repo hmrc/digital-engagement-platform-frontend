@@ -27,7 +27,7 @@ class IncomeTaxEnquiriesViewSpec extends ChatViewBehaviours with Matchers with W
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "Income Tax Enquiries view" must {
+  "Income Tax Enquiries view" should {
     val returnUrl: String =
       "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/income-tax-enquiries-for-individuals-pensioners-and-employees"
 

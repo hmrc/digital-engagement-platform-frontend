@@ -27,7 +27,7 @@ class NonUkResidentLandlordsViewSpec extends ChatViewBehaviours with Matchers wi
 
   private def createView(isEntertainersRedirect: Boolean): () => HtmlFormat.Appendable = () => view(isEntertainersRedirect)(fakeRequest, messages)
 
-  "NonUk Resident Landlords view" must {
+  "NonUk Resident Landlords view" should {
     val returnUrl: String =
       "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/non-resident-landlords"
 
@@ -46,7 +46,7 @@ class NonUkResidentLandlordsViewSpec extends ChatViewBehaviours with Matchers wi
     )
   }
 
-  "NonUk Resident Entertainers view" must {
+  "NonUk Resident Entertainers view" should {
     val returnUrl: String =
       "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/non-uk-resident-entertainers"
 

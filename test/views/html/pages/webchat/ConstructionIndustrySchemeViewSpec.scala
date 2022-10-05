@@ -27,7 +27,7 @@ class ConstructionIndustrySchemeViewSpec extends ChatViewBehaviours with Matcher
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "Construction Industry Scheme view" must {
+  "Construction Industry Scheme view" should {
     val returnUrl: String = "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/construction-industry-scheme"
 
     behave like normalPage(

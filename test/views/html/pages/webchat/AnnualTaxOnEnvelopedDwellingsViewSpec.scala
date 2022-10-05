@@ -27,7 +27,7 @@ class AnnualTaxOnEnvelopedDwellingsViewSpec extends ChatViewBehaviours with Matc
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "Annual Tax On Enveloped Dwellings View" must {
+  "Annual Tax On Enveloped Dwellings View" should {
     val returnUrl: String =
       "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/annual-tax-on-enveloped-dwellings-ated"
 

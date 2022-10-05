@@ -27,7 +27,7 @@ class Ir35EnquiriesViewSpec extends ChatViewBehaviours with Matchers with WordSp
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "IR35 Enquiries view" must {
+  "IR35 Enquiries view" should {
     val returnUrl: String =
       "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/ir35-enquiries"
 

@@ -27,7 +27,7 @@ class NonUkResidentEmployeesViewSpec extends ChatViewBehaviours with Matchers wi
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "Non Uk Resident Employees view" must {
+  "Non Uk Resident Employees view" should {
     val returnUrl: String =
       "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/non-uk-expatriate-employees-expats"
 

@@ -27,8 +27,8 @@ class ChildBenefitCUIViewSpec extends ChatViewBehaviours with Matchers with Word
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "Child Benefit CUI View" must {
-    "rendered" must {
+  "Child Benefit CUI View" should {
+    "rendered" should {
       behave like normalCuiPage(
         createView,
         "Ask HMRC",

@@ -27,7 +27,7 @@ class PersonalTransportUnitEnquiriesViewSpec extends ChatViewBehaviours with Mat
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "Additional Needs Help view" must {
+  "Additional Needs Help view" should {
     val returnUrl: String =
       "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/personal-transport-unit-enquiries"
 

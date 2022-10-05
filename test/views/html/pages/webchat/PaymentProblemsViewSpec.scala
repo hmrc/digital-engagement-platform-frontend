@@ -32,7 +32,7 @@ class PaymentProblemsViewSpec extends ChatViewBehaviours with Matchers with Word
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "Payment Problems view" must {
+  "Payment Problems view" should {
 
     val expectedGuidanceKeys: List[String] = List("payment.problems.p1",
         "payment.problems.p2",
@@ -55,7 +55,7 @@ class PaymentProblemsViewSpec extends ChatViewBehaviours with Matchers with Word
 
     "behave like a normal page" when {
 
-      "rendered" must {
+      "rendered" should {
 
         "have the correct banner title" in {
           val doc = asDocument(createView())

@@ -27,8 +27,8 @@ class OnlineServicesHelpdeskCUIViewSpec extends ChatViewBehaviours with Matchers
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "OSH CUI View" must {
-    "rendered" must {
+  "OSH CUI View" should {
+    "rendered" should {
       behave like normalCuiPage(
         createView,
         "Ask HMRC",

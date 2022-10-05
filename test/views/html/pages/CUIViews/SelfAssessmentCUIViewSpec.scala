@@ -27,8 +27,8 @@ class SelfAssessmentCUIViewSpec extends ChatViewBehaviours with Matchers with Wo
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "SA CUI View" must {
-    "rendered" must {
+  "SA CUI View" should {
+    "rendered" should {
       behave like normalCuiPage(
         createView,
         "Ask HMRC",

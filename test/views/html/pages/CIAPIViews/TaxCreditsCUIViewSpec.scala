@@ -27,8 +27,8 @@ class TaxCreditsCUIViewSpec extends ChatViewBehaviours with Matchers with WordSp
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "Tax Credits CUI View" must {
-    "rendered" must {
+  "Tax Credits CUI View" should {
+    "rendered" should {
       behave like normalCuiPage(
       createView,
         "Ask HMRC",

@@ -30,7 +30,7 @@ class EmployingExpatriateEmployeesViewSpec extends ChatViewBehaviours with Match
 
   def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "Employing expatriate employees view" must {
+  "Employing expatriate employees view" should {
     val returnUrl: String =
       "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/enquiries-from-employers-with-expatriate-employees"
 

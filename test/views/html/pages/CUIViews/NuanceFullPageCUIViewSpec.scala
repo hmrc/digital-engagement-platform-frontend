@@ -27,8 +27,8 @@ class NuanceFullPageCUIViewSpec extends ChatViewBehaviours with Matchers with Wo
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "Nuance Full Page CUI View" must {
-    "rendered" must {
+  "Nuance Full Page CUI View" should {
+    "rendered" should {
       behave like normalCuiPage(
         createView,
         "Ask HMRC",

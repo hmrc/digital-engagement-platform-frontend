@@ -27,7 +27,7 @@ class EmploymentRelatedSecuritiesViewSpec extends ChatViewBehaviours with Matche
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "Charities Community Amateur Sports view" must {
+  "Charities Community Amateur Sports view" should {
     val returnUrl: String =
       "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/share-schemes-for-employees"
 

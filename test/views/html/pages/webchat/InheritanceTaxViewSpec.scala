@@ -27,7 +27,7 @@ class InheritanceTaxViewSpec extends ChatViewBehaviours with Matchers with WordS
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "Probate view" must {
+  "Probate view" should {
     val returnUrl: String =
       "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/probate-and-inheritance-tax-enquiries"
 

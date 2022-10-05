@@ -27,7 +27,7 @@ class NationalInsuranceNumbersViewSpec extends ChatViewBehaviours with Matchers 
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "National Insurance Numbers View" must {
+  "National Insurance Numbers View" should {
     val returnUrl: String = "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/national-insurance-numbers"
 
     behave like normalPage(

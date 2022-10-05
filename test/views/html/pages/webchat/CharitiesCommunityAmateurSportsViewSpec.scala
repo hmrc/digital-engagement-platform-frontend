@@ -27,7 +27,7 @@ class CharitiesCommunityAmateurSportsViewSpec extends ChatViewBehaviours with Ma
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "Charities Community Amateur Sports view" must {
+  "Charities Community Amateur Sports view" should {
     val returnUrl: String =
       "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/charities-and-community-amateur-sports-clubs-cascs"
 

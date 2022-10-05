@@ -27,7 +27,7 @@ class OnlineServiceHelpdeskViewSpec extends ChatViewBehaviours with Matchers wit
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "Online Service Helpdesk View" must {
+  "Online Service Helpdesk View" should {
     val returnUrl: String = "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/online-services-helpdesk"
 
     behave like normalPage(

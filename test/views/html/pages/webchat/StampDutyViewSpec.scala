@@ -25,7 +25,7 @@ class StampDutyViewSpec extends ChatViewBehaviours with Matchers with WordSpecLi
 
   private val view = app.injector.instanceOf[StampDutyView]
 
-  "Stamp Duty Land Tax view" must {
+  "Stamp Duty Land Tax view" should {
     def createView: () => HtmlFormat.Appendable = () => view("landTax")(fakeRequest, messages)
     val returnUrl: String =
       "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/stamp-duty-land-tax"
@@ -41,7 +41,7 @@ class StampDutyViewSpec extends ChatViewBehaviours with Matchers with WordSpecLi
     )
   }
 
-  "Stamp Duty Reserve Tax view" must {
+  "Stamp Duty Reserve Tax view" should {
     def createView: () => HtmlFormat.Appendable = () => view("reserveTax")(fakeRequest, messages)
     val returnUrl: String =
       "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/stamp-duty-reserve-tax"
@@ -57,7 +57,7 @@ class StampDutyViewSpec extends ChatViewBehaviours with Matchers with WordSpecLi
     )
   }
 
-  "Stamp Duty Shares and LAnd Tax view" must {
+  "Stamp Duty Shares and LAnd Tax view" should {
     def createView: () => HtmlFormat.Appendable = () => view("sharesAndLand")(fakeRequest, messages)
     val returnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/stamp-duty-enquiries-shares-and-land"
