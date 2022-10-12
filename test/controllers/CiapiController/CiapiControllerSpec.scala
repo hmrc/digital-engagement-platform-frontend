@@ -16,19 +16,42 @@
 
 package controllers.CiapiController
 
+import config.AppConfig
 import controllers.CiapiController.{routes => ciapiRoutes}
+import mocks.MockAuditService
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.scalatest.matchers.must.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike
+import play.api.mvc.MessagesControllerComponents
 import play.api.test.FakeRequest
 import play.api.test.Helpers._
+import views.html.CIAPIViews._
+import views.html.CUIViews._
 import views.html.pages.helpers.AppBuilderSpecBase
 
 class CiapiControllerSpec
-  extends AppBuilderSpecBase with Matchers with AnyWordSpecLike {
+  extends AppBuilderSpecBase with Matchers with AnyWordSpecLike with MockAuditService {
 
-  private val controller = app.injector.instanceOf[CiapiController]
+	def controller = new CiapiController(
+		app.injector.instanceOf[AppConfig],
+		app.injector.instanceOf[MessagesControllerComponents],
+		mockAuditingService,
+		app.injector.instanceOf[TaxCreditsCUIView],
+		app.injector.instanceOf[CustomsInternationalTradeCUIView],
+		app.injector.instanceOf[VatOnlineCuiView],
+		app.injector.instanceOf[CorporationTaxCuiView],
+		app.injector.instanceOf[childBenefitCUIDAv2View],
+		app.injector.instanceOf[ChildBenefitCUIView],
+		app.injector.instanceOf[ConstructionIndustrySchemeCUIDAv2View],
+		app.injector.instanceOf[ConstructionIndustrySchemeCUIView],
+		app.injector.instanceOf[SelfAssessmentCUIDAv2View],
+		app.injector.instanceOf[SelfAssessmentCUIView],
+		app.injector.instanceOf[OnlineServicesHelpdeskCUIDAv2View],
+		app.injector.instanceOf[OnlineServicesHelpdeskCUIView],
+		app.injector.instanceOf[EmployerEnquiriesCUIView],
+		app.injector.instanceOf[EmployerEnquiriesCUIDAv2View]
+	)
 
   def asDocument(html: String): Document = Jsoup.parse(html)
 
