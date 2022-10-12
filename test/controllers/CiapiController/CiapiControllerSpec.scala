@@ -67,8 +67,7 @@ class CiapiControllerSpec
       val application = builder.configure("features.showCITCUI" -> "true").build()
 
       running(application) {
-        val request = FakeRequest(GET, ciapiRoutes.CiapiController.customsInternationalTrade.url)
-        val result = route(application, request).get
+        val result = controller.customsInternationalTrade(fakeRequest)
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
         doc.select("h1").text() mustBe "Customs and international trade: chat"

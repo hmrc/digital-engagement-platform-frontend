@@ -29,7 +29,6 @@ import scala.concurrent.ExecutionContext
 
 @Singleton
 class AuditHelper @Inject()(appConfig: AppConfig, auditConnector: AuditConnector) {
-
   def audit(auditModel: AuditModel, path: Option[String] = None)(implicit hc: HeaderCarrier, request: Request[_], ec: ExecutionContext): Unit = {
     val dataEvent = toDataEvent(appConfig.serviceIdentifier, auditModel, path.fold(request.path)(x => x))
     auditConnector.sendEvent(dataEvent)
