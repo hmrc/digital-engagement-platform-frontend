@@ -37,4 +37,3 @@ project/metals.sbt
 node_modules
 app/assets/javascripts/bundle/
 bundle.js
-package-lock.json
