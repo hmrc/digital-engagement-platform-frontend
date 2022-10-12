@@ -72,6 +72,7 @@ class CiapiControllerSpec
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
         doc.select("h1").text() mustBe "Customs and international trade: chat"
+				verifyAudit(DAv3AuditModel("customsInternationalTrade"))
       }
     }
 
