@@ -19,6 +19,7 @@ package controllers.CiapiController
 import config.AppConfig
 import controllers.CiapiController.{routes => ciapiRoutes}
 import mocks.MockAuditService
+import models.DAv3AuditModel
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.scalatest.matchers.must.Matchers
@@ -59,6 +60,7 @@ class CiapiControllerSpec
     "render Tax Credits Ask HMRC Online page" in {
       val result = controller.askHmrcOnline(fakeRequest)
       status(result) mustBe OK
+			verifyAudit(DAv3AuditModel("askHmrcOnline"))
     }
 
     "render Customs and International Trade CUI page if showCITCUI is true" in {

@@ -50,6 +50,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   implicit val config: AppConfig = appConfig
 
   def askHmrcOnline: Action[AnyContent] = Action.async { implicit request =>
+		auditHelper.audit(DAv3AuditModel("askHmrcOnline"))
     Future.successful(Ok(taxCreditsCUIView()))
   }
 
