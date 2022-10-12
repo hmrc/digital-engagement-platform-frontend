@@ -29,3 +29,4 @@ GET         /chat/construction-industry-scheme                                  
 GET         /chat/self-assessment                                                       controllers.CiapiController.CiapiController.selfAssessment
 GET         /chat/online-services-helpdesk                                              controllers.CiapiController.CiapiController.onlineServicesHelpdesk
 GET         /chat/employer-enquiries                                                    controllers.CiapiController.CiapiController.employerEnquiries
+GET         /chat/trade-tariff                                                          controllers.CiapiController.CiapiController.tradeTariff

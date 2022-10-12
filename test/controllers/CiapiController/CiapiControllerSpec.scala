@@ -224,4 +224,27 @@ class CiapiControllerSpec
       }
     }
   }
+
+  "render trade tariff CUI page if showTTCUI is true" in {
+    val application = builder.configure("features.showTTCUI" -> "true").build()
+
+    running(application) {
+      val request = FakeRequest(GET, ciapiRoutes.CiapiController.tradeTariff.url)
+      val result = route(application, request).get
+      val doc = asDocument(contentAsString(result))
+      status(result) mustBe OK
+      doc.select("h1").text() mustBe "Trade Tariff: Chat"
+    }
+  }
+
+  "render technical support with HMRC online services page if showTTCUI is false" in {
+    val application = builder.configure("features.showTTCUI" -> "false").build()
+
+    running(application) {
+      val request = FakeRequest(GET, ciapiRoutes.CiapiController.tradeTariff.url)
+      val result = route(application, request).get
+      status(result) mustBe NOT_FOUND
+    }
+  }
+
 }
