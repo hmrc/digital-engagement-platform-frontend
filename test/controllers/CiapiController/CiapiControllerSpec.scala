@@ -34,25 +34,25 @@ import views.html.pages.helpers.AppBuilderSpecBase
 class CiapiControllerSpec
   extends AppBuilderSpecBase with Matchers with AnyWordSpecLike with MockAuditService {
 
-	def controller = new CiapiController(
-		app.injector.instanceOf[AppConfig],
-		app.injector.instanceOf[MessagesControllerComponents],
-		mockAuditingService,
-		app.injector.instanceOf[TaxCreditsCUIView],
-		app.injector.instanceOf[CustomsInternationalTradeCUIView],
-		app.injector.instanceOf[VatOnlineCuiView],
-		app.injector.instanceOf[CorporationTaxCuiView],
-		app.injector.instanceOf[childBenefitCUIDAv2View],
-		app.injector.instanceOf[ChildBenefitCUIView],
-		app.injector.instanceOf[ConstructionIndustrySchemeCUIDAv2View],
-		app.injector.instanceOf[ConstructionIndustrySchemeCUIView],
-		app.injector.instanceOf[SelfAssessmentCUIDAv2View],
-		app.injector.instanceOf[SelfAssessmentCUIView],
-		app.injector.instanceOf[OnlineServicesHelpdeskCUIDAv2View],
-		app.injector.instanceOf[OnlineServicesHelpdeskCUIView],
-		app.injector.instanceOf[EmployerEnquiriesCUIView],
-		app.injector.instanceOf[EmployerEnquiriesCUIDAv2View]
-	)
+  def controller = new CiapiController(
+    app.injector.instanceOf[AppConfig],
+    app.injector.instanceOf[MessagesControllerComponents],
+    mockAuditingService,
+    app.injector.instanceOf[TaxCreditsCUIView],
+    app.injector.instanceOf[CustomsInternationalTradeCUIView],
+    app.injector.instanceOf[VatOnlineCuiView],
+    app.injector.instanceOf[CorporationTaxCuiView],
+    app.injector.instanceOf[childBenefitCUIDAv2View],
+    app.injector.instanceOf[ChildBenefitCUIView],
+    app.injector.instanceOf[ConstructionIndustrySchemeCUIDAv2View],
+    app.injector.instanceOf[ConstructionIndustrySchemeCUIView],
+    app.injector.instanceOf[SelfAssessmentCUIDAv2View],
+    app.injector.instanceOf[SelfAssessmentCUIView],
+    app.injector.instanceOf[OnlineServicesHelpdeskCUIDAv2View],
+    app.injector.instanceOf[OnlineServicesHelpdeskCUIView],
+    app.injector.instanceOf[EmployerEnquiriesCUIView],
+    app.injector.instanceOf[EmployerEnquiriesCUIDAv2View]
+  )
 
   def asDocument(html: String): Document = Jsoup.parse(html)
 
@@ -60,7 +60,7 @@ class CiapiControllerSpec
     "render Tax Credits Ask HMRC Online page" in {
       val result = controller.askHmrcOnline(fakeRequest)
       status(result) mustBe OK
-			verifyAudit(DAv3AuditModel("askHmrcOnline"))
+      verifyAudit(DAv3AuditModel("askHmrcOnline"))
     }
 
     "render Customs and International Trade CUI page if showCITCUI is true" in {
@@ -71,7 +71,7 @@ class CiapiControllerSpec
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
         doc.select("h1").text() mustBe "Customs and international trade: chat"
-				verifyAudit(DAv3AuditModel("customsInternationalTrade"))
+        verifyAudit(DAv3AuditModel("customsInternationalTrade"))
       }
     }
 
@@ -86,36 +86,36 @@ class CiapiControllerSpec
     }
 
     "render Vat Online CUI page if showVATCUI is true" in {
-        val application = builder.configure("features.showVATCUI" -> "true").build()
+      val application = builder.configure("features.showVATCUI" -> "true").build()
 
-        running(application) {
-            val request = FakeRequest(GET, ciapiRoutes.CiapiController.vatOnline.url)
-            val result = route(application, request).get
-            val doc = asDocument(contentAsString(result))
-            status(result) mustBe OK
-            doc.select("h1").text() mustBe "VAT Online: chat"
-        }
+      running(application) {
+        val result = controller.vatOnline(fakeRequest)
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "VAT Online: chat"
+        verifyAudit(DAv3AuditModel("vatOnline"))
+      }
     }
 
     "render technical support with HMRC online services page : if showVATCUI is false" in {
-        val application = builder.configure("features.showVATCUI" -> "false").build()
+      val application = builder.configure("features.showVATCUI" -> "false").build()
 
-        running(application) {
-            val request = FakeRequest(GET, ciapiRoutes.CiapiController.vatOnline.url)
-            val result = route(application, request).get
-            status(result) mustBe NOT_FOUND
-        }
+      running(application) {
+        val request = FakeRequest(GET, ciapiRoutes.CiapiController.vatOnline.url)
+        val result = route(application, request).get
+        status(result) mustBe NOT_FOUND
+      }
     }
 
     "render Corporation Tax CUI page if showCTCUI is true" in {
       val application = builder.configure("features.showCTCUI" -> "true").build()
 
       running(application) {
-        val request = FakeRequest(GET, ciapiRoutes.CiapiController.corporationTax.url)
-        val result = route(application, request).get
+        val result = controller.corporationTax(fakeRequest)
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
         doc.select("h1").text() mustBe "Corporation Tax: chat"
+        verifyAudit(DAv3AuditModel("corporationTax"))
       }
     }
 
@@ -133,11 +133,11 @@ class CiapiControllerSpec
       val application = builder.configure("features.showCHBCUI" -> "true").build()
 
       running(application) {
-        val request = FakeRequest(GET, ciapiRoutes.CiapiController.childBenefit.url)
-        val result = route(application, request).get
+        val result = controller.childBenefit(fakeRequest)
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
         doc.select("h1").text() mustBe "Child Benefit: chat"
+        verifyAudit(DAv3AuditModel("childBenefit"))
       }
     }
 
@@ -157,11 +157,11 @@ class CiapiControllerSpec
       val application = builder.configure("features.showCISCUI" -> "true").build()
 
       running(application) {
-        val request = FakeRequest(GET, ciapiRoutes.CiapiController.constructionIndustryScheme.url)
-        val result = route(application, request).get
+        val result = controller.constructionIndustryScheme(fakeRequest)
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
         doc.select("h1").text() mustBe "Construction Industry Scheme: chat"
+        verifyAudit(DAv3AuditModel("constructionIndustryScheme"))
       }
     }
 
@@ -181,11 +181,11 @@ class CiapiControllerSpec
       val application = builder.configure("features.showSACUI" -> "true").build()
 
       running(application) {
-        val request = FakeRequest(GET, ciapiRoutes.CiapiController.selfAssessment.url)
-        val result = route(application, request).get
+        val result = controller.selfAssessment(fakeRequest)
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
         doc.select("h1").text() mustBe "Self Assessment: chat"
+        verifyAudit(DAv3AuditModel("selfAssessment"))
       }
     }
 
@@ -205,11 +205,11 @@ class CiapiControllerSpec
       val application = builder.configure("features.showOSHCUI" -> "true").build()
 
       running(application) {
-        val request = FakeRequest(GET, ciapiRoutes.CiapiController.onlineServicesHelpdesk.url)
-        val result = route(application, request).get
+        val result = controller.onlineServicesHelpdesk(fakeRequest)
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
         doc.select("h1").text() mustBe "Technical support with HMRC online services: chat"
+        verifyAudit(DAv3AuditModel("onlineServicesHelpdesk"))
       }
     }
 
@@ -229,11 +229,11 @@ class CiapiControllerSpec
       val application = builder.configure("features.showEHLCUI" -> "true").build()
 
       running(application) {
-        val request = FakeRequest(GET, ciapiRoutes.CiapiController.employerEnquiries.url)
-        val result = route(application, request).get
+        val result = controller.employerEnquiries(fakeRequest)
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
         doc.select("h1").text() mustBe "Employers enquiries: chat"
+        verifyAudit(DAv3AuditModel("employerEnquiries"))
       }
     }
 

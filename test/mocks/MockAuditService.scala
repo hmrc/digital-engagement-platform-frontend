@@ -15,21 +15,21 @@ import scala.concurrent.ExecutionContext
 
 trait MockAuditService extends AppBuilderSpecBase with AnyWordSpecLike with BeforeAndAfterEach with MockitoSugar {
 
-	override def beforeEach(): Unit = {
-		super.beforeEach()
-		reset(mockAuditingService)
-	}
+  override def beforeEach(): Unit = {
+    super.beforeEach()
+    reset(mockAuditingService)
+  }
 
-	val mockAuditingService: AuditHelper = mock[AuditHelper]
+  val mockAuditingService: AuditHelper = mock[AuditHelper]
 
-	def verifyAudit(model: AuditModel, path: Option[String] = None): Unit = {
-		verify(mockAuditingService).audit(
-			ArgumentMatchers.eq(model),
-			AdditionalMatchers.or(ArgumentMatchers.eq(path), ArgumentMatchers.isNull)
-		)(
-			ArgumentMatchers.any[HeaderCarrier],
-			ArgumentMatchers.any[Request[_]],
-			ArgumentMatchers.any[ExecutionContext]
-		)
-	}
+  def verifyAudit(model: AuditModel, path: Option[String] = None): Unit = {
+    verify(mockAuditingService).audit(
+      ArgumentMatchers.eq(model),
+      AdditionalMatchers.or(ArgumentMatchers.eq(path), ArgumentMatchers.isNull)
+    )(
+      ArgumentMatchers.any[HeaderCarrier],
+      ArgumentMatchers.any[Request[_]],
+      ArgumentMatchers.any[ExecutionContext]
+    )
+  }
 }
