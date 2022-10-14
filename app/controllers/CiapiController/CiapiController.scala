@@ -45,13 +45,22 @@ class CiapiController @Inject()(appConfig: AppConfig,
                                 onlineServicesHelpdeskDav2View: OnlineServicesHelpdeskCUIDAv2View,
                                 onlineServicesHelpdeskCUIView: OnlineServicesHelpdeskCUIView,
                                 employerEnquiriesCUIView: EmployerEnquiriesCUIView,
-                                employerEnquiriesCUIDAv2View: EmployerEnquiriesCUIDAv2View) extends FrontendController(mcc) {
+                                employerEnquiriesCUIDAv2View: EmployerEnquiriesCUIDAv2View,
+                                tradeTariffCUIView: TradeTariffCUIView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
   def askHmrcOnline: Action[AnyContent] = Action.async { implicit request =>
     auditHelper.audit(DAv3AuditModel("askHmrcOnline"))
     Future.successful(Ok(taxCreditsCUIView()))
+  }
+
+  def tradeTariff : Action[AnyContent] = Action.async { implicit request =>
+    if(config.showTTCUI) {
+      Future.successful(Ok(tradeTariffCUIView()))
+    } else {
+      Future.successful(NotFound)
+    }
   }
 
   def customsInternationalTrade : Action[AnyContent] = Action.async { implicit request =>
