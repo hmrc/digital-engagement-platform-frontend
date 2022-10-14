@@ -51,7 +51,8 @@ class CiapiControllerSpec
     app.injector.instanceOf[OnlineServicesHelpdeskCUIDAv2View],
     app.injector.instanceOf[OnlineServicesHelpdeskCUIView],
     app.injector.instanceOf[EmployerEnquiriesCUIView],
-    app.injector.instanceOf[EmployerEnquiriesCUIDAv2View]
+    app.injector.instanceOf[EmployerEnquiriesCUIDAv2View],
+    app.injector.instanceOf[TradeTariffCUIView]
   )
 
   def asDocument(html: String): Document = Jsoup.parse(html)
@@ -254,11 +255,11 @@ class CiapiControllerSpec
     val application = builder.configure("features.showTTCUI" -> "true").build()
 
     running(application) {
-      val request = FakeRequest(GET, ciapiRoutes.CiapiController.tradeTariff.url)
-      val result = route(application, request).get
+      val result = controller.tradeTariff(fakeRequest)
       val doc = asDocument(contentAsString(result))
       status(result) mustBe OK
       doc.select("h1").text() mustBe "Trade Tariff: Chat"
+      verifyAudit(DAv3AuditModel("tradeTariff"))
     }
   }
 

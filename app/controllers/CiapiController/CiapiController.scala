@@ -57,6 +57,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
 
   def tradeTariff : Action[AnyContent] = Action.async { implicit request =>
     if(config.showTTCUI) {
+      auditHelper.audit(DAv3AuditModel("tradeTariff"))
       Future.successful(Ok(tradeTariffCUIView()))
     } else {
       Future.successful(NotFound)
