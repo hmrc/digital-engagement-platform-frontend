@@ -34,7 +34,7 @@ import views.html.pages.helpers.AppBuilderSpecBase
 class CiapiControllerSpec
   extends AppBuilderSpecBase with Matchers with AnyWordSpecLike with MockAuditService {
 
-  def controller = new CiapiController(
+  lazy val controller = new CiapiController(
     app.injector.instanceOf[AppConfig],
     app.injector.instanceOf[MessagesControllerComponents],
     mockAuditingService,
