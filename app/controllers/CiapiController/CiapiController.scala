@@ -16,18 +16,22 @@
 
 package controllers.CiapiController
 
+import audit.AuditHelper
 import config.AppConfig
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 import views.html.CIAPIViews._
 import views.html.CUIViews._
-
 import javax.inject.{Inject, Singleton}
+import models.DAv3AuditModel
+
+import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
 @Singleton
 class CiapiController @Inject()(appConfig: AppConfig,
                                 mcc: MessagesControllerComponents,
+                                auditHelper: AuditHelper,
                                 taxCreditsCUIView: TaxCreditsCUIView,
                                 customsInternationalTradeCUIView: CustomsInternationalTradeCUIView,
                                 vatOnlineCuiView: VatOnlineCuiView,
@@ -47,11 +51,13 @@ class CiapiController @Inject()(appConfig: AppConfig,
   implicit val config: AppConfig = appConfig
 
   def askHmrcOnline: Action[AnyContent] = Action.async { implicit request =>
+    auditHelper.audit(DAv3AuditModel("askHmrcOnline"))
     Future.successful(Ok(taxCreditsCUIView()))
   }
 
   def tradeTariff : Action[AnyContent] = Action.async { implicit request =>
     if(config.showTTCUI) {
+      auditHelper.audit(DAv3AuditModel("tradeTariff"))
       Future.successful(Ok(tradeTariffCUIView()))
     } else {
       Future.successful(NotFound)
@@ -60,22 +66,25 @@ class CiapiController @Inject()(appConfig: AppConfig,
 
   def customsInternationalTrade : Action[AnyContent] = Action.async { implicit request =>
     if(config.showCITCUI) {
+      auditHelper.audit(DAv3AuditModel("customsInternationalTrade"))
       Future.successful(Ok(customsInternationalTradeCUIView()))
     } else {
       Future.successful(NotFound)
     }
   }
 
-	def vatOnline: Action[AnyContent] = Action.async { implicit request =>
-		if(config.showVATCUI) {
-			Future.successful(Ok(vatOnlineCuiView()))
-		} else {
-			Future.successful(NotFound)
-		}
-	}
+  def vatOnline: Action[AnyContent] = Action.async { implicit request =>
+    if(config.showVATCUI) {
+      auditHelper.audit(DAv3AuditModel("vatOnline"))
+      Future.successful(Ok(vatOnlineCuiView()))
+    } else {
+      Future.successful(NotFound)
+    }
+  }
 
   def corporationTax: Action[AnyContent] = Action.async { implicit request =>
     if(config.showCTCUI) {
+      auditHelper.audit(DAv3AuditModel("corporationTax"))
       Future.successful(Ok(corporationTaxCuiView()))
     } else {
       Future.successful(NotFound)
@@ -84,6 +93,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
 
   def childBenefit: Action[AnyContent] = Action.async { implicit request =>
     if (config.showCHBCUI) {
+      auditHelper.audit(DAv3AuditModel("childBenefit"))
       Future.successful(Ok(childBenefitCUIView()))
     } else {
       Future.successful(Ok(childBenefitCUIDAv2View()))
@@ -92,6 +102,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
 
   def constructionIndustryScheme: Action[AnyContent] = Action.async { implicit request =>
     if (config.showCISCUI) {
+      auditHelper.audit(DAv3AuditModel("constructionIndustryScheme"))
       Future.successful(Ok(constructionIndustrySchemeCUIView()))
     } else {
       Future.successful(Ok(constructionIndustrySchemeCUIDAv2View()))
@@ -100,6 +111,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
 
   def selfAssessment: Action[AnyContent] = Action.async { implicit request =>
     if (config.showSACUI) {
+      auditHelper.audit(DAv3AuditModel("selfAssessment"))
       Future.successful(Ok(selfAssessmentCUIView()))
     } else {
       Future.successful(Ok(selfAssessmentCUIDAv2View()))
@@ -108,6 +120,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
 
   def onlineServicesHelpdesk: Action[AnyContent] = Action.async { implicit request =>
     if (config.showOSHCUI) {
+      auditHelper.audit(DAv3AuditModel("onlineServicesHelpdesk"))
       Future.successful(Ok(onlineServicesHelpdeskCUIView()))
     } else {
       Future.successful(Ok(onlineServicesHelpdeskDav2View()))
@@ -116,6 +129,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
 
   def employerEnquiries: Action[AnyContent] = Action.async { implicit request =>
     if (config.showEHLCUI) {
+      auditHelper.audit(DAv3AuditModel("employerEnquiries"))
       Future.successful(Ok(employerEnquiriesCUIView()))
     } else {
       Future.successful(Ok(employerEnquiriesCUIDAv2View()))
