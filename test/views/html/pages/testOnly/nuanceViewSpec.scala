@@ -26,7 +26,7 @@ class nuanceViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLi
 
   private val view = app.injector.instanceOf[NuanceFile]
 
-  private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest)
+  private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
   "Nuance View" must {
     "rendered" must {
