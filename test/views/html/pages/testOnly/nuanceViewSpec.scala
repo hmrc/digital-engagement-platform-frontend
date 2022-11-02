@@ -30,12 +30,11 @@ class nuanceViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLi
 
   "Nuance View" must {
     "rendered" must {
-      behave like normalCuiPage(
-        createView,
-        "Ask HMRC",
-        "Nuance Messaging Frame Test Page - Ask HMRC - GOV.UK",
-        "Nuance Messaging Frame Test Page"
-      )
+      "display the correct page title" in {
+        val doc = asDocument(createView())
+        doc.getElementsByTag("h1")
+        assertPageTitleEqualsMessage(doc, "Nuance Messaging Frame Test Page")
+      }
     }
   }
 }
