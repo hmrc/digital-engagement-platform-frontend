@@ -15,11 +15,17 @@
  *@
 
 @import config.AppConfig
+@import uk.gov.hmrc.webchat.client.WebChatClient
+@import templates.GovukWrapper
 @import views.html.helper.CSPNonce
 
-@this(appConfig: AppConfig)
+@this(
+        govuk_wrapper: GovukWrapper,
+        appConfig: AppConfig,
+        webChatClient: WebChatClient
+)
 
-@()(implicit request: Request[_])
+@()(implicit request: Request[_], messages: play.api.i18n.Messages)
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
@@ -36,6 +42,7 @@
             };
             </script>
             <script @{CSPNonce.attr} language="javascript" src="https://hmrc-uk-preprod.digital.nuance.com/chatskins/launch/inqChatLaunch10006719.js"> </script>
+            <h1>Nuance Messaging Frame Test Page</h1>
         }
     </body>
 </html>

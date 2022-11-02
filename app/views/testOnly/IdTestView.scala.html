@@ -39,18 +39,29 @@
 @main_template(title = "Test bed - ID Dump, etc.") {
 
     <h1 class="header-margin-top">@messages("Test bed - Id Dump, etc.")</h1>
-    @if(!appConfig.performanceTest){
+    @if(!appConfig.performanceTest) {
         <h3>HMRC_Fixed_1</h3>
-        @{webChatClient.loadWebChatContainer("HMRC_Fixed_1")}
+        @{
+            webChatClient.loadWebChatContainer("HMRC_Fixed_1")
+        }
         <h3>pp_self_assessment_webchat</h3>
-        @{webChatClient.loadWebChatContainer("pp_self_assessment_webchat")}
+        @{
+            webChatClient.loadWebChatContainer("pp_self_assessment_webchat")
+        }
         <h3>pp_vat_webchat</h3>
-        @{webChatClient.loadWebChatContainer("pp_vat_webchat")}
+        @{
+            webChatClient.loadWebChatContainer("pp_vat_webchat")
+        }
         <h3>pp_paye_webchat</h3>
-        @{webChatClient.loadWebChatContainer("pp_paye_webchat")}
+        @{
+            webChatClient.loadWebChatContainer("pp_paye_webchat")
+        }
         <h3>pp_corporation_tax_webchat</h3>
-        @{webChatClient.loadWebChatContainer("pp_corporation_tax_webchat")}
+        @{
+            webChatClient.loadWebChatContainer("pp_corporation_tax_webchat")
+        }
     }
+    <div id="nuanMessagingFrame" class="ci-api-embedded"></div>
 
     <code>Session id: @{sessionId}</code><br>
     <br>

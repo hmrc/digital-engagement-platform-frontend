@@ -90,6 +90,9 @@ va.global.h1.bullet.title=You can also:
 #Nuance Full Page CUI Test Page
 nuance.full.page.cui.test.page.title=Test full page CUI for webchat
 
+#Mix Test Page
+test.mix.ciapi.page.title=Mix Test Page
+
 #Test sidebar
 test.sidebar.h2.header=Help for businesses and employers
 test.sidebar.p1=The HMRC chatbot is available at any time to answer your questions about the Coronavirus Job Retention Scheme.

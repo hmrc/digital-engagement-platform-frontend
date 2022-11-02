@@ -55,5 +55,11 @@ class TestControllerSpec
 
       status(result) mustBe OK
     }
+
+    "render mixTest page" in {
+      val result = controller.mixTest(fakeRequest)
+
+      status(result) mustBe OK
+    }
   }
 }
