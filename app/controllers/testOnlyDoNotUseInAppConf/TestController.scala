@@ -17,12 +17,13 @@
 package controllers.testOnlyDoNotUseInAppConf
 
 import config.AppConfig
+
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 import views.html.IdTestView
 import views.html.ci_api._
-import views.html.testOnly.NuanceFile
+import views.html.testOnly.{MixTestView, NuanceFile}
 
 import scala.concurrent.Future
 
@@ -33,7 +34,8 @@ class TestController @Inject()(
   idTestView: IdTestView,
   ciApiDemoViewPopup: CiApiDemoViewPopup,
   ciApiDemoViewEmbedded: CiApiDemoViewEmbedded,
-  nuanceFile: NuanceFile) extends FrontendController(mcc) {
+  nuanceFile: NuanceFile,
+  mixTestView: MixTestView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
@@ -48,5 +50,8 @@ class TestController @Inject()(
   }
   def nuanceHtml: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(nuanceFile()))
+  }
+  def mixTest: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(mixTestView()))
   }
 }
