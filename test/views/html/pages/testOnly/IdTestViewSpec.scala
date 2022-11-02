@@ -33,7 +33,7 @@ class IdTestViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLi
       behave like normalCuiPage(
         createView,
         "Ask HMRC",
-        "Test bed - Id Dump, etc. - Ask HMRC - GOV.UK",
+        "Test bed - ID Dump, etc. - Ask HMRC - GOV.UK",
         "Test bed - Id Dump, etc."
       )
     }
