@@ -21,9 +21,7 @@ import config.AppConfig
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
-import views.html.IdTestView
-import views.html.ci_api._
-import views.html.testOnly.{MixTestView, NuanceFile}
+import views.html.testOnly._
 
 import scala.concurrent.Future
 
