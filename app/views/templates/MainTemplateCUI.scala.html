@@ -40,7 +40,6 @@
 <!--This is only used for fading elements.-->
 <script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/thirdparty/jquery-3.5.1.min.js")'></script>
 <script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/custom.js")'></script>
-<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/bundle.js")'></script>
 
 @if(!appConfig.performanceTest){
         @{webChatClient.loadRequiredElements()}

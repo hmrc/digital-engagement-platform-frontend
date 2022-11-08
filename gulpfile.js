@@ -22,11 +22,11 @@ gulp.task('clean:node_modules', function () {
 
 gulp.task('bundle', (done) => {
     return rollup({
-      input: './app/assets/javascripts/gtm_dl.js',
+      input: './app/assets/javascripts/custom.js',
       format: 'iife',
       sourcemap: false
     })
-    .pipe(source('gtm_dl.js', './app/assets/javascripts/'))
+    .pipe(source('custom.js', './app/assets/javascripts/'))
     .pipe(buffer())
     .pipe(babel({
        "presets": [

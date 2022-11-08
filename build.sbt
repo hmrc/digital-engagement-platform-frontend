@@ -29,9 +29,6 @@ lazy val microservice = Project(appName, file("."))
     scalaVersion := "2.12.15",
     SilencerSettings(),
     PlayKeys.playDefaultPort := 9956,
-    Concat.groups := Seq(
-      "javascripts/bundle.js" -> group(Seq("javascripts/bundle/gtm_dl.js"))
-    ),
     pipelineStages in Assets := Seq(concat),
     scoverageSettings,
     resolvers += Resolver.jcenterRepo
