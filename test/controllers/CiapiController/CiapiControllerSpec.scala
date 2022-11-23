@@ -273,4 +273,26 @@ class CiapiControllerSpec
     }
   }
 
+  "render debt management CUI page if showDMCUI is true" in {
+    val application = builder.configure("features.showDMCUI" -> "true").build()
+
+    running(application) {
+      val request = FakeRequest(GET, ciapiRoutes.CiapiController.debtManagement.url)
+      val result = route(application, request).get
+      val doc = asDocument(contentAsString(result))
+      status(result) mustBe OK
+      doc.select("h1").text() mustBe "Debt Management and Banking (DMB): chat"
+    }
+  }
+
+  "render debt management CUI page if showDMCUI is false" in {
+    val application = builder.configure("features.showTTCUI" -> "false").build()
+
+    running(application) {
+      val request = FakeRequest(GET, ciapiRoutes.CiapiController.tradeTariff.url)
+      val result = route(application, request).get
+      status(result) mustBe NOT_FOUND
+    }
+  }
+
 }

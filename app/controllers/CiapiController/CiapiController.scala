@@ -46,7 +46,8 @@ class CiapiController @Inject()(appConfig: AppConfig,
                                 onlineServicesHelpdeskCUIView: OnlineServicesHelpdeskCUIView,
                                 employerEnquiriesCUIView: EmployerEnquiriesCUIView,
                                 employerEnquiriesCUIDAv2View: EmployerEnquiriesCUIDAv2View,
-                                tradeTariffCUIView: TradeTariffCUIView) extends FrontendController(mcc) {
+                                tradeTariffCUIView: TradeTariffCUIView,
+                                debtManagementCUIView: DebtManagementCUIView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
@@ -133,6 +134,14 @@ class CiapiController @Inject()(appConfig: AppConfig,
       Future.successful(Ok(employerEnquiriesCUIView()))
     } else {
       Future.successful(Ok(employerEnquiriesCUIDAv2View()))
+    }
+  }
+
+  def debtManagement: Action[AnyContent] = Action.async { implicit request =>
+    if (config.showDMCUI) {
+      Future.successful(Ok(debtManagementCUIView()))
+    } else {
+      Future.successful(NotFound)
     }
   }
 }

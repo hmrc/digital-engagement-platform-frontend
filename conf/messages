@@ -142,3 +142,6 @@ ciapi.vat.online.title=VAT Online: chat
 
 #Corporation Tax
 ciapi.corporation.tax.title=Corporation Tax: chat
+
+#Debt Management and Banking
+cui.debt.management.title=Debt Management and Banking (DMB): chat
