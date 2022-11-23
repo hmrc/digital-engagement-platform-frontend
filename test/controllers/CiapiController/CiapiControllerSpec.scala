@@ -52,8 +52,8 @@ class CiapiControllerSpec
     app.injector.instanceOf[OnlineServicesHelpdeskCUIView],
     app.injector.instanceOf[EmployerEnquiriesCUIView],
     app.injector.instanceOf[EmployerEnquiriesCUIDAv2View],
-    app.injector.instanceOf[TradeTariffCUIView]
-  )
+    app.injector.instanceOf[TradeTariffCUIView],
+    app.injector.instanceOf[DebtManagementCUIView])
 
   def asDocument(html: String): Document = Jsoup.parse(html)
 
