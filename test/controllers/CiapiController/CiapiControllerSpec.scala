@@ -281,7 +281,7 @@ class CiapiControllerSpec
       val result = route(application, request).get
       val doc = asDocument(contentAsString(result))
       status(result) mustBe OK
-      doc.select("h1").text() mustBe "Debt Management and Banking (DMB): chat"
+      doc.select("h1").text() mustBe "Payment Problems: chat"
     }
   }
 

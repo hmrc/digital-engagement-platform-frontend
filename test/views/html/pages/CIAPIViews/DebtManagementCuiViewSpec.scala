@@ -33,8 +33,8 @@ class DebtManagementCuiViewSpec extends ChatViewBehaviours with Matchers with An
       behave like normalCuiPage(
         createView,
         "Ask HMRC",
-        "Debt Management and Banking (DMB): chat - Ask HMRC - GOV.UK",
-        "Debt Management and Banking (DMB): chat"
+        "Payment Problems: chat - Ask HMRC - GOV.UK",
+        "Payment Problems: chat"
       )
     }
   }
