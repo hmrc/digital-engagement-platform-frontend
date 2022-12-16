@@ -16,7 +16,6 @@
 
 package controllers.IvrController
 
-import audit.AuditHelper
 import config.AppConfig
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
@@ -32,7 +31,6 @@ import scala.concurrent.Future
 @Singleton
 class IvrController @Inject()(appConfig: AppConfig,
                               mcc: MessagesControllerComponents,
-                              auditHelper: AuditHelper,
                               selfAssessmentIVRView: SelfAssessmentIVRView
                              ) extends FrontendController(mcc) {
 
@@ -40,11 +38,9 @@ class IvrController @Inject()(appConfig: AppConfig,
 
   def selfAssessment: Action[AnyContent] = Action.async { implicit request =>
     if (config.showIVRWebchatSA) {
-      auditHelper.audit(DAv3AuditModel("IVRSelfAssessment"))
       Future.successful(Ok(selfAssessmentIVRView()))
     } else {
       Future.successful(NotFound)
     }
   }
-
 }
