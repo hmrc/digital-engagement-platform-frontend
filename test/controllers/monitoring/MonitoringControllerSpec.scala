@@ -33,29 +33,6 @@ class MonitoringControllerSpec extends AppBuilderSpecBase {
 
   "The nuance status action" should {
 
-    "return a status of Not Found" when {
-
-      "all monitoring is disabled" in {
-        val application = builder.configure("features.monitoring.all" -> "false").build()
-
-        running(application) {
-          val result = testController.monitorNuanceStatus(fakeRequest)
-
-          status(result) mustBe 404
-        }
-      }
-
-      "the nuance status feature is disabled" in {
-        val application = builder.configure("features.monitoring.nuanceStatus" -> "false").build()
-
-        running(application) {
-          val result = testController.monitorNuanceStatus(fakeRequest)
-
-          status(result) mustBe 404
-        }
-      }
-    }
-
     "return a status matching a payload status" when {
 
       "all validation passes with a status of 200" in {
