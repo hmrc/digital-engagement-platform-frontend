@@ -39,11 +39,11 @@ class Ir35EnquiriesViewSpec extends ChatViewBehaviours with Matchers with AnyWor
       "Off-payroll working (IR35): webchat",
       "Return to Contact HMRC",
       returnUrl,
-      Seq(
+      Some(Seq(
         "Opening times:",
         "Monday to Friday, 8:30am to 4:30pm",
         "Closed weekends and bank holidays."
-      )
+      ))
     )
   }
 }

@@ -14,37 +14,31 @@
  * limitations under the License.
  */
 
-package views.html.pages.webchat
+package views.html.pages.IVR
 
 import org.scalatest.matchers.must.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike
 import play.twirl.api.HtmlFormat
+import views.html.IVR.SelfAssessmentIVRView
 import views.html.pages.helpers.ChatViewBehaviours
-import views.html.webchat.AdditionalNeedsHelpView
 
-class AdditionalNeedsHelpViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike {
+class SelfAssessmentIVRViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike{
 
-  private val view = app.injector.instanceOf[AdditionalNeedsHelpView]
+  private val view = app.injector.instanceOf[SelfAssessmentIVRView]
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "Additional Needs Help view" must {
-    val returnUrl: String =
-      "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/get-help-from-hmrc-s-extra-support-team"
+  "Self Assessment IVR View" must {
+    val returnUrl: String = "https://www.gov.uk/contact-hmrc"
 
-    behave like normalPage(
+    behave like normalIVRPage(
       createView,
       "Ask HMRC",
-      "HMRC’s Extra Support team: webchat - GOV.UK",
-      "HMRC’s Extra Support team: webchat",
+      "Self Assessment: live chat - GOV.UK",
+      "Self Assessment: live chat",
       "Return to Contact HMRC",
       returnUrl,
-      Some(Seq(
-        "Opening times:",
-        "Monday to Friday, 8am to 7:30pm",
-        "Saturday, 8am to 4pm",
-        "Closed Sundays and bank holidays."
-      ))
+      None
     )
   }
 }
