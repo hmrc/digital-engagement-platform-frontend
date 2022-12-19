@@ -47,7 +47,7 @@ trait ChatViewBehaviours extends ViewSpecBase {
                  urlLinkText: String,
                  returnUrlLink: String,
                  openingTimes: Option[Seq[String]],
-                 chatIds: Seq[String] = Seq("HMRC_Fixed_1")): Unit = {
+                 chatIdsOption: Option[Seq[String]] = Some(Seq("HMRC_Fixed_1"))): Unit = {
 
     "behave like a normal page" when {
       "rendered" must {
@@ -87,65 +87,9 @@ trait ChatViewBehaviours extends ViewSpecBase {
 
         "insert the Nuance container tag(s)" in {
           val doc = asDocument(view())
-          for (chatId <- chatIds) doc.getElementById(chatId) must not be null
-        }
-
-        "insert the Nuance required tag" in {
-          val doc = asDocument(view())
-          doc.getElementById("WEBCHAT_TEST_RequiredElements") must not be null
-        }
-
-        "insert the Nuance chat container tag" in {
-          val doc = asDocument(view())
-          doc.getElementById("tc-nuance-chat-container") must not be null
-        }
-      }
-    }
-  }
-
-  def normalIVRPage(view: () => HtmlFormat.Appendable,
-                 bannerTitle: String,
-                 messageKeyPrefix: String,
-                 messageHeading: String,
-                 urlLinkText: String,
-                 returnUrlLink: String,
-                 openingTimes: Option[Seq[String]],
-                 chatIds: Seq[String] = Seq("HMRC_Fixed_1")): Unit = {
-
-    "behave like a normal page" when {
-      "rendered" must {
-
-        behave like generalContent(view, messageHeading)
-
-        "have the correct banner title" in {
-          val doc = asDocument(view())
-          val nav = doc.getElementsByClass("hmrc-header__service-name")
-          val span = nav.first
-          span.text mustBe bannerTitle
-        }
-
-        "display the correct browser title" in {
-          val doc = asDocument(view())
-          assertEqualsMessage(doc, "title", messageKeyPrefix)
-        }
-
-        "display the correct link text" in {
-          val doc = asDocument(view())
-          assertContainsText(doc, urlLinkText)
-        }
-
-        "confirm the correct return link back to the correct gov.uk page" in {
-          val doc = asDocument(view())
-          val a = doc.getElementById("return-link")
-          if (a != null) {
-            val href = a.attr("href")
-            href mustBe returnUrlLink
-          }
-        }
-
-        "display the opening times text" in {
-          val doc = asDocument(view())
-          for (key <- openingTimes) assertContainsText(doc, messages(key))
+          chatIdsOption.map(chatIds =>
+            for (chatId <- chatIds) doc.getElementById(chatId) must not be null
+          )
         }
 
         "insert the Nuance required tag" in {

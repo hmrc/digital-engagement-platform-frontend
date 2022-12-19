@@ -31,13 +31,14 @@ class SelfAssessmentIVRViewSpec extends ChatViewBehaviours with Matchers with An
   "Self Assessment IVR View" must {
     val returnUrl: String = "https://www.gov.uk/contact-hmrc"
 
-    behave like normalIVRPage(
+    behave like normalPage(
       createView,
       "Ask HMRC",
       "Self Assessment: live chat - GOV.UK",
       "Self Assessment: live chat",
       "Return to Contact HMRC",
       returnUrl,
+      None,
       None
     )
   }
