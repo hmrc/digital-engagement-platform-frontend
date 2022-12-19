@@ -46,8 +46,8 @@ trait ChatViewBehaviours extends ViewSpecBase {
                  messageHeading: String,
                  urlLinkText: String,
                  returnUrlLink: String,
-                 openingTimes: Seq[String],
-                 chatIds: Seq[String] = Seq("HMRC_Fixed_1")): Unit = {
+                 openingTimes: Option[Seq[String]],
+                 chatIdsOption: Option[Seq[String]] = Some(Seq("HMRC_Fixed_1"))): Unit = {
 
     "behave like a normal page" when {
       "rendered" must {
@@ -87,7 +87,9 @@ trait ChatViewBehaviours extends ViewSpecBase {
 
         "insert the Nuance container tag(s)" in {
           val doc = asDocument(view())
-          for (chatId <- chatIds) doc.getElementById(chatId) must not be null
+          chatIdsOption.map(chatIds =>
+            for (chatId <- chatIds) doc.getElementById(chatId) must not be null
+          )
         }
 
         "insert the Nuance required tag" in {
@@ -99,7 +101,6 @@ trait ChatViewBehaviours extends ViewSpecBase {
           val doc = asDocument(view())
           doc.getElementById("tc-nuance-chat-container") must not be null
         }
-
       }
     }
   }

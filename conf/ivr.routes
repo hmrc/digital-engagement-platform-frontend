@@ -1,0 +1,3 @@
+# microservice specific routes
+
+GET         /sa                     controllers.IvrController.IvrController.selfAssessment
