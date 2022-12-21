@@ -18,10 +18,10 @@ package controllers.monitoring
 
 import akka.stream.Materializer
 import config.AppConfig
-import play.api.test.Helpers.{defaultAwaitTimeout, running, status}
+import play.api.test.Helpers.{defaultAwaitTimeout, status}
 import play.api.libs.json.Json
 import play.api.mvc.MessagesControllerComponents
-import views.html.pages.helpers.AppBuilderSpecBase
+import views.html.pages.helpers.{AppBuilderSpecBase, AppBuilderSpecBaseWithTestConf}
 
 class MonitoringControllerSpec extends AppBuilderSpecBase {
 
@@ -93,6 +93,28 @@ class MonitoringControllerSpec extends AppBuilderSpecBase {
         ))
 
         status(result) mustBe 403
+      }
+    }
+
+    "return a status of 404" when {
+      "appConfig.monitoringFeature is false" in {
+
+        val specBaseWithTestConf = new AppBuilderSpecBaseWithTestConf {}
+
+        val testController = new MonitoringController(
+          specBaseWithTestConf.application.injector.instanceOf[MessagesControllerComponents],
+          specBaseWithTestConf.application.injector.instanceOf[AppConfig]
+        )
+
+        val result = testController.monitorNuanceStatus(fakeRequest.withJsonBody(
+          Json.parse(
+            """{
+              |	"key": "localkey",
+              |	"status": 200
+              |}""".stripMargin)
+        ))
+
+        status(result) mustBe 404
       }
     }
   }
