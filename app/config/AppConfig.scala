@@ -34,15 +34,6 @@ class AppConfig @Inject()(config: Configuration) {
 
   // Feature Toggles
   val shutter: Boolean = config.getOptional[Boolean]("features.shutter").getOrElse(false)
-  val showCHBCUI: Boolean = config.getOptional[Boolean]("features.showCHBCUI").getOrElse(false)
-  val showCITCUI: Boolean = config.getOptional[Boolean]("features.showCITCUI").getOrElse(false)
-  val showVATCUI: Boolean = config.getOptional[Boolean]("features.showVATCUI").getOrElse(false)
-  val showCTCUI: Boolean = config.getOptional[Boolean]("features.showCTCUI").getOrElse(false)
-  val showCISCUI: Boolean = config.getOptional[Boolean]("features.showCISCUI").getOrElse(false)
-  val showSACUI: Boolean = config.getOptional[Boolean]("features.showSACUI").getOrElse(false)
-  val showOSHCUI: Boolean = config.getOptional[Boolean]("features.showOSHCUI").getOrElse(false)
-  val showEHLCUI: Boolean = config.getOptional[Boolean]("features.showEHLCUI").getOrElse(false)
-  val showTTCUI: Boolean = config.getOptional[Boolean]("features.showTTCUI").getOrElse(false)
   val showDMCUI: Boolean = config.getOptional[Boolean]("features.showDMCUI").getOrElse(false)
   val showIVRWebchatSA: Boolean = config.getOptional[Boolean]("features.showIVRWebchatSA").getOrElse(false)
 

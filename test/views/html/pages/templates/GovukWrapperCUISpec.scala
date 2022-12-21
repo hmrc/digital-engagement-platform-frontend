@@ -21,14 +21,14 @@ import org.scalatest.wordspec.AnyWordSpecLike
 import play.api.mvc.{AnyContentAsEmpty, Cookie}
 import play.api.test.FakeRequest
 import play.twirl.api.HtmlFormat
-import views.html.CUIViews.SelfAssessmentCUIDAv2View
+import views.html.CIAPIViews.SelfAssessmentCUIView
 import views.html.pages.helpers.ChatViewBehaviours
 
 class GovukWrapperCUISpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike {
 
   implicit override val fakeRequest: FakeRequest[AnyContentAsEmpty.type] = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
 
-  val view: SelfAssessmentCUIDAv2View = app.injector.instanceOf[SelfAssessmentCUIDAv2View]
+  val view: SelfAssessmentCUIView = app.injector.instanceOf[SelfAssessmentCUIView]
 
   def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
