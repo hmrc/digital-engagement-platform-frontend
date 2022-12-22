@@ -21,7 +21,7 @@ import config.AppConfig
 import play.api.test.Helpers.{defaultAwaitTimeout, running, status}
 import play.api.libs.json.Json
 import play.api.mvc.MessagesControllerComponents
-import views.html.pages.helpers.{AppBuilderSpecBase}
+import views.html.pages.helpers.AppBuilderSpecBase
 
 class MonitoringControllerSpec extends AppBuilderSpecBase {
 
@@ -128,7 +128,5 @@ class MonitoringControllerSpec extends AppBuilderSpecBase {
         }
       }
     }
-
   }
-
 }

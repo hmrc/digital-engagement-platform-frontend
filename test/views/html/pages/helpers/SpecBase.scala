@@ -31,7 +31,6 @@ import play.api.test.FakeRequest
 import uk.gov.hmrc.webchat.client.WebChatClient
 import uk.gov.hmrc.webchat.testhelpers.WebChatClientStub
 
-
 class FakeMetrics extends Metrics {
   override val defaultRegistry: MetricRegistry = new MetricRegistry
   override val toJson: String = "{}"
