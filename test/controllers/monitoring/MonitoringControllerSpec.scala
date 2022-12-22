@@ -18,10 +18,10 @@ package controllers.monitoring
 
 import akka.stream.Materializer
 import config.AppConfig
-import play.api.test.Helpers.{defaultAwaitTimeout, status}
+import play.api.test.Helpers.{defaultAwaitTimeout, running, status}
 import play.api.libs.json.Json
 import play.api.mvc.MessagesControllerComponents
-import views.html.pages.helpers.{AppBuilderSpecBase, AppBuilderSpecBaseWithTestConf}
+import views.html.pages.helpers.{AppBuilderSpecBase}
 
 class MonitoringControllerSpec extends AppBuilderSpecBase {
 
@@ -97,26 +97,38 @@ class MonitoringControllerSpec extends AppBuilderSpecBase {
     }
 
     "return a status of 404" when {
-      "appConfig.monitoringFeature is false" in {
 
-        val specBaseWithTestConf = new AppBuilderSpecBaseWithTestConf {}
+      "all monitoring is disabled" in {
+        val application = builder.configure("features.monitoring.all" -> "false").build()
 
-        val testController = new MonitoringController(
-          specBaseWithTestConf.application.injector.instanceOf[MessagesControllerComponents],
-          specBaseWithTestConf.application.injector.instanceOf[AppConfig]
+        val testController: MonitoringController = new MonitoringController(
+          application.injector.instanceOf[MessagesControllerComponents],
+          application.injector.instanceOf[AppConfig]
         )
 
-        val result = testController.monitorNuanceStatus(fakeRequest.withJsonBody(
-          Json.parse(
-            """{
-              |	"key": "localkey",
-              |	"status": 200
-              |}""".stripMargin)
-        ))
+        running(application) {
+          val result = testController.monitorNuanceStatus(fakeRequest)
 
-        status(result) mustBe 404
+          status(result) mustBe 404
+        }
+      }
+
+      "the nuance status feature is disabled" in {
+        val application = builder.configure("features.monitoring.nuanceStatus" -> "false").build()
+
+        val testController: MonitoringController = new MonitoringController(
+          application.injector.instanceOf[MessagesControllerComponents],
+          application.injector.instanceOf[AppConfig]
+        )
+
+        running(application) {
+          val result = testController.monitorNuanceStatus(fakeRequest)
+
+          status(result) mustBe 404
+        }
       }
     }
+
   }
 
 }

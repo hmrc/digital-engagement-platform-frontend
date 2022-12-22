@@ -18,12 +18,11 @@ package views.html.pages.helpers
 
 import com.codahale.metrics.MetricRegistry
 import com.kenshoo.play.metrics.Metrics
-import com.typesafe.config.{Config, ConfigFactory}
 import config.AppConfig
 import org.scalatest.matchers.must.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike
 import org.scalatestplus.play.guice.GuiceOneAppPerSuite
-import play.api.{Application, Configuration}
+import play.api.Application
 import play.api.i18n.{Messages, MessagesApi}
 import play.api.inject.guice.GuiceApplicationBuilder
 import play.api.inject.{Injector, bind}
@@ -32,7 +31,6 @@ import play.api.test.FakeRequest
 import uk.gov.hmrc.webchat.client.WebChatClient
 import uk.gov.hmrc.webchat.testhelpers.WebChatClientStub
 
-import java.io.File
 
 class FakeMetrics extends Metrics {
   override val defaultRegistry: MetricRegistry = new MetricRegistry
@@ -64,20 +62,4 @@ trait AppBuilderSpecBase extends SpecBase {
     )
 
   override lazy val app: Application = builder.build()
-}
-
-trait AppBuilderSpecBaseWithTestConf extends SpecBase {
-  val configuration: Config = ConfigFactory.load(
-    ConfigFactory.parseFile(
-      new File("test/resources/test-application.conf")
-    )
-  )
-
-  lazy val application: Application = new GuiceApplicationBuilder()
-    .overrides(
-      bind[WebChatClient].toInstance(new WebChatClientStub),
-      bind[Metrics].toInstance(new FakeMetrics),
-      bind[Configuration].toInstance(Configuration(configuration))
-    )
-    .build()
 }
