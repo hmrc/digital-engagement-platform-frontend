@@ -8,20 +8,13 @@ global.nuance.div.loading.text=Checking adviser availability.
 global.webchat.title.h2=Webchat
 global.opening.times.title=Opening times:
 global.opening.times.8to4=Monday to Friday, 8am to 4pm
-global.opening.times.9to5=Monday to Friday, 9am to 5pm
 global.opening.times.8_30to4_30=Monday to Friday, 8:30am to 4:30pm
 global.opening.times.8_30to5=Monday to Friday, 8:30am to 5pm
-global.opening.times.8to6=Monday to Friday, 8am to 6pm
 global.opening.times.8to7_30=Monday to Friday, 8am to 7:30pm
-global.opening.times.8to4.includesat=Monday to Saturday, 8am to 4pm
-global.opening.times.mon.sat.8to7_30=Monday to Saturday, 8am to 7:30pm
 global.opening.times.saturday.8to4=Saturday, 8am to 4pm
-global.opening.times.sat.sun.8to4=Saturday and Sunday, 8am to 4pm
 global.opening.times.weekend.p=Closed weekends and bank holidays.
 global.opening.times.24_7=24 hours a day, 7 days a week
 global.closed.time.sun.bankholidays=Closed Sundays and bank holidays.
-global.opening.time.sat.bankholidays.8to4=Saturdays and Bank Holidays, 8am to 4pm
-global.opening.time.bankholidays.8to4=Bank holidays, 8am to 4pm
 global.closed.time.sun=Closed Sundays.
 
 #Beta Banner
@@ -36,17 +29,8 @@ service.unavailable.p2-2 = find other contact details for your query
 #Online Service Helpdesk Webchat
 online.services.title=Online services helpdesk: webchat
 
-#Payment Problems Self Assessment
-payment.problems.self.assessment.title=Payment Problems Self Assessment: webchat
-
-#Payment Problems VAT Enquiries
-payment.problems.vat.enquiries.title=Payment Problems VAT Enquiries: webchat
-
 #Payment Problems PAYE Enquiries
 payment.problems.paye.enquiries.title=Payment Problems PAYE Enquiries: webchat
-
-#Payment Problems corporation Tax Enquiries
-payment.problems.corporation.tax.enquiries.title=Payment Problems Corporation Tax Enquiries: webchat
 
 #Construction Industry Scheme
 construction.industry.scheme.title=Construction Industry Scheme: webchat
@@ -56,9 +40,6 @@ national.clearance.hub.title=National Clearance Hub: webchat
 
 #Additional Needs View
 additional.needs.title=HMRC’s Extra Support team: webchat
-
-#Eat Out To Help Out Webchat
-eat.out.to.help.out.title=Eat Out to Help Out scheme: webchat
 
 #Personal Transport Unit Enquiries
 personal.transport.unit.enquiries.title=Personal Transport Unit: webchat
@@ -87,9 +68,6 @@ payment.problems.p8=If you do not select the link to open the chat, you will hav
 va.global.h1.title=Use HMRC’s digital assistant
 va.global.h1.bullet.title=You can also:
 
-#Nuance Full Page CUI Test Page
-nuance.full.page.cui.test.page.title=Test full page CUI for webchat
-
 #Mix Test Page
 test.mix.ciapi.page.title=Mix Test Page
 
@@ -102,24 +80,14 @@ test.sidebar.p2=If it cannot help you, you can ask to transfer to an HMRC advise
 cui.page.title=Ask HMRC
 cui.page.title.gov=- Ask HMRC - GOV.UK
 
-#Nuance Test Full Page
-cui.job.retention.scheme.header=Get help with the Coronavirus Job Retention Scheme
-
 #Self Assessment page
 cui.self.assessment.title=Self Assessment: chat
-cui.self.assessment.sidebar.h2.header=Self Assessment: chat
-cui.self.assessment.sidebar.p1=The HMRC digital assistant is available at any time to answer your questions about Self Assessment.
-cui.self.assessment.sidebar.p2=If it cannot help you, you can ask to transfer to an HMRC adviser by typing ‘adviser’. Advisers work 8am to 7:30pm, Monday to Saturday and do not work Sundays or bank holidays.
 
 #Online Services Helpdesk pages
 cui.online.services.helpdesk.title=Technical support with HMRC online services: chat
-cui.online.services.helpdesk.sidebar.p1=The HMRC digital assistant is available at any time to answer your questions about Technical support with HMRC online services.
-cui.online.services.helpdesk.sidebar.p2=If it cannot help you, you can ask to transfer to an HMRC adviser by typing ‘adviser’. Advisers work Monday to Friday, 8am to 7:30pm, Saturday, 8 to 4pm and do not work Sundays or bank holidays.
 
 #Employer Enquiries page
 cui.employer.enquiries.title=Employers enquiries: chat
-cui.employer.enquiries.sidebar.p1=The HMRC digital assistant is available at any time to answer your questions about employers enquiries.
-cui.employer.enquiries.sidebar.p2=If it cannot help you, you can ask to transfer to an HMRC adviser by typing ‘adviser’. Advisers work 8am to 6pm, Monday to Friday and do not work weekends or bank holidays.
 
 #Construction Industry Scheme page
 cui.construction.industry.scheme.title=Construction Industry Scheme: chat
