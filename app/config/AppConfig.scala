@@ -37,6 +37,9 @@ class AppConfig @Inject()(config: Configuration) {
   val showDMCUI: Boolean = config.getOptional[Boolean]("features.showDMCUI").getOrElse(false)
   val showIVRWebchatSA: Boolean = config.getOptional[Boolean]("features.showIVRWebchatSA").getOrElse(false)
 
+	val monitoringFeature: Boolean = config.getOptional[Boolean]("features.monitoring.all").getOrElse(false)
+	val nuanceStatusFeature: Boolean = config.getOptional[Boolean]("features.monitoring.nuanceStatus").getOrElse(false)
+
   // Used in wrapper
   val analyticsToken: String = config.get[String]("google-analytics.token")
   val analyticsHost: String = config.get[String]("google-analytics.host")
@@ -90,4 +93,6 @@ class AppConfig @Inject()(config: Configuration) {
   def accessibilityStatementLink(pageUri: String): String = {
     controllers.routes.AccessibilityStatementController.accessibility(Some(pageUri)).url
   }
+
+  val monitoringKey: String = config.get[String]("monitoring.key")
 }

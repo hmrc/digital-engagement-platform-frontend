@@ -31,3 +31,5 @@ GET         /chat/online-services-helpdesk                                      
 GET         /chat/employer-enquiries                                                    controllers.CiapiController.CiapiController.employerEnquiries
 GET         /chat/trade-tariff                                                          controllers.CiapiController.CiapiController.tradeTariff
 GET         /chat/payment-problems                                                      controllers.CiapiController.CiapiController.debtManagement
+
+POST        /monitoring/nuance-status                                                   controllers.monitoring.MonitoringController.monitorNuanceStatus
