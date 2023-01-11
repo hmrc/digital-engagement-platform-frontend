@@ -26,7 +26,7 @@ lazy val microservice = Project(appName, file("."))
     javaScriptBundler,
     javaScriptTestRunnerHook,
     defaultSettings(),
-    scalaVersion := "2.12.15",
+    scalaVersion := "2.13.8",
     SilencerSettings(),
     PlayKeys.playDefaultPort := 9956,
     Concat.groups := Seq(

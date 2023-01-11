@@ -23,11 +23,6 @@ import views.html.IVR.SelfAssessmentIVRView
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.Future
 
-import views.html.IVR.SelfAssessmentIVRView
-
-import javax.inject.{Inject, Singleton}
-import scala.concurrent.Future
-
 @Singleton
 class IvrController @Inject()(appConfig: AppConfig,
                               mcc: MessagesControllerComponents,
