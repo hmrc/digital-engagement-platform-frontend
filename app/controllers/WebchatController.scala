@@ -40,10 +40,6 @@ class WebchatController @Inject()(appConfig: AppConfig,
     Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
-  def onlineServicesHelpdesk: Action[AnyContent] = Action.async {
-      Future.successful(Redirect(ciapiRoutes.CiapiController.onlineServicesHelpdesk))
-  }
-
   def customsEnquiries: Action[AnyContent] = Action.async {
     Future.successful(Redirect(ciapiRoutes.CiapiController.customsInternationalTrade))
   }

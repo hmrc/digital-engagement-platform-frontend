@@ -6,7 +6,6 @@ GET         /assets/*file           controllers.Assets.versioned(path="/public",
 
 GET         /webchat/service-unavailable                                                controllers.WebchatController.serviceUnavailable
 
-GET         /webchat/online-services-helpdesk                                           controllers.WebchatController.onlineServicesHelpdesk
 GET         /webchat/customs-international-trade                                        controllers.WebchatController.customsEnquiries
 GET         /webchat/construction-industry-scheme-enquiries                             controllers.WebchatController.constructionIndustryScheme
 GET         /webchat/national-clearance-hub                                             controllers.WebchatController.nationalClearanceHub
