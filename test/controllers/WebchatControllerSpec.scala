@@ -44,12 +44,6 @@ class WebchatControllerSpec
   }
 
   "fixed URLs" must {
-    "render technical support with HMRC online services page" in {
-      val result = controller.onlineServicesHelpdesk(fakeRequest)
-
-      status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(ciapiRoutes.CiapiController.onlineServicesHelpdesk.url)
-    }
 
     "render customs page" in {
       val result = controller.customsEnquiries(fakeRequest)

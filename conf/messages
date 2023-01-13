@@ -26,9 +26,6 @@ service.unavailable.p1 = We are hoping to provide this webchat from October 2022
 service.unavailable.p2-1 = You can
 service.unavailable.p2-2 = find other contact details for your query
 
-#Online Service Helpdesk Webchat
-online.services.title=Online services helpdesk: webchat
-
 #Payment Problems PAYE Enquiries
 payment.problems.paye.enquiries.title=Payment Problems PAYE Enquiries: webchat
 
