@@ -29,6 +29,14 @@
 
     <h1 class="header-margin-top">@messages("ivr.self.assessment.title")</h1>
 
+    <div>
+      <p>@messages("ivr.self.assessment.security.p1")</p>
+      <p>@messages("ivr.self.assessment.security.p2")</p>
+      <p>@messages("ivr.self.assessment.security.p3")
+          <a class="govuk-link" href=@appConfig.securityMessageLink target="_blank">
+              @messages("ivr.self.assessment.security.link")</a>
+      </p>
+   </div>
     <div class="govuk-inset-text">
       <p>@messages("global.opening.times.title")</p>
       <p>@messages("global.opening.times.8to7_30")</p>
