@@ -23,6 +23,7 @@ import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 import views.html.CIAPIViews._
 import javax.inject.{Inject, Singleton}
 import models.DAv3AuditModel
+import play.api.mvc.Cookie
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
@@ -47,7 +48,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
 
   def askHmrcOnline: Action[AnyContent] = Action.async { implicit request =>
     auditHelper.audit(DAv3AuditModel("askHmrcOnline"))
-		Future.successful(Ok(taxCreditsCUIView()).withSession(request.session + ("test" -> "testValue")))
+		Future.successful(Ok(taxCreditsCUIView()).withCookies(Cookie("test", "value")))
   }
 
   def tradeTariff : Action[AnyContent] = Action.async { implicit request =>
