@@ -2,34 +2,35 @@
 
 ->          /hmrc-frontend          hmrcfrontend.Routes
 
-GET         /assets/*file           controllers.Assets.versioned(path="/public", file: Asset)
+GET         /assets/*file                                                   controllers.Assets.versioned(path="/public", file: Asset)
 
-GET         /webchat/service-unavailable                                                controllers.WebchatController.serviceUnavailable
+GET         /webchat/service-unavailable                                    controllers.WebchatController.serviceUnavailable
 
-GET         /webchat/customs-international-trade                                        controllers.WebchatController.customsEnquiries
-GET         /webchat/construction-industry-scheme-enquiries                             controllers.WebchatController.constructionIndustryScheme
-GET         /webchat/national-clearance-hub                                             controllers.WebchatController.nationalClearanceHub
-GET         /webchat/help-for-users-with-additional-needs                               controllers.WebchatController.additionalNeedsHelp
-GET         /webchat/personal-transport-unit-enquiries                                  controllers.WebchatController.personalTransportUnitEnquiries
-GET         /webchat/ir35-enquiries                                                     controllers.WebchatController.ir35Enquiries
+GET         /webchat/customs-international-trade                            controllers.WebchatController.customsEnquiries
+GET         /webchat/construction-industry-scheme-enquiries                 controllers.WebchatController.constructionIndustryScheme
+GET         /webchat/national-clearance-hub                                 controllers.WebchatController.nationalClearanceHub
+GET         /webchat/help-for-users-with-additional-needs                   controllers.WebchatController.additionalNeedsHelp
+GET         /webchat/personal-transport-unit-enquiries                      controllers.WebchatController.personalTransportUnitEnquiries
+GET         /webchat/ir35-enquiries                                         controllers.WebchatController.ir35Enquiries
 
-GET         /virtual-assistant/customs-and-international-trade-enquiries                controllers.VirtualAssistantController.customsInternationalTrade
+GET         /virtual-assistant/customs-and-international-trade-enquiries    controllers.VirtualAssistantController.customsInternationalTrade
 
-GET         /webchat/payment-problems                                                   controllers.PaymentProblemsController.paymentProblem
+GET         /webchat/payment-problems                                       controllers.PaymentProblemsController.paymentProblem
 
-GET         /accessibility-statement                                                    controllers.AccessibilityStatementController.accessibility(userAction: Option[String])
+GET         /accessibility-statement                                        controllers.AccessibilityStatementController.accessibility(userAction: Option[String])
 
-GET         /chat/ask-hmrc-online                                                       controllers.CiapiController.CiapiController.askHmrcOnline
-GET         /chat/customs-and-international-trade                                       controllers.CiapiController.CiapiController.customsInternationalTrade
-GET			/chat/vat-online															controllers.CiapiController.CiapiController.vatOnline
-GET         /chat/corporation-tax                                                       controllers.CiapiController.CiapiController.corporationTax
-GET         /chat/child-benefit                                                         controllers.CiapiController.CiapiController.childBenefit
-GET         /chat/construction-industry-scheme                                          controllers.CiapiController.CiapiController.constructionIndustryScheme
-GET         /chat/self-assessment                                                       controllers.CiapiController.CiapiController.selfAssessment
-GET         /chat/online-services-helpdesk                                              controllers.CiapiController.CiapiController.onlineServicesHelpdesk
-GET         /chat/employer-enquiries                                                    controllers.CiapiController.CiapiController.employerEnquiries
-GET         /chat/trade-tariff                                                          controllers.CiapiController.CiapiController.tradeTariff
-GET         /chat/payment-problems                                                      controllers.CiapiController.CiapiController.debtManagement
+GET         /chat/ask-hmrc-online                                           controllers.CiapiController.CiapiController.askHmrcOnline
+GET         /chat/customs-and-international-trade                           controllers.CiapiController.CiapiController.customsInternationalTrade
+GET			/chat/vat-online									            controllers.CiapiController.CiapiController.vatOnline
+GET         /chat/corporation-tax                                           controllers.CiapiController.CiapiController.corporationTax
+GET         /chat/child-benefit                                             controllers.CiapiController.CiapiController.childBenefit
+GET         /chat/construction-industry-scheme                              controllers.CiapiController.CiapiController.constructionIndustryScheme
+GET         /chat/self-assessment                                           controllers.CiapiController.CiapiController.selfAssessment
+GET         /chat/online-services-helpdesk                                  controllers.CiapiController.CiapiController.onlineServicesHelpdesk
+GET         /chat/employer-enquiries                                        controllers.CiapiController.CiapiController.employerEnquiries
+GET         /chat/trade-tariff                                              controllers.CiapiController.CiapiController.tradeTariff
+GET         /chat/payment-problems                                          controllers.CiapiController.CiapiController.debtManagement
+GET         /chat/national-insurance                                        controllers.CiapiController.CiapiController.nationalInsurance
 
 +nocsrf
-POST        /monitoring/nuance-status                                                   controllers.monitoring.MonitoringController.monitorNuanceStatus
+POST        /monitoring/nuance-status                                       controllers.monitoring.MonitoringController.monitorNuanceStatus

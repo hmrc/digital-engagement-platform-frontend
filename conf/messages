@@ -111,6 +111,9 @@ ciapi.corporation.tax.title=Corporation Tax: chat
 #Debt Management and Banking
 cui.debt.management.title=Payment Problems: chat
 
+#National Insurance
+cui.national.insurance.title=National Insurance: chat
+
 #IVR SA
 ivr.self.assessment.title=Self Assessment: live chat
 ivr.self.assessment.security.p1=HMRC will never send unsolicited text messages containing links to webpages.

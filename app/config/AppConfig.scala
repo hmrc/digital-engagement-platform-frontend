@@ -35,6 +35,7 @@ class AppConfig @Inject()(config: Configuration) {
   // Feature Toggles
   val shutter: Boolean = config.getOptional[Boolean]("features.shutter").getOrElse(false)
   val showDMCUI: Boolean = config.getOptional[Boolean]("features.showDMCUI").getOrElse(false)
+  val showNICUI: Boolean = config.getOptional[Boolean]("features.showNICUI").getOrElse(false)
   val showIVRWebchatSA: Boolean = config.getOptional[Boolean]("features.showIVRWebchatSA").getOrElse(false)
 
   val monitoringFeature: Boolean = config.getOptional[Boolean]("features.monitoring.all").getOrElse(false)
