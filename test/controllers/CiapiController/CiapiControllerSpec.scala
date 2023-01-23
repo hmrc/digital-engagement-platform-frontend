@@ -17,6 +17,7 @@
 package controllers.CiapiController
 
 import config.AppConfig
+import controllers.CiapiController.{routes => ciapiRoutes}
 import mocks.MockAuditService
 import models.DAv3AuditModel
 import org.jsoup.Jsoup
@@ -24,6 +25,7 @@ import org.jsoup.nodes.Document
 import org.scalatest.matchers.must.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike
 import play.api.mvc.MessagesControllerComponents
+import play.api.test.FakeRequest
 import play.api.test.Helpers._
 import views.html.CIAPIViews._
 import views.html.pages.helpers.AppBuilderSpecBase
@@ -45,7 +47,8 @@ class CiapiControllerSpec
     app.injector.instanceOf[OnlineServicesHelpdeskCUIView],
     app.injector.instanceOf[EmployerEnquiriesCUIView],
     app.injector.instanceOf[TradeTariffCUIView],
-    app.injector.instanceOf[DebtManagementCUIView])
+    app.injector.instanceOf[DebtManagementCUIView],
+    app.injector.instanceOf[NationalInsuranceCUIView])
 
   def asDocument(html: String): Document = Jsoup.parse(html)
 
@@ -133,6 +136,28 @@ class CiapiControllerSpec
       val doc = asDocument(contentAsString(result))
       status(result) mustBe OK
       doc.select("h1").text() mustBe "Payment Problems: chat"
+    }
+
+    "render national insurance CUI page is displayed if shutter flag is true" in {
+      val application = builder.configure("features.showNICUI" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.nationalInsurance.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "National Insurance: chat"
+      }
+    }
+
+    "render national insurance CUI page is not displayed if shutter flag is false. 404 page recieved" in {
+      val application = builder.configure("features.showNICUI" -> "false").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.nationalInsurance.url)
+        val result = route(application, request).get
+        status(result) mustBe NOT_FOUND
+      }
     }
   }
 }
