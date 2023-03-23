@@ -79,6 +79,11 @@ class AppConfig @Inject()(config: Configuration) {
   val contactHMRC: String = "https://www.gov.uk/contact-hmrc"
   val securityMessageLink: String = "https://www.gov.uk/report-tax-fraud"
 
+	private val frontendHost: String = config.get[String]("digital-engagement-frontend.host")
+	private val frontendPath: String = config.get[String]("digital-engagement-frontend.path")
+
+	val featureSwitchUrl: String = s"$frontendHost$frontendPath/feature-switches"
+
   private def accessibilityHost = config.get[String]("accessibility-statement-frontend.host")
 
   private def accessibilityPath = config.get[String]("accessibility-statement-frontend.path")
