@@ -24,19 +24,18 @@ import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 import scala.concurrent.Future
 
 class FeatureSwitchController @Inject()(mcc: MessagesControllerComponents,
-																				 appConfig: AppConfig) extends FrontendController(mcc) {
+                                         appConfig: AppConfig) extends FrontendController(mcc) {
 
-	def getFeatureSwitch(switchName: String): Action[AnyContent] = Action.async { implicit request =>
-		val result = switchName match {
-			case "shutter" => appConfig.shutter
-			case "DMCUI" => appConfig.showDMCUI
-			case _ => false
-		}
+  def getFeatureSwitch(switchName: String): Action[AnyContent] = Action.async { implicit request =>
+    val result = switchName match {
+      case "test" => appConfig.testSwitch
+      case _ => false
+    }
 
-		if (result) {
-			Future.successful(NoContent)
-		} else {
-			Future.successful(Forbidden)
-		}
-	}
+    if (result) {
+      Future.successful(NoContent)
+    } else {
+      Future.successful(Forbidden)
+    }
+  }
 }

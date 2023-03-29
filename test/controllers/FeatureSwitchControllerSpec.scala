@@ -25,25 +25,29 @@ import views.html.pages.helpers.AppBuilderSpecBase
 import scala.concurrent.Future
 
 class FeatureSwitchControllerSpec
-	extends AppBuilderSpecBase with Matchers with AnyWordSpecLike {
+  extends AppBuilderSpecBase with Matchers with AnyWordSpecLike {
 
-	private val controller = app.injector.instanceOf[FeatureSwitchController]
+  private val controller = app.injector.instanceOf[FeatureSwitchController]
 
-	"Calling a feature switch" should {
+  "Calling a feature switch" should {
 
-		"return a 204 when set to true" in {
-			val result: Future[Result] = controller.getFeatureSwitch("DMCUI")(fakeRequest)
-			status(result) mustBe NO_CONTENT
-		}
+    "return a 204 when set to true" in {
+			val application = builder.configure("features.test" -> "true").build()
 
-		"return a 403 when set to false" in {
-			val result: Future[Result] = controller.getFeatureSwitch("shutter")(fakeRequest)
-			status(result) mustBe FORBIDDEN
-		}
+			running(application) {
+				val result: Future[Result] = controller.getFeatureSwitch("test")(fakeRequest)
+				status(result) mustBe NO_CONTENT
+			}
+    }
 
-		"return a 403 when it does not exist" in {
-			val result: Future[Result] = controller.getFeatureSwitch("fake")(fakeRequest)
-			status(result) mustBe FORBIDDEN
-		}
-	}
+    "return a 403 when set to false" in {
+      val result: Future[Result] = controller.getFeatureSwitch("test")(fakeRequest)
+      status(result) mustBe FORBIDDEN
+    }
+
+    "return a 403 when it does not exist" in {
+      val result: Future[Result] = controller.getFeatureSwitch("fake")(fakeRequest)
+      status(result) mustBe FORBIDDEN
+    }
+  }
 }

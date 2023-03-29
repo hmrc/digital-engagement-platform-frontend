@@ -37,6 +37,7 @@ class AppConfig @Inject()(config: Configuration) {
   val showDMCUI: Boolean = config.getOptional[Boolean]("features.showDMCUI").getOrElse(false)
   val showNICUI: Boolean = config.getOptional[Boolean]("features.showNICUI").getOrElse(false)
   val showIVRWebchatSA: Boolean = config.getOptional[Boolean]("features.showIVRWebchatSA").getOrElse(false)
+  val testSwitch: Boolean = config.getOptional[Boolean]("features.test").getOrElse(false)
 
   val monitoringFeature: Boolean = config.getOptional[Boolean]("features.monitoring.all").getOrElse(false)
   val nuanceStatusFeature: Boolean = config.getOptional[Boolean]("features.monitoring.nuanceStatus").getOrElse(false)
