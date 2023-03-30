@@ -18,6 +18,7 @@ package controllers
 
 import org.scalatest.matchers.must.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike
+import play.api.inject.guice.GuiceApplicationBuilder
 import play.api.mvc.Result
 import play.api.test.Helpers._
 import views.html.pages.helpers.AppBuilderSpecBase
@@ -32,12 +33,13 @@ class FeatureSwitchControllerSpec
   "Calling a feature switch" should {
 
     "return a 204 when set to true" in {
-			val application = builder.configure("features.test" -> "true").build()
+      val application = new GuiceApplicationBuilder().configure("features.test" -> "true").build()
+      val controller = application.injector.instanceOf[FeatureSwitchController]
 
-			running(application) {
-				val result: Future[Result] = controller.getFeatureSwitch("test")(fakeRequest)
-				status(result) mustBe NO_CONTENT
-			}
+      running(application) {
+        val result: Future[Result] = controller.getFeatureSwitch("test")(fakeRequest)
+        status(result) mustBe NO_CONTENT
+      }
     }
 
     "return a 403 when set to false" in {
