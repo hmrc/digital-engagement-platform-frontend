@@ -26,6 +26,7 @@ import scala.concurrent.Future
 class FeatureSwitchController @Inject()(mcc: MessagesControllerComponents,
                                          appConfig: AppConfig) extends FrontendController(mcc) {
 
+	//This controller receives a request from a javascript user to determine if they are allowed to access a feature within an environment
   def getFeatureSwitch(switchName: String): Action[AnyContent] = Action.async { implicit request =>
     val result = switchName match {
       case "test" => appConfig.testSwitch
