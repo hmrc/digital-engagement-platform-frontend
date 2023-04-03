@@ -32,5 +32,7 @@ GET         /chat/trade-tariff                                              cont
 GET         /chat/payment-problems                                          controllers.CiapiController.CiapiController.debtManagement
 GET         /chat/national-insurance                                        controllers.CiapiController.CiapiController.nationalInsurance
 
+GET         /feature-switches/:switchName                                   controllers.FeatureSwitchController.getFeatureSwitch(switchName: String)
+
 +nocsrf
 POST        /monitoring/nuance-status                                       controllers.monitoring.MonitoringController.monitorNuanceStatus
