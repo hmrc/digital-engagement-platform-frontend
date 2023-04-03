@@ -34,3 +34,6 @@ GET         /chat/national-insurance                                        cont
 GET         /chat/national-minimum-wage                                     controllers.CiapiController.CiapiController.nationalMinimumWage
 
 GET         /feature-switches/:switchName                                   controllers.FeatureSwitchController.getFeatureSwitch(switchName: String)
+
++nocsrf
+POST        /monitoring/nuance-status                                       controllers.monitoring.MonitoringController.monitorNuanceStatus
