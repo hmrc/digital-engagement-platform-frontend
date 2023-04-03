@@ -41,6 +41,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
                                 onlineServicesHelpdeskCUIView: OnlineServicesHelpdeskCUIView,
                                 employerEnquiriesCUIView: EmployerEnquiriesCUIView,
                                 tradeTariffCUIView: TradeTariffCUIView,
+                                nationalMinimumWageCUIView: NationalMinimumWageCUIView,
                                 debtManagementCUIView: DebtManagementCUIView,
                                 nationalInsuranceCUIView: NationalInsuranceCUIView) extends FrontendController(mcc) {
 
@@ -94,6 +95,11 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def employerEnquiries: Action[AnyContent] = Action.async { implicit request =>
       auditHelper.audit(DAv3AuditModel("employerEnquiries"))
       Future.successful(Ok(employerEnquiriesCUIView()))
+  }
+
+  def nationalMinimumWage : Action[AnyContent] = Action.async { implicit request =>
+    auditHelper.audit(DAv3AuditModel("nationalMinimumWage"))
+    Future.successful(Ok(nationalMinimumWageCUIView()))
   }
 
   def debtManagement: Action[AnyContent] = Action.async { implicit request =>

@@ -47,6 +47,7 @@ class CiapiControllerSpec
     app.injector.instanceOf[OnlineServicesHelpdeskCUIView],
     app.injector.instanceOf[EmployerEnquiriesCUIView],
     app.injector.instanceOf[TradeTariffCUIView],
+    app.injector.instanceOf[NationalMinimumWageCUIView],
     app.injector.instanceOf[DebtManagementCUIView],
     app.injector.instanceOf[NationalInsuranceCUIView])
 
@@ -136,6 +137,13 @@ class CiapiControllerSpec
       val doc = asDocument(contentAsString(result))
       status(result) mustBe OK
       doc.select("h1").text() mustBe "Payment Problems: chat"
+    }
+
+    "render national minimum wage CUI page" in {
+      val result = controller.nationalMinimumWage(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+      status(result) mustBe OK
+      doc.select("h1").text() mustBe "National Minimum Wage: chat"
     }
 
     "render national insurance CUI page is displayed if shutter flag is true" in {
