@@ -98,8 +98,12 @@ class CiapiController @Inject()(appConfig: AppConfig,
   }
 
   def nationalMinimumWage : Action[AnyContent] = Action.async { implicit request =>
-    auditHelper.audit(DAv3AuditModel("nationalMinimumWage"))
-    Future.successful(Ok(nationalMinimumWageCUIView()))
+    if (config.showNMWCUI) {
+      auditHelper.audit(DAv3AuditModel("nationalMinimumWage"))
+      Future.successful(Ok(nationalMinimumWageCUIView()))
+    } else {
+      Future.successful(NotFound)
+    }
   }
 
   def debtManagement: Action[AnyContent] = Action.async { implicit request =>
