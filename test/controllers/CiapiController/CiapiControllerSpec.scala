@@ -17,7 +17,6 @@
 package controllers.CiapiController
 
 import config.AppConfig
-import controllers.CiapiController.{routes => ciapiRoutes}
 import mocks.MockAuditService
 import models.DAv3AuditModel
 import org.jsoup.Jsoup
@@ -48,6 +47,7 @@ class CiapiControllerSpec
     app.injector.instanceOf[EmployerEnquiriesCUIView],
     app.injector.instanceOf[TradeTariffCUIView],
     app.injector.instanceOf[NationalMinimumWageCUIView],
+    app.injector.instanceOf[PAYECUIView],
     app.injector.instanceOf[DebtManagementCUIView],
     app.injector.instanceOf[NationalInsuranceCUIView])
 
@@ -156,6 +156,28 @@ class CiapiControllerSpec
 
       running(application) {
         val request = FakeRequest(GET, routes.CiapiController.nationalMinimumWage.url)
+        val result = route(application, request).get
+        status(result) mustBe NOT_FOUND
+      }
+    }
+
+    "render PAYE CUI page if shutter flag is true" in {
+      val application = builder.configure("features.showPAYECUI" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.paye.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "PAYE: chat"
+      }
+    }
+
+    "render not found if PAYE CUI page shutter flag is false" in {
+      val application = builder.configure("features.showPAYECUI" -> "false").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.paye.url)
         val result = route(application, request).get
         status(result) mustBe NOT_FOUND
       }
