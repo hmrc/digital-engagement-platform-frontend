@@ -37,6 +37,8 @@ class AppConfig @Inject()(config: Configuration) {
   val showDMCUI: Boolean = config.getOptional[Boolean]("features.showDMCUI").getOrElse(false)
   val showNICUI: Boolean = config.getOptional[Boolean]("features.showNICUI").getOrElse(false)
   val showIVRWebchatSA: Boolean = config.getOptional[Boolean]("features.showIVRWebchatSA").getOrElse(false)
+  val showNMWCUI : Boolean = config.getOptional[Boolean]("features.showNMWCUI").getOrElse(false)
+  val testSwitch: Boolean = config.getOptional[Boolean]("features.test").getOrElse(false)
 
   val monitoringFeature: Boolean = config.getOptional[Boolean]("features.monitoring.all").getOrElse(false)
   val nuanceStatusFeature: Boolean = config.getOptional[Boolean]("features.monitoring.nuanceStatus").getOrElse(false)
@@ -78,6 +80,11 @@ class AppConfig @Inject()(config: Configuration) {
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/ir35-enquiries"
   val contactHMRC: String = "https://www.gov.uk/contact-hmrc"
   val securityMessageLink: String = "https://www.gov.uk/report-tax-fraud"
+
+	private val frontendHost: String = config.get[String]("digital-engagement-frontend.host")
+	private val frontendPath: String = config.get[String]("digital-engagement-frontend.path")
+
+	val featureSwitchUrl: String = s"$frontendHost$frontendPath/feature-switches"
 
   private def accessibilityHost = config.get[String]("accessibility-statement-frontend.host")
 

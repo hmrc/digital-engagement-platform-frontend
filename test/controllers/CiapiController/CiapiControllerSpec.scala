@@ -47,6 +47,7 @@ class CiapiControllerSpec
     app.injector.instanceOf[OnlineServicesHelpdeskCUIView],
     app.injector.instanceOf[EmployerEnquiriesCUIView],
     app.injector.instanceOf[TradeTariffCUIView],
+    app.injector.instanceOf[NationalMinimumWageCUIView],
     app.injector.instanceOf[DebtManagementCUIView],
     app.injector.instanceOf[NationalInsuranceCUIView])
 
@@ -138,6 +139,28 @@ class CiapiControllerSpec
       doc.select("h1").text() mustBe "Payment Problems: chat"
     }
 
+    "render national minimum wage CUI page if shutter flag is true" in {
+      val application = builder.configure("features.showNMWCUI" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.nationalMinimumWage.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "National Minimum Wage: chat"
+      }
+    }
+
+    "render not found if national minimum wage CUI page shutter flag is false" in {
+      val application = builder.configure("features.showNMWCUI" -> "false").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.nationalMinimumWage.url)
+        val result = route(application, request).get
+        status(result) mustBe NOT_FOUND
+      }
+    }
+
     "render national insurance CUI page is displayed if shutter flag is true" in {
       val application = builder.configure("features.showNICUI" -> "true").build()
 
@@ -150,7 +173,7 @@ class CiapiControllerSpec
       }
     }
 
-    "render national insurance CUI page is not displayed if shutter flag is false. 404 page recieved" in {
+    "render national insurance CUI page is not displayed if shutter flag is false. 404 page received" in {
       val application = builder.configure("features.showNICUI" -> "false").build()
 
       running(application) {
