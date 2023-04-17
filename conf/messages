@@ -117,6 +117,9 @@ cui.national.insurance.title=National Insurance: chat
 #National Minimum Wage Enquiries
 cui.national.minimum.wage.enquiries.title=National Minimum Wage: chat
 
+#PAYE
+cui.paye.title=PAYE: chat
+
 #IVR SA
 ivr.self.assessment.title=Self Assessment: live chat
 ivr.self.assessment.security.p1=HMRC will never send unsolicited text messages containing links to webpages.
