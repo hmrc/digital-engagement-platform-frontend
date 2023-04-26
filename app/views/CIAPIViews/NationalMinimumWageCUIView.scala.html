@@ -17,12 +17,13 @@
 @import config.AppConfig
 @import templates.MainTemplateCUI
 @import views.html.helper.CSPNonce
+@import includes.nmwSidebar
 
 @this(main_template: MainTemplateCUI, appConfig: AppConfig)
 
 @()(implicit request: Request[_], messages: play.api.i18n.Messages)
 
-@main_template(title = messages("cui.national.minimum.wage.enquiries.title")) {
+@main_template(title = messages("cui.national.minimum.wage.enquiries.title"),sidebar = Some(nmwSidebar())) {
 <div class="cui-wrapper">
   <div id="cui-messaging-container">
     <div id="nuanMessagingFrame">
