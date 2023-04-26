@@ -28,8 +28,6 @@ class nmwSidebarSpec extends ViewSpecBase with Matchers with AnyWordSpecLike {
 
   private def createView: () => HtmlFormat.Appendable = () => viewWithTemplate()(fakeRequest, messages)
 
-  val gangmastersUrl: String = "https://www.gla.gov.uk/"
-
   "confirm the correct link to the Gangmasters & Labour Abuse Authority homepage" in {
     val doc = asDocument(createView())
     val element = doc.getElementsByAttributeValue("href", "https://www.gla.gov.uk/")
