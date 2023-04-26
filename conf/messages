@@ -126,3 +126,66 @@ ivr.self.assessment.security.p1=HMRC will never send unsolicited text messages c
 ivr.self.assessment.security.p2=We will only send a link to webchat after you have requested it.
 ivr.self.assessment.security.p3=If you think you have received a suspicious message, you can
 ivr.self.assessment.security.link= report it online (opens in a new tab).
+
+#Digital Assistant List Page
+digital.assistant.list.page.title=HMRC Digital Assistant
+
+digital.assistant.list.showIVRWebchatSA.title = Self Assessment
+digital.assistant.list.showIVRWebchatSA.url = https://www.tax.service.gov.uk/ask-hmrc/chat/national-insurance
+digital.assistant.list.showIVRWebchatSA.description = Chat about registering, filing returns and payments
+
+digital.assistant.list.showNMWCUI.title = National Minimum Wage
+digital.assistant.list.showNMWCUI.url = https://www.tax.service.gov.uk/ask-hmrc/chat/national-minimum-wage
+digital.assistant.list.showNMWCUI.description = Chat about entitlement and what you can do if you’re not being paid enough
+
+digital.assistant.list.showCHBCUI.title = Child Benefit
+digital.assistant.list.showCHBCUI.url = https://www.tax.service.gov.uk/ask-hmrc/chat/child-benefit
+digital.assistant.list.showCHBCUI.description = Chat about eligibility, claiming or stopping Child Benefit
+
+digital.assistant.list.showCISCUI.title = Construction Industry Scheme (CIS)
+digital.assistant.list.showCISCUI.url = https://www.tax.service.gov.uk/ask-hmrc/chat/construction-industry-scheme
+digital.assistant.list.showCISCUI.description = Chat about registering and using CIS
+
+digital.assistant.list.showCTCUI.title = Corporation Tax
+digital.assistant.list.showCTCUI.url = https://www.tax.service.gov.uk/ask-hmrc/chat/corporation-tax
+digital.assistant.list.showCTCUI.description = Chat about registering, filing returns and payments
+
+digital.assistant.list.showCITCUI.title = Customs and International Trade
+digital.assistant.list.showCITCUI.url = https://www.tax.service.gov.uk/ask-hmrc/chat/customs-and-international-trade
+digital.assistant.list.showCITCUI.description = Chat about import and export duty
+
+digital.assistant.list.showDMCUI.title = Debt Management
+digital.assistant.list.showDMCUI.url = https://www.tax.service.gov.uk/ask-hmrc/chat/payment-problems
+digital.assistant.list.showDMCUI.description = Chat about payment plans or reallocating payment
+
+digital.assistant.list.showEHLCUI.title = Employers
+digital.assistant.list.showEHLCUI.url = https://www.tax.service.gov.uk/ask-hmrc/chat/employer-enquiries
+digital.assistant.list.showEHLCUI.description = Chat about running payroll and employee benefits
+
+digital.assistant.list.showNICUI.title = National Insurance (NI)
+digital.assistant.list.showNICUI.url = https://www.tax.service.gov.uk/ask-hmrc/chat/national-insurance
+digital.assistant.list.showNICUI.description = Chat about your NI record or contributions
+
+digital.assistant.list.showOSHCUI.title = Online Services
+digital.assistant.list.showOSHCUI.url = https://www.tax.service.gov.uk/ask-hmrc/chat/online-services-helpdesk
+digital.assistant.list.showOSHCUI.description = Chat about technical issues with HMRC accounts
+
+digital.assistant.list.showSACUI.title = Self Assessment
+digital.assistant.list.showSACUI.url = https://www.tax.service.gov.uk/ask-hmrc/chat/self-assessment
+digital.assistant.list.showSACUI.description = Chat about registering, filing returns and payments
+
+digital.assistant.list.showTTCUI.title = Tariff Classification
+digital.assistant.list.showTTCUI.url = https://www.tax.service.gov.uk/ask-hmrc/chat/trade-tariff
+digital.assistant.list.showTTCUI.description = Chat about goods you want to import and export
+
+digital.assistant.list.showPAYECUI.title = Pay As You Earn (PAYE)
+digital.assistant.list.showPAYECUI.url = https://www.tax.service.gov.uk/ask-hmrc/chat/paye
+digital.assistant.list.showPAYECUI.description = Chat about tax on your income and tax codes
+
+digital.assistant.list.showTCCUI.title = Tax Credits
+digital.assistant.list.showTCCUI.url =  https://www.tax.service.gov.uk/ask-hmrc/chat/ask-hmrc-online
+digital.assistant.list.showTCCUI.description = Chat about payments, renewals and overpayments
+
+digital.assistant.list.showVATCUI.title = Valued Added Tax (VAT)
+digital.assistant.list.showVATCUI.url = https://www.tax.service.gov.uk/ask-hmrc/chat/ask-hmrc-online
+digital.assistant.list.showVATCUI.description = Chat about registering, filing returns and making payments

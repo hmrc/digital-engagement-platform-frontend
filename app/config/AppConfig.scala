@@ -18,6 +18,7 @@ package config
 
 import play.api.Configuration
 
+import scala.jdk.CollectionConverters._
 import java.net.URLEncoder
 import javax.inject.{Inject, Singleton}
 
@@ -34,12 +35,22 @@ class AppConfig @Inject()(config: Configuration) {
 
   // Feature Toggles
   val shutter: Boolean = config.getOptional[Boolean]("features.shutter").getOrElse(false)
-  val showDMCUI: Boolean = config.getOptional[Boolean]("features.showDMCUI").getOrElse(false)
-  val showNICUI: Boolean = config.getOptional[Boolean]("features.showNICUI").getOrElse(false)
-  val showIVRWebchatSA: Boolean = config.getOptional[Boolean]("features.showIVRWebchatSA").getOrElse(false)
-  val showNMWCUI : Boolean = config.getOptional[Boolean]("features.showNMWCUI").getOrElse(false)
-  val showPAYECUI : Boolean = config.getOptional[Boolean]("features.showPAYECUI").getOrElse(false)
+  val showDMCUI: Boolean = config.getOptional[Boolean]("features.digitalAssistants.showDMCUI").getOrElse(false)
+  val showNICUI: Boolean = config.getOptional[Boolean]("features.digitalAssistants.showNICUI").getOrElse(false)
+  val showIVRWebchatSA: Boolean = config.getOptional[Boolean]("features.digitalAssistants.showIVRWebchatSA").getOrElse(false)
+  val showNMWCUI: Boolean = config.getOptional[Boolean]("features.digitalAssistants.showNMWCUI").getOrElse(false)
+  val showPAYECUI : Boolean = config.getOptional[Boolean]("features.digitalAssistants.showPAYECUI").getOrElse(false)
   val testSwitch: Boolean = config.getOptional[Boolean]("features.test").getOrElse(false)
+
+  def digitalAssistantIsLive: String => Boolean =
+    (digitalAssistantsKey: String) => config.getOptional[Boolean](s"features.digitalAssistants.$digitalAssistantsKey").getOrElse(false)
+
+  val liveDigitalAssistants: Set[String] =
+    config.underlying.getConfig("features.digitalAssistants").entrySet().asScala.collect {
+      case digitalAssistant if digitalAssistantIsLive(digitalAssistant.getKey) => digitalAssistant.getKey
+    }.toSet
+
+  val showDigitalAssistantListPage: Boolean = config.getOptional[Boolean]("features.showDigitalAssistantListPage").getOrElse(false)
 
   val monitoringFeature: Boolean = config.getOptional[Boolean]("features.monitoring.all").getOrElse(false)
   val nuanceStatusFeature: Boolean = config.getOptional[Boolean]("features.monitoring.nuanceStatus").getOrElse(false)
@@ -82,10 +93,10 @@ class AppConfig @Inject()(config: Configuration) {
   val contactHMRC: String = "https://www.gov.uk/contact-hmrc"
   val securityMessageLink: String = "https://www.gov.uk/report-tax-fraud"
 
-	private val frontendHost: String = config.get[String]("digital-engagement-frontend.host")
-	private val frontendPath: String = config.get[String]("digital-engagement-frontend.path")
+  private val frontendHost: String = config.get[String]("digital-engagement-frontend.host")
+  private val frontendPath: String = config.get[String]("digital-engagement-frontend.path")
 
-	val featureSwitchUrl: String = s"$frontendHost$frontendPath/feature-switches"
+  val featureSwitchUrl: String = s"$frontendHost$frontendPath/feature-switches"
 
   private def accessibilityHost = config.get[String]("accessibility-statement-frontend.host")
 

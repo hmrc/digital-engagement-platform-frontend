@@ -1,0 +1,56 @@
+@*
+ * Copyright 2023 HM Revenue & Customs
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *@
+
+@import config.AppConfig
+@import templates.MainTemplateCUI
+@import views.html.helper.CSPNonce
+
+@this(main_template: MainTemplateCUI, appConfig: AppConfig)
+
+@()(implicit request: Request[_], messages: play.api.i18n.Messages)
+
+@main_template(title = messages("digital.assistant.list.page.title")) {
+  <div>
+    <div>
+      <p class="govuk-body">Start a conversation with the HMRC Digital Assistant. If you have questions about UK tax, National Insurance, customs duty or managing benefits, we can help.</p>
+      <h2 class="govuk-heading-m">Offering guidance</h2>
+      <p class="govuk-body">The HMRC Digital Assistant offers guidance to enable you to quickly:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>find general information about our services</li>
+        <li>access your accounts and self-serve</li>
+        <li>complete transactions with HMRC</li>
+      </ul>
+      <p class="govuk-body">Don’t include personal information. If the digital assistant cannot help you, ask to transfer to an HMRC adviser if they’re available.</p>
+      <h2 class="govuk-heading-m">Choose your service</h2>
+      <p class="govuk-body">We provide a digital assistant for:</p>
+    </div>
+    <div class="cui-wrapper">
+      <div id="content-container">
+        <div class="finder-results js-finder-results">
+          <ul class="govuk-list">
+            @for(digitalAssistant <- appConfig.liveDigitalAssistants) {
+              <li class="gem-c-document-list__item">
+                <a class="gem-c-document-list__item-title" href="@messages(s"digital.assistant.list.${digitalAssistant}.url")">@messages(s"digital.assistant.list.${digitalAssistant}.title")</a>
+                <div class="gem-c-document-list__item-description">@messages(s"digital.assistant.list.${digitalAssistant}.description")</div>
+              </li>
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+}
+
