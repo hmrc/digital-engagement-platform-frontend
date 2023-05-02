@@ -31,8 +31,6 @@ class DigitalAssistantListController @Inject()(appConfig: AppConfig,
                                                mcc: MessagesControllerComponents,
                                                digitalAssistantListView: DigitalAssistantListView) extends FrontendController(mcc) {
 
-  implicit val config: AppConfig = appConfig
-
   def digitalAssistantList: Action[AnyContent] = Action.async { implicit request =>
     if (appConfig.showDigitalAssistantListPage) {
       Future.successful(Ok(digitalAssistantListView()))
