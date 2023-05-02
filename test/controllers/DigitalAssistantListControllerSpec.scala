@@ -17,14 +17,11 @@
 package controllers
 
 import config.AppConfig
-import controllers.DigitalAssistantListController
 import mocks.MockAuditService
-import models.DAv3AuditModel
-import org.jsoup.Jsoup
-import org.jsoup.nodes.Document
 import org.scalatest.matchers.must.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike
 import play.api.mvc.MessagesControllerComponents
+import play.api.test.FakeRequest
 import play.api.test.Helpers._
 import views.html.pageList.DigitalAssistantListView
 import views.html.pages.helpers.AppBuilderSpecBase
@@ -37,13 +34,20 @@ class DigitalAssistantListControllerSpec
     app.injector.instanceOf[MessagesControllerComponents],
     app.injector.instanceOf[DigitalAssistantListView])
 
-  def asDocument(html: String): Document = Jsoup.parse(html)
-
   "DigitalAssistantListController Test Controller" should {
     "render the digital assistant list page" in {
       val result = controller.digitalAssistantList(fakeRequest)
       status(result) mustBe OK
     }
 
+    "return not found when showDigitalAssistantListPage flag is set to false" in {
+      val application = builder.configure("features.showDigitalAssistantListPage" -> "false").build()
+      running(application) {
+        val request = FakeRequest(GET, routes.DigitalAssistantListController.digitalAssistantList.url)
+        val result = route(application, request).get
+        status(result) mustBe NOT_FOUND
+      }
+    }
   }
+
 }
