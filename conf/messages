@@ -134,10 +134,6 @@ ivr.self.assessment.security.link= report it online (opens in a new tab).
 #Digital Assistant List Page
 digital.assistant.list.page.title=HMRC Digital Assistant
 
-digital.assistant.list.showIVRWebchatSA.title = Self Assessment
-digital.assistant.list.showIVRWebchatSA.url = https://www.tax.service.gov.uk/ask-hmrc/chat/national-insurance
-digital.assistant.list.showIVRWebchatSA.description = Chat about registering, filing returns and payments
-
 digital.assistant.list.showNMWCUI.title = National Minimum Wage
 digital.assistant.list.showNMWCUI.url = https://www.tax.service.gov.uk/ask-hmrc/chat/national-minimum-wage
 digital.assistant.list.showNMWCUI.description = Chat about entitlement and what you can do if you’re not being paid enough
@@ -191,5 +187,5 @@ digital.assistant.list.showTCCUI.url =  https://www.tax.service.gov.uk/ask-hmrc/
 digital.assistant.list.showTCCUI.description = Chat about payments, renewals and overpayments
 
 digital.assistant.list.showVATCUI.title = Valued Added Tax (VAT)
-digital.assistant.list.showVATCUI.url = https://www.tax.service.gov.uk/ask-hmrc/chat/ask-hmrc-online
+digital.assistant.list.showVATCUI.url = https://www.tax.service.gov.uk/ask-hmrc/chat/vat-online
 digital.assistant.list.showVATCUI.description = Chat about registering, filing returns and making payments
