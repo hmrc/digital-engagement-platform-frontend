@@ -45,10 +45,12 @@ class AppConfig @Inject()(config: Configuration) {
   def digitalAssistantIsLive: String => Boolean =
     (digitalAssistantsKey: String) => config.getOptional[Boolean](s"features.digitalAssistants.$digitalAssistantsKey").getOrElse(false)
 
-  val liveDigitalAssistants: Set[String] =
+  val liveDigitalAssistants =
     config.underlying.getConfig("features.digitalAssistants").entrySet().asScala.collect {
-      case digitalAssistant if digitalAssistantIsLive(digitalAssistant.getKey) => digitalAssistant.getKey
-    }.toSet
+      case digitalAssistant if digitalAssistantIsLive(digitalAssistant.getKey) && digitalAssistant.getKey != "showIVRWebchatSA"  =>
+        digitalAssistant.getKey
+    }.toList.sorted
+
 
   val showDigitalAssistantListPage: Boolean = config.getOptional[Boolean]("features.showDigitalAssistantListPage").getOrElse(false)
 
