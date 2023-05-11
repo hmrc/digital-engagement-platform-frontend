@@ -45,7 +45,7 @@ class AppConfig @Inject()(config: Configuration) {
   def digitalAssistantIsLive: String => Boolean =
     (digitalAssistantsKey: String) => config.getOptional[Boolean](s"features.digitalAssistants.$digitalAssistantsKey").getOrElse(false)
 
-  val liveDigitalAssistants =
+  val liveDigitalAssistants: List[String] =
     config.underlying.getConfig("features.digitalAssistants").entrySet().asScala.collect {
       case digitalAssistant if digitalAssistantIsLive(digitalAssistant.getKey) && digitalAssistant.getKey != "showIVRWebchatSA"  =>
         digitalAssistant.getKey
