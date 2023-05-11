@@ -40,6 +40,11 @@
     padding-top: 10px;
 }
 
+.gem-c-document-list__item-description {
+    color: #0b0c0c;
+    margin: 9px 0 20px 0;
+}
+
 #cui-subsection-title {
     margin-top: 0;
     margin-bottom:20px;
@@ -83,6 +88,42 @@
     height: calc(max(600px, 37rem));
 }
 
+#content-container {
+    width: 100%
+}
+
 .form-group-error {
   padding-left: 15px;
+}
+
+.gem-c-document-list__item {
+    margin-bottom: 25px;
+    padding-top: 10px;
+    border-top: 1px solid #b1b4b6;
+    list-style: none;
+}
+
+.gem-c-document-list__item-title {
+    font-family: "GDS Transport",arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 700;
+    font-size: 16px;
+    font-size: 1.1875rem;
+    line-height: 1.25;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.gem-c-document-list__item-title:link {
+    color: #1d70b8;
+}
+
+.gem-c-document-list__item-title:visited {
+    color: #4c2c92;
+}
+
+.finder-results {
+    list-style-type: none;
+    padding-left: 0;
 }

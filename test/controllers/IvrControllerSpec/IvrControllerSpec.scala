@@ -34,7 +34,7 @@ class IvrControllerSpec
   "IVR URLs" must {
 
     "Self Assessment page is displayed if shutter flag is true" in {
-      val application = builder.configure("features.showIVRWebchatSA" -> "true").build()
+      val application = builder.configure("features.digitalAssistants.showIVRWebchatSA" -> "true").build()
 
       running(application) {
         val request = FakeRequest(GET, routes.IvrController.selfAssessment.url)
@@ -46,7 +46,7 @@ class IvrControllerSpec
     }
 
     "Self Assessment page is not displayed if shutter flag is false. Shutter page is displayed instead" in {
-      val application = builder.configure("features.showIVRWebchatSA" -> "false").build()
+      val application = builder.configure("features.digitalAssistants.showIVRWebchatSA" -> "false").build()
 
       running(application) {
         val request = FakeRequest(GET, routes.IvrController.selfAssessment.url)

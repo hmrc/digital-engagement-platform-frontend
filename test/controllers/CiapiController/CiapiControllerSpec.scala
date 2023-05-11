@@ -140,7 +140,7 @@ class CiapiControllerSpec
     }
 
     "render national minimum wage CUI page if shutter flag is true" in {
-      val application = builder.configure("features.showNMWCUI" -> "true").build()
+      val application = builder.configure("features.digitalAssistants.showNMWCUI" -> "true").build()
 
       running(application) {
         val request = FakeRequest(GET, routes.CiapiController.nationalMinimumWage.url)
@@ -152,7 +152,7 @@ class CiapiControllerSpec
     }
 
     "render not found if national minimum wage CUI page shutter flag is false" in {
-      val application = builder.configure("features.showNMWCUI" -> "false").build()
+      val application = builder.configure("features.digitalAssistants.showNMWCUI" -> "false").build()
 
       running(application) {
         val request = FakeRequest(GET, routes.CiapiController.nationalMinimumWage.url)
@@ -162,7 +162,7 @@ class CiapiControllerSpec
     }
 
     "render PAYE CUI page if shutter flag is true" in {
-      val application = builder.configure("features.showPAYECUI" -> "true").build()
+      val application = builder.configure("features.digitalAssistants.showPAYECUI" -> "true").build()
 
       running(application) {
         val request = FakeRequest(GET, routes.CiapiController.paye.url)
@@ -174,7 +174,7 @@ class CiapiControllerSpec
     }
 
     "render not found if PAYE CUI page shutter flag is false" in {
-      val application = builder.configure("features.showPAYECUI" -> "false").build()
+      val application = builder.configure("features.digitalAssistants.showPAYECUI" -> "false").build()
 
       running(application) {
         val request = FakeRequest(GET, routes.CiapiController.paye.url)
@@ -184,7 +184,7 @@ class CiapiControllerSpec
     }
 
     "render national insurance CUI page is displayed if shutter flag is true" in {
-      val application = builder.configure("features.showNICUI" -> "true").build()
+      val application = builder.configure("features.digitalAssistants.showNICUI" -> "true").build()
 
       running(application) {
         val request = FakeRequest(GET, routes.CiapiController.nationalInsurance.url)
@@ -196,7 +196,7 @@ class CiapiControllerSpec
     }
 
     "render national insurance CUI page is not displayed if shutter flag is false. 404 page received" in {
-      val application = builder.configure("features.showNICUI" -> "false").build()
+      val application = builder.configure("features.digitalAssistants.showNICUI" -> "false").build()
 
       running(application) {
         val request = FakeRequest(GET, routes.CiapiController.nationalInsurance.url)
