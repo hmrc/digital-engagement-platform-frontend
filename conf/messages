@@ -99,8 +99,8 @@ cui.child.benefit.title=Child Benefit: chat
 #Tax Credits
 ciapi.tax.credits.page.title=Ask HMRC online
 
-#Customs and International Trade
-ciapi.customs.international.trade.title=Customs and international trade: chat
+#Import, export and customs
+ciapi.import.export.customs.title=Import, export and customs: chat
 
 #VAT Online
 ciapi.vat.online.title=VAT Online: chat
@@ -132,7 +132,7 @@ ivr.self.assessment.security.p3=If you think you have received a suspicious mess
 ivr.self.assessment.security.link= report it online (opens in a new tab).
 
 #Digital Assistant List Page
-digital.assistant.list.page.title=HMRC Digital Assistant
+digital.assistant.list.page.title=Ask HMRC Online
 
 digital.assistant.list.showNMWCUI.title = National Minimum Wage
 digital.assistant.list.showNMWCUI.url = https://www.tax.service.gov.uk/ask-hmrc/chat/national-minimum-wage
@@ -150,8 +150,8 @@ digital.assistant.list.showCTCUI.title = Corporation Tax
 digital.assistant.list.showCTCUI.url = https://www.tax.service.gov.uk/ask-hmrc/chat/corporation-tax
 digital.assistant.list.showCTCUI.description = Chat about registering, filing returns and payments
 
-digital.assistant.list.showCITCUI.title = Customs and International Trade
-digital.assistant.list.showCITCUI.url = https://www.tax.service.gov.uk/ask-hmrc/chat/customs-and-international-trade
+digital.assistant.list.showCITCUI.title = Import, export and customs
+digital.assistant.list.showCITCUI.url = https://www.tax.service.gov.uk/ask-hmrc/chat/import-export-and-customs
 digital.assistant.list.showCITCUI.description = Chat about import and export duty
 
 digital.assistant.list.showDMCUI.title = Debt Management

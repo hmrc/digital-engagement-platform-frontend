@@ -17,7 +17,7 @@ GET         /webchat/payment-problems                                       cont
 GET         /accessibility-statement                                        controllers.AccessibilityStatementController.accessibility(userAction: Option[String])
 
 GET         /chat/ask-hmrc-online                                           controllers.CiapiController.CiapiController.askHmrcOnline
-GET         /chat/customs-and-international-trade                           controllers.CiapiController.CiapiController.customsInternationalTrade
+GET         /chat/import-export-and-customs                                 controllers.CiapiController.CiapiController.importExportCustoms
 GET			/chat/vat-online									            controllers.CiapiController.CiapiController.vatOnline
 GET         /chat/corporation-tax                                           controllers.CiapiController.CiapiController.corporationTax
 GET         /chat/child-benefit                                             controllers.CiapiController.CiapiController.childBenefit

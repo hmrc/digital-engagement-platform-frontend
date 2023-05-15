@@ -32,7 +32,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
                                 mcc: MessagesControllerComponents,
                                 auditHelper: AuditHelper,
                                 taxCreditsCUIView: TaxCreditsCUIView,
-                                customsInternationalTradeCUIView: CustomsInternationalTradeCUIView,
+                                importExportCustomsCUIView: ImportExportCustomsCUIView,
                                 vatOnlineCuiView: VatOnlineCuiView,
                                 corporationTaxCuiView: CorporationTaxCuiView,
                                 childBenefitCUIView: ChildBenefitCUIView,
@@ -58,9 +58,9 @@ class CiapiController @Inject()(appConfig: AppConfig,
     Future.successful(Ok(tradeTariffCUIView()))
   }
 
-  def customsInternationalTrade : Action[AnyContent] = Action.async { implicit request =>
-      auditHelper.audit(DAv3AuditModel("customsInternationalTrade"))
-      Future.successful(Ok(customsInternationalTradeCUIView()))
+  def importExportCustoms : Action[AnyContent] = Action.async { implicit request =>
+      auditHelper.audit(DAv3AuditModel("importExportCustoms"))
+      Future.successful(Ok(importExportCustomsCUIView()))
   }
 
   def vatOnline: Action[AnyContent] = Action.async { implicit request =>

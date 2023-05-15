@@ -37,7 +37,7 @@ class CiapiControllerSpec
     app.injector.instanceOf[MessagesControllerComponents],
     mockAuditingService,
     app.injector.instanceOf[TaxCreditsCUIView],
-    app.injector.instanceOf[CustomsInternationalTradeCUIView],
+    app.injector.instanceOf[ImportExportCustomsCUIView],
     app.injector.instanceOf[VatOnlineCuiView],
     app.injector.instanceOf[CorporationTaxCuiView],
     app.injector.instanceOf[ChildBenefitCUIView],
