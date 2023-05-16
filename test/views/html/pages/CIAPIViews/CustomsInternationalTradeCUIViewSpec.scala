@@ -19,22 +19,22 @@ package views.html.pages.CIAPIViews
 import org.scalatest.matchers.must.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike
 import play.twirl.api.HtmlFormat
-import views.html.CIAPIViews.ImportExportCustomsCUIView
+import views.html.CIAPIViews.CustomsInternationalTradeCUIView
 import views.html.pages.helpers.ChatViewBehaviours
 
-class ImportExportCustomsCUIViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike{
+class CustomsInternationalTradeCUIViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike{
 
-  private val view = app.injector.instanceOf[ImportExportCustomsCUIView]
+  private val view = app.injector.instanceOf[CustomsInternationalTradeCUIView]
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "Import, export and customs View" must {
+  "Customs and International Trade View" must {
     "rendered" must {
       behave like normalCuiPage(
       createView,
         "Ask HMRC",
-        "Import, export and customs: chat - Ask HMRC - GOV.UK",
-        "Import, export and customs: chat"
+        "Customs and international trade: chat - Ask HMRC - GOV.UK",
+        "Customs and international trade: chat"
       )
     }
   }

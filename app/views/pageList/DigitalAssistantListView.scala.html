@@ -41,7 +41,7 @@
       <div id="content-container">
         <div class="finder-results js-finder-results">
           <ul class="govuk-list">
-            @for(digitalAssistant <- appConfig.liveDigitalAssistants) {
+            @for(digitalAssistant <- appConfig.liveDigitalAssistants(messages)) {
               <li class="gem-c-document-list__item">
                 <a class="gem-c-document-list__item-title" href="@messages(s"digital.assistant.list.${digitalAssistant}.url")">@messages(s"digital.assistant.list.${digitalAssistant}.title")</a>
                 <div class="gem-c-document-list__item-description">@messages(s"digital.assistant.list.${digitalAssistant}.description")</div>
