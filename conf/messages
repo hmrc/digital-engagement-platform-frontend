@@ -117,6 +117,9 @@ cui.national.insurance.title=National Insurance: chat
 #National Minimum Wage Enquiries
 cui.national.minimum.wage.enquiries.title=National Minimum Wage: chat
 
+#Inheritance tax
+cui.inheritance.tax.title=Inheritance Tax: chat
+
 cui.national.minimum.wage.enquiries.sidebar.p1=Gangmasters & Labour Abuse Authority
 cui.national.minimum.wage.enquiries.sidebar.p2=Employment Agency Standards
 cui.national.minimum.wage.enquiries.sidebar.p3=Health & Safety Executive

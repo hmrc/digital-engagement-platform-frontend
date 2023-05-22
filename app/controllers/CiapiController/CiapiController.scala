@@ -44,7 +44,8 @@ class CiapiController @Inject()(appConfig: AppConfig,
                                 nationalMinimumWageCUIView: NationalMinimumWageCUIView,
                                 payeCUIView: PAYECUIView,
                                 debtManagementCUIView: DebtManagementCUIView,
-                                nationalInsuranceCUIView: NationalInsuranceCUIView) extends FrontendController(mcc) {
+                                nationalInsuranceCUIView: NationalInsuranceCUIView,
+                                inheritanceTaxCUIView: InheritanceTaxCUIView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
@@ -127,6 +128,14 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def nationalInsurance: Action[AnyContent] = Action.async { implicit request =>
     if (config.showNICUI) {
       Future.successful(Ok(nationalInsuranceCUIView()))
+    } else {
+      Future.successful(NotFound)
+    }
+  }
+
+  def inheritanceTax: Action[AnyContent] = Action.async { implicit request =>
+    if (config.showIHTCUI) {
+      Future.successful(Ok(inheritanceTaxCUIView()))
     } else {
       Future.successful(NotFound)
     }
