@@ -30,6 +30,7 @@ GET         /chat/payment-problems                                          cont
 GET         /chat/national-insurance                                        controllers.CiapiController.CiapiController.nationalInsurance
 GET         /chat/national-minimum-wage                                     controllers.CiapiController.CiapiController.nationalMinimumWage
 GET         /chat/paye                                                      controllers.CiapiController.CiapiController.paye
+GET         /chat/inheritance-tax                                           controllers.CiapiController.CiapiController.inheritanceTax
 
 GET         /feature-switches/:switchName                                   controllers.FeatureSwitchController.getFeatureSwitch(switchName: String)
 
