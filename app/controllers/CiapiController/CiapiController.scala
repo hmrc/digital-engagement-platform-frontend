@@ -24,8 +24,8 @@ import views.html.CIAPIViews._
 import javax.inject.{Inject, Singleton}
 import models.DAv3AuditModel
 
-import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
+import scala.concurrent.ExecutionContext
 
 @Singleton
 class CiapiController @Inject()(appConfig: AppConfig,
@@ -45,7 +45,8 @@ class CiapiController @Inject()(appConfig: AppConfig,
                                 payeCUIView: PAYECUIView,
                                 debtManagementCUIView: DebtManagementCUIView,
                                 nationalInsuranceCUIView: NationalInsuranceCUIView,
-                                inheritanceTaxCUIView: InheritanceTaxCUIView) extends FrontendController(mcc) {
+                                inheritanceTaxCUIView: InheritanceTaxCUIView)(implicit ec: ExecutionContext)
+  extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
