@@ -27,7 +27,7 @@
     <div>
       <p class="govuk-body">Start a conversation with the HMRC Digital Assistant. If you have questions about UK tax, National Insurance, customs duty or managing benefits, we can help.</p>
       <h2 class="govuk-heading-m">Offering guidance</h2>
-      <p class="govuk-body">The HMRC Digital Assistant offers guidance to enable you to quickly:</p>
+      <p class="govuk-body">Ask HMRC online offers guidance to enable you to quickly:</p>
       <ul class="govuk-list govuk-list--bullet">
         <li>find general information about our services</li>
         <li>access your accounts and self-serve</li>
@@ -41,7 +41,7 @@
       <div id="content-container">
         <div class="finder-results js-finder-results">
           <ul class="govuk-list">
-            @for(digitalAssistant <- appConfig.liveDigitalAssistants) {
+            @for(digitalAssistant <- appConfig.liveDigitalAssistants(messages)) {
               <li class="gem-c-document-list__item">
                 <a class="gem-c-document-list__item-title" href="@messages(s"digital.assistant.list.${digitalAssistant}.url")">@messages(s"digital.assistant.list.${digitalAssistant}.title")</a>
                 <div class="gem-c-document-list__item-description">@messages(s"digital.assistant.list.${digitalAssistant}.description")</div>

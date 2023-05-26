@@ -28,9 +28,12 @@ import play.api.test.FakeRequest
 import play.api.test.Helpers._
 import views.html.CIAPIViews._
 import views.html.pages.helpers.AppBuilderSpecBase
+import scala.concurrent.ExecutionContext
 
 class CiapiControllerSpec
   extends AppBuilderSpecBase with Matchers with AnyWordSpecLike with MockAuditService {
+
+  implicit lazy val ec: ExecutionContext = app.injector.instanceOf[ExecutionContext]
 
   lazy val controller = new CiapiController(
     app.injector.instanceOf[AppConfig],

@@ -46,12 +46,13 @@ class AppConfig @Inject()(config: Configuration) {
   def digitalAssistantIsLive: String => Boolean =
     (digitalAssistantsKey: String) => config.getOptional[Boolean](s"features.digitalAssistants.$digitalAssistantsKey").getOrElse(false)
 
-  val liveDigitalAssistants: List[String] =
-    config.underlying.getConfig("features.digitalAssistants").entrySet().asScala.collect {
-      case digitalAssistant if digitalAssistantIsLive(digitalAssistant.getKey) && digitalAssistant.getKey != "showIVRWebchatSA"  =>
-        digitalAssistant.getKey
-    }.toList.sorted
-
+  def liveDigitalAssistants(messages: play.api.i18n.Messages) =
+  config.underlying.getConfig("features.digitalAssistants").entrySet().asScala.collect {
+    case digitalAssistant if digitalAssistantIsLive(digitalAssistant.getKey) && digitalAssistant.getKey != "showIVRWebchatSA" => digitalAssistant.getKey
+  }.toList.sortBy(digitalAssistantKey => {
+    val x = s"digital.assistant.list.$digitalAssistantKey.title"
+    messages.apply(x)
+  })
 
   val showDigitalAssistantListPage: Boolean = config.getOptional[Boolean]("features.showDigitalAssistantListPage").getOrElse(false)
 
