@@ -193,6 +193,6 @@ digital.assistant.list.showVATCUI.title = Valued Added Tax (VAT)
 digital.assistant.list.showVATCUI.url = https://www.tax.service.gov.uk/ask-hmrc/chat/vat-online
 digital.assistant.list.showVATCUI.description = chat about registering, filing returns and making payments
 
-digital.assistant.list.showVATCUI.title = Inheritance Tax and probate
-digital.assistant.list.showVATCUI.url = http://www.tax.service.gov.uk/ask-hmrc/chat/inheritance-tax
-digital.assistant.list.showVATCUI.description = chat about tax affairs when someone dies
+digital.assistant.list.showIHTCUI.title = Inheritance Tax and probate
+digital.assistant.list.showIHTCUI.url = http://www.tax.service.gov.uk/ask-hmrc/chat/inheritance-tax
+digital.assistant.list.showIHTCUI.description = chat about tax affairs when someone dies
