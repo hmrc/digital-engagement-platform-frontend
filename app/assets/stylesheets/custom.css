@@ -127,3 +127,11 @@
     list-style-type: none;
     padding-left: 0;
 }
+
+.govuk-notification-banner {
+    margin-bottom: 0px!important;
+}
+
+.govuk-notification-banner__content>* {
+    max-width: 100%!important;
+}

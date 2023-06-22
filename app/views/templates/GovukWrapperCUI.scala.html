@@ -22,6 +22,8 @@
 @import uk.gov.hmrc.govukfrontend.views.html.components.GovukBackLink
 @import uk.gov.hmrc.govukfrontend.views.html.components.BackLink
 @import uk.gov.hmrc.govukfrontend.views.html.components.Text
+@import uk.gov.hmrc.govukfrontend.views.html.components.GovukNotificationBanner
+@import uk.gov.hmrc.govukfrontend.views.Aliases.NotificationBanner
 @import views.html.helper.CSPNonce
 
 @import views.html.layouts.OurGovukLayout
@@ -29,6 +31,7 @@
 
 @this(
     govukLayout: OurGovukLayout,
+    govukNotificationBanner: GovukNotificationBanner,
     hmrcHead: HmrcHead,
     hmrcStandardHeader: HmrcStandardHeader,
     hmrcReportTechnicalIssueHelper: HmrcReportTechnicalIssueHelper,
@@ -73,6 +76,7 @@
 
 @beforeContentBlock = {
     @govukBackLink(BackLink(href="#", content=Text(messages("global.back"))))
+    @govukNotificationBanner(NotificationBanner(title=Text(messages("notification.banner.title")), content=Text(messages("notification.banner.p"))))
 }
 
 @wrappedContent = {
