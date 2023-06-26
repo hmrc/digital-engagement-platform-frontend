@@ -20,6 +20,10 @@ global.closed.time.sun=Closed Sundays.
 #Beta Banner
 global.banner.phase = BETA
 
+#Notification Banner
+notification.banner.title = Important
+notification.banner.p = Some helplines and online services will be unavailable between 12 p.m. on Friday, June 23, and 9 a.m. on Monday, June 26. There will also be reduced webchat service during this time.
+
 #Service Unavailable Page
 service.unavailable.title = Sorry, this webchat is unavailable
 service.unavailable.p1 = We are hoping to provide this webchat from October 2022.
