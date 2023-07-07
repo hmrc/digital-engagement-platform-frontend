@@ -53,7 +53,8 @@ class CiapiControllerSpec
     app.injector.instanceOf[PAYECUIView],
     app.injector.instanceOf[DebtManagementCUIView],
     app.injector.instanceOf[NationalInsuranceCUIView],
-    app.injector.instanceOf[InheritanceTaxCUIView])
+    app.injector.instanceOf[InheritanceTaxCUIView],
+    app.injector.instanceOf[AntiMoneyLaunderingServicesCUIView])
 
   def asDocument(html: String): Document = Jsoup.parse(html)
 
@@ -226,6 +227,28 @@ class CiapiControllerSpec
 
       running(application) {
         val request = FakeRequest(GET, routes.CiapiController.inheritanceTax.url)
+        val result = route(application, request).get
+        status(result) mustBe NOT_FOUND
+      }
+    }
+
+    "render anti-money laundering services CUI page is displayed if shutter flag is true" in {
+      val application = builder.configure("features.digitalAssistants.showAMLSCUI" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.antiMoneyLaunderingServices.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Anti-money laundering: chat"
+      }
+    }
+
+    "render anti-money laundering services CUI page is not displayed if shutter flag is false. 404 page received" in {
+      val application = builder.configure("features.digitalAssistants.showAMLSCUI" -> "false").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.antiMoneyLaunderingServices.url)
         val result = route(application, request).get
         status(result) mustBe NOT_FOUND
       }
