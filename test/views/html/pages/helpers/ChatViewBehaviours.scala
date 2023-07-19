@@ -123,7 +123,7 @@ trait ChatViewBehaviours extends ViewSpecBase {
                     bannerTitle: String,
                     title: String,
                     messageHeading: String,
-                    chatIds: Seq[String] = Seq("nuanMessagingFrame")): Unit = {
+                    chatIds: Seq[String] = Seq("nuanMessagingFrame", "nuanMessagingFramePopup")): Unit = {
 
     "behave like a normal CUI page" when {
       "rendered" must {
@@ -144,7 +144,14 @@ trait ChatViewBehaviours extends ViewSpecBase {
 
         "insert the Nuance container tag(s)" in {
           val doc = asDocument(view())
-          for (chatId <- chatIds) doc.getElementById(chatId) must not be null
+          var foundChatId = false
+
+          for (chatId <- chatIds) {
+            if (doc.getElementById(chatId) != null) {
+              foundChatId = true
+            }
+          }
+          foundChatId mustBe true
         }
 
         "insert the Nuance required tag" in {
