@@ -45,7 +45,8 @@ class CiapiController @Inject()(appConfig: AppConfig,
                                 payeCUIView: PAYECUIView,
                                 debtManagementCUIView: DebtManagementCUIView,
                                 nationalInsuranceCUIView: NationalInsuranceCUIView,
-                                inheritanceTaxCUIView: InheritanceTaxCUIView)(implicit ec: ExecutionContext)
+                                inheritanceTaxCUIView: InheritanceTaxCUIView,
+                                antiMoneyLaunderingServicesCUIView: AntiMoneyLaunderingServicesCUIView)(implicit ec: ExecutionContext)
   extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
@@ -137,6 +138,14 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def inheritanceTax: Action[AnyContent] = Action.async { implicit request =>
     if (config.showIHTCUI) {
       Future.successful(Ok(inheritanceTaxCUIView()))
+    } else {
+      Future.successful(NotFound)
+    }
+  }
+
+  def antiMoneyLaunderingServices: Action[AnyContent] = Action.async { implicit request =>
+    if (config.showAMLSCUI) {
+      Future.successful(Ok(antiMoneyLaunderingServicesCUIView()))
     } else {
       Future.successful(NotFound)
     }

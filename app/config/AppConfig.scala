@@ -41,6 +41,7 @@ class AppConfig @Inject()(config: Configuration) {
   val showNMWCUI: Boolean = config.getOptional[Boolean]("features.digitalAssistants.showNMWCUI").getOrElse(false)
   val showPAYECUI : Boolean = config.getOptional[Boolean]("features.digitalAssistants.showPAYECUI").getOrElse(false)
   val showIHTCUI : Boolean = config.getOptional[Boolean]("features.digitalAssistants.showIHTCUI").getOrElse(false)
+  val showAMLSCUI : Boolean = config.getOptional[Boolean]("features.digitalAssistants.showAMLSCUI").getOrElse(false)
   val testSwitch: Boolean = config.getOptional[Boolean]("features.test").getOrElse(false)
 
   def digitalAssistantIsLive: String => Boolean =
