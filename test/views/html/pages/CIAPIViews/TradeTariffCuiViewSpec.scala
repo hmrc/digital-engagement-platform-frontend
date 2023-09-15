@@ -33,8 +33,8 @@ class TradeTariffCuiViewSpec extends ChatViewBehaviours with Matchers with AnyWo
       behave like normalCuiPage(
         createView,
         "Ask HMRC",
-        "Trade Tariff: Chat - Ask HMRC - GOV.UK",
-        "Trade Tariff: Chat"
+        "Trade Tariff: chat - Ask HMRC - GOV.UK",
+        "Trade Tariff: chat"
       )
     }
   }

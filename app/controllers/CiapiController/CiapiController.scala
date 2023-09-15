@@ -51,69 +51,91 @@ class CiapiController @Inject()(appConfig: AppConfig,
 
   implicit val config: AppConfig = appConfig
 
-  def askHmrcOnline: Action[AnyContent] = Action.async { implicit request =>
-    auditHelper.audit(DAv3AuditModel("askHmrcOnline"))
-    Future.successful(Ok(taxCreditsCUIView()))
-  }
-
-  def tradeTariff : Action[AnyContent] = Action.async { implicit request =>
-    auditHelper.audit(DAv3AuditModel("tradeTariff"))
-    Future.successful(Ok(tradeTariffCUIView()))
-  }
-
-  def customsInternationalTrade : Action[AnyContent] = Action.async { implicit request =>
-      auditHelper.audit(DAv3AuditModel("customsInternationalTrade"))
-      Future.successful(Ok(customsInternationalTradeCUIView()))
-  }
-
-  def vatOnline: Action[AnyContent] = Action.async { implicit request =>
-      auditHelper.audit(DAv3AuditModel("vatOnline"))
-      Future.successful(Ok(vatOnlineCuiView()))
-  }
-
-  def corporationTax: Action[AnyContent] = Action.async { implicit request =>
-      auditHelper.audit(DAv3AuditModel("corporationTax"))
-      Future.successful(Ok(corporationTaxCuiView()))
-  }
-
   def childBenefit: Action[AnyContent] = Action.async { implicit request =>
+    if (config.showCHBCUI) {
       auditHelper.audit(DAv3AuditModel("childBenefit"))
       Future.successful(Ok(childBenefitCUIView()))
-  }
-
-  def constructionIndustryScheme: Action[AnyContent] = Action.async { implicit request =>
-      auditHelper.audit(DAv3AuditModel("constructionIndustryScheme"))
-      Future.successful(Ok(constructionIndustrySchemeCUIView()))
-  }
-
-  def selfAssessment: Action[AnyContent] = Action.async { implicit request =>
-      auditHelper.audit(DAv3AuditModel("selfAssessment"))
-      Future.successful(Ok(selfAssessmentCUIView()))
-  }
-
-  def onlineServicesHelpdesk: Action[AnyContent] = Action.async { implicit request =>
-      auditHelper.audit(DAv3AuditModel("onlineServicesHelpdesk"))
-      Future.successful(Ok(onlineServicesHelpdeskCUIView()))
-  }
-
-  def employerEnquiries: Action[AnyContent] = Action.async { implicit request =>
-      auditHelper.audit(DAv3AuditModel("employerEnquiries"))
-      Future.successful(Ok(employerEnquiriesCUIView()))
-  }
-
-  def paye : Action[AnyContent] = Action.async { implicit request =>
-    if (config.showPAYECUI) {
-      auditHelper.audit(DAv3AuditModel("paye"))
-      Future.successful(Ok(payeCUIView()))
     } else {
       Future.successful(NotFound)
     }
   }
 
-  def nationalMinimumWage : Action[AnyContent] = Action.async { implicit request =>
-    if (config.showNMWCUI) {
-      auditHelper.audit(DAv3AuditModel("nationalMinimumWage"))
-      Future.successful(Ok(nationalMinimumWageCUIView()))
+  def customsInternationalTrade : Action[AnyContent] = Action.async { implicit request =>
+    if (config.showCITCUI) {
+      auditHelper.audit(DAv3AuditModel("customsInternationalTrade"))
+      Future.successful(Ok(customsInternationalTradeCUIView()))
+    } else {
+      Future.successful(NotFound)
+    }
+  }
+
+  def vatOnline: Action[AnyContent] = Action.async { implicit request =>
+    if (config.showVATCUI) {
+      auditHelper.audit(DAv3AuditModel("vatOnline"))
+      Future.successful(Ok(vatOnlineCuiView()))
+    } else {
+      Future.successful(NotFound)
+    }
+  }
+
+  def corporationTax: Action[AnyContent] = Action.async { implicit request =>
+    if (config.showCTCUI) {
+      auditHelper.audit(DAv3AuditModel("corporationTax"))
+      Future.successful(Ok(corporationTaxCuiView()))
+    } else {
+      Future.successful(NotFound)
+    }
+  }
+
+  def constructionIndustryScheme: Action[AnyContent] = Action.async { implicit request =>
+    if (config.showCISCUI) {
+      auditHelper.audit(DAv3AuditModel("constructionIndustryScheme"))
+      Future.successful(Ok(constructionIndustrySchemeCUIView()))
+    } else {
+      Future.successful(NotFound)
+    }
+  }
+
+  def selfAssessment: Action[AnyContent] = Action.async { implicit request =>
+    if (config.showSACUI) {
+      auditHelper.audit(DAv3AuditModel("selfAssessment"))
+      Future.successful(Ok(selfAssessmentCUIView()))
+    } else {
+      Future.successful(NotFound)
+    }
+  }
+
+  def onlineServicesHelpdesk: Action[AnyContent] = Action.async { implicit request =>
+    if (config.showOSHCUI) {
+      auditHelper.audit(DAv3AuditModel("onlineServicesHelpdesk"))
+      Future.successful(Ok(onlineServicesHelpdeskCUIView()))
+    } else {
+      Future.successful(NotFound)
+    }
+  }
+
+  def employerEnquiries: Action[AnyContent] = Action.async { implicit request =>
+    if (config.showEHLCUI) {
+      auditHelper.audit(DAv3AuditModel("employerEnquiries"))
+      Future.successful(Ok(employerEnquiriesCUIView()))
+    } else {
+      Future.successful(NotFound)
+    }
+  }
+
+  def tradeTariff : Action[AnyContent] = Action.async { implicit request =>
+    if (config.showTTCUI) {
+      auditHelper.audit(DAv3AuditModel("tradeTariff"))
+      Future.successful(Ok(tradeTariffCUIView()))
+    } else {
+      Future.successful(NotFound)
+    }
+  }
+
+  def askHmrcOnline: Action[AnyContent] = Action.async { implicit request =>
+    if (config.showTCCUI) {
+      auditHelper.audit(DAv3AuditModel("askHmrcOnline"))
+      Future.successful(Ok(taxCreditsCUIView()))
     } else {
       Future.successful(NotFound)
     }
@@ -130,6 +152,24 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def nationalInsurance: Action[AnyContent] = Action.async { implicit request =>
     if (config.showNICUI) {
       Future.successful(Ok(nationalInsuranceCUIView()))
+    } else {
+      Future.successful(NotFound)
+    }
+  }
+
+  def nationalMinimumWage : Action[AnyContent] = Action.async { implicit request =>
+    if (config.showNMWCUI) {
+      auditHelper.audit(DAv3AuditModel("nationalMinimumWage"))
+      Future.successful(Ok(nationalMinimumWageCUIView()))
+    } else {
+      Future.successful(NotFound)
+    }
+  }
+
+  def paye : Action[AnyContent] = Action.async { implicit request =>
+    if (config.showPAYECUI) {
+      auditHelper.audit(DAv3AuditModel("paye"))
+      Future.successful(Ok(payeCUIView()))
     } else {
       Future.successful(NotFound)
     }
