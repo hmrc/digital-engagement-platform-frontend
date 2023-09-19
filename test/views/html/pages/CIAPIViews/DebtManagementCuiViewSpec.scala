@@ -34,8 +34,7 @@ class DebtManagementCuiViewSpec extends ChatViewBehaviours with Matchers with An
         createView,
         "Ask HMRC",
         "Payment Problems: chat - Ask HMRC - GOV.UK",
-        "Payment Problems: chat",
-        Seq("nuanMessagingFrame-webchat")
+        "Payment Problems: chat"
       )
     }
   }
