@@ -16,6 +16,7 @@
 
 package views.html.pages.CIAPIViews
 
+import org.jsoup.Jsoup
 import org.scalatest.matchers.must.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike
 import play.twirl.api.HtmlFormat
@@ -26,16 +27,24 @@ class DebtManagementCuiViewSpec extends ChatViewBehaviours with Matchers with An
 
   private val view = app.injector.instanceOf[DebtManagementCUIView]
 
-  private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
+  private def createView(webchatOnly: Boolean): () => HtmlFormat.Appendable = () => view(webchatOnly)(fakeRequest, messages)
 
   "Debt Management View" must {
     "rendered" must {
       behave like normalCuiPage(
-        createView,
+        createView(true),
         "Ask HMRC",
         "Payment Problems: chat - Ask HMRC - GOV.UK",
         "Payment Problems: chat"
       )
+
+      "have a class with webchatOnly" in {
+        Jsoup.parse(createView(true).apply().body).select(".webchat-only").isEmpty mustBe false
+      }
+
+      "have a class without webchatOnly" in {
+        Jsoup.parse(createView(false).apply().body).select(".webchat-only").isEmpty mustBe true
+      }
     }
   }
 }
