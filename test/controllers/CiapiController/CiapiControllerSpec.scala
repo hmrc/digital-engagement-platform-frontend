@@ -59,89 +59,247 @@ class CiapiControllerSpec
   def asDocument(html: String): Document = Jsoup.parse(html)
 
   "Nuance Full Page CIAPI Test Controller" should {
-    "render Tax Credits Ask HMRC Online page" in {
-      val result = controller.askHmrcOnline(fakeRequest)
-      status(result) mustBe OK
-      verifyAudit(DAv3AuditModel("askHmrcOnline"))
+
+    "render Tax Credits Ask HMRC Online page if shutter flag is true" in {
+      val application = builder.configure("features.digitalAssistants.showTCCUI" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.askHmrcOnline.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Ask HMRC online"
+      }
     }
 
-    "render Customs and International Trade CUI page" in {
-      val result = controller.customsInternationalTrade(fakeRequest)
-      val doc = asDocument(contentAsString(result))
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Customs and international trade: chat"
-      verifyAudit(DAv3AuditModel("customsInternationalTrade"))
+    "render not found if Tax Credits Ask HMRC Online page shutter flag is false" in {
+      val application = builder.configure("features.digitalAssistants.showTCCUI" -> "false").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.askHmrcOnline.url)
+        val result = route(application, request).get
+        status(result) mustBe NOT_FOUND
+      }
     }
 
-    "render Vat Online CUI page" in {
-      val result = controller.vatOnline(fakeRequest)
-      val doc = asDocument(contentAsString(result))
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "VAT Online: chat"
-      verifyAudit(DAv3AuditModel("vatOnline"))
+    "render Customs and International Trade CUI page if shutter flag is true" in {
+      val application = builder.configure("features.digitalAssistants.showCITCUI" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.customsInternationalTrade.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Customs and international trade: chat"
+      }
     }
 
-    "render Corporation Tax CUI page" in {
-      val result = controller.corporationTax(fakeRequest)
-      val doc = asDocument(contentAsString(result))
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Corporation Tax: chat"
-      verifyAudit(DAv3AuditModel("corporationTax"))
+    "render not found if Customs and International Trade CUI page shutter flag is false" in {
+      val application = builder.configure("features.digitalAssistants.showCITCUI" -> "false").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.customsInternationalTrade.url)
+        val result = route(application, request).get
+        status(result) mustBe NOT_FOUND
+      }
     }
 
-    "render child benefit CUI page" in {
-      val result = controller.childBenefit(fakeRequest)
-      val doc = asDocument(contentAsString(result))
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Child Benefit: chat"
-      verifyAudit(DAv3AuditModel("childBenefit"))
+    "render Vat Online CUI page if shutter flag is true" in {
+      val application = builder.configure("features.digitalAssistants.showVATCUI" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.vatOnline.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "VAT Online: chat"
+      }
     }
 
-    "render construction industry scheme CUI page" in {
-      val result = controller.constructionIndustryScheme(fakeRequest)
-      val doc = asDocument(contentAsString(result))
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Construction Industry Scheme: chat"
-      verifyAudit(DAv3AuditModel("constructionIndustryScheme"))
+    "render not found if Vat Online CUI page shutter flag is false" in {
+      val application = builder.configure("features.digitalAssistants.showVATCUI" -> "false").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.vatOnline.url)
+        val result = route(application, request).get
+        status(result) mustBe NOT_FOUND
+      }
     }
 
-    "render self assessment CUI page" in {
-      val result = controller.selfAssessment(fakeRequest)
-      val doc = asDocument(contentAsString(result))
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Self Assessment: chat"
-      verifyAudit(DAv3AuditModel("selfAssessment"))
+    "render Corporation Tax CUI page if shutter flag is true" in {
+      val application = builder.configure("features.digitalAssistants.showCTCUI" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.corporationTax.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Corporation Tax: chat"
+      }
     }
 
-    "render online services helpdesk CUI page" in {
-      val result = controller.onlineServicesHelpdesk(fakeRequest)
-      val doc = asDocument(contentAsString(result))
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Technical support with HMRC online services: chat"
-      verifyAudit(DAv3AuditModel("onlineServicesHelpdesk"))
+    "render not found if Corporation Tax CUI page shutter flag is false" in {
+      val application = builder.configure("features.digitalAssistants.showCTCUI" -> "false").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.corporationTax.url)
+        val result = route(application, request).get
+        status(result) mustBe NOT_FOUND
+      }
     }
 
-    "render employee enquiries CUI page" in {
-      val result = controller.employerEnquiries(fakeRequest)
-      val doc = asDocument(contentAsString(result))
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Employers enquiries: chat"
-      verifyAudit(DAv3AuditModel("employerEnquiries"))
+    "render Child Benefit CUI page if shutter flag is true" in {
+      val application = builder.configure("features.digitalAssistants.showCHBCUI" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.childBenefit.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Child Benefit: chat"
+      }
     }
 
-    "render trade tariff CUI page" in {
-      val result = controller.tradeTariff(fakeRequest)
-      val doc = asDocument(contentAsString(result))
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Trade Tariff: Chat"
-      verifyAudit(DAv3AuditModel("tradeTariff"))
+    "render not found if Child Benefit CUI page shutter flag is false" in {
+      val application = builder.configure("features.digitalAssistants.showCHBCUI" -> "false").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.childBenefit.url)
+        val result = route(application, request).get
+        status(result) mustBe NOT_FOUND
+      }
     }
 
-    "render debt management CUI page" in {
-      val result = controller.debtManagement(fakeRequest)
-      val doc = asDocument(contentAsString(result))
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "Payment Problems: chat"
+    "render Construction Industry Scheme CUI page if shutter flag is true" in {
+      val application = builder.configure("features.digitalAssistants.showCISCUI" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.constructionIndustryScheme.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Construction Industry Scheme: chat"
+      }
+    }
+
+    "render not found if Construction Industry Scheme CUI page shutter flag is false" in {
+      val application = builder.configure("features.digitalAssistants.showCISCUI" -> "false").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.constructionIndustryScheme.url)
+        val result = route(application, request).get
+        status(result) mustBe NOT_FOUND
+      }
+    }
+
+    "render Self Assessment CUI page if shutter flag is true" in {
+      val application = builder.configure("features.digitalAssistants.showSACUI" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.selfAssessment.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Self Assessment: chat"
+      }
+    }
+
+    "render not found if Self Assessment CUI page shutter flag is false" in {
+      val application = builder.configure("features.digitalAssistants.showSACUI" -> "false").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.selfAssessment.url)
+        val result = route(application, request).get
+        status(result) mustBe NOT_FOUND
+      }
+    }
+
+    "render Online Services Helpdesk CUI page if shutter flag is true" in {
+      val application = builder.configure("features.digitalAssistants.showOSHCUI" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.onlineServicesHelpdesk.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Technical support with HMRC online services: chat"
+      }
+    }
+
+    "render not found if Online Services Helpdesk CUI page shutter flag is false" in {
+      val application = builder.configure("features.digitalAssistants.showOSHCUI" -> "false").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.onlineServicesHelpdesk.url)
+        val result = route(application, request).get
+        status(result) mustBe NOT_FOUND
+      }
+    }
+
+    "render Employee Enquiries CUI page if shutter flag is true" in {
+      val application = builder.configure("features.digitalAssistants.showEHLCUI" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.employerEnquiries.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Employers enquiries: chat"
+      }
+    }
+
+    "render not found if Employee Enquiries CUI page shutter flag is false" in {
+      val application = builder.configure("features.digitalAssistants.showEHLCUI" -> "false").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.employerEnquiries.url)
+        val result = route(application, request).get
+        status(result) mustBe NOT_FOUND
+      }
+    }
+
+    "render Trade Tariff CUI page if shutter flag is true" in {
+      val application = builder.configure("features.digitalAssistants.showTTCUI" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.tradeTariff.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Trade Tariff: chat"
+      }
+    }
+
+    "render not found if Trade Tariff CUI page shutter flag is false" in {
+      val application = builder.configure("features.digitalAssistants.showTTCUI" -> "false").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.tradeTariff.url)
+        val result = route(application, request).get
+        status(result) mustBe NOT_FOUND
+      }
+    }
+
+    "render Debt Management CUI page if shutter flag is true" in {
+      val application = builder.configure("features.digitalAssistants.showDMCUI" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.debtManagement.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Payment Problems: chat"
+      }
+    }
+
+    "render not found if Debt Management CUI page shutter flag is false" in {
+      val application = builder.configure("features.digitalAssistants.showDMCUI" -> "false").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.debtManagement.url)
+        val result = route(application, request).get
+        status(result) mustBe NOT_FOUND
+      }
     }
 
     "render national minimum wage CUI page if shutter flag is true" in {
