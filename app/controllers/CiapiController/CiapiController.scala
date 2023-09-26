@@ -143,7 +143,8 @@ class CiapiController @Inject()(appConfig: AppConfig,
 
   def debtManagement: Action[AnyContent] = Action.async { implicit request =>
     if (config.showDMCUI) {
-      Future.successful(Ok(debtManagementCUIView()))
+      val webchatOnly = request.uri.contains("payment-plan-chat")
+      Future.successful(Ok(debtManagementCUIView(webchatOnly)))
     } else {
       Future.successful(NotFound)
     }
