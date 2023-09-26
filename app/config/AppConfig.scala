@@ -106,8 +106,6 @@ class AppConfig @Inject()(config: Configuration) {
   val manageYourTaxCreditsUrl: String = "https://www.gov.uk/manage-your-tax-credits"
   val personalTransportUnitEnquiriesReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/personal-transport-unit-enquiries"
-  val ir35EnquiriesReturnUrl: String =
-    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/ir35-enquiries"
   val contactHMRC: String = "https://www.gov.uk/contact-hmrc"
   val securityMessageLink: String = "https://www.gov.uk/report-tax-fraud"
 
