@@ -20,6 +20,10 @@ global.closed.time.sun=Closed Sundays.
 #Beta Banner
 global.banner.phase = BETA
 
+#Notification Banner
+notification.banner.title = Important
+notification.banner.p = Some of our online services will be unavailable between 2pm on October 9, and 10am on October 10.
+
 #Service Unavailable Page
 service.unavailable.title = Sorry, this webchat is unavailable
 service.unavailable.p1 = We are hoping to provide this webchat from October 2022.
