@@ -127,3 +127,13 @@
     list-style-type: none;
     padding-left: 0;
 }
+
+.govuk-notification-banner {
+    margin-bottom: 0px!important;
+    /* set display attribute to toggle the banner. Content is changed in messages.conf */
+    display:block;
+}
+
+.govuk-notification-banner__content>* {
+    max-width: 100%!important;
+}
