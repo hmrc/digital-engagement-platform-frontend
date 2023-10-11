@@ -4,6 +4,26 @@ window.HMRCFrontend.initAll();
 
 window.addEventListener('DOMContentLoaded', function() {
 
+    //Timer for notification banner
+    //date format ( YYYY-MM-DD )
+    //If BST then time needs to be 1 hour earlier
+
+    let currentDate = new Date().getTime()
+
+    //Change these to required start and end times
+    let startTime = new Date("2023-10-09T13:00:00Z").getTime();
+    let endTime = new Date("2023-10-10T09:00:00Z").getTime();
+
+    let notificationBanner = document.getElementsByClassName('govuk-notification-banner')[0]
+
+    if((currentDate > startTime ) && (currentDate < endTime)){
+        //Notification banner should be displayed
+        notificationBanner.style.display = 'block'
+    } else {
+        //Notification will not be displayed
+        notificationBanner.style.display = 'none'
+    }
+
     // =====================================================
     // Back link mimics browser back functionality
     // =====================================================
