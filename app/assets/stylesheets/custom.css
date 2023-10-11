@@ -131,7 +131,7 @@
 .govuk-notification-banner {
     margin-bottom: 0px!important;
     /* set display attribute to toggle the banner. Content is changed in messages.conf */
-    display:block;
+    display: none;
 }
 
 .govuk-notification-banner__content>* {
