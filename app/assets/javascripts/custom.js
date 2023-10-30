@@ -11,8 +11,8 @@ window.addEventListener('DOMContentLoaded', function() {
     let currentDate = new Date().getTime()
 
     //Change these to required start and end times
-    let startTime = new Date("2023-10-09T13:00:00Z").getTime();
-    let endTime = new Date("2023-10-10T09:00:00Z").getTime();
+    let startTime = new Date("2023-11-03T20:00:00Z").getTime();
+    let endTime = new Date("2023-11-06T07:30:00Z").getTime();
 
     let notificationBanner = document.getElementsByClassName('govuk-notification-banner')[0]
 
