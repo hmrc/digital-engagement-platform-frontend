@@ -31,6 +31,7 @@ class TestController @Inject()(
   mcc: MessagesControllerComponents,
   idTestView: IdTestView,
   ciApiDemoViewPopup: CiApiDemoViewPopup,
+  ciApiDemoViewProactivePopup: CiApiDemoViewProactivePopup,
   ciApiDemoViewEmbedded: CiApiDemoViewEmbedded,
   nuanceFile: NuanceFile,
   mixTestView: MixTestView) extends FrontendController(mcc) {
@@ -42,6 +43,9 @@ class TestController @Inject()(
   }
   def ciApiTestPopup: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(ciApiDemoViewPopup()))
+  }
+  def ciApiTestProactivePopup: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(ciApiDemoViewProactivePopup()))
   }
   def ciApiTestEmbedded: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(ciApiDemoViewEmbedded()))
