@@ -54,6 +54,7 @@ class AppConfig @Inject()(config: Configuration) {
   val showAMLSCUI : Boolean = config.getOptional[Boolean]("features.digitalAssistants.showAMLSCUI").getOrElse(false)
 
   val showIVRWebchatSA: Boolean = config.getOptional[Boolean]("features.digitalAssistants.showIVRWebchatSA").getOrElse(false)
+  val showIVRWebchatNI: Boolean = config.getOptional[Boolean]("features.digitalAssistants.showIVRWebchatNI").getOrElse(false)
 
   val testSwitch: Boolean = config.getOptional[Boolean]("features.test").getOrElse(false)
 

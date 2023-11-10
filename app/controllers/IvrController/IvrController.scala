@@ -20,13 +20,15 @@ import config.AppConfig
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 import views.html.IVR.SelfAssessmentIVRView
+import views.html.IVR.NationalInsuranceIVRView
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.Future
 
 @Singleton
 class IvrController @Inject()(appConfig: AppConfig,
                               mcc: MessagesControllerComponents,
-                              selfAssessmentIVRView: SelfAssessmentIVRView
+                              selfAssessmentIVRView: SelfAssessmentIVRView,
+                              nationalInsuranceIVRView: NationalInsuranceIVRView
                              ) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
@@ -34,6 +36,14 @@ class IvrController @Inject()(appConfig: AppConfig,
   def selfAssessment: Action[AnyContent] = Action.async { implicit request =>
     if (config.showIVRWebchatSA) {
       Future.successful(Ok(selfAssessmentIVRView()))
+    } else {
+      Future.successful(NotFound)
+    }
+  }
+
+  def nationalInsurance: Action[AnyContent] = Action.async { implicit request =>
+    if (config.showIVRWebchatNI) {
+      Future.successful(Ok(nationalInsuranceIVRView()))
     } else {
       Future.successful(NotFound)
     }

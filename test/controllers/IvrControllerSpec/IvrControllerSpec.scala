@@ -54,5 +54,27 @@ class IvrControllerSpec
         status(result) mustBe NOT_FOUND
       }
     }
+
+     "National Insurance page is displayed if shutter flag is true" in {
+      val application = builder.configure("features.digitalAssistants.showIVRWebchatNI" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.IvrController.nationalInsurance.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "National Insurance: live chat"
+      }
+    }
+
+    "National Insurance page is not displayed if shutter flag is false. Shutter page is displayed instead" in {
+      val application = builder.configure("features.digitalAssistants.showIVRWebchatNI" -> "false").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.IvrController.nationalInsurance.url)
+        val result = route(application, request).get
+        status(result) mustBe NOT_FOUND
+      }
+    }
   }
 }
