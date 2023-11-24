@@ -61,5 +61,23 @@ class TestControllerSpec
 
       status(result) mustBe OK
     }
+
+    "render proactivePopup page" in {
+      val result = controller.ciApiTestProactivePopup(fakeRequest)
+
+      status(result) mustBe OK
+    }
+
+    "render persistChatPageOne page" in {
+      val result = controller.persistChatPageOne(fakeRequest)
+
+      status(result) mustBe OK
+    }
+
+    "render persistChatPageTwo page" in {
+      val result = controller.persistChatPageTwo(fakeRequest)
+
+      status(result) mustBe OK
+    }
   }
 }
