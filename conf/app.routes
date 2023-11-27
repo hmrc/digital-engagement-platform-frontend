@@ -31,6 +31,7 @@ GET         /chat/national-minimum-wage                                     cont
 GET         /chat/paye                                                      controllers.CiapiController.CiapiController.paye
 GET         /chat/inheritance-tax                                           controllers.CiapiController.CiapiController.inheritanceTax
 GET         /chat/anti-money-laundering                                     controllers.CiapiController.CiapiController.antiMoneyLaunderingServices
+GET         /chat/self-assessment-filing                                    controllers.CiapiController.CiapiController.selfAssessment
 
 GET         /feature-switches/:switchName                                   controllers.FeatureSwitchController.getFeatureSwitch(switchName: String)
 
