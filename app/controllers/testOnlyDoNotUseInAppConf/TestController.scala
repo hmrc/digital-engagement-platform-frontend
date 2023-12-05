@@ -35,6 +35,7 @@ class TestController @Inject()(
   ciApiDemoViewEmbedded: CiApiDemoViewEmbedded,
   persistChatPageOneViewPopup: PersistChatPageOneViewPopup,
   persistChatPageTwoViewPopup: PersistChatPageTwoViewPopup,
+  c2cViewPopup: C2cViewPopup,
   nuanceFile: NuanceFile,
   mixTestView: MixTestView) extends FrontendController(mcc) {
 
@@ -63,5 +64,8 @@ class TestController @Inject()(
   }
   def persistChatPageTwo: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(persistChatPageTwoViewPopup()))
+  }
+  def c2cPopup: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(c2cViewPopup()))
   }
 }
