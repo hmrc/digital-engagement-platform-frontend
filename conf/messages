@@ -23,7 +23,7 @@ global.banner.phase = BETA
 
 #Notification Banner
 notification.banner.title = Important
-notification.banner.p = Some of our services will be unavailable from 10:30pm on 3 November, to 7:30am on 6 November.
+notification.banner.p = Depending on your query, our Webchat advisors may only be able to provide generic advice today. This is due to planned IT maintenance to some of our systems. We apologise for any inconvenience this may cause and a full service will resume from 9am Monday 11th December.
 
 #Service Unavailable Page
 service.unavailable.title = Sorry, this webchat is unavailable
