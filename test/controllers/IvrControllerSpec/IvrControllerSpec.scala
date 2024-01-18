@@ -85,7 +85,7 @@ class IvrControllerSpec
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
-        doc.select("h1").text() mustBe "Debt Management: live chat"
+        doc.select("h1").text() mustBe "Payment Problems: live chat"
       }
     }
 
