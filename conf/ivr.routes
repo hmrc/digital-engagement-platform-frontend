@@ -2,3 +2,4 @@
 
 GET         /sa                     controllers.IvrController.IvrController.selfAssessment
 GET         /ni                     controllers.IvrController.IvrController.nationalInsurance
+GET         /dm                     controllers.IvrController.IvrController.debtManagement

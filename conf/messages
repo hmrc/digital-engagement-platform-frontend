@@ -140,6 +140,13 @@ ivr.self.assessment.security.p2=We will only send a link to webchat after you ha
 ivr.self.assessment.security.p3=If you think you have received a suspicious message, you can
 ivr.self.assessment.security.link= report it online (opens in a new tab).
 
+#IVR DEBT MANAGEMENT
+ivr.debt.management.title=Debt Management: live chat
+ivr.debt.management.security.p1=HMRC will never send unsolicited text messages containing links to webpages.
+ivr.debt.management.security.p2=We will only send a link to webchat after you have requested it.
+ivr.debt.management.security.p3=If you think you have received a suspicious message, you can
+ivr.debt.management.security.link= report it online (opens in a new tab).
+
 #IVR NI
 ivr.national.insurance.title=National Insurance: live chat
 ivr.national.insurance.security.p1=HMRC will never send unsolicited text messages containing links to webpages.
