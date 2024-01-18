@@ -141,7 +141,7 @@ ivr.self.assessment.security.p3=If you think you have received a suspicious mess
 ivr.self.assessment.security.link= report it online (opens in a new tab).
 
 #IVR DEBT MANAGEMENT
-ivr.debt.management.title=Debt Management: live chat
+ivr.debt.management.title=Payment Problems: live chat
 ivr.debt.management.security.p1=HMRC will never send unsolicited text messages containing links to webpages.
 ivr.debt.management.security.p2=We will only send a link to webchat after you have requested it.
 ivr.debt.management.security.p3=If you think you have received a suspicious message, you can
