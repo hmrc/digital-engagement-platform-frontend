@@ -21,6 +21,7 @@ import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 import views.html.IVR.SelfAssessmentIVRView
 import views.html.IVR.NationalInsuranceIVRView
+import views.html.IVR.DebtManagementIVRView
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.Future
 
@@ -28,6 +29,7 @@ import scala.concurrent.Future
 class IvrController @Inject()(appConfig: AppConfig,
                               mcc: MessagesControllerComponents,
                               selfAssessmentIVRView: SelfAssessmentIVRView,
+                              debtManagementIVRView: DebtManagementIVRView,
                               nationalInsuranceIVRView: NationalInsuranceIVRView
                              ) extends FrontendController(mcc) {
 
@@ -44,6 +46,14 @@ class IvrController @Inject()(appConfig: AppConfig,
   def nationalInsurance: Action[AnyContent] = Action.async { implicit request =>
     if (config.showIVRWebchatNI) {
       Future.successful(Ok(nationalInsuranceIVRView()))
+    } else {
+      Future.successful(NotFound)
+    }
+  }
+  
+  def debtManagement: Action[AnyContent] = Action.async { implicit request =>
+    if (config.showIVRWebchatDM) {
+      Future.successful(Ok(debtManagementIVRView()))
     } else {
       Future.successful(NotFound)
     }
