@@ -28,14 +28,14 @@ class DebtManagementIVRViewSpec extends ChatViewBehaviours with Matchers with An
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "Debt Management IVR View" must {
+  "Payment Problems IVR View" must {
     val returnUrl: String = "https://www.gov.uk/contact-hmrc"
 
     behave like normalPage(
       createView,
       "Ask HMRC",
-      "Debt Management: live chat - GOV.UK",
-      "Debt Management: live chat",
+      "Payment Problems: live chat - GOV.UK",
+      "Payment Problems: live chat",
       "Return to Contact HMRC",
       returnUrl,
       None,
