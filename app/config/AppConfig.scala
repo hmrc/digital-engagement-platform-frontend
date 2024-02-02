@@ -64,7 +64,7 @@ class AppConfig @Inject()(config: Configuration) {
 
   def liveDigitalAssistants(messages: play.api.i18n.Messages) =
   config.underlying.getConfig("features.digitalAssistants").entrySet().asScala.collect {
-    case digitalAssistant if digitalAssistantIsLive(digitalAssistant.getKey) && digitalAssistant.getKey != "showIVRWebchatSA" => digitalAssistant.getKey
+    case digitalAssistant if digitalAssistantIsLive(digitalAssistant.getKey) && !digitalAssistant.getKey.contains("showIVR") => digitalAssistant.getKey
   }.toList.sortBy(digitalAssistantKey => {
     val x = s"digital.assistant.list.$digitalAssistantKey.title"
     messages.apply(x)
