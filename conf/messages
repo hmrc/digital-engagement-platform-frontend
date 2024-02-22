@@ -23,7 +23,7 @@ global.banner.phase = BETA
 
 #Notification Banner
 notification.banner.title = Important
-notification.banner.p = Depending on your query, our Webchat advisors may only be able to provide generic advice today. This is due to planned IT maintenance to some of our systems. We apologise for any inconvenience this may cause and a full service will resume from 9am Monday 11 December.
+notification.banner.p = Webchat advisers might not be available or they may only be able to provide general advice. A full service will resume from 8am on Monday 26 February.
 
 #Service Unavailable Page
 service.unavailable.title = Sorry, this webchat is unavailable
