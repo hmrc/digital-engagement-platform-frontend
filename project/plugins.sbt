@@ -4,16 +4,14 @@ resolvers += Resolver.url(
 
 addSbtPlugin("uk.gov.hmrc" % "sbt-auto-build" % "3.20.0")
 
-addSbtPlugin("uk.gov.hmrc" % "sbt-distributables" % "2.2.0")
+addSbtPlugin("uk.gov.hmrc" % "sbt-distributables" % "2.5.0")
 
-addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.8.18")
+addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.9.1")
 
-addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.9.3")
-
-addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "1.0.0")
+addSbtPlugin("org.scoverage" % "sbt-scoverage" % "2.0.9")
 
 addSbtPlugin("io.github.irundaia" % "sbt-sassify" % "1.5.2")
 
-addSbtPlugin("net.ground5hark.sbt" % "sbt-concat" % "0.2.0")
+addSbtPlugin("com.github.sbt" % "sbt-concat" % "1.0.0")
 
 addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.5.0")

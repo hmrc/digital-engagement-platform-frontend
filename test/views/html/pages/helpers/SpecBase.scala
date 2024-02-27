@@ -17,7 +17,6 @@
 package views.html.pages.helpers
 
 import com.codahale.metrics.MetricRegistry
-import com.kenshoo.play.metrics.Metrics
 import config.AppConfig
 import org.scalatest.matchers.must.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike
@@ -28,13 +27,8 @@ import play.api.inject.guice.GuiceApplicationBuilder
 import play.api.inject.{Injector, bind}
 import play.api.mvc.{AnyContentAsEmpty, BodyParsers}
 import play.api.test.FakeRequest
+import uk.gov.hmrc.play.bootstrap.metrics.Metrics
 import uk.gov.hmrc.webchat.client.WebChatClient
-import uk.gov.hmrc.webchat.testhelpers.WebChatClientStub
-
-class FakeMetrics extends Metrics {
-  override val defaultRegistry: MetricRegistry = new MetricRegistry
-  override val toJson: String = "{}"
-}
 
 trait SpecBase extends AnyWordSpecLike with GuiceOneAppPerSuite with Matchers {
 
@@ -56,8 +50,9 @@ trait AppBuilderSpecBase extends SpecBase {
 
   lazy val builder: GuiceApplicationBuilder = new GuiceApplicationBuilder()
     .overrides(
-      bind[WebChatClient].toInstance(new WebChatClientStub),
-      bind[Metrics].toInstance(new FakeMetrics)
+      bind[Metrics].toInstance(new Metrics {
+        override def defaultRegistry: MetricRegistry = new MetricRegistry()
+      })
     )
 
   override lazy val app: Application = builder.build()
