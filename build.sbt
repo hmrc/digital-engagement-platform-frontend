@@ -27,7 +27,10 @@ lazy val microservice = Project(appName, file("."))
     javaScriptTestRunnerHook,
     defaultSettings(),
     scalaVersion := "2.13.12",
-    SilencerSettings(),
+    // only required for frontends
+    scalacOptions += "-Wconf:cat=unused-imports&src=html/.*:s",
+    // for all services
+    scalacOptions += "-Wconf:cat=unused-imports&src=routes/.*:s",
     PlayKeys.playDefaultPort := 9956,
     Concat.groups := Seq(
       "javascripts/bundle.js" -> group(Seq("javascripts/bundle/gtm_dl.js"))
