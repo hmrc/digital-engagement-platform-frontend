@@ -54,8 +54,8 @@
 )(implicit request: Request[_], messages: play.api.i18n.Messages)
 
 @bodyEndBlock = {
-<script {{NONCE_ATTR}} src='@routes.Assets.versioned("lib/govuk-frontend/govuk/all.js")'></script>
-<script {{NONCE_ATTR}} src='@routes.Assets.versioned("lib/hmrc-frontend/hmrc/all.js")'></script>
+<script  src='@routes.Assets.versioned("lib/govuk-frontend/govuk/all.js")'></script>
+<script  src='@routes.Assets.versioned("lib/hmrc-frontend/hmrc/all.js")'></script>
 }
 
 @content = {
@@ -68,7 +68,7 @@
 }
 
 @headerBlock = {
-    <link {{NONCE_ATTR}} href='@routes.Assets.versioned("stylesheets/main.css")' media="screen" rel="stylesheet" type="text/css" />
+    <link  href='@routes.Assets.versioned("stylesheets/main.css")' media="screen" rel="stylesheet" type="text/css" />
 
     @hmrcStandardHeader(
         phaseBanner = Some(standardBetaBanner(phase=messages("global.banner.phase"), url=appConfig.betaFeedbackUnauthenticatedUrl)),
