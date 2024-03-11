@@ -16,11 +16,12 @@
 
 @import config.AppConfig
 @import uk.gov.hmrc.webchat.client.WebChatClient
+@import views.html.helper.CSPNonce
 
 @this(
-    govuk_wrapper: GovukWrapperCUI,
-    appConfig: AppConfig,
-    webChatClient: WebChatClient
+govuk_wrapper: GovukWrapperCUI,
+appConfig: AppConfig,
+webChatClient: WebChatClient
 )
 
 @(title: String, navTitle: Option[String] = Some("Ask HMRC"), sidebar: Option[Html] = None)(mainContent: Html)(implicit request : Request[_], messages: Messages)
@@ -33,14 +34,14 @@
 
 @scriptElem = {
 
-<script {{NONCE_ATTR}}>
+<script @CSPNonce.attr>
     window.isCUI = true;
-    window.featureSwitchUrl = @{appConfig.featureSwitchUrl}
+    window.featureSwitchUrl = "@{appConfig.featureSwitchUrl}"
 </script>
 <!--This is only used for fading elements.-->
-<script {{NONCE_ATTR}} src='@routes.Assets.versioned("javascripts/thirdparty/jquery-3.5.1.min.js")'></script>
-<script {{NONCE_ATTR}} src='@routes.Assets.versioned("javascripts/custom.js")'></script>
-<script {{NONCE_ATTR}} src='@routes.Assets.versioned("javascripts/bundle.js")'></script>
+<script @CSPNonce.attr src='@routes.Assets.versioned("javascripts/thirdparty/jquery-3.5.1.min.js")'></script>
+<script @CSPNonce.attr src='@routes.Assets.versioned("javascripts/custom.js")'></script>
+<script @CSPNonce.attr src='@routes.Assets.versioned("javascripts/bundle.js")'></script>
 
 @if(!appConfig.performanceTest){
         @{webChatClient.loadRequiredElements()}

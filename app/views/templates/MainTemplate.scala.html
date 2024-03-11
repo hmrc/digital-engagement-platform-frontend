@@ -16,11 +16,12 @@
 
 @import config.AppConfig
 @import uk.gov.hmrc.webchat.client.WebChatClient
+@import views.html.helper.CSPNonce
 
 @this(
-    govuk_wrapper: GovukWrapper,
-    appConfig: AppConfig,
-    webChatClient: WebChatClient
+govuk_wrapper: GovukWrapper,
+appConfig: AppConfig,
+webChatClient: WebChatClient
 )
 
 @(title: String,
@@ -30,8 +31,8 @@
 
 @scriptElem = {
 
-    <script {{NONCE_ATTR}} src='@routes.Assets.versioned("javascripts/custom.js")'></script>
-    <script {{NONCE_ATTR}} src='@routes.Assets.versioned("javascripts/bundle.js")'></script>
+    <script @CSPNonce.attr src='@routes.Assets.versioned("javascripts/custom.js")'></script>
+    <script @CSPNonce.attr src='@routes.Assets.versioned("javascripts/bundle.js")'></script>
 
     @if(!appConfig.performanceTest){
         @{webChatClient.loadRequiredElements()}
