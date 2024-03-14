@@ -34,8 +34,8 @@ class DebtManagementCuiViewSpec extends ChatViewBehaviours with Matchers with An
       behave like normalCuiPage(
         createView(true),
         "Ask HMRC",
-        "Payment Problems: chat - Ask HMRC - GOV.UK",
-        "Payment Problems: chat"
+        "Ask HMRC online - Ask HMRC - GOV.UK",
+        "Ask HMRC online"
       )
 
       "have a class with webchatOnly" in {

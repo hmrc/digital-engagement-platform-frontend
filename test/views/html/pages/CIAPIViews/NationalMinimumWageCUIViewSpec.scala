@@ -33,8 +33,8 @@ class NationalMinimumWageCUIViewSpec extends ChatViewBehaviours with Matchers wi
       behave like normalCuiPage(
         createView,
         "Ask HMRC",
-        "National Minimum Wage: chat - Ask HMRC - GOV.UK",
-        "National Minimum Wage: chat"
+        "Ask HMRC online - Ask HMRC - GOV.UK",
+        "Ask HMRC online"
       )
     }
   }

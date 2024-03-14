@@ -21,22 +21,22 @@ import org.scalatest.wordspec.AnyWordSpecLike
 import play.api.mvc.{AnyContentAsEmpty, Cookie}
 import play.api.test.FakeRequest
 import play.twirl.api.HtmlFormat
-import views.html.CIAPIViews.SelfAssessmentCUIView
+import views.html.CIAPIViews.AskHMRCOnlineCIAPIView
 import views.html.pages.helpers.ChatViewBehaviours
 
 class GovukWrapperCUISpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike {
 
   implicit override val fakeRequest: FakeRequest[AnyContentAsEmpty.type] = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
 
-  val view: SelfAssessmentCUIView = app.injector.instanceOf[SelfAssessmentCUIView]
+  val view: AskHMRCOnlineCIAPIView = app.injector.instanceOf[AskHMRCOnlineCIAPIView]
 
   def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
   "GovukWrapperCUI" must {
     behave like generalContentCUI(
       createView,
-      "Self Assessment: chat",
-      "Self Assessment: chat"
+      "Ask HMRC online",
+      "Ask HMRC online"
     )
   }
 }

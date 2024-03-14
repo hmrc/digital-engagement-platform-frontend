@@ -39,22 +39,9 @@ class CiapiControllerSpec
     app.injector.instanceOf[AppConfig],
     app.injector.instanceOf[MessagesControllerComponents],
     mockAuditingService,
-    app.injector.instanceOf[TaxCreditsCUIView],
-    app.injector.instanceOf[CustomsInternationalTradeCUIView],
-    app.injector.instanceOf[VatOnlineCuiView],
-    app.injector.instanceOf[CorporationTaxCuiView],
-    app.injector.instanceOf[ChildBenefitCUIView],
-    app.injector.instanceOf[ConstructionIndustrySchemeCUIView],
-    app.injector.instanceOf[SelfAssessmentCUIView],
-    app.injector.instanceOf[OnlineServicesHelpdeskCUIView],
-    app.injector.instanceOf[EmployerEnquiriesCUIView],
-    app.injector.instanceOf[TradeTariffCUIView],
+    app.injector.instanceOf[AskHMRCOnlineCIAPIView],
     app.injector.instanceOf[NationalMinimumWageCUIView],
-    app.injector.instanceOf[PAYECUIView],
-    app.injector.instanceOf[DebtManagementCUIView],
-    app.injector.instanceOf[NationalInsuranceCUIView],
-    app.injector.instanceOf[InheritanceTaxCUIView],
-    app.injector.instanceOf[AntiMoneyLaunderingServicesCUIView])
+    app.injector.instanceOf[DebtManagementCUIView])
 
   def asDocument(html: String): Document = Jsoup.parse(html)
 
@@ -90,7 +77,7 @@ class CiapiControllerSpec
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
-        doc.select("h1").text() mustBe "Customs and international trade: chat"
+        doc.select("h1").text() mustBe "Ask HMRC online"
       }
     }
 
@@ -112,7 +99,7 @@ class CiapiControllerSpec
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
-        doc.select("h1").text() mustBe "VAT Online: chat"
+        doc.select("h1").text() mustBe "Ask HMRC online"
       }
     }
 
@@ -134,7 +121,7 @@ class CiapiControllerSpec
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
-        doc.select("h1").text() mustBe "Corporation Tax: chat"
+        doc.select("h1").text() mustBe "Ask HMRC online"
       }
     }
 
@@ -156,7 +143,7 @@ class CiapiControllerSpec
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
-        doc.select("h1").text() mustBe "Child Benefit: chat"
+        doc.select("h1").text() mustBe "Ask HMRC online"
       }
     }
 
@@ -178,7 +165,7 @@ class CiapiControllerSpec
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
-        doc.select("h1").text() mustBe "Construction Industry Scheme: chat"
+        doc.select("h1").text() mustBe "Ask HMRC online"
       }
     }
 
@@ -200,7 +187,7 @@ class CiapiControllerSpec
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
-        doc.select("h1").text() mustBe "Self Assessment: chat"
+        doc.select("h1").text() mustBe "Ask HMRC online"
       }
     }
 
@@ -222,7 +209,7 @@ class CiapiControllerSpec
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
-        doc.select("h1").text() mustBe "Technical support with HMRC online services: chat"
+        doc.select("h1").text() mustBe "Ask HMRC online"
       }
     }
 
@@ -244,7 +231,7 @@ class CiapiControllerSpec
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
-        doc.select("h1").text() mustBe "Employers enquiries: chat"
+        doc.select("h1").text() mustBe "Ask HMRC online"
       }
     }
 
@@ -266,7 +253,7 @@ class CiapiControllerSpec
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
-        doc.select("h1").text() mustBe "Trade Tariff: chat"
+        doc.select("h1").text() mustBe "Ask HMRC online"
       }
     }
 
@@ -288,7 +275,7 @@ class CiapiControllerSpec
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
-        doc.select("h1").text() mustBe "Payment Problems: chat"
+        doc.select("h1").text() mustBe "Ask HMRC online"
       }
     }
 
@@ -310,7 +297,7 @@ class CiapiControllerSpec
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
-        doc.select("h1").text() mustBe "National Minimum Wage: chat"
+        doc.select("h1").text() mustBe "Ask HMRC online"
       }
     }
 
@@ -332,7 +319,7 @@ class CiapiControllerSpec
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
-        doc.select("h1").text() mustBe "PAYE: chat"
+        doc.select("h1").text() mustBe "Ask HMRC online"
       }
     }
 
@@ -354,7 +341,7 @@ class CiapiControllerSpec
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
-        doc.select("h1").text() mustBe "National Insurance: chat"
+        doc.select("h1").text() mustBe "Ask HMRC online"
       }
     }
 
@@ -376,7 +363,7 @@ class CiapiControllerSpec
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
-        doc.select("h1").text() mustBe "Inheritance Tax: chat"
+        doc.select("h1").text() mustBe "Ask HMRC online"
       }
     }
 
@@ -398,7 +385,7 @@ class CiapiControllerSpec
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
-        doc.select("h1").text() mustBe "Anti-money laundering: chat"
+        doc.select("h1").text() mustBe "Ask HMRC online"
       }
     }
 
