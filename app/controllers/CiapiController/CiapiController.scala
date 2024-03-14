@@ -31,22 +31,9 @@ import scala.concurrent.ExecutionContext
 class CiapiController @Inject()(appConfig: AppConfig,
                                 mcc: MessagesControllerComponents,
                                 auditHelper: AuditHelper,
-                                taxCreditsCUIView: TaxCreditsCUIView,
-                                customsInternationalTradeCUIView: CustomsInternationalTradeCUIView,
-                                vatOnlineCuiView: VatOnlineCuiView,
-                                corporationTaxCuiView: CorporationTaxCuiView,
-                                childBenefitCUIView: ChildBenefitCUIView,
-                                constructionIndustrySchemeCUIView: ConstructionIndustrySchemeCUIView,
-                                selfAssessmentCUIView: SelfAssessmentCUIView,
-                                onlineServicesHelpdeskCUIView: OnlineServicesHelpdeskCUIView,
-                                employerEnquiriesCUIView: EmployerEnquiriesCUIView,
-                                tradeTariffCUIView: TradeTariffCUIView,
+                                askHMRCOnlineCIAPIView: AskHMRCOnlineCIAPIView,
                                 nationalMinimumWageCUIView: NationalMinimumWageCUIView,
-                                payeCUIView: PAYECUIView,
-                                debtManagementCUIView: DebtManagementCUIView,
-                                nationalInsuranceCUIView: NationalInsuranceCUIView,
-                                inheritanceTaxCUIView: InheritanceTaxCUIView,
-                                antiMoneyLaunderingServicesCUIView: AntiMoneyLaunderingServicesCUIView)(implicit ec: ExecutionContext)
+                                debtManagementCUIView: DebtManagementCUIView)(implicit ec: ExecutionContext)
   extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
@@ -54,7 +41,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def childBenefit: Action[AnyContent] = Action.async { implicit request =>
     if (config.showCHBCUI) {
       auditHelper.audit(DAv3AuditModel("childBenefit"))
-      Future.successful(Ok(childBenefitCUIView()))
+      Future.successful(Ok(askHMRCOnlineCIAPIView()))
     } else {
       Future.successful(NotFound)
     }
@@ -63,7 +50,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def customsInternationalTrade : Action[AnyContent] = Action.async { implicit request =>
     if (config.showCITCUI) {
       auditHelper.audit(DAv3AuditModel("customsInternationalTrade"))
-      Future.successful(Ok(customsInternationalTradeCUIView()))
+      Future.successful(Ok(askHMRCOnlineCIAPIView()))
     } else {
       Future.successful(NotFound)
     }
@@ -72,7 +59,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def vatOnline: Action[AnyContent] = Action.async { implicit request =>
     if (config.showVATCUI) {
       auditHelper.audit(DAv3AuditModel("vatOnline"))
-      Future.successful(Ok(vatOnlineCuiView()))
+      Future.successful(Ok(askHMRCOnlineCIAPIView()))
     } else {
       Future.successful(NotFound)
     }
@@ -81,7 +68,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def corporationTax: Action[AnyContent] = Action.async { implicit request =>
     if (config.showCTCUI) {
       auditHelper.audit(DAv3AuditModel("corporationTax"))
-      Future.successful(Ok(corporationTaxCuiView()))
+      Future.successful(Ok(askHMRCOnlineCIAPIView()))
     } else {
       Future.successful(NotFound)
     }
@@ -90,7 +77,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def constructionIndustryScheme: Action[AnyContent] = Action.async { implicit request =>
     if (config.showCISCUI) {
       auditHelper.audit(DAv3AuditModel("constructionIndustryScheme"))
-      Future.successful(Ok(constructionIndustrySchemeCUIView()))
+      Future.successful(Ok(askHMRCOnlineCIAPIView()))
     } else {
       Future.successful(NotFound)
     }
@@ -99,7 +86,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def selfAssessment: Action[AnyContent] = Action.async { implicit request =>
     if (config.showSACUI) {
       auditHelper.audit(DAv3AuditModel("selfAssessment"))
-      Future.successful(Ok(selfAssessmentCUIView()))
+      Future.successful(Ok(askHMRCOnlineCIAPIView()))
     } else {
       Future.successful(NotFound)
     }
@@ -108,7 +95,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def onlineServicesHelpdesk: Action[AnyContent] = Action.async { implicit request =>
     if (config.showOSHCUI) {
       auditHelper.audit(DAv3AuditModel("onlineServicesHelpdesk"))
-      Future.successful(Ok(onlineServicesHelpdeskCUIView()))
+      Future.successful(Ok(askHMRCOnlineCIAPIView()))
     } else {
       Future.successful(NotFound)
     }
@@ -117,7 +104,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def employerEnquiries: Action[AnyContent] = Action.async { implicit request =>
     if (config.showEHLCUI) {
       auditHelper.audit(DAv3AuditModel("employerEnquiries"))
-      Future.successful(Ok(employerEnquiriesCUIView()))
+      Future.successful(Ok(askHMRCOnlineCIAPIView()))
     } else {
       Future.successful(NotFound)
     }
@@ -126,7 +113,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def tradeTariff : Action[AnyContent] = Action.async { implicit request =>
     if (config.showTTCUI) {
       auditHelper.audit(DAv3AuditModel("tradeTariff"))
-      Future.successful(Ok(tradeTariffCUIView()))
+      Future.successful(Ok(askHMRCOnlineCIAPIView()))
     } else {
       Future.successful(NotFound)
     }
@@ -135,7 +122,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def askHmrcOnline: Action[AnyContent] = Action.async { implicit request =>
     if (config.showTCCUI) {
       auditHelper.audit(DAv3AuditModel("askHmrcOnline"))
-      Future.successful(Ok(taxCreditsCUIView()))
+      Future.successful(Ok(askHMRCOnlineCIAPIView()))
     } else {
       Future.successful(NotFound)
     }
@@ -143,6 +130,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
 
   def debtManagement: Action[AnyContent] = Action.async { implicit request =>
     if (config.showDMCUI) {
+      auditHelper.audit(DAv3AuditModel("debtManagement"))
       val webchatOnly = request.uri.contains("payment-plan-chat")
       Future.successful(Ok(debtManagementCUIView(webchatOnly)))
     } else {
@@ -152,7 +140,8 @@ class CiapiController @Inject()(appConfig: AppConfig,
 
   def nationalInsurance: Action[AnyContent] = Action.async { implicit request =>
     if (config.showNICUI) {
-      Future.successful(Ok(nationalInsuranceCUIView()))
+      auditHelper.audit(DAv3AuditModel("nationalInsurance"))
+      Future.successful(Ok(askHMRCOnlineCIAPIView()))
     } else {
       Future.successful(NotFound)
     }
@@ -170,7 +159,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def paye : Action[AnyContent] = Action.async { implicit request =>
     if (config.showPAYECUI) {
       auditHelper.audit(DAv3AuditModel("paye"))
-      Future.successful(Ok(payeCUIView()))
+      Future.successful(Ok(askHMRCOnlineCIAPIView()))
     } else {
       Future.successful(NotFound)
     }
@@ -178,7 +167,8 @@ class CiapiController @Inject()(appConfig: AppConfig,
 
   def inheritanceTax: Action[AnyContent] = Action.async { implicit request =>
     if (config.showIHTCUI) {
-      Future.successful(Ok(inheritanceTaxCUIView()))
+      auditHelper.audit(DAv3AuditModel("inheritanceTax"))
+      Future.successful(Ok(askHMRCOnlineCIAPIView()))
     } else {
       Future.successful(NotFound)
     }
@@ -186,7 +176,8 @@ class CiapiController @Inject()(appConfig: AppConfig,
 
   def antiMoneyLaunderingServices: Action[AnyContent] = Action.async { implicit request =>
     if (config.showAMLSCUI) {
-      Future.successful(Ok(antiMoneyLaunderingServicesCUIView()))
+      auditHelper.audit(DAv3AuditModel("antiMoneyLaunderingServices"))
+      Future.successful(Ok(askHMRCOnlineCIAPIView()))
     } else {
       Future.successful(NotFound)
     }

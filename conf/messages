@@ -31,12 +31,6 @@ service.unavailable.p1 = We are hoping to provide this webchat from October 2022
 service.unavailable.p2-1 = You can
 service.unavailable.p2-2 = find other contact details for your query
 
-#Payment Problems PAYE Enquiries
-payment.problems.paye.enquiries.title=Payment Problems PAYE Enquiries: webchat
-
-#Construction Industry Scheme
-construction.industry.scheme.title=Construction Industry Scheme: webchat
-
 #National Clearance Hub
 national.clearance.hub.title=National Clearance Hub: webchat
 
@@ -79,59 +73,15 @@ test.sidebar.p2=If it cannot help you, you can ask to transfer to an HMRC advise
 cui.page.title=Ask HMRC
 cui.page.title.gov=- Ask HMRC - GOV.UK
 
-#Self Assessment page
-cui.self.assessment.title=Self Assessment: chat
-
-#Online Services Helpdesk pages
-cui.online.services.helpdesk.title=Technical support with HMRC online services: chat
-
-#Employer Enquiries page
-cui.employer.enquiries.title=Employers enquiries: chat
-
-#Construction Industry Scheme page
-cui.construction.industry.scheme.title=Construction Industry Scheme: chat
-
-#Trade Tariff page
-cui.trade.tariff.title=Trade Tariff: chat
-
-#Child benefit
-cui.child.benefit.title=Child Benefit: chat
-
 #CIAPI
-#Tax Credits
-ciapi.tax.credits.page.title=Ask HMRC online
 
-#Customs and International Trade
-ciapi.customs.international.trade.title=Customs and international trade: chat
-
-#VAT Online
-ciapi.vat.online.title=VAT Online: chat
-
-#Corporation Tax
-ciapi.corporation.tax.title=Corporation Tax: chat
-
-#Debt Management and Banking
-cui.debt.management.title=Payment Problems: chat
-
-#National Insurance
-cui.national.insurance.title=National Insurance: chat
+ciapi.page.title=Ask HMRC online
 
 #National Minimum Wage Enquiries
-cui.national.minimum.wage.enquiries.title=National Minimum Wage: chat
-
-#Inheritance tax
-cui.inheritance.tax.title=Inheritance Tax: chat
 
 cui.national.minimum.wage.enquiries.sidebar.p1=Gangmasters & Labour Abuse Authority
 cui.national.minimum.wage.enquiries.sidebar.p2=Employment Agency Standards
 cui.national.minimum.wage.enquiries.sidebar.p3=Health & Safety Executive
-
-#Anti-money Laundering Services
-
-cui.amls.title=Anti-money laundering: chat
-
-#PAYE
-cui.paye.title=PAYE: chat
 
 #IVR SA
 ivr.self.assessment.title=Self Assessment: live chat
