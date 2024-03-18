@@ -201,6 +201,28 @@ class CiapiControllerSpec
       }
     }
 
+       "render Help To Save CUI page if shutter flag is true" in {
+      val application = builder.configure("features.digitalAssistants.showH2SCUI" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.helpToSave.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Ask HMRC online"
+      }
+    }
+
+    "render not found if Help To Save CUI page shutter flag is false" in {
+      val application = builder.configure("features.digitalAssistants.showH2SCUI" -> "false").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.helpToSave.url)
+        val result = route(application, request).get
+        status(result) mustBe NOT_FOUND
+      }
+    }
+
     "render Online Services Helpdesk CUI page if shutter flag is true" in {
       val application = builder.configure("features.digitalAssistants.showOSHCUI" -> "true").build()
 

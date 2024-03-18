@@ -182,4 +182,13 @@ class CiapiController @Inject()(appConfig: AppConfig,
       Future.successful(NotFound)
     }
   }
+
+  def helpToSave: Action[AnyContent] = Action.async { implicit request =>
+    if (config.showH2SCUI) {
+      auditHelper.audit(DAv3AuditModel("helpToSave"))
+      Future.successful(Ok(askHMRCOnlineCIAPIView()))
+    } else {
+      Future.successful(NotFound)
+    }
+  }
 }
