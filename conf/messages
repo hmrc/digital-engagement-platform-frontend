@@ -147,9 +147,9 @@ digital.assistant.list.showSACUI.title = Self Assessment
 digital.assistant.list.showSACUI.url = https://www.tax.service.gov.uk/ask-hmrc/chat/self-assessment
 digital.assistant.list.showSACUI.description = Chat about registering, filing returns and payments.
 
-digital.assistant.list.showSACUI.title = Help To Save
-digital.assistant.list.showSACUI.url = https://www.tax.service.gov.uk/ask-hmrc/chat/help-to-save
-digital.assistant.list.showSACUI.description = Chat about the eligibility for the scheme, your account or your payments.
+digital.assistant.list.showH2SCUI.title = Help To Save
+digital.assistant.list.showH2SCUI.url = https://www.tax.service.gov.uk/ask-hmrc/chat/help-to-save
+digital.assistant.list.showH2SCUI.description = Chat about the eligibility for the scheme, your account or your payments.
 
 digital.assistant.list.showTTCUI.title = Trade Tariff
 digital.assistant.list.showTTCUI.url = https://www.tax.service.gov.uk/ask-hmrc/chat/trade-tariff
