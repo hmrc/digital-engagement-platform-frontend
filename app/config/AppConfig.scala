@@ -54,7 +54,6 @@ class AppConfig @Inject()(config: Configuration) {
   val showAMLSCUI : Boolean = config.getOptional[Boolean]("features.digitalAssistants.showAMLSCUI").getOrElse(false)
   val showH2SCUI : Boolean = config.getOptional[Boolean]("features.digitalAssistants.showH2SCUI").getOrElse(false)
   val showADLCUI : Boolean = config.getOptional[Boolean]("features.digitalAssistants.showADLCUI").getOrElse(false)
-
   val showIVRWebchatSA: Boolean = config.getOptional[Boolean]("features.digitalAssistants.showIVRWebchatSA").getOrElse(false)
   val showIVRWebchatNI: Boolean = config.getOptional[Boolean]("features.digitalAssistants.showIVRWebchatNI").getOrElse(false)
   val showIVRWebchatDM: Boolean = config.getOptional[Boolean]("features.digitalAssistants.showIVRWebchatDM").getOrElse(false)

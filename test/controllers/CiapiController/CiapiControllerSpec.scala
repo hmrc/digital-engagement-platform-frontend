@@ -223,7 +223,7 @@ class CiapiControllerSpec
       }
     }
 
-           "render Agent Dedicated Line CUI page if shutter flag is true" in {
+    "render Agent Dedicated Line CUI page if shutter flag is true" in {
       val application = builder.configure("features.digitalAssistants.showADLCUI" -> "true").build()
 
       running(application) {
