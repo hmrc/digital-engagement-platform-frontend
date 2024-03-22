@@ -53,6 +53,7 @@ class AppConfig @Inject()(config: Configuration) {
   val showIHTCUI : Boolean = config.getOptional[Boolean]("features.digitalAssistants.showIHTCUI").getOrElse(false)
   val showAMLSCUI : Boolean = config.getOptional[Boolean]("features.digitalAssistants.showAMLSCUI").getOrElse(false)
   val showH2SCUI : Boolean = config.getOptional[Boolean]("features.digitalAssistants.showH2SCUI").getOrElse(false)
+  val showADLCUI : Boolean = config.getOptional[Boolean]("features.digitalAssistants.showADLCUI").getOrElse(false)
 
   val showIVRWebchatSA: Boolean = config.getOptional[Boolean]("features.digitalAssistants.showIVRWebchatSA").getOrElse(false)
   val showIVRWebchatNI: Boolean = config.getOptional[Boolean]("features.digitalAssistants.showIVRWebchatNI").getOrElse(false)
@@ -101,6 +102,8 @@ class AppConfig @Inject()(config: Configuration) {
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/corporation-tax-enquiries"
   val helpToSaveReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/help-to-save-scheme"
+  val agentDedicatedLineUrl: String =
+    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/agent-dedicated-line-self-assessment-or-paye-for-individuals"
   val constructionIndustrySchemeReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/construction-industry-scheme"
   val nationalClearanceHubReturnUrl: String =
