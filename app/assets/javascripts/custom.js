@@ -30,13 +30,21 @@ window.addEventListener('DOMContentLoaded', function() {
 
     // back link
     var backLink = document.querySelector('.govuk-back-link');
-    if(backLink){
-        backLink.addEventListener('click', function(e){
-            e.preventDefault();
-            if (window.history && window.history.back && typeof window.history.back === 'function'){
+    
+    window.onload = function() {
+        toggleBackLinkVisibility();
+    };
+
+    function toggleBackLinkVisibility() {
+        if(window.history.length === 1 && window.history.back && typeof window.history.back === 'function') {
+            backLink.style.display = 'none';
+        }else{
+            backLink.style.display = 'block-inline'; 
+            backLink.addEventListener('click', function(e){
+                e.preventDefault();
                 window.history.back();
-            }
-        });
+            });
+        }
     }
 });
 
