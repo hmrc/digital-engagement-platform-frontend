@@ -24,6 +24,7 @@
 @import uk.gov.hmrc.govukfrontend.views.html.components.Text
 @import uk.gov.hmrc.govukfrontend.views.html.components.GovukNotificationBanner
 @import uk.gov.hmrc.govukfrontend.views.Aliases.NotificationBanner
+@import uk.gov.hmrc.govukfrontend.views.Aliases.HtmlContent
 
 @import views.html.components._
 @import views.html.layouts.OurGovukLayout
@@ -43,6 +44,7 @@
     govukBackLink : GovukBackLink
 )
 
+@import uk.gov.hmrc.govukfrontend.views.viewmodels.content.HtmlContent
 @(
     title: String,
     mainDataAttributes: Option[Html] = None,
@@ -82,7 +84,7 @@
 @beforeContentBlock = {
     @if(showBackLink) { @govukBackLink(BackLink(href="#", content=Text(messages("global.back")))) }
     @if(displayBanner) {
-        @govukNotificationBanner(NotificationBanner(title = Text(messages("notification.banner.title")), content = Text(messages("notification.banner.p"))))
+        @govukNotificationBanner(NotificationBanner(title = Text(messages("notification.banner.title")), content = HtmlContent(messages("notification.banner.p"))))
     }
 }
 
