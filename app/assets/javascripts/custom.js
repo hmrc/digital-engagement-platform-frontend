@@ -33,11 +33,38 @@ window.addEventListener('DOMContentLoaded', function() {
     if(backLink){
         backLink.addEventListener('click', function(e){
             e.preventDefault();
-            if (window.history && window.history.back && typeof window.history.back === 'function'){
+            if (window.history.length > 1 && window.history.back && typeof window.history.back === 'function'){
                 window.history.back();
+            }else{
+                window.location.href = "https://www.qa.tax.service.gov.uk/ask-hmrc/hmrc-digital-assistant";
             }
         });
     }
+
+    // if(backLink){
+    //     backLink.addEventListener('click', function(e){
+    //         e.preventDefault();
+    //         if (document.referrer !== ''){
+    //             window.history.back();
+    //         }else{
+    //             window.location.href = "https://www.qa.tax.service.gov.uk/ask-hmrc/hmrc-digital-assistant";
+    //         }
+    //     });
+    // }
+
+    // if(backLink){
+    //     backLink.addEventListener('click', function(e){
+    //         e.preventDefault();
+    //         if (window.history.length > 1){
+    //             window.history.back();
+    //         }else{
+    //             window.location.href = "https://www.qa.tax.service.gov.uk/ask-hmrc/hmrc-digital-assistant";
+    //         }
+    //     });
+    // }
+
+
+
 });
 
 // dynamically re-position nuance divs before footer for accessibility
