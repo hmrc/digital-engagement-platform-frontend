@@ -51,7 +51,8 @@
     scriptElem: Html = HtmlFormat.empty,
     navTitle: Option[String] = None,
     showHelpForm: Boolean = true,
-    showBackLink: Boolean = true
+    showBackLink: Boolean = true,
+    displayBanner: Boolean = false
 )(implicit request: Request[_], messages: play.api.i18n.Messages)
 
 @bodyEndBlock = {
@@ -80,7 +81,9 @@
 
 @beforeContentBlock = {
     @if(showBackLink) { @govukBackLink(BackLink(href="#", content=Text(messages("global.back")))) }
-    @govukNotificationBanner(NotificationBanner(title=Text(messages("notification.banner.title")), content=Text(messages("notification.banner.p"))))
+    @if(displayBanner) {
+        @govukNotificationBanner(NotificationBanner(title = Text(messages("notification.banner.title")), content = Text(messages("notification.banner.p"))))
+    }
 }
 
 @wrappedContent = {

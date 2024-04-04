@@ -27,7 +27,8 @@
 @(title: String,
     navTitle: Option[String] = None,
     showHelpForm: Boolean = true,
-    showBackLink: Boolean = true)(mainContent: Html)(implicit request : Request[_], messages: Messages)
+    showBackLink: Boolean = true,
+    displayBanner: Boolean = false)(mainContent: Html)(implicit request : Request[_], messages: Messages)
 
 @scriptElem = {
 
@@ -44,5 +45,6 @@
                mainContent = mainContent,
                scriptElem = scriptElem,
                showHelpForm = showHelpForm,
-               showBackLink = showBackLink
+               showBackLink = showBackLink,
+               displayBanner = displayBanner
 )
