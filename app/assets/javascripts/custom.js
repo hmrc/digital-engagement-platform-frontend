@@ -12,7 +12,8 @@ window.addEventListener('DOMContentLoaded', function() {
 
     //Change these to required start and end times
     let startTime = new Date("2024-02-24T07:45:00Z").getTime();
-    let endTime = new Date("2024-02-24T16:00:00Z").getTime();
+    //No end date given for current banner, set it to next year for now
+    let endTime = new Date("2025-02-24T16:00:00Z").getTime();
 
     let notificationBanner = document.getElementsByClassName('govuk-notification-banner')[0]
 

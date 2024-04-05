@@ -24,6 +24,7 @@
 @import uk.gov.hmrc.govukfrontend.views.html.components.Text
 @import uk.gov.hmrc.govukfrontend.views.html.components.GovukNotificationBanner
 @import uk.gov.hmrc.govukfrontend.views.Aliases.NotificationBanner
+@import uk.gov.hmrc.govukfrontend.views.Aliases.HtmlContent
 
 @import views.html.components._
 @import views.html.layouts.OurGovukLayout
@@ -51,7 +52,8 @@
     scriptElem: Html = HtmlFormat.empty,
     navTitle: Option[String] = None,
     showHelpForm: Boolean = true,
-    showBackLink: Boolean = true
+    showBackLink: Boolean = true,
+    displayBanner: Boolean = false
 )(implicit request: Request[_], messages: play.api.i18n.Messages)
 
 @bodyEndBlock = {
@@ -80,7 +82,9 @@
 
 @beforeContentBlock = {
     @if(showBackLink) { @govukBackLink(BackLink(href="#", content=Text(messages("global.back")))) }
-    @govukNotificationBanner(NotificationBanner(title=Text(messages("notification.banner.title")), content=Text(messages("notification.banner.p"))))
+    @if(displayBanner) {
+        @govukNotificationBanner(NotificationBanner(title = Text(messages("notification.banner.title")), content = HtmlContent(messages("notification.banner.p"))))
+    }
 }
 
 @wrappedContent = {
