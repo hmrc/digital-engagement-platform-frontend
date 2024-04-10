@@ -33,7 +33,7 @@ class IvrController @Inject()(appConfig: AppConfig,
                               selfAssessmentIVRView: SelfAssessmentIVRView,
                               debtManagementIVRView: DebtManagementIVRView,
                               nationalInsuranceIVRView: NationalInsuranceIVRView,
-                              employerHelplineIVRView: EmployerHelplineIVRView
+                              employerHelplineIVRView: EmployerHelplineIVRView,
                               constructionIndustrySchemeIVRView: ConstructionIndustrySchemeIVRView
                              ) extends FrontendController(mcc) {
 
