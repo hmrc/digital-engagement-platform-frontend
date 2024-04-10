@@ -23,6 +23,7 @@ import views.html.IVR.SelfAssessmentIVRView
 import views.html.IVR.NationalInsuranceIVRView
 import views.html.IVR.DebtManagementIVRView
 import views.html.IVR.EmployerHelplineIVRView
+import views.html.IVR.ConstructionIndustrySchemeIVRView
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.Future
 
@@ -33,6 +34,7 @@ class IvrController @Inject()(appConfig: AppConfig,
                               debtManagementIVRView: DebtManagementIVRView,
                               nationalInsuranceIVRView: NationalInsuranceIVRView,
                               employerHelplineIVRView: EmployerHelplineIVRView
+                              constructionIndustrySchemeIVRView: ConstructionIndustrySchemeIVRView
                              ) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
@@ -56,6 +58,14 @@ class IvrController @Inject()(appConfig: AppConfig,
   def employerHelpline: Action[AnyContent] = Action.async { implicit request =>
     if (config.showIVRWebchatEHL) {
       Future.successful(Ok(employerHelplineIVRView()))
+    } else {
+        Future.successful(NotFound)
+      }
+    }
+  
+  def constructionIndustryScheme: Action[AnyContent] = Action.async { implicit request =>
+    if (config.showIVRWebchatCIS) {
+      Future.successful(Ok(constructionIndustrySchemeIVRView()))
     } else {
       Future.successful(NotFound)
     }
