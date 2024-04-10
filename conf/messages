@@ -104,6 +104,13 @@ ivr.national.insurance.security.p2=We will only send a link to webchat after you
 ivr.national.insurance.security.p3=If you think you have received a suspicious message, you can
 ivr.national.insurance.security.link= report it online (opens in a new tab).
 
+#IVR CIS
+ivr.construction.industry.scheme.title=Construction Industry Scheme: live chat
+ivr.construction.industry.scheme.security.p1=HMRC will never send unsolicited text messages containing links to webpages.
+ivr.construction.industry.scheme.security.p2=We will only send a link to webchat after you have requested it.
+ivr.construction.industry.scheme.security.p3=If you think you have received a suspicious message, you can
+ivr.construction.industry.scheme.security.link= report it online (opens in a new tab).
+
 #Digital Assistant List Page
 digital.assistant.list.page.title=Ask HMRC Online
 
