@@ -55,7 +55,7 @@ class IvrController @Inject()(appConfig: AppConfig,
 
   def employerHelpline: Action[AnyContent] = Action.async { implicit request =>
     if (config.showIVRWebchatEHL) {
-      Future.successful(Ok(EmployerHelplineIVRView()))
+      Future.successful(Ok(employerHelplineIVRView()))
     } else {
       Future.successful(NotFound)
     }
