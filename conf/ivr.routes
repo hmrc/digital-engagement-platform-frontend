@@ -3,4 +3,5 @@
 GET         /sa                     controllers.IvrController.IvrController.selfAssessment
 GET         /ni                     controllers.IvrController.IvrController.nationalInsurance
 GET         /dm                     controllers.IvrController.IvrController.debtManagement
+GET         /ehl                    controllers.IvrController.IvrController.employerHelpline
 GET         /cis                    controllers.IvrController.IvrController.constructionIndustryScheme

@@ -22,6 +22,7 @@ import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 import views.html.IVR.SelfAssessmentIVRView
 import views.html.IVR.NationalInsuranceIVRView
 import views.html.IVR.DebtManagementIVRView
+import views.html.IVR.EmployerHelplineIVRView
 import views.html.IVR.ConstructionIndustrySchemeIVRView
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.Future
@@ -32,6 +33,7 @@ class IvrController @Inject()(appConfig: AppConfig,
                               selfAssessmentIVRView: SelfAssessmentIVRView,
                               debtManagementIVRView: DebtManagementIVRView,
                               nationalInsuranceIVRView: NationalInsuranceIVRView,
+                              employerHelplineIVRView: EmployerHelplineIVRView
                               constructionIndustrySchemeIVRView: ConstructionIndustrySchemeIVRView
                              ) extends FrontendController(mcc) {
 
@@ -53,6 +55,14 @@ class IvrController @Inject()(appConfig: AppConfig,
     }
   }
 
+  def employerHelpline: Action[AnyContent] = Action.async { implicit request =>
+    if (config.showIVRWebchatEHL) {
+      Future.successful(Ok(employerHelplineIVRView()))
+    } else {
+        Future.successful(NotFound)
+      }
+    }
+  
   def constructionIndustryScheme: Action[AnyContent] = Action.async { implicit request =>
     if (config.showIVRWebchatCIS) {
       Future.successful(Ok(constructionIndustrySchemeIVRView()))

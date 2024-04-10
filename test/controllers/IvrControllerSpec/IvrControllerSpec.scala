@@ -77,7 +77,29 @@ class IvrControllerSpec
       }
     }
 
-     "Construction Industry Scheme page is displayed if shutter flag is true" in {
+    "Employer Helpline page is displayed if shutter flag is true" in {
+      val application = builder.configure("features.digitalAssistants.showIVRWebchatEHL" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.IvrController.employerHelpline.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Employer Helpline: live chat"
+      }
+    }
+
+    "Employer Helpline page is not displayed if shutter flag is false. Shutter page is displayed instead" in {
+      val application = builder.configure("features.digitalAssistants.showIVRWebchatEHL" -> "false").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.IvrController.employerHelpline.url)
+        val result = route(application, request).get
+        status(result) mustBe NOT_FOUND
+      }
+    }
+    
+    "Construction Industry Scheme page is displayed if shutter flag is true" in {
       val application = builder.configure("features.digitalAssistants.showIVRWebchatCIS" -> "true").build()
 
       running(application) {
