@@ -4,6 +4,20 @@ window.HMRCFrontend.initAll();
 
 window.addEventListener('DOMContentLoaded', function() {
 
+    // =====================================================
+    // Back link mimics browser back functionality
+    // =====================================================
+    var backLink = document.querySelector('.govuk-back-link');
+    if(window.history.length === 1 && window.history.back && typeof window.history.back === 'function') {
+        backLink.style.display = 'none';
+    }else{
+        backLink.style.display = 'block-inline'; 
+        backLink.addEventListener('click', function(e){
+            e.preventDefault();
+            window.history.back();
+        });
+    }
+
     //Timer for notification banner
     //date format ( YYYY-MM-DD )
     //If BST then time needs to be 1 hour earlier
@@ -23,21 +37,6 @@ window.addEventListener('DOMContentLoaded', function() {
     } else {
         //Notification will not be displayed
         notificationBanner.style.display = 'none'
-    }
-
-    // =====================================================
-    // Back link mimics browser back functionality
-    // =====================================================
-
-    // back link
-    var backLink = document.querySelector('.govuk-back-link');
-    if(backLink){
-        backLink.addEventListener('click', function(e){
-            e.preventDefault();
-            if (window.history && window.history.back && typeof window.history.back === 'function'){
-                window.history.back();
-            }
-        });
     }
 });
 
