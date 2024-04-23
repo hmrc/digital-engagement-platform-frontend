@@ -39,10 +39,6 @@ class WebchatController @Inject()(appConfig: AppConfig,
     Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
-  def constructionIndustryScheme: Action[AnyContent] = Action.async {
-      Future.successful(Redirect(ciapiRoutes.CiapiController.constructionIndustryScheme))
-  }
-
   def nationalClearanceHub: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(nationalClearanceHubView()))
   }

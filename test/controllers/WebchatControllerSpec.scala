@@ -45,13 +45,6 @@ class WebchatControllerSpec
 
   "fixed URLs" must {
 
-    "Construction industry scheme page" in {
-      val result = controller.constructionIndustryScheme(fakeRequest)
-
-      status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some(ciapiRoutes.CiapiController.constructionIndustryScheme.url)
-    }
-
     "National clearance hub page" in {
       val result = controller.nationalClearanceHub(fakeRequest)
       val doc = asDocument(contentAsString(result))

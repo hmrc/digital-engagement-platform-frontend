@@ -6,7 +6,6 @@ GET         /assets/*file                                                   cont
 
 GET         /webchat/service-unavailable                                    controllers.WebchatController.serviceUnavailable
 
-GET         /webchat/construction-industry-scheme-enquiries                 controllers.WebchatController.constructionIndustryScheme
 GET         /webchat/national-clearance-hub                                 controllers.WebchatController.nationalClearanceHub
 GET         /webchat/help-for-users-with-additional-needs                   controllers.WebchatController.additionalNeedsHelp
 GET         /webchat/personal-transport-unit-enquiries                      controllers.WebchatController.personalTransportUnitEnquiries
