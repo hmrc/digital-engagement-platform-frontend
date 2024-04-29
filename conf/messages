@@ -165,7 +165,7 @@ digital.assistant.list.showH2SCUI.title = Help To Save
 digital.assistant.list.showH2SCUI.url = https://www.tax.service.gov.uk/ask-hmrc/chat/help-to-save
 digital.assistant.list.showH2SCUI.description = Chat about the eligibility for the scheme, your account or your payments.
 
-digital.assistant.list.showADLCUI.title = Agent Support
+digital.assistant.list.showADLCUI.title = Support for Tax Agents
 digital.assistant.list.showADLCUI.url = https://www.tax.service.gov.uk/ask-hmrc/chat/agent-dedicated-line-ind
 digital.assistant.list.showADLCUI.description = Chat about your clients’ Self Assessment or PAYE needs.
 
