@@ -33,7 +33,7 @@ class c2cViewPopupSpec extends ChatViewBehaviours with Matchers with AnyWordSpec
       behave like normalCuiPage(
         createView,
         "Ask HMRC",
-        "C2C Test Popup",
+        "C2C Test Popup - Ask HMRC - GOV.UK",
         "C2C Test Popup"
       )
     }

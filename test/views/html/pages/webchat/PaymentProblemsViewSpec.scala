@@ -67,7 +67,7 @@ class PaymentProblemsViewSpec extends ChatViewBehaviours with Matchers with AnyW
 
         "display the correct browser title" in {
           val doc = asDocument(createView())
-          assertEqualsMessage(doc, "title", "Coronavirus (COVID-19): tax support for businesses and self-employed - GOV.UK")
+          assertEqualsMessage(doc, "title", "Coronavirus (COVID-19): tax support for businesses and self-employed - Ask HMRC - GOV.UK")
         }
 
         "display the correct page title" in {
