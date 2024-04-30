@@ -33,6 +33,7 @@ GET         /chat/anti-money-laundering                                     cont
 GET         /chat/self-assessment-filing                                    controllers.CiapiController.CiapiController.selfAssessment
 GET         /chat/help-to-save                                              controllers.CiapiController.CiapiController.helpToSave
 GET         /chat/agent-dedicated-line-ind                                  controllers.CiapiController.CiapiController.agentDedicatedLine
+GET         /chat/trusts                                                    controllers.CiapiController.CiapiController.trusts
 
 GET         /feature-switches/:switchName                                   controllers.FeatureSwitchController.getFeatureSwitch(switchName: String)
 

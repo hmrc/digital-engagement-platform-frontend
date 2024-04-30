@@ -200,4 +200,13 @@ class CiapiController @Inject()(appConfig: AppConfig,
       Future.successful(NotFound)
     }
   }
+
+  def trusts: Action[AnyContent] = Action.async { implicit request =>
+    if (config.showTrusts) {
+      auditHelper.audit(DAv3AuditModel("trusts"))
+      Future.successful(Ok(askHMRCOnlineCIAPIView()))
+    } else {
+      Future.successful(NotFound)
+    }
+  }
 }
