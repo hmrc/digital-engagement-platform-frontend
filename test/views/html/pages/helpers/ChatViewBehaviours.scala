@@ -112,6 +112,7 @@ trait ChatViewBehaviours extends ViewSpecBase {
     }
   }
   def normalCuiPage(view: () => HtmlFormat.Appendable,
+                    title: String,
                     messageHeading: String,
                     chatIds: Seq[String] = Seq("nuanMessagingFrame")): Unit = {
 
