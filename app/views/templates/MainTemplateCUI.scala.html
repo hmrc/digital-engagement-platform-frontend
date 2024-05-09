@@ -24,7 +24,7 @@
     webChatClient: WebChatClient
 )
 
-@(title: String, navTitle: Option[String] = Some("Ask HMRC"), sidebar: Option[Html] = None, displayBanner: Boolean = false)(mainContent: Html)(implicit request : Request[_], messages: Messages)
+@(title: String, sidebar: Option[Html] = None, displayBanner: Boolean = false)(mainContent: Html)(implicit request : Request[_], messages: Messages)
 
 @sidebarContent = {
     @if(sidebar.isDefined) {
@@ -50,7 +50,6 @@
 }
 
 @govuk_wrapper(title = title,
-               navTitle = navTitle,
                sidebar = sidebarContent,
                mainContent = mainContent,
                scriptElem = Some(scriptElem),

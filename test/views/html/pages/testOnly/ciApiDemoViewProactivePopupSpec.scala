@@ -32,7 +32,6 @@ class ciApiDemoViewProactivePopupSpec extends ChatViewBehaviours with Matchers w
     "rendered" must {
       behave like normalCuiPage(
         createView,
-        "Ask HMRC",
         "Proactive Popup - Ask HMRC - GOV.UK",
         "Proactive Popup"
       )

@@ -33,7 +33,6 @@ class EmployerHelplineIVRViewSpec extends ChatViewBehaviours with Matchers with 
 
     behave like normalPage(
       createView,
-      "Ask HMRC",
       "Employer Helpline: live chat - Ask HMRC - GOV.UK",
       "Employer Helpline: live chat",
       "Return to Contact HMRC",

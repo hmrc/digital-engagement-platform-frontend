@@ -71,8 +71,7 @@
 
     @hmrcStandardHeader(
         phaseBanner = Some(standardBetaBanner(phase=messages("global.banner.phase"), url=appConfig.betaFeedbackUnauthenticatedUrl)),
-        displayHmrcBanner = false,
-        serviceName = navTitle.orElse(Some(Messages("global.nav.title")))
+        displayHmrcBanner = false
     )
 }
 

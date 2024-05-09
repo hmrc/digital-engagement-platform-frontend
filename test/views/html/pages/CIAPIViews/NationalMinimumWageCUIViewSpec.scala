@@ -32,7 +32,6 @@ class NationalMinimumWageCUIViewSpec extends ChatViewBehaviours with Matchers wi
     "rendered" must {
       behave like normalCuiPage(
         createView,
-        "Ask HMRC",
         "Ask HMRC online - Ask HMRC - GOV.UK",
         "Ask HMRC online"
       )
