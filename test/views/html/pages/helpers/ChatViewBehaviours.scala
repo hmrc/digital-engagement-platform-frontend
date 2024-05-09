@@ -121,6 +121,11 @@ trait ChatViewBehaviours extends ViewSpecBase {
 
         behave like generalContent(view, messageHeading)
 
+        "display the correct browser title" in {
+          val doc = asDocument(view())
+          assertEqualsMessage(doc, "title", title)
+        }
+
         "insert the Nuance container tag(s)" in {
           val doc = asDocument(view())
           for (chatId <- chatIds) doc.getElementById(chatId) must not be null
