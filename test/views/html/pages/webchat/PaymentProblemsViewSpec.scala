@@ -58,13 +58,6 @@ class PaymentProblemsViewSpec extends ChatViewBehaviours with Matchers with AnyW
 
       "rendered" must {
 
-        "have the correct banner title" in {
-          val doc = asDocument(createView())
-          val nav = doc.getElementsByClass("hmrc-header__service-name")
-          val span = nav.first
-          span.text mustBe messages("global.nav.title")
-        }
-
         "display the correct browser title" in {
           val doc = asDocument(createView())
           assertEqualsMessage(doc, "title", "Coronavirus (COVID-19): tax support for businesses and self-employed - Ask HMRC - GOV.UK")

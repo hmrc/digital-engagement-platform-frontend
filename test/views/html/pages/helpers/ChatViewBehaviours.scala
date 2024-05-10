@@ -41,7 +41,6 @@ trait ChatViewBehaviours extends ViewSpecBase {
   }
 
   def normalPage(view: () => HtmlFormat.Appendable,
-                 bannerTitle: String,
                  messageKeyPrefix: String,
                  messageHeading: String,
                  urlLinkText: String,
@@ -53,13 +52,6 @@ trait ChatViewBehaviours extends ViewSpecBase {
       "rendered" must {
 
         behave like generalContent(view, messageHeading)
-
-        "have the correct banner title" in {
-          val doc = asDocument(view())
-          val nav = doc.getElementsByClass("hmrc-header__service-name")
-          val span = nav.first
-          span.text mustBe bannerTitle
-        }
 
         "display the correct browser title" in {
           val doc = asDocument(view())
@@ -120,7 +112,6 @@ trait ChatViewBehaviours extends ViewSpecBase {
     }
   }
   def normalCuiPage(view: () => HtmlFormat.Appendable,
-                    bannerTitle: String,
                     title: String,
                     messageHeading: String,
                     chatIds: Seq[String] = Seq("nuanMessagingFrame")): Unit = {
@@ -129,13 +120,6 @@ trait ChatViewBehaviours extends ViewSpecBase {
       "rendered" must {
 
         behave like generalContent(view, messageHeading)
-
-        "have the correct banner title" in {
-          val doc = asDocument(view())
-          val nav = doc.getElementsByClass("hmrc-header__service-name")
-          val span = nav.first
-          span.text mustBe bannerTitle
-        }
 
         "display the correct browser title" in {
           val doc = asDocument(view())

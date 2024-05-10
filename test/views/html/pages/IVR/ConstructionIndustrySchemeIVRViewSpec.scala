@@ -33,7 +33,6 @@ class ConstructionIndustrySchemeIVRViewSpec extends ChatViewBehaviours with Matc
 
     behave like normalPage(
       createView,
-      "Ask HMRC",
       "Construction Industry Scheme: live chat - Ask HMRC - GOV.UK",
       "Construction Industry Scheme: live chat",
       "Return to Contact HMRC",

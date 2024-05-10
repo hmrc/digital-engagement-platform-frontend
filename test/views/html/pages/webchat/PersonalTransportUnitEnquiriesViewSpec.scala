@@ -34,7 +34,6 @@ class PersonalTransportUnitEnquiriesViewSpec extends ChatViewBehaviours with Mat
 
     behave like normalPage(
       createView,
-      "Ask HMRC",
       "Personal Transport Unit: webchat - Ask HMRC - GOV.UK",
       "Personal Transport Unit: webchat",
       "Return to Contact HMRC",

@@ -32,7 +32,6 @@ class MixTestSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike 
     "rendered" must {
       behave like normalCuiPage(
         createView,
-        "Ask HMRC",
         "Mix Test Page - Ask HMRC - GOV.UK",
         "Mix Test Page"
       )

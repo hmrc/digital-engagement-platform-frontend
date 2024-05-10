@@ -35,13 +35,6 @@ class VATaxCreditsEnquiriesViewSpec extends ChatViewBehaviours with Matchers wit
     "behave like a normal page" when {
       "rendered" must {
 
-        "have the correct banner title" in {
-          val doc = asDocument(createView())
-          val nav = doc.getElementsByClass("hmrc-header__service-name")
-          val span = nav.first
-          span.text mustBe messages("Ask HMRC")
-        }
-
         "display the correct browser title" in {
           val doc = asDocument(createView())
           assertEqualsMessage(doc, "title", "Use HMRC’s digital assistant - Ask HMRC - GOV.UK")

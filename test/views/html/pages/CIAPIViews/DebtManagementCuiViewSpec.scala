@@ -33,7 +33,6 @@ class DebtManagementCuiViewSpec extends ChatViewBehaviours with Matchers with An
     "rendered" must {
       behave like normalCuiPage(
         createView(true),
-        "Ask HMRC",
         "Ask HMRC online - Ask HMRC - GOV.UK",
         "Ask HMRC online"
       )
