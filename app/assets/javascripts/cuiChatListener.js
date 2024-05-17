@@ -120,7 +120,7 @@ export var chatListener = {
         messagingContainer.fadeTo(0, 0.0);
         loadingAnimation.show();
     },
-    technicalError: function(evt) {
+    technicalError: function() {
         var errorEle = document.getElementById("error-message");
 
         if(errorEle) {
