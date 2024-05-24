@@ -192,3 +192,7 @@ digital.assistant.list.showIHTCUI.description = Chat about tax affairs when some
 digital.assistant.list.showAMLSCUI.title = Anti-money laundering service
 digital.assistant.list.showAMLSCUI.url = http://www.tax.service.gov.uk/ask-hmrc/chat/anti-money-laundering
 digital.assistant.list.showAMLSCUI.description = Chat about registering for supervision and reporting suspicious activity.
+
+digital.assistant.list.showTrusts.title = Trusts
+digital.assistant.list.showTrusts.url = http://www.tax.service.gov.uk/ask-hmrc/chat/trusts
+digital.assistant.list.showTrusts.description = Chat about registering and managing trusts.
