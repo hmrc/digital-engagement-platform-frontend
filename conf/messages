@@ -23,7 +23,7 @@ global.banner.phase = BETA
 
 #Notification Banner
 notification.banner.title = Important
-notification.banner.p = <p class="govuk-notification-banner__heading">Our advisers cannot take Self Assessment or Self Employment registrations by webchat. <a href="https://www.gov.uk/register-for-self-assessment" target="_blank">Use the online tool to register for Self Assessment (opens in a new tab)</a>.</p>
+notification.banner.p = <p class="govuk-notification-banner__heading">If you lost money because a Child Benefit payment was late, use the <a href="https://www.gov.uk/child-benefit-complaints" target="_blank">complaints form</a> to apply for compensation.</p>
 
 #Service Unavailable Page
 service.unavailable.title = Sorry, this webchat is unavailable
