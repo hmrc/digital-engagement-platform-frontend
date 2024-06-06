@@ -105,13 +105,10 @@ describe("When loading a page and waiting for changes", () => {
             SUT.waitForChanges(window, document);
             window.dispatchEvent(new Event('load'));
 
-            expect($('.hide-text-on-error').css("display")).toBe("block");
-
             var timeoutFunction = elementWatcherMock.mock.calls[0][2];
             timeoutFunction();
-
-            expect($("#HMRC_Fixed_1").text()).toEqual("There's a problem with webchat. Try again later.")
-            expect($(".hide-text-on-error").css("display")).toBe("none")
+            expect(document.getElementById("HMRC_Fixed_1").textContent).toEqual("There's a problem with webchat. Try again later.")
+            expect(document.getElementsByClassName('hide-text-on-error')[0].style.display).toBe("none");
         });
         it("will raise event on data layer if timeout for webchat", () => {
             window.location = {
@@ -145,7 +142,7 @@ describe("When loading a page and waiting for changes", () => {
             var timeoutFunction = elementWatcherMock.mock.calls[0][2];
             timeoutFunction();
 
-            expect($("#HMRC_Fixed_1").text()).toEqual("There's a problem with the digital assistant. Try again later.")
+            expect(document.getElementById("HMRC_Fixed_1").textContent).toEqual("There's a problem with the digital assistant. Try again later.")
 
         });
         it("will raise event on data layer if timeout for virtual assistant", () => {

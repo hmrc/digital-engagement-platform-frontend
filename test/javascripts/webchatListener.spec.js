@@ -26,12 +26,10 @@ describe("Webchat listener", () => {
                 </div>
             `;
             jest.useFakeTimers();
-            $.fx.off = true;
         });
         afterEach(() => {
             jest.clearAllTimers();
             testListener.shutdown(window);
-            $.fx.off = false;
         });
 
         it("will have basic properties", () => {
@@ -44,9 +42,9 @@ describe("Webchat listener", () => {
             testListener.startup(window);
             window.dispatchEvent(new Event('load'));
 
-            let text = $('.webchat-loading-text')
+            let text = document.getElementsByClassName('webchat-loading-text')
             expect(text.length).toBe(1);
-            expect(text.css("display")).toBe("block");
+            expect(text[0].style.display).toBe("block");
         });
 
         it("will hide the loading text if activity and then shown", () => {
@@ -55,8 +53,8 @@ describe("Webchat listener", () => {
 
             testListener.onC2CStateChanged({});
             testListener.onAnyEvent({});
-
-            expect($('.webchat-loading-text').css("display")).toBe("none");
+            let text = document.getElementsByClassName('webchat-loading-text')
+            expect(text[0].style.display).toBe("none");
         });
 
         it("will hide the loading text if timeout", () => {
@@ -65,7 +63,8 @@ describe("Webchat listener", () => {
 
             jest.runOnlyPendingTimers();
 
-            expect($('.webchat-loading-text').css("display")).toBe("none");
+            let text = document.getElementsByClassName('webchat-loading-text')
+            expect(text[0].style.display).toBe("none");
         });
 
     });
