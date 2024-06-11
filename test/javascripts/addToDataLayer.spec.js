@@ -1,5 +1,10 @@
 import * as SUT from '../../app/assets/javascripts/addToDataLayer'
 
+let spy;
+beforeAll(() => {
+  spy = jest.spyOn(document, 'getElementById');
+});
+
 describe("Add to data layer", function() {
   	it("will add all base properties", () => {
         document.body.innerHTML = `<input type="text" id="test" data-gtag="test">`
@@ -7,7 +12,7 @@ describe("Add to data layer", function() {
         var el = "test";
         var d = {
             querySelectorAll : () => {
-                return document.getElementById("test");
+                return document.querySelectorAll('#test');
             }};
 
         SUT.addToDataLayer("Pending", el, w, d);
@@ -21,16 +26,11 @@ describe("Add to data layer", function() {
     
 
   	it("push any data-gtag objects in the format `key:value, key:value` into global dataLayer", () => {
-        const parentDiv = document.createElement("div");
-        const variable1 = document.createElement("input");
-            variable1.setAttribute('type', 'text') 
-            variable1.setAttribute('id', 'test') 
-            variable1.setAttribute('data-gtag', 'alloys:20 inches color:blue engine:v6') 
-            parentDiv.appendChild(variable1);
-        document.body.appendChild(parentDiv);           
-        console.log(JSON.stringify(document.getElementById('test')))
+        document.body.innerHTML = `<input type="text" id="test" data-gtag="engine:v6, color:blue, alloys:20 inches">`
         var w = {dataLayer : []};
-        var d =  document.querySelector('[id=test]')
+        var d = {querySelectorAll : () => {
+                return document.querySelectorAll('#test');
+            }};
         var el = "test";
 
 		SUT.addToDataLayer("Pending",el,w,d);
