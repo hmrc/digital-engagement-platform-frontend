@@ -120,7 +120,11 @@ export var chatListener = {
         var errorEle = document.getElementById("error-message");
 
         if(errorEle) {
-            document.getElementById("error-message").innerHTML = '<p id="cui-technical-error" class="cui-technical-error error-message">Sorry, there is a problem with this service. Try again later</p>';
+            if (errorEle.classList.contains("chat-in-progress")) {
+                errorEle.innerHTML = "<p class='cui-technical-error error-message'> You've already started a chat in another tab or window. Return to the chat to continue your conversation. </p>";
+            } else {
+                errorEle.innerHTML = '<p class="cui-technical-error error-message">Sorry, there is a problem with this service. Try again later</p>';
+            }
         }
 
         this.showNuanceDiv();
