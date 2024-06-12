@@ -96,7 +96,6 @@ export var chatListener = {
             this.engageTimeout = null;
         }
         this.engaged = true;
-        // $('.cui-technical-error').hide();
         if(document.getElementById("cui-technical-error")){
             document.getElementById("cui-technical-error").style.display = 'none'
         }
