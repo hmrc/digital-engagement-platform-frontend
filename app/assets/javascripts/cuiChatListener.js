@@ -96,29 +96,24 @@ export var chatListener = {
             this.engageTimeout = null;
         }
         this.engaged = true;
-        $('.cui-technical-error').hide();
+        if(document.getElementById("cui-technical-error")){
+            document.getElementById("cui-technical-error").style.display = 'none'
+        }
+        
         this.showNuanceDiv();
     },
     showNuanceDiv: function() {
         console.log("showNuanceDiv");
+        document.getElementById("cui-loading-animation").style.display = 'none'
+        document.getElementById("cui-messaging-container").style.display = 'block'
 
-        var loadingAnimation = $(this.loadingAnimationSelector)
-        var messagingContainer = $(this.messagingContainerSelector)
-        messagingContainer.fadeTo(2000, 1.0);
-        loadingAnimation.fadeTo(1500, 0.0, function() {
-            loadingAnimation.hide();
-        });
-      
-        if($("#ciapiSkin").length){
-             $('.cui-technical-error').hide();
+        if(document.getElementById("#ciapiSkin")){
+            document.getElementById("cui-technical-error").style.display = 'none'
         }
     },
     showLoadingAnimation: function() {
-        var loadingAnimation = $(this.loadingAnimationSelector);
-        var messagingContainer = $(this.messagingContainerSelector);
-
-        messagingContainer.fadeTo(0, 0.0);
-        loadingAnimation.show();
+        document.getElementById("cui-loading-animation").style.display = 'block'
+        document.getElementById("cui-messaging-container").style.display = 'block'
     },
     technicalError: function() {
         var errorEle = document.getElementById("error-message");

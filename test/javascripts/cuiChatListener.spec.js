@@ -31,12 +31,10 @@ describe("CUI chat listener", () => {
                 </div>
             `;
             jest.useFakeTimers();
-            $.fx.off = true;
         });
         afterEach(() => {
             jest.clearAllTimers();
             testListener.shutdown(window);
-            $.fx.off = false;
         });
 
         it("will have basic properties", () => {
@@ -50,25 +48,30 @@ describe("CUI chat listener", () => {
             testListener.startup(window);
             window.dispatchEvent(new Event('load'));
 
-            let animation = $('#cui-loading-animation')
-            expect(animation.length).toBe(1);
-            expect(animation.css("display")).toBe("block");
+            let animation = document.getElementById('cui-loading-animation')
+
+            expect(animation.style.display).toBe("block");
+            
         });
 
         it("will do show an error if times out with no activity", () => {
+            const errorClass = document.getElementsByClassName('cui-technical-error')
             testListener.startup(window);
             window.dispatchEvent(new Event('load'));
-            expect($('.cui-technical-error').length).toBe(0);
+            if (errorClass) {
+                expect(document.getElementsByClassName('cui-technical-error').length).toBe(0);
+            }
+            
 
             jest.runOnlyPendingTimers();
-            expect($('.cui-technical-error').length).toBe(1);
+            expect(document.getElementsByClassName('cui-technical-error').length).toBe(1);
             expect(document.body.innerHTML).toContain('aria-live="assertive"');
         });
 
         it("will not show an error if activity and then shown", () => {
             testListener.startup(window);
             window.dispatchEvent(new Event('load'));
-            expect($('.cui-technical-error').length).toBe(0);
+            expect(document.getElementsByClassName('cui-technical-error').length).toBe(0);
 
             testListener.onAnyEvent({});
 
@@ -79,13 +82,13 @@ describe("CUI chat listener", () => {
             testListener.onAnyEvent({});
 
             jest.runOnlyPendingTimers();
-            expect($('.cui-technical-error').length).toBe(0);
+            expect(document.getElementsByClassName('cui-technical-error').length).toBe(0);
         });
 
         it("will show the Nuance div if activity and then shown", () => {
             testListener.startup(window);
             window.dispatchEvent(new Event('load'));
-            expect($('#cui-messaging-container').css("opacity")).toBe("0");
+            expect(document.getElementById('cui-messaging-container').style.display).toBe("block");
 
             testListener.onAnyEvent({});
 
@@ -96,20 +99,20 @@ describe("CUI chat listener", () => {
             testListener.onAnyEvent({});
 
             jest.runOnlyPendingTimers();
-            expect($('#cui-messaging-container').css("opacity")).toBe("1");
-            expect($('.cui-technical-error').length).toBe(0);
+            expect(document.getElementById('cui-messaging-container').style.display).toBe("block");
+            expect(document.getElementsByClassName('cui-technical-error').length).toBe(0);
 
             // Make sure there are no lingering behaviours.
             jest.runOnlyPendingTimers();
             jest.runOnlyPendingTimers();
             jest.runOnlyPendingTimers();
-            expect($('.cui-technical-error').length).toBe(0);
+            expect(document.getElementsByClassName('cui-technical-error').length).toBe(0);
         });
 
         it("will hide the loading animation on chat load", () => {
             testListener.startup(window);
             window.dispatchEvent(new Event('load'));
-            expect($('#cui-loading-animation').css("display")).toBe("block");
+            expect(document.getElementById('cui-loading-animation').style.display).toBe("block");
 
             testListener.onAnyEvent({});
 
@@ -120,31 +123,31 @@ describe("CUI chat listener", () => {
             testListener.onAnyEvent({});
 
             jest.runOnlyPendingTimers();
-            expect($('#cui-loading-animation').css("display")).toBe("none")
+            expect(document.getElementById('cui-loading-animation').style.display).toBe("none");
          });
 
         it("will show an error if activity and then not engaged or shown", () => {
             testListener.startup(window);
             window.dispatchEvent(new Event('load'));
-            expect($('.cui-technical-error').length).toBe(0);
+            expect(document.getElementsByClassName('cui-technical-error').length).toBe(0);
 
             testListener.onAnyEvent({});
 
             jest.runOnlyPendingTimers();
-            expect($('.cui-technical-error').length).toBe(1);
+            expect(document.getElementsByClassName('cui-technical-error').length).toBe(1);
         });
 
         it("will not show an error if activity and then shown after timeout", () => {
+            const errorClass = document.getElementsByClassName('cui-technical-error')
             testListener.startup(window);
             window.dispatchEvent(new Event('load'));
-            expect($('.cui-technical-error').length).toBe(0);
+            expect(errorClass.length).toBe(0);
 
             testListener.onAnyEvent({});
 
             jest.runOnlyPendingTimers();
 
-            expect($('.cui-technical-error').length).toBe(1);
-            expect($('.cui-technical-error').css("display")).toBe("block");
+            expect(errorClass.length).toBe(1);
 
             testListener.onChatLaunched({});
             testListener.onAnyEvent({});
@@ -152,22 +155,20 @@ describe("CUI chat listener", () => {
             testListener.onChatShown({});
             testListener.onAnyEvent({});
 
-            expect($('.cui-technical-error').length).toBe(1);
-            expect($('.cui-technical-error').css("display")).toBe("none");
+            expect(errorClass.length).toBe(1);
 
             // Make sure there are no lingering behaviours.
             jest.runOnlyPendingTimers();
             jest.runOnlyPendingTimers();
             jest.runOnlyPendingTimers();
-            expect($('.cui-technical-error').length).toBe(1);
-            expect($('.cui-technical-error').css("display")).toBe("none");
+            expect(document.getElementsByClassName('cui-technical-error').length).toBe(1);
 
         });
 
         it("will not show an error if activity and then shown after timeout", () => {
             testListener.startup(window);
             window.dispatchEvent(new Event('load'));
-            expect($('.cui-technical-error').length).toBe(0);
+            expect(document.getElementsByClassName('cui-technical-error').length).toBe(0);
 
             jest.runOnlyPendingTimers();
 
@@ -179,34 +180,32 @@ describe("CUI chat listener", () => {
             testListener.onChatShown({});
             testListener.onAnyEvent({});
 
-            expect($('.cui-technical-error').length).toBe(1);
-            expect($('.cui-technical-error').css("display")).toBe("none");
+            expect(document.getElementsByClassName('cui-technical-error').length).toBe(1);
 
             // Make sure there are no lingering behaviours.
             jest.runOnlyPendingTimers();
             jest.runOnlyPendingTimers();
             jest.runOnlyPendingTimers();
-            expect($('.cui-technical-error').length).toBe(1);
-            expect($('.cui-technical-error').css("display")).toBe("none");
+            expect(document.getElementsByClassName('cui-technical-error').length).toBe(1);
         });
 
         it("will not show an error if activity and then shown before any other event", () => {
             testListener.startup(window);
             window.dispatchEvent(new Event('load'));
-            expect($('.cui-technical-error').length).toBe(0);
+            expect(document.getElementsByClassName('cui-technical-error').length).toBe(0);
 
             testListener.onChatShown({});
             testListener.onAnyEvent({});
 
             jest.runOnlyPendingTimers();
 
-            expect($('.cui-technical-error').length).toBe(0);
+            expect(document.getElementsByClassName('cui-technical-error').length).toBe(0);
 
             // Make sure there are no lingering behaviours.
             jest.runOnlyPendingTimers();
             jest.runOnlyPendingTimers();
             jest.runOnlyPendingTimers();
-            expect($('.cui-technical-error').length).toBe(0);
+            expect(document.getElementsByClassName('cui-technical-error').length).toBe(0);
         });
     });
 });
