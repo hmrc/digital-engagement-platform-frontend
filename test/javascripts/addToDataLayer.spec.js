@@ -1,5 +1,10 @@
 import * as SUT from '../../app/assets/javascripts/addToDataLayer'
 
+let spy;
+beforeAll(() => {
+  spy = jest.spyOn(document, 'getElementById');
+});
+
 describe("Add to data layer", function() {
   	it("will add all base properties", () => {
         document.body.innerHTML = `<input type="text" id="test" data-gtag="test">`
@@ -7,7 +12,7 @@ describe("Add to data layer", function() {
         var el = "test";
         var d = {
             querySelectorAll : () => {
-                return $("#test");
+                return document.querySelectorAll('#test');
             }};
 
         SUT.addToDataLayer("Pending", el, w, d);
@@ -24,7 +29,7 @@ describe("Add to data layer", function() {
         document.body.innerHTML = `<input type="text" id="test" data-gtag="engine:v6, color:blue, alloys:20 inches">`
         var w = {dataLayer : []};
         var d = {querySelectorAll : () => {
-                return $("#test");
+                return document.querySelectorAll('#test');
             }};
         var el = "test";
 
