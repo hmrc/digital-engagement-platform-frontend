@@ -16,7 +16,7 @@
 
 package controllers.monitoring
 
-import akka.stream.Materializer
+import org.apache.pekko.stream.Materializer
 import config.AppConfig
 import play.api.test.Helpers.{defaultAwaitTimeout, running, status}
 import play.api.libs.json.Json
