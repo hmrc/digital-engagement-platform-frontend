@@ -236,7 +236,7 @@ class CiapiControllerSpec
     }
 
     "render not found if Agent Dedicated Line CUI page shutter flag is false" in {
-      val application = builder.configure("features.digitalAssistants.showADLCUI" -> "false").build()
+      val application = builder.configure("features.notDisplayedDigitalAssistants.showADLCUI" -> "false").build()
 
       running(application) {
         val request = FakeRequest(GET, routes.CiapiController.agentDedicatedLine.url)
