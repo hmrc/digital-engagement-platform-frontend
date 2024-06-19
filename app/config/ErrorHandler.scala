@@ -18,23 +18,19 @@ package config
 
 import javax.inject.{Inject, Singleton}
 import play.api.i18n.MessagesApi
-import play.api.mvc.{Request, RequestHeader}
+import play.api.mvc.Request
 import play.twirl.api.Html
-import uk.gov.hmrc.play.bootstrap.frontend.http.{FrontendErrorHandler, LegacyFrontendErrorHandler}
+import uk.gov.hmrc.play.bootstrap.frontend.http.FrontendErrorHandler
 import views.html.templates.ErrorTemplate
-
-import scala.concurrent.{ExecutionContext, Future}
 
 @Singleton
 class ErrorHandler @Inject()(val messagesApi: MessagesApi,
                              errorTemplate: ErrorTemplate,
-                             implicit val appConfig: AppConfig,
-                             implicit val ec: ExecutionContext)
-    extends LegacyFrontendErrorHandler {
+                             implicit val appConfig: AppConfig)
+    extends FrontendErrorHandler {
   override def standardErrorTemplate(
       pageTitle: String,
       heading: String,
-      message: String)(implicit request: Request[_]): Html = {
+      message: String)(implicit request: Request[_]): Html =
     errorTemplate(pageTitle, heading, message)
-  }
 }

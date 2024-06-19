@@ -16,7 +16,7 @@
 
 package filters
 
-import org.apache.pekko.stream.Materializer
+import akka.stream.Materializer
 import com.google.inject.Inject
 import org.scalatest.matchers.must.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike
