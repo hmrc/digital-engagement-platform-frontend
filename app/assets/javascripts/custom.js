@@ -1,7 +1,3 @@
-
-window.GOVUKFrontend.initAll();
-window.HMRCFrontend.initAll();
-
 window.addEventListener('DOMContentLoaded', function() {
 
     // =====================================================
@@ -11,7 +7,7 @@ window.addEventListener('DOMContentLoaded', function() {
     if(window.history.length === 1 && window.history.back && typeof window.history.back === 'function') {
         backLink.style.display = 'none';
     }else{
-        backLink.style.display = 'block-inline'; 
+        backLink.style.display = 'block-inline';
         backLink.addEventListener('click', function(e){
             e.preventDefault();
             window.history.back();

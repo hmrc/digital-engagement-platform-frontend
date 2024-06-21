@@ -52,23 +52,16 @@
     displayBanner: Boolean = false
 )(implicit request: Request[_], messages: play.api.i18n.Messages)
 
-@bodyEndBlock = {
-<script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/govuk-frontend/dist/govuk/all.js")'></script>
-<script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/hmrc-frontend/hmrc/all.js")'></script>
-}
-
 @content = {
     @mainContent
     @hmrcReportTechnicalIssueHelper()
 }
 
-@scriptsBlock = {
-    @scriptElem
+@extraHead = {
+    <link @{CSPNonce.attr} href='@routes.Assets.versioned("stylesheets/main.css")' media="screen" rel="stylesheet" type="text/css" />
 }
 
 @headerBlock = {
-    <link @{CSPNonce.attr} href='@routes.Assets.versioned("stylesheets/main.css")' media="screen" rel="stylesheet" type="text/css" />
-
     @hmrcStandardHeader(
         phaseBanner = Some(standardBetaBanner(phase=messages("global.banner.phase"), url=appConfig.betaFeedbackUnauthenticatedUrl)),
         displayHmrcBanner = false
@@ -96,10 +89,9 @@
 
 @govukLayout(
     pageTitle = Some(title + " " + messages("cui.page.title.gov")),
-    headBlock = Some(hmrcHead()),
+    headBlock = Some(hmrcHead(Some(extraHead))),
     headerBlock = Some(headerBlock),
-    scriptsBlock = Some(scriptsBlock),
-    bodyEndBlock = Some(bodyEndBlock),
+    scriptsBlock = Some(hmrcScripts(scriptElem)),
     beforeContentBlock = Some(beforeContentBlock),
     footerBlock = Some(hmrcStandardFooter(accessibilityStatementUrl=Some(appConfig.accessibilityStatementLink(request.uri))))
 )(wrappedContent)
