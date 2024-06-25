@@ -49,30 +49,23 @@
     mainDataAttributes: Option[Html] = None,
     bodyClasses: Option[String] = None,
     mainContent: Html = HtmlFormat.empty,
-    scriptElem: Html = HtmlFormat.empty,
+    scriptElem: Option[Html] = None,
     navTitle: Option[String] = None,
     showHelpForm: Boolean = true,
     showBackLink: Boolean = true,
     displayBanner: Boolean = false
 )(implicit request: Request[_], messages: play.api.i18n.Messages)
 
-@bodyEndBlock = {
-<script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/govuk-frontend/dist/govuk/all.js")'></script>
-<script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/hmrc-frontend/hmrc/all.js")'></script>
-}
-
 @content = {
     @mainContent
 @if(showHelpForm) { <div class="govuk-!-padding-bottom-6">@hmrcReportTechnicalIssueHelper() </div>}
 }
 
-@scriptsBlock = {
-    @scriptElem
+@extraHead = {
+    <link @{CSPNonce.attr} href='@routes.Assets.versioned("stylesheets/main.css")' media="screen" rel="stylesheet" type="text/css" />
 }
 
 @headerBlock = {
-    <link @{CSPNonce.attr} href='@routes.Assets.versioned("stylesheets/main.css")' media="screen" rel="stylesheet" type="text/css" />
-
     @hmrcStandardHeader(
         phaseBanner = Some(standardBetaBanner(phase=messages("global.banner.phase"), url=appConfig.betaFeedbackUnauthenticatedUrl)),
         displayHmrcBanner = false
@@ -101,10 +94,9 @@
 
 @govukLayout(
     pageTitle = Some(title + " " + messages("cui.page.title.gov")),
-    headBlock = Some(hmrcHead()),
+    headBlock = Some(hmrcHead(Some(extraHead))),
     headerBlock = Some(headerBlock),
-    scriptsBlock = Some(scriptsBlock),
-    bodyEndBlock = Some(bodyEndBlock),
+    scriptsBlock = Some(hmrcScripts(scriptElem)),
     beforeContentBlock = Some(beforeContentBlock),
     footerBlock = Some(footer)
 )(wrappedContent)

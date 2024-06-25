@@ -1,7 +1,4 @@
 
-window.GOVUKFrontend.initAll();
-window.HMRCFrontend.initAll();
-
 window.addEventListener('DOMContentLoaded', function() {
 
     // =====================================================
@@ -33,10 +30,14 @@ window.addEventListener('DOMContentLoaded', function() {
 
     if((currentDate > startTime ) && (currentDate < endTime)){
         //Notification banner should be displayed
-        notificationBanner.style.display = 'block'
+        if (notificationBanner) {
+            notificationBanner.style.display = 'block'
+        }
     } else {
         //Notification will not be displayed
-        notificationBanner.style.display = 'none'
+        if (notificationBanner) {
+            notificationBanner.style.display = 'none'
+        }
     }
 });
 

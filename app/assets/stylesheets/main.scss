@@ -1,9 +1,8 @@
 //Order of imports matters, do not change.
-$govuk-assets-path: "/ask-hmrc/assets/lib/govuk-frontend/govuk/assets/";
+$govuk-assets-path: "/ask-hmrc/assets/lib/govuk-frontend/dist/govuk/assets/";
 $hmrc-assets-path: "/ask-hmrc/assets/lib/hmrc-frontend/hmrc/";
 
 @import 'custom';
 @import '_typography';
 
 @import "lib/govuk-frontend/dist/govuk/all";
-@import "lib/hmrc-frontend/hmrc/all";
