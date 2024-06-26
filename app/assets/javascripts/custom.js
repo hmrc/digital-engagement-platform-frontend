@@ -32,7 +32,7 @@ window.addEventListener('DOMContentLoaded', function() {
     //Change these to required start and end times
     let individualStartTime = new Date("2024-06-06T09:00:00Z").getTime();
     //No end date given for current banner, set it to next year for now
-    let individualEndTime = new Date("2024-06-30T00:00:01Z").getTime();
+    let individualEndTime = new Date("2024-06-21T00:00:01Z").getTime();
 
     if((currentDate > individualStartTime ) && (currentDate < individualEndTime)){
         //Notification banner should be displayed
@@ -51,9 +51,9 @@ window.addEventListener('DOMContentLoaded', function() {
     // =====================================================
 
      //Change these to required start and end times
-     let globalStartTime = new Date("2024-06-06T09:00:00Z").getTime();
+     let globalStartTime = new Date("2024-07-10T07:00:00Z").getTime();
      //No end date given for current banner, set it to next year for now
-     let globalEndTime = new Date("2024-06-30T00:00:01Z").getTime();
+     let globalEndTime = new Date("2024-07-15T06:00:01Z").getTime();
 
      if((currentDate > globalStartTime ) && (currentDate < globalEndTime)){
         //Notification banner should be displayed
