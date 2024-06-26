@@ -4,7 +4,7 @@
 @import "lib/govuk-frontend/dist/govuk/tools/all";
 
 #cui-messaging-container {
-  @extend .govuk-body;
+  @extend .govuk-body !optional;
 }
 .ciapiSkinChatTranscript a {
   @include govuk-link-common;
