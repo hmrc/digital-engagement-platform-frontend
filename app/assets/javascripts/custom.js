@@ -21,22 +21,49 @@ window.addEventListener('DOMContentLoaded', function() {
 
     let currentDate = new Date().getTime()
 
+    //may need to implement a way to dynamically assign these values depending on future complexity
+    let globalNotificationBanner = document.getElementsByClassName('govuk-notification-banner')[0]
+    let individualNotificationBanner = document.getElementsByClassName('govuk-notification-banner')[1]
+
+    // =====================================================
+    // Timing for individual banners
+    // =====================================================
+
     //Change these to required start and end times
-    let startTime = new Date("2024-06-06T09:00:00Z").getTime();
+    let individualStartTime = new Date("2024-06-06T09:00:00Z").getTime();
     //No end date given for current banner, set it to next year for now
-    let endTime = new Date("2024-06-21T00:00:01Z").getTime();
+    let individualEndTime = new Date("2024-06-30T00:00:01Z").getTime();
 
-    let notificationBanner = document.getElementsByClassName('govuk-notification-banner')[0]
-
-    if((currentDate > startTime ) && (currentDate < endTime)){
+    if((currentDate > individualStartTime ) && (currentDate < individualEndTime)){
         //Notification banner should be displayed
-        if (notificationBanner) {
-            notificationBanner.style.display = 'block'
+        if (individualNotificationBanner) {
+            individualNotificationBanner.style.display = 'block'
         }
     } else {
         //Notification will not be displayed
-        if (notificationBanner) {
-            notificationBanner.style.display = 'none'
+        if (individualNotificationBanner) {
+            individualNotificationBanner.style.display = 'none'
+        }
+    }
+
+    // =====================================================
+    // Timing for global banners
+    // =====================================================
+
+     //Change these to required start and end times
+     let globalStartTime = new Date("2024-06-06T09:00:00Z").getTime();
+     //No end date given for current banner, set it to next year for now
+     let globalEndTime = new Date("2024-06-30T00:00:01Z").getTime();
+
+     if((currentDate > globalStartTime ) && (currentDate < globalEndTime)){
+        //Notification banner should be displayed
+        if (globalNotificationBanner) {
+            globalNotificationBanner.style.display = 'block'
+        }
+    } else {
+        //Notification will not be displayed
+        if (globalNotificationBanner) {
+            globalNotificationBanner.style.display = 'none'
         }
     }
 });
