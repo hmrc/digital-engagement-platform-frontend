@@ -97,10 +97,6 @@ class AppConfig @Inject()(config: Configuration) {
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/employer-enquiries"
   val nationalInsuranceApplyUrl: String =
     "https://www.gov.uk/apply-national-insurance-number"
-  val paymentProblemsCoronavirusHelplineReturnUrl: String =
-    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/coronavirus-covid-19-helpline"
-  val paymentProblemsBusinessSupportReturnUrl: String =
-    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/business-payment-support-service"
   val corporationTaxEnquiriesReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/corporation-tax-enquiries"
   val helpToSaveReturnUrl: String =

@@ -6,14 +6,7 @@ import {availabilities} from './getAvailability'
 
 export function waitForChanges(w, d) {
   w.addEventListener("load", function () {
-    if (w.location.pathname.includes("payment-problems")) {
-      waitForNuanceElement('#pp_self_assessment_webchat',w,d);
-      waitForNuanceElement('#pp_vat_webchat',w,d);
-      waitForNuanceElement('#pp_paye_webchat',w,d);
-      waitForNuanceElement('#pp_corporation_tax_webchat',w,d);
-    } else {
       waitForNuanceElement('#HMRC_Fixed_1',w,d);
-    }
   });
 };
 
