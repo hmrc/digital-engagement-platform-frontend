@@ -21,9 +21,13 @@ global.closed.time.sun=Closed Sundays.
 #Beta Banner
 global.banner.phase = BETA
 
-#Notification Banner
-notification.banner.title = Important
-notification.banner.p = <p class="govuk-notification-banner__heading">If you lost money because a Child Benefit payment was late, use the <a href="https://www.gov.uk/child-benefit-complaints" target="_blank">complaints form</a> to apply for compensation.</p>
+#Individual Page Notification Banner
+individualNotification.banner.title = Important
+individualNotification.banner.p = <p id= "individualBanner" class="govuk-notification-banner__heading">If you lost money because a Child Benefit payment was late, use the <a href="https://www.gov.uk/child-benefit-complaints" target="_blank">complaints form</a> to apply for compensation.</p>
+
+#Global Notification Banner
+globalNotification.banner.title = Important
+globalNotification.banner.p = <p id= "globalBanner" class="govuk-notification-banner__heading">National Insurance and PAYE services will be unavailable from 10pm on Friday 12 July, until 7am on Monday 15 July. This is because of an upgrade to the system. We apologise for any inconvenience this may cause.</p>
 
 #Service Unavailable Page
 service.unavailable.title = Sorry, this webchat is unavailable

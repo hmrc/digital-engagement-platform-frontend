@@ -70,8 +70,9 @@
 
 @beforeContentBlock = {
     @govukBackLink(BackLink(href="#", content=Text(messages("global.back"))))
+    @govukNotificationBanner(NotificationBanner(titleId = Some("globalBanner"), title = Text(messages("globalNotification.banner.title")), content = HtmlContent(messages("globalNotification.banner.p"))))
     @if(displayBanner) {
-        @govukNotificationBanner(NotificationBanner(title = Text(messages("notification.banner.title")), content = HtmlContent(messages("notification.banner.p"))))
+        @govukNotificationBanner(NotificationBanner(titleId = Some("individualBanner"), title = Text(messages("individualNotification.banner.title")), content = HtmlContent(messages("individualNotification.banner.p"))))
     }
 }
 
