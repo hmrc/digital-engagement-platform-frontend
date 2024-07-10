@@ -21,6 +21,8 @@ GET         /ask-hmrc/test-only/mix-test-page                                   
 GET         /ask-hmrc/test-only/persist-chat-page-one                           controllers.testOnlyDoNotUseInAppConf.TestController.persistChatPageOne
 GET         /ask-hmrc/test-only/persist-chat-page-two                           controllers.testOnlyDoNotUseInAppConf.TestController.persistChatPageTwo
 GET         /ask-hmrc/test-only/c2c-popup-test-page                             controllers.testOnlyDoNotUseInAppConf.TestController.c2cPopup
+GET         /ask-hmrc/test-only/c2c-fixed-popup-test-page                       controllers.testOnlyDoNotUseInAppConf.TestController.c2cFixedPopup
+
 
 # Serve up dummy page that digital-engagement-platform-config would have, to enable chat to work
 # This should only be requested locally.

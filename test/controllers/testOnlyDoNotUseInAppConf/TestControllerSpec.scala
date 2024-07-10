@@ -85,5 +85,11 @@ class TestControllerSpec
 
       status(result) mustBe OK
     }
+
+    "render c2cFixedPopup page" in {
+      val result = controller.c2cFixedPopup(fakeRequest)
+
+      status(result) mustBe OK
+    }
   }
 }
