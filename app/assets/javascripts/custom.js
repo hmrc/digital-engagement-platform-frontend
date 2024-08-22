@@ -5,14 +5,16 @@ window.addEventListener('DOMContentLoaded', function() {
     // Back link mimics browser back functionality
     // =====================================================
     var backLink = document.querySelector('.govuk-back-link');
-    if(window.history.length === 1 && window.history.back && typeof window.history.back === 'function') {
-        backLink.style.display = 'none';
-    }else{
+    const referrer = this.document.referrer;
+
+    if(referrer != ""){
         backLink.style.display = 'block-inline'; 
         backLink.addEventListener('click', function(e){
             e.preventDefault();
             window.history.back();
         });
+    } else {
+        backLink.style.display = 'none'; 
     }
 
     //Timer for notification banner
