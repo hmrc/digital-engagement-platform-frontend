@@ -6,8 +6,9 @@ window.addEventListener('DOMContentLoaded', function() {
     // =====================================================
     var backLink = document.querySelector('.govuk-back-link');
     const referrer = this.document.referrer;
+    console.log(referrer)
 
-    if(referrer != "" && this.window.history.length > 1){
+    if(referrer != "" && this.window.history.length > 1 && referrer.includes('gov.uk/')){
         backLink.style.display = 'block-inline'; 
         backLink.addEventListener('click', function(e){
             e.preventDefault();
