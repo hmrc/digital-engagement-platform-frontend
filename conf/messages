@@ -27,7 +27,7 @@ individualNotification.banner.p = <p id= "individualBanner" class="govuk-notific
 
 #Global Notification Banner
 globalNotification.banner.title = Important
-globalNotification.banner.p = <p id= "globalBanner" class="govuk-notification-banner__heading">National Insurance and PAYE services will be unavailable from 10pm on Friday 12 July, until 7am on Monday 15 July. This is because of an upgrade to the system. We apologise for any inconvenience this may cause.</p>
+globalNotification.banner.p = <p id= "globalBanner" class="govuk-notification-banner__heading">Phone lines are unavailable due to a technical issue we’re working to resolve. You can still use the online services as normal.</p>
 
 #Service Unavailable Page
 service.unavailable.title = Sorry, this webchat is unavailable
