@@ -16,17 +16,18 @@
 
 @import config.AppConfig
 @import uk.gov.hmrc.webchat.client.WebChatClient
+@import templates.GovukWrapper
 @import views.html.templates.MainTemplate
+@import views.html.helper.CSPNonce
 
 @this(
-main_template: MainTemplate,
+govuk_wrapper: GovukWrapper,
 appConfig: AppConfig,
 webChatClient: WebChatClient)
 
 @()(implicit request: Request[_], messages: play.api.i18n.Messages)
 
-@main_template(title = messages("national.clearance.hub.title")) {
-
+@mainContent = {
 <h1 class="header-margin-top">@messages("national.clearance.hub.title")</h1>
 
 <div class="govuk-inset-text">
@@ -36,10 +37,26 @@ webChatClient: WebChatClient)
 
 <h2 class="margin-top">@messages("global.webchat.title.h2")</h2>
 
-@components.webchat_container(appConfig, webChatClient)
-@components.webchat_loading_text()
+<div id="HMRC_CIAPI_Fixed_1"></div>
 
 <p class="margin-top">
     <a class="govuk-link" id="return-link" href=@appConfig.nationalClearanceHubReturnUrl>@messages("global.text.link.back.to.govuk.p1")</a>
 </p>
 }
+
+@scriptElem = {
+<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/custom.js")'></script>
+<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/bundle.js")'></script>
+
+@if(!appConfig.performanceTest){
+@{webChatClient.loadRequiredElements()}
+@{webChatClient.loadHMRCChatSkinElement("popup")}
+}
+}
+
+@govuk_wrapper(title = messages("national.clearance.hub.title"),
+mainContent = mainContent,
+scriptElem = Some(scriptElem),
+showHelpForm = true,
+showBackLink = true
+)

@@ -21,6 +21,7 @@ import controllers.CiapiController.{routes => ciapiRoutes}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 import views.html.webchat._
+import views.html.webchat.dav4.DAv4NationalClearanceHubView
 
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.Future
@@ -29,6 +30,7 @@ import scala.concurrent.Future
 class WebchatController @Inject()(appConfig: AppConfig,
                                   mcc: MessagesControllerComponents,
                                   nationalClearanceHubView: NationalClearanceHubView,
+                                  dav4NationalClearanceHubView: DAv4NationalClearanceHubView,
                                   additionalNeedsHelpView: AdditionalNeedsHelpView,
                                   personalTransportUnitEnquiriesView: PersonalTransportUnitEnquiriesView,
                                   serviceUnavailableView: ServiceUnavailableView) extends FrontendController(mcc) {
@@ -40,7 +42,11 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def nationalClearanceHub: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(nationalClearanceHubView()))
+    if (config.showDAv4NCH){
+      Future.successful(Ok(dav4NationalClearanceHubView()))
+    } else {
+      Future.successful(Ok(nationalClearanceHubView()))
+    }
   }
 
   def additionalNeedsHelp: Action[AnyContent] = Action.async { implicit request =>
