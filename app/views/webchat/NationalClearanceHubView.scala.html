@@ -19,27 +19,27 @@
 @import views.html.templates.MainTemplate
 
 @this(
-main_template: MainTemplate,
-appConfig: AppConfig,
-webChatClient: WebChatClient)
+    main_template: MainTemplate,
+    appConfig: AppConfig,
+    webChatClient: WebChatClient)
 
 @()(implicit request: Request[_], messages: play.api.i18n.Messages)
 
 @main_template(title = messages("national.clearance.hub.title")) {
 
-<h1 class="header-margin-top">@messages("national.clearance.hub.title")</h1>
+    <h1 class="header-margin-top">@messages("national.clearance.hub.title")</h1>
 
-<div class="govuk-inset-text">
-    <p>@messages("global.opening.times.title")</p>
-    <p>@messages("global.opening.times.24_7")</p>
-</div>
+    <div class="govuk-inset-text">
+        <p>@messages("global.opening.times.title")</p>
+        <p>@messages("global.opening.times.24_7")</p>
+    </div>
 
-<h2 class="margin-top">@messages("global.webchat.title.h2")</h2>
+    <h2 class="margin-top">@messages("global.webchat.title.h2")</h2>
 
-@components.webchat_container(appConfig, webChatClient)
-@components.webchat_loading_text()
+    @components.webchat_container(appConfig, webChatClient)
+    @components.webchat_loading_text()
 
-<p class="margin-top">
-    <a class="govuk-link" id="return-link" href=@appConfig.nationalClearanceHubReturnUrl>@messages("global.text.link.back.to.govuk.p1")</a>
-</p>
+    <p class="margin-top">
+        <a class="govuk-link" id="return-link" href=@appConfig.nationalClearanceHubReturnUrl>@messages("global.text.link.back.to.govuk.p1")</a>
+    </p>
 }
