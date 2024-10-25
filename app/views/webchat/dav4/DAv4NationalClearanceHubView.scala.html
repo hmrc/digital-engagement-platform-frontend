@@ -45,6 +45,8 @@
 }
 
 @scriptElem = {
+
+	<script @{CSPNonce.attr}> window.isCUI = true; </script>
 	<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/custom.js")'></script>
 	<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/bundle.js")'></script>
 
