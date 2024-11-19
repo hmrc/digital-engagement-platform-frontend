@@ -68,6 +68,11 @@ va.global.h1.bullet.title=You can also:
 #Mix Test Page
 test.mix.ciapi.page.title=Mix Test Page
 
+#Trade Tariffs
+cui.trade.tariffs.enquiries.sidebar.header=Opening hours
+cui.trade.tariffs.enquiries.sidebar.p1=Monday to Friday: 9:00 - 16:30
+cui.trade.tariffs.enquiries.sidebar.p2=Closed weekends and bank holidays.
+
 #Test sidebar
 test.sidebar.h2.header=Help for businesses and employers
 test.sidebar.p1=The HMRC chatbot is available at any time to answer your questions about the Coronavirus Job Retention Scheme.
