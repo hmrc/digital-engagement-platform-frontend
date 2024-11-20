@@ -33,6 +33,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
                                 auditHelper: AuditHelper,
                                 askHMRCOnlineCIAPIView: AskHMRCOnlineCIAPIView,
                                 nationalMinimumWageCUIView: NationalMinimumWageCUIView,
+                                tradeTariffCUIView: TradeTariffCUIView,
                                 debtManagementCUIView: DebtManagementCUIView)(implicit ec: ExecutionContext)
   extends FrontendController(mcc) {
 
@@ -113,7 +114,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def tradeTariff : Action[AnyContent] = Action.async { implicit request =>
     if (config.showTTCUI) {
       auditHelper.audit(DAv3AuditModel("tradeTariff"))
-      Future.successful(Ok(askHMRCOnlineCIAPIView()))
+      Future.successful(Ok(tradeTariffCUIView()))
     } else {
       Future.successful(NotFound)
     }
