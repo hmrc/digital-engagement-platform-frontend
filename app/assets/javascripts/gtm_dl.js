@@ -7,7 +7,9 @@ if (!window.isCUI) {
     if (!window.location.pathname.includes("virtual-assistant")) {
         webchatListener.initChatListener(window)
     }
-} else {
+}
+else {
+//    nuanceWatcher.waitForChanges(window, document)
     chatListener.initChatListener(window)
 }
 
