@@ -9,7 +9,7 @@ if (!window.isCUI) {
         webchatListener.initChatListener(window)
     }
 } else {
-    if (document.querySelector("#HMRC_CIAPI_Fixed_1") !== null ){
+    if (document.getElementById("HMRC_CIAPI_Fixed_1")){
         nuanceCIAPIWatcher.waitForCIAPIFixedChanges(window, document)
     }
     chatListener.initChatListener(window)

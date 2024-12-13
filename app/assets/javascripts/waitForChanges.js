@@ -35,4 +35,5 @@ function waitForNuanceElement(el,w,d) {
       }
     }
   );
+
 }

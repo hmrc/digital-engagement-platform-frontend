@@ -7,22 +7,29 @@ import {availabilities} from './getAvailability'
 export function waitForCIAPIFixedChanges(w, d) {
   console.log(">>>>waitForCIAPIFixedChanges")
   w.addEventListener("load", function () {
-      waitForNuanceCIAPIElement('#HMRC_CIAPI_Fixed_1',w,d);
+      waitForNuanceElement('#HMRC_CIAPI_Fixed_1',w,d);
   });
 };
 
-function waitForNuanceCIAPIElement(el,w,d) {
+function waitForNuanceElement(el,w,d) {
+//  document.getElementById("HMRC_CIAPI_Fixed_1").style.display = 'none'
   elementWatcher.waitForEl(el + ' div',
-    function () {
+     function () {
       dataLayerUpdater.updateDataLayer(el,w,d);
       statusObserver.observeStatus(el,w,d);
+//      document.getElementById("cui-dav4-loading-text").style.display = 'none'
+//      document.getElementById("HMRC_CIAPI_Fixed_1").style.display = 'block'
     },
     function() {
+//      document.getElementById("cui-dav4-loading-text").style.display = 'none'
+//      document.getElementById("HMRC_CIAPI_Fixed_1").style.display = 'block'
+
       const assistantUsed = w.location.pathname.includes("webchat")
         ? "webchat"
         : "the digital assistant";
 
-      divElement.textContent = "There's a problem with " + assistantUsed + ". Try again later.";
+      var the_element = d.querySelector(el);
+      the_element.textContent = "There's a problem with " + assistantUsed + ". Try again later.";
 
       reportEvent(w,createDataLayerElement(availabilities.NuanceUnavailable, el))
 
