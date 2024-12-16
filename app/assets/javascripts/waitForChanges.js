@@ -5,7 +5,6 @@ import {createDataLayerElement,reportEvent} from './addToDataLayer'
 import {availabilities} from './getAvailability'
 
 export function waitForChanges(w, d) {
-  console.log(">>>>waitForChanges")
   w.addEventListener("load", function () {
       waitForNuanceElement('#HMRC_Fixed_1',w,d);
   });
@@ -35,5 +34,4 @@ function waitForNuanceElement(el,w,d) {
       }
     }
   );
-
 }

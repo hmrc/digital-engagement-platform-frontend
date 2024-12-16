@@ -11,9 +11,6 @@ export function updateDataLayer(el,w,d) {
         return;
 
     var nuanceText = nuanceElement.innerText;
-    console.log(">>>>" + nuanceElement)
-
-    console.log(">>>>" + nuanceText)
   
     dataLayer.addToDataLayer(availabilityChecker.getAvailability(nuanceText), el, w, d);
   }
