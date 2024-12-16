@@ -5,7 +5,6 @@ import {createDataLayerElement,reportEvent} from './addToDataLayer'
 import {availabilities} from './getAvailability'
 
 export function waitForCIAPIFixedChanges(w, d) {
-  console.log(">>>>waitForCIAPIFixedChanges")
   w.addEventListener("load", function () {
       waitForNuanceElement('#HMRC_CIAPI_Fixed_1',w,d);
   });
