@@ -12,18 +12,12 @@ export function waitForCIAPIFixedChanges(w, d) {
 };
 
 function waitForNuanceElement(el,w,d) {
-//  document.getElementById("HMRC_CIAPI_Fixed_1").style.display = 'none'
   elementWatcher.waitForEl(el + ' div',
      function () {
       dataLayerUpdater.updateDataLayer(el,w,d);
       statusObserver.observeStatus(el,w,d);
-//      document.getElementById("cui-dav4-loading-text").style.display = 'none'
-//      document.getElementById("HMRC_CIAPI_Fixed_1").style.display = 'block'
     },
     function() {
-//      document.getElementById("cui-dav4-loading-text").style.display = 'none'
-//      document.getElementById("HMRC_CIAPI_Fixed_1").style.display = 'block'
-
       const assistantUsed = w.location.pathname.includes("webchat")
         ? "webchat"
         : "the digital assistant";
