@@ -19,12 +19,12 @@
 
 @this(main_template: MainTemplateCUI, appConfig: AppConfig)
 
-@(webchatOnly: Boolean)(implicit request: Request[_], messages: play.api.i18n.Messages)
+@()(implicit request: Request[_], messages: play.api.i18n.Messages)
 
 @main_template(title = messages("ciapi.page.title")) {
   <div class="cui-wrapper">
     <div id="cui-messaging-container">
-      @if(webchatOnly){<div id="nuanMessagingFrame" class="webchat-only">} else {<div id="nuanMessagingFrame">}
+      <div id="nuanMessagingFrame">
         <div id="error-message" aria-live="assertive" role="alert"></div>
       </div>
       <div id="cui-loading-animation">
