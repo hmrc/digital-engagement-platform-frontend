@@ -23,6 +23,7 @@ import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 import views.html.CIAPIViews._
 import javax.inject.{Inject, Singleton}
 import models.DAv3AuditModel
+import views.html.webchat.dav4.DAv4DebtManagementView
 
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext
@@ -34,6 +35,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
                                 askHMRCOnlineCIAPIView: AskHMRCOnlineCIAPIView,
                                 nationalMinimumWageCUIView: NationalMinimumWageCUIView,
                                 tradeTariffCUIView: TradeTariffCUIView,
+                                dav4DebtManagementView: DAv4DebtManagementView,
                                 debtManagementCUIView: DebtManagementCUIView)(implicit ec: ExecutionContext)
   extends FrontendController(mcc) {
 
@@ -132,8 +134,12 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def debtManagement: Action[AnyContent] = Action.async { implicit request =>
     if (config.showDMCUI) {
       auditHelper.audit(DAv3AuditModel("debtManagement"))
-      val webchatOnly = request.uri.contains("payment-plan-chat")
-      Future.successful(Ok(debtManagementCUIView(webchatOnly)))
+      val dav4ClickToChat = request.uri.contains("payment-plan-chat")
+      if(dav4ClickToChat && config.showDAv4DM){
+        Future.successful(Ok(dav4DebtManagementView()))
+      } else {
+        Future.successful(Ok(debtManagementCUIView()))
+      }
     } else {
       Future.successful(NotFound)
     }
