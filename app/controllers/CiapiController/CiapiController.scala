@@ -35,8 +35,8 @@ class CiapiController @Inject()(appConfig: AppConfig,
                                 askHMRCOnlineCIAPIView: AskHMRCOnlineCIAPIView,
                                 nationalMinimumWageCUIView: NationalMinimumWageCUIView,
                                 tradeTariffCUIView: TradeTariffCUIView,
-                                dav4DebtManagementView: DAv4DebtManagementView,
-                                debtManagementCUIView: DebtManagementCUIView)(implicit ec: ExecutionContext)
+                                dav4DebtManagementView: DAv4DebtManagementView
+                                )(implicit ec: ExecutionContext)
   extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
