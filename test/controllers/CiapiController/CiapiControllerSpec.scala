@@ -42,7 +42,7 @@ class CiapiControllerSpec
     app.injector.instanceOf[AskHMRCOnlineCIAPIView],
     app.injector.instanceOf[NationalMinimumWageCUIView],
     app.injector.instanceOf[TradeTariffCUIView],
-    app.injector.instanceOf[DebtManagementCUIView])
+ )
 
   def asDocument(html: String): Document = Jsoup.parse(html)
 
