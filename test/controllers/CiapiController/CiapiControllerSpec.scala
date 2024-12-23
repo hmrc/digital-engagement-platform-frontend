@@ -29,6 +29,7 @@ import play.api.test.Helpers._
 import views.html.CIAPIViews._
 import views.html.pages.helpers.AppBuilderSpecBase
 import scala.concurrent.ExecutionContext
+import views.html.webchat.dav4.DAv4DebtManagementView
 
 class CiapiControllerSpec
   extends AppBuilderSpecBase with Matchers with AnyWordSpecLike with MockAuditService {
@@ -42,6 +43,7 @@ class CiapiControllerSpec
     app.injector.instanceOf[AskHMRCOnlineCIAPIView],
     app.injector.instanceOf[NationalMinimumWageCUIView],
     app.injector.instanceOf[TradeTariffCUIView],
+    app.injector.instanceOf[DAv4DebtManagementView],
  )
 
   def asDocument(html: String): Document = Jsoup.parse(html)
