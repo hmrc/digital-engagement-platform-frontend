@@ -138,7 +138,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
       if(dav4ClickToChat && config.showDAv4DM){
         Future.successful(Ok(dav4DebtManagementView()))
       } else {
-        Future.successful(Ok(debtManagementCUIView()))
+        Future.successful(Ok(askHMRCOnlineCIAPIView()))
       }
     } else {
       Future.successful(NotFound)
