@@ -28,20 +28,14 @@ class DAv4DebtManagementViewSpec extends ChatViewBehaviours with Matchers with A
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "National Clearance Hub view" must {
-    val returnUrl: String =
-      "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/national-clearance-hub"
-
-    behave like normalPage(
-      createView,
-      "National Clearance Hub: webchat - Ask HMRC - GOV.UK",
-      "National Clearance Hub: webchat",
-      "Return to Contact HMRC",
-      returnUrl,
-      Some(Seq(
-        "Opening times:",
-        "24 hours a day, 7 days a week"
-      ))
-    )
+  "Debt Management DAv4" must {
+     "rendered" must {
+    behave like normalCuiPage(
+        createView,
+        "Debt Management: webchat - Ask HMRC - GOV.UK",
+        "Debt Management: webchat",
+      )
+    }
   }
 }
+  
