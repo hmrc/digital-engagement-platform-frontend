@@ -30,81 +30,19 @@
     <h1 class="header-margin-top">@messages("ivr.construction.industry.scheme.title")</h1>
 
     <div>
-      <p>@messages("ivr.construction.industry.scheme.security.p1")</p>
-      <p>@messages("ivr.construction.industry.scheme.security.p2")</p>
-      <p>@messages("ivr.construction.industry.scheme.security.p3")
-          <a class="govuk-link" href=@appConfig.securityMessageLink target="_blank">
+        <p>@messages("ivr.construction.industry.scheme.security.p1")</p>
+        <p>@messages("ivr.construction.industry.scheme.security.p2")</p>
+        <p>@messages("ivr.construction.industry.scheme.security.p3")
+            <a class="govuk-link" href=@appConfig.securityMessageLink target="_blank">
               @messages("ivr.construction.industry.scheme.security.link")</a>
-      </p>
-   </div>
-
-    <table class="govuk-table">
-        <caption class="govuk-table__caption govuk-table__caption--m">Opening times</caption>
-        <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header">Date</th>
-            <th scope="col" class="govuk-table__header">Availability</th>
-        </tr>
-        </thead>
-        <tbody class="govuk-table__body">
-        <tr class="govuk-table__row">
-            <td class="govuk-table__cell">Friday 20 December</td>
-            <td class="govuk-table__cell">8am to 6pm</td>
-        </tr>
-        <tr class="govuk-table__row">
-            <td class="govuk-table__cell">Saturday 21 December</td>
-            <td class="govuk-table__cell">Closed</td>
-        </tr>
-        <tr class="govuk-table__row">
-            <td class="govuk-table__cell">Sunday 22 December</td>
-            <td class="govuk-table__cell">Closed</td>
-        </tr>
-        <tr class="govuk-table__row">
-            <td class="govuk-table__cell">Monday 23 December</td>
-            <td class="govuk-table__cell">8am to 6pm</td>
-        </tr>
-        <tr class="govuk-table__row">
-            <td class="govuk-table__cell">Tuesday 24 December</td>
-            <td class="govuk-table__cell">8am to 4pm</td>
-        </tr>
-        <tr class="govuk-table__row">
-            <td class="govuk-table__cell">Wednesday 25 December</td>
-            <td class="govuk-table__cell">Closed</td>
-        </tr>
-        <tr class="govuk-table__row">
-            <td class="govuk-table__cell">Thursday 26 December</td>
-            <td class="govuk-table__cell">Closed</td>
-        </tr>
-        <tr class="govuk-table__row">
-            <td class="govuk-table__cell">Friday 27 December</td>
-            <td class="govuk-table__cell">8am to 6pm</td>
-        </tr>
-        <tr class="govuk-table__row">
-            <td class="govuk-table__cell">Saturday 28 December</td>
-            <td class="govuk-table__cell">Closed</td>
-        </tr>
-        <tr class="govuk-table__row">
-            <td class="govuk-table__cell">Sunday 29 December</td>
-            <td class="govuk-table__cell">Closed</td>
-        </tr>
-        <tr class="govuk-table__row">
-            <td class="govuk-table__cell">Monday 30 December</td>
-            <td class="govuk-table__cell">8am to 6pm</td>
-        </tr>
-        <tr class="govuk-table__row">
-            <td class="govuk-table__cell">Tuesday 31 December</td>
-            <td class="govuk-table__cell">8am to 6pm</td>
-        </tr>
-        <tr class="govuk-table__row">
-            <td class="govuk-table__cell">Wednesday 1 January</td>
-            <td class="govuk-table__cell">Closed</td>
-        </tr>
-        <tr class="govuk-table__row">
-            <td class="govuk-table__cell">Thursday 2 January</td>
-            <td class="govuk-table__cell">8am to 6pm</td>
-        </tr>
-        </tbody>
-    </table>
+        </p>
+    </div>
+    
+    <div class="govuk-inset-text">
+        <p>@messages("global.opening.times.title")</p>
+        <p>@messages("global.opening.times.8to6")</p>
+        <p>@messages("global.opening.times.weekend.p")</p>
+    </div>
 
     <p class="margin-top">
         <a class="govuk-link" id="return-link" href=@appConfig.contactHMRC>@messages("global.text.link.back.to.govuk.p1")</a>

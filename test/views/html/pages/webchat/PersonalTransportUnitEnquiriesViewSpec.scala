@@ -38,7 +38,11 @@ class PersonalTransportUnitEnquiriesViewSpec extends ChatViewBehaviours with Mat
       "Personal Transport Unit: webchat",
       "Return to Contact HMRC",
       returnUrl,
-      None
+      Some(Seq(
+        "Opening times:",
+        "Monday to Friday, 8:30am to 5pm",
+        "Closed weekends and bank holidays."
+      ))
     )
   }
 }
