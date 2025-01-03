@@ -38,7 +38,12 @@ class AdditionalNeedsHelpViewSpec extends ChatViewBehaviours with Matchers with 
       "HMRC’s Extra Support team: webchat",
       "Return to Contact HMRC",
       returnUrl,
-      None
+      Some(Seq(
+        "Opening times:",
+        "Monday to Friday, 8am to 7:30pm",
+        "Saturday, 8am to 4pm",
+        "Closed Sundays and bank holidays."
+      ))
     )
   }
 }
