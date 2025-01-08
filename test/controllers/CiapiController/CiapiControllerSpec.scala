@@ -336,7 +336,7 @@ class CiapiControllerSpec
       }
     }
 
-    "render Debt Management live webchat page if query parameter and feature switch are true" in {
+    "render Debt Management live webchat page if query parameter is present and feature switch is true" in {
       val application = builder.configure("features.digitalAssistants.showDMCUI" -> "true", "features.digitalAssistants.showDAv4DM" -> "true").build()
 
       running(application) {
