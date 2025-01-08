@@ -32,16 +32,15 @@
 
 	<div class="govuk-inset-text">
 		<p>@messages("global.opening.times.title")</p>
-		<p>@messages("global.opening.times.24_7")</p>
+		<p>@messages("global.opening.times.8to6")</p>
+		<p>@messages("global.opening.times.weekend.p")</p>
 	</div>
 
 	<h2 class="margin-top">@messages("global.webchat.title.h2")</h2>
 
 	<div id="HMRC_CIAPI_Fixed_1">Checking adviser availability.</div>
 
-	<p class="margin-top">
-		<a class="govuk-link" id="return-link" href=@appConfig.nationalClearanceHubReturnUrl>@messages("global.text.link.back.to.govuk.p1")</a>
-	</p>
+	<br>
 }
 
 @scriptElem = {
@@ -56,7 +55,7 @@
 	}
 }
 
-@govuk_wrapper(title = messages("national.clearance.hub.title"),
+@govuk_wrapper(title = messages("debt.management.title"),
 mainContent = mainContent,
 scriptElem = Some(scriptElem),
 showHelpForm = true,

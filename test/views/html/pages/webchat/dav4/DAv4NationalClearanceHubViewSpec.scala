@@ -20,28 +20,30 @@ import org.scalatest.matchers.must.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike
 import play.twirl.api.HtmlFormat
 import views.html.pages.helpers.ChatViewBehaviours
-import views.html.webchat.dav4.DAv4DebtManagementView
+import views.html.webchat.dav4.DAv4NationalClearanceHubView
 
-class DAv4DebtManagementViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike {
+class DAv4NationalClearanceHubViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike {
 
-  private val view = app.injector.instanceOf[DAv4DebtManagementView]
+  private val view = app.injector.instanceOf[DAv4NationalClearanceHubView]
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
- "Debt Management DAv4 webchat view" must {
+  "National Clearance Hub DAv4 webchat view" must {
+    val returnUrl: String =
+      "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/national-clearance-hub"
 
     behave like normalPage(
       createView,
-      "Payment plan: webchat - Ask HMRC - GOV.UK",
-      "Payment plan: webchat",
-      "",
-      "",
+      "National Clearance Hub: webchat - Ask HMRC - GOV.UK",
+      "National Clearance Hub: webchat",
+      "Return to Contact HMRC",
+      returnUrl,
        Some(Seq(
         "Opening times:",
-        "Monday to Friday, 8am to 6pm",
-        "Closed weekends and bank holidays."
+        "24 hours a day, 7 days a week"
       )),
       Some(Seq("HMRC_CIAPI_Fixed_1"))
     )
   }
 }
+  

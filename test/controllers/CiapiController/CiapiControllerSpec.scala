@@ -336,6 +336,32 @@ class CiapiControllerSpec
       }
     }
 
+    "render Debt Management live webchat page if query parameter and feature switch are true" in {
+      val application = builder.configure("features.digitalAssistants.showDMCUI" -> "true", "features.digitalAssistants.showDAv4DM" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.debtManagement.url + "?payment-plan-chat")
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Payment plan: webchat"
+        assert(doc.getElementById("HMRC_CIAPI_Fixed_1") != null)
+      }
+    }
+
+    "render Debt Management live webchat page if query parameter is present and feature switch is false" in {
+      val application = builder.configure("features.digitalAssistants.showDMCUI" -> "true", "features.digitalAssistants.showDAv4DM" -> "false").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.debtManagement.url + "?payment-plan-chat")
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Ask HMRC online"
+        assert(doc.getElementById("HMRC_CIAPI_Fixed_1") == null)
+      }
+    }
+
     "render national minimum wage CUI page if shutter flag is true" in {
       val application = builder.configure("features.digitalAssistants.showNMWCUI" -> "true").build()
 
