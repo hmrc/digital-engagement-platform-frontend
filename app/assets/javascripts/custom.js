@@ -32,9 +32,9 @@ window.addEventListener('DOMContentLoaded', function() {
     // =====================================================
 
     //Change these to required start and end times
-    let individualStartTime = new Date("2024-06-06T09:00:00Z").getTime();
+    let individualStartTime = new Date("2025-01-07T09:00:00Z").getTime();
     //No end date given for current banner, set it to next year for now
-    let individualEndTime = new Date("2024-06-21T00:00:01Z").getTime();
+    let individualEndTime = new Date("2025-05-06T00:00:01Z").getTime();
 
     if((currentDate > individualStartTime ) && (currentDate < individualEndTime)){
         //Notification banner should be displayed

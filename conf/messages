@@ -23,7 +23,7 @@ global.banner.phase = BETA
 
 #Individual Page Notification Banner
 individualNotification.banner.title = Important
-individualNotification.banner.p = <p id= "individualBanner" class="govuk-notification-banner__heading">If you lost money because a Child Benefit payment was late, use the <a href="https://www.gov.uk/child-benefit-complaints" target="_blank">complaints form</a> to apply for compensation.</p>
+individualNotification.banner.p = <p id= "individualBanner" class="govuk-notification-banner__heading">Tax Credits are ending on 5 April 2025. <a href="https://www.tax.service.gov.uk/personal-account/tax-credits-are-ending" target="_blank">Find more information from your Personal Tax Account.</a></p>
 
 #Global Notification Banner
 globalNotification.banner.title = Important

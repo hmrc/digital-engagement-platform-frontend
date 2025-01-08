@@ -125,7 +125,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def askHmrcOnline: Action[AnyContent] = Action.async { implicit request =>
     if (config.showTCCUI) {
       auditHelper.audit(DAv3AuditModel("askHmrcOnline"))
-      Future.successful(Ok(askHMRCOnlineCIAPIView()))
+      Future.successful(Ok(askHMRCOnlineCIAPIView(displayBanner = true)))
     } else {
       Future.successful(NotFound)
     }
