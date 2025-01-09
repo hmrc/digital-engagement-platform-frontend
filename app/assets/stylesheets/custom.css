@@ -137,3 +137,7 @@
 .govuk-notification-banner__content>* {
     max-width: 100%!important;
 }
+
+.debtManagementCIAPIDiv {
+    margin-bottom: 3.125rem;
+}
