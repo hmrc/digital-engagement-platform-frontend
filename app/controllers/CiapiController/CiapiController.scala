@@ -42,7 +42,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def childBenefit: Action[AnyContent] = Action.async { implicit request =>
     if (config.showCHBCUI) {
       auditHelper.audit(DAv3AuditModel("childBenefit"))
-      Future.successful(Ok(askHMRCOnlineCIAPIView(displayBanner = true)))
+      Future.successful(Ok(askHMRCOnlineCIAPIView(displayBanner = false)))
     } else {
       Future.successful(NotFound)
     }
