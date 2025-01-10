@@ -44,8 +44,7 @@ class CiapiControllerSpec
     app.injector.instanceOf[NationalMinimumWageCUIView],
     app.injector.instanceOf[TradeTariffCUIView],
     app.injector.instanceOf[DebtManagementCUIView],
-    app.injector.instanceOf[DAv4DebtManagementView],
- )
+    app.injector.instanceOf[DAv4DebtManagementView])
 
   def asDocument(html: String): Document = Jsoup.parse(html)
 
