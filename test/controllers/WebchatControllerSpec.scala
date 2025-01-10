@@ -45,12 +45,32 @@ class WebchatControllerSpec
 
   "fixed URLs" must {
 
-    "National clearance hub page" in {
-      val result = controller.nationalClearanceHub(fakeRequest)
-      val doc = asDocument(contentAsString(result))
+    "National Clearance Hub DAv1 live webchat page if feature switch is false" in {
+      val application = builder.configure("features.digitalAssistants.showDAv4NCH" -> "false").build()
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "National Clearance Hub: webchat"
+      running(application) {
+        val request = FakeRequest(GET, routes.WebchatController.nationalClearanceHub.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "National Clearance Hub: webchat"
+        assert(doc.getElementById("HMRC_Fixed_1") != null)
+        assert(doc.getElementById("HMRC_CIAPI_Fixed_1") == null)
+      }
+    }
+
+    "National Clearance Hub DAv4 live webchat page if feature switch is true" in {
+      val application = builder.configure("features.digitalAssistants.showDAv4NCH" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.WebchatController.nationalClearanceHub.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "National Clearance Hub: webchat"
+        assert(doc.getElementById("HMRC_CIAPI_Fixed_1") != null)
+        assert(doc.getElementById("HMRC_Fixed_1") == null)
+      }
     }
 
     "Additional Needs page" in {

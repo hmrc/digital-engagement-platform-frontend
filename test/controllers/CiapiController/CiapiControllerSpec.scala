@@ -29,6 +29,7 @@ import play.api.test.Helpers._
 import views.html.CIAPIViews._
 import views.html.pages.helpers.AppBuilderSpecBase
 import scala.concurrent.ExecutionContext
+import views.html.webchat.dav4.DAv4DebtManagementView
 
 class CiapiControllerSpec
   extends AppBuilderSpecBase with Matchers with AnyWordSpecLike with MockAuditService {
@@ -42,7 +43,8 @@ class CiapiControllerSpec
     app.injector.instanceOf[AskHMRCOnlineCIAPIView],
     app.injector.instanceOf[NationalMinimumWageCUIView],
     app.injector.instanceOf[TradeTariffCUIView],
-    app.injector.instanceOf[DebtManagementCUIView])
+    app.injector.instanceOf[DebtManagementCUIView],
+    app.injector.instanceOf[DAv4DebtManagementView])
 
   def asDocument(html: String): Document = Jsoup.parse(html)
 
@@ -331,6 +333,32 @@ class CiapiControllerSpec
         val request = FakeRequest(GET, routes.CiapiController.debtManagement.url)
         val result = route(application, request).get
         status(result) mustBe NOT_FOUND
+      }
+    }
+
+    "render Debt Management live webchat page if query parameter is present and feature switch is true" in {
+      val application = builder.configure("features.digitalAssistants.showDMCUI" -> "true", "features.digitalAssistants.showDAv4DM" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.debtManagement.url + "?payment-plan-chat")
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Payment Plan: webchat"
+        assert(doc.getElementById("HMRC_CIAPI_Fixed_1") != null)
+      }
+    }
+
+    "render Debt Management live webchat page if query parameter is present and feature switch is false" in {
+      val application = builder.configure("features.digitalAssistants.showDMCUI" -> "true", "features.digitalAssistants.showDAv4DM" -> "false").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.debtManagement.url + "?payment-plan-chat")
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Ask HMRC online"
+        assert(doc.getElementById("HMRC_CIAPI_Fixed_1") == null)
       }
     }
 
