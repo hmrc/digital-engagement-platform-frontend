@@ -35,6 +35,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
                                 askHMRCOnlineCIAPIView: AskHMRCOnlineCIAPIView,
                                 nationalMinimumWageCUIView: NationalMinimumWageCUIView,
                                 tradeTariffCUIView: TradeTariffCUIView,
+                                debtManagementCUIView: DebtManagementCUIView,
                                 dav4DebtManagementView: DAv4DebtManagementView
                                 )(implicit ec: ExecutionContext)
   extends FrontendController(mcc) {
@@ -134,11 +135,11 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def debtManagement: Action[AnyContent] = Action.async { implicit request =>
     if (config.showDMCUI) {
       auditHelper.audit(DAv3AuditModel("debtManagement"))
-      val dav4ClickToChat = request.uri.contains("payment-plan-chat")
-      if(dav4ClickToChat && config.showDAv4DM){
+      val webchatOnly = request.uri.contains("payment-plan-chat")
+      if(webchatOnly && config.showDAv4DM) {
         Future.successful(Ok(dav4DebtManagementView()))
       } else {
-        Future.successful(Ok(askHMRCOnlineCIAPIView()))
+        Future.successful(Ok(debtManagementCUIView(webchatOnly)))
       }
     } else {
       Future.successful(NotFound)

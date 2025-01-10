@@ -43,6 +43,7 @@ class CiapiControllerSpec
     app.injector.instanceOf[AskHMRCOnlineCIAPIView],
     app.injector.instanceOf[NationalMinimumWageCUIView],
     app.injector.instanceOf[TradeTariffCUIView],
+    app.injector.instanceOf[DebtManagementCUIView],
     app.injector.instanceOf[DAv4DebtManagementView],
  )
 
