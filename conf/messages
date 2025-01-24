@@ -29,6 +29,11 @@ individualNotification.banner.p = <p id= "individualBanner" class="govuk-notific
 globalNotification.banner.title = Important
 globalNotification.banner.p = <p id= "globalBanner" class="govuk-notification-banner__heading">Phone lines are unavailable due to a technical issue we’re working to resolve. You can still use the online services as normal.</p>
 
+#OSH Notification Banner
+oshNotification.banner.title = Important
+oshNotification.banner.p = <p id= "oshBanner" class="govuk-notification-banner__heading">This service is for technical queries with your online account. If your question is about completing Self Assessment, call 0300 200 3310.</p>
+
+
 #Service Unavailable Page
 service.unavailable.title = Sorry, this webchat is unavailable
 service.unavailable.p1 = We are hoping to provide this webchat from October 2022.
