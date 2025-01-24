@@ -1,0 +1,82 @@
+@*
+ * Copyright 2023 HM Revenue & Customs
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *@
+
+@import config.AppConfig
+@import uk.gov.hmrc.webchat.client.WebChatClient
+@import templates.GovukWrapper
+@import views.html.templates.MainTemplate
+@import views.html.helper.CSPNonce
+
+@this(
+	govuk_wrapper: GovukWrapper,
+	appConfig: AppConfig,
+	webChatClient: WebChatClient)
+
+@()(implicit request: Request[_], messages: play.api.i18n.Messages)
+
+@mainContent = {
+<div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+	<div class="govuk-notification-banner__header">
+		<h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+			Important
+		</h2>
+	</div>
+	<div class="govuk-notification-banner__content">
+		<p class="govuk-notification-banner__heading">
+			You have 7 days left to send your application.
+			<a class="govuk-notification-banner__link" href="#">View application</a>.
+		</p>
+	</div>
+</div>
+
+	<h1 class="header-margin-top">@messages("national.clearance.hub.title")</h1>
+
+
+<div class="cui-wrapper">
+	<div id="cui-messaging-container">
+		<div id="nuanMessagingFrame">
+			<div id="error-message" aria-live="assertive" role="alert"></div>
+		</div>
+		<div id="cui-loading-animation">
+			<img id="cui-loading-animation-image" src='@routes.Assets.versioned("media/loading.gif")' alt="Chat loading...">
+			<div id="cui-loading-animation-text">
+				<p>Chat loading...</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+}
+
+@scriptElem = {
+
+	<script @{CSPNonce.attr}> window.isCUI = true; </script>
+	<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/custom.js")'></script>
+	<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/bundle.js")'></script>
+
+	@if(!appConfig.performanceTest){
+		@{webChatClient.loadRequiredElements()}
+		@{webChatClient.loadHMRCChatSkinElement("embedded")}
+	}
+}
+
+@govuk_wrapper(title = messages("national.clearance.hub.title"),
+mainContent = mainContent,
+scriptElem = Some(scriptElem),
+showHelpForm = true,
+showBackLink = true
+)
