@@ -49,7 +49,8 @@
     mainContent: Html = HtmlFormat.empty,
     scriptElem: Option[Html] = None,
     navTitle: Option[String] = None,
-    displayBanner: Boolean = false
+    displayBanner: Boolean = false,
+    displayBannerOSH: Boolean = false
 )(implicit request: Request[_], messages: play.api.i18n.Messages)
 
 @content = {
@@ -73,6 +74,9 @@
     @govukNotificationBanner(NotificationBanner(titleId = Some("globalBanner"), title = Text(messages("globalNotification.banner.title")), content = HtmlContent(messages("globalNotification.banner.p"))))
     @if(displayBanner) {
         @govukNotificationBanner(NotificationBanner(titleId = Some("individualBanner"), title = Text(messages("individualNotification.banner.title")), content = HtmlContent(messages("individualNotification.banner.p"))))
+    }
+    @if(displayBannerOSH) {
+        @govukNotificationBanner(NotificationBanner(titleId = Some("oshBanner"), title = Text(messages("oshNotification.banner.title")), content = HtmlContent(messages("oshNotification.banner.p"))))
     }
 }
 
