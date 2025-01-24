@@ -45,7 +45,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def childBenefit: Action[AnyContent] = Action.async { implicit request =>
     if (config.showCHBCUI) {
       auditHelper.audit(DAv3AuditModel("childBenefit"))
-      Future.successful(Ok(askHMRCOnlineCIAPIView(displayBanner = false)))
+      Future.successful(Ok(askHMRCOnlineCIAPIView(displayBannerTC = false)))
     } else {
       Future.successful(NotFound)
     }
@@ -99,7 +99,8 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def onlineServicesHelpdesk: Action[AnyContent] = Action.async { implicit request =>
     if (config.showOSHCUI) {
       auditHelper.audit(DAv3AuditModel("onlineServicesHelpdesk"))
-      Future.successful(Ok(askHMRCOnlineCIAPIView()))
+      Future.successful(Ok(askHMRCOnlineCIAPIView(displayBannerOSH = true)))
+      
     } else {
       Future.successful(NotFound)
     }
@@ -126,7 +127,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def askHmrcOnline: Action[AnyContent] = Action.async { implicit request =>
     if (config.showTCCUI) {
       auditHelper.audit(DAv3AuditModel("askHmrcOnline"))
-      Future.successful(Ok(askHMRCOnlineCIAPIView(displayBanner = true)))
+      Future.successful(Ok(askHMRCOnlineCIAPIView(displayBannerTC = true)))
     } else {
       Future.successful(NotFound)
     }

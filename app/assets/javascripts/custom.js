@@ -1,5 +1,5 @@
 
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', function () {
 
     // =====================================================
     // Back link mimics browser back functionality
@@ -7,14 +7,14 @@ window.addEventListener('DOMContentLoaded', function() {
     var backLink = document.querySelector('.govuk-back-link');
     const referrer = this.document.referrer;
 
-    if(referrer != "" && this.window.history.length > 1 && referrer.includes('gov.uk/')){
-        backLink.style.display = 'block-inline'; 
-        backLink.addEventListener('click', function(e){
+    if (referrer != "" && this.window.history.length > 1 && referrer.includes('gov.uk/')) {
+        backLink.style.display = 'block-inline';
+        backLink.addEventListener('click', function (e) {
             e.preventDefault();
             window.history.back();
         });
     } else {
-        backLink.style.display = 'none'; 
+        backLink.style.display = 'none';
     }
 
     //Timer for notification banner
@@ -26,6 +26,8 @@ window.addEventListener('DOMContentLoaded', function() {
     //may need to implement a way to dynamically assign these values depending on future complexity
     let globalNotificationBanner = document.getElementsByClassName('govuk-notification-banner')[0]
     let individualNotificationBanner = document.getElementsByClassName('govuk-notification-banner')[1]
+    let individualNotificationBanner1 = document.getElementsByClassName('govuk-notification-banner')[2]
+    console.log('DISPLAY BANNERS', document.getElementsByClassName('govuk-notification-banner'))
 
     // =====================================================
     // Timing for individual banners
@@ -36,7 +38,7 @@ window.addEventListener('DOMContentLoaded', function() {
     //No end date given for current banner, set it to next year for now
     let individualEndTime = new Date("2025-05-06T00:00:01Z").getTime();
 
-    if((currentDate > individualStartTime ) && (currentDate < individualEndTime)){
+    if ((currentDate > individualStartTime) && (currentDate < individualEndTime)) {
         //Notification banner should be displayed
         if (individualNotificationBanner) {
             individualNotificationBanner.style.display = 'block'
@@ -48,16 +50,38 @@ window.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+
+    // =====================================================
+    // Timing for individual banner 1
+    // =====================================================
+
+    //Change these to required start and end times
+    let individualStartTime1 = new Date("2025-01-07T09:00:00Z").getTime();
+    //No end date given for current banner, set it to next year for now
+    let individualEndTime1 = new Date("2025-05-06T00:00:01Z").getTime();
+
+    if ((currentDate > individualStartTime1) && (currentDate < individualEndTime1)) {
+        //Notification banner should be displayed
+        if (individualNotificationBanner1) {
+            individualNotificationBanner1.style.display = 'block'
+        }
+    } else {
+        //Notification will not be displayed
+        if (individualNotificationBanner1) {
+            individualNotificationBanner1.style.display = 'none'
+        }
+    }
+
     // =====================================================
     // Timing for global banners
     // =====================================================
 
-     //Change these to required start and end times
-     let globalStartTime = new Date("2024-09-10T07:00:00Z").getTime();
-     //No end date given for current banner, set it to next year for now
-     let globalEndTime = new Date("2024-09-10T19:00:01Z").getTime();
+    //Change these to required start and end times
+    let globalStartTime = new Date("2024-09-10T07:00:00Z").getTime();
+    //No end date given for current banner, set it to next year for now
+    let globalEndTime = new Date("2024-09-10T19:00:01Z").getTime();
 
-     if((currentDate > globalStartTime ) && (currentDate < globalEndTime)){
+    if ((currentDate > globalStartTime) && (currentDate < globalEndTime)) {
         //Notification banner should be displayed
         if (globalNotificationBanner) {
             globalNotificationBanner.style.display = 'block'
@@ -71,30 +95,30 @@ window.addEventListener('DOMContentLoaded', function() {
 });
 
 // dynamically re-position nuance divs before footer for accessibility
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
 
-    var waitForEl = function(selector, callback, count) {
+    var waitForEl = function (selector, callback, count) {
         if (document.querySelector(selector) !== null) {
             callback();
         } else {
-            setTimeout(function() {
-              count++;
-              if(count<3) {
-                waitForEl(selector, callback, count);
-              }
+            setTimeout(function () {
+                count++;
+                if (count < 3) {
+                    waitForEl(selector, callback, count);
+                }
             }, 1000);
-      }
+        }
     }
 
     waitForEl(
         "#inqChatStage",
-         function() {
+        function () {
             var footer = document.querySelector('#footer');
             if (footer !== null) {
                 document.body.appendChild(footer);
             }
-         },
-         0
+        },
+        0
     );
 
 });

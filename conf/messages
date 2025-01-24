@@ -25,6 +25,10 @@ global.banner.phase = BETA
 individualNotification.banner.title = Important
 individualNotification.banner.p = <p id= "individualBanner" class="govuk-notification-banner__heading">Tax Credits are ending on 5 April 2025. <a href="https://www.tax.service.gov.uk/personal-account/tax-credits-are-ending" target="_blank">Find more information from your Personal Tax Account.</a></p>
 
+#Individual Page Notification Banner
+individualNotification1.banner.title = Important
+individualNotification1.banner.p = <p id= "individualBanner1" class="govuk-notification-banner__heading">Test. <a href="https://www.tax.service.gov.uk/personal-account/tax-credits-are-ending" target="_blank">Find more information from your Personal Tax Account.</a></p>
+
 #Global Notification Banner
 globalNotification.banner.title = Important
 globalNotification.banner.p = <p id= "globalBanner" class="govuk-notification-banner__heading">Phone lines are unavailable due to a technical issue we’re working to resolve. You can still use the online services as normal.</p>
