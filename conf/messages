@@ -21,13 +21,13 @@ global.closed.time.sun=Closed Sundays.
 #Beta Banner
 global.banner.phase = BETA
 
-#Individual Page Notification Banner
-individualNotification.banner.title = Important
-individualNotification.banner.p = <p id= "individualBanner" class="govuk-notification-banner__heading">Tax Credits are ending on 5 April 2025. <a href="https://www.tax.service.gov.uk/personal-account/tax-credits-are-ending" target="_blank">Find more information from your Personal Tax Account.</a></p>
-
 #Global Notification Banner
 globalNotification.banner.title = Important
 globalNotification.banner.p = <p id= "globalBanner" class="govuk-notification-banner__heading">Phone lines are unavailable due to a technical issue we’re working to resolve. You can still use the online services as normal.</p>
+
+#TC Notification Banner
+tcNotification.banner.title = Important
+tcNotification.banner.p = <p id= "tcBanner" class="govuk-notification-banner__heading">Tax Credits are ending on 5 April 2025. <a href="https://www.tax.service.gov.uk/personal-account/tax-credits-are-ending" target="_blank">Find more information from your Personal Tax Account.</a></p>
 
 #OSH Notification Banner
 oshNotification.banner.title = Important
