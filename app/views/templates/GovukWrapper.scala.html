@@ -76,7 +76,7 @@
     @if(showBackLink) { @govukBackLink(BackLink(href="#", content=Text(messages("global.back")))) }
     @govukNotificationBanner(NotificationBanner(titleId = Some("globalBanner"), title = Text(messages("globalNotification.banner.title")), content = HtmlContent(messages("globalNotification.banner.p"))))
     @if(displayBannerTC) {
-        @govukNotificationBanner(NotificationBanner(titleId = Some("individualBanner"), title = Text(messages("tcNotification.banner.title")), content = HtmlContent(messages("tcNotification.banner.p"))))
+        @govukNotificationBanner(NotificationBanner(titleId = Some("tcBanner"), title = Text(messages("tcNotification.banner.title")), content = HtmlContent(messages("tcNotification.banner.p"))))
     }
 }
 
