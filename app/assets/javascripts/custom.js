@@ -24,7 +24,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const currentDate = new Date().getTime()
 
     //may need to implement a way to dynamically assign these values depending on future complexity
-    let globalNotificationBanner = document.getElementsByClassName('govuk-notification-banner')[0]
+    let globalNotificationBanner = document.querySelector('[aria-labelledby = "globalBanner"]')
     let tcNotificationBanner = document.querySelector('[aria-labelledby = "tcBanner"]')
     let oshNotificationBanner = document.querySelector('[aria-labelledby = "oshBanner"]')
 
