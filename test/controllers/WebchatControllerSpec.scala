@@ -81,7 +81,7 @@ class WebchatControllerSpec
       doc.select("h1").text() mustBe "HMRC’s Extra Support team: webchat"
     }
 
-     "Personal Transport Unit Equiries DAv1 live webchat page if feature switch is false" in {
+     "Personal Transport Unit Enquiries DAv1 live webchat page if feature switch is false" in {
       val application = builder.configure("features.digitalAssistants.showDAv4PTU" -> "false").build()
 
       running(application) {
@@ -95,7 +95,7 @@ class WebchatControllerSpec
       }
     }
 
-    "Personal Transport Unit Equiries DAv4 live webchat page if feature switch is true" in {
+    "Personal Transport Unit Enquiries DAv4 live webchat page if feature switch is true" in {
       val application = builder.configure("features.digitalAssistants.showDAv4PTU" -> "true").build()
 
       running(application) {
