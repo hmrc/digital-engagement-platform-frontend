@@ -64,6 +64,7 @@ class AppConfig @Inject()(config: Configuration) {
 
   val showDAv4NCH: Boolean = config.getOptional[Boolean]("features.digitalAssistants.showDAv4NCH").getOrElse(false)
   val showDAv4DM: Boolean = config.getOptional[Boolean]("features.digitalAssistants.showDAv4DM").getOrElse(false)
+  val showDAv4PTU: Boolean = config.getOptional[Boolean]("features.digitalAssistants.showDAv4PTU").getOrElse(false)
 
   val testSwitch: Boolean = config.getOptional[Boolean]("features.test").getOrElse(false)
 
