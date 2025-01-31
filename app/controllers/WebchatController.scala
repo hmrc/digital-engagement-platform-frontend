@@ -53,7 +53,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def additionalNeedsHelp: Action[AnyContent] = Action.async { implicit request =>
-    if (config.showDAv4AddNeeds){
+    if (config.showDAv4ANH){
       Future.successful(Ok(dav4AdditionalNeedsHelpView()))
     } else {
       Future.successful(Ok(additionalNeedsHelpView()))
