@@ -32,7 +32,7 @@ class testSidebarSpec extends ViewSpecBase with Matchers with AnyWordSpecLike {
   "behave like an include" when {
     "show the sidebar header" in {
       val doc = asDocument(createView())
-      assertEqualsValue(doc, "#cui-subsection-title", "Help for businesses and employers")
+      assertEqualsValue(doc, ".cui-subsection-title", "Help for businesses and employers")
     }
 
     "show the sidebar chatbot can paragraph" in {
