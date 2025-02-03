@@ -24,7 +24,6 @@ import views.html.webchat._
 import views.html.webchat.dav4.DAv4NationalClearanceHubView
 import views.html.webchat.dav4.DAv4AdditionalNeedsHelpView
 
-
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.Future
 

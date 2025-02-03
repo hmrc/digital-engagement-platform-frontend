@@ -101,8 +101,6 @@ class WebchatControllerSpec
       }
     }
 
-
-
     "Personal Transport Unit Enquiries page" in {
       val result = controller.personalTransportUnitEnquiries(fakeRequest)
       val doc = asDocument(contentAsString(result))
