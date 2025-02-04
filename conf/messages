@@ -77,9 +77,9 @@ va.global.h1.bullet.title=You can also:
 test.mix.ciapi.page.title=Mix Test Page
 
 #Trade Tariffs
-cui.trade.tariffs.enquiries.sidebar.header=Opening hours
-cui.trade.tariffs.enquiries.sidebar.p1=Monday to Friday: 9:00 - 16:30
-cui.trade.tariffs.enquiries.sidebar.p2=Closed weekends and bank holidays.
+cui.trade.tariffs.enquiries.sidebar.header=Webchat opening hours
+cui.trade.tariffs.enquiries.sidebar.p1=Monday to Friday, 9am to 4:30pm
+cui.trade.tariffs.enquiries.sidebar.p2=Closed bank holidays.
 
 #Test sidebar
 test.sidebar.h2.header=Help for businesses and employers

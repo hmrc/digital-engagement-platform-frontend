@@ -19,9 +19,9 @@
 @()(implicit request: Request[_], messages: play.api.i18n.Messages)
 
 <div class="app-related-items govuk-body" >
-    <h2 id="cui-subsection-title">@messages("cui.trade.tariffs.enquiries.sidebar.header")</h2>
+    <h2 class="cui-subsection-title govuk-heading-m">@messages("cui.trade.tariffs.enquiries.sidebar.header")</h2>
 
-    <p>@messages("cui.trade.tariffs.enquiries.sidebar.p1")</p>
+    <p class="trade-tariff-open">@messages("cui.trade.tariffs.enquiries.sidebar.p1")</p>
 
-    <p>@messages("cui.trade.tariffs.enquiries.sidebar.p2")</p>
+    <p class="trade-tariff-closed">@messages("cui.trade.tariffs.enquiries.sidebar.p2")</p>
 </div>
