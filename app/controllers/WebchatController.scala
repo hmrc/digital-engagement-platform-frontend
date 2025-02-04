@@ -23,6 +23,7 @@ import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 import views.html.webchat._
 import views.html.webchat.dav4.DAv4NationalClearanceHubView
 import views.html.webchat.dav4.DAv4PersonalTransportUnitEnquiriesView
+import views.html.webchat.dav4.DAv4AdditionalNeedsHelpView
 
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.Future
@@ -32,6 +33,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
                                   mcc: MessagesControllerComponents,
                                   nationalClearanceHubView: NationalClearanceHubView,
                                   dav4NationalClearanceHubView: DAv4NationalClearanceHubView,
+                                  dav4AdditionalNeedsHelpView: DAv4AdditionalNeedsHelpView,
                                   additionalNeedsHelpView: AdditionalNeedsHelpView,
                                   personalTransportUnitEnquiriesView: PersonalTransportUnitEnquiriesView,
                                   dav4PersonalTransportUnitEnquiriesView: DAv4PersonalTransportUnitEnquiriesView,
@@ -52,7 +54,11 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def additionalNeedsHelp: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(additionalNeedsHelpView()))
+    if (config.showDAv4ANH){
+      Future.successful(Ok(dav4AdditionalNeedsHelpView()))
+    } else {
+      Future.successful(Ok(additionalNeedsHelpView()))
+    }
   }
 
   def personalTransportUnitEnquiries: Action[AnyContent] = Action.async { implicit request =>

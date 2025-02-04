@@ -19,12 +19,12 @@ package views.html.pages.includes
 import org.scalatest.matchers.must.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike
 import play.twirl.api.HtmlFormat
-import views.html.testOnly.CiApiDemoViewEmbedded
 import views.html.pages.helpers.ViewSpecBase
+import views.html.CIAPIViews.TradeTariffCUIView
 
-class testSidebarSpec extends ViewSpecBase with Matchers with AnyWordSpecLike {
+class tradeTariffSidebarSpec extends ViewSpecBase with Matchers with AnyWordSpecLike {
 
-  private val viewWithTemplate = app.injector.instanceOf[CiApiDemoViewEmbedded]
+  private val viewWithTemplate = app.injector.instanceOf[TradeTariffCUIView]
 
   private def createView: () => HtmlFormat.Appendable = () => viewWithTemplate()(fakeRequest, messages)
 
@@ -32,19 +32,17 @@ class testSidebarSpec extends ViewSpecBase with Matchers with AnyWordSpecLike {
   "behave like an include" when {
     "show the sidebar header" in {
       val doc = asDocument(createView())
-      assertEqualsValue(doc, ".cui-subsection-title", "Help for businesses and employers")
+      assertEqualsValue(doc, ".cui-subsection-title", "Webchat opening hours")
     }
 
-    "show the sidebar chatbot can paragraph" in {
+    "show the sidebar paragraph 1" in {
       val doc = asDocument(createView())
-      assertEqualsValue(doc, "#chatbot-can", "The HMRC chatbot is available at any time to answer " +
-        "your questions about the Coronavirus Job Retention Scheme.")
+      assertEqualsValue(doc, ".trade-tariff-open", "Monday to Friday, 9am to 4:30pm")
     }
 
-    "show the sidebar chatbot cannot paragraph" in {
+     "show the sidebar paragraph 2" in {
       val doc = asDocument(createView())
-      assertEqualsValue(doc, "#chatbot-cannot", "If it cannot help you, you can ask to transfer to an HMRC adviser " +
-        "by typing ‘adviser’. Advisers work 8am to 7:30pm, Monday to Friday and do not work bank holidays.")
+      assertEqualsValue(doc, ".trade-tariff-closed", "Closed bank holidays.")
     }
   }
 }
