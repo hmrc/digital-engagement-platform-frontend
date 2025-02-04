@@ -22,6 +22,7 @@ import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 import views.html.webchat._
 import views.html.webchat.dav4.DAv4NationalClearanceHubView
+import views.html.webchat.dav4.DAv4PersonalTransportUnitEnquiriesView
 import views.html.webchat.dav4.DAv4AdditionalNeedsHelpView
 
 import javax.inject.{Inject, Singleton}
@@ -35,6 +36,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
                                   dav4AdditionalNeedsHelpView: DAv4AdditionalNeedsHelpView,
                                   additionalNeedsHelpView: AdditionalNeedsHelpView,
                                   personalTransportUnitEnquiriesView: PersonalTransportUnitEnquiriesView,
+                                  dav4PersonalTransportUnitEnquiriesView: DAv4PersonalTransportUnitEnquiriesView,
                                   serviceUnavailableView: ServiceUnavailableView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
@@ -60,7 +62,11 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def personalTransportUnitEnquiries: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(personalTransportUnitEnquiriesView()))
+    if (config.showDAv4PTU){
+      Future.successful(Ok(dav4PersonalTransportUnitEnquiriesView()))
+    } else {
+      Future.successful(Ok(personalTransportUnitEnquiriesView()))
+    }
   }
 
   def serviceUnavailable: Action[AnyContent] = Action.async { implicit request =>
