@@ -73,12 +73,32 @@ class WebchatControllerSpec
       }
     }
 
-    "Additional Needs page" in {
-      val result = controller.additionalNeedsHelp(fakeRequest)
-      val doc = asDocument(contentAsString(result))
+    "Additional Needs Help DAv1 live webchat page if feature switch is false" in {
+      val application = builder.configure("features.digitalAssistants.showDAv4ANH" -> "false").build()
 
-      status(result) mustBe OK
-      doc.select("h1").text() mustBe "HMRC’s Extra Support team: webchat"
+      running(application) {
+        val request = FakeRequest(GET, routes.WebchatController.additionalNeedsHelp.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "HMRC’s Extra Support team: webchat"
+        assert(doc.getElementById("HMRC_Fixed_1") != null)
+        assert(doc.getElementById("HMRC_CIAPI_Fixed_1") == null)
+      }
+    }
+
+    "Additional Needs Help DAv4 live webchat page if feature switch is true" in {
+      val application = builder.configure("features.digitalAssistants.showDAv4ANH" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.WebchatController.additionalNeedsHelp.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "HMRC’s Extra Support team: webchat"
+        assert(doc.getElementById("HMRC_Fixed_1") == null)
+        assert(doc.getElementById("HMRC_CIAPI_Fixed_1") != null)
+      }
     }
 
     "Personal Transport Unit Enquiries page" in {
