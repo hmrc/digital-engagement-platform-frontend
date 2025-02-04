@@ -40,7 +40,7 @@ class DAv4PersonalTransportUnitEnquiriesViewSpec extends ChatViewBehaviours with
       returnUrl,
        Some(Seq(
         "Opening times:",
-         "Monday to Saturday, 8:30am to 5pm",
+         "Monday to Friday, 8:30am to 5pm",
          "Closed weekends and bank holidays."
       )),
       Some(Seq("HMRC_CIAPI_Fixed_1"))
