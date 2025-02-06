@@ -104,16 +104,24 @@ export var chatListener = {
     },
     showNuanceDiv: function() {
         console.log("showNuanceDiv");
-        document.getElementById("cui-loading-animation").style.display = 'none'
-        document.getElementById("cui-messaging-container").style.display = 'block'
+        if (document.getElementById("cui-loading-animation")){
+            document.getElementById("cui-loading-animation").style.display = 'none'
+        }
+        if (document.getElementById("cui-messaging-container")){
+            document.getElementById("cui-messaging-container").style.display = 'block'
+        }
 
         if(document.getElementById("#ciapiSkin")){
             document.getElementById("cui-technical-error").style.display = 'none'
         }
     },
     showLoadingAnimation: function() {
-        document.getElementById("cui-loading-animation").style.display = 'block'
-        document.getElementById("cui-messaging-container").style.display = 'block'
+        if (document.getElementById("cui-loading-animation")){
+            document.getElementById("cui-loading-animation").style.display = 'block'
+        }
+        if (document.getElementById("cui-messaging-container")){
+            document.getElementById("cui-messaging-container").style.display = 'block'
+        }
     },
     technicalError: function() {
         var errorEle = document.getElementById("error-message");
