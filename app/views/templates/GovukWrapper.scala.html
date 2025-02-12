@@ -89,6 +89,11 @@
 }
 
 @footer = {
+    if IVR {
+@accessibilityStatementUrl =
+    else {
+
+
     @hmrcStandardFooter(accessibilityStatementUrl=Some(appConfig.accessibilityStatementLink(request.uri)))
     <div id="tc-nuance-chat-container"></div>
 }

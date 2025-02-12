@@ -24,6 +24,8 @@ import views.html.IVR.NationalInsuranceIVRView
 import views.html.IVR.DebtManagementIVRView
 import views.html.IVR.EmployerHelplineIVRView
 import views.html.IVR.ConstructionIndustrySchemeIVRView
+import views.html.testOnly.CiApiDemoViewProactivePopup
+
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.Future
 
@@ -34,14 +36,15 @@ class IvrController @Inject()(appConfig: AppConfig,
                               debtManagementIVRView: DebtManagementIVRView,
                               nationalInsuranceIVRView: NationalInsuranceIVRView,
                               employerHelplineIVRView: EmployerHelplineIVRView,
-                              constructionIndustrySchemeIVRView: ConstructionIndustrySchemeIVRView
+                              constructionIndustrySchemeIVRView: ConstructionIndustrySchemeIVRView,
+                              ciApiDemoViewProactivePopup: CiApiDemoViewProactivePopup
                              ) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
   def selfAssessment: Action[AnyContent] = Action.async { implicit request =>
     if (config.showIVRWebchatSA) {
-      Future.successful(Ok(selfAssessmentIVRView()))
+      Future.successful(Ok(ciApiDemoViewProactivePopup()))
     } else {
       Future.successful(NotFound)
     }
