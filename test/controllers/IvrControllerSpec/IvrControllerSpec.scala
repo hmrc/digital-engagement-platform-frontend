@@ -59,6 +59,19 @@ class IvrControllerSpec
       }
     }
 
+     "Self Assessment DAv4 live webchat page is displayed if DAv4 feature switch is true but DAv1 feature switch is also true" in {
+      val application = builder.configure("features.digitalAssistants.showDAv4IVRWebchatSA" -> "true", "features.digitalAssistants.showIVRWebchatSA" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.IvrController.selfAssessment.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Self Assessment: live chat"
+        assert(doc.getElementsByClass("dav4IVRWebchat") != null)
+      }
+    }
+
     "Self Assessment page is not displayed if feature switches are false for both DAv4 and DAv1. The shutter page is displayed instead" in {
       val application = builder.configure("features.digitalAssistants.showDAv4IVRWebchatSA" -> "false", "features.digitalAssistants.showIVRWebchatSA" -> "false").build()
 
