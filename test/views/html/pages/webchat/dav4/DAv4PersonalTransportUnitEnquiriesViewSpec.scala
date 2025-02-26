@@ -43,7 +43,8 @@ class DAv4PersonalTransportUnitEnquiriesViewSpec extends ChatViewBehaviours with
          "Monday to Friday, 8:30am to 5pm",
          "Closed weekends and bank holidays."
       )),
-      Some(Seq("HMRC_CIAPI_Fixed_1"))
+      Some(Seq("HMRC_CIAPI_Fixed_1")),
+      None
     )
   }
 }

@@ -41,7 +41,8 @@ class DAv4DebtManagementViewSpec extends ChatViewBehaviours with Matchers with A
         "Monday to Friday, 8am to 6pm",
         "Closed weekends and bank holidays."
       )),
-      Some(Seq("HMRC_CIAPI_Fixed_1"))
+      Some(Seq("HMRC_CIAPI_Fixed_1")),
+      None
     )
   }
 }

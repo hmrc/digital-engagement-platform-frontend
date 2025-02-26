@@ -44,7 +44,8 @@ class DAv4AdditionalNeedsHelpViewSpec extends ChatViewBehaviours with Matchers w
         "Saturday, 8am to 4pm",
         "Closed Sundays and bank holidays."
       )),
-      Some(Seq("HMRC_CIAPI_Fixed_1"))
+      Some(Seq("HMRC_CIAPI_Fixed_1")),
+      None
     )
   }
 }

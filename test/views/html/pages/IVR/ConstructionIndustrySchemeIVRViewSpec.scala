@@ -38,6 +38,7 @@ class ConstructionIndustrySchemeIVRViewSpec extends ChatViewBehaviours with Matc
       "Return to Contact HMRC",
       returnUrl,
       None,
+      None,
       None
     )
   }
