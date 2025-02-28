@@ -43,7 +43,9 @@ class AdditionalNeedsHelpViewSpec extends ChatViewBehaviours with Matchers with 
         "Monday to Friday, 8am to 7:30pm",
         "Saturday, 8am to 4pm",
         "Closed Sundays and bank holidays."
-      ))
+      )),
+      None,
+      None
     )
   }
 }

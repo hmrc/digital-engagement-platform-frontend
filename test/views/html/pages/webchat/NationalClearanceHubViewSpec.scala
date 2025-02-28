@@ -41,7 +41,9 @@ class NationalClearanceHubViewSpec extends ChatViewBehaviours with Matchers with
       Some(Seq(
         "Opening times:",
         "24 hours a day, 7 days a week"
-      ))
+      )),
+      None,
+      None
     )
   }
 }

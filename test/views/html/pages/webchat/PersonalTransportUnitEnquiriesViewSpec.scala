@@ -42,7 +42,9 @@ class PersonalTransportUnitEnquiriesViewSpec extends ChatViewBehaviours with Mat
         "Opening times:",
         "Monday to Friday, 8:30am to 5pm",
         "Closed weekends and bank holidays."
-      ))
+      )),
+      None,
+      None
     )
   }
 }

@@ -38,6 +38,7 @@ class EmployerHelplineIVRViewSpec extends ChatViewBehaviours with Matchers with 
       "Return to Contact HMRC",
       returnUrl,
       None,
+      None,
       None
     )
   }

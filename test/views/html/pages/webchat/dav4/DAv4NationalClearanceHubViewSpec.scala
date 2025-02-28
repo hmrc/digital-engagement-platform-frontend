@@ -42,7 +42,8 @@ class DAv4NationalClearanceHubViewSpec extends ChatViewBehaviours with Matchers 
         "Opening times:",
         "24 hours a day, 7 days a week"
       )),
-      Some(Seq("HMRC_CIAPI_Fixed_1"))
+      Some(Seq("HMRC_CIAPI_Fixed_1")),
+      None
     )
   }
 }
