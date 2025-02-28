@@ -55,7 +55,7 @@ class IvrControllerSpec
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
         doc.select("h1").text() mustBe "Self Assessment: live chat"
-        assert(doc.getElementsByClass("dav4IVRWebchat") != null)
+        assert(!doc.getElementsByClass("dav4IVRWebchat").isEmpty)
       }
     }
 
@@ -68,7 +68,7 @@ class IvrControllerSpec
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
         doc.select("h1").text() mustBe "Self Assessment: live chat"
-        assert(doc.getElementsByClass("dav4IVRWebchat") != null)
+        assert(!doc.getElementsByClass("dav4IVRWebchat").isEmpty)
       }
     }
 
