@@ -493,5 +493,27 @@ class CiapiControllerSpec
         status(result) mustBe NOT_FOUND
       }
     }
+
+    "render childcare service webchat page if shutter flag is true" in {
+      val application = builder.configure("features.digitalAssistants.showCSCUI" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.childcareService.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Ask HMRC online"
+      }
+    }
+
+    "render childcare service webchat page is not displayed if shutter flag is false. 404 page received" in {
+      val application = builder.configure("features.digitalAssistants.showCSCUI" -> "false").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.childcareService.url)
+        val result = route(application, request).get
+        status(result) mustBe NOT_FOUND
+      }
+    }
   }
 }

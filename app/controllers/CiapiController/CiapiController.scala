@@ -217,4 +217,13 @@ class CiapiController @Inject()(appConfig: AppConfig,
       Future.successful(NotFound)
     }
   }
+
+  def childcareService: Action[AnyContent] = Action.async { implicit request =>
+    if (config.showCSCUI) {
+      auditHelper.audit(DAv3AuditModel("childcareService"))
+      Future.successful(Ok(askHMRCOnlineCIAPIView()))
+    } else {
+      Future.successful(NotFound)
+    }
+  }
 }

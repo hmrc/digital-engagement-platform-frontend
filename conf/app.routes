@@ -33,6 +33,7 @@ GET         /chat/self-assessment-cessation                                 cont
 GET         /chat/help-to-save                                              controllers.CiapiController.CiapiController.helpToSave
 GET         /chat/agent-dedicated-line-ind                                  controllers.CiapiController.CiapiController.agentDedicatedLine
 GET         /chat/trusts                                                    controllers.CiapiController.CiapiController.trusts
+GET         /chat/childcare-service                                         controllers.CiapiController.CiapiController.childcareService
 
 GET         /feature-switches/:switchName                                   controllers.FeatureSwitchController.getFeatureSwitch(switchName: String)
 
