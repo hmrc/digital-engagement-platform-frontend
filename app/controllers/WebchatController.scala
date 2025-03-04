@@ -24,6 +24,7 @@ import views.html.webchat._
 import views.html.webchat.dav4.DAv4NationalClearanceHubView
 import views.html.webchat.dav4.DAv4PersonalTransportUnitEnquiriesView
 import views.html.webchat.dav4.DAv4AdditionalNeedsHelpView
+import views.html.webchat.dav4.DAv4ComplaintsPAYESAView
 
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.Future
@@ -37,6 +38,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
                                   additionalNeedsHelpView: AdditionalNeedsHelpView,
                                   personalTransportUnitEnquiriesView: PersonalTransportUnitEnquiriesView,
                                   dav4PersonalTransportUnitEnquiriesView: DAv4PersonalTransportUnitEnquiriesView,
+                                  dav4ComplaintsPAYESAView: DAv4ComplaintsPAYESAView,
                                   serviceUnavailableView: ServiceUnavailableView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
@@ -58,6 +60,14 @@ class WebchatController @Inject()(appConfig: AppConfig,
       Future.successful(Ok(dav4AdditionalNeedsHelpView()))
     } else {
       Future.successful(Ok(additionalNeedsHelpView()))
+    }
+  }
+
+  def complaintsPAYESA: Action[AnyContent] = Action.async { implicit request =>
+    if (config.showDAv4CPS){
+      Future.successful(Ok(dav4ComplaintsPAYESAView()))
+    } else {
+      Future.successful(Ok(serviceUnavailableView()))
     }
   }
 

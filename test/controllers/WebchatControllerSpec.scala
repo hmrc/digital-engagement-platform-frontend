@@ -101,6 +101,21 @@ class WebchatControllerSpec
       }
     }
 
+    "Complaints PAYE / SA DAv4 live webchat page if feature switch is true" in {
+      val application = builder.configure("features.digitalAssistants.showDAv4CPS" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.WebchatController.complaintsPAYESA.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "HMRC’s Extra Support team: webchat"
+//         Potentially remove the below line as there is no DAv1.
+        assert(doc.getElementById("HMRC_Fixed_1") == null)
+        assert(doc.getElementById("HMRC_CIAPI_Fixed_1") != null)
+      }
+    }
+
      "Personal Transport Unit Enquiries DAv1 live webchat page if feature switch is false" in {
       val application = builder.configure("features.digitalAssistants.showDAv4PTU" -> "false").build()
 
