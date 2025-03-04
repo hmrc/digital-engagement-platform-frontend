@@ -213,3 +213,7 @@ digital.assistant.list.showAMLSCUI.description = Chat about registering for supe
 digital.assistant.list.showTrusts.title = Trusts
 digital.assistant.list.showTrusts.url = http://www.tax.service.gov.uk/ask-hmrc/chat/trusts
 digital.assistant.list.showTrusts.description = Chat about registering and managing trusts.
+
+digital.assistant.list.showCSCUI.title = Childcare Service
+digital.assistant.list.showCSCUI.url = http://www.tax.service.gov.uk/ask-hmrc/chat/childcare-service
+digital.assistant.list.showCSCUI.description = Chat about Tax-Free Childcare, free childcare if you’re working and using your online childcare account.
