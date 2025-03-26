@@ -12,6 +12,7 @@ global.opening.times.8_30to4_30=Monday to Friday, 8:30am to 4:30pm
 global.opening.times.8_30to5=Monday to Friday, 8:30am to 5pm
 global.opening.times.8to7_30=Monday to Friday, 8am to 7:30pm
 global.opening.times.8to6=Monday to Friday, 8am to 6pm
+global.opening.times.9to4=Monday to Friday, 9am to 4pm
 global.opening.times.saturday.8to4=Saturday, 8am to 4pm
 global.opening.times.weekend.p=Closed weekends and bank holidays.
 global.opening.times.24_7=24 hours a day, 7 days a week
@@ -51,6 +52,9 @@ additional.needs.title=HMRC’s Extra Support team: webchat
 
 #Personal Transport Unit Enquiries
 personal.transport.unit.enquiries.title=Personal Transport Unit: webchat
+
+#PAYE / SA Tier 1 complaints
+paye.sa.complaints.title=PAYE and Self Assessment resolutions: webchat
 
 #Payment Problems
 payment.problems.title=Coronavirus (COVID-19): tax support for businesses and self-employed
