@@ -64,6 +64,7 @@ class AppConfig @Inject()(config: Configuration) {
   val showIVRWebchatCIS: Boolean = config.getOptional[Boolean]("features.digitalAssistants.showIVRWebchatCIS").getOrElse(false)
 
   val showDAv4IVRWebchatSA: Boolean = config.getOptional[Boolean]("features.digitalAssistants.showDAv4IVRWebchatSA").getOrElse(false)
+  val showDAv4IVRWebchatCIS: Boolean = config.getOptional[Boolean]("features.digitalAssistants.showDAv4IVRWebchatCIS").getOrElse(false)
 
   val showDAv4NCH: Boolean = config.getOptional[Boolean]("features.digitalAssistants.showDAv4NCH").getOrElse(false)
   val showDAv4DM: Boolean = config.getOptional[Boolean]("features.digitalAssistants.showDAv4DM").getOrElse(false)
