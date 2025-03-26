@@ -33,6 +33,10 @@ tcNotification.banner.p = <p id= "tcBanner" class="govuk-notification-banner__he
 oshNotification.banner.title = Important
 oshNotification.banner.p = <p id= "oshBanner" class="govuk-notification-banner__heading">This service is for technical queries with your online account. If your question is about completing Self Assessment, call 0300 200 3310.</p>
 
+#ADL Notification Banner
+adlNotification.banner.title = Important
+adlNotification.banner.p = <p id= "adlBanner" class="govuk-notification-banner__heading">This page is an Agent Dedicated Line. If you’re not an agent,  <a href="https://www.tax.service.gov.uk/ask-hmrc/hmrc-digital-assistant" target="_blank">find the right service</a>.</p>
+
 
 #Service Unavailable Page
 service.unavailable.title = Sorry, this webchat is unavailable

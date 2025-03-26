@@ -27,6 +27,7 @@ window.addEventListener('DOMContentLoaded', function () {
     let globalNotificationBanner = document.querySelector('[aria-labelledby = "globalBanner"]')
     let tcNotificationBanner = document.querySelector('[aria-labelledby = "tcBanner"]')
     let oshNotificationBanner = document.querySelector('[aria-labelledby = "oshBanner"]')
+    let adlNotificationBanner = document.querySelector('[aria-labelledby = "adlBanner"]')
 
     // =====================================================
     // Timing for individual TC banner
@@ -63,6 +64,25 @@ window.addEventListener('DOMContentLoaded', function () {
         } else {
             //Notification will not be displayed
             oshNotificationBanner.style.display = 'none'
+        }
+    }
+
+        // =====================================================
+    // Timing for individual ADL banner
+    // =====================================================
+
+    if (adlNotificationBanner) {
+        //Change these to required start and end times
+        const adlStartTime = new Date("2025-04-01T01:00:00Z").getTime();
+        //No end date given for current banner, set it to next year for now
+        const adlEndTime = new Date("2025-04-30T11:59:00Z").getTime();
+
+        if ((currentDate > adlStartTime) && (currentDate < adlEndTime)) {
+            //Notification banner should be displayed
+            adlNotificationBanner.style.display = 'block'
+        } else {
+            //Notification will not be displayed
+            adlNotificationBanner.style.display = 'none'
         }
     }
 
