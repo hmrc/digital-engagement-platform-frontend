@@ -26,7 +26,7 @@ lazy val microservice = Project(appName, file("."))
     javaScriptBundler,
     javaScriptTestRunnerHook,
     defaultSettings(),
-    scalaVersion := "2.13.12",
+    scalaVersion := "2.13.16",
     // only required for frontends
     scalacOptions += "-Wconf:cat=unused-imports&src=html/.*:s",
     // for all services
