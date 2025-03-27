@@ -202,7 +202,7 @@ digital.assistant.list.showTCCUI.title = Tax credits
 digital.assistant.list.showTCCUI.url =  https://www.tax.service.gov.uk/ask-hmrc/chat/ask-hmrc-online
 digital.assistant.list.showTCCUI.description = Chat about payments, renewals and overpayments.
 
-digital.assistant.list.showVATCUI.title = Valued Added Tax (VAT)
+digital.assistant.list.showVATCUI.title = Value Added Tax (VAT)
 digital.assistant.list.showVATCUI.url = https://www.tax.service.gov.uk/ask-hmrc/chat/vat-online
 digital.assistant.list.showVATCUI.description = Chat about registering, filing returns and making payments.
 
