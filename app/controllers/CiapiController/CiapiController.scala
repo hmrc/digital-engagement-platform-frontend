@@ -203,7 +203,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def agentDedicatedLine: Action[AnyContent] = Action.async { implicit request =>
     if (config.showADLCUI) {
       auditHelper.audit(DAv3AuditModel("agentDedicatedLine"))
-      Future.successful(Ok(askHMRCOnlineCIAPIView()))
+      Future.successful(Ok(askHMRCOnlineCIAPIView(displayBannerADL = true)))
     } else {
       Future.successful(NotFound)
     }
