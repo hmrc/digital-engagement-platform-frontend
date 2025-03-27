@@ -9,7 +9,7 @@ GET         /webchat/service-unavailable                                    cont
 GET         /webchat/national-clearance-hub                                 controllers.WebchatController.nationalClearanceHub
 GET         /webchat/help-for-users-with-additional-needs                   controllers.WebchatController.additionalNeedsHelp
 GET         /webchat/personal-transport-unit-enquiries                      controllers.WebchatController.personalTransportUnitEnquiries
-GET         /webchat/paye-and-self-assessment-resolutions                                   controllers.WebchatController.complaintsPAYESA
+GET         /webchat/paye-and-self-assessment-resolutions                   controllers.WebchatController.payeandSelfAssessmentResolutions
 
 GET         /accessibility-statement                                        controllers.AccessibilityStatementController.accessibility(userAction: Option[String])
 

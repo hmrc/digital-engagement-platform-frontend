@@ -20,29 +20,26 @@ import org.scalatest.matchers.must.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike
 import play.twirl.api.HtmlFormat
 import views.html.pages.helpers.ChatViewBehaviours
-import views.html.webchat.dav4.DAv4ComplaintsPAYESAView
+import views.html.webchat.dav4.DAv4PAYESAResolutionsView
 
-class DAv4ComplaintsPAYESAViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike {
+class DAv4PAYESAResolutionsViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike {
 
-  private val view = app.injector.instanceOf[DAv4ComplaintsPAYESAView]
+  private val view = app.injector.instanceOf[DAv4PAYESAResolutionsView]
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "Additional Needs Help DAv4 webchat view" must {
-    val returnUrl: String =
-      "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/get-help-from-hmrc-s-extra-support-team"
+  "PAYE amd Self Assessment resolutions DAv4 webchat view" must {
 
     behave like normalPage(
       createView,
       "PAYE and Self Assessment resolutions: webchat - Ask HMRC - GOV.UK",
       "PAYE and Self Assessment resolutions: webchat",
-      "Return to Contact HMRC",
-      returnUrl,
+      "",
+      "",
        Some(Seq(
         "Opening times:",
-        "Monday to Friday, 8am to 7:30pm",
-        "Saturday, 8am to 4pm",
-        "Closed Sundays and bank holidays."
+        "Monday to Friday, 8am to 4pm",
+        "Closed weekends and bank holidays."
       )),
       Some(Seq("HMRC_CIAPI_Fixed_1")),
       None

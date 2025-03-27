@@ -105,13 +105,11 @@ class WebchatControllerSpec
       val application = builder.configure("features.digitalAssistants.showDAv4CPS" -> "true").build()
 
       running(application) {
-        val request = FakeRequest(GET, routes.WebchatController.complaintsPAYESA.url)
+        val request = FakeRequest(GET, routes.WebchatController.payeandSelfAssessmentResolutions.url)
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
-        doc.select("h1").text() mustBe "HMRC’s Extra Support team: webchat"
-//         Potentially remove the below line as there is no DAv1.
-        assert(doc.getElementById("HMRC_Fixed_1") == null)
+        doc.select("h1").text() mustBe "PAYE and Self Assessment resolutions: webchat"
         assert(doc.getElementById("HMRC_CIAPI_Fixed_1") != null)
       }
     }
