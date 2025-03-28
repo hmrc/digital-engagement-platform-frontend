@@ -38,7 +38,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
                                   additionalNeedsHelpView: AdditionalNeedsHelpView,
                                   personalTransportUnitEnquiriesView: PersonalTransportUnitEnquiriesView,
                                   dav4PersonalTransportUnitEnquiriesView: DAv4PersonalTransportUnitEnquiriesView,
-                                  dav4PAYESAResolutions: DAv4PAYESAResolutionsView,
+                                  dav4PAYESAResolutionsView: DAv4PAYESAResolutionsView,
                                   serviceUnavailableView: ServiceUnavailableView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
@@ -65,7 +65,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
 
   def payeandSelfAssessmentResolutions: Action[AnyContent] = Action.async { implicit request =>
     if (config.showDAv4PAYESAR){
-      Future.successful(Ok(dav4PAYESAResolutions()))
+      Future.successful(Ok(dav4PAYESAResolutionsView()))
     } else {
       Future.successful(NotFound)
     }
