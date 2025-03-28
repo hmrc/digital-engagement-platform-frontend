@@ -24,8 +24,9 @@ import views.html.IVR.NationalInsuranceIVRView
 import views.html.IVR.DebtManagementIVRView
 import views.html.IVR.EmployerHelplineIVRView
 import views.html.IVR.ConstructionIndustrySchemeIVRView
-import views.html.IVR.dav4.{DAv4ConstructionIndustrySchemeIVRView, DAv4SelfAssessmentIVRView}
-
+import views.html.IVR.dav4.DAv4SelfAssessmentIVRView
+import views.html.IVR.dav4.DAv4DebtManagementIVRView
+import views.html.IVR.dav4.DAv4ConstructionIndustrySchemeIVRView
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.Future
 
@@ -34,6 +35,7 @@ class IvrController @Inject()(appConfig: AppConfig,
                               mcc: MessagesControllerComponents,
                               selfAssessmentIVRView: SelfAssessmentIVRView,
                               dav4SelfAssessmentIVRView: DAv4SelfAssessmentIVRView,
+                              dav4DebtManagementIVRView: DAv4DebtManagementIVRView,
                               debtManagementIVRView: DebtManagementIVRView,
                               nationalInsuranceIVRView: NationalInsuranceIVRView,
                               employerHelplineIVRView: EmployerHelplineIVRView,
@@ -80,7 +82,9 @@ class IvrController @Inject()(appConfig: AppConfig,
   }
   
   def debtManagement: Action[AnyContent] = Action.async { implicit request =>
-    if (config.showIVRWebchatDM) {
+    if(config.showDAv4IVRWebchatDM){
+      Future.successful(Ok(dav4DebtManagementIVRView()))
+    } else if (config.showIVRWebchatDM) {
       Future.successful(Ok(debtManagementIVRView()))
     } else {
       Future.successful(NotFound)
