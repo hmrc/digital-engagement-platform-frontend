@@ -101,7 +101,7 @@ class WebchatControllerSpec
       }
     }
 
-    "Complaints PAYE / SA DAv4 live webchat page if feature switch is true" in {
+    "PAYE and Self Assessment resolutions DAv4 live webchat page if feature switch is true" in {
       val application = builder.configure("features.digitalAssistants.showDAv4PAYESAR" -> "true").build()
 
       running(application) {
@@ -114,7 +114,7 @@ class WebchatControllerSpec
       }
     }
 
-    "Complaints PAYE / SA DAv4 live webchat page is not displayed if feature switch is false" in {
+    "PAYE and Self Assessment resolutions DAv4 live webchat page is not displayed if feature switch is false" in {
       val application = builder.configure("features.digitalAssistants.showDAv4PAYESAR" -> "false").build()
 
       running(application) {
