@@ -28,7 +28,7 @@
 @()(implicit request: Request[_], messages: play.api.i18n.Messages)
 
 @mainContent = {
-	<h1 class="header-margin-top">@messages("paye.sa.complaints.title")</h1>
+	<h1 class="header-margin-top">@messages("paye.sa.resolutions.title")</h1>
 
 	<div class="govuk-inset-text">
 		<p>@messages("global.opening.times.title")</p>
@@ -58,7 +58,7 @@
 	}
 }
 
-@govuk_wrapper(title = messages("paye.sa.complaints.title"),
+@govuk_wrapper(title = messages("paye.sa.resolutions.title"),
 mainContent = mainContent,
 scriptElem = Some(scriptElem),
 showHelpForm = true,

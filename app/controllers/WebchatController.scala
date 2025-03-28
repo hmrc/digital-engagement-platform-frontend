@@ -64,10 +64,10 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def payeandSelfAssessmentResolutions: Action[AnyContent] = Action.async { implicit request =>
-    if (config.showDAv4CPS){
+    if (config.showDAv4PAYESAR){
       Future.successful(Ok(dav4PAYESAResolutions()))
     } else {
-      Future.successful(Ok(serviceUnavailableView()))
+      Future.successful(NotFound)
     }
   }
 
