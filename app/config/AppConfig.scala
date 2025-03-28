@@ -96,6 +96,7 @@ class AppConfig @Inject()(config: Configuration) {
   val reportAProblemNonJSUrl: String = s"$contactHost/contact/problem_reports_nonjs?service=$serviceIdentifier"
   val betaFeedbackUnauthenticatedUrl = s"$contactHost/contact/beta-feedback-unauthenticated?service=$serviceIdentifier"
 
+  val generalContactReturnUrl: String = "https://www.gov.uk/contact-hmrc"
   val selfAssessmentReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/self-assessment"
   val taxCreditsEnquiriesReturnUrl: String =
