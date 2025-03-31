@@ -82,8 +82,8 @@ class IvrControllerSpec
       }
     }
 
-     "National Insurance page is displayed if shutter flag is true" in {
-      val application = builder.configure("features.digitalAssistants.showIVRWebchatNI" -> "true").build()
+    "National Insurance DAv1 live webchat page is displayed if DAv4 feature switch is false but DAv1 feature switch is true" in {
+      val application = builder.configure("features.digitalAssistants.showDAv4IVRWebchatNI" -> "false", "features.digitalAssistants.showIVRWebchatNI" -> "true").build()
 
       running(application) {
         val request = FakeRequest(GET, routes.IvrController.nationalInsurance.url)
@@ -91,11 +91,38 @@ class IvrControllerSpec
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
         doc.select("h1").text() mustBe "National Insurance: live chat"
+        assert(doc.getElementsByClass("dav4IVRWebchat").isEmpty)
       }
     }
 
-    "National Insurance page is not displayed if shutter flag is false. Shutter page is displayed instead" in {
-      val application = builder.configure("features.digitalAssistants.showIVRWebchatNI" -> "false").build()
+    "National Insurance DAv4 live webchat page is displayed if DAv4 feature switch is true but DAv1 feature switch is false" in {
+      val application = builder.configure("features.digitalAssistants.showDAv4IVRWebchatNI" -> "true", "features.digitalAssistants.showIVRWebchatNI" -> "false").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.IvrController.nationalInsurance.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "National Insurance: live chat"
+        assert(!doc.getElementsByClass("dav4IVRWebchat").isEmpty)
+      }
+    }
+
+    "National Insurance DAv4 live webchat page is displayed if DAv4 feature switch is true but DAv1 feature switch is also true" in {
+      val application = builder.configure("features.digitalAssistants.showDAv4IVRWebchatNI" -> "true", "features.digitalAssistants.showIVRWebchatNI" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.IvrController.nationalInsurance.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "National Insurance: live chat"
+        assert(!doc.getElementsByClass("dav4IVRWebchat").isEmpty)
+      }
+    }
+
+    "National Insurance page is not displayed if feature switches are false for both DAv4 and DAv1. The shutter page is displayed instead" in {
+      val application = builder.configure("features.digitalAssistants.showDAv4IVRWebchatNI" -> "false", "features.digitalAssistants.showIVRWebchatNI" -> "false").build()
 
       running(application) {
         val request = FakeRequest(GET, routes.IvrController.nationalInsurance.url)
@@ -152,9 +179,9 @@ class IvrControllerSpec
         status(result) mustBe NOT_FOUND
       }
     }
-    
-    "Construction Industry Scheme page is displayed if shutter flag is true" in {
-      val application = builder.configure("features.digitalAssistants.showIVRWebchatCIS" -> "true").build()
+
+    "Construction Industry Scheme DAv1 live webchat page is displayed if DAv4 feature switch is false but DAv1 feature switch is true" in {
+      val application = builder.configure("features.digitalAssistants.showDAv4IVRWebchatCIS" -> "false", "features.digitalAssistants.showIVRWebchatCIS" -> "true").build()
 
       running(application) {
         val request = FakeRequest(GET, routes.IvrController.constructionIndustryScheme.url)
@@ -162,11 +189,38 @@ class IvrControllerSpec
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
         doc.select("h1").text() mustBe "Construction Industry Scheme: live chat"
+        assert(doc.getElementsByClass("dav4IVRWebchat").isEmpty)
       }
     }
 
-    "Construction Industry Scheme page is not displayed if shutter flag is false. Shutter page is displayed instead" in {
-      val application = builder.configure("features.digitalAssistants.showIVRWebchatCIS" -> "false").build()
+    "Construction Industry Scheme DAv4 live webchat page is displayed if DAv4 feature switch is true but DAv1 feature switch is false" in {
+      val application = builder.configure("features.digitalAssistants.showDAv4IVRWebchatCIS" -> "true", "features.digitalAssistants.showIVRWebchatCIS" -> "false").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.IvrController.constructionIndustryScheme.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Construction Industry Scheme: live chat"
+        assert(!doc.getElementsByClass("dav4IVRWebchat").isEmpty)
+      }
+    }
+
+    "Construction Industry Scheme DAv4 live webchat page is displayed if DAv4 feature switch is true but DAv1 feature switch is also true" in {
+      val application = builder.configure("features.digitalAssistants.showDAv4IVRWebchatCIS" -> "true", "features.digitalAssistants.showIVRWebchatCIS" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.IvrController.constructionIndustryScheme.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Construction Industry Scheme: live chat"
+        assert(!doc.getElementsByClass("dav4IVRWebchat").isEmpty)
+      }
+    }
+
+    "Construction Industry Scheme page is not displayed if feature switches are false for both DAv4 and DAv1. The shutter page is displayed instead" in {
+      val application = builder.configure("features.digitalAssistants.showDAv4IVRWebchatCIS" -> "false", "features.digitalAssistants.showIVRWebchatCIS" -> "false").build()
 
       running(application) {
         val request = FakeRequest(GET, routes.IvrController.constructionIndustryScheme.url)

@@ -19,33 +19,31 @@ package views.html.pages.IVR.dav4
 import org.scalatest.matchers.must.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike
 import play.twirl.api.HtmlFormat
+import views.html.IVR.dav4.DAv4NationalInsuranceIVRView
 import views.html.pages.helpers.ChatViewBehaviours
-import views.html.IVR.dav4.DAv4SelfAssessmentIVRView
 
-class DAv4SelfAssessmentIVRViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike {
+class DAv4NationalInsuranceIVRViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike {
 
-  private val view = app.injector.instanceOf[DAv4SelfAssessmentIVRView]
+  private val view = app.injector.instanceOf[DAv4NationalInsuranceIVRView]
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "Self Assessment IVR DAv4 webchat view" must {
+  "Debt Management IVR DAv4 webchat view" must {
     val returnUrl: String = "https://www.gov.uk/contact-hmrc"
 
     behave like normalPage(
       createView,
-      "Self Assessment: live chat - Ask HMRC - GOV.UK",
-      "Self Assessment: live chat",
+      "National Insurance: live chat - Ask HMRC - GOV.UK",
+      "National Insurance: live chat",
       "Return to Contact HMRC",
       returnUrl,
       Some(Seq(
         "Opening times:",
-        "Monday to Friday, 8am to 7:30pm",
-        "Saturday, 8am to 4pm",
-        "Closed Sundays and bank holidays."
+        "Monday to Friday, 8am to 6pm",
+        "Closed weekends and bank holidays."
       )),
       None,
       Some(Seq("dav4IVRWebchat"))
     )
   }
-
 }
