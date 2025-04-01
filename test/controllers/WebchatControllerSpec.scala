@@ -101,6 +101,30 @@ class WebchatControllerSpec
       }
     }
 
+    "PAYE and Self Assessment resolutions DAv4 live webchat page if feature switch is true" in {
+      val application = builder.configure("features.digitalAssistants.showDAv4PAYESAR" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.WebchatController.payeandSelfAssessmentResolutions.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "PAYE and Self Assessment resolutions: webchat"
+        assert(doc.getElementById("HMRC_CIAPI_Fixed_1") != null)
+      }
+    }
+
+    "PAYE and Self Assessment resolutions DAv4 live webchat page is not displayed if feature switch is false" in {
+      val application = builder.configure("features.digitalAssistants.showDAv4PAYESAR" -> "false").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.WebchatController.payeandSelfAssessmentResolutions.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe NOT_FOUND
+      }
+    }
+
      "Personal Transport Unit Enquiries DAv1 live webchat page if feature switch is false" in {
       val application = builder.configure("features.digitalAssistants.showDAv4PTU" -> "false").build()
 
