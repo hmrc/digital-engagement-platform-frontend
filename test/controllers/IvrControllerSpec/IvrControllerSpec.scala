@@ -131,8 +131,8 @@ class IvrControllerSpec
       }
     }
 
-    "Employer Helpline page is displayed if shutter flag is true" in {
-      val application = builder.configure("features.digitalAssistants.showIVRWebchatEHL" -> "true").build()
+    "Employer Helpline DAv1 live webchat page is displayed if DAv4 feature switch is false but DAv1 feature switch is true" in {
+      val application = builder.configure("features.digitalAssistants.showDAv4IVRWebchatEHL" -> "false", "features.digitalAssistants.showIVRWebchatEHL" -> "true").build()
 
       running(application) {
         val request = FakeRequest(GET, routes.IvrController.employerHelpline.url)
@@ -140,11 +140,38 @@ class IvrControllerSpec
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
         doc.select("h1").text() mustBe "Employer Helpline: live chat"
+        assert(doc.getElementsByClass("dav4IVRWebchat").isEmpty)
       }
     }
 
-    "Employer Helpline page is not displayed if shutter flag is false. Shutter page is displayed instead" in {
-      val application = builder.configure("features.digitalAssistants.showIVRWebchatEHL" -> "false").build()
+    "Employer Helpline DAv4 live webchat page is displayed if DAv4 feature switch is true but DAv1 feature switch is false" in {
+      val application = builder.configure("features.digitalAssistants.showDAv4IVRWebchatEHL" -> "true", "features.digitalAssistants.showIVRWebchatEHL" -> "false").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.IvrController.employerHelpline.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Employer Helpline: live chat"
+        assert(!doc.getElementsByClass("dav4IVRWebchat").isEmpty)
+      }
+    }
+
+    "Employer Helpline DAv4 live webchat page is displayed if DAv4 feature switch is true but DAv1 feature switch is also true" in {
+      val application = builder.configure("features.digitalAssistants.showDAv4IVRWebchatEHL" -> "true", "features.digitalAssistants.showIVRWebchatEHL" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.IvrController.employerHelpline.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Employer Helpline: live chat"
+        assert(!doc.getElementsByClass("dav4IVRWebchat").isEmpty)
+      }
+    }
+
+    "Employer Helpline page is not displayed if feature switches are false for both DAv4 and DAv1. The shutter page is displayed instead" in {
+      val application = builder.configure("features.digitalAssistants.showDAv4IVRWebchatEHL" -> "false", "features.digitalAssistants.showIVRWebchatEHL" -> "false").build()
 
       running(application) {
         val request = FakeRequest(GET, routes.IvrController.employerHelpline.url)

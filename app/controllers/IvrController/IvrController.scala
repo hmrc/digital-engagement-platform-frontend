@@ -26,6 +26,7 @@ import views.html.IVR.EmployerHelplineIVRView
 import views.html.IVR.ConstructionIndustrySchemeIVRView
 import views.html.IVR.dav4.DAv4SelfAssessmentIVRView
 import views.html.IVR.dav4.DAv4DebtManagementIVRView
+import views.html.IVR.dav4.DAv4EmployerHelplineIVRView
 import views.html.IVR.dav4.DAv4ConstructionIndustrySchemeIVRView
 import views.html.IVR.dav4.DAv4NationalInsuranceIVRView
 import javax.inject.{Inject, Singleton}
@@ -41,6 +42,7 @@ class IvrController @Inject()(appConfig: AppConfig,
                               debtManagementIVRView: DebtManagementIVRView,
                               nationalInsuranceIVRView: NationalInsuranceIVRView,
                               employerHelplineIVRView: EmployerHelplineIVRView,
+                              dav4EmployerHelplineIVRView: DAv4EmployerHelplineIVRView,
                               constructionIndustrySchemeIVRView: ConstructionIndustrySchemeIVRView,
                               dav4ConstructionIndustrySchemeIVRView: DAv4ConstructionIndustrySchemeIVRView
                              ) extends FrontendController(mcc) {
@@ -68,12 +70,14 @@ class IvrController @Inject()(appConfig: AppConfig,
   }
 
   def employerHelpline: Action[AnyContent] = Action.async { implicit request =>
-    if (config.showIVRWebchatEHL) {
+    if (config.showDAv4IVRWebchatEHL){
+      Future.successful(Ok(dav4EmployerHelplineIVRView()))
+    } else if (config.showIVRWebchatEHL) {
       Future.successful(Ok(employerHelplineIVRView()))
     } else {
-        Future.successful(NotFound)
-      }
+      Future.successful(NotFound)
     }
+  }
   
   def constructionIndustryScheme: Action[AnyContent] = Action.async { implicit request =>
     if (config.showDAv4IVRWebchatCIS){
