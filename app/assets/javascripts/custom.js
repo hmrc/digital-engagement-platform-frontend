@@ -37,7 +37,7 @@ window.addEventListener('DOMContentLoaded', function () {
         //Change these to required start and end times
         const tcStartTime = new Date("2025-01-07T09:00:00Z").getTime();
         //No end date given for current banner, set it to next year for now
-        const tcEndTime = new Date("2025-05-06T00:00:01Z").getTime();
+        const tcEndTime = new Date("2025-01-07T09:00:00Z").getTime();
 
         if ((currentDate > tcStartTime) && (currentDate < tcEndTime)) {
             //Notification banner should be displayed
@@ -67,7 +67,7 @@ window.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-        // =====================================================
+    // =====================================================
     // Timing for individual ADL banner
     // =====================================================
 
