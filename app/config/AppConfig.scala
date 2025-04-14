@@ -129,6 +129,7 @@ class AppConfig @Inject()(config: Configuration) {
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/personal-transport-unit-enquiries"
   val contactHMRC: String = "https://www.gov.uk/contact-hmrc"
   val securityMessageLink: String = "https://www.gov.uk/report-tax-fraud"
+  val complainAboutHMRC: String = "https://www.gov.uk/complain-about-hmrc"
 
   private val frontendHost: String = config.get[String]("digital-engagement-frontend.host")
   private val frontendPath: String = config.get[String]("digital-engagement-frontend.path")
