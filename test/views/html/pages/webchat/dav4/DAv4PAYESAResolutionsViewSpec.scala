@@ -30,13 +30,13 @@ class DAv4PAYESAResolutionsViewSpec extends ChatViewBehaviours with Matchers wit
 
   "PAYE amd Self Assessment resolutions DAv4 webchat view" must {
   val returnUrl: String =
-      "https://www.gov.uk/contact-hmrc"
+      "https://www.gov.uk/complain-about-hmrc"
 
     behave like normalPage(
       createView,
       "PAYE and Self Assessment resolutions: webchat - Ask HMRC - GOV.UK",
       "PAYE and Self Assessment resolutions: webchat",
-      "Return to Contact HMRC",
+      "Return to Complain about HMRC",
       returnUrl,
        Some(Seq(
         "Opening times:",
