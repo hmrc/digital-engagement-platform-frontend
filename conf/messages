@@ -3,6 +3,8 @@ global.title.suffix=- GOV.UK
 global.nav.title=Ask HMRC
 global.nav.va.title=Ask HMRC
 global.text.link.back.to.govuk.p1=Return to Contact HMRC
+global.text.link.contact.p1=For other ways to get in touch, you can
+global.text.link.contact.hmrc.anchor=contact HMRC
 global.back = Back
 global.nuance.div.loading.text=Checking adviser availability.
 global.webchat.title.h2=Webchat
@@ -46,7 +48,7 @@ service.unavailable.p2-1 = You can
 service.unavailable.p2-2 = find other contact details for your query
 
 #National Clearance Hub
-national.clearance.hub.title=National Clearance Hub: webchat
+national.clearance.hub.title=National Clearance Hub
 
 #Debt Management C2C DAv4
 debt.management.title=Payment Plan: webchat
