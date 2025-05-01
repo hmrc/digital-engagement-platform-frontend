@@ -24,7 +24,7 @@
     webChatClient: WebChatClient
 )
 
-@(title: String, sidebar: Option[Html] = None, displayBannerTC: Boolean = false, displayBannerOSH: Boolean = false, displayBannerADL: Boolean = false)(mainContent: Html)(implicit request : Request[_], messages: Messages)
+@(title: String, sidebar: Option[Html] = None, displayBannerTC: Boolean = false, displayBannerOSH: Boolean = false, displayBannerADL: Boolean = false, displayBannerPAYE: Boolean = false, displayBannerSA: Boolean = false)(mainContent: Html)(implicit request : Request[_], messages: Messages)
 
 @sidebarContent = {
     @if(sidebar.isDefined) {
@@ -54,5 +54,7 @@
                scriptElem = Some(scriptElem),
                displayBannerTC = displayBannerTC,
                displayBannerOSH = displayBannerOSH,
-               displayBannerADL = displayBannerADL
+               displayBannerADL = displayBannerADL,
+               displayBannerPAYE = displayBannerPAYE,
+               displayBannerSA = displayBannerSA
 )

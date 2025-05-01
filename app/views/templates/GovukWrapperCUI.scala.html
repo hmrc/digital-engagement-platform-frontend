@@ -51,7 +51,9 @@
     navTitle: Option[String] = None,
     displayBannerTC: Boolean = false,
     displayBannerOSH: Boolean = false,
-    displayBannerADL: Boolean = false
+    displayBannerADL: Boolean = false,
+    displayBannerPAYE: Boolean = false,
+    displayBannerSA: Boolean = false
 )(implicit request: Request[_], messages: play.api.i18n.Messages)
 
 @content = {
@@ -81,6 +83,12 @@
     }
     @if(displayBannerADL) {
         @govukNotificationBanner(NotificationBanner(titleId = Some("adlBanner"), title = Text(messages("adlNotification.banner.title")), content = HtmlContent(messages("adlNotification.banner.p"))))
+    }
+    @if(displayBannerPAYE) {
+        @govukNotificationBanner(NotificationBanner(titleId = Some("payeBanner"), title = Text(messages("payeNotification.banner.title")), content = HtmlContent(messages("payeNotification.banner.p"))))
+    }
+    @if(displayBannerSA) {
+        @govukNotificationBanner(NotificationBanner(titleId = Some("saBanner"), title = Text(messages("saNotification.banner.title")), content = HtmlContent(messages("saNotification.banner.p"))))
     }
 }
 
