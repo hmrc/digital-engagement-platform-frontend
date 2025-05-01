@@ -96,7 +96,7 @@ window.addEventListener('DOMContentLoaded', function () {
         //Change these to required start and end times
         const payeStartTime = new Date("2025-05-01T01:00:00Z").getTime();
         //No end date given for current banner, set it to next year for now
-        const payeEndTime = new Date("2025-05-31T11:59:00Z").getTime();
+        const payeEndTime = new Date("2025-05-31T22:59:00Z").getTime();
 
         if ((currentDate > payeStartTime) && (currentDate < payeEndTime)) {
             //Notification banner should be displayed
@@ -115,7 +115,7 @@ window.addEventListener('DOMContentLoaded', function () {
         //Change these to required start and end times
         const saStartTime = new Date("2025-05-01T01:00:00Z").getTime();
         //No end date given for current banner, set it to next year for now
-        const saEndTime = new Date("2025-05-31T11:59:00Z").getTime();
+        const saEndTime = new Date("2025-05-31T22:59:00Z").getTime();
 
         if ((currentDate > saStartTime) && (currentDate < saEndTime)) {
             //Notification banner should be displayed
