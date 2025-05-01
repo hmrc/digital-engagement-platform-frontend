@@ -40,11 +40,11 @@ adlNotification.banner.p = <p id= "adlBanner" class="govuk-notification-banner__
 
 #PAYE Notification Banner
 payeNotification.banner.title = Important
-payeNotification.banner.p = <p id= "payeBanner" class="govuk-notification-banner__heading">We cannot help with 2024 to 2025 tax refund queries until you’ve received a P800 (tax calculation letter). We’re sending these out by 31 May..</p>
+payeNotification.banner.p = <p id= "payeBanner" class="govuk-notification-banner__heading">We cannot help with 2024 to 2025 tax refund queries until you’ve received a P800 (tax calculation letter). We’re sending these out by 31 May.</p>
 
 #SA Notification Banner
 saNotification.banner.title = Important
-saNotification.banner.p = <p id= "saBanner" class="govuk-notification-banner__heading">We cannot process Self Assessment refunds by webchat or phone. You must  <a href="https://www.gov.uk/log-in-register-hmrc-online-services" target="_blank">sign in to HMRC online services to claim (opens in a new tab)</a>.</p>
+saNotification.banner.p = <p id= "saBanner" class="govuk-notification-banner__heading">Advisers cannot take requests for Self Assessment refunds by webchat or phone. To claim your refund you must  <a href="https://www.gov.uk/log-in-register-hmrc-online-services" target="_blank">sign in to HMRC online services to claim (opens in a new tab)</a>.</p>
 
 #Service Unavailable Page
 service.unavailable.title = Sorry, this webchat is unavailable
