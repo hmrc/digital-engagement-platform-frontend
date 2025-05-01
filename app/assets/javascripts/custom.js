@@ -28,6 +28,8 @@ window.addEventListener('DOMContentLoaded', function () {
     let tcNotificationBanner = document.querySelector('[aria-labelledby = "tcBanner"]')
     let oshNotificationBanner = document.querySelector('[aria-labelledby = "oshBanner"]')
     let adlNotificationBanner = document.querySelector('[aria-labelledby = "adlBanner"]')
+    let payeNotificationBanner = document.querySelector('[aria-labelledby = "payeBanner"]')
+    let saNotificationBanner = document.querySelector('[aria-labelledby = "saBanner"]')
 
     // =====================================================
     // Timing for individual TC banner
@@ -83,6 +85,44 @@ window.addEventListener('DOMContentLoaded', function () {
         } else {
             //Notification will not be displayed
             adlNotificationBanner.style.display = 'none'
+        }
+    }
+
+    // =====================================================
+    // Timing for individual PAYE banner
+    // =====================================================
+
+    if (payeNotificationBanner) {
+        //Change these to required start and end times
+        const payeStartTime = new Date("2025-05-01T01:00:00Z").getTime();
+        //No end date given for current banner, set it to next year for now
+        const payeEndTime = new Date("2025-05-31T11:59:00Z").getTime();
+
+        if ((currentDate > payeStartTime) && (currentDate < payeEndTime)) {
+            //Notification banner should be displayed
+            payeNotificationBanner.style.display = 'block'
+        } else {
+            //Notification will not be displayed
+            payeNotificationBanner.style.display = 'none'
+        }
+    }
+
+    // =====================================================
+    // Timing for individual SA banner
+    // =====================================================
+
+    if (saNotificationBanner) {
+        //Change these to required start and end times
+        const saStartTime = new Date("2025-05-01T01:00:00Z").getTime();
+        //No end date given for current banner, set it to next year for now
+        const saEndTime = new Date("2025-05-31T11:59:00Z").getTime();
+
+        if ((currentDate > saStartTime) && (currentDate < saEndTime)) {
+            //Notification banner should be displayed
+            saNotificationBanner.style.display = 'block'
+        } else {
+            //Notification will not be displayed
+            saNotificationBanner.style.display = 'none'
         }
     }
 

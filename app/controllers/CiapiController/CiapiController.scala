@@ -90,7 +90,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def selfAssessment: Action[AnyContent] = Action.async { implicit request =>
     if (config.showSACUI) {
       auditHelper.audit(DAv3AuditModel("selfAssessment"))
-      Future.successful(Ok(askHMRCOnlineCIAPIView()))
+      Future.successful(Ok(askHMRCOnlineCIAPIView(displayBannerSA = true)))
     } else {
       Future.successful(NotFound)
     }
@@ -167,7 +167,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def paye : Action[AnyContent] = Action.async { implicit request =>
     if (config.showPAYECUI) {
       auditHelper.audit(DAv3AuditModel("paye"))
-      Future.successful(Ok(askHMRCOnlineCIAPIView()))
+      Future.successful(Ok(askHMRCOnlineCIAPIView(displayBannerPAYE = true)))
     } else {
       Future.successful(NotFound)
     }
