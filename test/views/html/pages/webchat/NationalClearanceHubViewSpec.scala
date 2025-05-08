@@ -34,8 +34,8 @@ class NationalClearanceHubViewSpec extends ChatViewBehaviours with Matchers with
 
     behave like normalPage(
       createView,
-      "National Clearance Hub - Ask HMRC - GOV.UK",
-      "National Clearance Hub",
+      "National Clearance Hub webchat - Ask HMRC - GOV.UK",
+      "National Clearance Hub webchat",
       "Return to Contact HMRC",
       returnUrl,
       Some(Seq(

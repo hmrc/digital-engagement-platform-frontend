@@ -53,7 +53,7 @@ class WebchatControllerSpec
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
-        doc.select("h1").text() mustBe "National Clearance Hub"
+        doc.select("h1").text() mustBe "National Clearance Hub webchat"
         assert(doc.getElementById("HMRC_Fixed_1") != null)
         assert(doc.getElementById("HMRC_CIAPI_Fixed_1") == null)
       }
@@ -67,7 +67,7 @@ class WebchatControllerSpec
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
-        doc.select("h1").text() mustBe "National Clearance Hub"
+        doc.select("h1").text() mustBe "National Clearance Hub webchat"
         assert(doc.getElementById("HMRC_CIAPI_Fixed_1") != null)
         assert(doc.getElementById("HMRC_Fixed_1") == null)
       }
@@ -133,7 +133,7 @@ class WebchatControllerSpec
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
-        doc.select("h1").text() mustBe "Personal Transport Unit: webchat"
+        doc.select("h1").text() mustBe "Personal Transport Unit webchat"
         assert(doc.getElementById("HMRC_Fixed_1") != null)
         assert(doc.getElementById("HMRC_CIAPI_Fixed_1") == null)
       }
@@ -147,7 +147,7 @@ class WebchatControllerSpec
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
-        doc.select("h1").text() mustBe "Personal Transport Unit: webchat"
+        doc.select("h1").text() mustBe "Personal Transport Unit webchat"
         assert(doc.getElementById("HMRC_CIAPI_Fixed_1") != null)
         assert(doc.getElementById("HMRC_Fixed_1") == null)
       }
