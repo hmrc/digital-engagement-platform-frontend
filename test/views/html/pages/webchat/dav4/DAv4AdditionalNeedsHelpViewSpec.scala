@@ -34,9 +34,9 @@ class DAv4AdditionalNeedsHelpViewSpec extends ChatViewBehaviours with Matchers w
 
     behave like normalPage(
       createView,
-      "HMRC’s Extra Support team: webchat - Ask HMRC - GOV.UK",
-      "HMRC’s Extra Support team: webchat",
-      "Return to Contact HMRC",
+      "HMRC’s Extra Support team webchat - Ask HMRC - GOV.UK",
+      "HMRC’s Extra Support team webchat",
+      "contact HMRC",
       returnUrl,
        Some(Seq(
         "Opening times:",
