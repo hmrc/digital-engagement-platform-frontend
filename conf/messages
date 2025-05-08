@@ -51,7 +51,7 @@ service.unavailable.p2-2 = find other contact details for your query
 national.clearance.hub.title=National Clearance Hub webchat
 
 #Debt Management C2C DAv4
-debt.management.title=Payment Plan: webchat
+debt.management.title=Payment Plan webchat
 
 #Additional Needs View
 additional.needs.title=HMRC’s Extra Support team webchat
