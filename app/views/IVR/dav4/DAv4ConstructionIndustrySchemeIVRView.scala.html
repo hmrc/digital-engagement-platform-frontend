@@ -29,25 +29,18 @@ webChatClient: WebChatClient
 
 @mainContent = {
     <h1 class="header-margin-top">@messages("ivr.construction.industry.scheme.title")</h1>
-
-    <div>
-        <p>@messages("ivr.construction.industry.scheme.security.p1")</p>
-        <p>@messages("ivr.construction.industry.scheme.security.p2")</p>
-        <p>@messages("ivr.construction.industry.scheme.security.p3")
-            <a class="govuk-link" href=@appConfig.securityMessageLink target="_blank">
-            @messages("ivr.construction.industry.scheme.security.link")</a>
-        </p>
-    </div>
     
-    <div class="govuk-inset-text">
-        <p>@messages("global.opening.times.title")</p>
+    <div class="opening-times">
+        <p class="govuk-body govuk-!-font-weight-bold">@messages("global.opening.times.title")</p>
         <p>@messages("global.opening.times.8to6")</p>
         <p>@messages("global.opening.times.weekend.p")</p>
     </div>
 
-    <p class="margin-top">
-        <a class="govuk-link" id="return-link" href=@appConfig.contactHMRC>@messages("global.text.link.back.to.govuk.p1")</a>
-    </p>
+    <p>@messages("global.ivr.info")</p>
+
+    <p class="margin-top">@messages("global.text.link.contact.p1")
+		<a class="govuk-link" id="return-link" href=@appConfig.contactHMRC>@messages("global.text.link.contact.hmrc.anchor")</a>
+	</p>
 
     <div class="dav4IVRWebchat"></div>
 }

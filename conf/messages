@@ -22,6 +22,7 @@ global.opening.times.weekend.p=Closed weekends and bank holidays.
 global.opening.times.24_7=24 hours a day, 7 days a week
 global.closed.time.sun.bankholidays=Closed Sundays and bank holidays.
 global.closed.time.sun=Closed Sundays.
+global.ivr.info=The chat will pop up when advisers are available. You might join a queue before you’re connected.
 
 #Beta Banner
 global.banner.phase = BETA
@@ -114,35 +115,35 @@ cui.national.minimum.wage.enquiries.sidebar.p2=Employment Agency Standards
 cui.national.minimum.wage.enquiries.sidebar.p3=Health & Safety Executive
 
 #IVR SA
-ivr.self.assessment.title=Self Assessment: live chat
+ivr.self.assessment.title=Self Assessment live chat
 ivr.self.assessment.security.p1=HMRC will never send unsolicited text messages containing links to webpages.
 ivr.self.assessment.security.p2=We will only send a link to webchat after you have requested it.
 ivr.self.assessment.security.p3=If you think you have received a suspicious message, you can
 ivr.self.assessment.security.link= report it online (opens in a new tab).
 
 #IVR DEBT MANAGEMENT
-ivr.debt.management.title=Payment Problems: live chat
+ivr.debt.management.title=Payment Problems live chat
 ivr.debt.management.security.p1=HMRC will never send unsolicited text messages containing links to webpages.
 ivr.debt.management.security.p2=We will only send a link to webchat after you have requested it.
 ivr.debt.management.security.p3=If you think you have received a suspicious message, you can
 ivr.debt.management.security.link= report it online (opens in a new tab).
 
 #IVR NI
-ivr.national.insurance.title=National Insurance: live chat
+ivr.national.insurance.title=National Insurance live chat
 ivr.national.insurance.security.p1=HMRC will never send unsolicited text messages containing links to webpages.
 ivr.national.insurance.security.p2=We will only send a link to webchat after you have requested it.
 ivr.national.insurance.security.p3=If you think you have received a suspicious message, you can
 ivr.national.insurance.security.link= report it online (opens in a new tab).
 
 #IVR EHL
-ivr.employer.helpline.title=Employer Helpline: live chat
+ivr.employer.helpline.title=Employer Helpline live chat
 ivr.employer.helpline.security.p1=HMRC will never send unsolicited text messages containing links to webpages.
 ivr.employer.helpline.security.p2=We will only send a link to webchat after you have requested it.
 ivr.employer.helpline.security.p3=If you think you have received a suspicious message, you can
 ivr.employer.helpline.security.link= report it online (opens in a new tab).
 
 #IVR CIS
-ivr.construction.industry.scheme.title=Construction Industry Scheme: live chat
+ivr.construction.industry.scheme.title=Construction Industry Scheme live chat
 ivr.construction.industry.scheme.security.p1=HMRC will never send unsolicited text messages containing links to webpages.
 ivr.construction.industry.scheme.security.p2=We will only send a link to webchat after you have requested it.
 ivr.construction.industry.scheme.security.p3=If you think you have received a suspicious message, you can

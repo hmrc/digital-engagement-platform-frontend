@@ -41,7 +41,7 @@ class IvrControllerSpec
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
-        doc.select("h1").text() mustBe "Self Assessment: live chat"
+        doc.select("h1").text() mustBe "Self Assessment live chat"
         assert(doc.getElementsByClass("dav4IVRWebchat").isEmpty)
       }
     }
@@ -54,7 +54,7 @@ class IvrControllerSpec
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
-        doc.select("h1").text() mustBe "Self Assessment: live chat"
+        doc.select("h1").text() mustBe "Self Assessment live chat"
         assert(!doc.getElementsByClass("dav4IVRWebchat").isEmpty)
       }
     }
@@ -67,7 +67,7 @@ class IvrControllerSpec
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
-        doc.select("h1").text() mustBe "Self Assessment: live chat"
+        doc.select("h1").text() mustBe "Self Assessment live chat"
         assert(!doc.getElementsByClass("dav4IVRWebchat").isEmpty)
       }
     }
@@ -90,7 +90,7 @@ class IvrControllerSpec
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
-        doc.select("h1").text() mustBe "National Insurance: live chat"
+        doc.select("h1").text() mustBe "National Insurance live chat"
         assert(doc.getElementsByClass("dav4IVRWebchat").isEmpty)
       }
     }
@@ -103,7 +103,7 @@ class IvrControllerSpec
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
-        doc.select("h1").text() mustBe "National Insurance: live chat"
+        doc.select("h1").text() mustBe "National Insurance live chat"
         assert(!doc.getElementsByClass("dav4IVRWebchat").isEmpty)
       }
     }
@@ -116,7 +116,7 @@ class IvrControllerSpec
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
-        doc.select("h1").text() mustBe "National Insurance: live chat"
+        doc.select("h1").text() mustBe "National Insurance live chat"
         assert(!doc.getElementsByClass("dav4IVRWebchat").isEmpty)
       }
     }
@@ -139,7 +139,7 @@ class IvrControllerSpec
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
-        doc.select("h1").text() mustBe "Employer Helpline: live chat"
+        doc.select("h1").text() mustBe "Employer Helpline live chat"
         assert(doc.getElementsByClass("dav4IVRWebchat").isEmpty)
       }
     }
@@ -152,7 +152,7 @@ class IvrControllerSpec
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
-        doc.select("h1").text() mustBe "Employer Helpline: live chat"
+        doc.select("h1").text() mustBe "Employer Helpline live chat"
         assert(!doc.getElementsByClass("dav4IVRWebchat").isEmpty)
       }
     }
@@ -165,7 +165,7 @@ class IvrControllerSpec
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
-        doc.select("h1").text() mustBe "Employer Helpline: live chat"
+        doc.select("h1").text() mustBe "Employer Helpline live chat"
         assert(!doc.getElementsByClass("dav4IVRWebchat").isEmpty)
       }
     }
@@ -188,7 +188,7 @@ class IvrControllerSpec
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
-        doc.select("h1").text() mustBe "Construction Industry Scheme: live chat"
+        doc.select("h1").text() mustBe "Construction Industry Scheme live chat"
         assert(doc.getElementsByClass("dav4IVRWebchat").isEmpty)
       }
     }
@@ -201,7 +201,7 @@ class IvrControllerSpec
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
-        doc.select("h1").text() mustBe "Construction Industry Scheme: live chat"
+        doc.select("h1").text() mustBe "Construction Industry Scheme live chat"
         assert(!doc.getElementsByClass("dav4IVRWebchat").isEmpty)
       }
     }
@@ -214,7 +214,7 @@ class IvrControllerSpec
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
-        doc.select("h1").text() mustBe "Construction Industry Scheme: live chat"
+        doc.select("h1").text() mustBe "Construction Industry Scheme live chat"
         assert(!doc.getElementsByClass("dav4IVRWebchat").isEmpty)
       }
     }
@@ -237,7 +237,7 @@ class IvrControllerSpec
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
-        doc.select("h1").text() mustBe "Payment Problems: live chat"
+        doc.select("h1").text() mustBe "Payment Problems live chat"
         assert(doc.getElementsByClass("dav4IVRWebchat").isEmpty)
       }
     }
@@ -250,7 +250,7 @@ class IvrControllerSpec
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
-        doc.select("h1").text() mustBe "Payment Problems: live chat"
+        doc.select("h1").text() mustBe "Payment Problems live chat"
         assert(!doc.getElementsByClass("dav4IVRWebchat").isEmpty)
       }
     }
@@ -263,7 +263,7 @@ class IvrControllerSpec
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
-        doc.select("h1").text() mustBe "Payment Problems: live chat"
+        doc.select("h1").text() mustBe "Payment Problems live chat"
         assert(!doc.getElementsByClass("dav4IVRWebchat").isEmpty)
       }
     }

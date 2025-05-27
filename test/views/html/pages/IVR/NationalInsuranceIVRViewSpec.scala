@@ -33,8 +33,8 @@ class NationalInsuranceIVRViewSpec extends ChatViewBehaviours with Matchers with
 
     behave like normalPage(
       createView,
-      "National Insurance: live chat - Ask HMRC - GOV.UK",
-      "National Insurance: live chat",
+      "National Insurance live chat - Ask HMRC - GOV.UK",
+      "National Insurance live chat",
       "Return to Contact HMRC",
       returnUrl,
       None,
