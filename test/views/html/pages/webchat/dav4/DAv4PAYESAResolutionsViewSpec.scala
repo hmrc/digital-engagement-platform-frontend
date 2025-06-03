@@ -34,9 +34,9 @@ class DAv4PAYESAResolutionsViewSpec extends ChatViewBehaviours with Matchers wit
 
     behave like normalPage(
       createView,
-      "PAYE and Self Assessment resolutions: webchat - Ask HMRC - GOV.UK",
-      "PAYE and Self Assessment resolutions: webchat",
-      "Return to Complain about HMRC",
+      "PAYE and Self Assessment resolutions webchat - Ask HMRC - GOV.UK",
+      "PAYE and Self Assessment resolutions webchat",
+      "complain about HMRC",
       returnUrl,
        Some(Seq(
         "Opening times:",

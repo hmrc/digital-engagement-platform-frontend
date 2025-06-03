@@ -33,8 +33,8 @@ class DebtManagementIVRViewSpec extends ChatViewBehaviours with Matchers with An
 
     behave like normalPage(
       createView,
-      "Payment Problems: live chat - Ask HMRC - GOV.UK",
-      "Payment Problems: live chat",
+      "Payment Problems live chat - Ask HMRC - GOV.UK",
+      "Payment Problems live chat",
       "Return to Contact HMRC",
       returnUrl,
       None,

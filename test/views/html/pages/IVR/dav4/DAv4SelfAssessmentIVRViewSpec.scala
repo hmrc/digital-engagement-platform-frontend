@@ -33,9 +33,9 @@ class DAv4SelfAssessmentIVRViewSpec extends ChatViewBehaviours with Matchers wit
 
     behave like normalPage(
       createView,
-      "Self Assessment: live chat - Ask HMRC - GOV.UK",
-      "Self Assessment: live chat",
-      "Return to Contact HMRC",
+      "Self Assessment live chat - Ask HMRC - GOV.UK",
+      "Self Assessment live chat",
+      "contact HMRC",
       returnUrl,
       Some(Seq(
         "Opening times:",

@@ -34,9 +34,9 @@ class DAv4PersonalTransportUnitEnquiriesViewSpec extends ChatViewBehaviours with
 
     behave like normalPage(
       createView,
-      "Personal Transport Unit: webchat - Ask HMRC - GOV.UK",
-      "Personal Transport Unit: webchat",
-      "Return to Contact HMRC",
+      "Personal Transport Unit webchat - Ask HMRC - GOV.UK",
+      "Personal Transport Unit webchat",
+      "contact HMRC",
       returnUrl,
        Some(Seq(
         "Opening times:",

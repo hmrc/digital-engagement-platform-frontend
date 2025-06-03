@@ -33,9 +33,9 @@ class DAv4DebtManagementIVRViewSpec extends ChatViewBehaviours with Matchers wit
 
     behave like normalPage(
       createView,
-      "Payment Problems: live chat - Ask HMRC - GOV.UK",
-      "Payment Problems: live chat",
-      "Return to Contact HMRC",
+      "Payment Problems live chat - Ask HMRC - GOV.UK",
+      "Payment Problems live chat",
+      "contact HMRC",
       returnUrl,
       Some(Seq(
         "Opening times:",

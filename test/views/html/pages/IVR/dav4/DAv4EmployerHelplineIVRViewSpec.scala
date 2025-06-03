@@ -33,9 +33,9 @@ class DAv4EmployerHelplineIVRViewSpec extends ChatViewBehaviours with Matchers w
 
     behave like normalPage(
       createView,
-      "Employer Helpline: live chat - Ask HMRC - GOV.UK",
-      "Employer Helpline: live chat",
-      "Return to Contact HMRC",
+      "Employer Helpline live chat - Ask HMRC - GOV.UK",
+      "Employer Helpline live chat",
+      "contact HMRC",
       returnUrl,
       Some(Seq(
         "Opening times:",

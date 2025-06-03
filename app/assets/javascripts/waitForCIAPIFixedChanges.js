@@ -18,7 +18,11 @@ function waitForNuanceElement(el, w, d) {
     },
     function () {
       var the_element = d.querySelector(el);
-      the_element.textContent = "Sorry, there’s a problem with this service. Refresh the page to try again.";
+      const errorHeading = document.createElement('h2')
+      errorHeading.classList.add('govuk-heading-s')
+      the_element.textContent = ''
+      errorHeading.textContent = "Sorry, there’s a problem with this service. Refresh the page to try again.";
+      the_element.appendChild(errorHeading)
 
       reportEvent(w, createDataLayerElement(availabilities.NuanceUnavailable, el))
 

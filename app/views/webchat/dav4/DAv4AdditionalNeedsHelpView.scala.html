@@ -30,19 +30,17 @@
 @mainContent = {
 	<h1 class="header-margin-top">@messages("additional.needs.title")</h1>
 
-	<div class="govuk-inset-text">
-		<p>@messages("global.opening.times.title")</p>
+	<div class="opening-times">
+		<p class="govuk-body govuk-!-font-weight-bold">@messages("global.opening.times.title")</p>
 		<p>@messages("global.opening.times.8to7_30")</p>
 		<p>@messages("global.opening.times.saturday.8to4")</p>
 		<p>@messages("global.closed.time.sun.bankholidays")</p>
 	</div>
 
-	<h2 class="margin-top">@messages("global.webchat.title.h2")</h2>
-
 	<div id="HMRC_CIAPI_Fixed_1">Checking adviser availability.</div>
 
-	<p class="margin-top">
-		<a class="govuk-link" id="return-link" href=@appConfig.additionalNeedsReturnUrl>@messages("global.text.link.back.to.govuk.p1")</a>
+	<p class="margin-top">@messages("global.text.link.contact.p1")
+		<a class="govuk-link" id="return-link" href=@appConfig.additionalNeedsReturnUrl>@messages("global.text.link.contact.hmrc.anchor")</a>
 	</p>
 }
 

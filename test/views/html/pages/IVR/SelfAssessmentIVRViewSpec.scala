@@ -33,8 +33,8 @@ class SelfAssessmentIVRViewSpec extends ChatViewBehaviours with Matchers with An
 
     behave like normalPage(
       createView,
-      "Self Assessment: live chat - Ask HMRC - GOV.UK",
-      "Self Assessment: live chat",
+      "Self Assessment live chat - Ask HMRC - GOV.UK",
+      "Self Assessment live chat",
       "Return to Contact HMRC",
       returnUrl,
       None,

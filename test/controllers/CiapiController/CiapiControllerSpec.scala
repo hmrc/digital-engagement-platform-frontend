@@ -344,7 +344,7 @@ class CiapiControllerSpec
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
-        doc.select("h1").text() mustBe "Payment Plan: webchat"
+        doc.select("h1").text() mustBe "Payment Plan webchat"
         assert(doc.getElementById("HMRC_CIAPI_Fixed_1") != null)
       }
     }

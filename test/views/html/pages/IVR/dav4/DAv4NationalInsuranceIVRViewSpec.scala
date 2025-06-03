@@ -33,9 +33,9 @@ class DAv4NationalInsuranceIVRViewSpec extends ChatViewBehaviours with Matchers 
 
     behave like normalPage(
       createView,
-      "National Insurance: live chat - Ask HMRC - GOV.UK",
-      "National Insurance: live chat",
-      "Return to Contact HMRC",
+      "National Insurance live chat - Ask HMRC - GOV.UK",
+      "National Insurance live chat",
+      "contact HMRC",
       returnUrl,
       Some(Seq(
         "Opening times:",

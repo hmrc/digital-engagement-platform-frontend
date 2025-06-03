@@ -3,6 +3,10 @@ global.title.suffix=- GOV.UK
 global.nav.title=Ask HMRC
 global.nav.va.title=Ask HMRC
 global.text.link.back.to.govuk.p1=Return to Contact HMRC
+global.text.link.contact.p1=For other ways to get in touch, you can
+global.text.link.contact.hmrc.anchor=contact HMRC.
+global.text.link.complain.p1=Find another way to
+global.text.link.complain.hmrc.anchor=complain about HMRC.
 global.back = Back
 global.nuance.div.loading.text=Checking adviser availability.
 global.webchat.title.h2=Webchat
@@ -18,6 +22,7 @@ global.opening.times.weekend.p=Closed weekends and bank holidays.
 global.opening.times.24_7=24 hours a day, 7 days a week
 global.closed.time.sun.bankholidays=Closed Sundays and bank holidays.
 global.closed.time.sun=Closed Sundays.
+global.ivr.info=The chat will pop up when advisers are available. You might join a queue before you’re connected.
 
 #Beta Banner
 global.banner.phase = BETA
@@ -53,19 +58,19 @@ service.unavailable.p2-1 = You can
 service.unavailable.p2-2 = find other contact details for your query
 
 #National Clearance Hub
-national.clearance.hub.title=National Clearance Hub: webchat
+national.clearance.hub.title=National Clearance Hub webchat
 
 #Debt Management C2C DAv4
-debt.management.title=Payment Plan: webchat
+debt.management.title=Payment Plan webchat
 
 #Additional Needs View
-additional.needs.title=HMRC’s Extra Support team: webchat
+additional.needs.title=HMRC’s Extra Support team webchat
 
 #Personal Transport Unit Enquiries
-personal.transport.unit.enquiries.title=Personal Transport Unit: webchat
+personal.transport.unit.enquiries.title=Personal Transport Unit webchat
 
 #PAYE / SA Tier 1 resolutions
-paye.sa.resolutions.title=PAYE and Self Assessment resolutions: webchat
+paye.sa.resolutions.title=PAYE and Self Assessment resolutions webchat
 paye.sa.resolutions.back.to.complaints=Return to Complain about HMRC
 
 #Payment Problems
@@ -117,35 +122,35 @@ cui.national.minimum.wage.enquiries.sidebar.p2=Employment Agency Standards
 cui.national.minimum.wage.enquiries.sidebar.p3=Health & Safety Executive
 
 #IVR SA
-ivr.self.assessment.title=Self Assessment: live chat
+ivr.self.assessment.title=Self Assessment live chat
 ivr.self.assessment.security.p1=HMRC will never send unsolicited text messages containing links to webpages.
 ivr.self.assessment.security.p2=We will only send a link to webchat after you have requested it.
 ivr.self.assessment.security.p3=If you think you have received a suspicious message, you can
 ivr.self.assessment.security.link= report it online (opens in a new tab).
 
 #IVR DEBT MANAGEMENT
-ivr.debt.management.title=Payment Problems: live chat
+ivr.debt.management.title=Payment Problems live chat
 ivr.debt.management.security.p1=HMRC will never send unsolicited text messages containing links to webpages.
 ivr.debt.management.security.p2=We will only send a link to webchat after you have requested it.
 ivr.debt.management.security.p3=If you think you have received a suspicious message, you can
 ivr.debt.management.security.link= report it online (opens in a new tab).
 
 #IVR NI
-ivr.national.insurance.title=National Insurance: live chat
+ivr.national.insurance.title=National Insurance live chat
 ivr.national.insurance.security.p1=HMRC will never send unsolicited text messages containing links to webpages.
 ivr.national.insurance.security.p2=We will only send a link to webchat after you have requested it.
 ivr.national.insurance.security.p3=If you think you have received a suspicious message, you can
 ivr.national.insurance.security.link= report it online (opens in a new tab).
 
 #IVR EHL
-ivr.employer.helpline.title=Employer Helpline: live chat
+ivr.employer.helpline.title=Employer Helpline live chat
 ivr.employer.helpline.security.p1=HMRC will never send unsolicited text messages containing links to webpages.
 ivr.employer.helpline.security.p2=We will only send a link to webchat after you have requested it.
 ivr.employer.helpline.security.p3=If you think you have received a suspicious message, you can
 ivr.employer.helpline.security.link= report it online (opens in a new tab).
 
 #IVR CIS
-ivr.construction.industry.scheme.title=Construction Industry Scheme: live chat
+ivr.construction.industry.scheme.title=Construction Industry Scheme live chat
 ivr.construction.industry.scheme.security.p1=HMRC will never send unsolicited text messages containing links to webpages.
 ivr.construction.industry.scheme.security.p2=We will only send a link to webchat after you have requested it.
 ivr.construction.industry.scheme.security.p3=If you think you have received a suspicious message, you can
