@@ -75,9 +75,9 @@ window.addEventListener('DOMContentLoaded', function () {
 
     if (adlNotificationBanner) {
         //Change these to required start and end times
-        const adlStartTime = new Date("2025-04-01T01:00:00Z").getTime();
+        const adlStartTime = new Date("2025-06-07T01:00:00Z").getTime();
         //No end date given for current banner, set it to next year for now
-        const adlEndTime = new Date("2025-04-30T11:59:00Z").getTime();
+        const adlEndTime = new Date("2025-08-07T11:59:00Z").getTime();
 
         if ((currentDate > adlStartTime) && (currentDate < adlEndTime)) {
             //Notification banner should be displayed

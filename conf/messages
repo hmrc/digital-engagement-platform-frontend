@@ -41,7 +41,7 @@ oshNotification.banner.p = <p id= "oshBanner" class="govuk-notification-banner__
 
 #ADL Notification Banner
 adlNotification.banner.title = Important
-adlNotification.banner.p = <p id= "adlBanner" class="govuk-notification-banner__heading">This page is an Agent Dedicated Line. If you’re not an agent,  <a href="https://www.tax.service.gov.uk/ask-hmrc/hmrc-digital-assistant" target="_blank">find the right service</a>.</p>
+adlNotification.banner.p = <p id= "adlBanner" class="govuk-notification-banner__heading">If you’re an agent, find out  <a href="https://www.gov.uk/government/collections/making-tax-digital-for-income-tax-as-an-agent-step-by-step" target="_blank">how to use Making Tax Digital for Income Tax for clients (opens in a new tab)</a>.</p>
 
 #PAYE Notification Banner
 payeNotification.banner.title = Important
