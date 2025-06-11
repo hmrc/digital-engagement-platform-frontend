@@ -22,7 +22,6 @@ import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 import views.html.webchat._
 import views.html.webchat.dav4.DAv4NationalClearanceHubView
-import views.html.webchat.dav4.DAv4PersonalTransportUnitEnquiriesView
 import views.html.webchat.dav4.DAv4AdditionalNeedsHelpView
 import views.html.webchat.dav4.DAv4PAYESAResolutionsView
 
@@ -36,8 +35,6 @@ class WebchatController @Inject()(appConfig: AppConfig,
                                   dav4NationalClearanceHubView: DAv4NationalClearanceHubView,
                                   dav4AdditionalNeedsHelpView: DAv4AdditionalNeedsHelpView,
                                   additionalNeedsHelpView: AdditionalNeedsHelpView,
-                                  personalTransportUnitEnquiriesView: PersonalTransportUnitEnquiriesView,
-                                  dav4PersonalTransportUnitEnquiriesView: DAv4PersonalTransportUnitEnquiriesView,
                                   dav4PAYESAResolutionsView: DAv4PAYESAResolutionsView,
                                   serviceUnavailableView: ServiceUnavailableView) extends FrontendController(mcc) {
 
@@ -68,14 +65,6 @@ class WebchatController @Inject()(appConfig: AppConfig,
       Future.successful(Ok(dav4PAYESAResolutionsView()))
     } else {
       Future.successful(NotFound)
-    }
-  }
-
-  def personalTransportUnitEnquiries: Action[AnyContent] = Action.async { implicit request =>
-    if (config.showDAv4PTU){
-      Future.successful(Ok(dav4PersonalTransportUnitEnquiriesView()))
-    } else {
-      Future.successful(Ok(personalTransportUnitEnquiriesView()))
     }
   }
 
