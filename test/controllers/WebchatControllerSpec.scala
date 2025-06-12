@@ -125,34 +125,6 @@ class WebchatControllerSpec
       }
     }
 
-     "Personal Transport Unit Enquiries DAv1 live webchat page if feature switch is false" in {
-      val application = builder.configure("features.digitalAssistants.showDAv4PTU" -> "false").build()
-
-      running(application) {
-        val request = FakeRequest(GET, routes.WebchatController.personalTransportUnitEnquiries.url)
-        val result = route(application, request).get
-        val doc = asDocument(contentAsString(result))
-        status(result) mustBe OK
-        doc.select("h1").text() mustBe "Personal Transport Unit webchat"
-        assert(doc.getElementById("HMRC_Fixed_1") != null)
-        assert(doc.getElementById("HMRC_CIAPI_Fixed_1") == null)
-      }
-    }
-
-    "Personal Transport Unit Enquiries DAv4 live webchat page if feature switch is true" in {
-      val application = builder.configure("features.digitalAssistants.showDAv4PTU" -> "true").build()
-
-      running(application) {
-        val request = FakeRequest(GET, routes.WebchatController.personalTransportUnitEnquiries.url)
-        val result = route(application, request).get
-        val doc = asDocument(contentAsString(result))
-        status(result) mustBe OK
-        doc.select("h1").text() mustBe "Personal Transport Unit webchat"
-        assert(doc.getElementById("HMRC_CIAPI_Fixed_1") != null)
-        assert(doc.getElementById("HMRC_Fixed_1") == null)
-      }
-    }
-
     "Service unavailable page" in {
       val result = controller.serviceUnavailable(fakeRequest)
       val doc = asDocument(contentAsString(result))

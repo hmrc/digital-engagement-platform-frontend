@@ -71,7 +71,6 @@ class AppConfig @Inject()(config: Configuration) {
 
   val showDAv4NCH: Boolean = config.getOptional[Boolean]("features.digitalAssistants.showDAv4NCH").getOrElse(false)
   val showDAv4DM: Boolean = config.getOptional[Boolean]("features.digitalAssistants.showDAv4DM").getOrElse(false)
-  val showDAv4PTU: Boolean = config.getOptional[Boolean]("features.digitalAssistants.showDAv4PTU").getOrElse(false)
   val showDAv4ANH: Boolean = config.getOptional[Boolean]("features.digitalAssistants.showDAv4ANH").getOrElse(false)
   val showDAv4PAYESAR: Boolean = config.getOptional[Boolean]("features.digitalAssistants.showDAv4PAYESAR").getOrElse(false)
 
@@ -125,8 +124,6 @@ class AppConfig @Inject()(config: Configuration) {
   val additionalNeedsReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/get-help-from-hmrc-s-extra-support-team"
   val manageYourTaxCreditsUrl: String = "https://www.gov.uk/manage-your-tax-credits"
-  val personalTransportUnitEnquiriesReturnUrl: String =
-    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/personal-transport-unit-enquiries"
   val contactHMRC: String = "https://www.gov.uk/contact-hmrc"
   val securityMessageLink: String = "https://www.gov.uk/report-tax-fraud"
   val complainAboutHMRC: String = "https://www.gov.uk/complain-about-hmrc"
