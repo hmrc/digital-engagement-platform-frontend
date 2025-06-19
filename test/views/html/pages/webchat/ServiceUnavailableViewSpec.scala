@@ -26,8 +26,7 @@ class ServiceUnavailableViewSpec extends ChatViewBehaviours with Matchers with A
 
   private val view = app.injector.instanceOf[ServiceUnavailableView]
 
-  private def createView(): () =>
-    HtmlFormat.Appendable = () => view()(fakeRequest, messages)
+  private def createView(): () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
   "Service unavailable view" must {
     behave like generalContent(

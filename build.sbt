@@ -26,11 +26,12 @@ lazy val microservice = Project(appName, file("."))
     javaScriptBundler,
     javaScriptTestRunnerHook,
     defaultSettings(),
-    scalaVersion := "2.13.16",
+    scalaVersion := "3.3.5",
     // only required for frontends
-    scalacOptions += "-Wconf:cat=unused-imports&src=html/.*:s",
+    scalacOptions += "-Wconf:msg=unused import&src=html/.*:s",
     // for all services
     scalacOptions += "-Wconf:cat=unused-imports&src=routes/.*:s",
+    scalacOptions += "-Wconf:msg=Flag.*repeatedly:s",
     PlayKeys.playDefaultPort := 9956,
     Concat.groups := Seq(
       "javascripts/bundle.js" -> group(Seq("javascripts/bundle/gtm_dl.js"))

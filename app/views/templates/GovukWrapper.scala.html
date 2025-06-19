@@ -54,7 +54,7 @@
     showHelpForm: Boolean = true,
     showBackLink: Boolean = true,
     displayBannerTC: Boolean = false
-)(implicit request: Request[_], messages: play.api.i18n.Messages)
+)(implicit request: RequestHeader, messages: play.api.i18n.Messages)
 
 @content = {
     @mainContent
