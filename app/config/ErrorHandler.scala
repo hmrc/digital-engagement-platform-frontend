@@ -34,7 +34,5 @@ class ErrorHandler @Inject()(val messagesApi: MessagesApi,
   override def standardErrorTemplate(
       pageTitle: String,
       heading: String,
-      message: String)(implicit request: RequestHeader): Future[Html] = {
-    errorTemplate(pageTitle, heading, message)
-  }
+      message: String)(implicit request: RequestHeader): Future[Html] = Future.successful(errorTemplate(pageTitle, heading, message))
 }

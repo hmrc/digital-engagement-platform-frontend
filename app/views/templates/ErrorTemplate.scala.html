@@ -21,7 +21,7 @@
   govuk_wrapper: GovukWrapper
 )
 
-@(pageTitle: String, heading: String, message: String)(implicit request: Request[_], messages: Messages)
+@(pageTitle: String, heading: String, message: String)(implicit request: RequestHeader, messages: Messages)
 
 @mainContent = {
  <h1>@heading</h1>
