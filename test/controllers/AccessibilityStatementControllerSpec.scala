@@ -29,7 +29,7 @@ class AccessibilityStatementControllerSpec
 
   private val controller = app.injector.instanceOf[AccessibilityStatementController]
 
-  private val expectedAccessibilityStatementUrl = "http://localhost:12346/accessibility-statement/digital-engagement-platform-frontend"
+  private val expectedAccessibilityStatementUrl = "http://localhost:12346/accessibility-statement/digital-engagement-platform-frontend-hmrc-chatskin"
 
   "fixed URLs" should {
     "render accessibility statement page" in {
