@@ -29,7 +29,7 @@ class AppConfig @Inject()(config: Configuration) {
 
   private def encodeUrl(url: String): String = URLEncoder.encode(url, "UTF-8")
 
-  val serviceIdentifier: String = "digital-engagement-platform-frontend"
+  val serviceIdentifier: String = "digital-engagement-platform-frontend-hmrc-chatskin"
 
   val performanceTest: Boolean = config.get[Boolean]("performance-test.mode")
 
