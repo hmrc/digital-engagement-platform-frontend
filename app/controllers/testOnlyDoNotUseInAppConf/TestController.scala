@@ -72,4 +72,7 @@ class TestController @Inject()(
   def c2cFixedPopup: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(c2cFixedViewPopup()))
   }
+  def keepAlive: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(""))
+  }
 }
