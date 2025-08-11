@@ -24,7 +24,6 @@ trait ChatViewBehaviours extends ViewSpecBase {
   def generalContent(view: () => HtmlFormat.Appendable,
                      messageHeading: String,
                      hasGetHelpWithPageText: Boolean = true,
-                     betaBannerText: String = "This is a new service"
                     ): Unit = {
     "the view" must {
 
@@ -33,10 +32,6 @@ trait ChatViewBehaviours extends ViewSpecBase {
         assertPageTitleEqualsMessage(doc, messageHeading)
       }
 
-      "display the beta banner" in {
-        val doc = asDocument(view())
-        assertContainsText(doc, betaBannerText)
-      }
     }
   }
 

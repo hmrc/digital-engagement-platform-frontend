@@ -24,9 +24,6 @@ global.closed.time.sun.bankholidays=Closed Sundays and bank holidays.
 global.closed.time.sun=Closed Sundays.
 global.ivr.info=The chat will pop up when advisers are available. You might join a queue before you’re connected.
 
-#Beta Banner
-global.banner.phase = BETA
-
 #Global Notification Banner
 globalNotification.banner.title = Important
 globalNotification.banner.p = <p id= "globalBanner" class="govuk-notification-banner__heading">Phone lines are unavailable due to a technical issue we’re working to resolve. You can still use the online services as normal.</p>
