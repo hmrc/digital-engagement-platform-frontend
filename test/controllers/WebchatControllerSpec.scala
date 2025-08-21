@@ -16,13 +16,13 @@
 
 package controllers
 
-import controllers.CiapiController.{routes => ciapiRoutes}
+import controllers.CiapiController.routes as ciapiRoutes
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.scalatest.matchers.must.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike
 import play.api.test.FakeRequest
-import play.api.test.Helpers._
+import play.api.test.Helpers.{status as result, *}
 import views.html.pages.helpers.AppBuilderSpecBase
 
 class WebchatControllerSpec
@@ -119,6 +119,30 @@ class WebchatControllerSpec
 
       running(application) {
         val request = FakeRequest(GET, routes.WebchatController.payeandSelfAssessmentResolutions.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe NOT_FOUND
+      }
+    }
+
+    "Bereavement DAv4 live webchat page if feature switch is true" in {
+      val application = builder.configure("features.digitalAssistants.showDAv4Bereavement" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.WebchatController.bereavement.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Bereavement webchat"
+        assert(doc.getElementById("HMRC_CIAPI_Fixed_1") != null)
+      }
+    }
+
+    "Bereavement DAv4 live webchat page is not displayed if feature switch is false" in {
+      val application = builder.configure("features.digitalAssistants.showDAv4Bereavement" -> "false").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.WebchatController.bereavement.url)
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe NOT_FOUND
