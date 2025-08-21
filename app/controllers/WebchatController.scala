@@ -71,7 +71,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def bereavement: Action[AnyContent] = Action.async { implicit request =>
-    if (config.showDAv4PAYESAR) {
+    if (config.showDAv4Bereavement) {
       Future.successful(Ok(dav4BereavementView()))
     } else {
       Future.successful(NotFound)
