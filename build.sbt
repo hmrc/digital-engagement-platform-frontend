@@ -38,5 +38,4 @@ lazy val microservice = Project(appName, file("."))
     ),
     pipelineStages in Assets := Seq(concat),
     scoverageSettings,
-    resolvers += Resolver.jcenterRepo
   )
