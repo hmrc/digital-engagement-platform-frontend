@@ -30,17 +30,18 @@ class DAv4BereavementViewSpec extends ChatViewBehaviours with Matchers with AnyW
 
   "Bereavement DAv4 webchat view" must {
     val returnUrl: String =
-      "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/national-clearance-hub"
+      "https://www.gov.uk/contact-hmrc"
 
     behave like normalPage(
       createView,
-      "National Clearance Hub webchat - Ask HMRC - GOV.UK",
-      "Bereavement webchat",
+      "Bereavement and deceased estate live chat - Ask HMRC - GOV.UK",
+      "Bereavement and deceased estate live chat",
       "contact HMRC",
       returnUrl,
        Some(Seq(
         "Opening times:",
-        "24 hours a day, 7 days a week"
+        "Monday to Friday, 9am to 4pm",
+        "Closed weekends and bank holidays."
       )),
       Some(Seq("HMRC_CIAPI_Fixed_1")),
       None
