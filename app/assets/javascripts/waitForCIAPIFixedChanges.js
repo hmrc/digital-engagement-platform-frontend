@@ -24,6 +24,14 @@ function waitForNuanceElement(el, w, d) {
       errorHeading.textContent = "Sorry, there’s a problem with this service. Refresh the page to try again.";
       the_element.appendChild(errorHeading)
 
+      const businessAreaTitle = document.title
+      document.title = errorHeading.textContent
+      let displayingBusinessAreaName = false
+      setInterval(() => {
+        document.title = displayingBusinessAreaName ? errorHeading.textContent : businessAreaTitle
+        displayingBusinessAreaName = !displayingBusinessAreaName
+      }, 2000)
+
       reportEvent(w, createDataLayerElement(availabilities.NuanceUnavailable, el))
 
       var elements_to_hide = d.querySelectorAll(".hide-text-on-error");
