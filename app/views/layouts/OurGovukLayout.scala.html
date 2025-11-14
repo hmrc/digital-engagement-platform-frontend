@@ -15,10 +15,11 @@
  *@
 
 @import uk.gov.hmrc.govukfrontend.views.html.components._
+@import uk.gov.hmrc.hmrcfrontend.views.html.helpers._
 
 @this(
   govukTemplate: GovukTemplate,
-  govukHeader: GovukHeader,
+  hmrcStandardHeader: HmrcStandardHeader,
   govukFooter: GovukFooter,
   govukBackLink: GovukBackLink
 )
@@ -35,13 +36,11 @@
 )(contentBlock: Html)(implicit messages: Messages, request: RequestHeader)
 
 @headerDefault = {
-  @headerBlock.getOrElse {
-    @govukHeader(Header(
-      homepageUrl = Some("https://www.gov.uk/"),
-      serviceName = Some(messages("service.name")),
-      serviceUrl = Some(messages("service.homePageUrl")),
-      containerClasses = None))
-  }
+    @headerBlock.getOrElse {
+        @hmrcStandardHeader(serviceName = Some(messages("service.name")),
+        serviceUrl = Some(messages("service.homePageUrl"))
+        )
+    }
 }
 
 @footerDefault = {
