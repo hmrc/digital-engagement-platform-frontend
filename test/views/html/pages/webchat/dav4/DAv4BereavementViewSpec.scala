@@ -38,11 +38,7 @@ class DAv4BereavementViewSpec extends ChatViewBehaviours with Matchers with AnyW
       "Bereavement and deceased estate live chat",
       "contact HMRC",
       returnUrl,
-       Some(Seq(
-        "Opening times:",
-        "Monday to Friday, 9am to 4pm",
-        "Closed weekends and bank holidays."
-      )),
+      None,
       Some(Seq("HMRC_CIAPI_Fixed_1")),
       None
     )
