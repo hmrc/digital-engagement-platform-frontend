@@ -37,11 +37,7 @@ class DAv4DebtManagementIVRViewSpec extends ChatViewBehaviours with Matchers wit
       "Payment Problems live chat",
       "contact HMRC",
       returnUrl,
-      Some(Seq(
-        "Opening times:",
-        "Monday to Friday, 8am to 6pm",
-        "Closed weekends and bank holidays."
-      )),
+      None,
       None,
       Some(Seq("dav4IVRWebchat"))
     )

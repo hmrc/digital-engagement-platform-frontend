@@ -36,11 +36,7 @@ class DAv4DebtManagementViewSpec extends ChatViewBehaviours with Matchers with A
       "Payment Plan webchat",
       "",
       "",
-       Some(Seq(
-        "Opening times:",
-        "Monday to Friday, 8am to 6pm",
-        "Closed weekends and bank holidays."
-      )),
+      None,
       Some(Seq("HMRC_CIAPI_Fixed_1")),
       None
     )

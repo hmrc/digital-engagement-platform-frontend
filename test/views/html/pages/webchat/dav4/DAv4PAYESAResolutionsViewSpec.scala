@@ -38,11 +38,7 @@ class DAv4PAYESAResolutionsViewSpec extends ChatViewBehaviours with Matchers wit
       "PAYE and Self Assessment resolutions webchat",
       "complain about HMRC",
       returnUrl,
-       Some(Seq(
-        "Opening times:",
-        "Monday to Friday, 9am to 4pm",
-        "Closed weekends and bank holidays."
-      )),
+      None,
       Some(Seq("HMRC_CIAPI_Fixed_1")),
       None
     )
