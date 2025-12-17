@@ -32,34 +32,23 @@ import scala.concurrent.Future
 @Singleton
 class WebchatController @Inject()(appConfig: AppConfig,
                                   mcc: MessagesControllerComponents,
-                                  nationalClearanceHubView: NationalClearanceHubView,
                                   dav4NationalClearanceHubView: DAv4NationalClearanceHubView,
                                   dav4AdditionalNeedsHelpView: DAv4AdditionalNeedsHelpView,
-                                  additionalNeedsHelpView: AdditionalNeedsHelpView,
                                   dav4PAYESAResolutionsView: DAv4PAYESAResolutionsView,
-                                  dav4BereavementView: DAv4BereavementView,
-                                  serviceUnavailableView: ServiceUnavailableView) extends FrontendController(mcc) {
+                                  dav4BereavementView: DAv4BereavementView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
-  def serviceUnavailableRedirect: Action[AnyContent] = Action.async {
-    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
-  }
+//  def serviceUnavailableRedirect: Action[AnyContent] = Action.async {
+//    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
+//  }
 
   def nationalClearanceHub: Action[AnyContent] = Action.async { implicit request =>
-    if (config.showDAv4NCH){
-      Future.successful(Ok(dav4NationalClearanceHubView()))
-    } else {
-      Future.successful(Ok(nationalClearanceHubView()))
-    }
+    Future.successful(Ok(dav4NationalClearanceHubView()))
   }
 
   def additionalNeedsHelp: Action[AnyContent] = Action.async { implicit request =>
-    if (config.showDAv4ANH){
-      Future.successful(Ok(dav4AdditionalNeedsHelpView()))
-    } else {
-      Future.successful(Ok(additionalNeedsHelpView()))
-    }
+    Future.successful(Ok(dav4AdditionalNeedsHelpView()))
   }
 
   def payeandSelfAssessmentResolutions: Action[AnyContent] = Action.async { implicit request =>
@@ -78,7 +67,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
     }
   }
 
-  def serviceUnavailable: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(serviceUnavailableView()))
-  }
+//  def serviceUnavailable: Action[AnyContent] = Action.async { implicit request =>
+//    Future.successful(Ok(serviceUnavailableView()))
+//  }
 }
