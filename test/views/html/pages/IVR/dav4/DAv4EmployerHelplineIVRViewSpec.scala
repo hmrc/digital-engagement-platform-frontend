@@ -37,7 +37,11 @@ class DAv4EmployerHelplineIVRViewSpec extends ChatViewBehaviours with Matchers w
       "Employer Helpline live chat",
       "contact HMRC",
       returnUrl,
-      None,
+      Some(Seq(
+        "Opening times:",
+        "Monday to Friday, 8am to 6pm",
+        "Closed weekends and bank holidays."
+      )),
       None,
       Some(Seq("dav4IVRWebchat"))
     )

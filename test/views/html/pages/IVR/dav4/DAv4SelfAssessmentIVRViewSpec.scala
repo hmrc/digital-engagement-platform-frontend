@@ -37,7 +37,12 @@ class DAv4SelfAssessmentIVRViewSpec extends ChatViewBehaviours with Matchers wit
       "Self Assessment live chat",
       "contact HMRC",
       returnUrl,
-      None,
+      Some(Seq(
+        "Opening times:",
+        "Monday to Friday, 8am to 7:30pm",
+        "Saturday, 8am to 4pm",
+        "Closed Sundays and bank holidays."
+      )),
       None,
       Some(Seq("dav4IVRWebchat"))
     )

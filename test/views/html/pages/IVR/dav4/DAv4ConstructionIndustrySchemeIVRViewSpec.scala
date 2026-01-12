@@ -37,7 +37,11 @@ class DAv4ConstructionIndustrySchemeIVRViewSpec extends ChatViewBehaviours with 
       "Construction Industry Scheme live chat",
       "contact HMRC",
       returnUrl,
-      None,
+      Some(Seq(
+        "Opening times:",
+        "Monday to Friday, 8am to 6pm",
+        "Closed weekends and bank holidays."
+      )),
       None,
       Some(Seq("dav4IVRWebchat"))
     )
