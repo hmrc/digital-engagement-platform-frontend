@@ -38,7 +38,12 @@ class DAv4AdditionalNeedsHelpViewSpec extends ChatViewBehaviours with Matchers w
       "HMRC’s Extra Support team webchat",
       "contact HMRC",
       returnUrl,
-      None,
+       Some(Seq(
+        "Opening times:",
+        "Monday to Friday, 8am to 7:30pm",
+        "Saturday, 8am to 4pm",
+        "Closed Sundays and bank holidays."
+      )),
       Some(Seq("HMRC_CIAPI_Fixed_1")),
       None
     )
