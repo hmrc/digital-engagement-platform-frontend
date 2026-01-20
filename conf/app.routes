@@ -4,7 +4,7 @@
 
 GET         /assets/*file                                                   controllers.Assets.versioned(path="/public", file: Asset)
 
-# GET         /webchat/service-unavailable                                    controllers.WebchatController.serviceUnavailable
+GET         /webchat/service-unavailable                                    controllers.WebchatController.serviceUnavailable
 
 GET         /webchat/national-clearance-hub                                 controllers.WebchatController.nationalClearanceHub
 GET         /webchat/help-for-users-with-additional-needs                   controllers.WebchatController.additionalNeedsHelp

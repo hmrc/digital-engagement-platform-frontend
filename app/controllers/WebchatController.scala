@@ -35,13 +35,14 @@ class WebchatController @Inject()(appConfig: AppConfig,
                                   dav4NationalClearanceHubView: DAv4NationalClearanceHubView,
                                   dav4AdditionalNeedsHelpView: DAv4AdditionalNeedsHelpView,
                                   dav4PAYESAResolutionsView: DAv4PAYESAResolutionsView,
-                                  dav4BereavementView: DAv4BereavementView) extends FrontendController(mcc) {
+                                  dav4BereavementView: DAv4BereavementView,
+                                  serviceUnavailableView: ServiceUnavailableView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
-//  def serviceUnavailableRedirect: Action[AnyContent] = Action.async {
-//    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
-//  }
+  def serviceUnavailableRedirect: Action[AnyContent] = Action.async {
+    Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
+  }
 
   def nationalClearanceHub: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(dav4NationalClearanceHubView()))
@@ -67,7 +68,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
     }
   }
 
-//  def serviceUnavailable: Action[AnyContent] = Action.async { implicit request =>
-//    Future.successful(Ok(serviceUnavailableView()))
-//  }
+  def serviceUnavailable: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(serviceUnavailableView()))
+  }
 }

@@ -15,14 +15,10 @@
  *@
 
 @import config.AppConfig
-@import uk.gov.hmrc.webchat.client.WebChatClient
-@import templates.GovukWrapper
 @import views.html.helper.CSPNonce
 
 @this(
-        govuk_wrapper: GovukWrapper,
-        appConfig: AppConfig,
-        webChatClient: WebChatClient
+        appConfig: AppConfig
 )
 
 @()(implicit request: Request[_], messages: play.api.i18n.Messages)

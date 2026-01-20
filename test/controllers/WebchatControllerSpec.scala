@@ -34,14 +34,14 @@ class WebchatControllerSpec
 
   def asDocument(html: String): Document = Jsoup.parse(html)
 
-//  "service unavailable redirect" must {
-//    "show the service unavailable page" in {
-//      val result = controller.serviceUnavailableRedirect(fakeRequest)
-//
-//      status(result) mustBe SEE_OTHER
-//      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
-//    }
-//  }
+  "service unavailable redirect" must {
+    "show the service unavailable page" in {
+      val result = controller.serviceUnavailableRedirect(fakeRequest)
+
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some(routes.WebchatController.serviceUnavailable.url)
+    }
+  }
 
   "fixed URLs" must {
 
@@ -149,12 +149,12 @@ class WebchatControllerSpec
       }
     }
 
-//    "Service unavailable page" in {
-//      val result = controller.serviceUnavailable(fakeRequest)
-//      val doc = asDocument(contentAsString(result))
-//
-//      status(result) mustBe OK
-//      doc.select("h1").text() mustBe "Sorry, this webchat is unavailable"
-//    }
+    "Service unavailable page" in {
+      val result = controller.serviceUnavailable(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
+      status(result) mustBe OK
+      doc.select("h1").text() mustBe "Sorry, this webchat is unavailable"
+    }
   }
 }

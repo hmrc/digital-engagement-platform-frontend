@@ -1,9 +1,9 @@
-import sbt._
+import sbt.*
 
 object AppDependencies {
 
   val compile: Seq[ModuleID] = Seq(
-    "uk.gov.hmrc" %% "play-frontend-hmrc-play-30" % "12.8.0",
+    "uk.gov.hmrc" %% "play-frontend-hmrc-play-30" % "12.25.0",
     "uk.gov.hmrc" %% "bootstrap-frontend-play-30" % "9.19.0",
     "uk.gov.hmrc" %% "digital-engagement-platform-chat-30" % "1.8.0"
   )
