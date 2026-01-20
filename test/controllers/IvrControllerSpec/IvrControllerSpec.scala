@@ -33,19 +33,6 @@ class IvrControllerSpec
 
   "IVR URLs" must {
 
-    "Self Assessment DAv1 live webchat page is displayed if DAv4 feature switch is false but DAv1 feature switch is true" in {
-      val application = builder.configure("features.digitalAssistants.showDAv4IVRWebchatSA" -> "false", "features.digitalAssistants.showIVRWebchatSA" -> "true").build()
-
-      running(application) {
-        val request = FakeRequest(GET, routes.IvrController.selfAssessment.url)
-        val result = route(application, request).get
-        val doc = asDocument(contentAsString(result))
-        status(result) mustBe OK
-        doc.select("h1").text() mustBe "Self Assessment live chat"
-        assert(doc.getElementsByClass("dav4IVRWebchat").isEmpty)
-      }
-    }
-
     "Self Assessment DAv4 live webchat page is displayed if DAv4 feature switch is true but DAv1 feature switch is false" in {
       val application = builder.configure("features.digitalAssistants.showDAv4IVRWebchatSA" -> "true", "features.digitalAssistants.showIVRWebchatSA" -> "false").build()
 
@@ -79,19 +66,6 @@ class IvrControllerSpec
         val request = FakeRequest(GET, routes.IvrController.selfAssessment.url)
         val result = route(application, request).get
         status(result) mustBe NOT_FOUND
-      }
-    }
-
-    "National Insurance DAv1 live webchat page is displayed if DAv4 feature switch is false but DAv1 feature switch is true" in {
-      val application = builder.configure("features.digitalAssistants.showDAv4IVRWebchatNI" -> "false", "features.digitalAssistants.showIVRWebchatNI" -> "true").build()
-
-      running(application) {
-        val request = FakeRequest(GET, routes.IvrController.nationalInsurance.url)
-        val result = route(application, request).get
-        val doc = asDocument(contentAsString(result))
-        status(result) mustBe OK
-        doc.select("h1").text() mustBe "National Insurance live chat"
-        assert(doc.getElementsByClass("dav4IVRWebchat").isEmpty)
       }
     }
 
@@ -131,19 +105,6 @@ class IvrControllerSpec
       }
     }
 
-    "Employer Helpline DAv1 live webchat page is displayed if DAv4 feature switch is false but DAv1 feature switch is true" in {
-      val application = builder.configure("features.digitalAssistants.showDAv4IVRWebchatEHL" -> "false", "features.digitalAssistants.showIVRWebchatEHL" -> "true").build()
-
-      running(application) {
-        val request = FakeRequest(GET, routes.IvrController.employerHelpline.url)
-        val result = route(application, request).get
-        val doc = asDocument(contentAsString(result))
-        status(result) mustBe OK
-        doc.select("h1").text() mustBe "Employer Helpline live chat"
-        assert(doc.getElementsByClass("dav4IVRWebchat").isEmpty)
-      }
-    }
-
     "Employer Helpline DAv4 live webchat page is displayed if DAv4 feature switch is true but DAv1 feature switch is false" in {
       val application = builder.configure("features.digitalAssistants.showDAv4IVRWebchatEHL" -> "true", "features.digitalAssistants.showIVRWebchatEHL" -> "false").build()
 
@@ -180,19 +141,6 @@ class IvrControllerSpec
       }
     }
 
-    "Construction Industry Scheme DAv1 live webchat page is displayed if DAv4 feature switch is false but DAv1 feature switch is true" in {
-      val application = builder.configure("features.digitalAssistants.showDAv4IVRWebchatCIS" -> "false", "features.digitalAssistants.showIVRWebchatCIS" -> "true").build()
-
-      running(application) {
-        val request = FakeRequest(GET, routes.IvrController.constructionIndustryScheme.url)
-        val result = route(application, request).get
-        val doc = asDocument(contentAsString(result))
-        status(result) mustBe OK
-        doc.select("h1").text() mustBe "Construction Industry Scheme live chat"
-        assert(doc.getElementsByClass("dav4IVRWebchat").isEmpty)
-      }
-    }
-
     "Construction Industry Scheme DAv4 live webchat page is displayed if DAv4 feature switch is true but DAv1 feature switch is false" in {
       val application = builder.configure("features.digitalAssistants.showDAv4IVRWebchatCIS" -> "true", "features.digitalAssistants.showIVRWebchatCIS" -> "false").build()
 
@@ -226,19 +174,6 @@ class IvrControllerSpec
         val request = FakeRequest(GET, routes.IvrController.constructionIndustryScheme.url)
         val result = route(application, request).get
         status(result) mustBe NOT_FOUND
-      }
-    }
-
-    "Debt Management DAv1 live webchat page is displayed if DAv4 feature switch is false but DAv1 feature switch is true" in {
-      val application = builder.configure("features.digitalAssistants.showDAv4IVRWebchatDM" -> "false", "features.digitalAssistants.showIVRWebchatDM" -> "true").build()
-
-      running(application) {
-        val request = FakeRequest(GET, routes.IvrController.debtManagement.url)
-        val result = route(application, request).get
-        val doc = asDocument(contentAsString(result))
-        status(result) mustBe OK
-        doc.select("h1").text() mustBe "Payment Problems live chat"
-        assert(doc.getElementsByClass("dav4IVRWebchat").isEmpty)
       }
     }
 
