@@ -45,8 +45,8 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def nationalClearanceHub: Action[AnyContent] = Action.async { implicit request =>
-    if (config.showDAv4ANH){
-      Future.successful(Ok(dav4AdditionalNeedsHelpView()))
+    if (config.showDAv4NCH){
+      Future.successful(Ok(dav4NationalClearanceHubView()))
     } else {
       Future.successful(NotFound)
     }
