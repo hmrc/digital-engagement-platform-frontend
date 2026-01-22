@@ -18,7 +18,6 @@ package controllers.CiapiController
 
 import config.AppConfig
 import mocks.MockAuditService
-import models.DAv3AuditModel
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.scalatest.matchers.must.Matchers
@@ -511,6 +510,28 @@ class CiapiControllerSpec
 
       running(application) {
         val request = FakeRequest(GET, routes.CiapiController.childcareService.url)
+        val result = route(application, request).get
+        status(result) mustBe NOT_FOUND
+      }
+    }
+
+    "render additional income webchat page if shutter flag is true" in {
+      val application = builder.configure("features.digitalAssistants.showAddInUI" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.additionalIncome.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Ask HMRC online"
+      }
+    }
+
+    "additional income webchat page is not displayed if shutter flag is false. 404 page received" in {
+      val application = builder.configure("features.digitalAssistants.showAddInUI" -> "false").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.additionalIncome.url)
         val result = route(application, request).get
         status(result) mustBe NOT_FOUND
       }

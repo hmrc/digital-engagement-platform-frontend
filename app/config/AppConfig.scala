@@ -56,6 +56,7 @@ class AppConfig @Inject()(config: Configuration) {
   val showADLCUI : Boolean = config.getOptional[Boolean]("features.digitalAssistants.showADLCUI").getOrElse(false)
   val showTrusts : Boolean = config.getOptional[Boolean]("features.digitalAssistants.showTrusts").getOrElse(false)
   val showCSCUI : Boolean = config.getOptional[Boolean]("features.digitalAssistants.showCSCUI").getOrElse(false)
+  val showAddInUI : Boolean = config.getOptional[Boolean]("features.digitalAssistants.showAddInUI").getOrElse(false)
 
   val showIVRWebchatSA: Boolean = config.getOptional[Boolean]("features.digitalAssistants.showIVRWebchatSA").getOrElse(false)
   val showIVRWebchatNI: Boolean = config.getOptional[Boolean]("features.digitalAssistants.showIVRWebchatNI").getOrElse(false)
@@ -83,7 +84,7 @@ class AppConfig @Inject()(config: Configuration) {
   def liveDigitalAssistants(messages: play.api.i18n.Messages) =
   config.underlying.getConfig("features.digitalAssistants").entrySet().asScala.collect {
     case digitalAssistant if digitalAssistantIsLive(digitalAssistant.getKey)
-      && !digitalAssistant.getKey.contains("showIVRWebchat") && !digitalAssistant.getKey.contains("showDAv4") => digitalAssistant.getKey
+      && !digitalAssistant.getKey.contains("showIVRWebchat") && !digitalAssistant.getKey.contains("showDAv4") && !digitalAssistant.getKey.contains("showAddInUI") => digitalAssistant.getKey
   }.toList.sortBy(digitalAssistantKey => {
     val x = s"digital.assistant.list.$digitalAssistantKey.title"
     messages.apply(x)
