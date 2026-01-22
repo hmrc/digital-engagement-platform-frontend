@@ -45,11 +45,19 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def nationalClearanceHub: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(dav4NationalClearanceHubView()))
+    if (config.showDAv4ANH){
+      Future.successful(Ok(dav4AdditionalNeedsHelpView()))
+    } else {
+      Future.successful(NotFound)
+    }
   }
 
   def additionalNeedsHelp: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(dav4AdditionalNeedsHelpView()))
+    if (config.showDAv4ANH){
+      Future.successful(Ok(dav4AdditionalNeedsHelpView()))
+    } else {
+      Future.successful(NotFound)
+    }
   }
 
   def payeandSelfAssessmentResolutions: Action[AnyContent] = Action.async { implicit request =>
