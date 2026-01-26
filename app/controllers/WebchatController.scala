@@ -32,10 +32,8 @@ import scala.concurrent.Future
 @Singleton
 class WebchatController @Inject()(appConfig: AppConfig,
                                   mcc: MessagesControllerComponents,
-                                  nationalClearanceHubView: NationalClearanceHubView,
                                   dav4NationalClearanceHubView: DAv4NationalClearanceHubView,
                                   dav4AdditionalNeedsHelpView: DAv4AdditionalNeedsHelpView,
-                                  additionalNeedsHelpView: AdditionalNeedsHelpView,
                                   dav4PAYESAResolutionsView: DAv4PAYESAResolutionsView,
                                   dav4BereavementView: DAv4BereavementView,
                                   serviceUnavailableView: ServiceUnavailableView) extends FrontendController(mcc) {
@@ -50,7 +48,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
     if (config.showDAv4NCH){
       Future.successful(Ok(dav4NationalClearanceHubView()))
     } else {
-      Future.successful(Ok(nationalClearanceHubView()))
+      Future.successful(NotFound)
     }
   }
 
@@ -58,7 +56,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
     if (config.showDAv4ANH){
       Future.successful(Ok(dav4AdditionalNeedsHelpView()))
     } else {
-      Future.successful(Ok(additionalNeedsHelpView()))
+      Future.successful(NotFound)
     }
   }
 

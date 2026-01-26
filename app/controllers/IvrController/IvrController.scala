@@ -19,31 +19,19 @@ package controllers.IvrController
 import config.AppConfig
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
-import views.html.IVR.SelfAssessmentIVRView
-import views.html.IVR.NationalInsuranceIVRView
-import views.html.IVR.DebtManagementIVRView
-import views.html.IVR.EmployerHelplineIVRView
-import views.html.IVR.ConstructionIndustrySchemeIVRView
-import views.html.IVR.dav4.DAv4SelfAssessmentIVRView
-import views.html.IVR.dav4.DAv4DebtManagementIVRView
-import views.html.IVR.dav4.DAv4EmployerHelplineIVRView
-import views.html.IVR.dav4.DAv4ConstructionIndustrySchemeIVRView
-import views.html.IVR.dav4.DAv4NationalInsuranceIVRView
+import views.html.IVR.*
+import views.html.IVR.dav4.*
+
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.Future
 
 @Singleton
 class IvrController @Inject()(appConfig: AppConfig,
                               mcc: MessagesControllerComponents,
-                              selfAssessmentIVRView: SelfAssessmentIVRView,
                               dav4SelfAssessmentIVRView: DAv4SelfAssessmentIVRView,
                               dav4DebtManagementIVRView: DAv4DebtManagementIVRView,
                               dav4NationalInsuranceIVRView: DAv4NationalInsuranceIVRView,
-                              debtManagementIVRView: DebtManagementIVRView,
-                              nationalInsuranceIVRView: NationalInsuranceIVRView,
-                              employerHelplineIVRView: EmployerHelplineIVRView,
                               dav4EmployerHelplineIVRView: DAv4EmployerHelplineIVRView,
-                              constructionIndustrySchemeIVRView: ConstructionIndustrySchemeIVRView,
                               dav4ConstructionIndustrySchemeIVRView: DAv4ConstructionIndustrySchemeIVRView
                              ) extends FrontendController(mcc) {
 
@@ -52,8 +40,6 @@ class IvrController @Inject()(appConfig: AppConfig,
   def selfAssessment: Action[AnyContent] = Action.async { implicit request =>
     if (config.showDAv4IVRWebchatSA){
       Future.successful(Ok(dav4SelfAssessmentIVRView()))
-    } else if (config.showIVRWebchatSA) {
-      Future.successful(Ok(selfAssessmentIVRView()))
     } else {
       Future.successful(NotFound)
     }
@@ -62,8 +48,6 @@ class IvrController @Inject()(appConfig: AppConfig,
   def nationalInsurance: Action[AnyContent] = Action.async { implicit request =>
     if(config.showDAv4IVRWebchatNI) {
       Future.successful(Ok(dav4NationalInsuranceIVRView()))
-    } else if (config.showIVRWebchatNI) {
-      Future.successful(Ok(nationalInsuranceIVRView()))
     } else {
       Future.successful(NotFound)
     }
@@ -72,8 +56,6 @@ class IvrController @Inject()(appConfig: AppConfig,
   def employerHelpline: Action[AnyContent] = Action.async { implicit request =>
     if (config.showDAv4IVRWebchatEHL){
       Future.successful(Ok(dav4EmployerHelplineIVRView()))
-    } else if (config.showIVRWebchatEHL) {
-      Future.successful(Ok(employerHelplineIVRView()))
     } else {
       Future.successful(NotFound)
     }
@@ -82,8 +64,6 @@ class IvrController @Inject()(appConfig: AppConfig,
   def constructionIndustryScheme: Action[AnyContent] = Action.async { implicit request =>
     if (config.showDAv4IVRWebchatCIS){
       Future.successful(Ok(dav4ConstructionIndustrySchemeIVRView()))
-    } else if (config.showIVRWebchatCIS) {
-      Future.successful(Ok(constructionIndustrySchemeIVRView()))
     } else {
       Future.successful(NotFound)
     }
@@ -92,8 +72,6 @@ class IvrController @Inject()(appConfig: AppConfig,
   def debtManagement: Action[AnyContent] = Action.async { implicit request =>
     if(config.showDAv4IVRWebchatDM){
       Future.successful(Ok(dav4DebtManagementIVRView()))
-    } else if (config.showIVRWebchatDM) {
-      Future.successful(Ok(debtManagementIVRView()))
     } else {
       Future.successful(NotFound)
     }
