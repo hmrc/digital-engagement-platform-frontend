@@ -516,7 +516,7 @@ class CiapiControllerSpec
     }
 
     "render additional income webchat page if shutter flag is true" in {
-      val application = builder.configure("features.digitalAssistants.showAddInUI" -> "true").build()
+      val application = builder.configure("features.digitalAssistants.showAddIncCUI" -> "true").build()
 
       running(application) {
         val request = FakeRequest(GET, routes.CiapiController.additionalIncome.url)
@@ -528,7 +528,7 @@ class CiapiControllerSpec
     }
 
     "additional income webchat page is not displayed if shutter flag is false. 404 page received" in {
-      val application = builder.configure("features.digitalAssistants.showAddInUI" -> "false").build()
+      val application = builder.configure("features.digitalAssistants.showAddIncCUI" -> "false").build()
 
       running(application) {
         val request = FakeRequest(GET, routes.CiapiController.additionalIncome.url)
