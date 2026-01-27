@@ -226,4 +226,13 @@ class CiapiController @Inject()(appConfig: AppConfig,
       Future.successful(NotFound)
     }
   }
+
+  def additionalIncome: Action[AnyContent] = Action.async { implicit request =>
+    if (config.showAddIncCUI) {
+      auditHelper.audit(DAv3AuditModel("additionalIncome"))
+      Future.successful(Ok(askHMRCOnlineCIAPIView()))
+    } else {
+      Future.successful(NotFound)
+    }
+  }
 }
