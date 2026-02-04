@@ -20,9 +20,9 @@
 
 @this(main_template: MainTemplateCUI, appConfig: AppConfig)
 
-@()(implicit request: Request[_], messages: play.api.i18n.Messages)
+@(requiredElements: Html)(implicit request: Request[_], messages: play.api.i18n.Messages)
 
-@main_template(title = messages("ciapi.page.title"),sidebar = Some(nmwSidebar())) {
+@main_template(requiredElements = requiredElements, title = messages("ciapi.page.title"),sidebar = Some(nmwSidebar())) {
 <div class="cui-wrapper">
   <div id="cui-messaging-container">
     <div id="nuanMessagingFrame">

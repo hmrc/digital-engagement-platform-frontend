@@ -19,9 +19,9 @@
 
 @this(main_template: MainTemplateCUI, appConfig: AppConfig)
 
-@()(implicit request: Request[_], messages: play.api.i18n.Messages)
+@(requiredElements: Html)(implicit request: Request[_], messages: play.api.i18n.Messages)
 
-@main_template(title = messages("digital.assistant.list.page.title")) {
+@main_template(requiredElements = requiredElements,title = messages("digital.assistant.list.page.title")) {
   <div>
     <div>
       <p class="govuk-body">Start a conversation with the HMRC Digital Assistant. If you have questions about UK tax, National Insurance, customs duty or managing benefits, we can help.</p>

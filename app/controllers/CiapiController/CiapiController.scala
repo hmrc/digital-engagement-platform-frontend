@@ -20,9 +20,11 @@ import audit.AuditHelper
 import config.AppConfig
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
-import views.html.CIAPIViews._
+import views.html.CIAPIViews.*
+
 import javax.inject.{Inject, Singleton}
 import models.DAv3AuditModel
+import uk.gov.hmrc.webchat.client.WebChatClient
 import views.html.webchat.dav4.DAv4DebtManagementView
 
 import scala.concurrent.Future
@@ -36,7 +38,8 @@ class CiapiController @Inject()(appConfig: AppConfig,
                                 nationalMinimumWageCUIView: NationalMinimumWageCUIView,
                                 tradeTariffCUIView: TradeTariffCUIView,
                                 debtManagementCUIView: DebtManagementCUIView,
-                                dav4DebtManagementView: DAv4DebtManagementView
+                                dav4DebtManagementView: DAv4DebtManagementView,
+                                webChatClient: WebChatClient
                                 )(implicit ec: ExecutionContext)
   extends FrontendController(mcc) {
 
@@ -45,7 +48,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def childBenefit: Action[AnyContent] = Action.async { implicit request =>
     if (config.showCHBCUI) {
       auditHelper.audit(DAv3AuditModel("childBenefit"))
-      Future.successful(Ok(askHMRCOnlineCIAPIView()))
+      Future.successful(Ok(askHMRCOnlineCIAPIView(webChatClient.loadRequiredElements().value.get.get)))
     } else {
       Future.successful(NotFound)
     }
@@ -54,7 +57,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def customsInternationalTrade : Action[AnyContent] = Action.async { implicit request =>
     if (config.showCITCUI) {
       auditHelper.audit(DAv3AuditModel("customsInternationalTrade"))
-      Future.successful(Ok(askHMRCOnlineCIAPIView()))
+      Future.successful(Ok(askHMRCOnlineCIAPIView(webChatClient.loadRequiredElements().value.get.get)))
     } else {
       Future.successful(NotFound)
     }
@@ -63,7 +66,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def vatOnline: Action[AnyContent] = Action.async { implicit request =>
     if (config.showVATCUI) {
       auditHelper.audit(DAv3AuditModel("vatOnline"))
-      Future.successful(Ok(askHMRCOnlineCIAPIView()))
+      Future.successful(Ok(askHMRCOnlineCIAPIView(webChatClient.loadRequiredElements().value.get.get)))
     } else {
       Future.successful(NotFound)
     }
@@ -72,7 +75,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def corporationTax: Action[AnyContent] = Action.async { implicit request =>
     if (config.showCTCUI) {
       auditHelper.audit(DAv3AuditModel("corporationTax"))
-      Future.successful(Ok(askHMRCOnlineCIAPIView()))
+      Future.successful(Ok(askHMRCOnlineCIAPIView(webChatClient.loadRequiredElements().value.get.get)))
     } else {
       Future.successful(NotFound)
     }
@@ -81,7 +84,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def constructionIndustryScheme: Action[AnyContent] = Action.async { implicit request =>
     if (config.showCISCUI) {
       auditHelper.audit(DAv3AuditModel("constructionIndustryScheme"))
-      Future.successful(Ok(askHMRCOnlineCIAPIView()))
+      Future.successful(Ok(askHMRCOnlineCIAPIView(webChatClient.loadRequiredElements().value.get.get)))
     } else {
       Future.successful(NotFound)
     }
@@ -90,7 +93,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def selfAssessment: Action[AnyContent] = Action.async { implicit request =>
     if (config.showSACUI) {
       auditHelper.audit(DAv3AuditModel("selfAssessment"))
-      Future.successful(Ok(askHMRCOnlineCIAPIView(displayBannerSA = true)))
+      Future.successful(Ok(askHMRCOnlineCIAPIView(webChatClient.loadRequiredElements().value.get.get, displayBannerSA = true)))
     } else {
       Future.successful(NotFound)
     }
@@ -99,7 +102,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def onlineServicesHelpdesk: Action[AnyContent] = Action.async { implicit request =>
     if (config.showOSHCUI) {
       auditHelper.audit(DAv3AuditModel("onlineServicesHelpdesk"))
-      Future.successful(Ok(askHMRCOnlineCIAPIView(displayBannerOSH = true)))
+      Future.successful(Ok(askHMRCOnlineCIAPIView(webChatClient.loadRequiredElements().value.get.get, displayBannerOSH = true)))
     } else {
       Future.successful(NotFound)
     }
@@ -108,7 +111,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def employerEnquiries: Action[AnyContent] = Action.async { implicit request =>
     if (config.showEHLCUI) {
       auditHelper.audit(DAv3AuditModel("employerEnquiries"))
-      Future.successful(Ok(askHMRCOnlineCIAPIView()))
+      Future.successful(Ok(askHMRCOnlineCIAPIView(webChatClient.loadRequiredElements().value.get.get)))
     } else {
       Future.successful(NotFound)
     }
@@ -117,7 +120,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def tradeTariff : Action[AnyContent] = Action.async { implicit request =>
     if (config.showTTCUI) {
       auditHelper.audit(DAv3AuditModel("tradeTariff"))
-      Future.successful(Ok(tradeTariffCUIView()))
+      Future.successful(Ok(tradeTariffCUIView(webChatClient.loadRequiredElements().value.get.get)))
     } else {
       Future.successful(NotFound)
     }
@@ -126,7 +129,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def askHmrcOnline: Action[AnyContent] = Action.async { implicit request =>
     if (config.showTCCUI) {
       auditHelper.audit(DAv3AuditModel("askHmrcOnline"))
-      Future.successful(Ok(askHMRCOnlineCIAPIView(displayBannerTC = false)))
+      Future.successful(Ok(askHMRCOnlineCIAPIView(webChatClient.loadRequiredElements().value.get.get, displayBannerTC = false)))
     } else {
       Future.successful(NotFound)
     }
@@ -137,9 +140,9 @@ class CiapiController @Inject()(appConfig: AppConfig,
       auditHelper.audit(DAv3AuditModel("debtManagement"))
       val webchatOnly = request.uri.contains("payment-plan-chat")
       if(webchatOnly && config.showDAv4DM) {
-        Future.successful(Ok(dav4DebtManagementView()))
+        Future.successful(Ok(dav4DebtManagementView(webChatClient.loadRequiredElements().value.get.get)))
       } else {
-        Future.successful(Ok(debtManagementCUIView(webchatOnly)))
+        Future.successful(Ok(debtManagementCUIView(webChatClient.loadRequiredElements().value.get.get, webchatOnly)))
       }
     } else {
       Future.successful(NotFound)
@@ -149,7 +152,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def nationalInsurance: Action[AnyContent] = Action.async { implicit request =>
     if (config.showNICUI) {
       auditHelper.audit(DAv3AuditModel("nationalInsurance"))
-      Future.successful(Ok(askHMRCOnlineCIAPIView()))
+      Future.successful(Ok(askHMRCOnlineCIAPIView(webChatClient.loadRequiredElements().value.get.get)))
     } else {
       Future.successful(NotFound)
     }
@@ -158,7 +161,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def nationalMinimumWage : Action[AnyContent] = Action.async { implicit request =>
     if (config.showNMWCUI) {
       auditHelper.audit(DAv3AuditModel("nationalMinimumWage"))
-      Future.successful(Ok(nationalMinimumWageCUIView()))
+      Future.successful(Ok(nationalMinimumWageCUIView(webChatClient.loadRequiredElements().value.get.get)))
     } else {
       Future.successful(NotFound)
     }
@@ -167,7 +170,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def paye : Action[AnyContent] = Action.async { implicit request =>
     if (config.showPAYECUI) {
       auditHelper.audit(DAv3AuditModel("paye"))
-      Future.successful(Ok(askHMRCOnlineCIAPIView(displayBannerPAYE = true)))
+      Future.successful(Ok(askHMRCOnlineCIAPIView(webChatClient.loadRequiredElements().value.get.get, displayBannerPAYE = true)))
     } else {
       Future.successful(NotFound)
     }
@@ -176,7 +179,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def inheritanceTax: Action[AnyContent] = Action.async { implicit request =>
     if (config.showIHTCUI) {
       auditHelper.audit(DAv3AuditModel("inheritanceTax"))
-      Future.successful(Ok(askHMRCOnlineCIAPIView()))
+      Future.successful(Ok(askHMRCOnlineCIAPIView(webChatClient.loadRequiredElements().value.get.get)))
     } else {
       Future.successful(NotFound)
     }
@@ -185,7 +188,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def antiMoneyLaunderingServices: Action[AnyContent] = Action.async { implicit request =>
     if (config.showAMLSCUI) {
       auditHelper.audit(DAv3AuditModel("antiMoneyLaunderingServices"))
-      Future.successful(Ok(askHMRCOnlineCIAPIView()))
+      Future.successful(Ok(askHMRCOnlineCIAPIView(webChatClient.loadRequiredElements().value.get.get)))
     } else {
       Future.successful(NotFound)
     }
@@ -194,7 +197,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def helpToSave: Action[AnyContent] = Action.async { implicit request =>
     if (config.showH2SCUI) {
       auditHelper.audit(DAv3AuditModel("helpToSave"))
-      Future.successful(Ok(askHMRCOnlineCIAPIView()))
+      Future.successful(Ok(askHMRCOnlineCIAPIView(webChatClient.loadRequiredElements().value.get.get)))
     } else {
       Future.successful(NotFound)
     }
@@ -203,7 +206,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def agentDedicatedLine: Action[AnyContent] = Action.async { implicit request =>
     if (config.showADLCUI) {
       auditHelper.audit(DAv3AuditModel("agentDedicatedLine"))
-      Future.successful(Ok(askHMRCOnlineCIAPIView(displayBannerADL = true)))
+      Future.successful(Ok(askHMRCOnlineCIAPIView(webChatClient.loadRequiredElements().value.get.get, displayBannerADL = true)))
     } else {
       Future.successful(NotFound)
     }
@@ -212,7 +215,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def trusts: Action[AnyContent] = Action.async { implicit request =>
     if (config.showTrusts) {
       auditHelper.audit(DAv3AuditModel("trusts"))
-      Future.successful(Ok(askHMRCOnlineCIAPIView()))
+      Future.successful(Ok(askHMRCOnlineCIAPIView(webChatClient.loadRequiredElements().value.get.get)))
     } else {
       Future.successful(NotFound)
     }
@@ -221,7 +224,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def childcareService: Action[AnyContent] = Action.async { implicit request =>
     if (config.showCSCUI) {
       auditHelper.audit(DAv3AuditModel("childcareService"))
-      Future.successful(Ok(askHMRCOnlineCIAPIView()))
+      Future.successful(Ok(askHMRCOnlineCIAPIView(webChatClient.loadRequiredElements().value.get.get)))
     } else {
       Future.successful(NotFound)
     }
@@ -230,7 +233,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def additionalIncome: Action[AnyContent] = Action.async { implicit request =>
     if (config.showAddIncCUI) {
       auditHelper.audit(DAv3AuditModel("additionalIncome"))
-      Future.successful(Ok(askHMRCOnlineCIAPIView()))
+      Future.successful(Ok(askHMRCOnlineCIAPIView(webChatClient.loadRequiredElements().value.get.get)))
     } else {
       Future.successful(NotFound)
     }

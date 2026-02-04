@@ -23,9 +23,9 @@
     appConfig: AppConfig,
     webChatClient: WebChatClient)
 
-@()(implicit request: Request[_], messages: play.api.i18n.Messages)
+@(requiredElements: Html)(implicit request: Request[_], messages: play.api.i18n.Messages)
 
-@main_template(title = messages("va.global.h1.title"), navTitle = Some(messages("global.nav.va.title"))) {
+@main_template(requiredElements = requiredElements, title = messages("va.global.h1.title"), navTitle = Some(messages("global.nav.va.title"))) {
 
     <h1>@messages("va.global.h1.title")</h1>
 

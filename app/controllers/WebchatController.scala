@@ -17,10 +17,11 @@
 package controllers
 
 import config.AppConfig
-import controllers.CiapiController.{routes => ciapiRoutes}
+import controllers.CiapiController.routes as ciapiRoutes
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
-import views.html.webchat._
+import uk.gov.hmrc.webchat.client.WebChatClient
+import views.html.webchat.*
 import views.html.webchat.dav4.DAv4NationalClearanceHubView
 import views.html.webchat.dav4.DAv4AdditionalNeedsHelpView
 import views.html.webchat.dav4.DAv4PAYESAResolutionsView
@@ -36,7 +37,8 @@ class WebchatController @Inject()(appConfig: AppConfig,
                                   dav4AdditionalNeedsHelpView: DAv4AdditionalNeedsHelpView,
                                   dav4PAYESAResolutionsView: DAv4PAYESAResolutionsView,
                                   dav4BereavementView: DAv4BereavementView,
-                                  serviceUnavailableView: ServiceUnavailableView) extends FrontendController(mcc) {
+                                  serviceUnavailableView: ServiceUnavailableView,
+                                  webChatClient: WebChatClient) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
@@ -46,7 +48,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
 
   def nationalClearanceHub: Action[AnyContent] = Action.async { implicit request =>
     if (config.showDAv4NCH){
-      Future.successful(Ok(dav4NationalClearanceHubView()))
+      Future.successful(Ok(dav4NationalClearanceHubView(webChatClient.loadRequiredElements().value.get.get)))
     } else {
       Future.successful(NotFound)
     }
@@ -54,7 +56,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
 
   def additionalNeedsHelp: Action[AnyContent] = Action.async { implicit request =>
     if (config.showDAv4ANH){
-      Future.successful(Ok(dav4AdditionalNeedsHelpView()))
+      Future.successful(Ok(dav4AdditionalNeedsHelpView(webChatClient.loadRequiredElements().value.get.get)))
     } else {
       Future.successful(NotFound)
     }
@@ -62,7 +64,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
 
   def payeandSelfAssessmentResolutions: Action[AnyContent] = Action.async { implicit request =>
     if (config.showDAv4PAYESAR){
-      Future.successful(Ok(dav4PAYESAResolutionsView()))
+      Future.successful(Ok(dav4PAYESAResolutionsView(webChatClient.loadRequiredElements().value.get.get)))
     } else {
       Future.successful(NotFound)
     }
@@ -70,13 +72,13 @@ class WebchatController @Inject()(appConfig: AppConfig,
 
   def bereavement: Action[AnyContent] = Action.async { implicit request =>
     if (config.showDAv4Bereavement) {
-      Future.successful(Ok(dav4BereavementView()))
+      Future.successful(Ok(dav4BereavementView(webChatClient.loadRequiredElements().value.get.get)))
     } else {
       Future.successful(NotFound)
     }
   }
 
   def serviceUnavailable: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(serviceUnavailableView()))
+    Future.successful(Ok(serviceUnavailableView(webChatClient.loadRequiredElements().value.get.get)))
   }
 }

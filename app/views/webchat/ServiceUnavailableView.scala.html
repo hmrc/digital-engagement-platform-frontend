@@ -19,9 +19,9 @@
 
 @this(main_template: MainTemplate, app_config: AppConfig)
 
-@()(implicit request: Request[_], messages: play.api.i18n.Messages)
+@(requiredElements: Html)(implicit request: Request[_], messages: play.api.i18n.Messages)
 
-@main_template(title = messages("service.unavailable.title"), showBackLink = false) {
+@main_template(requiredElements = requiredElements, title = messages("service.unavailable.title"), showBackLink = false) {
 
 <h1 class="header-margin-top govuk-heading-l">@messages("service.unavailable.title")</h1>
 

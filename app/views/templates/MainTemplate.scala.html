@@ -24,7 +24,8 @@
     webChatClient: WebChatClient
 )
 
-@(title: String,
+@(requiredElements: Html,
+    title: String,
     navTitle: Option[String] = None,
     showHelpForm: Boolean = true,
     showBackLink: Boolean = true,
@@ -36,7 +37,7 @@
     <script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/bundle.js")'></script>
 
     @if(!appConfig.performanceTest){
-        @{webChatClient.loadRequiredElements()}
+        @requiredElements
     }
 }
 

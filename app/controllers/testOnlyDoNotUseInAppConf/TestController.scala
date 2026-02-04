@@ -21,7 +21,8 @@ import config.AppConfig
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
-import views.html.testOnly._
+import uk.gov.hmrc.webchat.client.WebChatClient
+import views.html.testOnly.*
 
 import scala.concurrent.Future
 
@@ -38,38 +39,39 @@ class TestController @Inject()(
   c2cViewPopup: C2cViewPopup,
   c2cFixedViewPopup: C2cFixedViewPopup,
   nuanceFile: NuanceFile,
-  mixTestView: MixTestView) extends FrontendController(mcc) {
+  mixTestView: MixTestView,
+  webChatClient: WebChatClient) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
   def idTest: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(idTestView()))
+    Future.successful(Ok(idTestView(webChatClient.loadRequiredElements().value.get.get)))
   }
   def ciApiTestPopup: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(ciApiDemoViewPopup()))
+    Future.successful(Ok(ciApiDemoViewPopup(webChatClient.loadRequiredElements().value.get.get)))
   }
   def ciApiTestProactivePopup: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(ciApiDemoViewProactivePopup()))
+    Future.successful(Ok(ciApiDemoViewProactivePopup(webChatClient.loadRequiredElements().value.get.get)))
   }
   def ciApiTestEmbedded: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(ciApiDemoViewEmbedded()))
+    Future.successful(Ok(ciApiDemoViewEmbedded(webChatClient.loadRequiredElements().value.get.get)))
   }
   def nuanceHtml: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(nuanceFile()))
   }
   def mixTest: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(mixTestView()))
+    Future.successful(Ok(mixTestView(webChatClient.loadRequiredElements().value.get.get)))
   }
   def persistChatPageOne: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(persistChatPageOneViewPopup()))
+    Future.successful(Ok(persistChatPageOneViewPopup(webChatClient.loadRequiredElements().value.get.get)))
   }
   def persistChatPageTwo: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(persistChatPageTwoViewPopup()))
+    Future.successful(Ok(persistChatPageTwoViewPopup(webChatClient.loadRequiredElements().value.get.get)))
   }
   def c2cPopup: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(c2cViewPopup()))
+    Future.successful(Ok(c2cViewPopup(webChatClient.loadRequiredElements().value.get.get)))
   }
   def c2cFixedPopup: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(c2cFixedViewPopup()))
+    Future.successful(Ok(c2cFixedViewPopup(webChatClient.loadRequiredElements().value.get.get)))
   }
 }

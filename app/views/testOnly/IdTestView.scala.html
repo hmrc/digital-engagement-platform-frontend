@@ -24,7 +24,7 @@
     appConfig: AppConfig,
     webChatClient: WebChatClient)
 
-@()(implicit request: Request[_], messages: play.api.i18n.Messages)
+@(requiredElements: Html)(implicit request: Request[_], messages: play.api.i18n.Messages)
 
 @sessionId = @{
     val hc = HeaderCarrierConverter.fromRequestAndSession(request, request.session)
@@ -36,7 +36,7 @@
     hc.deviceID.fold("None")(_.toString)
 }
 
-@main_template(title = "Test bed - ID Dump, etc.") {
+@main_template(requiredElements = requiredElements, title = "Test bed - ID Dump, etc.") {
 
     <h1 class="header-margin-top">@messages("Test bed - Id Dump, etc.")</h1>
     @if(!appConfig.performanceTest) {
@@ -67,7 +67,6 @@
     <br>
     <code>Device id: @{deviceId}</code><br>
     <br>
-    <code>Required block: @{webChatClient.loadRequiredElements().fold("ERROR")(_.toString)}</code>
     <br>
 
 }

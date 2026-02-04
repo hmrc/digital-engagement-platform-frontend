@@ -18,10 +18,11 @@ package controllers
 
 
 import config.AppConfig
+
 import javax.inject.Inject
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
-
+import uk.gov.hmrc.webchat.client.WebChatClient
 import views.html.pageList.DigitalAssistantListView
 
 import scala.concurrent.Future
@@ -29,11 +30,12 @@ import scala.concurrent.Future
 
 class DigitalAssistantListController @Inject()(appConfig: AppConfig,
                                                mcc: MessagesControllerComponents,
-                                               digitalAssistantListView: DigitalAssistantListView) extends FrontendController(mcc) {
+                                               digitalAssistantListView: DigitalAssistantListView,
+                                               webChatClient: WebChatClient) extends FrontendController(mcc) {
 
   def digitalAssistantList: Action[AnyContent] = Action.async { implicit request =>
     if (appConfig.showDigitalAssistantListPage) {
-      Future.successful(Ok(digitalAssistantListView()))
+      Future.successful(Ok(digitalAssistantListView(webChatClient.loadRequiredElements().value.get.get)))
     } else {
       Future.successful(NotFound)
     }

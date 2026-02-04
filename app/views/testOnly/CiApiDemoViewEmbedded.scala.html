@@ -19,9 +19,10 @@
 
 @this(main_template: MainTemplateCUI)
 
-@()(implicit request: Request[_], messages: play.api.i18n.Messages)
+@(requiredElements: Html)(implicit request: Request[_], messages: play.api.i18n.Messages)
 
 @main_template(
+requiredElements = requiredElements,
 title = "Embedded",
 sidebar = Some(testSidebar())) {
 

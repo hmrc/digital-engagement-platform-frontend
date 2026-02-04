@@ -19,9 +19,9 @@
 
 @this(main_template: MainTemplateCUI, appConfig: AppConfig)
 
-@(displayBannerTC: Boolean = false, displayBannerOSH: Boolean = false, displayBannerADL: Boolean = false, displayBannerPAYE: Boolean = false, displayBannerSA: Boolean = false)(implicit request: Request[_], messages: play.api.i18n.Messages)
+@(requiredElements: Html, displayBannerTC: Boolean = false, displayBannerOSH: Boolean = false, displayBannerADL: Boolean = false, displayBannerPAYE: Boolean = false, displayBannerSA: Boolean = false)(implicit request: Request[_], messages: play.api.i18n.Messages)
 
-@main_template(title = messages("ciapi.page.title"), displayBannerTC = displayBannerTC, displayBannerOSH = displayBannerOSH, displayBannerADL = displayBannerADL, displayBannerPAYE = displayBannerPAYE, displayBannerSA = displayBannerSA) {
+@main_template(requiredElements = requiredElements, title = messages("ciapi.page.title"), displayBannerTC = displayBannerTC, displayBannerOSH = displayBannerOSH, displayBannerADL = displayBannerADL, displayBannerPAYE = displayBannerPAYE, displayBannerSA = displayBannerSA) {
     <div class="cui-wrapper">
         <div id="cui-messaging-container">
             <div id="nuanMessagingFrame">
