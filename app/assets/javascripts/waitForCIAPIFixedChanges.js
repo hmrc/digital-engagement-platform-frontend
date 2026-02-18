@@ -20,6 +20,7 @@ function waitForNuanceElement(el, w, d) {
       var the_element = d.querySelector(el);
       const errorHeading = document.createElement('h2')
       errorHeading.classList.add('govuk-heading-s')
+      errorHeading.tabIndex = 0
       the_element.textContent = ''
       errorHeading.textContent = "Sorry, there’s a problem with this service. Refresh the page to try again.";
       the_element.appendChild(errorHeading)

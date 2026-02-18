@@ -128,9 +128,9 @@ export var chatListener = {
 
         if (errorEle) {
             if (errorEle.classList.contains("chat-in-progress")) {
-                errorEle.innerHTML = "<p class='cui-technical-error error-message'> You've already started a chat in another tab or window. Return to the chat to continue your conversation. </p>";
+                errorEle.innerHTML = "<p class='cui-technical-error error-message' tabindex='0'> You've already started a chat in another tab or window. Return to the chat to continue your conversation. </p>";
             } else {
-                errorEle.innerHTML = '<p class="cui-technical-error error-message">Sorry, there’s a problem with this service. Refresh the page to try again.</p>';
+                errorEle.innerHTML = '<p class="cui-technical-error error-message" tabindex="0">Sorry, there’s a problem with this service. Refresh the page to try again.</p>';
             }
         }
 
