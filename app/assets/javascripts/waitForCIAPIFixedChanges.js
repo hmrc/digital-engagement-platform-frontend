@@ -20,7 +20,6 @@ function waitForNuanceElement(el, w, d) {
       var the_element = d.querySelector(el);
       const errorHeading = document.createElement('h2')
       errorHeading.classList.add('govuk-heading-s')
-      errorHeading.tabIndex = 0
       errorHeading.ariaLive = "polite"
       errorHeading.role = "alert"
       the_element.textContent = ''
