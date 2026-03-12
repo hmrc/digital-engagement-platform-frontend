@@ -235,4 +235,13 @@ class CiapiController @Inject()(appConfig: AppConfig,
       Future.successful(NotFound)
     }
   }
+
+  def makingTaxDigital: Action[AnyContent] = Action.async { implicit request =>
+    if (config.showMTDCUI) {
+      auditHelper.audit(DAv3AuditModel("makingTaxDigital"))
+      Future.successful(Ok(askHMRCOnlineCIAPIView()))
+    } else {
+      Future.successful(NotFound)
+    }
+  }
 }
