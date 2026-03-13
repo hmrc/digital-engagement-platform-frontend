@@ -235,3 +235,7 @@ digital.assistant.list.showTrusts.description = Chat about registering and manag
 digital.assistant.list.showCSCUI.title = Childcare Service
 digital.assistant.list.showCSCUI.url = http://www.tax.service.gov.uk/ask-hmrc/chat/childcare-service
 digital.assistant.list.showCSCUI.description = Chat about Tax-Free Childcare, free childcare if you’re working and using your online childcare account.
+
+digital.assistant.list.showMTDCUI.title = Making Tax Digital for Income Tax
+digital.assistant.list.showMTDCUI.url = https://www.tax.service.gov.uk/ask-hmrc/chat/mtd-income-tax
+digital.assistant.list.showMTDCUI.description = Chat about signing up, exemption and choosing the right software.
