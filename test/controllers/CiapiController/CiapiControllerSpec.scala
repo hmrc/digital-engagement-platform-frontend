@@ -536,5 +536,27 @@ class CiapiControllerSpec
         status(result) mustBe NOT_FOUND
       }
     }
+
+    "render MTD digital assistant page if shutter flag is true" in {
+      val application = builder.configure("features.digitalAssistants.showMTDCUI" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.makingTaxDigital.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "Ask HMRC online"
+      }
+    }
+
+    "MTD digital assistant page is not displayed if shutter flag is false. 404 page received" in {
+      val application = builder.configure("features.digitalAssistants.showMTDCUI" -> "false").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.CiapiController.makingTaxDigital.url)
+        val result = route(application, request).get
+        status(result) mustBe NOT_FOUND
+      }
+    }
   }
 }
