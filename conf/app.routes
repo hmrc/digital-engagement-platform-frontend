@@ -10,6 +10,7 @@ GET         /webchat/national-clearance-hub                                 cont
 GET         /webchat/help-for-users-with-additional-needs                   controllers.WebchatController.additionalNeedsHelp
 GET         /webchat/paye-and-self-assessment-resolutions                   controllers.WebchatController.payeandSelfAssessmentResolutions
 GET         /webchat/paye-and-self-assessment-bereavement                   controllers.WebchatController.bereavement
+GET         /webchat/wmr-ni-repayment                                       controllers.WebchatController.WMRNIRepayment
 
 GET         /accessibility-statement                                        controllers.AccessibilityStatementController.accessibility(userAction: Option[String])
 
