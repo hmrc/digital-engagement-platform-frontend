@@ -78,7 +78,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
     }
   }
 
-  def WMRNIRepayment: Action[AnyContent] = Action.async { implicit request =>
+  def wmrNiRepayment: Action[AnyContent] = Action.async { implicit request =>
     if (config.showDAv4WMRNIRepayment) {
       Future.successful(Ok(dav4WMRNIRepaymentView()))
     } else {

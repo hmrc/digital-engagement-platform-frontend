@@ -126,7 +126,7 @@ class WebchatControllerSpec
       val application = builder.configure("features.digitalAssistants.showDAv4WMRNIRepayment" -> "true").build()
 
       running(application) {
-        val request = FakeRequest(GET, routes.WebchatController.WMRNIRepayment.url)
+        val request = FakeRequest(GET, routes.WebchatController.wmrNiRepayment.url)
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
@@ -139,7 +139,7 @@ class WebchatControllerSpec
       val application = builder.configure("features.digitalAssistants.showDAv4WMRNIRepayment" -> "false").build()
 
       running(application) {
-        val request = FakeRequest(GET, routes.WebchatController.WMRNIRepayment.url)
+        val request = FakeRequest(GET, routes.WebchatController.wmrNiRepayment.url)
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe NOT_FOUND
