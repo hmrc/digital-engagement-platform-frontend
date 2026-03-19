@@ -34,8 +34,8 @@ class DAv4WMRNIRepaymentViewSpec extends ChatViewBehaviours with Matchers with A
 
     behave like normalPage(
       createView,
-      "WMR National Insurance Repayment live chat - Ask HMRC - GOV.UK",
-      "WMR National Insurance Repayment live chat",
+      "National Insurance repayment webchat - Ask HMRC - GOV.UK",
+      "National Insurance repayment webchat",
       "contact HMRC",
       returnUrl,
        Some(Seq(
