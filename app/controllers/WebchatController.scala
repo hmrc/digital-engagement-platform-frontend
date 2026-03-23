@@ -25,6 +25,7 @@ import views.html.webchat.dav4.DAv4NationalClearanceHubView
 import views.html.webchat.dav4.DAv4AdditionalNeedsHelpView
 import views.html.webchat.dav4.DAv4PAYESAResolutionsView
 import views.html.webchat.dav4.DAv4BereavementView
+import views.html.webchat.dav4.DAv4WMRNIRepaymentView
 
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.Future
@@ -36,6 +37,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
                                   dav4AdditionalNeedsHelpView: DAv4AdditionalNeedsHelpView,
                                   dav4PAYESAResolutionsView: DAv4PAYESAResolutionsView,
                                   dav4BereavementView: DAv4BereavementView,
+                                  dav4WMRNIRepaymentView: DAv4WMRNIRepaymentView,
                                   serviceUnavailableView: ServiceUnavailableView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
@@ -71,6 +73,14 @@ class WebchatController @Inject()(appConfig: AppConfig,
   def bereavement: Action[AnyContent] = Action.async { implicit request =>
     if (config.showDAv4Bereavement) {
       Future.successful(Ok(dav4BereavementView()))
+    } else {
+      Future.successful(NotFound)
+    }
+  }
+
+  def wmrNiRepayment: Action[AnyContent] = Action.async { implicit request =>
+    if (config.showDAv4WMRNIRepayment) {
+      Future.successful(Ok(dav4WMRNIRepaymentView()))
     } else {
       Future.successful(NotFound)
     }
