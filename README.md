@@ -42,7 +42,7 @@ Dependencies will also need to be started from source or using Service Manager.
 To access the various types of DAs you can use the following URLs (examples):
 
 *Reactive popup*
-`http://localhost:9956/ask-hmrc/webchat/customs-international-trade?url=https://www.qa.tax.service.gov.uk/ask-hmrc/webchat/customs-international-trade`
+`http://localhost:9956/ask-hmrc/webchat/national-clearance-hub?url=https://www.qa.tax.service.gov.uk/ask-hmrc/webchat/national-clearance-hub`
 
 *Embedded with Nuance skin*
 `http://localhost:9956/ask-hmrc/chat/self-assessment?url=https://www.qa.tax.service.gov.uk/ask-hmrc/chat/self-assessment`
