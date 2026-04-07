@@ -1,4 +1,4 @@
-import * as SUT from '../../app/assets/javascripts/waitForEl'
+import * as SUT from 'app/assets/javascripts/waitForEl'
 import {availabilities} from '../../app/assets/javascripts/getAvailability'
 
 describe("When waiting for an element", () => {

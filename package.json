@@ -37,6 +37,7 @@
   },
   "jest": {
     "testRegex": "((\\.|/*.)(spec))\\.js?$",
-    "verbose": true
+    "verbose": true,
+    "moduleDirectories": ["node_modules", "digital-engagement-platform-frontend", "../app/assets/javascripts"]
   }
 }
