@@ -1,4 +1,4 @@
-import {chatListener, initChatListener} from '../../app/assets/javascripts/cuiChatListener.js'
+import {chatListener, initChatListener} from 'app/assets/javascripts/cuiChatListener.js'
 
 var protoListener = Object.assign({}, chatListener)
 protoListener.name = "protoListener";
