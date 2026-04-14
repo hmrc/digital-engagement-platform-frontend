@@ -1,5 +1,5 @@
 .*
-
+!.nvmrc
 !.github
 !.gitignore
 !.scalafmt.conf
