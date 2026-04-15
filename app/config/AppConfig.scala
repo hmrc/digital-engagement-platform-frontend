@@ -45,7 +45,6 @@ class AppConfig @Inject()(config: Configuration) {
   val showOSHCUI: Boolean = config.getOptional[Boolean]("features.digitalAssistants.showOSHCUI").getOrElse(false)
   val showEHLCUI: Boolean = config.getOptional[Boolean]("features.digitalAssistants.showEHLCUI").getOrElse(false)
   val showTTCUI: Boolean = config.getOptional[Boolean]("features.digitalAssistants.showTTCUI").getOrElse(false)
-  val showTCCUI: Boolean = config.getOptional[Boolean]("features.digitalAssistants.showTCCUI").getOrElse(false)
   val showDMCUI: Boolean = config.getOptional[Boolean]("features.digitalAssistants.showDMCUI").getOrElse(false)
   val showNICUI: Boolean = config.getOptional[Boolean]("features.digitalAssistants.showNICUI").getOrElse(false)
   val showNMWCUI: Boolean = config.getOptional[Boolean]("features.digitalAssistants.showNMWCUI").getOrElse(false)
