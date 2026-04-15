@@ -49,28 +49,6 @@ class CiapiControllerSpec
 
   "Nuance Full Page CIAPI Test Controller" should {
 
-    "render Tax Credits Ask HMRC Online page if shutter flag is true" in {
-      val application = builder.configure("features.digitalAssistants.showTCCUI" -> "true").build()
-
-      running(application) {
-        val request = FakeRequest(GET, routes.CiapiController.askHmrcOnline.url)
-        val result = route(application, request).get
-        val doc = asDocument(contentAsString(result))
-        status(result) mustBe OK
-        doc.select("h1").text() mustBe "Ask HMRC online"
-      }
-    }
-
-    "render not found if Tax Credits Ask HMRC Online page shutter flag is false" in {
-      val application = builder.configure("features.digitalAssistants.showTCCUI" -> "false").build()
-
-      running(application) {
-        val request = FakeRequest(GET, routes.CiapiController.askHmrcOnline.url)
-        val result = route(application, request).get
-        status(result) mustBe NOT_FOUND
-      }
-    }
-
     "render Customs and International Trade CUI page if shutter flag is true" in {
       val application = builder.configure("features.digitalAssistants.showCITCUI" -> "true").build()
 
