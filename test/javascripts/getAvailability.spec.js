@@ -1,4 +1,4 @@
- import * as SUT from 'app/assets/javascripts/getAvailability'
+ import * as SUT from '../../app/assets/javascripts/getAvailability'
 
 
 describe("Set availability", function() {

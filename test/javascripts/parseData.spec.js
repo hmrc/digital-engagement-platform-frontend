@@ -1,4 +1,4 @@
- import * as SUT from 'app/assets/javascripts/parseData'
+ import * as SUT from '../../app/assets/javascripts/parseData'
 
 describe("Parse data", function() {
   	it("will parse the element into an object", () => {

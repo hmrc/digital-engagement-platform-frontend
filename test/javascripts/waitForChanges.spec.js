@@ -3,9 +3,9 @@
  * @jest-environment-options {"url": "https://example.test/"}
  */
 
-import * as SUT from 'app/assets/javascripts/waitForChanges';
-import * as elementWatcher from 'app/assets/javascripts/waitForEl';
-import { availabilities } from 'app/assets/javascripts/getAvailability';
+import * as SUT from '../../app/assets/javascripts/waitForChanges';
+import * as elementWatcher from '../../app/assets/javascripts/waitForEl';
+import { availabilities } from '../../app/assets/javascripts/getAvailability';
 
 describe("When loading a page and waiting for changes", () => {
     let elementWatcherMock;

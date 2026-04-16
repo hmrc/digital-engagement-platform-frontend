@@ -1,4 +1,4 @@
-import * as SUT from 'app/assets/javascripts/addToDataLayer'
+import * as SUT from '../../app/assets/javascripts/addToDataLayer'
 
 let spy;
 beforeAll(() => {

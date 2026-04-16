@@ -3,7 +3,7 @@
  * @jest-environment-options {"url": "https://example.test/"}
  */
 
-import * as SUT from 'app/assets/javascripts/waitForEl';
+import * as SUT from '../../app/assets/javascripts/waitForEl';
 
 describe("When waiting for an element", () => {
 	beforeEach(() => {
