@@ -15,8 +15,10 @@ function cleanNodeModules() {
 function bundle() {
     return rollup({
         input: './app/assets/javascripts/gtm_dl.js',
-        format: 'iife',
-        sourcemap: false
+        output: {
+            format: 'iife',
+            sourcemap: false
+        }
     })
         .pipe(source('gtm_dl.js', './app/assets/javascripts/'))
         .pipe(buffer())
