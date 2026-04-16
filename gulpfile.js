@@ -36,8 +36,14 @@ function bundle() {
 }
 
 function jestTask() {
-    const cmd = process.platform === 'win32' ? 'npx.cmd' : 'npx';
-    return spawn(cmd, ['jest', '--ci'], { stdio: 'inherit' });
+    const jestBin = process.platform === 'win32'
+        ? '.\\node_modules\\.bin\\jest.cmd'
+        : './node_modules/.bin/jest';
+
+    return spawn(jestBin, ['--ci'], {
+        stdio: 'inherit',
+        shell: true
+    });
 }
 
 exports.bundle = bundle;
