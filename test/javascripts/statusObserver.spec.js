@@ -1,5 +1,4 @@
 import * as SUT from '../../app/assets/javascripts/statusObserver'
-
 describe("The status observer", function() {
     var isObserved = false;
     global.MutationObserver = class {
