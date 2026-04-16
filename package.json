@@ -6,15 +6,16 @@
     "@babel/cli": "^7.11.6",
     "@babel/core": "^7.11.6",
     "@babel/preset-env": "^7.11.5",
+    "@rollup/stream": "^3.0.1",
     "@types/jest": "^27.0.2",
+    "babel-jest": "^30.0.0",
     "del": "^2.2.0",
     "gulp": "^5.0.1",
-    "gulp-cli": "^3.1.0",
     "gulp-babel": "^8.0.0",
+    "gulp-cli": "^3.1.0",
     "gulp-sourcemaps": "^2.6.5",
     "jest": "^30.0.0",
     "jest-environment-jsdom": "^30.0.0",
-    "babel-jest": "^30.0.0",
     "rollup": "^4.60.1",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
@@ -38,7 +39,11 @@
     "testRegex": "((\\.|/*.)(spec))\\.js?$",
     "verbose": true,
     "testEnvironment": "jsdom",
-    "moduleDirectories": ["node_modules", "digital-engagement-platform-frontend", "../app/assets/javascripts"]
+    "moduleDirectories": [
+      "node_modules",
+      "digital-engagement-platform-frontend",
+      "../app/assets/javascripts"
+    ]
   },
   "scripts": {
     "test": "jest"
