@@ -145,6 +145,30 @@ class WebchatControllerSpec
         status(result) mustBe NOT_FOUND
       }
     }
+
+    "WMR National Insurance Credit DAv4 live webchat page if feature switch is true" in {
+      val application = builder.configure("features.digitalAssistants.showDAv4WMRNICredit" -> "true").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.WebchatController.wmrNiCredit.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe OK
+        doc.select("h1").text() mustBe "National Insurance credit webchat"
+        assert(doc.getElementById("HMRC_CIAPI_Fixed_1") != null)
+      }
+    }
+
+    "WMR National Insurance Credit DAv4 live webchat page is not displayed if feature switch is false" in {
+      val application = builder.configure("features.digitalAssistants.showDAv4WMRNICredit" -> "false").build()
+
+      running(application) {
+        val request = FakeRequest(GET, routes.WebchatController.wmrNiCredit.url)
+        val result = route(application, request).get
+        val doc = asDocument(contentAsString(result))
+        status(result) mustBe NOT_FOUND
+      }
+    }
     
     "Service unavailable page" in {
       val result = controller.serviceUnavailable(fakeRequest)
