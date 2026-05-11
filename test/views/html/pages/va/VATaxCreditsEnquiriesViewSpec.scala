@@ -37,7 +37,7 @@ class VATaxCreditsEnquiriesViewSpec extends ChatViewBehaviours with Matchers wit
 
         "display the correct browser title" in {
           val doc = asDocument(createView())
-          assertEqualsMessage(doc, "title", "Use HMRC’s digital assistant - Ask HMRC - GOV.UK")
+          assertEqualsMessage(doc, "title", "Chat with HMRC’s digital assistant about tax - GOV.UK")
         }
 
         "display the correct page title" in {

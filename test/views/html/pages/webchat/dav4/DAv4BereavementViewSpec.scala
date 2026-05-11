@@ -34,7 +34,7 @@ class DAv4BereavementViewSpec extends ChatViewBehaviours with Matchers with AnyW
 
     behave like normalPage(
       createView,
-      "Bereavement and deceased estate live chat - Ask HMRC - GOV.UK",
+      "Chat with HMRC’s digital assistant about tax - GOV.UK",
       "Bereavement and deceased estate live chat",
       "contact HMRC",
       returnUrl,

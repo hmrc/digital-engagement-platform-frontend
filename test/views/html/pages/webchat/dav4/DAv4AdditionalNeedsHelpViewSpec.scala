@@ -20,7 +20,7 @@ import org.scalatest.matchers.must.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike
 import play.twirl.api.HtmlFormat
 import views.html.pages.helpers.ChatViewBehaviours
-import views.html.webchat.dav4.{DAv4AdditionalNeedsHelpView}
+import views.html.webchat.dav4.DAv4AdditionalNeedsHelpView
 
 class DAv4AdditionalNeedsHelpViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike {
 
@@ -34,7 +34,7 @@ class DAv4AdditionalNeedsHelpViewSpec extends ChatViewBehaviours with Matchers w
 
     behave like normalPage(
       createView,
-      "HMRC’s Extra Support team webchat - Ask HMRC - GOV.UK",
+      "Chat with HMRC’s digital assistant about tax - GOV.UK",
       "HMRC’s Extra Support team webchat",
       "contact HMRC",
       returnUrl,

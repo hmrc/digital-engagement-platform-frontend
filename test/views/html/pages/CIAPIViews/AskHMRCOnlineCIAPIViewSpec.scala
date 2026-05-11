@@ -32,7 +32,7 @@ class AskHMRCOnlineCIAPIViewSpec extends ChatViewBehaviours with Matchers with A
     "rendered" must {
       behave like normalCuiPage(
       createView,
-        "Ask HMRC online - Ask HMRC - GOV.UK",
+        "Chat with HMRC’s digital assistant about tax - GOV.UK",
         "Ask HMRC online"
       )
     }

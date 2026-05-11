@@ -14,26 +14,26 @@
  * limitations under the License.
  */
 
-package views.html.pages.testOnly
+package views.html.pages.CIAPIViews
 
 import org.scalatest.matchers.must.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike
 import play.twirl.api.HtmlFormat
-import views.html.testOnly.MixTestView
+import views.html.CIAPIViews.TradeTariffCUIView
 import views.html.pages.helpers.ChatViewBehaviours
 
-class MixTestSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike {
+class TradeTariffCUIViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike{
 
-  private val view = app.injector.instanceOf[MixTestView]
+  private val view = app.injector.instanceOf[TradeTariffCUIView]
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "Mix Test View" must {
+  "Trade Tariff View" must {
     "rendered" must {
       behave like normalCuiPage(
         createView,
-        "Mix Test Page - Ask HMRC - GOV.UK",
-        "Mix Test Page"
+        "Chat with HMRC’s digital assistant about tax - GOV.UK",
+        "Ask HMRC online"
       )
     }
   }

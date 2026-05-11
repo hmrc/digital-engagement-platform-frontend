@@ -32,7 +32,7 @@ class persistChatPageTwoViewPopupSpec extends ChatViewBehaviours with Matchers w
     "rendered" must {
       behave like normalCuiPage(
         createView,
-        "Persist Chat Page Two Popup - Ask HMRC - GOV.UK",
+        "Chat with HMRC’s digital assistant about tax - GOV.UK",
         "Persist Chat Page Two Popup"
       )
     }
