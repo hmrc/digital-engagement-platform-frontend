@@ -33,7 +33,7 @@ class DAv4EmployerHelplineIVRViewSpec extends ChatViewBehaviours with Matchers w
 
     behave like normalPage(
       createView,
-      "Employer Helpline live chat - Ask HMRC - GOV.UK",
+      "Chat with HMRC’s digital assistant about tax - GOV.UK",
       "Employer Helpline live chat",
       "contact HMRC",
       returnUrl,

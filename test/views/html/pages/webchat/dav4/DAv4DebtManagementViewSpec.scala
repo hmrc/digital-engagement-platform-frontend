@@ -32,7 +32,7 @@ class DAv4DebtManagementViewSpec extends ChatViewBehaviours with Matchers with A
 
     behave like normalPage(
       createView,
-      "Payment Plan webchat - Ask HMRC - GOV.UK",
+      "Chat with HMRC’s digital assistant about tax - GOV.UK",
       "Payment Plan webchat",
       "",
       "",

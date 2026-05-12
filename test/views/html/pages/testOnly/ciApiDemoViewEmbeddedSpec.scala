@@ -32,7 +32,7 @@ class ciApiDemoViewEmbeddedSpec extends ChatViewBehaviours with Matchers with An
     "rendered" must {
       behave like normalCuiPage(
         createView,
-        "Embedded - Ask HMRC - GOV.UK",
+        "Chat with HMRC’s digital assistant about tax - GOV.UK",
         "Embedded"
       )
     }

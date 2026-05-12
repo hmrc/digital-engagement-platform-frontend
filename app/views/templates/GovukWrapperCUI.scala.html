@@ -89,7 +89,7 @@
 }
 
 @wrappedContent = {
-<h1 class="heading-margin-top govuk-heading-xl">@title</h1>
+<h1 class="heading-margin-top govuk-heading-xl" id="chat-header">@title</h1>
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
         @content
@@ -101,7 +101,7 @@
 }
 
 @govukLayout(
-    pageTitle = Some(title + " " + messages("cui.page.title.gov")),
+    pageTitle = Some(messages("cui.page.title.gov")),
     headBlock = Some(hmrcHead(Some(extraHead))),
     headerBlock = Some(headerBlock),
     scriptsBlock = Some(hmrcScripts(scriptElem)),

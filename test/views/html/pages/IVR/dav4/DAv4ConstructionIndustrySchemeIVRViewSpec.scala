@@ -33,7 +33,7 @@ class DAv4ConstructionIndustrySchemeIVRViewSpec extends ChatViewBehaviours with 
 
     behave like normalPage(
       createView,
-      "Construction Industry Scheme live chat - Ask HMRC - GOV.UK",
+      "Chat with HMRC’s digital assistant about tax - GOV.UK",
       "Construction Industry Scheme live chat",
       "contact HMRC",
       returnUrl,
