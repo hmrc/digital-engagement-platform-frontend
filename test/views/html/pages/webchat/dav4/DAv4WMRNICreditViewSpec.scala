@@ -34,7 +34,7 @@ class DAv4WMRNICreditViewSpec extends ChatViewBehaviours with Matchers with AnyW
 
     behave like normalPage(
       createView,
-      "National Insurance credit webchat - Ask HMRC - GOV.UK",
+      "Chat with HMRC’s digital assistant about tax - GOV.UK",
       "National Insurance credit webchat",
       "contact HMRC",
       returnUrl,
