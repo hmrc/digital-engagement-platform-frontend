@@ -154,7 +154,7 @@ class WebchatControllerSpec
         val result = route(application, request).get
         val doc = asDocument(contentAsString(result))
         status(result) mustBe OK
-        doc.select("h1").text() mustBe "National Insurance credit webchat"
+        doc.select("h1").text() mustBe "National Insurance credit application webchat"
         assert(doc.getElementById("HMRC_CIAPI_Fixed_1") != null)
       }
     }
