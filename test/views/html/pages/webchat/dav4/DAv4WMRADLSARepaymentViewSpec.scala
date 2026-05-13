@@ -35,7 +35,7 @@ class DAv4WMRADLSARepaymentViewSpec extends ChatViewBehaviours with Matchers wit
     behave like normalPage(
       createView,
       "Chat with HMRC’s digital assistant about tax - GOV.UK",
-      "National Insurance credit webchat Pending Content",
+      "Agent Dedicated Line Self Assessment repayment webchat",
       "contact HMRC",
       returnUrl,
        Some(Seq(
