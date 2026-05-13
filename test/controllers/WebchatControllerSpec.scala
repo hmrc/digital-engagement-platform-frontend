@@ -170,7 +170,7 @@ class WebchatControllerSpec
       }
     }
 
-    "WMR SA Repayment DAv4 live webchat page if feature switch is true" in {
+    "WMR Agent Dedicated Line Self Assessment repayment DAv4 live webchat page if feature switch is true" in {
       val application = builder.configure("features.digitalAssistants.showDAv4WMRADLSARepayment" -> "true").build()
 
       running(application) {
@@ -183,7 +183,7 @@ class WebchatControllerSpec
       }
     }
 
-    "WMR SA Repayment DAv4 live webchat page is not displayed if feature switch is false" in {
+    "WMR Agent Dedicated Line Self Assessment repayment DAv4 live webchat page is not displayed if feature switch is false" in {
       val application = builder.configure("features.digitalAssistants.showDAv4WMRADLSARepayment" -> "false").build()
 
       running(application) {

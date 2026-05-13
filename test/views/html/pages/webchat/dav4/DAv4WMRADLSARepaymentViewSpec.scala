@@ -20,11 +20,11 @@ import org.scalatest.matchers.must.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike
 import play.twirl.api.HtmlFormat
 import views.html.pages.helpers.ChatViewBehaviours
-import views.html.webchat.dav4.DAv4WMRNICreditView
+import views.html.webchat.dav4.{DAv4WMRADLSARepaymentView}
 
 class DAv4WMRADLSARepaymentViewSpec extends ChatViewBehaviours with Matchers with AnyWordSpecLike {
 
-  private val view = app.injector.instanceOf[DAv4WMRNICreditView]
+  private val view = app.injector.instanceOf[DAv4WMRADLSARepaymentView]
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
