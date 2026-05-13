@@ -69,6 +69,9 @@ wmr.ni.repayment.title=National Insurance repayment webchat
 #WMRNICredit
 wmr.ni.credit.title=National Insurance credit webchat
 
+#WMRADLSARepayment
+wmr.adl.sa.repayment.title=National Insurance credit webchat Pending Content
+
 #Additional Needs View
 additional.needs.title=HMRC’s Extra Support team webchat
 
