@@ -12,6 +12,8 @@ GET         /webchat/paye-and-self-assessment-resolutions                   cont
 GET         /webchat/paye-and-self-assessment-bereavement                   controllers.WebchatController.bereavement
 GET         /webchat/wmr-ni-repayment                                       controllers.WebchatController.wmrNiRepayment
 GET         /webchat/wmr-ni-credits                                         controllers.WebchatController.wmrNiCredit
+GET         /webchat/wmr-adl-sa-repayment                                   controllers.WebchatController.wmrAdlSaRepayment
+
 
 GET         /accessibility-statement                                        controllers.AccessibilityStatementController.accessibility(userAction: Option[String])
 
