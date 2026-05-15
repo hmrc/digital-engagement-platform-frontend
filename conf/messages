@@ -69,6 +69,9 @@ wmr.ni.repayment.title=National Insurance repayment webchat
 #WMRNICredit
 wmr.ni.credit.title=National Insurance credit application webchat
 
+#WMRNIA1Cert
+wmr.ni.a1cert.title=National Insurance A1/S1 certificate webchat
+
 #WMRADLSARepayment
 wmr.adl.sa.repayment.title=Agent Dedicated Line Self Assessment repayment webchat
 

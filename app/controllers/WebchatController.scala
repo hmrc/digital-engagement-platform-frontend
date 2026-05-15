@@ -28,6 +28,7 @@ import views.html.webchat.dav4.DAv4BereavementView
 import views.html.webchat.dav4.DAv4WMRNIRepaymentView
 import views.html.webchat.dav4.DAv4WMRNICreditView
 import views.html.webchat.dav4.DAv4WMRADLSARepaymentView
+import views.html.webchat.dav4.DAv4WMRNIA1CertView
 
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.Future
@@ -42,6 +43,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
                                   dav4WMRNIRepaymentView: DAv4WMRNIRepaymentView,
                                   dav4WMRNICreditView: DAv4WMRNICreditView,
                                   dav4WMRADLSARepaymentView: DAv4WMRADLSARepaymentView,
+                                  dav4WMRNIA1CertView: DAv4WMRNIA1CertView,
                                   serviceUnavailableView: ServiceUnavailableView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
@@ -93,6 +95,14 @@ class WebchatController @Inject()(appConfig: AppConfig,
   def wmrNiCredit: Action[AnyContent] = Action.async { implicit request =>
     if (config.showDAv4WMRNICredit) {
       Future.successful(Ok(dav4WMRNICreditView()))
+    } else {
+      Future.successful(NotFound)
+    }
+  }
+
+  def wmrNiA1Cert: Action[AnyContent] = Action.async { implicit request =>
+    if (config.showDAv4WMRNIA1Cert) {
+      Future.successful(Ok(dav4WMRNIA1CertView()))
     } else {
       Future.successful(NotFound)
     }
