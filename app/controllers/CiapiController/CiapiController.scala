@@ -235,4 +235,13 @@ class CiapiController @Inject()(appConfig: AppConfig,
       Future.successful(NotFound)
     }
   }
+
+  def getHelpFromHmrcDa: Action[AnyContent] = Action.async { implicit request =>
+    if (config.showGetHelpFromHmrcDa) {
+      auditHelper.audit(DAv3AuditModel("getHelpFromHmrcDa"))
+      Future.successful(Ok(askHMRCOnlineCIAPIView()))
+    } else {
+      Future.successful(NotFound)
+    }
+  }
 }
