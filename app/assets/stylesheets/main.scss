@@ -5,4 +5,5 @@ $hmrc-assets-path: "/ask-hmrc/assets/lib/hmrc-frontend/hmrc/";
 @import 'custom';
 @import '_typography';
 
-@import "lib/govuk-frontend/dist/govuk/all";
+@import "lib/govuk-frontend/dist/govuk/index";
+
