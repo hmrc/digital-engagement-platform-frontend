@@ -29,6 +29,7 @@ import views.html.webchat.dav4.DAv4WMRNIRepaymentView
 import views.html.webchat.dav4.DAv4WMRNICreditView
 import views.html.webchat.dav4.DAv4WMRADLSARepaymentView
 import views.html.webchat.dav4.DAv4WMRNIA1CertView
+import views.html.webchat.dav4.DAv4WmrNiAbroadEuView
 
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.Future
@@ -37,6 +38,7 @@ import scala.concurrent.Future
 class WebchatController @Inject()(appConfig: AppConfig,
                                   mcc: MessagesControllerComponents,
                                   dav4NationalClearanceHubView: DAv4NationalClearanceHubView,
+                                  dav4wmrNiAbroadEuView: DAv4WmrNiAbroadEuView,
                                   dav4AdditionalNeedsHelpView: DAv4AdditionalNeedsHelpView,
                                   dav4PAYESAResolutionsView: DAv4PAYESAResolutionsView,
                                   dav4BereavementView: DAv4BereavementView,
@@ -50,6 +52,14 @@ class WebchatController @Inject()(appConfig: AppConfig,
 
   def serviceUnavailableRedirect: Action[AnyContent] = Action.async {
     Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
+  }
+
+  def wmrNiAbroadEu: Action[AnyContent] = Action.async { implicit request =>
+    if (config.showDAv4WMRNIAbroadEU) {
+      Future.successful(Ok(dav4wmrNiAbroadEuView()))
+    } else {
+      Future.successful(NotFound)
+    }
   }
 
   def nationalClearanceHub: Action[AnyContent] = Action.async { implicit request =>
