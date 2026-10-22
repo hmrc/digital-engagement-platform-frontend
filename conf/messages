@@ -57,6 +57,9 @@ service.unavailable.p2-2 = find other contact details for your query
 #National Clearance Hub
 national.clearance.hub.title=National Clearance Hub webchat
 
+#WMR NI Abroad EU
+wmr.ni.abroad.eu.title=EU application to pay National Insurance whilst abroad webchat
+
 #WMR NI Abroad Non EU
 wmr.ni.abroad.non.eu.title=Non-EU application to pay National Insurance whilst abroad webchat
 

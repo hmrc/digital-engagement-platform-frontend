@@ -29,6 +29,7 @@ import views.html.webchat.dav4.DAv4WMRNIRepaymentView
 import views.html.webchat.dav4.DAv4WMRNICreditView
 import views.html.webchat.dav4.DAv4WMRADLSARepaymentView
 import views.html.webchat.dav4.DAv4WMRNIA1CertView
+import views.html.webchat.dav4.DAv4WmrNiAbroadEuView
 import views.html.webchat.dav4.DAv4WMRNIAbroadNonEUView
 
 import javax.inject.{Inject, Singleton}
@@ -38,6 +39,7 @@ import scala.concurrent.Future
 class WebchatController @Inject()(appConfig: AppConfig,
                                   mcc: MessagesControllerComponents,
                                   dav4NationalClearanceHubView: DAv4NationalClearanceHubView,
+                                  dav4wmrNiAbroadEuView: DAv4WmrNiAbroadEuView,
                                   dav4WMRNIAbroadNonEUView: DAv4WMRNIAbroadNonEUView,
                                   dav4AdditionalNeedsHelpView: DAv4AdditionalNeedsHelpView,
                                   dav4PAYESAResolutionsView: DAv4PAYESAResolutionsView,
@@ -54,6 +56,14 @@ class WebchatController @Inject()(appConfig: AppConfig,
     Future.successful(Redirect(routes.WebchatController.serviceUnavailable))
   }
 
+  def wmrNiAbroadEu: Action[AnyContent] = Action.async { implicit request =>
+    if (config.showDAv4WMRNIAbroadEU) {
+      Future.successful(Ok(dav4wmrNiAbroadEuView()))
+    } else {
+      Future.successful(NotFound)
+    }
+  }
+
   def wmrNiAbroadNonEu: Action[AnyContent] = Action.async { implicit request =>
     if (config.showDAv4WMRNIAbroadNonEU){
       Future.successful(Ok(dav4WMRNIAbroadNonEUView()))
@@ -63,7 +73,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def nationalClearanceHub: Action[AnyContent] = Action.async { implicit request =>
-    if (config.showDAv4NCH) {
+    if (config.showDAv4NCH){
       Future.successful(Ok(dav4NationalClearanceHubView()))
     } else {
       Future.successful(NotFound)

@@ -7,6 +7,7 @@ GET         /assets/*file                                                   cont
 GET         /webchat/service-unavailable                                    controllers.WebchatController.serviceUnavailable
 
 GET         /webchat/national-clearance-hub                                 controllers.WebchatController.nationalClearanceHub
+GET         /webchat/wmr-ni-abroad-eu                                       controllers.WebchatController.wmrNiAbroadEu
 GET         /webchat/wmr-ni-abroad-non-eu                                   controllers.WebchatController.wmrNiAbroadNonEu
 GET         /webchat/help-for-users-with-additional-needs                   controllers.WebchatController.additionalNeedsHelp
 GET         /webchat/paye-and-self-assessment-resolutions                   controllers.WebchatController.payeandSelfAssessmentResolutions
