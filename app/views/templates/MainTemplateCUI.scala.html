@@ -42,10 +42,34 @@
 <script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/custom.js")'></script>
 <script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/bundle.js")'></script>
 
-@if(!appConfig.performanceTest){
+<script @{CSPNonce.attr}>
+
+    (function(n,u){
+
+        window.CXoneDfo=n,
+
+            window[n]=window[n]||function(){(window[n].q=window[n].q||[]).push(arguments)},window[n].u=u,
+
+            e=document.createElement("script"),e.type="module",e.src=u+"?"+Math.round(Date.now()/1e3/3600),
+
+            document.head.appendChild(e)
+
+    })('cxone','https://web-modules-de-uk3.nicecxone-sov2.uk/loader/1/loader.js');
+
+
+
+    cxone('init', '1027');
+
+    cxone('guide','init');
+    cxone('chat', 'setWindowWidth', '100%');
+    cxone('chat', 'setWindowHeight', '100%');
+    cxone('chat', 'openChatWindow');
+</script>
+
+<!--@if(!appConfig.performanceTest){
         @{webChatClient.loadRequiredElements()}
         @{webChatClient.loadHMRCChatSkinElement("embedded")}
-    }
+    }-->
 }
 
 @govuk_wrapper(title = title,
