@@ -60,11 +60,96 @@
 
     cxone('init', '1027');
 
-    cxone('guide','init');
-    cxone('chat', 'setWindowWidth', '100%');
-    cxone('chat', 'setWindowHeight', '100%');
-    cxone('chat', 'openChatWindow');
+    if (document.getElementById('cui-messaging-container')) {
+        cxone('chat', 'init', 1027, 'chat_2eb777e8-4c6f-4728-af23-26329f3ab463');
+        cxone('chat', 'enableChatAlwaysOnline');
+        cxone('chat', 'setWindowWidth', '100%');
+        cxone('chat', 'setWindowHeight', '100%');
+        cxone('chat', 'setCustomCss', '[data-selector="WIDGET"], [data-selector="HEADER_MINIMIZE_WINDOW"], ' +
+            '[class*="WaitingQueueModal_WaitingQueueModal"] { display: none !important; }');
+        cxone('chat', 'openChatWindow');
+    } else {
+        cxone('guide', 'init');
+    }
+
+    // The CXone loader only offers a floating window in the corner. On pages with #cui-messaging-container
+    // (where the Nuance chat used to be), keep the widget's container lined up with that slot instead.
+    (function embedChatWidget() {
+        var slot = document.getElementById('cui-messaging-container');
+        if (!slot) return;
+        // Turns on the styles below; pages without the slot keep the standard floating widget
+        document.documentElement.classList.add('cui-chat-embedded');
+
+        function placeWidget() {
+            var widget = document.getElementById('be-chat-container');
+            if (!widget) return;
+            var r = slot.getBoundingClientRect();
+            widget.style.top = (r.top + window.scrollY) + 'px';
+            widget.style.left = (r.left + window.scrollX) + 'px';
+            widget.style.width = r.width + 'px';
+            widget.style.height = r.height + 'px';
+            widget.setAttribute('data-cui-placed', 'true');
+        }
+
+        function undoModal() {
+            [].forEach.call(document.body.children, function (el) {
+                if (el.id === 'be-chat-container' || el.tagName === 'SCRIPT' || el.tagName === 'IFRAME') return;
+                if (el.hasAttribute('inert')) el.removeAttribute('inert');
+                if (el.getAttribute('aria-hidden') === 'true') el.removeAttribute('aria-hidden');
+            });
+            if (document.body.style.overflow === 'hidden') document.body.style.overflow = '';
+        }
+
+        function start() {
+            window.addEventListener('resize', placeWidget);
+            new MutationObserver(function (records) {
+                if (records.some(function (r) { return r.target === document.body || r.target.parentNode === document.body; })) undoModal();
+            }).observe(document.body, { subtree: true, attributes: true, attributeFilter: ['inert', 'aria-hidden', 'style'] });
+
+            // Banners and other content above the slot can change its position, so check it regularly
+            var last = '';
+            setInterval(function () {
+                var r = slot.getBoundingClientRect();
+                var key = [r.top + window.scrollY, r.left + window.scrollX, r.width, r.height].map(Math.round).join(',');
+                if (key !== last || !document.getElementById('be-chat-container')) { last = key; placeWidget(); }
+            }, 150);
+
+            // Hide the Nuance loading animation once the widget covers the slot
+            var tries = 0;
+            var waitForWidget = setInterval(function () {
+                if (document.getElementById('be-chat-container')) {
+                    placeWidget();
+                    var loading = document.getElementById('cui-loading-animation');
+                    if (loading) loading.style.display = 'none';
+                    clearInterval(waitForWidget);
+                } else if (++tries > 100) {
+                    clearInterval(waitForWidget);
+                }
+            }, 250);
+        }
+
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
+        else start();
+    })();
 </script>
+
+<!-- Draws Cognigy buttons and lists (CXRICH messages) inside the CXone widget -->
+<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/niceWidgetRichContent.js")'></script>
+
+<style @{CSPNonce.attr}>
+    /* Pin the CXone widget over #cui-messaging-container; the script above sets its position and size.
+       Only on pages with that slot (the script adds .cui-chat-embedded). */
+    .cui-chat-embedded #be-chat-container { position: absolute !important; z-index: 1 !important; }
+    .cui-chat-embedded #be-chat-container:not([data-cui-placed]) { visibility: hidden !important; }
+    .cui-chat-embedded #be-chat-container #be-frame {
+        position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important;
+        max-width: none !important; max-height: none !important; margin: 0 !important;
+        transform: none !important; box-shadow: none !important; z-index: auto !important;
+    }
+    .cui-chat-embedded #be-chat-container #be-frame iframe {
+        width: 100% !important; height: 100% !important; max-width: none !important; max-height: none !important;
+    }
+</style>
 
 <!--@if(!appConfig.performanceTest){
         @{webChatClient.loadRequiredElements()}
