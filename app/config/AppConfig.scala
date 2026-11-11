@@ -81,6 +81,7 @@ class AppConfig @Inject()(config: Configuration) {
   val showDAv4WMRNIA1Cert: Boolean = config.getOptional[Boolean]("features.digitalAssistants.showDAv4WMRNIA1Cert").getOrElse(false)
   val showDAv4WMRNIAbroadEU: Boolean = config.getOptional[Boolean]("features.digitalAssistants.showDAv4WMRNIAbroadEU").getOrElse(false)
   val showDAv4WMRNIAbroadNonEU: Boolean = config.getOptional[Boolean]("features.digitalAssistants.showDAv4WMRNIAbroadNonEU").getOrElse(false)
+  val useNiceCXone: Boolean = config.getOptional[Boolean]("features.use-nicecxone").getOrElse(false)
 
   val testSwitch: Boolean = config.getOptional[Boolean]("features.test").getOrElse(false)
 
