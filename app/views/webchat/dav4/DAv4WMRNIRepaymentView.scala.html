@@ -49,8 +49,12 @@
 	<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/bundle.js")'></script>
 
 	@if(!appConfig.performanceTest){
-		@{webChatClient.loadRequiredElements()}
-		@{webChatClient.loadHMRCChatSkinElement("popup")}
+		@if(appConfig.useNiceCXone){
+			@{webChatClient.loadCXoneRequiredElements("webchat")}
+		}else{
+			@{webChatClient.loadRequiredElements()}
+			@{webChatClient.loadHMRCChatSkinElement("popup")}
+		}
 	}
 }
 
