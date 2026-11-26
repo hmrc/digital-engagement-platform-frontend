@@ -39,8 +39,7 @@
     window.featureSwitchUrl = "@{appConfig.featureSwitchUrl}"
 </script>
 <!--This is only used for fading elements.-->
-<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/custom.js")'></script>
-<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/bundle.js")'></script>
+
 
 
 
@@ -48,6 +47,8 @@
    @if(appConfig.useNiceCXone){
       @{webChatClient.loadCXoneRequiredElements("embeddedDA")}
    }else{
+        <script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/custom.js")'></script>
+        <script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/bundle.js")'></script>
       @{webChatClient.loadRequiredElements()}
       @{webChatClient.loadHMRCChatSkinElement("embedded")}
    }
